@@ -1,0 +1,70 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @format
+ */
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #00d6a1;
+  --ifm-color-primary-dark: #00c191;
+  --ifm-color-primary-darker: #00b689;
+  --ifm-color-primary-darkest: #009671;
+  --ifm-color-primary-light: #00ebb1;
+  --ifm-color-primary-lighter: #00f6b9;
+  --ifm-color-primary-lightest: #17ffc6;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #00d6a1;
+}
+/* Styling one class specially in dark mode */
+[data-theme='dark'] .white-text {
+  color: black;
+
+}
+
+body {
+  font-weight: var(--ifm-font-weight-normal);
+}
+
+h2 {
+  margin-bottom: 2rem;
+}
+
+h5, h6 { font-weight: var(--ifm-font-weight-semibold); }
+
+
+.darkBackground {
+  padding: 2rem;
+  background: linear-gradient(135deg,
+              rgba(135, 135, 135, .3) 60%,
+              rgba(100, 100, 100, .3) 60.01%);
+  background-position: 50% 0;
+  position: relative;
+  color: black;
+  text-align: center;
+}
+
+.lightBackground {
+  padding: 2rem;
+  background: linear-gradient(-135deg,
+              #f5fffb 40%,
+              white 40.01%);
+  background-position: 50% 0;
+  position: relative;
+  color: black
+}
+
+
+
