@@ -8,7 +8,7 @@ Docusaurus is a **static-site-generator** (also called **[Jamstack](https://jams
 
 It builds your site as simple **static HTML, JavaScript and CSS files**.
 
-## Key Features
+## Build your site
 
 Build your site **for production**:
 

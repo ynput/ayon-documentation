@@ -5,7 +5,7 @@ sidebar_label: Installation
 ---
 
 import Tabs from '@theme/Tabs';
-import TabItem from '@th
+import TabItem from '@theme/TabItem';
 
 ## Installation
 
