@@ -32,7 +32,7 @@ Another TVPaint window pop up. Please press `Yes`. This window will be presented
 
 ![writefile](assets/tvp_write_file.png)
 
-Now ayon Tools menu is in your TVPaint work area. 
+Now AYON Tools menu is in your TVPaint work area. 
 
 ![AYONtools](assets/tvp_ayon_menu.png)
 
@@ -125,7 +125,7 @@ When you want to create `RenderPass`
 
 <br></br>
 
-In this example, ayon will render selected animation layers within the given color group. E.i. the layers *L020_colour_fx*, *L020_colour_mouth*, and *L020_colour_eye* will be rendered as one pass belonging to the yellow RenderLayer.  
+In this example, AYON will render selected animation layers within the given color group. E.i. the layers *L020_colour_fx*, *L020_colour_mouth*, and *L020_colour_eye* will be rendered as one pass belonging to the yellow RenderLayer.  
 
 ![renderpass](assets/tvp_timeline_color2.png)
 
@@ -143,7 +143,7 @@ You can check your RendrePasses and RenderLayers in [Subset Manager](#subset-man
 <div class="col col--6 markdown">
 
 Now that you have created the required instances, you can publish them via `Publish` tool. 
-- Click on `Publish` in ayon Tools menu.
+- Click on `Publish` in AYON Tools menu.
 - wait until all instances are collected. 
 - You can check on the left side whether all your instances have been created and are ready for publishing. 
 - Fill the comment on the bottom of the window.
