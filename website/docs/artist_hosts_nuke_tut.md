@@ -196,7 +196,7 @@ More about [workfiles](artist_tools.md#workfiles).
 
 - **Open Workfile**
 
-  - You can [configure](project_settings/settings_project_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
+  - You can [admin section](project_settings/settings_project_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
 
 - **Nuke Color Settings**
 
