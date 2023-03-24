@@ -14,8 +14,8 @@ const config = {
     title: "AYON",
     tagline:
         "The most robust open-source pipeline for studios and remote teams",
-    url: "https://ayon.ynput.io",
-    baseUrl: "/",
+    url: process.env.DEPLOY_PRIME_URL || "http://localhost:3000", // Your website URL
+    baseUrl: process.env.DEPLOY_BASE_URL || "/",
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
@@ -41,6 +41,23 @@ const config = {
                     customCss: require.resolve("./src/css/custom.css"),
                 },
             }),
+        ],
+        [
+            "redocusaurus",
+            {
+                // Plugin Options for loading OpenAPI files
+                specs: [
+                    {
+                        spec: "https://ayon.cloud/openapi.json",
+                        route: "/api",
+                    },
+                ],
+                // Theme Options for modifying how redoc renders them
+                theme: {
+                    // Change with your site colors
+                    primaryColor: "#00d6a1",
+                },
+            },
         ],
     ],
 
@@ -73,6 +90,11 @@ const config = {
                         to: "docs/dev_introduction",
                         label: "Dev Docs",
                         position: "left",
+                    },
+                    {
+                        to: "/api",
+                        label: "REST API Docs",
+                        position: "right",
                     },
                     {
                         href: "https://github.com/pypeclub",
