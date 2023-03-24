@@ -78,6 +78,27 @@ const config = {
         style: 'dark',
         links: [
           {
+            title: 'Pages',
+            items: [
+              {
+                label: 'Features',
+                to: '/features',
+              },
+              {
+                label: 'User Docs',
+                to: '/docs/artist_getting_started',
+              },
+              {
+                label: 'Admin Docs',
+                to: '/docs/system_introduction',
+              },
+              {
+                label: 'Dev Docs',
+                to: '/docs/dev_introduction',
+              },
+            ],
+          },
+          {
             title: 'Community',
             items: [
               {
@@ -122,7 +143,7 @@ const config = {
           // },
         ],
         // Please do not remove the credits, help to publicize Docusaurus :)
-        copyright: `Copyright © ${new Date().getFullYear()} Orbi Tools`,
+        copyright: `Copyright © ${new Date().getFullYear()} Ynput`,
       },
     }),
 };

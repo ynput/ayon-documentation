@@ -18,51 +18,49 @@ import styles from './styles.module.css';
 const features = [
   {
     title: 'Battle tested',
-    //imageUrl: 'img/undraw_docusaurus_mountain.svg',
+    //imageUrl: '',
     description: (
       <>
-        Designed, used, broken-in and 
-        validated in collaboration with many 
-        studios, who's artist have used it on 
-        projects ranging from commercials, to 
-        features.
+        Designed, used, broken-in and validated in collaboration with many
+        studios, who's artist have used it on projects ranging from commercials,
+        to features.
       </>
     ),
   },
   {
     title: 'Supported',
-    //imageUrl: 'img/undraw_docusaurus_tree.svg',
+    //imageUrl: '',
     description: (
       <>
-        AYON is developed and
-        maintained by ynput.io, a full-time,
-        dedicated team of industry
-        professionals, providing support and
-        training to studios and artists.
+        AYON is developed and maintained by ynput.io, a full-time, dedicated
+        team of industry professionals, providing support and training to
+        studios and artists.
       </>
     ),
   },
   {
     title: 'Extensible',
-    //imageUrl: 'img/undraw_docusaurus_react.svg',
+    //imageUrl: '',
     description: (
       <>
-       Project needs differ, clients differ and studios differ. AYON is designed to fit into your workflow and bend to your will. If a feature is missing, it can most probably be added.
+        Project needs differ, clients differ and studios differ. AYON is
+        designed to fit into your workflow and bend to your will. If a feature
+        is missing, it can most probably be added.
       </>
     ),
   },
   {
     title: 'Focused',
-    //imageUrl: 'img/undraw_docusaurus_react.svg',
+    //imageUrl: '',
     description: (
       <>
-       All AYON features have been added to solve specific needs during it's use in production. If something is obsolete, it is carefully deprecated, to keep the codebase lean and easier to maintain.
+        All AYON features have been added to solve specific needs during it's
+        use in production. If something is obsolete, it is carefully deprecated,
+        to keep the codebase lean and easier to maintain.
       </>
     ),
   },
 ];
-
-
 
 function Feature({imageUrl, title, description}) {
   const imgUrl = useBaseUrl(imageUrl);
@@ -110,7 +108,7 @@ export default function Home() {
           </div>
         </div>
       </header>
-      
+
       <main>
         {features && features.length > 0 && (
           <section className={styles.features}>
@@ -127,23 +125,29 @@ export default function Home() {
               </div>
             </div>
           </section>
-          
         )}
-        
-        <section className={styles.features, "darkBackground"}>
+
+        <section className={(styles.features, 'darkBackground')}>
           <div className="container">
             <div className="row">
               <div className="col col--6">
-              <img src="/img/splash2.svg" />
+                <img src="" />
               </div>
               <div className="col col--6">
                 <h2>Join the creative pipeline revolution</h2>
-                    <p>AYON is for anyone that wants to make their creative studio scalable to take on more projects with a pipeline that is production-proven and continuously improving in-line with industry demands. We are funded by the industry to strengthen the industry. AYON opens the door for your creative team to take on new projects, giving a scalable platform to grow your studio.</p>
+                <p>
+                  AYON is for anyone that wants to make their creative studio
+                  scalable to take on more projects with a pipeline that is
+                  production-proven and continuously improving in-line with
+                  industry demands. We are funded by the industry to strengthen
+                  the industry. AYON opens the door for your creative team to
+                  take on new projects, giving a scalable platform to grow your
+                  studio.
+                </p>
               </div>
             </div>
           </div>
         </section>
-
       </main>
     </Layout>
   );
