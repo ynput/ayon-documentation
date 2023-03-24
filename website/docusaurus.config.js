@@ -13,7 +13,7 @@
 const config = {
   title: 'AYON',
   tagline: 'The most robust open-source pipeline for studios and remote teams',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://ayon.ynput.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -33,15 +33,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          editUrl: 'https://github.com/ynput/OpenPype/tree/develop/website',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -63,93 +55,71 @@ const config = {
           {
             to: '/features',
             label: 'Features',
-            position: 'left'
-          }, {
+            position: 'left',
+          },
+          {
             to: 'docs/artist_getting_started',
             label: 'User Docs',
-            position: 'left'
+            position: 'left',
           },
           {
             to: 'docs/system_introduction',
             label: 'Admin Docs',
-            position: 'left'
+            position: 'left',
           },
           {
             to: 'docs/dev_introduction',
             label: 'Dev Docs',
-            position: 'left'
+            position: 'left',
           },
-      
         ],
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Learn',
-            items: [
-              {
-                label: 'Style Guide',
-                to: 'docs/',
-              },
-              {
-                label: 'Second Doc',
-                to: 'docs/doc2',
-              },
-            ],
-          },
-          {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
-              },
-              {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'Blog',
-                to: 'blog',
+                href: 'https://discord.gg/ynput',
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/ynput/OpenPype',
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/company/ynput',
+              },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/ynput_io',
               },
             ],
           },
-          {
-            title: 'Legal',
-            // Please do not remove the privacy and terms, it's a legal requirement.
-            items: [
-              {
-                label: 'Privacy',
-                href: 'https://opensource.fb.com/legal/privacy/',
-              },
-              {
-                label: 'Terms',
-                href: 'https://opensource.fb.com/legal/terms/',
-              },
-              {
-                label: 'Data Policy',
-                href: 'https://opensource.fb.com/legal/data-policy/',
-              },
-              {
-                label: 'Cookie Policy',
-                href: 'https://opensource.fb.com/legal/cookie-policy/',
-              },
-            ],
-          },
+          // {
+          //   title: 'Legal',
+          //   // Please do not remove the privacy and terms, it's a legal requirement.
+          //   items: [
+          //     {
+          //       label: 'Privacy',
+          //       href: 'https://opensource.fb.com/legal/privacy/',
+          //     },
+          //     {
+          //       label: 'Terms',
+          //       href: 'https://opensource.fb.com/legal/terms/',
+          //     },
+          //     {
+          //       label: 'Data Policy',
+          //       href: 'https://opensource.fb.com/legal/data-policy/',
+          //     },
+          //     {
+          //       label: 'Cookie Policy',
+          //       href: 'https://opensource.fb.com/legal/cookie-policy/',
+          //     },
+          //   ],
+          // },
         ],
         // Please do not remove the credits, help to publicize Docusaurus :)
         copyright: `Copyright © ${new Date().getFullYear()} Orbi Tools`,
