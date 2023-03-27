@@ -7,7 +7,10 @@ sidebar_label: Slack
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This module allows configuring profiles(when to trigger, for which combination of task, host and family) and templates(could contain {} placeholder) to send notification to Slack channel(s) whenever configured asset type is published.
+
+This module allows configuring profiles(when to trigger, for which combination of task, host and family)
+and templates(could contain {} placeholder) to send notification to Slack channel(s)
+whenever configured asset type is published.
 
 
 ## App installation
@@ -90,6 +93,16 @@ Few keys also have Capitalized and UPPERCASE format. Values will be modified acc
 
 Here you can find review {review_filepath}
 ```
+
+##### Dynamic message for artists
+If artists uses host with implemented Publisher (new UI for publishing, implemented in Tray Publisher, Adobe products etc), it is possible for
+them to add additional message (notification for specific users for example, artists must provide proper user id with '@').
+Additional message will be sent only if at least one profile, eg. one target channel is configured.
+All available template keys (see higher) could be used here as a placeholder too.
+
+#### User or group notifications
+Message template or dynamic data could contain user or group notification, it must be in format @artist.name, '@John Doe' or "@admin group" for display name containing space.
+If value prefixed with @ is not resolved and Slack user is not found, message will contain same value (not translated by Slack into link and proper mention.)
 
 #### Message retention
 Currently no purging of old messages is implemented in AYON. Admins of Slack should set their own retention of messages and files per channel.

@@ -7,7 +7,8 @@ sidebar_label: Ftrack
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Ftrack is currently the main project management option for AYON. This documentation assumes that you are familiar with Ftrack and it's basic principles. If you're new to Ftrack, we recommend having a thorough look at [Ftrack Official Documentation](http://ftrack.rtd.ftrack.com/en/stable/).
+
+Ftrack is currently the main project management option for AYON. This documentation assumes that you are familiar with Ftrack and its basic principles. If you're new to Ftrack, we recommend having a thorough look at [Ftrack Official Documentation](http://ftrack.rtd.ftrack.com/en/stable/).
 
 ## Prepare Ftrack for AYON
 
@@ -15,9 +16,9 @@ Ftrack is currently the main project management option for AYON. This documentat
 If you want to connect Ftrack to AYON you might need to make few changes in Ftrack settings. These changes would take a long time to do manually, so we prepared a few Ftrack actions to help you out. First, you'll need to launch AYON settings, enable [Ftrack module](admin_settings_system.md#Ftrack), and enter the address to your Ftrack server.
 
 ### Login
-Once your server is configured, restart aAYONyon and you should be prompted to enter your [Ftrack credentials](artist_ftrack.md#How-to-use-Ftrack-in-ayon) to be able to run our Ftrack actions. If you are already logged in to Ftrack in your browser, it is enough to press `Ftrack login` and it will connect automatically.
+Once your server is configured, restart AYON and you should be prompted to enter your [Ftrack credentials](artist_ftrack.md#How-to-use-Ftrack-in-AYON) to be able to run our Ftrack actions. If you are already logged in to Ftrack in your browser, it is enough to press `Ftrack login` and it will connect automatically.
 
-For more details step by step on how to login to Ftrack in AYON to go [artist Ftrack login](artist_ftrack.md#How-to-use-Ftrack-in-ayon) documentation.
+For more details step by step on how to login to Ftrack in AYON to go [artist Ftrack login](artist_ftrack.md#How-to-use-Ftrack-in-AYON) documentation.
 
 You can only use our Ftrack Actions and publish to Ftrack if each artist is logged in.
 
@@ -50,7 +51,7 @@ There are specific launch arguments for event server. With `ayon_console module 
 
 -  **`--ftrack-user "your.username"`** : Ftrack Username
 -   **`--ftrack-api-key "00000aaa-11bb-22cc-33dd-444444eeeee"`** : User's API key
--   `--ftrack-url "https://yourdomain.ftrackapp.com/"` : Ftrack server URL _(it is not needed to enter if you have set `FTRACK_SERVER` in ayon' environments)_
+-   `--ftrack-url "https://yourdomain.ftrackapp.com/"` : Ftrack server URL _(it is not needed to enter if you have set `FTRACK_SERVER` in AYON' environments)_
 
 So if you want to use AYON's environments then you can launch event server for first time with these arguments `ayon_console.exe module ftrack eventserver --ftrack-user "my.username" --ftrack-api-key "00000aaa-11bb-22cc-33dd-444444eeeee" --store-credentials`. Since that time, if everything was entered correctly, you can launch event server with `ayon_console.exe module ftrack eventserver`.
 
@@ -98,7 +99,7 @@ Event server should **not** run more than once! It may cause major issues.
 -   add content to the file:
 ```sh
 #!/usr/bin/env bash
-export ayon_MONGO=<ayon-mongo-url>
+export AYON_MONGO=<ayon-mongo-url>
 
 pushd /mnt/path/to/ayon
 ./ayon_console module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug
@@ -141,7 +142,7 @@ WantedBy=multi-user.target
 -   add content to the service file:
 ```sh
 @echo off
-set ayon_MONGO=<ayon-mongo-url>
+set AYON_MONGO=<ayon-mongo-url>
 
 pushd \\path\to\ayon
 ayon_console.exe module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug

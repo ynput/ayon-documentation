@@ -4,6 +4,9 @@ title: Hiero
 sidebar_label: Hiero / Nuke Studio
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::note
 All the information also applies to **_Nuke Studio_**(NKS), but for simplicity we only refer to Hiero/NKS. The workflows are identical for both. We are supporting versions **`11.0`** and above.
 :::
@@ -12,11 +15,11 @@ All the information also applies to **_Nuke Studio_**(NKS), but for simplicity w
 
 ## AYON global tools
 
--   [Work Files](artist_tools.md#workfiles)
--   [Create](artist_tools.md#creator)
--   [Load](artist_tools.md#loader)
--   [Manage (Inventory)](artist_tools.md#inventory)
--   [Publish](artist_tools.md#publisher)
+-   [Work Files](artist_tools_workfiles)
+-   [Create](artist_tools_creator)
+-   [Load](artist_tools_loader)
+-   [Manage (Inventory)](artist_tools_inventory)
+-   [Publish](artist_tools_publisher)
 
 
 ## Hiero specific tools
@@ -48,7 +51,7 @@ This tool will recreate all necessary AYON tags needed for successful publishing
 
 ### Apply Colorspace Project
 
-This tool will set any defined colorspace definition from ayon `Settings / Project / Anatomy / Color Management and Output Formats / Hiero / Workfile` to Hiero `menu / Project / Edit Settings / Color Management tab`
+This tool will set any defined colorspace definition from AYON `Settings / Project / Anatomy / Color Management and Output Formats / Hiero / Workfile` to Hiero `menu / Project / Edit Settings / Color Management tab`
 
 #### Result
 
@@ -68,7 +71,7 @@ This tool will set any defined colorspace definition from ayon `Settings / Proje
 
 ### Apply Colorspace Clips
 
-This tool will set any defined colorspace definition from ayon `Settings / Project / Anatomy / Color Management and Output Formats / Hiero / Colorspace on Inputs by regex detection` to any matching clip's source path.
+This tool will set any defined colorspace definition from AYON `Settings / Project / Anatomy / Color Management and Output Formats / Hiero / Colorspace on Inputs by regex detection` to any matching clip's source path.
 
 #### Result
 
@@ -96,7 +99,7 @@ Because we don't support on-fly data conversion so in case of working with raw c
 1. Merge all tracks which supposed to be one and they are multiply only because of editor's style
 2. Rename tracks to follow basic structure > if only one layer then `main` in case of multiple layer (elements) for one shot then `main`, and other elements for example: `bg`, `greenscreen`, `fg01`, `fg02`, `display01`, etc. please avoid using [-/_.,%&*] or spaces. These names will be later used in *subset* name creation as `{family}{trackName}` so for example **plateMain** or **plateFg01**
 3. Define correct `Set Media Color Transform` at all clips as those will be also published to metadata and used for later loading with correct color transformation.
-4. Reviewable video material which you wish to be used as preview videos on any supported Project manager platform (Ftrack) has to be added ideally to track named **review**. This can be offline edit used as reference video for 2D/3D artists. This video material can be edited to fit length of **main** timeline track or it cand be one long video clip under all clips in **main** track, because ayon will trim this to appropriate length with use of FFMPEG. Please be avare we only support MP4(h264) or JPG sequence at the moment.
+4. Reviewable video material which you wish to be used as preview videos on any supported Projec manager platform (Ftrack) has to be added ideally to track named **review**. This can be offline edit used as reference video for 2D/3D artists. This video material can be edited to fit length of **main** timeline track or it cand be one long video clip under all clips in **main** track, because AYON will trim this to appropriate length with use of FFMPEG. Please be avare we only support MP4(h264) or JPG sequence at the moment.
 
 <div class="col--6 markdown">
 
@@ -166,7 +169,7 @@ I case you wish to publish reviewable video as explained above then find the app
 Hover above each input field for help.
 <br></br>
 
-Handles can be defined here to. In case you wish to have individual clip set differently we recommend to set here the default value and later change those in the created ayon tag's metadata under `handleStart` and `handleEnd` properties (look below for details)
+Handles can be defined here to. In case you wish to have individual clip set differently we recommend to set here the default value and later change those in the created AYON tag's metadata under `handleStart` and `handleEnd` properties (look below for details)
 </div>
 
 <div class="col col--6 markdown">
@@ -226,14 +229,14 @@ All published instances that will replace the place holder must contain unique i
 ![Create menu](assets/nuke_publishedinstance.png)
 
 
-The informations about these objects are given by the user by filling the extra attributes of the Place Holder
+The information about these objects are given by the user by filling the extra attributes of the Place Holder
 
 ![Create menu](assets/nuke_fillingExtraAttributes.png)
 
 
 
 ### Update Place Holder
-This tool alows the user to change the information provided in the extra attributes of the selected Place Holder.
+This tool allows the user to change the information provided in the extra attributes of the selected Place Holder.
 
 ![Create menu](assets/nuke_updatePlaceHolder.png)
 
@@ -245,7 +248,7 @@ This tool imports the template used and replaces the existed PlaceHolders with t
 ![Create menu](assets/nuke_buildWorfileFromTemplate.png)
 
 #### Result
-- Replace `PLACEHOLDER` node in the template with the published instance corresponding to the informations provided in extra attributes of the Place Holder
+- Replace `PLACEHOLDER` node in the template with the published instance corresponding to the information provided in extra attributes of the Place Holder
 
 ![Create menu](assets/nuke_buildworkfile.png)
 

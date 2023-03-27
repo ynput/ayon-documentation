@@ -4,6 +4,7 @@ title: DaVinci Resolve
 sidebar_label: DaVinci Resolve
 ---
 
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -15,18 +16,18 @@ Before you are able to start with AYON tools in DaVinci Resolve, installation of
 
 ## AYON global tools
 
--   [Work Files](artist_tools.md#workfiles)
--   [Create](artist_tools.md#creator)
--   [Load](artist_tools.md#loader)
--   [Manage (Inventory)](artist_tools.md#inventory)
--   [Publish](artist_tools.md#publisher)
+-   [Work Files](artist_tools_workfiles)
+-   [Create](artist_tools_creator)
+-   [Load](artist_tools_loader)
+-   [Manage (Inventory)](artist_tools_inventory)
+-   [Publish](artist_tools_publisher)
 
 
 <div class="row markdown">
 
 ## Creating Shots from timeline items
 
-Before a clip can be published with [Publisher](artist_tools.md#publisher) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable subset.
+Before a clip can be published with [Publisher](artist_tools_publisher) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable subset.
 
 Lets do it step by step.
 
@@ -64,7 +65,7 @@ To be able to work with dynamic subset name, which is based on track names it is
 <div class="col col--6 markdown">
 
 ![Create menu](assets/resolve_creator_subset_name.png)
-The name of the resulting *subset* can be seen in the **AYONData** marker.
+The name of the resulting *subset* can be seen in the **OpenPypeData** marker.
 <br></br><br></br>
 </div>
 
@@ -93,7 +94,7 @@ After all clips which are intended to be converted to publishable instances are 
 </div>
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_menu_ayon.png)
+![Create menu](assets/resolve_menu_openpype.png)
 
 </div>
 
@@ -187,7 +188,7 @@ In multiple tracks scenario - as mentioned [here](#rename-timeline-track-names) 
 <div class="row markdown">
 <div class="col--6 markdown">
 
-Once all `Chocolate` colored clips have gone through the [creator](#rcreate-menu), have been colored to `Pink` color and a marker has been created for each of them, it means they have been successfully converted to publishable clips. Now we can run **Publisher** - it's button can be found in the ayon menu.
+Once all `Chocolate` colored clips have gone through the [creator](#rcreate-menu), have been colored to `Pink` color and a marker has been created for each of them, it means they have been successfully converted to publishable clips. Now we can run **Publisher** - it's button can be found in the AYON menu.
 
 <br></br>
 </div>

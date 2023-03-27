@@ -4,7 +4,6 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
-
 **AYON** is a python application built on top of many other open-source libraries, modules and projects.
 To be able to use it, you need those tools and set your environment. This
 requires additional software installed and set up correctly on your system.
@@ -15,13 +14,12 @@ various usage scenarios.
 
 ## Studio Preparation
 
-You can find detailed breakdown of technical requirements [here](dev_requirements), but in general AYON should be able
+You can find a detailed breakdown of technical requirements [here](dev_requirements), but in general AYON should be able
 to operate in most studios fairly quickly. The main obstacles are usually related to workflows and habits, that
-might not be fully compatible with what AYON is expecting or enforcing. It is recommended to go through artists [key concepts](artist_concepts) to get idea about basics.
+might not be fully compatible with what AYON is expecting or enforcing. It is recommended to go through artists [key concepts](artist_concepts) to get comfortable with the basics.
 
-Keep in mind that if you run into any workflows that are not supported, it's usually just because we haven't hit 
-that particular case and it can most likely be added upon request. 
-
+Keep in mind that if you run into any workflows that are not supported, it's usually just because we haven't hit
+that particular case and it can most likely be added upon request.
 
 ## Artist Workstations
 
@@ -47,4 +45,4 @@ It is totally up to you how you deploy and distribute AYON to your artist, but t
 to the table
 - Some DCCs do not support using Environment variables in file paths. This will make it very hard to maintain full multiplatform
 compatibility as well variable storage roots.
-- Relying on VPN connection and using it to work directly of network storage will be painfully slow.
+-   Relying on VPN connection and using it to work directly of network storage will be painfully slow.

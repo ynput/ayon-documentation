@@ -8,7 +8,8 @@ sidebar_label: VRay
 
 ### #Using VRay Proxies
 
-AYON support publishing, loading and using of VRay Proxy in look management. Their underlying format can be either vrmesh or alembic.
+AYON support publishing, loading and using of VRay Proxy in look management. Their underlying format
+can be either vrmesh or alembic.
 
 :::warning vrmesh or alembic and look management
 Be aware that **vrmesh** cannot be used with looks as it doesn't retain IDs necessary to map shaders to geometry.
@@ -19,7 +20,8 @@ Be aware that **vrmesh** cannot be used with looks as it doesn't retain IDs nece
 To create VRay Proxy, select geometry you want and - **AYON → Create ...** select **VRay Proxy**. Name your
 subset as you want and press **Create** button.
 
-This will create `vrayproxy` set for your subset. You can set some options in Attribute editor, mainly if you want export animation instead of single frame.
+This will create `vrayproxy` set for your subset. You can set some options in Attribute editor, mainly if you want
+export animation instead of single frame.
 
 ![Maya - VRay Proxy Creation](assets/maya-vray_proxy.jpg)
 

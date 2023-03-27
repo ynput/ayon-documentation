@@ -1,2 +1,2 @@
 # ayon-documentation
-Documentation of Ayon
+Documentation of AYON

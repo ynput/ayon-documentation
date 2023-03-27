@@ -4,7 +4,7 @@ title: Publishing
 sidebar_label: Publishing
 ---
 
-## What is publishing? 
+## What is publishing?
 
 A process of exporting particular data from your work scene to be shared with others.
 

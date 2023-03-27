@@ -7,7 +7,7 @@ sidebar_label: Builds
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Admins might find prepared builds on https://github.com/pypeclub/OpenPype/releases for all major platforms.
+Admins might find prepared builds on https://github.com/ynput/OpenPype/releases for all major platforms.
 
 ### Currently built on OS versions
 - Windows 10

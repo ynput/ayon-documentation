@@ -1,7 +1,7 @@
 {
     "openapi": "3.0.2",
     "info": {
-        "title": "Ayon server",
+        "title": "AYON server",
         "description": "Open VFX and Animation pipeline server",
         "termsOfService": "https://ynput.io/terms-of-service",
         "contact": {
@@ -8156,7 +8156,7 @@
             "get": {
                 "tags": ["Services"],
                 "summary": "List Hosts",
-                "description": "Return a list of all hosts.\n\nA host is an instance of Ayon Service Host (ASH) that is capable of\nrunning addon services. A host record in the database is created\nautomatically when the host sends a heartbeat to the API.",
+                "description": "Return a list of all hosts.\n\nA host is an instance of AYON Service Host (ASH) that is capable of\nrunning addon services. A host record in the database is created\nautomatically when the host sends a heartbeat to the API.",
                 "operationId": "list_hosts",
                 "parameters": [
                     {
@@ -13753,7 +13753,7 @@
                     "version": {
                         "title": "Model version",
                         "type": "string",
-                        "description": "Anatomy model version currently used in Ayon"
+                        "description": "Anatomy model version currently used in AYON"
                     },
                     "presets": {
                         "title": "List of anatomy presets",
@@ -14403,7 +14403,7 @@
                         "title": "Description",
                         "type": "string",
                         "description": "Short, human readable description of the target event",
-                        "example": "Sync Ftrack project to Ayon"
+                        "example": "Sync Ftrack project to AYON"
                     },
                     "sequential": {
                         "title": "Sequential",
@@ -15311,7 +15311,7 @@
                         "title": "Message of the day",
                         "type": "string",
                         "description": "Instance specific message to be displayed in the login page",
-                        "default": "To access Ayon dev server, you can sign in using your username and password, \nor use our **Discord** button for a more seamless login experience.\n\nPlease note that in order to use the Discord SSO, you need to be a member of **Ynput community** Discord server. \nIf you're not already a member, please join the server before attempting to use the Discord OAuth button.\n\nIf you choose to sign in using your username and password, please make sure that your login credentials are correct.\n"
+                        "default": "To access AYON dev server, you can sign in using your username and password, \nor use our **Discord** button for a more seamless login experience.\n\nPlease note that in order to use the Discord SSO, you need to be a member of **Ynput community** Discord server. \nIf you're not already a member, please join the server before attempting to use the Discord OAuth button.\n\nIf you choose to sign in using your username and password, please make sure that your login credentials are correct.\n"
                     },
                     "loginPageBackground": {
                         "title": "Loginpagebackground",
@@ -15323,9 +15323,9 @@
                         "default": "/static/brand.svg"
                     },
                     "version": {
-                        "title": "Ayon version",
+                        "title": "AYON version",
                         "type": "string",
-                        "description": "Version of the Ayon API",
+                        "description": "Version of the AYON API",
                         "default": "1.0.0"
                     },
                     "uptime": { "title": "Uptime", "type": "number" },
@@ -16143,7 +16143,7 @@
                         "example": "e831c13f0ba0fbbfe102cd50420439d1"
                     },
                     "hash_type": {
-                        "title": "Hash type. 'op3' is the default for OpenPype 3 imports",
+                        "title": "Hash type. 'op3' is the default for AYON 3 imports",
                         "enum": ["md5", "sha1", "sha256", "op3"],
                         "type": "string",
                         "default": "md5",
@@ -16556,7 +16556,7 @@
                         "title": "Machine hostname",
                         "type": "string"
                     },
-                    "version": { "title": "Ayon version", "type": "string" },
+                    "version": { "title": "AYON version", "type": "string" },
                     "users": {
                         "title": "List of users",
                         "type": "array",

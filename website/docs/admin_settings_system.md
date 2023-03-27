@@ -13,16 +13,23 @@ Settings applicable to the full studio.
 
 ![general_settings](assets/settings/settings_system_general.png)
 
-**`Studio Name`** - Full name of the studio (can be used as variable on some places)
+### Studio Name
+Full name of the studio (can be used as variable on some places)
 
-**`Studio Code`** - Studio acronym or a short code (can be used as variable on some places)
+### Studio Code
+Studio acronym or a short code (can be used as variable on some places)
 
-**`Admin Password`** - After setting admin password, normal user won't have access to ayon settings and Project Manager GUI. Please keep in mind that this is a studio wide password and it is meant purely as a simple barrier to prevent artists from accidental setting changes.
+### Admin Password
+After setting admin password, normal user won't have access to AYON settings
+and Project Manager GUI. Please keep in mind that this is a studio wide password and it is meant purely
+as a simple barrier to prevent artists from accidental setting changes.
 
-**`Environment`** - Globally applied environment variables that will be appended to any ayon process in the studio.
+### Environment
+Globally applied environment variables that will be appended to any AYON process in the studio.
 
-**`Disk mapping`** - Platform dependent configuration for mapping of virtual disk(s) on an artist's ayon machines before OP starts up.
-Uses `subst` command, if configured volume character in `Destination` field already exists, no re-mapping is done for that character(volume).
+### Disk mapping
+- Platform dependent configuration for mapping of virtual disk(s) on an artist's AYON machines before OP starts up.
+- Uses `subst` command, if configured volume character in `Destination` field already exists, no re-mapping is done for that character(volume).
 
 ### FFmpeg and OpenImageIO tools
 We bundle FFmpeg tools for all platforms and OpenImageIO tools for Windows and Linux. By default, bundled tools are used, but it is possible to set environment variables `AYON_FFMPEG_PATHS` and `AYON_OIIO_PATHS` in system settings environments to look for them in different directory.
@@ -39,7 +46,7 @@ For more information about Production and Staging go to [Distribute](admin_distr
 
 **Production version** and **Staging version** fields will define which version will be used in studio. Filling explicit version will force new AYON processes to use it. That gives more control over studio deployment especially when some workstations don't have access to version repository (e.g. remote users). It can be also used to downgrade studio version when newer version have production breaking bug.
 
-When fields are not filled, the latest version in the versions repository is used as studio version. That makes updating easier as it is not needed to modify settings, though workstations without access to versions repository can't find out which ayon version should be used.
+When fields are not filled, the latest version in the versions repository is used as studio version. That makes updating easier as it is not needed to modify settings, though workstations without access to versions repository can't find out which AYON version should be used.
 
 If **`Version Repository`** is not set or is not accessible for workstation, the latest available version on workstation is used or the version inside build.
 
@@ -111,7 +118,7 @@ Module that allows storing all logging into the database for easier retrieval an
 
 ## Applications
 
-In this section you can manage what Applications are available to your studio, locations of their executables, and their additional environments. In ayon context, each application that is integrated is also called a `Host` and these two terms might be used interchangeably in the documentation.
+In this section you can manage what Applications are available to your studio, locations of their executables, and their additional environments. In AYON context, each application that is integrated is also called a `Host` and these two terms might be used interchangeably in the documentation.
 
 Each Host is made of two levels.
 1. **Application group** - This is the main name of the application and you can define extra environments that are applicable to all versions of the given application. For example any extra Maya scripts that are not
@@ -144,12 +151,12 @@ It is possible to add new version for any supported application. There are two w
 1. **Add new executable** to an existing application version. This is a good way if you have multiple fully compatible versions of your DCC across the studio. Nuke is a typical example where multiple artists might have different `v#` releases of the same minor Nuke release. For example `12.2v3` and `12.3v6`. When you add both to `12.2` Nuke executables they will be treated the same in AYON and the system will automatically pick the first that it finds on an artist machine when launching. Their order is also the order of their priority when choosing which version to run if multiple are present.
 ![settings_applications](assets/settings/settings_addapplication.gif)
 
-2. **Add version** in case you want this version to be selectable individually. This is usually used for bigger releases that might not be fully compatible with previous versions. Keep in mind that if you add the latest version of an Application that is not yet part of the official AYON release, you might run into problems with integration. We test all the new software versions for compatibility and most often, smaller or bigger updates to ayon code are necessary to keep everything running.
+2. **Add version** in case you want this version to be selectable individually. This is usually used for bigger releases that might not be fully compatible with previous versions. Keep in mind that if you add the latest version of an Application that is not yet part of the official AYON release, you might run into problems with integration. We test all the new software versions for compatibility and most often, smaller or bigger updates to AYON code are necessary to keep everything running.
 ![settings_applications](assets/settings/settings_addappversion.gif)
 
 ## Tools
 
-A tool in AYON is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
+A tool in openPype is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
 
 AYON comes with some major CG renderers pre-configured as an example, but these and any others will need to be changed to match your particular environment.
 
@@ -161,4 +168,4 @@ In the image before you can see that we set most of the environment variables in
 In this example MTOA will automatically will the `MAYA_VERSION`(which is set by Maya Application environment) and `MTOA_VERSION` into the `MTOA` variable. We then use the `MTOA` to set all the other variables needed for it to function within Maya.
 ![tools](assets/settings/tools_01.png)
 
-All of the tools defined in here can then be assigned to projects. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So if you just need to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project, it is possible.
+All the tools defined in here can then be assigned to projects. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So if you just need to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project, it is possible.

@@ -7,6 +7,7 @@ sidebar_label: Installation
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+
 ## Installation
 
 AYON comes in packages for Windows (10 or Server), Mac OS X (Mojave or higher), and Linux distribution (Centos, Ubuntu), and you can install them on your machine the same way as you are used to. 
@@ -26,7 +27,7 @@ To install AYON you will need administrator permissions.
 
 <TabItem value='win'>
 
-For installation on Windows, download and run the executable file `ayon-3.0.0.exe`.
+For installation on Windows, download and run the executable file `AYON-3.0.0.exe`.
 During the installation process, you can change the destination location path of the application, 
 
 ![Windows installation](assets/install_01.png)
@@ -40,7 +41,7 @@ and create an icon on the desktop.
 
 <TabItem value='linux'>
 
-For installation on your Linux distribution, download and unzip `ayon-3.0.0.zip`. A new folder `ayon-3.0.0` will be created.
+For installation on your Linux distribution, download and unzip `AYON-3.0.0.zip`. A new folder `AYON-3.0.0` will be created.
 Inside this folder find and run `ayon_gui`,
 
 ![Linux launch](assets/install_03.png)
@@ -50,7 +51,7 @@ Inside this folder find and run `ayon_gui`,
 
 <TabItem value='mac'>
 
-For installation on Mac OS X, download and run dmg image file `ayon-3.0.0.dmg`. 
+For installation on Mac OS X, download and run dmg image file `AYON-3.0.0.dmg`. 
 
 Drag the AYON icon into the Application folder.
 
@@ -64,7 +65,7 @@ After the installation, you can find AYON among the other Applications.
 
 ## Run AYON
 
-To run AYON click on the icon or find executable file (e.g. `C:\Program Files (x86)\ayon\ayon_gui.exe`) in the application location. 
+To run AYON click on the icon or find executable file (e.g. `C:\Program Files (x86)\AYON\ayon_gui.exe`) in the application location. 
 On the very first run of AYON the user will be asked for AYON Mongo URL. 
 This piece of information will be provided by the administrator or project manager who set up the studio.
 

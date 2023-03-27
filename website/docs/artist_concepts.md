@@ -33,7 +33,7 @@ At this moment names of assets, tasks, subsets or representations can contain on
 
 ### Family
 
-Each published [subset][3b89d8e0] can have exactly one family assigned to it. Family determines the type of data that the subset holds. Family doesn't dictate the file type, but can enforce certain technical specifications. For example ayon default configuration expects `model` family to only contain geometry without any shaders or joints when it is published.
+Each published [subset][3b89d8e0] can have exactly one family assigned to it. Family determines the type of data that the subset holds. Family doesn't dictate the file type, but can enforce certain technical specifications. For example AYON default configuration expects `model` family to only contain geometry without any shaders or joints when it is published.
 
   [3b89d8e0]: #subset "subset"
 
@@ -55,5 +55,5 @@ Process of exporting data from your work scene to versioned, immutable file that
 
 ### Load
 
-Process of importing previously published subsets into your current scene, using any of the ayon tools.
+Process of importing previously published subsets into your current scene, using any of the AYON tools.
 Loading asset using proper tools will ensure that all your scene content stays version controlled and updatable at a later point.

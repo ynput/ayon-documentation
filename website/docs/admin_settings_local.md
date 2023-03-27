@@ -15,7 +15,7 @@ AYON stores some of it's settings and configuration in local file system. These 
 
 ## Categories
 
-### ayon Mongo URL
+### AYON Mongo URL
 
 ### General
 

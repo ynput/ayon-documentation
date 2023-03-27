@@ -68,7 +68,7 @@ Project Manager or Supervisor must set project's applications during project pre
 
 ### Sync to Avalon
 * Entity types: Project, Typed Context
-* User roles: ynput, Administrator, Project manager
+* User roles: Pypeclub, Administrator, Project manager
 
 Synchronization to Avalon is key process to keep AYON data updated. Action updates selected entities (Project, Shot, Sequence, etc.) and all nested entities to Avalon database. If action is successfully finished [Sync Hier Attrs](#sync-hier-attrs) action is triggered.
 
@@ -80,7 +80,7 @@ It is recommended to use **local** version if possible to avoid unnecessary dece
 
 ### Sync Hier Attrs
 * Entity types: Project, Typed Context
-* User roles: ynput, Administrator, Project manager
+* User roles: Pypeclub, Administrator, Project manager
 
 Synchronization to Avalon of Ftrack's hierarchical Custom attributes is a bit complicated so we decided to split synchronization process into 2 actions. This action updates hierarchical Custom attributes of selected entities (Project, Shot, Sequence, etc.) and all their nested entities to pipeline database. This action is also triggered automatically after successfully finished [Sync To Avalon](#sync-to-avalon) action.
 
@@ -92,7 +92,7 @@ It is recommended to use **local** version if possible to avoid unnecessary dece
 
 ### Job Killer
 * Entity types: All
-* User roles: ynput, Administrator
+* User roles: Pypeclub, Administrator
 
 Custom Jobs in Ftrack help to track process and status of triggered actions but sometimes unexpected failure of action may happen *(Please let us know when happens)*. The failure will cause that job's status will remain set to **Running** which may cause issues in future.
 
@@ -100,7 +100,7 @@ This action gives ability to *stop running jobs*. When action is triggered, an i
 
 ### Delete Assets by Name
 * Entity types: Typed Context, Task
-* User roles: ynput, Administrator
+* User roles: Pypeclub, Administrator
 
 With this action it's possible to delete up to 15 entities at once from active project in pipeline database. Entered names must match exactly the names stored in database. These entities also must not have children entities *(Sequence must not have Shots but Task is not entity)*.
 
@@ -119,9 +119,9 @@ With this action it's possible to delete up to 15 entities at once from active p
 </div>
 
 * Entity types: Project
-* User roles: ynput, Administrator, Project manager
+* User roles: Pypeclub, Administrator, Project manager
 
-Allows project managers and coordinator to *set basic project attributes* needed for ayon to operate, *Create project folders* if you want and especially prepare project specific [settings](admin_settings_project).
+Allows project managers and coordinator to *set basic project attributes* needed for AYON to operate, *Create project folders* if you want and especially prepare project specific [settings](admin_settings_project).
 
 :::tip
 It is possible to use this action during the lifetime of a project but we recommend using it only once at the start of the project.
@@ -164,7 +164,7 @@ You can add same note to multiple Asset Versions at once with this action.
 </div>
 
 * Entity types: Typed Context, Task
-* User roles: ynput, Administrator
+* User roles: Pypeclub, Administrator
 
 Action deletes Entities and Asset Versions from Ftrack and Avalon database.
 
@@ -185,7 +185,7 @@ You should use this action if you need to delete Entities or Asset Versions othe
 </div>
 
 * Entity types: Project
-* User roles: ynput, Administrator
+* User roles: Pypeclub, Administrator
 
 *Create Project Structure* helps to create basic folder structure and may create the main ftrack entities for the project.
 
@@ -210,7 +210,7 @@ Please keep in mind this action is meant to make your project setup faster at th
 </div>
 
 * Entity types: Task
-* User roles: ynput, Project manager, Administrator
+* User roles: Pypeclub, Project manager, Administrator
 
 Collects approved hires files and copy them into a folder. It takes any components of any versions and copies and renames them correctly.
 

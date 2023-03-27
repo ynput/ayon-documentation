@@ -589,13 +589,13 @@ function Home() {
                     </p>
 
                     <p>
-                        OpenPype includes very robust Maya implementation that
-                        can handle full CG workflow from model, through
-                        animation till final renders. Scene settings, Your
-                        artists won't need to touch file browser at all and
-                        OpenPype will take care of all the file management. Most
-                        of maya workflows are supported including gpucaches,
-                        referencing, nested references and render proxies.
+                        AYON includes very robust Maya implementation that can
+                        handle full CG workflow from model, through animation
+                        till final renders. Scene settings, Your artists won't
+                        need to touch file browser at all and AYON will take
+                        care of all the file management. Most of maya workflows
+                        are supported including gpucaches, referencing, nested
+                        references and render proxies.
                     </p>
 
                     {maya_features && maya_features.length && (

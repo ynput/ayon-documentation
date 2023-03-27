@@ -7,7 +7,7 @@ sidebar_label: Project Anatomy
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Project Anatomy is the most important configuration piece for each project you work on with AYON. 
+Project Anatomy is the most important configuration piece for each project you work on with openPype. 
 
 It defines: 
 - Project Root folders
@@ -41,7 +41,7 @@ Note how multiple roots are used here, to push different types of files to diffe
 
 Templates define the project's folder structure and filenames. 
 
-We have a few required anatomy templates for ayon to work properly, however we keep adding more when needed.
+We have a few required anatomy templates for AYON to work properly, however we keep adding more when needed.
 
 ### Available template keys
 

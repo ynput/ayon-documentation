@@ -31,13 +31,13 @@ invalid. If AYON detects such name it automatically prepends letter **P** to mak
 
 AYON global tools can be found in Unreal's toolbar and in the *Tools* main menu:
 
-![Unreal AYON Menu](assets/unreal_ayon_tools.png)
+![Unreal AYON Menu](assets/unreal_openpype_tools.png)
 
--   [Create](artist_tools.md#creator)
--   [Load](artist_tools.md#loader)
--   [Manage (Inventory)](artist_tools.md#inventory)
--   [Publish](artist_tools.md#publisher)
--   [Library Loader](artist_tools.md#library-loader)
+-   [Create](artist_tools_creator)
+-   [Load](artist_tools_loader)
+-   [Manage (Inventory)](artist_tools_inventory)
+-   [Publish](artist_tools_publisher)
+-   [Library Loader](artist_tools_library_loader)
 
 ## Static Mesh
 
@@ -66,7 +66,7 @@ You can choose in the Project Settings if you want to generate the level sequenc
 
 To load a layout, click on the AYON icon in Unreal’s main taskbar, and select **Load**.
 
-![Unreal OP Tools Load](assets/unreal_ayon_tools_load.png)
+![Unreal OP Tools Load](assets/unreal_openpype_tools_load.png)
 
 Select the task on the left, then right click on the layout asset and select **Load Layout**.
 
@@ -120,7 +120,7 @@ After adding the environment level to the master level, you will need to set it 
 
 To manage loaded layouts, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_ayon_tools_manage.png)
+![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version. Right click on the element, and select Update if you need to update the layout.
@@ -139,21 +139,21 @@ To render and publish an episode, a scene or a shot, you will need to create a p
 
 Navigate to the folder that contains the level sequence that you need to render. Select the level sequence, and then click on the AYON icon in Unreal’s main taskbar, and select **Create**.
 
-![Unreal OP Tools Create](assets/unreal_ayon_tools_create.png)
+![Unreal OP Tools Create](assets/unreal_openpype_tools_create.png)
 
 In the Instance Creator, select **Unreal - Render**, give it a name, and click **Create**.
 
 ![Unreal OP Instance Creator](assets/unreal_create_render.png)
 
-The render instance will be created in `/Content/ayon/PublishInstances`.
+The render instance will be created in `/Content/AYON/PublishInstances`.
 
 Select the instance you need to render, and then click on the AYON icon in Unreal’s main taskbar, and select **Render**. You can render more than one instance at a time, if needed. Just select all the instances that you need to render before selecting the **Render** button from the AYON menu.
 
-![Unreal OP Tools Render](assets/unreal_ayon_tools_render.png)
+![Unreal OP Tools Render](assets/unreal_openpype_tools_render.png)
 
 Once the render is finished, click on the AYON icon in Unreal’s main taskbar, and select **Publish**.
 
-![Unreal OP Tools Publish](assets/unreal_ayon_tools_publish.png)
+![Unreal OP Tools Publish](assets/unreal_openpype_tools_publish.png)
 
 On the left, you will see the render instances. They will be automatically reorganised to have an instance for each shot. So, for example, if you have created the render instance for the whole episode, here you will have an instance for each shot in the episode.
 

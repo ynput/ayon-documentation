@@ -7,7 +7,7 @@ sidebar_label: Artist
 # How to use Ftrack in AYON
 
 ## Login to Ftrack module in AYON (best case scenario) 
-1. Launch ayon and go to systray AYON icon.
+1. Launch AYON and go to systray AYON icon.
 2. *Ftrack login* window pop up on start or press **login** in **Ftrack menu** to pop up *Ftrack login* window
 
     ![ftrack-login-2](assets/ftrack/ftrack-login_50.png)
@@ -31,7 +31,7 @@ sidebar_label: Artist
 ---
 
 ## Application launch (best case scenario)
-1. Make sure ayon is running and you passed [Login to Ftrack](#login-to-ftrack-module-in-ayon-best-case-scenario) guide
+1. Make sure AYON is running and you passed [Login to Ftrack](#login-to-ftrack-module-in-ayon-best-case-scenario) guide
    
 2. Open Web browser and go to your studio Ftrack web page *(e.g. https://mystudio.ftrackapp.com/)*
    
@@ -116,12 +116,12 @@ sidebar_label: Artist
 - Check **Ftrack URL** value in *Ftrack login* window
 - Inform your administrator if URL is incorrect and launch AYON again when administrator fix it
 
-**3. possibility - Ftrack Web app can't be reached the way ayon use it**
+**3. possibility - Ftrack Web app can't be reached the way AYON use it**
 - Enter your **Username** and [API key](#where-to-find-api-key) in *Ftrack login* window and press **Login** button
 
   ![ftrack-api](assets/ftrack/ftrack-api.gif)
 ### Ftrack action menu is empty
-**1. possibility - ayon is not running**
+**1. possibility - AYON is not running**
 - launch AYON and check if it is running in systray
 
 **2. possibility - You didn't go through Login to Ftrack guide**

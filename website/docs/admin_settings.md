@@ -7,12 +7,15 @@ sidebar_label: Working with settings
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-AYON stores all of it's settings and configuration in the mongo database. To make the configuration as easy as possible we provide a robust GUI where you can access and change everything that is configurable
+AYON stores all of its settings and configuration in the mongo database. To make the configuration as easy as possible we provide a robust GUI where you can access and change everything that is configurable
 
 **Settings** GUI can be started from the tray menu *Admin -> Studio Settings*.
 
-Please keep in mind that these settings are set-up for the full studio and not per-individual. If you're looking for individual artist settings, you can head to
-[Local Settings](admin_settings_local.md) section in the artist documentation.
+:::important Studio Settings versus Local Settings
+Please keep in mind that these settings are set up for the full studio and not per-individual. If you're looking for individual artist settings, you can head to
+[Local Settings](admin_settings_local.md) section in the documentation.
+:::
+
 
 ## Categories
 
@@ -32,7 +35,7 @@ System sections contains all settings that can be configured on a studio level, 
 
 ### Project
 
-Project tab contains most of ayon settings and all of them can be configured and overridden on a per-project basis if need be. This includes most of the workflow behaviors like what formats to export, naming conventions, publishing validations, automatic assets loaders and a lot more.
+Project tab contains most of AYON settings and all of them can be configured and overridden on a per-project basis if need be. This includes most of the workflow behaviors like what formats to export, naming conventions, publishing validations, automatic assets loaders and a lot more.
 
 We recommend to try to keep as many configurations as possible on a studio level and only override selectively, because micromanaging all of the project settings might become cumbersome down the line. Most of the settings can be safely adjusted and locked on a project after the production started.
 
@@ -43,7 +46,7 @@ Most of the individual settings can be set and overridden on multiple levels.
 ### AYON defaults
 When you first open settings, all of the values and categories will be marked with either light **grey labels** or a **grey vertical bar** on the left edge of the expandable category.
 
-The grey colouring signifies the value has been left at ayon Default. If the default changes in future AYON versions, these values will be reflect the change after you deploy the new version.
+The grey colouring signifies the value has been left at AYON Default. If the default changes in future AYON versions, these values will be reflect the change after you deploy the new version.
 
 ### Studio defaults
 
@@ -55,7 +58,7 @@ In the Project settings tab, you need to select the **( Default )** project on t
 
 ![studio_defaults](assets/settings/studio_defaults.gif)
 
-You can also reset any settings to ayon default by doing `right click` and `remove from studio default`
+You can also reset any settings to AYON default by doing `right click` and `remove from studio default`
 
 ![studio_defaults](assets/settings/studio_defaults_remove.gif)
 
@@ -66,7 +69,7 @@ Many settings are useful to be adjusted on a per-project basis. To identify proj
 The process of settting project overrides is similar to setting the Studio defaults. The key difference is to select a particular project you want to be configure. Those projects can be found on the left hand side of the Project Settings tab.
 
 In the image below you can see all three overrides at the same time.
-1. Deadline has **no changes to the ayon defaults** at all — **grey** colour of left bar.
+1. Deadline has **no changes to the AYON defaults** at all — **grey** colour of left bar.
 2. Maya has **studio-wide defaults configured**, which are inherited in the particular project - **green** colour of left bar.
 3. Nuke contains **project specific overrides** - **orange** colour of left bar.
 

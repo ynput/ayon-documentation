@@ -10,13 +10,13 @@ AYON supports Nuke version **`11.0`** and above.
 
 ## AYON global tools
 
--   [Set Context](artist_tools.md#set-context)
--   [Work Files](artist_tools.md#workfiles)
--   [Create](artist_tools.md#creator)
--   [Load](artist_tools.md#loader)
--   [Manage (Inventory)](artist_tools.md#inventory)
--   [Publish](artist_tools.md#publisher)
--   [Library Loader](artist_tools.md#library-loader)
+-   [Set Context](artist_tools_context_manager)
+-   [Work Files](artist_tools_workfiles)
+-   [Create](artist_tools_creator)
+-   [Load](artist_tools_loader)
+-   [Manage (Inventory)](artist_tools_inventory)
+-   [Publish](artist_tools_publisher)
+-   [Library Loader](artist_tools_library_loader)
 
 ## Nuke specific tools
 
@@ -144,7 +144,7 @@ This tool will append all available subsets into an actual node graph. It will l
 
 ## Nuke QuickStart
 
-This QuickStart is short introduction to what ayon can do for you. It attempts to make an overview for compositing artists, and simplifies processes that are better described in specific parts of the documentation.
+This QuickStart is short introduction to what AYON can do for you. It attempts to make an overview for compositing artists, and simplifies processes that are better described in specific parts of the documentation.
 
 <iframe width="512px" height="288px" src="https://www.youtube.com/embed/jgwmLOPJg0g" frameborder="0" modestbranding="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"></iframe>
 
@@ -165,7 +165,7 @@ Nuke AYON menu shows the current context
 
 Launching Nuke with context stops your timer, and starts the clock on the shot and task you picked.
 
-AYON makes initial setup for your Nuke script. It is the same as running [Apply All Settings](artist_hosts_nuke_tut.md#apply-all-settings) from the ayon menu.
+Openpype makes initial setup for your Nuke script. It is the same as running [Apply All Settings](artist_hosts_nuke_tut.md#apply-all-settings) from the AYON menu.
 
 - Reads frame range and resolution from Avalon database, sets it in Nuke Project Settings,
 Creates Viewer node, sets it’s range and indicates handles by In and Out points.
@@ -179,14 +179,14 @@ After Nuke starts it will automatically **Apply All Settings** for you. If you a
 :::
 
 ### Save Nuke script – the Work File
-Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming. 
+Use AYON - Work files menu to create a new Nuke script. Openpype offers you the preconfigured naming. 
 ![Context](assets/nuke_tut/nuke_WorkFileSaveAs.png)
 
 The Next Available Version checks the work folder for already used versions and offers the lowest unused version number automatically.
 
 Subversion can be used to distinguish or name versions. For example used to add shortened artist name.
 
-More about [workfiles](artist_tools.md#workfiles).
+More about [workfiles](artist_tools_workfiles).
 
 
 :::tip Admin Tips
@@ -196,7 +196,7 @@ More about [workfiles](artist_tools.md#workfiles).
 
 - **Open Workfile**
 
-  - You can [admin section](project_settings/settings_project_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
+  - You can [configure](project_settings/settings_project_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
 
 - **Nuke Color Settings**
 
@@ -214,10 +214,10 @@ Note that the Read node created by AYON is green. Green color indicates the high
 
 ![Asset Load](assets/nuke_tut/nuke_AssetLoadOutOfDate.png)
 
-More about [Asset loader](artist_tools.md#loader).
+More about [Asset loader](artist_tools_loader).
 
 ### Create Write Node
-To create ayon managed Write node, select the Read node you just created, from ayon menu, pick Create.
+To create AYON managed Write node, select the Read node you just created, from AYON menu, pick Create.
 In the Instance Creator, pick Create Write Render, and Create.
 
 ![AYON Create](assets/nuke_tut/nuke_Creator.png)
@@ -273,7 +273,7 @@ Pyblish Dialog tries to pack a lot of info in a small area. One of the more tric
 
 If you run the publish and decide to not publish the Nuke script, you can turn it off right in the Pyblish dialog by clicking on the checkbox. If you decide to render and  publish the shot in lower resolution to speed up the turnaround, you have to turn off the Write Resolution validator. If you want to use an older version of the asset (older version of the plate...), you have to turn off the Validate containers, and so on.
 
-More info about [Using Pyblish](artist_tools.md#publisher)
+More info about [Using Pyblish](artist_tools_publisher)
 
 :::tip Admin Tip - Configuring validators
 You can configure Nuke validators like Output Resolution in **Studio Settings → Project → Nuke → Publish plugins**
@@ -283,7 +283,7 @@ You can configure Nuke validators like Output Resolution in **Studio Settings �
 ![Write Node Review](assets/nuke_tut/nuke_WriteNodeReview.png)
 
 When you turn the review checkbox on in your AYON write node, here is what happens:
-- ayon uses the current Nuke script to 
+- AYON uses the current Nuke script to 
   - Load the render
   - Optionally apply LUT
   - Render Prores 4444 with the same resolution as your render
@@ -294,6 +294,8 @@ Creating reviews is a part of the publishing process. If you choose to do a loca
 If you choose to publish on the farm, you will render and do reviews on the farm.
 
 So far there is no option for using existing frames (from your local / check render) and just do the review on the farm.
+
+More info about [configuring reviews](pype2/admin_presets_plugins.md#extractreview).
 
 :::tip Admin Tip - Configuring Reviews
 You can configure reviewsin **Studio Settings → Project → Global → Publish plugins → ExtractReview / ExtractBurnin**
@@ -306,7 +308,7 @@ Reviews can be configured separately for each host, task, or family. For example
 
 Let’s say you want to render and publish the shot right now, with only a Read and Write node. You need to decide if you want to render, check the render and then publish it, or you want to execute the render and publish in one go.
 
-If you wish to check your render before publishing, you can use your local machine or your farm to render the write node as you would do without ayon, load and check your render (AYON Write has a convenience button for that), and if happy, use publish with Use existing frames option selected in the write node to generate the review on your local machine.
+If you wish to check your render before publishing, you can use your local machine or your farm to render the write node as you would do without AYON, load and check your render (AYON Write has a convenience button for that), and if happy, use publish with Use existing frames option selected in the write node to generate the review on your local machine.
 
 If you want to render and publish on the farm in one go, run publish with On farm option selected in the write node to render and make the review on farm.
 
