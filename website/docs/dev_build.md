@@ -1,6 +1,6 @@
 ---
 id: dev_build
-title: Build OpenPYPE from source
+title: Build AYON from source
 sidebar_label: Build
 ---
 

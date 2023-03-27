@@ -65,7 +65,7 @@ To be able to work with dynamic subset name, which is based on track names it is
 <div class="col col--6 markdown">
 
 ![Create menu](assets/resolve_creator_subset_name.png)
-The name of the resulting *subset* can be seen in the **OpenPypeData** marker.
+The name of the resulting *subset* can be seen in the **AYONData** marker.
 <br></br><br></br>
 </div>
 

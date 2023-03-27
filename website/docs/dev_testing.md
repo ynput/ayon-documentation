@@ -23,7 +23,7 @@ If you would like just to experiment with provided integration tests, and have p
 
 - From source:
 ```
-- use Openpype command 'runtests' from command line (`.venv` in ${AYON_ROOT} must be activated to use configured Python!)
+- use AYON command 'runtests' from command line (`.venv` in ${AYON_ROOT} must be activated to use configured Python!)
 - `python ${AYON_ROOT}/start.py runtests ../tests/integration/hosts/nuke`
 ```
 - From build:

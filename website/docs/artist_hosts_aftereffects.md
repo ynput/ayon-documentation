@@ -50,7 +50,7 @@ After this process you should have something like this:
 ![Highlights](assets/aftereffects_publish_instance.png)
 
 Name of publishable instance (eg. subset name) could be configured with a template in `project_settings/global/tools/creator/subset_name_profiles`.
-(This must be configured by admin who has access to Openpype Settings.)
+(This must be configured by admin who has access to AYON Settings.)
 
 Trash icon under the list of instances allows to delete any selected `render` instance.
 

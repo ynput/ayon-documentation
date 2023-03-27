@@ -57,7 +57,7 @@ This will result in:
 it will create only single publishable instance which will wrap all visible layers.)
 
 Name of publishable instance (eg. subset name) could be configured with a template in `project_settings/global/tools/creator/subset_name_profiles`.
-(This must be configured by admin who has access to Openpype Settings.)
+(This must be configured by admin who has access to AYON Settings.)
 
 Trash icon under the list of instances allows to delete any selected `image` instance.
 

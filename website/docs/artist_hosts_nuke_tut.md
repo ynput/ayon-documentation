@@ -165,7 +165,7 @@ Nuke AYON menu shows the current context
 
 Launching Nuke with context stops your timer, and starts the clock on the shot and task you picked.
 
-Openpype makes initial setup for your Nuke script. It is the same as running [Apply All Settings](artist_hosts_nuke_tut.md#apply-all-settings) from the AYON menu.
+AYON makes initial setup for your Nuke script. It is the same as running [Apply All Settings](artist_hosts_nuke_tut.md#apply-all-settings) from the AYON menu.
 
 - Reads frame range and resolution from Avalon database, sets it in Nuke Project Settings,
 Creates Viewer node, sets it’s range and indicates handles by In and Out points.
@@ -179,7 +179,7 @@ After Nuke starts it will automatically **Apply All Settings** for you. If you a
 :::
 
 ### Save Nuke script – the Work File
-Use AYON - Work files menu to create a new Nuke script. Openpype offers you the preconfigured naming. 
+Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming. 
 ![Context](assets/nuke_tut/nuke_WorkFileSaveAs.png)
 
 The Next Available Version checks the work folder for already used versions and offers the lowest unused version number automatically.

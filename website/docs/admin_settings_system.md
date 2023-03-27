@@ -156,7 +156,7 @@ It is possible to add new version for any supported application. There are two w
 
 ## Tools
 
-A tool in openPype is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
+A tool in AYON is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
 
 AYON comes with some major CG renderers pre-configured as an example, but these and any others will need to be changed to match your particular environment.
 

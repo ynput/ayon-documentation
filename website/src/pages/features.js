@@ -67,7 +67,7 @@ const key_features = [
         label: "Configuration GUI",
         link: "",
         description:
-            "All settings and configuration are done via openPype Settings tool. No need to dig around .json and .yaml",
+            "All settings and configuration are done via AYON Settings tool. No need to dig around .json and .yaml",
     },
     {
         label: "Site Sync",
@@ -233,7 +233,7 @@ const maya_features = [
     {
         label: "Plugins Support",
         description:
-            "OpenPYPE plays well with Arnold, Vray, Redshift and Yeti. With more plugins added upon client requests.",
+            "AYON plays well with Arnold, Vray, Redshift and Yeti. With more plugins added upon client requests.",
         docs: "docs/artist_hosts_maya#working-with-yeti-in-pype",
     },
 ];

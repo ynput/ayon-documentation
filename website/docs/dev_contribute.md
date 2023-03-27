@@ -1,6 +1,6 @@
 ---
 id: dev_contribute
-title: Contribute to openPype development
+title: Contribute to AYON development
 sidebar_label: Contribute
 ---
 

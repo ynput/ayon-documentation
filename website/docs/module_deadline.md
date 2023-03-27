@@ -45,7 +45,7 @@ executable. It is recommended to use the `ayon_console` executable as it provide
 
 ![Configure plugin](assets/deadline_configure_plugin.png)
 
-### OpenPypeTileAssembler Plugin
+### AYONTileAssembler Plugin
 To setup tile rendering copy the `OpenPypeTileAssembler` plugin to the repository;
 `[AYON]\ayon\modules\deadline\repository\custom\plugins\OpenPypeTileAssembler` > `[DeadlineRepository]\custom\plugins\OpenPypeTileAssembler`
 
