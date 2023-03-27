@@ -35,7 +35,7 @@ const config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        "https://github.com/ynput/Ayon/tree/develop/website",
+                        "https://github.com/ynput/OpenPype/tree/develop/website",
                 },
                 theme: {
                     customCss: require.resolve("./src/css/custom.css"),
@@ -108,7 +108,7 @@ const config = {
                         position: "right",
                     },
                     {
-                        href: "https://github.com/pypeclub",
+                        href: "https://github.com/ynput/OpenPype",
                         label: "GitHub",
                         position: "right",
                     },
@@ -147,7 +147,7 @@ const config = {
                             },
                             {
                                 label: "GitHub",
-                                href: "https://github.com/ynput/Ayon",
+                                href: "https://github.com/ynput/OpenPype",
                             },
                             {
                                 label: "LinkedIn",
