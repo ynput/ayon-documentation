@@ -80,7 +80,7 @@ module.exports = {
                 "admin_builds",
                 "admin_distribute",
                 "admin_use",
-                "admin_openpype_commands",
+                "admin_ayon_commands",
             ],
         },
         {
