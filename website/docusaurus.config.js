@@ -65,12 +65,23 @@ const config = {
         /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
         ({
             navbar: {
-                title: "AYON",
-                logo: {
-                    alt: "AYON Logo",
-                    src: "img/logo.svg",
-                },
                 items: [
+                    {
+                        type: "custom-logo",
+                        position: "left",
+                        logo: "/img/yn_symbol_BG_sa.svg",
+                        logoInverted: "/img/yn_symbol_W_sa.svg",
+                        to: "https://ynput.io/ayon/",
+                        title: "Ynput",
+                    },
+                    {
+                        type: "custom-logo",
+                        position: "left",
+                        logo: "/img/Y_black.svg",
+                        logoInverted: "/img/Y_white.svg",
+                        to: "/",
+                        title: "AYON",
+                    },
                     {
                         to: "/features",
                         label: "Features",

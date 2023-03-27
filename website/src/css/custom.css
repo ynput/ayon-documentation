@@ -79,3 +79,39 @@ h6 {
 .menu-content .scrollbar-container > ul + div {
     position: relative;
 }
+
+/* remove default logo */
+.navbar__items > a.navbar__brand {
+    display: none;
+}
+
+/* navbar logo hover effect */
+.navbar__brand:hover img {
+    filter: brightness(0) saturate(100%) invert(57%) sepia(79%) saturate(1448%)
+        hue-rotate(120deg) brightness(98%) contrast(101%);
+
+    transition: filter 0.1s;
+}
+
+.custom-logo {
+    display: inline-flex;
+}
+
+.custom-logo + .custom-logo a {
+    margin-left: 20px;
+}
+
+/* divider between logos */
+.custom-logo + .custom-logo::before {
+    content: "|";
+    display: inline-block;
+    position: absolute;
+}
+
+/* show logo dark version */
+.navbar__logo img.dark {
+    display: none;
+}
+[data-theme="dark"] .navbar__logo img.dark {
+    display: initial;
+}
