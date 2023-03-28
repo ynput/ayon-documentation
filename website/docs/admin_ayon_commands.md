@@ -40,8 +40,8 @@ For more information [see here](admin_use.md#run-ayon).
 | module | Run command line arguments for modules. |  |
 | repack-version | Tool to re-create version zip. | [📑](#repack-version-arguments) |
 | tray | Launch AYON Tray. | [📑](#tray-arguments)
-| launch | Launch application in Pype environment. | [📑](#launch-arguments) |
-| publish | Pype takes JSON from provided path and use it to publish data in it. | [📑](#publish-arguments) |
+| launch | Launch application in AYON environment. | [📑](#launch-arguments) |
+| publish | AYON takes JSON from provided path and use it to publish data in it. | [📑](#publish-arguments) |
 | extractenvironments | Extract environment variables for entered context to a json file. | [📑](#extractenvironments-arguments) |
 | run | Execute given python script within AYON environment. | [📑](#run-arguments) |
 | interactive | Start python like interactive console session. | |
