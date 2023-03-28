@@ -11,9 +11,9 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 
 import Layout from "@theme/Layout";
-import FavoriteIcon from "@site/src/components/svgIcons/FavoriteIcon";
+
 import {
-    sortedUsers,
+    sortedFeatures,
     Tags,
     TagList,
     type Feature,
@@ -71,8 +71,14 @@ function filterUsers(
 ) {
     if (searchName) {
         // eslint-disable-next-line no-param-reassign
-        features = features.filter((feature) =>
-            feature.title.toLowerCase().includes(searchName?.toLowerCase())
+        features = features.filter(
+            (feature) =>
+                feature.title
+                    .toLowerCase()
+                    .includes(searchName?.toLowerCase()) ||
+                feature.tags.some((tag) =>
+                    tag.toLowerCase().includes(searchName?.toLowerCase())
+                )
         );
     }
     if (selectedTags.length === 0) {
@@ -89,7 +95,7 @@ function filterUsers(
     });
 }
 
-function useFilteredUsers() {
+function useFilteredFeatures() {
     const location = useLocation<UserState>();
     const [operator, setOperator] = useState<Operator>("OR");
     // On SSR / first mount (hydration) no tag is selected
@@ -105,44 +111,50 @@ function useFilteredUsers() {
     }, [location]);
 
     return useMemo(
-        () => filterUsers(sortedUsers, selectedTags, operator, searchName),
+        () => filterUsers(sortedFeatures, selectedTags, operator, searchName),
         [selectedTags, operator, searchName]
     );
 }
 
 function ShowcaseFilters() {
     return (
-        <section className="container margin-top--l margin-bottom--lg">
-            <div className={clsx("margin-bottom--sm", styles.filterCheckbox)}>
-                <div>
-                    <Heading as="h2">Filters</Heading>
-                </div>
-                <ShowcaseFilterToggle />
-            </div>
-            <ul className={clsx("clean-list", styles.checkboxList)}>
-                {TagList.map((tag, i) => {
-                    const { label } = Tags[tag];
-                    const id = `showcase_checkbox_id_${tag}`;
+        <aside className="theme-doc-sidebar-container docSidebarContainer_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-Sidebar-styles-module">
+            <div className="sidebarViewport_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-Sidebar-styles-module">
+                <div className="sidebar_node_modules-@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-styles-module">
+                    <nav
+                        aria-label="Docs sidebar"
+                        className="menu thin-scrollbar menu_node_modules-@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-Content-styles-module"
+                    >
+                        <ul className="theme-doc-sidebar-menu menu__list">
+                            {TagList.map((tag, i) => {
+                                const { label } = Tags[tag];
+                                const id = `showcase_checkbox_id_${tag}`;
 
-                    return (
-                        <li key={i} className={styles.checkboxListItem}>
-                            <ShowcaseTagSelect
-                                tag={tag}
-                                id={id}
-                                label={label}
-                            />
-                        </li>
-                    );
-                })}
-            </ul>
-        </section>
+                                return (
+                                    <li
+                                        key={i}
+                                        className={`${styles.checkboxListItem} theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item`}
+                                    >
+                                        <ShowcaseTagSelect
+                                            tag={tag}
+                                            id={id}
+                                            label={label}
+                                        />
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </aside>
     );
 }
 
-const keyFeatures = sortedUsers.filter((feature) =>
+const keyFeatures = sortedFeatures.filter((feature) =>
     feature.tags.includes("key")
 );
-const otherFeatures = sortedUsers.filter(
+const otherFeatures = sortedFeatures.filter(
     (feature) => !feature.tags.includes("key")
 );
 
@@ -184,9 +196,11 @@ function SearchBar() {
 }
 
 function ShowcaseCards() {
-    const filteredUsers = useFilteredUsers();
+    const filteredFeatures = useFilteredFeatures();
+    const location = useLocation();
+    const searchTags = readSearchTags(location.search);
 
-    if (filteredUsers.length === 0) {
+    if (filteredFeatures.length === 0) {
         return (
             <section className="margin-top--lg margin-bottom--xl">
                 <div className="container padding-vert--md text--center">
@@ -198,37 +212,36 @@ function ShowcaseCards() {
     }
 
     return (
-        <section className="margin-top--lg margin-bottom--xl">
-            {filteredUsers.length === sortedUsers.length ? (
+        <section className="margin-bottom--xl container padding-top--lg padding-bottom--lg">
+            {filteredFeatures.length === sortedFeatures.length ? (
                 <>
-                    <div className={styles.showcaseFavorite}>
-                        <div className="container">
-                            <div
-                                className={clsx(
-                                    "margin-bottom--md",
-                                    styles.showcaseFavoriteHeader
-                                )}
-                            >
-                                <Heading as="h2">Key Features</Heading>
-                                <SearchBar />
-                            </div>
-                            <ul
-                                className={clsx(
-                                    "container",
-                                    "clean-list",
-                                    styles.showcaseList
-                                )}
-                            >
-                                {keyFeatures.map((feature) => (
-                                    <ShowcaseCard
-                                        key={feature.title}
-                                        feature={feature}
-                                    />
-                                ))}
-                            </ul>
+                    <div className={clsx("container", styles.featuresSection)}>
+                        <div
+                            className={clsx(
+                                "margin-bottom--md",
+                                styles.showcaseFavoriteHeader
+                            )}
+                        >
+                            <Heading as="h2">Key Features</Heading>
+                            <SearchBar />
                         </div>
+                        <ul
+                            className={clsx(
+                                "container",
+                                "clean-list",
+                                styles.showcaseList
+                            )}
+                        >
+                            {keyFeatures.map((feature) => (
+                                <ShowcaseCard
+                                    key={feature.title}
+                                    feature={feature}
+                                />
+                            ))}
+                        </ul>
                     </div>
-                    <div className="container margin-top--lg">
+
+                    <div className={clsx("container", styles.featuresSection)}>
                         <Heading as="h2" className={styles.showcaseHeader}>
                             All Features
                         </Heading>
@@ -250,10 +263,16 @@ function ShowcaseCards() {
                             styles.showcaseFavoriteHeader
                         )}
                     >
+                        <Heading as="h2" className={styles.showcaseHeader}>
+                            Filtered:{" "}
+                            {searchTags
+                                .map((tag) => Tags[tag]?.label)
+                                .join(", ")}
+                        </Heading>
                         <SearchBar />
                     </div>
                     <ul className={clsx("clean-list", styles.showcaseList)}>
-                        {filteredUsers.map((feature) => (
+                        {filteredFeatures.map((feature) => (
                             <ShowcaseCard
                                 key={feature.title}
                                 feature={feature}
@@ -266,13 +285,18 @@ function ShowcaseCards() {
     );
 }
 
-export default function Showcase(): JSX.Element {
+export default function Features(): JSX.Element {
     return (
         <Layout>
-            <main className="margin-vert--lg">
+            <div
+                style={{ width: "100vw" }}
+                className="docPage_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module"
+            >
                 <ShowcaseFilters />
-                <ShowcaseCards />
-            </main>
+                <main className="docMainContainer_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module">
+                    <ShowcaseCards />
+                </main>
+            </div>
         </Layout>
     );
 }

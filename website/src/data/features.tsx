@@ -256,4 +256,4 @@ function sortFeatures() {
     return result;
 }
 
-export const sortedUsers = sortFeatures();
+export const sortedFeatures = sortFeatures();

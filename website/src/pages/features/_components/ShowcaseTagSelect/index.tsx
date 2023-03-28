@@ -19,6 +19,7 @@ import type { TagType } from "@site/src/data/features";
 
 import { prepareUserState } from "../../index";
 import styles from "./styles.module.css";
+import clsx from "clsx";
 
 interface Props extends ComponentProps<"input"> {
     label: ReactNode;
@@ -86,7 +87,11 @@ function ShowcaseTagSelect(
                 checked={selected}
                 {...rest}
             />
-            <label ref={ref} htmlFor={id} className={styles.checkboxLabel}>
+            <label
+                ref={ref}
+                htmlFor={id}
+                className={clsx(styles.checkboxLabel, "menu__link")}
+            >
                 {label}
             </label>
         </>
