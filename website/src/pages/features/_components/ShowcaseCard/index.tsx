@@ -13,9 +13,9 @@ import {
     Tags,
     TagList,
     type TagType,
-    type User,
+    type Feature,
     type Tag,
-} from "@site/src/data/users";
+} from "@site/src/data/features";
 import { sortBy } from "@site/src/utils/jsUtils";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
@@ -52,42 +52,42 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
     );
 }
 
-function getCardImage(user: User): string {
+function getCardImage(feature: Feature): string {
     return (
-        user.preview ??
+        feature.preview ??
         `https://slorber-api-screenshot.netlify.app/${encodeURIComponent(
-            user.website
+            feature.website
         )}/showcase`
     );
 }
 
-function ShowcaseCard({ user }: { user: User }) {
-    const image = getCardImage(user);
+function ShowcaseCard({ feature }: { feature: Feature }) {
+    const image = getCardImage(feature);
     console.log(image);
     return (
-        <li key={user.title} className="card shadow--md">
+        <li key={feature.title} className="card shadow--md">
             <div className={clsx("card__image", styles.showcaseCardImage)}>
-                <IdealImage img={image} alt={user.title} />
+                <IdealImage img={image} alt={feature.title} />
             </div>
             <div className="card__body">
                 <div className={clsx(styles.showcaseCardHeader)}>
                     <Heading as="h4" className={styles.showcaseCardTitle}>
                         <Link
-                            href={user.website}
+                            href={feature.website}
                             className={styles.showcaseCardLink}
                         >
-                            {user.title}
+                            {feature.title}
                         </Link>
                     </Heading>
-                    {user.tags.includes("favorite") && (
+                    {feature.tags.includes("favorite") && (
                         <FavoriteIcon
                             svgClass={styles.svgIconFavorite}
                             size="small"
                         />
                     )}
-                    {user.source && (
+                    {feature.source && (
                         <Link
-                            href={user.source}
+                            href={feature.source}
                             className={clsx(
                                 "button button--secondary button--sm",
                                 styles.showcaseCardSrcBtn
@@ -97,10 +97,10 @@ function ShowcaseCard({ user }: { user: User }) {
                         </Link>
                     )}
                 </div>
-                <p className={styles.showcaseCardBody}>{user.description}</p>
+                <p className={styles.showcaseCardBody}>{feature.description}</p>
             </div>
             <ul className={clsx("card__footer", styles.cardFooter)}>
-                <ShowcaseCardTag tags={user.tags} />
+                <ShowcaseCardTag tags={feature.tags} />
             </ul>
         </li>
     );

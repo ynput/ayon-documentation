@@ -16,9 +16,9 @@ import {
     sortedUsers,
     Tags,
     TagList,
-    type User,
+    type Feature,
     type TagType,
-} from "@site/src/data/users";
+} from "@site/src/data/features";
 import Heading from "@theme/Heading";
 import ShowcaseTagSelect, {
     readSearchTags,
@@ -64,29 +64,28 @@ function readSearchName(search: string) {
 }
 
 function filterUsers(
-    users: User[],
+    features: Feature[],
     selectedTags: TagType[],
     operator: Operator,
     searchName: string | null
 ) {
     if (searchName) {
-        console.log(users);
         // eslint-disable-next-line no-param-reassign
-        users = users.filter((user) =>
-            user.title.toLowerCase().includes(searchName?.toLowerCase())
+        features = features.filter((feature) =>
+            feature.title.toLowerCase().includes(searchName?.toLowerCase())
         );
     }
     if (selectedTags.length === 0) {
-        return users;
+        return features;
     }
-    return users.filter((user) => {
-        if (user.tags.length === 0) {
+    return features.filter((feature) => {
+        if (feature.tags.length === 0) {
             return false;
         }
         if (operator === "AND") {
-            return selectedTags.every((tag) => user.tags.includes(tag));
+            return selectedTags.every((tag) => feature.tags.includes(tag));
         }
-        return selectedTags.some((tag) => user.tags.includes(tag));
+        return selectedTags.some((tag) => feature.tags.includes(tag));
     });
 }
 
@@ -157,11 +156,11 @@ function ShowcaseFilters() {
     );
 }
 
-const favoriteUsers = sortedUsers.filter((user) =>
-    user.tags.includes("favorite")
+const favoriteUsers = sortedUsers.filter((feature) =>
+    feature.tags.includes("favorite")
 );
 const otherUsers = sortedUsers.filter(
-    (user) => !user.tags.includes("favorite")
+    (feature) => !feature.tags.includes("favorite")
 );
 
 function SearchBar() {
@@ -240,10 +239,10 @@ function ShowcaseCards() {
                                     styles.showcaseList
                                 )}
                             >
-                                {favoriteUsers.map((user) => (
+                                {favoriteUsers.map((feature) => (
                                     <ShowcaseCard
-                                        key={user.title}
-                                        user={user}
+                                        key={feature.title}
+                                        feature={feature}
                                     />
                                 ))}
                             </ul>
@@ -254,8 +253,11 @@ function ShowcaseCards() {
                             All sites
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>
-                            {otherUsers.map((user) => (
-                                <ShowcaseCard key={user.title} user={user} />
+                            {otherUsers.map((feature) => (
+                                <ShowcaseCard
+                                    key={feature.title}
+                                    feature={feature}
+                                />
                             ))}
                         </ul>
                     </div>
@@ -271,8 +273,11 @@ function ShowcaseCards() {
                         <SearchBar />
                     </div>
                     <ul className={clsx("clean-list", styles.showcaseList)}>
-                        {filteredUsers.map((user) => (
-                            <ShowcaseCard key={user.title} user={user} />
+                        {filteredUsers.map((feature) => (
+                            <ShowcaseCard
+                                key={feature.title}
+                                feature={feature}
+                            />
                         ))}
                     </ul>
                 </div>
