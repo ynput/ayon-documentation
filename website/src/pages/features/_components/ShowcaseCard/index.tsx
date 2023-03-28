@@ -25,10 +25,6 @@ const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     ({ label, color, description }, ref) => (
         <li ref={ref} className={styles.tag} title={description}>
             <span className={styles.textLabel}>{label}</span>
-            <span
-                className={styles.colorLabel}
-                style={{ backgroundColor: color }}
-            />
         </li>
     )
 );
@@ -52,22 +48,13 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
     );
 }
 
-function getCardImage(feature: Feature): string {
-    return (
-        feature.preview ??
-        `https://slorber-api-screenshot.netlify.app/${encodeURIComponent(
-            feature.website
-        )}/showcase`
-    );
-}
-
 function ShowcaseCard({ feature }: { feature: Feature }) {
-    const image = getCardImage(feature);
-    console.log(image);
     return (
         <li key={feature.title} className="card shadow--md">
             <div className={clsx("card__image", styles.showcaseCardImage)}>
-                <IdealImage img={image} alt={feature.title} />
+                {feature.preview && (
+                    <IdealImage img={feature.preview} alt={feature.title} />
+                )}
             </div>
             <div className="card__body">
                 <div className={clsx(styles.showcaseCardHeader)}>
@@ -79,12 +66,6 @@ function ShowcaseCard({ feature }: { feature: Feature }) {
                             {feature.title}
                         </Link>
                     </Heading>
-                    {feature.tags.includes("favorite") && (
-                        <FavoriteIcon
-                            svgClass={styles.svgIconFavorite}
-                            size="small"
-                        />
-                    )}
                     {feature.source && (
                         <Link
                             href={feature.source}

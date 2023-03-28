@@ -121,7 +121,7 @@ function ShowcaseFilters() {
             </div>
             <ul className={clsx("clean-list", styles.checkboxList)}>
                 {TagList.map((tag, i) => {
-                    const { label, description, color } = Tags[tag];
+                    const { label } = Tags[tag];
                     const id = `showcase_checkbox_id_${tag}`;
 
                     return (
@@ -130,23 +130,6 @@ function ShowcaseFilters() {
                                 tag={tag}
                                 id={id}
                                 label={label}
-                                icon={
-                                    tag === "favorite" ? (
-                                        <FavoriteIcon
-                                            svgClass={styles.svgIconFavoriteXs}
-                                        />
-                                    ) : (
-                                        <span
-                                            style={{
-                                                backgroundColor: color,
-                                                width: 10,
-                                                height: 10,
-                                                borderRadius: "50%",
-                                                marginLeft: 8,
-                                            }}
-                                        />
-                                    )
-                                }
                             />
                         </li>
                     );
@@ -156,11 +139,11 @@ function ShowcaseFilters() {
     );
 }
 
-const favoriteUsers = sortedUsers.filter((feature) =>
-    feature.tags.includes("favorite")
+const keyFeatures = sortedUsers.filter((feature) =>
+    feature.tags.includes("key")
 );
-const otherUsers = sortedUsers.filter(
-    (feature) => !feature.tags.includes("favorite")
+const otherFeatures = sortedUsers.filter(
+    (feature) => !feature.tags.includes("key")
 );
 
 function SearchBar() {
@@ -226,10 +209,7 @@ function ShowcaseCards() {
                                     styles.showcaseFavoriteHeader
                                 )}
                             >
-                                <Heading as="h2">Our favorites</Heading>
-                                <FavoriteIcon
-                                    svgClass={styles.svgIconFavorite}
-                                />
+                                <Heading as="h2">Key Features</Heading>
                                 <SearchBar />
                             </div>
                             <ul
@@ -239,7 +219,7 @@ function ShowcaseCards() {
                                     styles.showcaseList
                                 )}
                             >
-                                {favoriteUsers.map((feature) => (
+                                {keyFeatures.map((feature) => (
                                     <ShowcaseCard
                                         key={feature.title}
                                         feature={feature}
@@ -250,10 +230,10 @@ function ShowcaseCards() {
                     </div>
                     <div className="container margin-top--lg">
                         <Heading as="h2" className={styles.showcaseHeader}>
-                            All sites
+                            All Features
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>
-                            {otherUsers.map((feature) => (
+                            {otherFeatures.map((feature) => (
                                 <ShowcaseCard
                                     key={feature.title}
                                     feature={feature}

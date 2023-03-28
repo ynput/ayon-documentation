@@ -21,7 +21,6 @@ import { prepareUserState } from "../../index";
 import styles from "./styles.module.css";
 
 interface Props extends ComponentProps<"input"> {
-    icon: ReactElement<ComponentProps<"svg">>;
     label: ReactNode;
     tag: TagType;
 }
@@ -40,7 +39,7 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
 }
 
 function ShowcaseTagSelect(
-    { id, icon, label, tag, ...rest }: Props,
+    { id, label, tag, ...rest }: Props,
     ref: React.ForwardedRef<HTMLLabelElement>
 ) {
     const location = useLocation();
@@ -89,7 +88,6 @@ function ShowcaseTagSelect(
             />
             <label ref={ref} htmlFor={id} className={styles.checkboxLabel}>
                 {label}
-                {icon}
             </label>
         </>
     );
