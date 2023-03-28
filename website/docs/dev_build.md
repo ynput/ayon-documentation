@@ -29,7 +29,7 @@ This is outline of build steps. Most of them are done automatically via scripts:
 
 ### Clone AYON repository:
 ```powershell
-git clone --recurse-submodules https://github.com/ynput/AYON.git
+git clone --recurse-submodules https://github.com/ynput/OpenPype.git
 ```
 
 ## Platform specific steps
@@ -101,9 +101,9 @@ You can pull the image:
 
 ```shell
 # replace 3.0.0 tag with version you want
-$ docker pull ynput/ayon:3.0.0
+$ docker pull ynput/openpype:3.0.0
 ```
-See https://hub.docker.com/r/ynput/ayon/tag for more.
+See https://hub.docker.com/r/ynput/openpype/tag for more.
 
 Beware that as Python is built against some libraries version in Centos 7 base image,
 those might not be available in linux version you are using. We try to handle those we

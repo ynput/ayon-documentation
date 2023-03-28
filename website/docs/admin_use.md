@@ -13,9 +13,9 @@ import TabItem from '@theme/TabItem';
 You can install AYON on individual workstations the same way as any other software. 
 When you create you build, you will end up with an installation package for the platform that was used for the build.
 
-- Windows: `ayon-3.0.0.msi`
-- Linux: `ayon-3.0.0.zip`
-- Mac: `ayon-3.0.0.dmg`
+- Windows: `OpenPype-3.0.0.msi`
+- Linux: `OpenPype-3.0.0.zip`
+- Mac: `OpenPype-3.0.0.dmg`
 
 After AYON is installed, it will ask the user for further installation if it detects a newer version in the studio update location.
 
@@ -34,7 +34,7 @@ You can use following command line arguments:
 
 `--use-version` - to specify version you want to run explicitly, like:
 ```shell
-ayon_console --use-version=3.0.1
+openpype_console --use-version=3.0.1
 ```
 
 `--use-staging` - to specify you prefer staging version. In that case it will be used instead of production one.
@@ -43,14 +43,14 @@ ayon_console --use-version=3.0.1
 To list all available versions, use:
 
 ```shell
-ayon_console --list-versions
+openpype_console --list-versions
 ```
 :::
 
 If you want to validate integrity of some available version, you can use:
 
 ```shell
-ayon_console --validate-version=3.3.0
+openpype_console --validate-version=3.3.0
 ```
 
 This will go through the version and validate file content against sha 256 hashes
@@ -65,7 +65,7 @@ Add `--headless` to run AYON without graphical UI (useful on server or on automa
 Level value can be integer in range `0-50` or one of enum strings `"notset" (0)`, `"debug" (10)`, `"info" (20)`, `"warning" (30)`, `"error" (40)`, `"critical" (50)`. Value is stored to `AYON_LOG_LEVEL` environment variable for next processes.
 
 ```shell
-ayon_console --verbose debug
+openpype_console --verbose debug
 ```
 
 `--debug` - set debug flag affects logging
@@ -73,7 +73,7 @@ ayon_console --verbose debug
 Enable debug flag for AYON process. Change value of environment variable `AYON_DEBUG` to `"1"`. At this moment affects only AYON loggers. Argument `--verbose` or environment variable `AYON_LOG_LEVEL` are used in preference to affect log level.
 
 ```shell
-ayon_console --debug
+openpype_console --debug
 ```
 
 ### Details
@@ -103,9 +103,9 @@ When connection to MongoDB is made, AYON will get various settings from there - 
 
 This path can be set is AYON settings, but also with environment variable `AYON_PATH` or with `AYONPath` in json file located application directory depending on your system.
 
-- Windows: `%LOCALAPPDATA%\ynput\ayon`
-- Linux: `~/.local/share/ynput/ayon`
-- Mac: `~/Library/Application Support/ynput/ayon`
+- Windows: `%LOCALAPPDATA%\ynput\openpype`
+- Linux: `~/.local/share/ynput/openpype`
+- Mac: `~/Library/Application Support/ynput/openpype`
 
 ### Runtime provided environment variables
 AYON is providing following environment variables for its subprocesses that can be used in various places, like scripting, etc.
@@ -116,4 +116,4 @@ AYON is providing following environment variables for its subprocesses that can 
 - `AYON_DATABASE_NAME` - database name in MongoDB used by AYON
 - `AYON_EXECUTABLE` - path to executable used to run AYON - when run from sources it will point
 to **python** stored in virtual environment. If run from frozen code, it will point to either `ayon_gui` or
-  `ayon_console`.
+  `openpype_console`.

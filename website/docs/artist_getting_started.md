@@ -25,7 +25,7 @@ See the [Installation section](artist_install.md) for more information on how to
 :::
 
 
-You can run AYON by desktop "OP" icon (if it exists after installing) or by directly executing **ayon_gui.exe** located in the AYON folder. This executable being suitable **for artists**. or alternatively by **ayon_console.exe** which is more suitable for **TDs/Admin** for debugging and error reporting. This one runs with opened console window where all the necessary info will appear during user's work session.
+You can run AYON by desktop "OP" icon (if it exists after installing) or by directly executing **ayon_gui.exe** located in the AYON folder. This executable being suitable **for artists**. or alternatively by **openpype_console.exe** which is more suitable for **TDs/Admin** for debugging and error reporting. This one runs with opened console window where all the necessary info will appear during user's work session.
 
 :::tip Is AYON running?
 AYON runs in the operating system's tray. If you see turquoise AYON icon in the tray you can easily tell AYON is currently running.

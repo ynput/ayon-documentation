@@ -24,7 +24,7 @@ Project anatomy is stored into a project document thus is not versioned and its 
 ## Settings schema items
 As was mentioned schema items define output type of values, how they are stored and how they look in UI.
 - schemas are (by default) defined by json files
-- AYON core system settings schemas are stored in `~/ayon/settings/entities/schemas/system_schema/` and project settings in `~/ayon/settings/entities/schemas/projects_schema/`
+- AYON core system settings schemas are stored in `~/openpype/settings/entities/schemas/system_schema/` and project settings in `~/openpype/settings/entities/schemas/projects_schema/`
     - both contain `schema_main.json` which are entry points
 - AYON modules/addons can define their settings schemas using `BaseModuleSettingsDef` in that case some functionality may be slightly modified
 - single schema item is represented by dictionary (object) in json which has `"type"` key.
@@ -894,6 +894,6 @@ Items used only for UI purposes.
 
 
 ## How to add new settings
-Always start with modifying or adding a new schema and don't worry about values. When you think schema is ready to use launch AYON settings in development mode using `poetry run python ./start.py settings --dev` or prepared script in `~/ayon/tools/run_settings(.sh|.ps1)`. Settings opened in development mode have the checkbox `Modify defaults` available in the bottom left corner. When checked default values are modified and saved on `Save`. This is a recommended approach on how default settings should be created instead of direct modification of files.
+Always start with modifying or adding a new schema and don't worry about values. When you think schema is ready to use launch AYON settings in development mode using `poetry run python ./start.py settings --dev` or prepared script in `~/openpype/tools/run_settings(.sh|.ps1)`. Settings opened in development mode have the checkbox `Modify defaults` available in the bottom left corner. When checked default values are modified and saved on `Save`. This is a recommended approach on how default settings should be created instead of direct modification of files.
 
 ![Modify default settings](assets/settings_dev.png)

@@ -5,7 +5,7 @@ sidebar_label: AYON Commands
 ---
 
 :::info
-You can substitute `ayon_console` with `poetry run python start.py` if you want to run it
+You can substitute `openpype_console` with `poetry run python start.py` if you want to run it
 directly from sources.
 :::
 
@@ -16,7 +16,7 @@ Running AYON without any commands will default to `tray`.
 ## Common arguments
 `--use-version` to specify explicit version to use:
 ```shell
-ayon_console --use-version=3.0.0-foo+bar
+openpype_console --use-version=3.0.0-foo+bar
 ```
 `--headless` - to run AYON in headless mode (without using graphical UI)
 
@@ -52,7 +52,7 @@ For more information [see here](admin_use.md#run-ayon).
 ### `tray` arguments {#tray-arguments}
 
 ```shell
-ayon_console tray
+openpype_console tray
 ```
 ---
 
@@ -87,7 +87,7 @@ Run publishing based on metadata passed in json file e.g. on farm.
 | Positional argument | Path to metadata json file |
 
 ```shell
-ayon publish <PATH_TO_JSON> --targes farm
+pype publish <PATH_TO_JSON> --targes farm
 ```
 
 ---
@@ -106,7 +106,7 @@ Context options are `project`, `asset`, `task`, `app`
 | `--app` | Application name |
 
 ```shell
-ayon_console /home/ayon/env.json --project Foo --asset Bar --task modeling --app maya-2019
+openpype_console /home/openpype/env.json --project Foo --asset Bar --task modeling --app maya-2019
 ```
 
 ---
@@ -118,14 +118,14 @@ ayon_console /home/ayon/env.json --project Foo --asset Bar --task modeling --app
 Note that additional arguments are passed to the script.
 
 ```shell
-ayon_console run --script /foo/bar/baz.py arg1 arg2
+openpype_console run --script /foo/bar/baz.py arg1 arg2
 ```
 
 ---
 ### `projectmanager` arguments {#projectmanager-arguments}
 `projectmanager` has no command-line arguments.
 ```shell
-ayon_console projectmanager
+openpype_console projectmanager
 ```
 
 ---
@@ -135,7 +135,7 @@ ayon_console projectmanager
 | `-d` / `--dev` | Run settings in developer mode. |
 
 ```shell
-ayonconsole settings
+openpype_console settings
 ```
 
 ---
@@ -145,5 +145,5 @@ zipped, checksums recalculated and version will be determined by folder name
 (and written to `version.py`).
 
 ```shell
-./ayon_console repack-version /path/to/some/modified/unzipped/version/ayon-v3.8.3-modified
+./openpype_console repack-version /path/to/some/modified/unzipped/version/openpype-v3.8.3-modified
 ```

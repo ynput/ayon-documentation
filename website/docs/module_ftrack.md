@@ -34,7 +34,7 @@ To prepare Ftrack for working with AYON you'll need to run [AYON Admin - Create/
 Ftrack Event Server is the key to automation of many tasks like _status change_, _thumbnail update_, _automatic synchronization to Avalon database_ and many more. Event server should run at all times to perform the required processing as it is not possible to catch some of them retrospectively with enough certainty.
 
 ### Running event server
-There are specific launch arguments for event server. With `ayon_console module ftrack eventserver` you can launch event server but without prior preparation it will terminate immediately. The reason is that event server requires 3 pieces of information: _Ftrack server url_, _paths to events_ and _credentials (Username and API key)_. Ftrack server URL and Event path are set from AYON's environments by default, but the credentials must be done separatelly for security reasons.
+There are specific launch arguments for event server. With `openpype_console module ftrack eventserver` you can launch event server but without prior preparation it will terminate immediately. The reason is that event server requires 3 pieces of information: _Ftrack server url_, _paths to events_ and _credentials (Username and API key)_. Ftrack server URL and Event path are set from AYON's environments by default, but the credentials must be done separatelly for security reasons.
 
 
 
@@ -53,7 +53,7 @@ There are specific launch arguments for event server. With `ayon_console module 
 -   **`--ftrack-api-key "00000aaa-11bb-22cc-33dd-444444eeeee"`** : User's API key
 -   `--ftrack-url "https://yourdomain.ftrackapp.com/"` : Ftrack server URL _(it is not needed to enter if you have set `FTRACK_SERVER` in AYON' environments)_
 
-So if you want to use AYON's environments then you can launch event server for first time with these arguments `ayon_console.exe module ftrack eventserver --ftrack-user "my.username" --ftrack-api-key "00000aaa-11bb-22cc-33dd-444444eeeee" --store-credentials`. Since that time, if everything was entered correctly, you can launch event server with `ayon_console.exe module ftrack eventserver`.
+So if you want to use AYON's environments then you can launch event server for first time with these arguments `openpype_console.exe module ftrack eventserver --ftrack-user "my.username" --ftrack-api-key "00000aaa-11bb-22cc-33dd-444444eeeee" --store-credentials`. Since that time, if everything was entered correctly, you can launch event server with `openpype_console.exe module ftrack eventserver`.
 
 </TabItem>
 <TabItem value="env">
@@ -95,20 +95,20 @@ Event server should **not** run more than once! It may cause major issues.
 <TabItem value="linux">
 
 - create file:
-    `sudo vi /opt/ayon/run_event_server.sh`
+    `sudo vi /opt/openpype/run_event_server.sh`
 -   add content to the file:
 ```sh
 #!/usr/bin/env bash
 export AYON_MONGO=<ayon-mongo-url>
 
-pushd /mnt/path/to/ayon
-./ayon_console module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug
+pushd /mnt/path/to/openpype
+./openpype_console module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug
 ```
 -   change file permission:
-    `sudo chmod 0755 /opt/ayon/run_event_server.sh`
+    `sudo chmod 0755 /opt/openpype/run_event_server.sh`
 
 -   create service file:
-    `sudo vi /etc/systemd/system/ayon-ftrack-event-server.service`
+    `sudo vi /etc/systemd/system/openpype-ftrack-event-server.service`
 -   add content to the service file
 
 ```toml
@@ -118,7 +118,7 @@ After=network.target
 
 [Service]
 Type=idle
-ExecStart=/opt/ayon/run_event_server.sh
+ExecStart=/opt/openpype/run_event_server.sh
 Restart=on-failure
 RestartSec=10s
 
@@ -127,7 +127,7 @@ WantedBy=multi-user.target
 ```
 
 -   change file permission:
-    `sudo chmod 0755 /etc/systemd/system/ayon-ftrack-event-server.service`
+    `sudo chmod 0755 /etc/systemd/system/openpype-ftrack-event-server.service`
 
 -   enable service:
     `sudo systemctl enable ayon-ftrack-event-server`
@@ -145,7 +145,7 @@ WantedBy=multi-user.target
 set AYON_MONGO=<ayon-mongo-url>
 
 pushd \\path\to\ayon
-ayon_console.exe module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug
+openpype_console.exe module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug
 ```
 -   download and install `nssm.cc`
 -   create Windows service according to nssm.cc manual

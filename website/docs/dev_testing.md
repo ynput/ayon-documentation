@@ -28,7 +28,7 @@ If you would like just to experiment with provided integration tests, and have p
 ```
 - From build:
 ```
-- ${AYON_BUILD}/ayon_console runtests {ABSOLUTE_PATH_AYON_ROOT}/tests/integration/hosts/nuke`
+- ${AYON_BUILD}/openpype_console runtests {ABSOLUTE_PATH_AYON_ROOT}/tests/integration/hosts/nuke`
 ```
 Modify tests path argument to limit which tests should be run (`../tests/integration` will run all implemented integration tests).
 

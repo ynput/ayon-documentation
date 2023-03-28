@@ -20,7 +20,7 @@ Updating OP with Kitsu data is executed running the `sync-service`, which requir
 Once this sync is done, the thread will automatically start a loop to listen to Kitsu events.
 
 ```bash
-ayon_console module kitsu sync-service -l me@domain.ext -p my_password
+openpype_console module kitsu sync-service -l me@domain.ext -p my_password
 ```
 
 ### Events listening
@@ -35,7 +35,7 @@ This functionality cannot deal with all cases and is not error proof, some inter
 :::
 
 ```bash
-ayon_console module kitsu push-to-zou -l me@domain.ext -p my_password
+openpype_console module kitsu push-to-zou -l me@domain.ext -p my_password
 ```
 
 ## Integrate Kitsu Note

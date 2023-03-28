@@ -45,7 +45,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export AYON_MONGO=YOUR_MONGODB_CONNECTION
 
 pushd /opt/ayon
-./ayon_console webpublisherwebserver --upload_dir YOUR_SHARED_FOLDER_ON_HOST  --executable /opt/ayon/ayon_console  --host YOUR_HOST_IP --port YOUR_HOST_PORT > /tmp/ayon.log 2>&1
+./openpype_console webpublisherwebserver --upload_dir YOUR_SHARED_FOLDER_ON_HOST  --executable /opt/ayon/openpype_console  --host YOUR_HOST_IP --port YOUR_HOST_PORT > /tmp/ayon.log 2>&1
 ```
 
 1. create service file `sudo vi /etc/systemd/system/openpye-webserver.service`

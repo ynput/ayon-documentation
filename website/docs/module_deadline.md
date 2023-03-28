@@ -38,7 +38,7 @@ destinations accessible by DL process. Check permissions (must be executable and
 - Enable `Tools > Super User Mode` in Deadline Monitor
 
 - Go to `Tools > Configure Plugins...`, find `AYON` in the list on the left side, find location of AYON
-executable. It is recommended to use the `ayon_console` executable as it provides a bit more logging.
+executable. It is recommended to use the `openpype_console` executable as it provides a bit more logging.
 
 - In case of multi OS farms, provide multiple locations, each Deadline Worker goes through the list and tries to find the first accessible
  location for itself.

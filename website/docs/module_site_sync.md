@@ -194,8 +194,8 @@ To do this:
 
 
 This is an example how to trigger background syncing process where active (source) site is `studio`. 
-(It is expected that OP is installed on a machine, `ayon_console` is on PATH. If not, add full path to executable.
+(It is expected that OP is installed on a machine, `openpype_console` is on PATH. If not, add full path to executable.
 )
 ```shell
-ayon_console syncserver --active_site studio
+openpype_console syncserver --active_site studio
 ```

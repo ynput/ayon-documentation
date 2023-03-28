@@ -46,9 +46,9 @@ Zips will be automatically unzipped there.
 
 The default locations are:
 
-- Windows: `%LOCALAPPDATA%\pypeclub\ayon`
-- Linux: `~/.local/share/pypeclub/ayon`
-- Mac: `~/Library/Application Support/pypeclub/ayon`
+- Windows: `%LOCALAPPDATA%\pypeclub\openpype`
+- Linux: `~/.local/share/pypeclub/openpype`
+- Mac: `~/Library/Application Support/pypeclub/openpype`
 
 
 ### Staging vs. Production
