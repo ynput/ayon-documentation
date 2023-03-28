@@ -108,60 +108,41 @@ const config = {
                         position: "right",
                     },
                     {
-                        href: "https://github.com/ynput/OpenPype",
-                        label: "GitHub",
+                        label: "Community",
                         position: "right",
-                    },
-                ],
-            },
-            footer: {
-                style: "dark",
-                links: [
-                    {
-                        title: "Pages",
                         items: [
-                            {
-                                label: "Features",
-                                to: "/features",
-                            },
-                            {
-                                label: "User Docs",
-                                to: "/docs/artist_getting_started",
-                            },
-                            {
-                                label: "Admin Docs",
-                                to: "/docs/system_introduction",
-                            },
-                            {
-                                label: "Dev Docs",
-                                to: "/docs/dev_introduction",
-                            },
-                        ],
-                    },
-                    {
-                        title: "Community",
-                        items: [
-                            {
-                                label: "Discord",
-                                href: "https://discord.gg/ynput",
-                            },
                             {
                                 label: "GitHub",
                                 href: "https://github.com/ynput/OpenPype",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "Discord",
+                                href: "https://discord.gg/ynput",
+                                target: "_blank",
+                                rel: null,
                             },
                             {
                                 label: "LinkedIn",
                                 href: "https://www.linkedin.com/company/ynput",
+                                target: "_blank",
+                                rel: null,
                             },
                             {
                                 label: "Twitter",
                                 href: "https://twitter.com/ynput_io",
+                                target: "_blank",
+                                rel: null,
                             },
                         ],
+                        className: "navbar__link--community",
+                    },
+                    {
+                        type: "search",
+                        position: "right",
                     },
                 ],
-                // Please do not remove the credits, help to publicize Docusaurus :)
-                copyright: `Copyright © ${new Date().getFullYear()} Ynput`,
             },
         }),
 };
