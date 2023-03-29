@@ -9,12 +9,7 @@ import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import FavoriteIcon from "@site/src/components/svgIcons/FavoriteIcon";
-import {
-    TagList,
-    type TagType,
-    type Feature,
-    type Tag,
-} from "@site/src/data/features";
+import { TagList, type TagType, type Feature, type Tag } from "@site/src/data";
 import { sortBy } from "@site/src/utils/jsUtils";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.css";

@@ -17,7 +17,7 @@ import {
     TagList,
     type Feature,
     type TagType,
-} from "@site/src/data/features";
+} from "@site/src/data";
 import Heading from "@theme/Heading";
 import { readSearchTags } from "./_components/ShowcaseTagSelect";
 import ShowcaseFilterToggle, {
