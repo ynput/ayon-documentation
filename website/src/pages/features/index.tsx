@@ -19,10 +19,11 @@ import ShowcaseFilterToggle, {
     type Operator,
     readOperator,
 } from "./_components/ShowcaseFilterToggle";
-import ShowcaseCard from "./_components/ShowcaseCard";
+import FeatureCard from "./_components/FeatureCard";
 
 import styles from "./styles.module.css";
 import SideBar from "./_components/SideBar";
+import HeaderCard from "./_components/HeaderCard";
 
 type UserState = {
     scrollTopPosition: number;
@@ -88,7 +89,7 @@ function filterUsers(
     });
 }
 
-function useFilteredFeatures() {
+function useFilteredFeatures(searchOnly: boolean) {
     const location = useLocation<UserState>();
     const [operator, setOperator] = useState<Operator>("OR");
     // On SSR / first mount (hydration) no tag is selected
@@ -104,7 +105,13 @@ function useFilteredFeatures() {
     }, [location]);
 
     return useMemo(
-        () => filterUsers(sortedFeatures, selectedTags, operator, searchName),
+        () =>
+            filterUsers(
+                sortedFeatures,
+                selectedTags,
+                operator,
+                searchOnly ? null : searchName
+            ),
         [selectedTags, operator, searchName]
     );
 }
@@ -127,6 +134,7 @@ function SearchBar() {
     return (
         <div className={styles.searchContainer}>
             <input
+                autoComplete="off"
                 id="searchbar"
                 placeholder={"Search features..."}
                 value={value ?? undefined}
@@ -155,9 +163,22 @@ function SearchBar() {
 }
 
 function ShowcaseCards() {
-    const filteredFeatures = useFilteredFeatures();
+    const filteredFeatures = useFilteredFeatures(false);
+    const filteredFeaturesNoSearch = useFilteredFeatures(true);
+    // split out any addons if addon selected
     const location = useLocation();
     const searchTags = readSearchTags(location.search);
+
+    let filteredAddons: Feature[] = [];
+    let filteredOtherFeatures = filteredFeatures;
+    if (searchTags.length) {
+        filteredAddons = filteredFeaturesNoSearch.filter((feature) =>
+            feature.tags.includes("addon")
+        );
+        filteredOtherFeatures = filteredFeatures.filter(
+            (feature) => !feature.tags.includes("addon")
+        );
+    }
 
     if (filteredFeatures.length === 0) {
         return (
@@ -192,7 +213,7 @@ function ShowcaseCards() {
                             )}
                         >
                             {addons.map((feature) => (
-                                <ShowcaseCard
+                                <FeatureCard
                                     key={feature.title}
                                     feature={feature}
                                 />
@@ -206,7 +227,7 @@ function ShowcaseCards() {
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>
                             {otherFeatures.map((feature) => (
-                                <ShowcaseCard
+                                <FeatureCard
                                     key={feature.title}
                                     feature={feature}
                                 />
@@ -224,9 +245,34 @@ function ShowcaseCards() {
                     >
                         <SearchBar />
                     </div>
+                    {!!filteredAddons.length && (
+                        <>
+                            <ul
+                                className={clsx(
+                                    "clean-list",
+                                    styles.headerList
+                                )}
+                            >
+                                {filteredAddons.map((feature) => (
+                                    <HeaderCard
+                                        key={feature.title}
+                                        feature={feature}
+                                    />
+                                ))}
+                            </ul>
+                            {!!filteredOtherFeatures.length && (
+                                <Heading
+                                    as="h2"
+                                    className={styles.showcaseHeader}
+                                >
+                                    Addon Features
+                                </Heading>
+                            )}
+                        </>
+                    )}
                     <ul className={clsx("clean-list", styles.showcaseList)}>
-                        {filteredFeatures.map((feature) => (
-                            <ShowcaseCard
+                        {filteredOtherFeatures.map((feature) => (
+                            <FeatureCard
                                 key={feature.title}
                                 feature={feature}
                             />

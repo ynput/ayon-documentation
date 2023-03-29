@@ -6,7 +6,7 @@
         "docs": {
             "user": "artist_hosts_nuke#build-first-work-file"
         },
-        "tags": ["nuke"]
+        "tags": ["templates", "nuke"]
     },
     "nodePresets": {
         "title": "Node Presets",
@@ -32,7 +32,7 @@
         "docs": {
             "user": "artist_hosts_nuke#set-colorspace"
         },
-        "tags": ["nuke"]
+        "tags": ["nuke", "color"]
     },
     "workfiles": {
         "title": "Workfiles",
@@ -41,7 +41,7 @@
         "docs": {
             "user": "artist_tools_workfiles"
         },
-        "tags": ["core", "key"]
+        "tags": ["core"]
     },
     "creator": {
         "title": "Creator",
@@ -58,7 +58,7 @@
         "docs": {
             "user": "artist_tools_loader"
         },
-        "tags": ["core", "key"]
+        "tags": ["core", "nuke"]
     },
     "publisher": {
         "title": "Publisher",
@@ -66,7 +66,7 @@
         "docs": {
             "user": "artist_tools_publisher"
         },
-        "tags": ["core"]
+        "tags": ["core", "nuke"]
     },
     "sceneManager": {
         "title": "Scene manager",
@@ -75,7 +75,7 @@
         "docs": {
             "user": "artist_tools_inventory"
         },
-        "tags": ["core", "key"]
+        "tags": ["core", "nuke"]
     },
     "projectManager": {
         "title": "Project manager",

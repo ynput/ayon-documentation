@@ -31,7 +31,7 @@ export function readSearchTags(search: string): TagType[] {
     return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
 }
 
-function replaceSearchTags(search: string, newTags: TagType[]) {
+export function replaceSearchTags(search: string, newTags: TagType[]) {
     const searchParams = new URLSearchParams(search);
     searchParams.delete(TagQueryStringKey);
     newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));

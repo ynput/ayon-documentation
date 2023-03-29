@@ -1,0 +1,147 @@
+.showcaseCardImage {
+    overflow: hidden;
+    height: 150px;
+    border-bottom: 2px solid var(--ifm-color-emphasis-200);
+
+    border-radius: var(--ifm-card-border-radius);
+}
+
+.showcaseCardHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.showcaseCardTitle {
+    margin-bottom: 0;
+    flex: 1 1 auto;
+}
+
+.showcaseCardTitle a {
+    text-decoration: none;
+    background: linear-gradient(
+            var(--ifm-color-primary),
+            var(--ifm-color-primary)
+        )
+        0% 100% / 0% 1px no-repeat;
+    transition: background-size ease-out 200ms;
+}
+
+.showcaseCardTitle a:not(:focus):hover {
+    background-size: 100% 1px;
+}
+
+.showcaseCardTitle,
+.showcaseCardHeader .svgIconFavorite {
+    margin-right: 0.25rem;
+}
+
+.showcaseCardHeader .svgIconFavorite {
+    color: var(--site-color-svg-icon-favorite);
+}
+
+.showcaseCardSrcBtn {
+    margin-left: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: none;
+}
+
+.showcaseCardSrcBtn:focus-visible {
+    background-color: var(--ifm-color-secondary-dark);
+}
+
+[data-theme="dark"] .showcaseCardSrcBtn {
+    background-color: var(--ifm-color-emphasis-200) !important;
+    color: inherit;
+}
+
+[data-theme="dark"] .showcaseCardSrcBtn:hover {
+    background-color: var(--ifm-color-emphasis-300) !important;
+}
+
+.showcaseCardBody {
+    font-size: smaller;
+    line-height: 1.66;
+}
+
+.cardFooter {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-size: 0.675rem;
+    border: 1px solid var(--ifm-color-secondary-darkest);
+    cursor: default;
+    margin-right: 6px;
+    margin-bottom: 6px !important;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.tag .textLabel {
+    margin: 0 8px;
+}
+
+.tag.isActive {
+    border: 1px solid var(--ifm-color-primary);
+}
+
+.tag .colorLabel {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+/* addon */
+.isAddon {
+    cursor: pointer;
+    --border-width: 0;
+    &::after {
+        transition: all 0.5s;
+
+        position: absolute;
+        border-radius: var(--ifm-card-border-radius);
+        opacity: 0;
+        content: "";
+        top: calc(-1 * var(--border-width));
+        left: calc(-1 * var(--border-width));
+        z-index: -1;
+        width: calc(100% + var(--border-width) * 2);
+        height: calc(100% + var(--border-width) * 2);
+    }
+}
+
+.isAddon:hover {
+    --border-width: 2px;
+    position: relative;
+    overflow: visible;
+
+    &::after {
+        content: "";
+        opacity: 1;
+
+        background: linear-gradient(
+            60deg,
+            hsl(165, 100%, 50%),
+            hsl(165, 100%, 35%),
+            hsl(168, 100%, 15%),
+            hsl(165, 100%, 35%),
+            hsl(165, 100%, 77%)
+        );
+        background-size: 300% 300%;
+        background-position: 0 50%;
+
+        animation: moveGradient 3.5s alternate infinite;
+    }
+}
+
+@keyframes moveGradient {
+    50% {
+        background-position: 100% 50%;
+    }
+}

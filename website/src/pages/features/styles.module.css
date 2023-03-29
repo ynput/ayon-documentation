@@ -77,6 +77,12 @@
     gap: 24px;
 }
 
+.headerList {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
 .showcaseFavorite {
     padding-top: 2rem;
     padding-bottom: 2rem;

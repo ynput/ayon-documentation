@@ -4,10 +4,12 @@ export type DocType = "user" | "admin" | "developer";
 export type Feature = {
     title: string;
     description: string;
+    descriptionLong?: string;
     preview?: string;
     tags: string[];
     docs?: { [type in DocType]?: String };
     families?: string[];
+    github?: string;
 };
 
 const Features: Feature[] = [];

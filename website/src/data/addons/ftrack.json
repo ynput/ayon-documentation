@@ -6,5 +6,6 @@
         "admin": "module_ftrack"
     },
     "preview": "ftrack.png",
-    "tags": ["ftrack"]
+    "tags": ["ftrack"],
+    "github": "https://github.com/ynput/ayon-ftrack"
 }

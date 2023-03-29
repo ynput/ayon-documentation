@@ -1,14 +1,6 @@
-/**
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import FavoriteIcon from "@site/src/components/svgIcons/FavoriteIcon";
 import { TagList, type TagType, type Feature, type Tag } from "@site/src/data";
 import { sortBy } from "@site/src/utils/jsUtils";
 import Heading from "@theme/Heading";
@@ -40,9 +32,12 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
     );
 }
 
-function ShowcaseCard({ feature }: { feature: Feature }) {
+function HeaderCard({ feature }: { feature: Feature }) {
     return (
-        <li key={feature.title} className="card shadow--md">
+        <li
+            key={feature.title}
+            className={clsx("card", "shadow--md", styles.headerCard)}
+        >
             <div className={clsx("card__image", styles.showcaseCardImage)}>
                 {feature.preview && (
                     <IdealImage img={feature.preview} alt={feature.title} />
@@ -79,4 +74,4 @@ function ShowcaseCard({ feature }: { feature: Feature }) {
     );
 }
 
-export default React.memo(ShowcaseCard);
+export default React.memo(HeaderCard);

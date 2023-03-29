@@ -6,7 +6,7 @@ import { type Feature as Addon } from "./features";
 // 3. add the addon name to the addons list "myAddon"
 
 // List of addons to load
-const addonsToLoad = ["nuke", "ftrack"];
+const addonsToLoad = ["nuke", "ftrack", "maya"];
 
 // load addons
 const Addons: Addon[] = addonsToLoad.flatMap((feature) => {
