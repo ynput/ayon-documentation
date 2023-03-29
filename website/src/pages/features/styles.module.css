@@ -9,6 +9,64 @@
     margin-left: auto;
 }
 
+.showcaseContainer {
+    display: flex;
+    width: 100vw;
+    flex: 1 0;
+}
+
+/* main */
+.showcaseContainer main {
+    display: flex;
+    width: 100%;
+}
+
+@media (min-width: 997px) {
+    .showcaseContainer main {
+        flex-grow: 1;
+        max-width: calc(100% - var(--doc-sidebar-width));
+    }
+
+    .showcaseContainer aside {
+        display: block;
+        width: var(--doc-sidebar-width);
+        margin-top: calc(-1 * var(--ifm-navbar-height));
+        border-right: 1px solid var(--ifm-toc-border-color);
+        will-change: width;
+        transition: width var(--ifm-transition-fast) ease;
+        clip-path: inset(0);
+    }
+
+    .sidebarWrapper {
+        top: 0;
+        position: sticky;
+        height: 100%;
+        max-height: 100vh;
+    }
+
+    /* inner */
+    .sidebarWrapper > div {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding-top: var(--ifm-navbar-height);
+        width: var(--doc-sidebar-width);
+    }
+
+    .sidebarWrapper nav {
+        padding: 0.5rem;
+        scrollbar-gutter: stable;
+        flex-grow: 1;
+    }
+
+    /* ul */
+    .sidebarWrapper nav ul {
+        list-style: none;
+        padding-left: 0;
+        margin: 0;
+    }
+}
+
 .featuresSection {
     padding-bottom: 2rem;
 }
@@ -51,8 +109,4 @@
 
 .svgIconFavorite {
     margin-left: 1rem;
-}
-
-.checkboxListItem {
-    margin: 8px 0;
 }

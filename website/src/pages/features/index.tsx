@@ -30,6 +30,7 @@ import ShowcaseFilterToggle, {
 import ShowcaseCard from "./_components/ShowcaseCard";
 
 import styles from "./styles.module.css";
+import SideBar from "./_components/SideBar";
 
 type UserState = {
     scrollTopPosition: number;
@@ -113,41 +114,6 @@ function useFilteredFeatures() {
     return useMemo(
         () => filterUsers(sortedFeatures, selectedTags, operator, searchName),
         [selectedTags, operator, searchName]
-    );
-}
-
-function ShowcaseFilters() {
-    return (
-        <aside className="theme-doc-sidebar-container docSidebarContainer_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-Sidebar-styles-module">
-            <div className="sidebarViewport_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-Sidebar-styles-module">
-                <div className="sidebar_node_modules-@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-styles-module">
-                    <nav
-                        aria-label="Docs sidebar"
-                        className="menu thin-scrollbar menu_node_modules-@docusaurus-theme-classic-lib-theme-DocSidebar-Desktop-Content-styles-module"
-                    >
-                        <ul className="theme-doc-sidebar-menu menu__list">
-                            {TagList.map((tag, i) => {
-                                const { label } = Tags[tag];
-                                const id = `showcase_checkbox_id_${tag}`;
-
-                                return (
-                                    <li
-                                        key={i}
-                                        className={`${styles.checkboxListItem} theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item`}
-                                    >
-                                        <ShowcaseTagSelect
-                                            tag={tag}
-                                            id={id}
-                                            label={label}
-                                        />
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </aside>
     );
 }
 
@@ -290,10 +256,10 @@ export default function Features(): JSX.Element {
         <Layout>
             <div
                 style={{ width: "100vw" }}
-                className="docPage_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module"
+                className={styles.showcaseContainer}
             >
-                <ShowcaseFilters />
-                <main className="docMainContainer_node_modules-@docusaurus-theme-classic-lib-theme-DocPage-Layout-Main-styles-module">
+                <SideBar TagList={TagList} Tags={Tags} />
+                <main>
                     <ShowcaseCards />
                 </main>
             </div>

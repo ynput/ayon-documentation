@@ -14,8 +14,8 @@ const config = {
     title: "AYON",
     tagline:
         "The most robust open-source pipeline for studios and remote teams",
-    url: process.env.DEPLOY_PRIME_URL || "http://localhost:3000", // Your website URL
-    baseUrl: process.env.DEPLOY_BASE_URL || "/",
+    url: "https://docs.ynput.io", // Your website URL
+    baseUrl: "/",
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
@@ -77,10 +77,13 @@ const config = {
                     {
                         type: "custom-logo",
                         position: "left",
-                        logo: "/img/Y_black.svg",
-                        logoInverted: "/img/Y_white.svg",
+                        logo: "/img/AYON_blackG_Y.svg",
+                        logoInverted: "/img/AYON_whiteG_Y.svg",
                         to: "/",
-                        title: "AYON",
+                        logoStyle: {
+                            height: "1.5rem",
+                            top: -2,
+                        },
                     },
                     {
                         to: "/features",
@@ -159,6 +162,7 @@ const config = {
                 disableInDev: true,
             }),
         ],
+        "docusaurus-plugin-sass",
     ],
 };
 

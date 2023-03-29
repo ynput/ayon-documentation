@@ -98,20 +98,12 @@ h6 {
     display: none;
 }
 
-/* navbar logo hover effect */
-.navbar__brand:hover img {
-    filter: brightness(0) saturate(100%) invert(57%) sepia(79%) saturate(1448%)
-        hue-rotate(120deg) brightness(98%) contrast(101%);
-
-    transition: filter 0.1s;
-}
-
 .custom-logo {
     display: inline-flex;
 }
 
 .custom-logo + .custom-logo a {
-    margin-left: 20px;
+    margin-left: 1rem;
 }
 
 /* divider between logos */
@@ -119,12 +111,4 @@ h6 {
     content: "|";
     display: inline-block;
     position: absolute;
-}
-
-/* show logo dark version */
-.navbar__logo img.dark {
-    display: none;
-}
-[data-theme="dark"] .navbar__logo img.dark {
-    display: initial;
 }

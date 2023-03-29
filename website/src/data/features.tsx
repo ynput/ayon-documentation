@@ -145,15 +145,6 @@ const NukeFeatures: FeaturesType = {
         },
         tags: ["nuke", "integration"],
     },
-    colorManaged: {
-        title: "Color Managed",
-        description: "Fully colour managed outputs for work and review",
-        preview: require("./features/color_managed.png"),
-        docs: {
-            user: "artist_hosts_nuke#set-colorspace",
-        },
-        tags: ["nuke"],
-    },
     scriptBuilding: {
         title: "Script Building",
         description:
@@ -197,13 +188,25 @@ const ExtraFeatures: FeaturesType = {
         preview: require("./features/ftrack.png"),
         tags: ["ftrack"],
     },
+    colorManaged: {
+        title: "Color Managed",
+        description: "Fully colour managed outputs for work and review",
+        preview: require("./features/color_managed.png"),
+        docs: {
+            user: "artist_hosts_nuke#set-colorspace",
+        },
+        tags: ["nuke"],
+    },
 };
+
+const AddonFeatures: FeaturesType = {};
 
 // add other features
 export const Features: FeaturesType = {
     ...CoreFeatures,
     ...NukeFeatures,
     ...ExtraFeatures,
+    ...AddonFeatures,
 };
 
 export type DocType = "user" | "admin" | "developer";
