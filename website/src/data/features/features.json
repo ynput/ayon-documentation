@@ -1,0 +1,124 @@
+{
+    "scriptBuilding": {
+        "title": "Script Building",
+        "description": "Automatically build initial workfiles from published plates or renders",
+        "preview": "script_building.png",
+        "docs": {
+            "user": "artist_hosts_nuke#build-first-work-file"
+        },
+        "tags": ["nuke"]
+    },
+    "nodePresets": {
+        "title": "Node Presets",
+        "description": "Template system for centrally controlled node parameters.",
+        "tags": ["nuke"]
+    },
+    "rendering": {
+        "title": "Rendering",
+        "description": "Support for local and farm renders, including baked reviews.",
+        "tags": ["nuke"],
+        "preview": "rendering.png"
+    },
+    "slates": {
+        "title": "Slates",
+        "description": "Generate slates and attach them to rendered.",
+        "tags": ["nuke"],
+        "preview": "slates.png"
+    },
+    "colorManaged": {
+        "title": "Color Managed",
+        "description": "Fully colour managed outputs for work and review",
+        "preview": "color_managed.png",
+        "docs": {
+            "user": "artist_hosts_nuke#set-colorspace"
+        },
+        "tags": ["nuke"]
+    },
+    "workfiles": {
+        "title": "Workfiles",
+        "description": "Save and load workfiles in progress. Change the context inside of the application.",
+        "preview": "workfiles.png",
+        "docs": {
+            "user": "artist_tools_workfiles"
+        },
+        "tags": ["core", "key"]
+    },
+    "creator": {
+        "title": "Creator",
+        "description": "Universal GUI for defining content for publishing from your DCC app.",
+        "docs": {
+            "user": "artist_tools_creator"
+        },
+        "tags": ["core"]
+    },
+    "loader": {
+        "title": "Loader",
+        "description": "Universal GUI for loading published assets into your DCC app.",
+        "preview": "loader.png",
+        "docs": {
+            "user": "artist_tools_loader"
+        },
+        "tags": ["core", "key"]
+    },
+    "publisher": {
+        "title": "Publisher",
+        "description": "Universal GUI for validating and publishing content from your DCC app.",
+        "docs": {
+            "user": "artist_tools_publisher"
+        },
+        "tags": ["core"]
+    },
+    "sceneManager": {
+        "title": "Scene manager",
+        "description": "Universal GUI for managing versions of assets loaded into your working scene.",
+        "preview": "scene_manager.png",
+        "docs": {
+            "user": "artist_tools_inventory"
+        },
+        "tags": ["core", "key"]
+    },
+    "projectManager": {
+        "title": "Project manager",
+        "description": "Tools for creating shots, assets and task within your project if you don't use third party project management",
+        "tags": ["core"]
+    },
+    "libraryLoader": {
+        "title": "Library Loader",
+        "description": "A loader GUI that allows yo to load content from dedicated cross project asset library",
+        "docs": {
+            "user": "artist_tool_library_loader"
+        },
+        "tags": ["core"]
+    },
+    "trayPublisher": {
+        "title": "Tray Publisher",
+        "description": "A standalone GUI for publishing data into pipeline without going though DCC app.",
+        "tags": ["core"]
+    },
+    "appLauncher": {
+        "title": "App Launcher",
+        "description": "Standalone GUI for launching application in the chosen context directly from tray",
+        "tags": ["core"]
+    },
+    "configurationGUI": {
+        "title": "Configuration GUI",
+        "description": "All settings and configuration are done via AYON Settings tool. No need to dig around .json and .yaml",
+        "tags": ["core"]
+    },
+    "siteSync": {
+        "title": "Site Sync",
+        "description": "Built in file synchronization between your central storage (cloud or physical) and all your freelancers",
+        "docs": {
+            "admin": "module_site_sync"
+        },
+        "tags": ["core"]
+    },
+    "timersManager": {
+        "title": "Timers Manager",
+        "description": "Service for monitoring the user activity to start, stop and synchronise time tracking.",
+        "docs": {
+            "admin": "admin_settings_system#timers-manager"
+        },
+        "tags": ["core"]
+    }
+}

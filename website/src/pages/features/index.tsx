@@ -14,15 +14,12 @@ import Layout from "@theme/Layout";
 
 import {
     sortedFeatures,
-    Tags,
     TagList,
     type Feature,
     type TagType,
 } from "@site/src/data/features";
 import Heading from "@theme/Heading";
-import ShowcaseTagSelect, {
-    readSearchTags,
-} from "./_components/ShowcaseTagSelect";
+import { readSearchTags } from "./_components/ShowcaseTagSelect";
 import ShowcaseFilterToggle, {
     type Operator,
     readOperator,
@@ -230,10 +227,7 @@ function ShowcaseCards() {
                         )}
                     >
                         <Heading as="h2" className={styles.showcaseHeader}>
-                            Filtered:{" "}
-                            {searchTags
-                                .map((tag) => Tags[tag]?.label)
-                                .join(", ")}
+                            Filtered: {searchTags.map((tag) => tag).join(", ")}
                         </Heading>
                         <SearchBar />
                     </div>
@@ -258,7 +252,7 @@ export default function Features(): JSX.Element {
                 style={{ width: "100vw" }}
                 className={styles.showcaseContainer}
             >
-                <SideBar TagList={TagList} Tags={Tags} />
+                <SideBar TagList={TagList} />
                 <main>
                     <ShowcaseCards />
                 </main>

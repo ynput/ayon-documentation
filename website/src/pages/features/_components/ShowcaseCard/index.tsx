@@ -10,7 +10,6 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import FavoriteIcon from "@site/src/components/svgIcons/FavoriteIcon";
 import {
-    Tags,
     TagList,
     type TagType,
     type Feature,
@@ -21,16 +20,14 @@ import Heading from "@theme/Heading";
 import styles from "./styles.module.css";
 import IdealImage from "@theme/IdealImage";
 
-const TagComp = React.forwardRef<HTMLLIElement, Tag>(
-    ({ label, color, description }, ref) => (
-        <li ref={ref} className={styles.tag} title={description}>
-            <span className={styles.textLabel}>{label}</span>
-        </li>
-    )
-);
+const TagComp = React.forwardRef<HTMLLIElement, Tag>(({ tag }, ref) => (
+    <li ref={ref} className={styles.tag} title={tag}>
+        <span className={styles.textLabel}>{tag}</span>
+    </li>
+));
 
 function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
-    const tagObjects = tags.map((tag) => ({ tag, ...Tags[tag] }));
+    const tagObjects = tags.map((tag) => ({ tag }));
 
     // Keep same order for all tags
     const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>

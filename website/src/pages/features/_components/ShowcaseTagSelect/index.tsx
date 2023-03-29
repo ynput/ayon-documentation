@@ -40,7 +40,7 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
 }
 
 function ShowcaseTagSelect(
-    { id, label, tag, ...rest }: Props,
+    { id, tag, ...rest }: Props,
     ref: React.ForwardedRef<HTMLLabelElement>
 ) {
     const location = useLocation();
@@ -92,7 +92,7 @@ function ShowcaseTagSelect(
                 htmlFor={id}
                 className={clsx(styles.checkboxLabel, "menu__link")}
             >
-                {label}
+                {tag}
             </label>
         </>
     );

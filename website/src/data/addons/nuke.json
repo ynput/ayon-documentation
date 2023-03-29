@@ -1,0 +1,9 @@
+{
+    "title": "Nuke",
+    "description": "Nuke is a compositing software for visual effects and motion graphics artists.",
+    "preview": "nuke.png",
+    "tags": ["nuke"],
+    "docs": {
+        "user": "artist_hosts_nuke"
+    }
+}

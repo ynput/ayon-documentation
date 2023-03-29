@@ -1,0 +1,10 @@
+{
+    "title": "Ftrack",
+    "description": "Ftrack is a project management tool for creative teams.",
+    "docs": {
+        "user": "artist_ftrack",
+        "admin": "module_ftrack"
+    },
+    "preview": "ftrack.png",
+    "tags": ["ftrack"]
+}
