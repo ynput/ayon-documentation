@@ -91,7 +91,7 @@ function ShowcaseTagSelect(
                 htmlFor={id}
                 className={clsx(styles.checkboxLabel, "menu__link")}
             >
-                {tag}
+                {tag.replace(/^\w/, (c) => c.toUpperCase())}
             </label>
         </>
     );

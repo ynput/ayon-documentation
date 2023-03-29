@@ -6,6 +6,16 @@
     margin: 8px 0;
 }
 
+.title {
+    color: var(--ifm-menu-color-active);
+    // remove hover effect
+    &:hover {
+        background-color: initial;
+        color: var(--ifm-menu-color-active);
+    }
+    font-weight: var(--ifm-font-weight-bold);
+}
+
 @media (min-width: 997px) {
     .toolbar {
         display: block;
@@ -38,7 +48,7 @@
 
             ul {
                 list-style: none;
-                padding-left: 0;
+                padding-left: 1rem;
                 margin: 0;
             }
         }

@@ -12,12 +12,7 @@ import { useHistory, useLocation } from "@docusaurus/router";
 
 import Layout from "@theme/Layout";
 
-import {
-    sortedFeatures,
-    TagList,
-    type Feature,
-    type TagType,
-} from "@site/src/data";
+import { sortedFeatures, type Feature, type TagType } from "@site/src/data";
 import Heading from "@theme/Heading";
 import { readSearchTags } from "./_components/ShowcaseTagSelect";
 import ShowcaseFilterToggle, {
@@ -114,11 +109,12 @@ function useFilteredFeatures() {
     );
 }
 
-const keyFeatures = sortedFeatures.filter((feature) =>
-    feature.tags.includes("key")
+const addons = sortedFeatures.filter((feature) =>
+    feature.tags.includes("addon")
 );
+
 const otherFeatures = sortedFeatures.filter(
-    (feature) => !feature.tags.includes("key")
+    (feature) => !feature.tags.includes("addon")
 );
 
 function SearchBar() {
@@ -185,7 +181,7 @@ function ShowcaseCards() {
                                 styles.showcaseFavoriteHeader
                             )}
                         >
-                            <Heading as="h2">Key Features</Heading>
+                            <Heading as="h2">Addons</Heading>
                             <SearchBar />
                         </div>
                         <ul
@@ -195,7 +191,7 @@ function ShowcaseCards() {
                                 styles.showcaseList
                             )}
                         >
-                            {keyFeatures.map((feature) => (
+                            {addons.map((feature) => (
                                 <ShowcaseCard
                                     key={feature.title}
                                     feature={feature}
@@ -206,7 +202,7 @@ function ShowcaseCards() {
 
                     <div className={clsx("container", styles.featuresSection)}>
                         <Heading as="h2" className={styles.showcaseHeader}>
-                            All Features
+                            Core Features
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>
                             {otherFeatures.map((feature) => (
@@ -226,9 +222,6 @@ function ShowcaseCards() {
                             styles.showcaseFavoriteHeader
                         )}
                     >
-                        <Heading as="h2" className={styles.showcaseHeader}>
-                            Filtered: {searchTags.map((tag) => tag).join(", ")}
-                        </Heading>
                         <SearchBar />
                     </div>
                     <ul className={clsx("clean-list", styles.showcaseList)}>
@@ -252,7 +245,7 @@ export default function Features(): JSX.Element {
                 style={{ width: "100vw" }}
                 className={styles.showcaseContainer}
             >
-                <SideBar TagList={TagList} />
+                <SideBar />
                 <main>
                     <ShowcaseCards />
                 </main>
