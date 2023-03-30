@@ -5,16 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import clsx from "clsx";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
-
+import { toggleListItem } from "@site/src/utils/jsUtils";
 import Layout from "@theme/Layout";
 
 import { sortedFeatures, type Feature, type TagType } from "@site/src/data";
 import Heading from "@theme/Heading";
-import { readSearchTags } from "./_components/ShowcaseTagSelect";
+import {
+    readSearchTags,
+    replaceSearchTags,
+} from "./_components/ShowcaseTagSelect";
 import ShowcaseFilterToggle, {
     type Operator,
     readOperator,
@@ -167,6 +170,7 @@ function ShowcaseCards() {
     const filteredFeaturesNoSearch = useFilteredFeatures(true);
     // split out any addons if addon selected
     const location = useLocation();
+    const history = useHistory();
     const searchTags = readSearchTags(location.search);
 
     let filteredAddons: Feature[] = [];
@@ -179,6 +183,19 @@ function ShowcaseCards() {
             (feature) => !feature.tags.includes("addon")
         );
     }
+
+    const toggleTag = useCallback(
+        (tag) => {
+            const tags = readSearchTags(location.search);
+            const newTags = toggleListItem(tags, tag);
+            const newSearch = replaceSearchTags(location.search, newTags);
+            history.push({
+                ...location,
+                search: newSearch,
+            });
+        },
+        [location, history]
+    );
 
     if (filteredFeatures.length === 0) {
         return (
@@ -263,6 +280,7 @@ function ShowcaseCards() {
                                                 filteredAddons.length - 1 ===
                                                     index)
                                         }
+                                        onClose={toggleTag}
                                     />
                                 ))}
                             </ul>

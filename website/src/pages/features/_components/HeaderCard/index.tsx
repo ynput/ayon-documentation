@@ -5,13 +5,16 @@ import { type Feature } from "@site/src/data";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
 import IdealImage from "@theme/IdealImage";
+import Close from "./close.svg";
 
 function HeaderCard({
     feature,
     showSupport,
+    onClose,
 }: {
     feature: Feature;
     showSupport: boolean;
+    onClose: (tag: string) => void;
 }) {
     if (!feature) return null;
 
@@ -28,7 +31,13 @@ function HeaderCard({
             key={feature.title}
             className={clsx("card", "shadow--md", styles.headerCard)}
         >
-            <div className={clsx("card__image", styles.showcaseCardImage)}>
+            <button
+                className={clsx("clean-btn", styles.close)}
+                onClick={() => onClose(feature.title?.toLowerCase())}
+            >
+                <Close />
+            </button>
+            <div className={clsx(styles.showcaseCardImage)}>
                 {feature.preview && (
                     <IdealImage img={feature.preview} alt={feature.title} />
                 )}
@@ -86,7 +95,7 @@ function HeaderCard({
                     <ul
                         style={{
                             gridTemplateColumns: `repeat(auto-fill, minmax(${
-                                longestSupportLabel * 12
+                                longestSupportLabel * 10
                             }px, 1fr))`,
                         }}
                     >
