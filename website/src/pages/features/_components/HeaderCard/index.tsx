@@ -24,7 +24,7 @@ function HeaderCard({
     )?.label.length;
 
     const supportLength = feature.supports?.length;
-    const flex = (supportLength * longestSupportLabel) / 100;
+    const flex = Math.max((supportLength * longestSupportLabel) / 100, 0.5);
 
     return (
         <li

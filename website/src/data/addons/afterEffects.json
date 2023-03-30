@@ -3,10 +3,12 @@
     "description": "Render compositions and get workfiles.",
     "preview": "after-effects.png",
     "tags": ["after effects"],
+    "addonTags": ["deadline"],
     "docs": {
-        "user": "artist_hosts_maya",
-        "admin": "admin_hosts_maya"
+        "user": "artist_hosts_aftereffects",
+        "admin": "admin_hosts_aftereffects"
     },
+    "github": "https://github.com/ynput/ayon-aftereffects",
     "supportsTitle": "Families",
     "supports": [
         { "label": "Render" },

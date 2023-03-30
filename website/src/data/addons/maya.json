@@ -4,6 +4,7 @@
     "descriptionLong": "OpenPype includes very robust Maya implementation that can handle full CG workflow from model, through animation till final renders. Scene settings, Your artists won't need to touch file browser at all and OpenPype will take care of all the file management. Most of maya workflows are supported including gpucaches, referencing, nested references and render proxies.",
     "preview": "maya.png",
     "tags": ["maya"],
+    "addonTags": ["deadline"],
     "docs": {
         "user": "artist_hosts_maya",
         "admin": "admin_hosts_maya"
