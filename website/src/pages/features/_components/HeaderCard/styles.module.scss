@@ -41,11 +41,17 @@
     min-width: 250px;
     flex: 4;
 
+    // hidden div that's added at build
+    & > div {
+        height: 100% !important;
+    }
+
     img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         object-position: left;
+        height: 100% !important;
     }
 }
 
