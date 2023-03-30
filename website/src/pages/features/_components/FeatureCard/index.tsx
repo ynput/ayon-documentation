@@ -85,11 +85,13 @@ function FeatureCard({ feature }: { feature: Feature }) {
             className={clsx("card", "shadow--md", isAddon && styles.isAddon)}
             onClick={() => handleClick(feature.title?.toLowerCase())}
         >
-            <div className={clsx("card__image", styles.showcaseCardImage)}>
-                {feature.preview && (
-                    <IdealImage img={feature.preview} alt={feature.title} />
-                )}
-            </div>
+            {isAddon && (
+                <div className={clsx("card__image", styles.showcaseCardImage)}>
+                    {feature.preview && (
+                        <IdealImage img={feature.preview} alt={feature.title} />
+                    )}
+                </div>
+            )}
             <div className="card__body">
                 {!isAddon && (
                     <div className={clsx(styles.showcaseCardHeader)}>
