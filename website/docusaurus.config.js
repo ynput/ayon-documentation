@@ -121,6 +121,12 @@ const config = {
                                 rel: null,
                             },
                             {
+                                label: "Forum",
+                                href: "https://forum.ynput.io/",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
                                 label: "Discord",
                                 href: "https://discord.gg/ynput",
                                 target: "_blank",

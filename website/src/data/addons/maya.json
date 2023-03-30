@@ -7,5 +7,28 @@
     "docs": {
         "user": "artist_hosts_maya",
         "admin": "admin_hosts_maya"
-    }
+    },
+    "supportsTitle": "Families",
+    "supports": [
+        { "label": "Model" },
+        { "label": "Look" },
+        { "label": "Rig" },
+        { "label": "Setdress" },
+        { "label": "Animation" },
+        { "label": "Cache" },
+        { "label": "VDB Cache" },
+        { "label": "Assembly" },
+        { "label": "Camera" },
+        { "label": "CameraRig" },
+        { "label": "RenderSetup" },
+        { "label": "Render" },
+        { "label": "Plate" },
+        { "label": "Review" },
+        { "label": "Workfile" },
+        { "label": ".ASS StandIn" },
+        { "label": "Yeti Cache" },
+        { "label": "Yeti Rig" },
+        { "label": "Vray Scene" },
+        { "label": "Vray Proxy" }
+    ]
 }

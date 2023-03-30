@@ -8,7 +8,6 @@ import styles from "./styles.module.scss";
 import IdealImage from "@theme/IdealImage";
 import { readSearchTags, replaceSearchTags } from "../ShowcaseTagSelect";
 import { useLocation, useHistory } from "@docusaurus/router";
-import { prepareUserState } from "../..";
 
 const TagComp = React.forwardRef<HTMLLIElement, Tag>(
     ({ tag, isActive }, ref) => (
@@ -76,7 +75,6 @@ function FeatureCard({ feature }: { feature: Feature }) {
             history.push({
                 ...location,
                 search: newSearch,
-                state: prepareUserState(),
             });
         }
     };
@@ -93,16 +91,20 @@ function FeatureCard({ feature }: { feature: Feature }) {
                 )}
             </div>
             <div className="card__body">
-                <div className={clsx(styles.showcaseCardHeader)}>
-                    <Heading as="h4" className={styles.showcaseCardTitle}>
-                        {feature.title}
-                    </Heading>
-                </div>
+                {!isAddon && (
+                    <div className={clsx(styles.showcaseCardHeader)}>
+                        <Heading as="h4" className={styles.showcaseCardTitle}>
+                            {feature.title}
+                        </Heading>
+                    </div>
+                )}
                 <p className={styles.showcaseCardBody}>{feature.description}</p>
             </div>
-            <ul className={clsx("card__footer", styles.cardFooter)}>
-                <ShowcaseCardTag tags={feature.tags} />
-            </ul>
+            {!isAddon && (
+                <ul className={clsx("card__footer", styles.cardFooter)}>
+                    <ShowcaseCardTag tags={feature.tags} />
+                </ul>
+            )}
         </li>
     );
 }

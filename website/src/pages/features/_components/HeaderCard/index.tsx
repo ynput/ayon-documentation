@@ -1,38 +1,28 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import { TagList, type TagType, type Feature, type Tag } from "@site/src/data";
-import { sortBy } from "@site/src/utils/jsUtils";
+import { type Feature } from "@site/src/data";
 import Heading from "@theme/Heading";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import IdealImage from "@theme/IdealImage";
 
-const TagComp = React.forwardRef<HTMLLIElement, Tag>(({ tag }, ref) => (
-    <li ref={ref} className={styles.tag} title={tag}>
-        <span className={styles.textLabel}>{tag}</span>
-    </li>
-));
+function HeaderCard({
+    feature,
+    showSupport,
+}: {
+    feature: Feature;
+    showSupport: boolean;
+}) {
+    if (!feature) return null;
 
-function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
-    const tagObjects = tags.map((tag) => ({ tag }));
+    const longestSupportLabel = feature.supports?.reduce(
+        (a, b) => (a.label.length > b.label.length ? a : b),
+        { label: "" }
+    )?.label.length;
 
-    // Keep same order for all tags
-    const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
-        TagList.indexOf(tagObject.tag)
-    );
+    const supportLength = feature.supports?.length;
+    const flex = (supportLength * longestSupportLabel) / 100;
 
-    return (
-        <>
-            {tagObjectsSorted.map((tagObject, index) => {
-                const id = `showcase_card_tag_${tagObject.tag}`;
-
-                return <TagComp key={index} {...tagObject} />;
-            })}
-        </>
-    );
-}
-
-function HeaderCard({ feature }: { feature: Feature }) {
     return (
         <li
             key={feature.title}
@@ -43,33 +33,83 @@ function HeaderCard({ feature }: { feature: Feature }) {
                     <IdealImage img={feature.preview} alt={feature.title} />
                 )}
             </div>
-            <div className="card__body">
+            <div className={clsx(styles.cardContent, "card__body")}>
                 <div className={clsx(styles.showcaseCardHeader)}>
-                    <Heading as="h4" className={styles.showcaseCardTitle}>
-                        <Link
-                            href={feature.website}
-                            className={styles.showcaseCardLink}
-                        >
-                            {feature.title}
-                        </Link>
+                    <Heading as="h2" className={styles.showcaseCardTitle}>
+                        {feature.title} Addon
                     </Heading>
-                    {feature.source && (
+                </div>
+                <p className={styles.description}>
+                    {feature.descriptionLong && showSupport
+                        ? feature.descriptionLong
+                        : feature.description}
+                </p>
+                <div className={clsx(styles.buttons)}>
+                    {feature.docs &&
+                        Object.entries(feature.docs).map(([k, v]) => (
+                            <Link
+                                href={"/docs/" + v}
+                                className={clsx(
+                                    "button button--secondary button--md",
+                                    "pagination-nav__link",
+                                    styles.button
+                                )}
+                                key={k}
+                            >
+                                {k.charAt(0).toUpperCase() + k.slice(1)} Docs
+                            </Link>
+                        ))}
+                    {feature.github && (
                         <Link
-                            href={feature.source}
+                            href={feature.github}
                             className={clsx(
-                                "button button--secondary button--sm",
-                                styles.showcaseCardSrcBtn
+                                "button button--secondary button--md",
+                                "pagination-nav__link",
+                                styles.button
                             )}
                         >
-                            source
+                            Github
                         </Link>
                     )}
                 </div>
-                <p className={styles.showcaseCardBody}>{feature.description}</p>
             </div>
-            <ul className={clsx("card__footer", styles.cardFooter)}>
-                <ShowcaseCardTag tags={feature.tags} />
-            </ul>
+            {!!feature.supports?.length && showSupport && (
+                <div
+                    className={clsx(styles.supports)}
+                    style={{
+                        flex,
+                    }}
+                >
+                    <Heading as="h2" className={styles.showcaseCardTitle}>
+                        {feature.supportsTitle || "Supports"}
+                    </Heading>
+                    <ul
+                        style={{
+                            gridTemplateColumns: `repeat(auto-fill, minmax(${
+                                longestSupportLabel * 12
+                            }px, 1fr))`,
+                        }}
+                    >
+                        {feature.supports.map((support) => (
+                            <Link
+                                key={support.label}
+                                href={
+                                    support?.docbase
+                                        ? "/docs/" + support.docbase
+                                        : "#"
+                                }
+                                className={clsx(
+                                    "button button--secondary button--md",
+                                    styles.supportButton,
+                                    !support.docbase && styles.noLink
+                                )}
+                            >
+                                {support.label}
+                            </Link>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </li>
     );
 }

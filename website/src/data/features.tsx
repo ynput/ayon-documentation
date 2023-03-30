@@ -8,7 +8,8 @@ export type Feature = {
     preview?: string;
     tags: string[];
     docs?: { [type in DocType]?: String };
-    families?: string[];
+    supports?: { label: string; docbase: string }[];
+    supportsTitle?: string;
     github?: string;
 };
 

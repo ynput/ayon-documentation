@@ -5,5 +5,17 @@
     "tags": ["nuke"],
     "docs": {
         "user": "artist_hosts_nuke"
-    }
+    },
+    "supportsTitle": "Families",
+    "supports": [
+        { "label": "Model" },
+        { "label": "Camera" },
+        { "label": "Render" },
+        { "label": "Plate" },
+        { "label": "Review" },
+        { "label": "Workfile" },
+        { "label": "LUT" },
+        { "label": "Gizmo" },
+        { "label": "Prerender" }
+    ]
 }

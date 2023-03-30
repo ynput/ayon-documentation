@@ -253,10 +253,16 @@ function ShowcaseCards() {
                                     styles.headerList
                                 )}
                             >
-                                {filteredAddons.map((feature) => (
+                                {filteredAddons.map((feature, index) => (
                                     <HeaderCard
                                         key={feature.title}
                                         feature={feature}
+                                        showSupport={
+                                            filteredAddons.length === 1 ||
+                                            (!(index % 2) &&
+                                                filteredAddons.length - 1 ===
+                                                    index)
+                                        }
                                     />
                                 ))}
                             </ul>

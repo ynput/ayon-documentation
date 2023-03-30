@@ -1,0 +1,19 @@
+{
+    "title": "After Effects",
+    "description": "Render compositions and get workfiles.",
+    "preview": "after-effects.png",
+    "tags": ["after effects"],
+    "docs": {
+        "user": "artist_hosts_maya",
+        "admin": "admin_hosts_maya"
+    },
+    "supportsTitle": "Families",
+    "supports": [
+        { "label": "Render" },
+        { "label": "Plate" },
+        { "label": "Image" },
+        { "label": "Audio" },
+        { "label": "Background" },
+        { "label": "Workfile" }
+    ]
+}

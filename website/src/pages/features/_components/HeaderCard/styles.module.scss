@@ -1,0 +1,161 @@
+.headerCard {
+    flex: 1;
+    flex-direction: row;
+
+    min-width: max(310px, 40%);
+
+    container-type: inline-size;
+    max-height: 350px;
+}
+
+.showcaseCardImage {
+    overflow: hidden;
+    height: 100% !important;
+    min-height: 250px;
+    width: 100%;
+    max-width: 250px;
+    min-width: 250px;
+    flex: 4;
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+    }
+}
+
+@container (max-width: 700px) {
+    .showcaseCardImage {
+        width: 100%;
+        max-width: 150px;
+        min-width: 150px;
+        min-height: 150px;
+
+        img {
+            object-position: -0.5vw;
+        }
+    }
+}
+
+.buttons {
+    display: flex;
+
+    gap: 10px;
+}
+
+.headerCard .button {
+    background-color: transparent;
+    color: var(--ifm-navbar-link-color);
+    height: auto;
+}
+
+.cardContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--ifm-card-vertical-spacing) !important;
+    min-width: 30%;
+
+    p {
+        overflow: auto;
+    }
+}
+
+.supports {
+    padding: var(--ifm-card-vertical-spacing);
+
+    h2 {
+        margin-bottom: 12px;
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    ul {
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+        gap: 5px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.headerCard .supportButton {
+    background-color: transparent;
+    color: var(--ifm-navbar-link-color);
+
+    height: auto;
+
+    &:not(:hover) {
+        border-color: transparent;
+    }
+}
+
+.showcaseCardHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.showcaseCardTitle {
+    margin-bottom: 0;
+    flex: 1 1 auto;
+}
+
+.showcaseCardTitle a {
+    text-decoration: none;
+    background: linear-gradient(
+            var(--ifm-color-primary),
+            var(--ifm-color-primary)
+        )
+        0% 100% / 0% 1px no-repeat;
+    transition: background-size ease-out 200ms;
+}
+
+.showcaseCardTitle a:not(:focus):hover {
+    background-size: 100% 1px;
+}
+
+.showcaseCardTitle,
+.showcaseCardHeader .svgIconFavorite {
+    margin-right: 0.25rem;
+}
+
+.showcaseCardHeader .svgIconFavorite {
+    color: var(--site-color-svg-icon-favorite);
+}
+
+.showcaseCardSrcBtn {
+    margin-left: 6px;
+    padding-left: 12px;
+    padding-right: 12px;
+    border: none;
+}
+
+.showcaseCardSrcBtn:focus-visible {
+    background-color: var(--ifm-color-secondary-dark);
+}
+
+[data-theme="dark"] .showcaseCardSrcBtn {
+    background-color: var(--ifm-color-emphasis-200) !important;
+    color: inherit;
+}
+
+[data-theme="dark"] .showcaseCardSrcBtn:hover {
+    background-color: var(--ifm-color-emphasis-300) !important;
+}
+
+.description {
+    flex: 1;
+}
+
+.cardFooter {
+    display: flex;
+    flex-wrap: wrap;
+}
