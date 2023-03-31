@@ -13,52 +13,83 @@ import React, {
     type ReactNode,
 } from "react";
 import { useHistory, useLocation } from "@docusaurus/router";
-import { toggleListItem } from "@site/src/utils/jsUtils";
 import type { TagType } from "@site/src/data";
 
-import { prepareUserState } from "../../index";
+import { prepareUserState, readSearchAddons } from "../../index";
 import styles from "./styles.module.css";
 import clsx from "clsx";
 
 interface Props extends ComponentProps<"input"> {
     label: ReactNode;
     tag: TagType;
+    isAddon?: boolean;
 }
 
 const TagQueryStringKey = "tags";
 
-export function readSearchTags(search: string): TagType[] {
-    return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
+export function readSearchTags(search: string, key?: string): TagType[] {
+    return new URLSearchParams(search).getAll(
+        key || TagQueryStringKey
+    ) as TagType[];
 }
 
-export function replaceSearchTags(search: string, newTags: TagType[]) {
+export function replaceSearchTags(
+    search: string,
+    newTags: TagType[],
+    queryKey: "tags" | "addons" = "tags"
+): string {
     const searchParams = new URLSearchParams(search);
-    searchParams.delete(TagQueryStringKey);
-    newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
+    searchParams.delete(queryKey);
+    newTags.forEach((tag) => searchParams.append(queryKey, tag));
     return searchParams.toString();
 }
 
+export function toggleListItem<T>(list: T[], item: T): T[] {
+    const itemIndex = list.indexOf(item);
+    if (itemIndex === -1) {
+        return list.concat(item);
+    }
+    const newList = [...list];
+    newList.splice(itemIndex, 1);
+    return newList;
+}
+
 function ShowcaseTagSelect(
-    { id, tag, ...rest }: Props,
+    { id, tag, isAddon, label, ...rest }: Props,
     ref: React.ForwardedRef<HTMLLabelElement>
 ) {
     const location = useLocation();
     const history = useHistory();
     const [selected, setSelected] = useState(false);
+
     useEffect(() => {
-        const tags = readSearchTags(location.search);
+        const tags = readSearchTags(
+            location.search,
+            isAddon ? "addons" : "tags"
+        );
         setSelected(tags.includes(tag));
     }, [tag, location]);
+
     const toggleTag = useCallback(() => {
-        const tags = readSearchTags(location.search);
+        let tags: string[] = [];
+        if (isAddon) tags = readSearchAddons(location.search);
+        else tags = readSearchTags(location.search);
+
         const newTags = toggleListItem(tags, tag);
-        const newSearch = replaceSearchTags(location.search, newTags);
+
+        const newSearch = replaceSearchTags(
+            location.search,
+            newTags,
+            isAddon ? "addons" : "tags"
+        );
+
         history.push({
             ...location,
             search: newSearch,
             state: prepareUserState(),
         });
     }, [tag, location, history]);
+
     return (
         <>
             <input
@@ -91,7 +122,7 @@ function ShowcaseTagSelect(
                 htmlFor={id}
                 className={clsx(styles.checkboxLabel, "menu__link")}
             >
-                {tag.replace(/\b\w/g, (c) => c.toUpperCase())}
+                {label}
             </label>
         </>
     );

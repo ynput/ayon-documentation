@@ -2,10 +2,9 @@
     "title": "Deadline",
     "description": "Deadline is a vfx rendering farm software that manages jobs and helps you get renders done faster.",
     "preview": "deadline.png",
-    "tags": ["deadline"],
-
     "docs": {
-        "dev": "dev_deadline"
+        "dev": "dev_deadline",
+        "admin": "module_deadline"
     },
     "supportsTitle": "Features",
     "supports": [
@@ -27,5 +26,6 @@
         {
             "label": "Publishing"
         }
-    ]
+    ],
+    "features": ["publisher", "nuke", "harmony", "maya", "aftereffects"]
 }

@@ -1,19 +1,16 @@
 // TYPES
-export type DocType = "user" | "admin" | "developer";
+
+import { DocType } from "./addons";
 
 export type Feature = {
     title: string;
     description: string;
-    descriptionLong?: string;
     preview?: string;
-    tags: string[];
     docs?: { [type in DocType]?: String };
-    supports?: { label: string; docbase: string }[];
-    supportsTitle?: string;
-    github?: string;
+    tags?: string[];
 };
 
-const Features: Feature[] = [];
+const Features: (Feature & { id: string; addons: string[] })[] = [];
 // import features JSON file and create a list of features
 try {
     const featuresJSON = require("./features/features.json");
@@ -32,6 +29,15 @@ try {
                 delete feature.preview;
             }
         }
+
+        // add id
+        feature.id = key;
+        // add tags array if none
+        if (!feature.tags) {
+            feature.tags = [];
+        }
+        // add addons array
+        feature.addons = [];
 
         Features.push(feature);
     }

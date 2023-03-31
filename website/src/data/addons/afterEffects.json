@@ -2,8 +2,6 @@
     "title": "After Effects",
     "description": "Render compositions and get workfiles.",
     "preview": "after-effects.png",
-    "tags": ["after effects"],
-    "addonTags": ["deadline"],
     "docs": {
         "user": "artist_hosts_aftereffects",
         "admin": "admin_hosts_aftereffects"
@@ -17,5 +15,6 @@
         { "label": "Audio" },
         { "label": "Background" },
         { "label": "Workfile" }
-    ]
+    ],
+    "features": ["rendering", "workfiles"]
 }

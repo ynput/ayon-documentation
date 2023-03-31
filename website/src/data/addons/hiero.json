@@ -6,7 +6,6 @@
         "admin": "admin_hosts_hiero"
     },
     "preview": "hiero.png",
-    "tags": ["hiero"],
     "supportsTitle": "Families",
     "supports": [
         { "label": "Render" },
@@ -16,5 +15,6 @@
         { "label": "Nukenodes" },
         { "label": "Gizmo" },
         { "label": "Workfile" }
-    ]
+    ],
+    "features": ["rendering"]
 }

@@ -1,41 +1,55 @@
 import React from "react";
 import clsx from "clsx";
-import Link from "@docusaurus/Link";
-import { TagList, type TagType, type Feature, type Tag } from "@site/src/data";
 import { sortBy } from "@site/src/utils/jsUtils";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
-import IdealImage from "@theme/IdealImage";
-import { readSearchTags, replaceSearchTags } from "../ShowcaseTagSelect";
-import { useLocation, useHistory } from "@docusaurus/router";
+import { readSearchTags } from "../ShowcaseTagSelect";
+import { useLocation } from "@docusaurus/router";
+import { addons, Feature } from "../../../../data";
+import { addonsIds } from "../../../../data/addons";
 
-const TagComp = React.forwardRef<HTMLLIElement, Tag>(
-    ({ tag, isActive }, ref) => (
+const TagComp = React.forwardRef<HTMLLIElement, any>(
+    ({ tag, isActive, label }, ref) => (
         <li
             ref={ref}
             className={clsx(styles.tag, isActive && styles.isActive)}
             title={tag}
         >
-            <span className={styles.textLabel}>{tag}</span>
+            <span className={styles.textLabel}>{label}</span>
         </li>
     )
 );
 
-function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
-    const tagObjects = tags.map((tag) => ({ tag }));
+function ShowcaseCardTag({
+    tags,
+    addons: addonsTags,
+}: {
+    tags: string[];
+    addons: string[];
+}) {
+    const tagObjects = tags.map((tag) => ({
+        tag,
+        label: tag.replace(/\b\w/g, (c) => c.toUpperCase()),
+    }));
+    // add addons to tagObjects
+    addonsTags.forEach((addon) => {
+        const label = addons[addonsIds.indexOf(addon)]?.title || addon;
+        tagObjects.push({ tag: addon, label });
+    });
     const location = useLocation();
     const searchTags = readSearchTags(location.search);
+    const searchAddons = readSearchTags(location.search, "addons");
+
+    const allTags = [...searchTags, ...searchAddons];
 
     // Keep same order for all tags
-    const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
-        TagList.indexOf(tagObject.tag)
-    );
+    let tagObjectsSorted: { tag: string; label: string }[] = [];
 
     // if searchTags is not empty, sort by searchTags
-    if (searchTags.length > 0) {
-        tagObjectsSorted.sort((a, b) => {
-            const aIndex = searchTags.indexOf(a.tag);
-            const bIndex = searchTags.indexOf(b.tag);
+    if (allTags.length > 0) {
+        tagObjectsSorted = tagObjects.sort((a, b) => {
+            const aIndex = allTags.indexOf(a.tag);
+            const bIndex = allTags.indexOf(b.tag);
             if (aIndex === -1) {
                 return 1;
             }
@@ -48,14 +62,13 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
 
     return (
         <>
-            {tagObjectsSorted.map((tagObject, index) => {
-                const id = `showcase_card_tag_${tagObject.tag}`;
-
+            {tagObjectsSorted.map(({ tag, label }, index) => {
                 return (
                     <TagComp
                         key={index}
-                        {...tagObject}
-                        isActive={searchTags.includes(tagObject.tag)}
+                        tag={tag}
+                        label={label}
+                        isActive={allTags.includes(tag)}
                     />
                 );
             })}
@@ -64,49 +77,24 @@ function ShowcaseCardTag({ tags }: { tags: TagType[] }) {
 }
 
 function FeatureCard({ feature }: { feature: Feature }) {
-    const location = useLocation();
-    const history = useHistory();
-    // if the card is an addon
-    const isAddon = feature.tags.includes("addon");
-
-    const handleClick = (name) => {
-        if (isAddon) {
-            const newSearch = replaceSearchTags(location.search, [name]);
-            history.push({
-                ...location,
-                search: newSearch,
-            });
-        }
-    };
-
     return (
-        <li
-            key={feature.title}
-            className={clsx("card", "shadow--md", isAddon && styles.isAddon)}
-            onClick={() => handleClick(feature.title?.toLowerCase())}
-        >
-            {isAddon && (
-                <div className={clsx("card__image", styles.showcaseCardImage)}>
-                    {feature.preview && (
-                        <IdealImage img={feature.preview} alt={feature.title} />
-                    )}
-                </div>
-            )}
+        <li key={feature.title} className={clsx("card", "shadow--md")}>
             <div className="card__body">
-                {!isAddon && (
-                    <div className={clsx(styles.showcaseCardHeader)}>
-                        <Heading as="h4" className={styles.showcaseCardTitle}>
-                            {feature.title}
-                        </Heading>
-                    </div>
-                )}
+                <div className={clsx(styles.showcaseCardHeader)}>
+                    <Heading as="h4" className={styles.showcaseCardTitle}>
+                        {feature.title}
+                    </Heading>
+                </div>
+
                 <p className={styles.showcaseCardBody}>{feature.description}</p>
             </div>
-            {!isAddon && (
-                <ul className={clsx("card__footer", styles.cardFooter)}>
-                    <ShowcaseCardTag tags={feature.tags} />
-                </ul>
-            )}
+
+            <ul className={clsx("card__footer", styles.cardFooter)}>
+                <ShowcaseCardTag
+                    tags={feature.tags || []}
+                    addons={feature.addons || []}
+                />
+            </ul>
         </li>
     );
 }

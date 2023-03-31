@@ -5,7 +5,7 @@
     min-width: max(310px, 40%);
 
     container-type: inline-size;
-    max-height: 350px;
+    max-height: 250px;
 }
 
 .headerCard .close {
@@ -63,7 +63,7 @@
         min-height: 150px;
 
         img {
-            object-position: -0.5vw;
+            object-position: 9%;
         }
     }
 }

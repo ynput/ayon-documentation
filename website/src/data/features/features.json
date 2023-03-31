@@ -1,38 +1,9 @@
 {
-    "scriptBuilding": {
-        "title": "Script Building",
-        "description": "Automatically build initial workfiles from published plates or renders",
-        "preview": "script_building.png",
-        "docs": {
-            "user": "artist_hosts_nuke#build-first-work-file"
-        },
-        "tags": ["templates", "nuke"]
-    },
-    "nodePresets": {
-        "title": "Node Presets",
-        "description": "Template system for centrally controlled node parameters.",
-        "tags": ["nuke"]
-    },
-    "rendering": {
-        "title": "Rendering",
-        "description": "Support for local and farm renders, including baked reviews.",
-        "tags": ["nuke"],
-        "preview": "rendering.png"
-    },
     "slates": {
         "title": "Slates",
         "description": "Generate slates and attach them to rendered.",
-        "tags": ["nuke"],
-        "preview": "slates.png"
-    },
-    "colorManaged": {
-        "title": "Color Managed",
-        "description": "Fully colour managed outputs for work and review",
-        "preview": "color_managed.png",
-        "docs": {
-            "user": "artist_hosts_nuke#set-colorspace"
-        },
-        "tags": ["nuke", "color"]
+        "preview": "slates.png",
+        "tags": ["core"]
     },
     "workfiles": {
         "title": "Workfiles",
@@ -58,7 +29,7 @@
         "docs": {
             "user": "artist_tools_loader"
         },
-        "tags": ["core", "nuke"]
+        "tags": ["core"]
     },
     "publisher": {
         "title": "Publisher",
@@ -66,7 +37,7 @@
         "docs": {
             "user": "artist_tools_publisher"
         },
-        "tags": ["core", "nuke"]
+        "tags": ["core"]
     },
     "sceneManager": {
         "title": "Scene manager",
@@ -75,12 +46,11 @@
         "docs": {
             "user": "artist_tools_inventory"
         },
-        "tags": ["core", "nuke"]
+        "tags": ["core"]
     },
     "projectManager": {
         "title": "Project manager",
-        "description": "Tools for creating shots, assets and task within your project if you don't use third party project management",
-        "tags": ["core"]
+        "description": "Tools for creating shots, assets and task within your project if you don't use third party project management"
     },
     "libraryLoader": {
         "title": "Library Loader",
@@ -120,5 +90,56 @@
             "admin": "admin_settings_system#timers-manager"
         },
         "tags": ["core"]
+    },
+    "farmRendering": {
+        "title": "Farm rendering",
+        "docs": {
+            "admin": "module_deadline"
+        },
+        "description": "Integrations with Deadline and Muster render managers. Render, publish and generate reviews on the farm.",
+        "tags": ["core"]
+    },
+    "remote": {
+        "title": "Remote",
+        "description": "Production proven in fully remote workflows. Pype can run of cloud servers and storage.",
+        "tags": ["core"]
+    },
+    "sceneBuilder": {
+        "title": "Scene Builder",
+        "description": "System for simple scene building. Loads pre-defined publishes to scene with single click, speeding up scene preparation.",
+        "tags": ["core"]
+    },
+    "reviewables": {
+        "title": "Reviewables",
+        "docs": "docs/project_settings/settings_project_global#extract-review",
+        "description": "Generate automated reviewable quicktimes and sequences in any format, with metadata burnins.",
+        "tags": ["core"]
+    },
+    "scriptBuilding": {
+        "title": "Script Building",
+        "description": "Automatically build initial workfiles from published plates or renders",
+        "preview": "script_building.png",
+        "docs": {
+            "user": "artist_hosts_nuke#build-first-work-file"
+        },
+        "tags": ["automation"]
+    },
+    "colorManaged": {
+        "title": "Color Managed",
+        "description": "Fully colour managed outputs for work and review",
+        "preview": "color_managed.png",
+        "docs": {
+            "user": "artist_hosts_nuke#set-colorspace"
+        },
+        "tags": ["color"]
+    },
+    "nodePresets": {
+        "title": "Node Presets",
+        "description": "Template system for centrally controlled node parameters."
+    },
+    "rendering": {
+        "title": "Rendering",
+        "description": "Support for local and farm renders, including baked reviews.",
+        "preview": "rendering.png"
     }
 }

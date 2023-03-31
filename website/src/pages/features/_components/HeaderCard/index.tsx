@@ -1,61 +1,63 @@
 import React from "react";
 import clsx from "clsx";
 import Link from "@docusaurus/Link";
-import { type Feature } from "@site/src/data";
+
 import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
 import IdealImage from "@theme/IdealImage";
 import Close from "./close.svg";
+import { Addon } from "../../../../data";
 
 function HeaderCard({
-    feature,
+    addon,
     showSupport,
     onClose,
 }: {
-    feature: Feature;
+    addon: Addon;
     showSupport: boolean;
     onClose: (tag: string) => void;
 }) {
-    if (!feature) return null;
+    if (!addon) return null;
 
-    const longestSupportLabel = feature.supports?.reduce(
-        (a, b) => (a.label.length > b.label.length ? a : b),
-        { label: "" }
-    )?.label.length;
+    const longestSupportLabel =
+        addon.supports?.reduce(
+            (a, b) => (a.label.length > b.label.length ? a : b),
+            { label: "" }
+        )?.label.length || 0;
 
-    const supportLength = feature.supports?.length;
+    const supportLength = addon.supports?.length || 0;
     const flex = Math.max((supportLength * longestSupportLabel) / 100, 0.5);
 
     return (
         <li
-            key={feature.title}
+            key={addon.title}
             className={clsx("card", "shadow--md", styles.headerCard)}
         >
             <button
                 className={clsx("clean-btn", styles.close)}
-                onClick={() => onClose(feature.title?.toLowerCase())}
+                onClick={() => onClose(addon.title?.toLowerCase())}
             >
                 <Close />
             </button>
             <div className={clsx(styles.showcaseCardImage)}>
-                {feature.preview && (
-                    <IdealImage img={feature.preview} alt={feature.title} />
+                {addon.preview && (
+                    <IdealImage img={addon.preview} alt={addon.title} />
                 )}
             </div>
             <div className={clsx(styles.cardContent, "card__body")}>
                 <div className={clsx(styles.showcaseCardHeader)}>
                     <Heading as="h2" className={styles.showcaseCardTitle}>
-                        {feature.title} Addon
+                        {addon.title} Addon
                     </Heading>
                 </div>
                 <p className={styles.description}>
-                    {feature.descriptionLong && showSupport
-                        ? feature.descriptionLong
-                        : feature.description}
+                    {addon.descriptionLong && showSupport
+                        ? addon.descriptionLong
+                        : addon.description}
                 </p>
                 <div className={clsx(styles.buttons)}>
-                    {feature.docs &&
-                        Object.entries(feature.docs).map(([k, v]) => (
+                    {addon.docs &&
+                        Object.entries(addon.docs).map(([k, v]) => (
                             <Link
                                 href={"/docs/" + v}
                                 className={clsx(
@@ -68,9 +70,9 @@ function HeaderCard({
                                 {k.charAt(0).toUpperCase() + k.slice(1)} Docs
                             </Link>
                         ))}
-                    {feature.github && (
+                    {addon.github && (
                         <Link
-                            href={feature.github}
+                            href={addon.github}
                             className={clsx(
                                 "button button--secondary button--md",
                                 "pagination-nav__link",
@@ -82,7 +84,7 @@ function HeaderCard({
                     )}
                 </div>
             </div>
-            {!!feature.supports?.length && showSupport && (
+            {!!addon.supports?.length && showSupport && (
                 <div
                     className={clsx(styles.supports)}
                     style={{
@@ -90,7 +92,7 @@ function HeaderCard({
                     }}
                 >
                     <Heading as="h2" className={styles.showcaseCardTitle}>
-                        {feature.supportsTitle || "Supports"}
+                        {addon.supportsTitle || "Supports"}
                     </Heading>
                     <ul
                         style={{
@@ -99,7 +101,7 @@ function HeaderCard({
                             }px, 1fr))`,
                         }}
                     >
-                        {feature.supports.map((support) => (
+                        {addon.supports.map((support) => (
                             <Link
                                 key={support.label}
                                 href={

@@ -2,7 +2,13 @@
     "title": "Nuke",
     "description": "Nuke is a compositing software for visual effects and motion graphics artists.",
     "preview": "nuke.png",
-    "tags": ["nuke"],
+    "features": [
+        "rendering",
+        "workfiles",
+        "loader",
+        "scriptBuilding",
+        "colorManaged"
+    ],
     "addonTags": ["deadline"],
     "docs": {
         "user": "artist_hosts_nuke",

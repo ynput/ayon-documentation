@@ -1,50 +1,31 @@
 // export addons and features
-
-import { sortBy } from "@site/src/utils/jsUtils";
-import Addons from "./addons";
+import Addons, { type Addon as AddonType } from "./addons";
 import Features, { type Feature as FeatureType } from "./features";
 
-export type Feature = FeatureType;
 // create a list of tags from Features array
 export const TagList: string[] = [];
 Features.forEach((feature) => {
-    feature.tags.forEach((tag) => {
+    feature.tags?.forEach((tag) => {
         if (!TagList.includes(tag)) {
             TagList.push(tag);
         }
     });
 });
 
-// filter TagList to remove tags that are used in Addons
+// if a features id is in an addons tags array, add the addon id to the features tags array
 Addons.forEach((addon) => {
-    addon.tags.forEach((tag) => {
-        if (TagList.includes(tag)) {
-            TagList.splice(TagList.indexOf(tag), 1);
+    // if addon has features
+    Features.forEach((feature) => {
+        if (addon.features?.includes(feature.id)) {
+            if (!feature.addons?.includes(addon.id)) {
+                feature.addons?.push(addon.id);
+            }
         }
     });
 });
 
-function sortFeatures() {
-    let result = [...Addons, ...Features];
-    // Sort by site name
-    result = sortBy(result, (feature) => feature.title.toLowerCase());
-    // sort by if has addon
-    result = sortBy(
-        result,
-        (feature) => !(feature.tags?.indexOf("addon") > -1)
-    );
+export type Addon = AddonType & { id: string };
+export const addons = Addons;
 
-    return result;
-}
-
-export const sortedFeatures = sortFeatures();
-
-// sort addons
-function sortAddons() {
-    let result = Addons;
-    // Sort by site name
-    result = sortBy(result, (feature) => feature.title.toLowerCase());
-    return result;
-}
-
-export const sortedAddons = sortAddons();
+export type Feature = FeatureType & { addons: string[]; id: string };
+export const features = Features;
