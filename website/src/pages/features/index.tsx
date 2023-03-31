@@ -28,6 +28,7 @@ import SideBar from "./_components/SideBar";
 import HeaderCard from "./_components/HeaderCard";
 import { type Addon, type Feature, addons, features } from "../../data";
 import AddonCard from "./_components/AddonCard";
+import { addonsIds } from "../../data/addons";
 
 type UserState = {
     scrollTopPosition: number;
@@ -214,33 +215,72 @@ function FeaturesCards() {
 
     const isAddonsFiltered = addonsFiltered.length !== addons.length;
     // const isFeaturesFiltered = featuresFiltered.length !== features.length;
+    let supportedAddons: Addon[] | null = [];
 
     // now filter out any features that don't have the addon in addons
     if (isAddonsFiltered) {
         featuresFiltered = featuresFiltered.filter((feature) =>
             addonsFiltered.some((addon) => feature.addons?.includes(addon.id))
         );
+
+        // if the filtered addons has any addons in features that aren't in filtered addons
+        const filteredAddonIds = addonsIds.filter(
+            (id) =>
+                addonsFiltered.every((addon) => addon.features?.includes(id)) &&
+                addonsFiltered.every((addon) => addon.id !== id)
+        );
+
+        // add addon to supportedAddons
+        filteredAddonIds.forEach((id) => {
+            const addon = addons.find((addon) => addon.id === id);
+            if (addon) {
+                supportedAddons?.push(addon);
+            }
+        });
     }
+
+    let addonsToShow = addons;
+
+    if (!supportedAddons.length) supportedAddons = null;
+    else addonsToShow = supportedAddons;
 
     return (
         <section className="margin-bottom--xl container padding-top--lg padding-bottom--lg">
-            <div
-                className={clsx(
-                    "container",
-                    styles.featuresSection,
-                    styles.addonsSection
-                )}
-            >
+            {isAddonsFiltered && (
+                <ul className={clsx("clean-list", styles.headerList)}>
+                    {addonsFiltered.map((addon, index) => (
+                        <HeaderCard
+                            key={addon.id}
+                            addon={addon}
+                            showSupport={
+                                addonsFiltered.length === 1 ||
+                                (!(index % 2) &&
+                                    addonsFiltered.length - 1 === index)
+                            }
+                            onClose={toggleTag}
+                        />
+                    ))}
+                </ul>
+            )}
+            {(!isAddonsFiltered || supportedAddons) && (
                 <div
                     className={clsx(
-                        "margin-bottom--md",
-                        styles.showcaseFavoriteHeader
+                        "container",
+                        styles.featuresSection,
+                        styles.addonsSection
                     )}
                 >
-                    <Heading as="h2">Addons</Heading>
-                    <SearchBar />
-                </div>
-                {!isAddonsFiltered ? (
+                    <div
+                        className={clsx(
+                            "margin-bottom--md",
+                            styles.showcaseFavoriteHeader
+                        )}
+                    >
+                        <Heading as="h2">
+                            {supportedAddons ? "Supported Addons" : "Addons"}
+                        </Heading>
+                        <SearchBar />
+                    </div>
                     <ul
                         className={clsx(
                             "container",
@@ -248,7 +288,7 @@ function FeaturesCards() {
                             styles.showcaseList
                         )}
                     >
-                        {addons.map((addon) => (
+                        {addonsToShow.map((addon) => (
                             <AddonCard
                                 key={addon.title}
                                 addon={addon}
@@ -256,23 +296,8 @@ function FeaturesCards() {
                             />
                         ))}
                     </ul>
-                ) : (
-                    <ul className={clsx("clean-list", styles.headerList)}>
-                        {addonsFiltered.map((addon, index) => (
-                            <HeaderCard
-                                key={addon.id}
-                                addon={addon}
-                                showSupport={
-                                    addonsFiltered.length === 1 ||
-                                    (!(index % 2) &&
-                                        addonsFiltered.length - 1 === index)
-                                }
-                                onClose={toggleTag}
-                            />
-                        ))}
-                    </ul>
-                )}
-            </div>
+                </div>
+            )}
             <div className={clsx("container", styles.featuresSection)}>
                 <Heading as="h2" className={styles.showcaseHeader}>
                     {isAddonsFiltered ? "Supported Features" : "All Features"}
