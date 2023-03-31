@@ -35,7 +35,7 @@ function HeaderCard({
         >
             <button
                 className={clsx("clean-btn", styles.close)}
-                onClick={() => onClose(addon.title?.toLowerCase())}
+                onClick={() => onClose(addon.id)}
             >
                 <Close />
             </button>
