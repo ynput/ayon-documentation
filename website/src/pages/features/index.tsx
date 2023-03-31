@@ -68,11 +68,10 @@ export function readSearchAddons(search: string): string[] {
 }
 
 function filterFeatures(
-    features: (Addon & { tags?: string; addons?: string[] })[],
+    features: Feature[],
     selectedTags: string[],
     operator: Operator,
-    searchName: string | null,
-    searchField: "tags" | "id" = "tags"
+    searchName: string | null
 ) {
     if (searchName) {
         // eslint-disable-next-line no-param-reassign
@@ -91,26 +90,40 @@ function filterFeatures(
     }
 
     return features.filter((feature) => {
-        if (feature[searchField]?.length === 0) {
+        if (feature.tags?.length === 0) {
             return false;
         }
         if (operator === "AND") {
-            return selectedTags.every((tag) =>
-                feature[searchField]?.includes(tag)
-            );
+            return selectedTags.every((tag) => feature.tags?.includes(tag));
         }
-        return selectedTags.some((tag) => feature[searchField]?.includes(tag));
+        return selectedTags.some((tag) => feature.tags?.includes(tag));
     });
 }
 
-function useFeaturesFiltered(
-    features: (Addon & {
-        tags?: string[] | undefined;
-        addons?: string[] | undefined;
-    })[],
-    key: "tags" | "addons" = "tags",
-    search: boolean
+function filterAddons(
+    features: Addon[],
+    selectedTags: string[],
+    operator: Operator
 ) {
+    if (selectedTags.length === 0) {
+        return features;
+    }
+
+    return features.filter((feature) => {
+        if (feature.id?.length === 0) {
+            return false;
+        }
+        if (operator === "AND") {
+            return selectedTags.every((tag) => feature.id?.includes(tag));
+        }
+        return selectedTags.some((tag) => feature.id?.includes(tag));
+    });
+}
+
+function useFeaturesFiltered(features: Feature[], addons: Addon[]) {
+    let key = "tags";
+    if (!features.length) key = "addons";
+
     const location = useLocation<UserState>();
     const [operator, setOperator] = useState<Operator>("OR");
     // On SSR / first mount (hydration) no tag is selected
@@ -127,13 +140,9 @@ function useFeaturesFiltered(
 
     return useMemo(
         () =>
-            filterFeatures(
-                features,
-                selectedTags,
-                operator,
-                search ? searchName : null,
-                key === "addons" ? "id" : "tags"
-            ),
+            !!features.length
+                ? filterFeatures(features, selectedTags, operator, searchName)
+                : filterAddons(addons, selectedTags, operator),
         [selectedTags, operator, searchName]
     );
 }
@@ -200,8 +209,8 @@ function FeaturesCards() {
         [location, history]
     );
 
-    const addonsFiltered = useFeaturesFiltered(addons, "addons", false);
-    let featuresFiltered = useFeaturesFiltered(features, "tags", true);
+    const addonsFiltered = useFeaturesFiltered([], addons) as Addon[];
+    let featuresFiltered = useFeaturesFiltered(features, []) as Feature[];
 
     const isAddonsFiltered = addonsFiltered.length !== addons.length;
     // const isFeaturesFiltered = featuresFiltered.length !== features.length;

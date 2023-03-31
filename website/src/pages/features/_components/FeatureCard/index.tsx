@@ -1,6 +1,5 @@
 import React from "react";
 import clsx from "clsx";
-import { sortBy } from "@site/src/utils/jsUtils";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
 import { readSearchTags } from "../ShowcaseTagSelect";
