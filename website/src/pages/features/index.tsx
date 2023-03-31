@@ -56,12 +56,6 @@ export function prepareUserState(): UserState | undefined {
     return undefined;
 }
 
-const SearchNameQueryKey = "name";
-
-function readSearchName(search: string) {
-    return new URLSearchParams(search).get(SearchNameQueryKey);
-}
-
 const AddonQueryStringKey = "addons";
 
 export function readSearchAddons(search: string): string[] {
@@ -71,21 +65,8 @@ export function readSearchAddons(search: string): string[] {
 function filterFeatures(
     features: Feature[],
     selectedTags: string[],
-    operator: Operator,
-    searchName: string | null
+    operator: Operator
 ) {
-    if (searchName) {
-        // eslint-disable-next-line no-param-reassign
-        features = features.filter(
-            (feature) =>
-                feature.title
-                    .toLowerCase()
-                    .includes(searchName?.toLowerCase()) ||
-                feature.tags?.some((tag) =>
-                    tag.toLowerCase().includes(searchName?.toLowerCase())
-                )
-        );
-    }
     if (selectedTags.length === 0) {
         return features;
     }
@@ -104,18 +85,9 @@ function filterFeatures(
 function filterAddons(
     addons2: Addon[],
     selectedTags: string[],
-    operator: Operator,
-    searchName: string | null,
-    disableTags?: boolean
+    operator: Operator
 ) {
-    if (searchName) {
-        // eslint-disable-next-line no-param-reassign
-        addons2 = addons2.filter((feature) =>
-            feature.title.toLowerCase().includes(searchName?.toLowerCase())
-        );
-    }
-
-    if (selectedTags.length === 0 || disableTags) {
+    if (selectedTags.length === 0) {
         return addons2;
     }
 
@@ -143,78 +115,41 @@ function useFeaturesFiltered(
     const [operator, setOperator] = useState<Operator>("OR");
     // On SSR / first mount (hydration) no tag is selected
     const [selectedTags, setSelectedTags] = useState<string[]>([]);
-    const [searchName, setSearchName] = useState<string | null>(null);
+
     // Sync tags from QS to state (delayed on purpose to avoid SSR/Client
     // hydration mismatch)
 
     useEffect(() => {
         setSelectedTags(readSearchTags(location.search, key));
         setOperator(readOperator(location.search));
-        setSearchName(readSearchName(location.search));
         restoreUserState(location.state);
     }, [location, disableSearch, disableTags]);
 
     return useMemo(
         () =>
             !!features.length
-                ? filterFeatures(features, selectedTags, operator, searchName)
-                : filterAddons(
-                      addons,
-                      selectedTags,
-                      operator,
-                      disableSearch ? null : searchName,
-                      disableTags
-                  ),
-        [
-            selectedTags,
-            operator,
-            searchName,
-            disableSearch,
-            disableTags,
-            location,
-        ]
+                ? filterFeatures(features, selectedTags, operator)
+                : filterAddons(addons, selectedTags, operator),
+        [selectedTags, operator, disableTags, location]
     );
 }
 
-function SearchBar() {
-    const history = useHistory();
-    const location = useLocation();
-    const [value, setValue] = useState<string | null>(null);
-    useEffect(() => {
-        setValue(readSearchName(location.search));
-    }, [location]);
+function SearchBar({ value, setValue }) {
     return (
         <div className={styles.searchContainer}>
             <input
                 autoComplete="off"
                 id="searchbar"
                 placeholder={"Search..."}
-                value={value ?? undefined}
-                onInput={(e) => {
-                    setValue(e.currentTarget.value);
-                    const newSearch = new URLSearchParams(location.search);
-                    newSearch.delete(SearchNameQueryKey);
-                    if (e.currentTarget.value) {
-                        newSearch.set(
-                            SearchNameQueryKey,
-                            e.currentTarget.value
-                        );
-                    }
-                    history.push({
-                        ...location,
-                        search: newSearch.toString(),
-                        state: prepareUserState(),
-                    });
-                    setTimeout(() => {
-                        document.getElementById("searchbar")?.focus();
-                    }, 0);
-                }}
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
             />
         </div>
     );
 }
 
 function FeaturesCards() {
+    const [search, setSearch] = useState<string>("");
     // split out any addons if addon selected
     const location = useLocation();
     const history = useHistory();
@@ -246,7 +181,13 @@ function FeaturesCards() {
     const [viewAll, setViewAll] = useState(false);
 
     let isAddonsSelected = !!readSearchTags(location.search, "addons").length;
-    let isSearching = !!readSearchName(location.search);
+    let isSearching = !!search.length;
+
+    useEffect(() => {
+        if (isSearching) {
+            setSearch("");
+        }
+    }, [isAddonsSelected]);
 
     const addonsFiltered = useFeaturesFiltered(
         [],
@@ -259,16 +200,6 @@ function FeaturesCards() {
     if (isAddonsSelected && addonsFiltered.length === addons.length) {
         isAddonsSelected = false;
     }
-
-    if (isSearching && addonsFiltered.length === addons.length) {
-        isSearching = false;
-    }
-
-    console.log({
-        isAddonsSelected,
-        isSearching,
-        addonsFiltered: addonsFiltered.length,
-    });
 
     let featuresFiltered = useFeaturesFiltered(features, [], true) as Feature[];
 
@@ -306,11 +237,15 @@ function FeaturesCards() {
                 featuredAddons.includes(id)
             );
     } else {
-        addonsToShow = supportedAddons.filter(
-            ({ id }) =>
-                !isSearching ||
-                id.includes(readSearchName(location.search) as string)
+        addonsToShow = supportedAddons;
+    }
+
+    if (isSearching) {
+        // filter by search
+        featuresFiltered = featuresFiltered.filter(({ title }) =>
+            title.toLowerCase().includes(search.toLowerCase())
         );
+        addonsToShow = addonsToShow.filter(({ id }) => id.includes(search));
     }
 
     return (
@@ -332,7 +267,7 @@ function FeaturesCards() {
                 </ul>
             )}
             <div>
-                <SearchBar />
+                <SearchBar value={search} setValue={setSearch} />
                 {(!isAddonsSelected || supportedAddons) && (
                     <div
                         className={clsx(
