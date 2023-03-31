@@ -28,7 +28,7 @@ import SideBar from "./_components/SideBar";
 import HeaderCard from "./_components/HeaderCard";
 import { type Addon, type Feature, addons, features } from "../../data";
 import AddonCard from "./_components/AddonCard";
-import { addonsIds } from "../../data/addons";
+import { addonsIds, featuredAddons } from "../../data/addons";
 
 type UserState = {
     scrollTopPosition: number;
@@ -102,15 +102,24 @@ function filterFeatures(
 }
 
 function filterAddons(
-    features: Addon[],
+    addons2: Addon[],
     selectedTags: string[],
-    operator: Operator
+    operator: Operator,
+    searchName: string | null,
+    disableTags?: boolean
 ) {
-    if (selectedTags.length === 0) {
-        return features;
+    if (searchName) {
+        // eslint-disable-next-line no-param-reassign
+        addons2 = addons2.filter((feature) =>
+            feature.title.toLowerCase().includes(searchName?.toLowerCase())
+        );
     }
 
-    return features.filter((feature) => {
+    if (selectedTags.length === 0 || disableTags) {
+        return addons2;
+    }
+
+    return addons2.filter((feature) => {
         if (feature.id?.length === 0) {
             return false;
         }
@@ -121,7 +130,12 @@ function filterAddons(
     });
 }
 
-function useFeaturesFiltered(features: Feature[], addons: Addon[]) {
+function useFeaturesFiltered(
+    features: Feature[],
+    addons: Addon[],
+    disableSearch: boolean,
+    disableTags?: boolean
+) {
     let key = "tags";
     if (!features.length) key = "addons";
 
@@ -132,19 +146,33 @@ function useFeaturesFiltered(features: Feature[], addons: Addon[]) {
     const [searchName, setSearchName] = useState<string | null>(null);
     // Sync tags from QS to state (delayed on purpose to avoid SSR/Client
     // hydration mismatch)
+
     useEffect(() => {
         setSelectedTags(readSearchTags(location.search, key));
         setOperator(readOperator(location.search));
         setSearchName(readSearchName(location.search));
         restoreUserState(location.state);
-    }, [location]);
+    }, [location, disableSearch, disableTags]);
 
     return useMemo(
         () =>
             !!features.length
                 ? filterFeatures(features, selectedTags, operator, searchName)
-                : filterAddons(addons, selectedTags, operator),
-        [selectedTags, operator, searchName]
+                : filterAddons(
+                      addons,
+                      selectedTags,
+                      operator,
+                      disableSearch ? null : searchName,
+                      disableTags
+                  ),
+        [
+            selectedTags,
+            operator,
+            searchName,
+            disableSearch,
+            disableTags,
+            location,
+        ]
     );
 }
 
@@ -160,7 +188,7 @@ function SearchBar() {
             <input
                 autoComplete="off"
                 id="searchbar"
-                placeholder={"Search features..."}
+                placeholder={"Search..."}
                 value={value ?? undefined}
                 onInput={(e) => {
                     setValue(e.currentTarget.value);
@@ -187,38 +215,68 @@ function SearchBar() {
 }
 
 function FeaturesCards() {
-    // const featuresFiltered = useFeaturesFiltered(false);
-    // const featuresFilteredNoSearch = useFeaturesFiltered(true);
     // split out any addons if addon selected
     const location = useLocation();
     const history = useHistory();
 
     const toggleTag = useCallback(
-        (addon) => {
+        (addon: string, deleteSearch: boolean) => {
+            // remove search if there is one
             const tags = readSearchAddons(location.search);
             const newTags = toggleListItem(tags, addon);
             const newSearch = replaceSearchTags(
                 location.search,
                 newTags,
-                "addons"
+                "addons",
+                deleteSearch
             );
             history.push({
                 ...location,
                 search: newSearch,
+                state: prepareUserState(),
             });
         },
         [location, history]
     );
 
-    const addonsFiltered = useFeaturesFiltered([], addons) as Addon[];
-    let featuresFiltered = useFeaturesFiltered(features, []) as Feature[];
+    const handleAddonClick = (id: string) => {
+        toggleTag(id, true);
+    };
 
-    const isAddonsFiltered = addonsFiltered.length !== addons.length;
+    const [viewAll, setViewAll] = useState(false);
+
+    let isAddonsSelected = !!readSearchTags(location.search, "addons").length;
+    let isSearching = !!readSearchName(location.search);
+
+    const addonsFiltered = useFeaturesFiltered(
+        [],
+        addons,
+        isAddonsSelected,
+        false
+    ) as Addon[];
+
+    // fix where bug where for one render all addons are seen when an addon is selected
+    if (isAddonsSelected && addonsFiltered.length === addons.length) {
+        isAddonsSelected = false;
+    }
+
+    if (isSearching && addonsFiltered.length === addons.length) {
+        isSearching = false;
+    }
+
+    console.log({
+        isAddonsSelected,
+        isSearching,
+        addonsFiltered: addonsFiltered.length,
+    });
+
+    let featuresFiltered = useFeaturesFiltered(features, [], true) as Feature[];
+
     // const isFeaturesFiltered = featuresFiltered.length !== features.length;
     let supportedAddons: Addon[] | null = [];
 
     // now filter out any features that don't have the addon in addons
-    if (isAddonsFiltered) {
+    if (isAddonsSelected) {
         featuresFiltered = featuresFiltered.filter((feature) =>
             addonsFiltered.some((addon) => feature.addons?.includes(addon.id))
         );
@@ -239,14 +297,25 @@ function FeaturesCards() {
         });
     }
 
-    let addonsToShow = addons;
+    let addonsToShow = isAddonsSelected ? addons : addonsFiltered;
 
-    if (!supportedAddons.length) supportedAddons = null;
-    else addonsToShow = supportedAddons;
+    if (!supportedAddons.length) {
+        supportedAddons = null;
+        if (!viewAll && !isSearching)
+            addonsToShow = addons.filter(({ id }) =>
+                featuredAddons.includes(id)
+            );
+    } else {
+        addonsToShow = supportedAddons.filter(
+            ({ id }) =>
+                !isSearching ||
+                id.includes(readSearchName(location.search) as string)
+        );
+    }
 
     return (
         <section className="margin-bottom--xl container padding-top--lg padding-bottom--lg">
-            {isAddonsFiltered && (
+            {isAddonsSelected && (
                 <ul className={clsx("clean-list", styles.headerList)}>
                     {addonsFiltered.map((addon, index) => (
                         <HeaderCard
@@ -257,57 +326,82 @@ function FeaturesCards() {
                                 (!(index % 2) &&
                                     addonsFiltered.length - 1 === index)
                             }
-                            onClose={toggleTag}
+                            onClose={handleAddonClick}
                         />
                     ))}
                 </ul>
             )}
-            {(!isAddonsFiltered || supportedAddons) && (
-                <div
-                    className={clsx(
-                        "container",
-                        styles.featuresSection,
-                        styles.addonsSection
-                    )}
-                >
+            <div>
+                <SearchBar />
+                {(!isAddonsSelected || supportedAddons) && (
                     <div
                         className={clsx(
-                            "margin-bottom--md",
-                            styles.showcaseFavoriteHeader
-                        )}
-                    >
-                        <Heading as="h2">
-                            {supportedAddons ? "Supported Addons" : "Addons"}
-                        </Heading>
-                        <SearchBar />
-                    </div>
-                    <ul
-                        className={clsx(
                             "container",
-                            "clean-list",
-                            styles.showcaseList
+                            styles.featuresSection,
+                            styles.addonsSection
                         )}
                     >
-                        {addonsToShow.map((addon) => (
-                            <AddonCard
-                                key={addon.title}
-                                addon={addon}
-                                onClick={toggleTag}
-                            />
-                        ))}
-                    </ul>
-                </div>
-            )}
-            <div className={clsx("container", styles.featuresSection)}>
-                <Heading as="h2" className={styles.showcaseHeader}>
-                    {isAddonsFiltered ? "Supported Features" : "All Features"}
-                </Heading>
+                        <div
+                            className={clsx(
+                                "margin-bottom--md",
+                                styles.showcaseFavoriteHeader
+                            )}
+                        >
+                            <Heading as="h2">
+                                {supportedAddons
+                                    ? "Supported Addons"
+                                    : viewAll || isSearching
+                                    ? "All Addons"
+                                    : "Featured Addons"}
+                            </Heading>
+                        </div>
+                        <ul
+                            className={clsx(
+                                "container",
+                                "clean-list",
+                                styles.showcaseList
+                            )}
+                        >
+                            {addonsToShow.map((addon) => (
+                                <AddonCard
+                                    key={addon.title}
+                                    addon={addon}
+                                    onClick={handleAddonClick}
+                                />
+                            ))}
+                        </ul>
+                        {!isAddonsSelected && !isSearching && (
+                            <div
+                                className={clsx(
+                                    "button button--secondary button--md",
+                                    "pagination-nav__link",
+                                    styles.viewAll
+                                )}
+                                onClick={() => setViewAll(!viewAll)}
+                            >
+                                {viewAll ? "View Less" : "View All"}
+                            </div>
+                        )}
+                    </div>
+                )}
+                {!!featuresFiltered.length && (
+                    <div className={clsx("container", styles.featuresSection)}>
+                        <Heading as="h2" className={styles.showcaseHeader}>
+                            {isAddonsSelected
+                                ? "Supported Features"
+                                : "All Features"}
+                        </Heading>
 
-                <ul className={clsx("clean-list", styles.showcaseList)}>
-                    {featuresFiltered.map((feature) => (
-                        <FeatureCard key={feature.id} feature={feature} />
-                    ))}
-                </ul>
+                        <ul className={clsx("clean-list", styles.showcaseList)}>
+                            {featuresFiltered.map((feature) => (
+                                <FeatureCard
+                                    key={feature.id}
+                                    feature={feature}
+                                />
+                            ))}
+                        </ul>
+                    </div>
+                )}
             </div>
         </section>
     );

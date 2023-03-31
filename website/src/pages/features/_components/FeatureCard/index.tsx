@@ -57,6 +57,8 @@ function ShowcaseCardTag({
             }
             return aIndex - bIndex;
         });
+    } else {
+        tagObjectsSorted = tagObjects.splice(0, 3);
     }
 
     return (

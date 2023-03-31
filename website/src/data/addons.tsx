@@ -60,6 +60,18 @@ const communityAddons = [];
 
 export const addonsIds = [...officialAddons, ...communityAddons];
 
+// Top 8 addons
+export const featuredAddons = [
+    "nuke",
+    "ftrack",
+    "houdini",
+    "maya",
+    "deadline",
+    "blender",
+    "fusion",
+    "hiero",
+];
+
 // load addons
 const Addons: (Addon & { id: string })[] = addonsIds.flatMap((feature) => {
     try {

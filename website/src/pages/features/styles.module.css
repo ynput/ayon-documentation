@@ -6,7 +6,8 @@
 }
 
 .searchContainer {
-    margin-left: auto;
+    position: absolute;
+    right: 1rem;
 }
 
 .showcaseContainer {
@@ -19,6 +20,16 @@
 .showcaseContainer main {
     display: flex;
     width: 100%;
+}
+
+.showcaseContainer .viewAll {
+    background-color: transparent;
+    color: var(--ifm-navbar-link-color);
+    height: auto;
+    width: min-content;
+    margin-top: 1rem;
+    margin-left: auto;
+    margin-right: var(--ifm-spacing-horizontal);
 }
 
 @media (min-width: 997px) {

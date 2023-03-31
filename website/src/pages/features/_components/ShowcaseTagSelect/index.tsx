@@ -36,10 +36,14 @@ export function readSearchTags(search: string, key?: string): TagType[] {
 export function replaceSearchTags(
     search: string,
     newTags: TagType[],
-    queryKey: "tags" | "addons" = "tags"
+    queryKey: "tags" | "addons" = "tags",
+    deleteSearch: boolean = false
 ): string {
     const searchParams = new URLSearchParams(search);
     searchParams.delete(queryKey);
+    if (deleteSearch) {
+        searchParams.delete("name");
+    }
     newTags.forEach((tag) => searchParams.append(queryKey, tag));
     return searchParams.toString();
 }
