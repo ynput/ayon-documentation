@@ -12,7 +12,39 @@ export type Addon = {
     github?: string;
 };
 
-export const officialAddons = [
+// HOW TO CREATE AN ADDON TILE
+// 1. create a json file in the addons folder called "myAddon.json"
+// 2. use the following template (see example below or Addon type above)
+
+// {
+//     "title": "My Addon",
+//     "description": "My Addon description",
+//     "descriptionLong": "My Addon long description",
+//     "preview": "myAddon.png",
+//     "features": [ "workfiles", "publish" ],
+//     "docs": {
+//         "user": "user-guide-page",
+//         "admin": "admin-guide-page",
+//         "developer": "developer-guide-page"
+//     },
+//     "supports": [
+//         {
+//             "label": "Camera",
+//             "docbase": "camera-docs"
+//         },
+//      ],
+//     "supportsTitle": "Supports",
+//     "github": "github-link"
+// }
+
+// NOTE: features = ["workfiles", "publish"] // these are the features that the addon supports
+// You can find all features in the data/features/features.json file
+// You can also add other addon ids to the features array to show that the addon supports those addons
+
+// 3. add the preview image in the addons/img folder "myAddon.png"
+// 4. add addon name ("myAddon") to either officialAddons or communityAddons
+
+const officialAddons = [
     "nuke",
     "ftrack",
     "maya",
@@ -21,13 +53,6 @@ export const officialAddons = [
     "hiero",
 ];
 
-// HOW TO ADD AN ADDON TILE
-// 1. add a json file in the addons folder "myAddon.json"
-// 2. add a preview image in the addons/img folder "myAddon.png"
-// 3. add the addon name to the addons list "myAddon"
-
-// Add your addon name to the list below
-// needs to match the filename of the json file
 const communityAddons = [];
 
 export const addonsIds = [...officialAddons, ...communityAddons];
