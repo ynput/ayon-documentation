@@ -47,10 +47,13 @@ export type Addon = {
 const officialAddons = [
     "nuke",
     "ftrack",
+    "houdini",
     "maya",
     "afterEffects",
     "deadline",
     "hiero",
+    "blender",
+    "fusion",
 ];
 
 const communityAddons = [];

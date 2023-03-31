@@ -1,0 +1,17 @@
+{
+    "title": "Houdini",
+    "description": "Houdini is a 3D animation software tool set used for creating visual effects in film and television.",
+    "docs": {
+        "user": "artist_hosts_houdini",
+        "admin": "admin_hosts_houdini"
+    },
+    "preview": "houdini.png",
+    "supportsTitle": "Families",
+    "supports": [
+        { "label": "Model" },
+        { "label": "Point Cache" },
+        { "label": "VDB Cache" },
+        { "label": "Camera" }
+    ],
+    "features": ["workfiles"]
+}
