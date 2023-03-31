@@ -266,7 +266,7 @@ function FeaturesCards() {
                     ))}
                 </ul>
             )}
-            <div>
+            <div style={{ position: "relative" }}>
                 <SearchBar value={search} setValue={setSearch} />
                 {(!isAddonsSelected || supportedAddons) && (
                     <div
