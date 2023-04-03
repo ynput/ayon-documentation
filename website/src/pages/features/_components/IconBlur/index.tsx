@@ -43,7 +43,7 @@ function IconBlur({
 }: {
     icon: string;
     title: string;
-    iconOnly: boolean;
+    iconOnly?: boolean;
 }) {
     // hsl color
     const [domColor, setDomColor] = useState([0, 0, 0]);

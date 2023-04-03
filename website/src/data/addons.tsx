@@ -5,12 +5,12 @@ export type Addon = {
     description: string;
     descriptionLong?: string;
     preview?: string;
+    icon?: string;
     features?: string[];
     docs?: { [type in DocType]?: String };
     supports?: { label: string; docbase: string }[];
     supportsTitle?: string;
     github?: string;
-    icon?: string;
 };
 
 // HOW TO CREATE AN ADDON TILE
@@ -21,7 +21,8 @@ export type Addon = {
 //     "title": "My Addon",
 //     "description": "My Addon description",
 //     "descriptionLong": "My Addon long description",
-//     "preview": "myAddon.png",
+//     "preview": "my-addon.png",
+//     "icon": "my-addon-icon.png",
 //     "features": [ "workfiles", "publish" ],
 //     "docs": {
 //         "user": "user-guide-page",
@@ -37,6 +38,11 @@ export type Addon = {
 //     "supportsTitle": "Supports",
 //     "github": "github-link"
 // }
+
+// ICONS AND PREVIEW IMAGES
+// Icon images should be 1:1 ratio (square) and have a transparent background
+// When using an icon image a blurred background will be generated and a color pallet will be extracted from the image
+// Sometimes this doesn't work as expected, in that case you can add a preview image
 
 // NOTE: features = ["workfiles", "publish"] // these are the features that the addon supports
 // You can find all features in the data/features/features.json file
