@@ -355,7 +355,7 @@ function FeaturesCards() {
 
 export default function Features(): JSX.Element {
     return (
-        <Layout>
+        <Layout title="Features">
             <div
                 style={{ width: "100vw" }}
                 className={styles.showcaseContainer}

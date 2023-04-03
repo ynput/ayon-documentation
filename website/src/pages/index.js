@@ -13,152 +13,102 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
+import { Brush, Cube, Shield } from "../components/icons";
 
-const features = [
+const links = [
     {
-        title: "Battle tested",
-        //imageUrl: '',
-        description: (
-            <>
-                Designed, used, broken-in and validated in collaboration with
-                many studios, who's artist have used it on projects ranging from
-                commercials, to features.
-            </>
-        ),
+        title: "User",
+        icon: Brush,
+        bio: "Guides for users, artists and coordinators",
+        to: "docs/artist_getting_started",
+        button: "Get Help",
     },
     {
-        title: "Supported",
-        //imageUrl: '',
-        description: (
-            <>
-                AYON is developed and maintained by ynput.io, a full-time,
-                dedicated team of industry professionals, providing support and
-                training to studios and artists.
-            </>
-        ),
+        title: "Admin",
+        icon: Shield,
+        bio: "Studio setup, configuration and management",
+        to: "docs/system_introduction",
+        button: "Get Setup",
     },
     {
-        title: "Extensible",
-        //imageUrl: '',
-        description: (
-            <>
-                Project needs differ, clients differ and studios differ. AYON is
-                designed to fit into your workflow and bend to your will. If a
-                feature is missing, it can most probably be added.
-            </>
-        ),
-    },
-    {
-        title: "Focused",
-        //imageUrl: '',
-        description: (
-            <>
-                All AYON features have been added to solve specific needs during
-                it's use in production. If something is obsolete, it is
-                carefully deprecated, to keep the codebase lean and easier to
-                maintain.
-            </>
-        ),
+        title: "Developer",
+        icon: Cube,
+        bio: "Technical docs and guides for TDs and Devs",
+        to: "docs/dev_introduction",
+        button: "Developer Docs",
     },
 ];
 
-function Feature({ imageUrl, title, description }) {
-    const imgUrl = useBaseUrl(imageUrl);
+const LinkModal = ({ link }) => {
+    const { title, icon, bio, to, button } = link;
     return (
-        <div className={clsx("col col--3", styles.feature)}>
-            {imgUrl && (
-                <div className="text--center">
-                    <img
-                        className={styles.featureImage}
-                        src={imgUrl}
-                        alt={title}
-                    />
-                </div>
-            )}
-            <h3>{title}</h3>
-            <p>{description}</p>
+        <div className={styles.link}>
+            <header>
+                {icon()}
+                <h3>{title}</h3>
+            </header>
+            <p>{bio}</p>
+            <Link
+                className={clsx(
+                    "button button--secondary button--md",
+                    "pagination-nav__link",
+                    styles.button
+                )}
+                to={useBaseUrl(to)}
+            >
+                {button}
+            </Link>
         </div>
     );
-}
+};
 
 export default function Home() {
     const context = useDocusaurusContext();
     const { siteConfig = {} } = context;
     return (
-        <Layout title={siteConfig.title} description={siteConfig.tagline}>
-            <header className={clsx("hero hero--primary", styles.heroBanner)}>
-                <div className="container">
+        <Layout>
+            <header className={clsx(styles.header)}>
+                <div className={clsx(styles.hero)}>
                     <div className={styles.title}>
                         <img
-                            src="img/logo.svg"
+                            src="img/AYON_blackG_dot.svg"
                             alt="AYON logo"
                             width="100"
                             height="100"
+                            className={styles.logo}
                         />
-                        <h1 className={`${styles.projectTitle} hero__title`}>
-                            {siteConfig.title}
-                        </h1>
+                        <img
+                            src="img/AYON_whiteG_dot.svg"
+                            alt="AYON logo"
+                            width="100"
+                            height="100"
+                            className={styles.logo}
+                        />
                     </div>
                     <p className="hero__subtitle">{siteConfig.tagline}</p>
-                    <div className={styles.buttons}>
-                        <Link
-                            className={clsx(
-                                "button button--secondary button--lg",
-                                styles.getStarted
-                            )}
-                            to={useBaseUrl("introduction/getting-started")}
-                        >
-                            Get Started
-                        </Link>
-                    </div>
+                </div>
+                <div className={styles.links}>
+                    {links.map((link, i) => (
+                        <LinkModal key={i} link={link} />
+                    ))}
+                </div>
+                <div className={styles.more}>
+                    <p className="hero__subtitle">
+                        AYON offers core features and official addons with
+                        flexibility and customisation in mind.
+                    </p>
+                    <Link
+                        className={clsx(
+                            "button button--primary button--lg",
+                            styles.getStarted
+                        )}
+                        to={"/features"}
+                    >
+                        Supported Features
+                    </Link>
                 </div>
             </header>
-
-            <main>
-                {features && features.length > 0 && (
-                    <section className={styles.features}>
-                        <div className="container">
-                            <div className="row">
-                                {features.map(
-                                    ({ title, imageUrl, description }) => (
-                                        <Feature
-                                            key={title}
-                                            title={title}
-                                            imageUrl={imageUrl}
-                                            description={description}
-                                        />
-                                    )
-                                )}
-                            </div>
-                        </div>
-                    </section>
-                )}
-
-                <section className={(styles.features, "darkBackground")}>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col col--6">
-                                <img src="" />
-                            </div>
-                            <div className="col col--6">
-                                <h2>Join the creative pipeline revolution</h2>
-                                <p>
-                                    AYON is for anyone that wants to make their
-                                    creative studio scalable to take on more
-                                    projects with a pipeline that is
-                                    production-proven and continuously improving
-                                    in-line with industry demands. We are funded
-                                    by the industry to strengthen the industry.
-                                    AYON opens the door for your creative team
-                                    to take on new projects, giving a scalable
-                                    platform to grow your studio.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
         </Layout>
     );
 }
