@@ -7,6 +7,7 @@ import styles from "./styles.module.scss";
 import IdealImage from "@theme/IdealImage";
 import Close from "./close.svg";
 import { Addon } from "../../../../data";
+import IconBlur from "../IconBlur";
 
 function HeaderCard({
     addon,
@@ -40,8 +41,16 @@ function HeaderCard({
                 <Close />
             </button>
             <div className={clsx(styles.showcaseCardImage)}>
-                {addon.preview && (
-                    <IdealImage img={addon.preview} alt={addon.title} />
+                {addon.icon ? (
+                    <IconBlur
+                        icon={addon.icon.default}
+                        title={addon.title}
+                        iconOnly
+                    />
+                ) : (
+                    addon.preview && (
+                        <IdealImage img={addon.preview} alt={addon.title} />
+                    )
                 )}
             </div>
             <div className={clsx(styles.cardContent, "card__body")}>

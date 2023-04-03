@@ -24,6 +24,7 @@
         "@mdx-js/react": "^1.6.22",
         "add": "^2.0.6",
         "clsx": "^1.2.1",
+        "colorthief": "^2.4.0",
         "docusaurus-plugin-sass": "^0.2.3",
         "prism-react-renderer": "^1.3.5",
         "react": "^17.0.2",

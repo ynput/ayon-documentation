@@ -8,5 +8,6 @@
     "preview": "fusion.png",
     "supportsTitle": "Families",
     "supports": [{ "label": "Plate" }, { "label": "Review" }],
-    "features": ["workfiles", "rendering"]
+    "features": ["workfiles", "rendering"],
+    "icon": "fusion-icon.png"
 }

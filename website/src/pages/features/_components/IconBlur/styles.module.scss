@@ -1,0 +1,62 @@
+.showcaseCardImage {
+    overflow: hidden;
+    height: 150px;
+    // border-bottom: 2px solid var(--ifm-color-emphasis-200);
+
+    border-radius: var(--ifm-card-border-radius);
+
+    // hidden div that's added at build
+    & > div {
+        height: 100% !important;
+    }
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    position: relative;
+
+    background-color: grey;
+    padding: 20px 0;
+    flex-direction: row-reverse;
+
+    h3 {
+        font-size: 25px;
+        width: fit-content;
+        margin: 0;
+        z-index: 20;
+    }
+
+    img {
+        height: 100% !important;
+        width: auto;
+        margin-left: -2rem;
+        z-index: 20;
+    }
+}
+
+.blur {
+    position: absolute;
+    // center
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20rem;
+    font-weight: bolder;
+    z-index: 10;
+    padding-bottom: 2rem;
+
+    filter: blur(35px);
+}
+
+.iconOnly {
+    img {
+        width: 80%;
+        height: auto !important;
+        margin: 0;
+    }
+}

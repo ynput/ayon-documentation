@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
-import IdealImage from "@theme/IdealImage";
 import ColorThief from "colorthief";
 
 function rgbToHsl(rgb: number[]): number[] {
@@ -37,15 +36,14 @@ function rgbToHsl(rgb: number[]): number[] {
     return [hue, saturation, lightness];
 }
 
-import { type Addon } from "../../../../data";
-import IconBlur from "../IconBlur";
-
-function AddonCard({
-    addon,
-    onClick,
+function IconBlur({
+    icon,
+    title,
+    iconOnly,
 }: {
-    addon: Addon;
-    onClick: (id: string) => void;
+    icon: string;
+    title: string;
+    iconOnly: boolean;
 }) {
     // hsl color
     const [domColor, setDomColor] = useState([0, 0, 0]);
@@ -95,26 +93,39 @@ function AddonCard({
     }%)`;
 
     return (
-        <li
-            key={addon.title}
-            className={clsx("card", "shadow--md", styles.isAddon)}
-            onClick={() => onClick(addon.id)}
-        >
-            {addon.icon ? (
-                <IconBlur icon={addon.icon.default} title={addon.title} />
-            ) : (
-                <div className={clsx("card__image", styles.showcaseCardImage)}>
-                    {addon.preview && (
-                        <IdealImage img={addon.preview} alt={addon.title} />
-                    )}
-                </div>
+        <div
+            className={clsx(
+                styles.icon,
+                styles.showcaseCardImage,
+                iconOnly && styles.iconOnly
             )}
-
-            <div className="card__body">
-                <p className={styles.showcaseCardBody}>{addon.description}</p>
-            </div>
-        </li>
+            style={{
+                backgroundColor: isLoading
+                    ? "var(--ifm-card-background-color)"
+                    : bgColor,
+            }}
+        >
+            {!isLoading && (
+                <>
+                    <div className={styles.blur} style={{ color: blurColor }}>
+                        {title}
+                    </div>
+                    {!iconOnly && (
+                        <h3
+                            style={{
+                                color: titleColor,
+                            }}
+                        >
+                            {title}
+                            <br />
+                            Addon
+                        </h3>
+                    )}
+                </>
+            )}
+            <img src={icon} alt={title} onLoad={handleLoad} />
+        </div>
     );
 }
 
-export default React.memo(AddonCard);
+export default IconBlur;

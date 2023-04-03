@@ -17,5 +17,6 @@
         { "label": "Camera" },
         { "label": "Workfile" }
     ],
-    "features": []
+    "features": [],
+    "icon": "blender-icon.png"
 }

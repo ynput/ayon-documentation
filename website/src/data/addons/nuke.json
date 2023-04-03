@@ -9,7 +9,6 @@
         "scriptBuilding",
         "colorManaged"
     ],
-    "addonTags": ["deadline"],
     "docs": {
         "user": "artist_hosts_nuke",
         "admin": "admin_hosts_nuke"

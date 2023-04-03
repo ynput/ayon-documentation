@@ -13,5 +13,6 @@
         { "label": "VDB Cache" },
         { "label": "Camera" }
     ],
-    "features": ["workfiles"]
+    "features": ["workfiles"],
+    "icon": "houdini-icon.png"
 }

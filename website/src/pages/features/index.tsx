@@ -248,6 +248,17 @@ function FeaturesCards() {
         addonsToShow = addonsToShow.filter(({ id }) => id.includes(search));
     }
 
+    // sort addonsToShow by if id in featuredAddons
+    addonsToShow.sort((a, b) => {
+        if (featuredAddons.includes(a.id) && !featuredAddons.includes(b.id)) {
+            return -1;
+        }
+        if (!featuredAddons.includes(a.id) && featuredAddons.includes(b.id)) {
+            return 1;
+        }
+        return 0;
+    });
+
     return (
         <section className="margin-bottom--xl container padding-top--lg padding-bottom--lg">
             {isAddonsSelected && (

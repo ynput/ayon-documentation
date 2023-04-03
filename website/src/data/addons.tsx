@@ -10,6 +10,7 @@ export type Addon = {
     supports?: { label: string; docbase: string }[];
     supportsTitle?: string;
     github?: string;
+    icon?: string;
 };
 
 // HOW TO CREATE AN ADDON TILE
@@ -54,6 +55,7 @@ const officialAddons = [
     "hiero",
     "blender",
     "fusion",
+    "harmony",
 ];
 
 const communityAddons = [];
@@ -85,6 +87,16 @@ const Addons: (Addon & { id: string })[] = addonsIds.flatMap((feature) => {
                 JSON.preview = img;
             } catch (error) {
                 delete JSON.preview;
+            }
+        }
+        if (JSON.icon) {
+            try {
+                // get img
+                const img = require(`./addons/img/${JSON.icon}`);
+                // add img to JSON
+                JSON.icon = img;
+            } catch (error) {
+                delete JSON.icon;
             }
         }
 
