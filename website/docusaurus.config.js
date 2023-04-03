@@ -122,7 +122,7 @@ const config = {
                             },
                             {
                                 label: "Forum",
-                                href: "https://forum.ynput.io/",
+                                href: "https://community.ynput.io/",
                                 target: "_blank",
                                 rel: null,
                             },
