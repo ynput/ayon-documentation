@@ -63,6 +63,8 @@ const officialAddons = [
     "blender",
     "fusion",
     "harmony",
+    "tvpaint",
+    "photoshop",
 ];
 
 const communityAddons = [];
