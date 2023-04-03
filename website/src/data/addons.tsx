@@ -42,7 +42,8 @@ export type Addon = {
 // ICONS AND PREVIEW IMAGES
 // Icon images should be 1:1 ratio (square) and have a transparent background
 // When using an icon image a blurred background will be generated and a color pallet will be extracted from the image
-// Sometimes this doesn't work as expected, in that case you can add a preview image
+// Sometimes this doesn't work as expected, in that case you can add a preview image that will be used instead
+// Preview images should be around 1:2 ratio (landscape), include a blurred background and have the text "myAddon Addon" baked into the image.
 
 // NOTE: features = ["workfiles", "publish"] // these are the features that the addon supports
 // You can find all features in the data/features/features.json file
