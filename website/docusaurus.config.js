@@ -11,7 +11,7 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: "AYON",
+    title: "AYON Docs",
     tagline:
         "The most robust open-source pipeline for studios and remote teams",
     url: "https://docs.ynput.io", // Your website URL
@@ -77,8 +77,8 @@ const config = {
                     {
                         type: "custom-logo",
                         position: "left",
-                        logo: "/img/AYON_blackG_Y.svg",
-                        logoInverted: "/img/AYON_whiteG_Y.svg",
+                        logo: "/img/AYON_blackG_dot.svg",
+                        logoInverted: "/img/AYON_whiteG_dot.svg",
                         to: "/",
                         logoStyle: {
                             height: "1.5rem",
