@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
 import ColorThief from "colorthief";
+import IdealImage from "@theme/IdealImage";
 
 function rgbToHsl(rgb: number[]): number[] {
     const [r, g, b] = rgb.map((value) => value / 255); // convert RGB values to range of 0 to 1
@@ -123,7 +124,13 @@ function IconBlur({
                     )}
                 </>
             )}
-            <img src={icon} alt={title} onLoad={handleLoad} />
+            <img
+                src={icon.default}
+                alt={title}
+                onLoad={handleLoad}
+                style={{ display: "none" }}
+            />
+            <IdealImage img={icon} alt={title} />
         </div>
     );
 }

@@ -47,53 +47,6 @@ function AddonCard({
     addon: Addon;
     onClick: (id: string) => void;
 }) {
-    // hsl color
-    const [domColor, setDomColor] = useState([0, 0, 0]);
-    const [isLoading, setIsLoading] = useState(true);
-
-    const handleLoad = (e) => {
-        const colorThief = new ColorThief();
-
-        const colors = colorThief.getColor(e.target);
-
-        const hsl = rgbToHsl(colors);
-
-        setDomColor(hsl);
-        setIsLoading(false);
-    };
-
-    let ratios = [-0.4, 0.4, -0.1];
-
-    // if domColor[1] lightness is below 0.45 invert ratios
-    if (domColor[2] >= 0.65) {
-        // invert ratios
-        ratios[0] = -ratios[0] - 0.1;
-        ratios[1] = -ratios[1];
-        ratios[2] = -ratios[2] - 0.2;
-    } else if (domColor[2] >= 0.5) {
-        ratios[2] = -0.2;
-        ratios[3] = -0.2;
-    }
-
-    if (domColor[2] < 0.3) {
-        ratios = [0.5, 0.1, -0.1];
-    }
-
-    // make title color darker domColor
-    let titleColor = `hsl(${domColor[0]}, ${domColor[1] * 100}%, ${
-        Math.min(Math.max(domColor[2] + ratios[0], 0.2), 0.95) * 100
-    }%)`;
-
-    // make bg color light domColor
-    let bgColor = `hsl(${domColor[0]}, ${domColor[1] * 100}%, ${
-        (domColor[2] + ratios[1]) * 100
-    }%)`;
-
-    // convert dom color to hsl string for css
-    let blurColor = `hsl(${domColor[0]}, ${domColor[1] * 100}%, ${
-        (domColor[2] + ratios[2]) * 100
-    }%)`;
-
     return (
         <li
             key={addon.title}
@@ -101,7 +54,7 @@ function AddonCard({
             onClick={() => onClick(addon.id)}
         >
             {addon.icon ? (
-                <IconBlur icon={addon.icon.default} title={addon.title} />
+                <IconBlur icon={addon.icon} title={addon.title} />
             ) : (
                 <div className={clsx("card__image", styles.showcaseCardImage)}>
                     {addon.preview && (

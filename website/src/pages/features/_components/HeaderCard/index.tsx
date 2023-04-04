@@ -42,11 +42,7 @@ function HeaderCard({
             </button>
             <div className={clsx(styles.showcaseCardImage)}>
                 {addon.icon ? (
-                    <IconBlur
-                        icon={addon.icon.default}
-                        title={addon.title}
-                        iconOnly
-                    />
+                    <IconBlur icon={addon.icon} title={addon.title} iconOnly />
                 ) : (
                     addon.preview && (
                         <IdealImage img={addon.preview} alt={addon.title} />
