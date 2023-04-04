@@ -16,5 +16,6 @@
         { "label": "Gizmo" },
         { "label": "Workfile" }
     ],
-    "features": ["rendering"]
+    "features": ["rendering"],
+    "github": "https://github.com/ynput/ayon-addons/tree/main/hiero/dev"
 }

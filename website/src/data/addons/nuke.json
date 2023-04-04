@@ -7,7 +7,8 @@
         "workfiles",
         "loader",
         "scriptBuilding",
-        "colorManaged"
+        "colorManaged",
+        "reviewables"
     ],
     "docs": {
         "user": "artist_hosts_nuke",
@@ -17,12 +18,10 @@
     "supports": [
         { "label": "Model" },
         { "label": "Camera" },
-        { "label": "Render" },
         { "label": "Plate" },
-        { "label": "Review" },
-        { "label": "Workfile" },
         { "label": "LUT" },
         { "label": "Gizmo" },
         { "label": "Prerender" }
-    ]
+    ],
+    "github": "https://github.com/ynput/ayon-addons/tree/main/nuke/dev"
 }

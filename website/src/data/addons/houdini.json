@@ -14,5 +14,6 @@
         { "label": "Camera" }
     ],
     "features": ["workfiles"],
-    "icon": "houdini-icon.png"
+    "icon": "houdini-icon.png",
+    "github": "https://github.com/ynput/ayon-addons/tree/main/houdini/dev"
 }

@@ -65,6 +65,16 @@ const officialAddons = [
     "harmony",
     "tvpaint",
     "photoshop",
+    "shotgrid",
+    "celaction",
+    "clockify",
+    "flame",
+    "kitsu",
+    "muster",
+    "resolve",
+    "royalRender",
+    "unreal",
+    "slack",
 ];
 
 const communityAddons = [];
@@ -79,8 +89,8 @@ export const featuredAddons = [
     "maya",
     "deadline",
     "blender",
-    "fusion",
-    "hiero",
+    "unreal",
+    "shotgrid",
 ];
 
 // load addons

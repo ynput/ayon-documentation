@@ -8,9 +8,6 @@
         "admin": "admin_hosts_tvpaint"
     },
     "supportsTitle": "Families",
-    "supports": [
-        { "label": "Image" },
-        { "label": "Audio" },
-        { "label": "Workfile" }
-    ]
+    "supports": [{ "label": "Image" }, { "label": "Audio" }],
+    "github": "https://github.com/ynput/ayon-addons/tree/main/tvpaint/dev"
 }

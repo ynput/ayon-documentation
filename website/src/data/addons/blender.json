@@ -5,7 +5,7 @@
         "user": "artist_hosts_blender",
         "admin": "admin_hosts_blender"
     },
-    "preview": "blender.png",
+    "features": ["workfiles", "loader"],
     "supportsTitle": "Families",
     "supports": [
         { "label": "Model" },
@@ -14,9 +14,8 @@
         { "label": "Layout" },
         { "label": "Animation" },
         { "label": "Point Cache" },
-        { "label": "Camera" },
-        { "label": "Workfile" }
+        { "label": "Camera" }
     ],
-    "features": [],
-    "icon": "blender-icon.png"
+    "icon": "blender-icon.png",
+    "github": "https://github.com/ynput/ayon-addons/tree/main/blender/dev"
 }

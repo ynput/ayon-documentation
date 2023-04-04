@@ -5,9 +5,9 @@
         "user": "artist_hosts_resolve",
         "admin": "admin_hosts_resolve"
     },
-    "preview": "fusion.png",
     "supportsTitle": "Families",
     "supports": [{ "label": "Plate" }, { "label": "Review" }],
     "features": ["workfiles", "rendering"],
-    "icon": "fusion-icon.png"
+    "icon": "fusion-icon.png",
+    "github": "https://github.com/ynput/ayon-addons/tree/main/fusion/dev"
 }
