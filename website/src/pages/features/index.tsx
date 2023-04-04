@@ -189,6 +189,12 @@ function FeaturesCards() {
         }
     }, [isAddonsSelected]);
 
+    useEffect(() => {
+        if (!!readSearchTags(location.search, "viewAll").length) {
+            setViewAll(true);
+        }
+    }, []);
+
     const addonsFiltered = useFeaturesFiltered(
         [],
         addons,
@@ -331,7 +337,10 @@ function FeaturesCards() {
                     </div>
                 )}
                 {!!featuresFiltered.length && (
-                    <div className={clsx("container", styles.featuresSection)}>
+                    <div
+                        className={clsx("container", styles.featuresSection)}
+                        id="features"
+                    >
                         <Heading as="h2" className={styles.showcaseHeader}>
                             {isAddonsSelected
                                 ? "Supported Features"

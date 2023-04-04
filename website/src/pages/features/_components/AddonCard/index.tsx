@@ -45,13 +45,13 @@ function AddonCard({
     onClick,
 }: {
     addon: Addon;
-    onClick: (id: string) => void;
+    onClick?: (id: string) => void;
 }) {
     return (
         <li
             key={addon.title}
             className={clsx("card", "shadow--md", styles.isAddon)}
-            onClick={() => onClick(addon.id)}
+            onClick={() => onClick && onClick(addon.id)}
         >
             {addon.icon ? (
                 <IconBlur icon={addon.icon} title={addon.title} />
@@ -62,10 +62,6 @@ function AddonCard({
                     )}
                 </div>
             )}
-
-            <div className="card__body">
-                <p className={styles.showcaseCardBody}>{addon.description}</p>
-            </div>
         </li>
     );
 }

@@ -22,8 +22,7 @@
     flex-direction: column;
 }
 
-.hero,
-.more {
+.hero {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -62,18 +61,25 @@ html[data-theme="dark"] .title {
     }
 }
 
+.getStarted {
+    color: var(--ifm-background-surface-color);
+}
+
+.linksWrapper {
+    box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.25),
+        inset 0px -5px 5px rgba(0, 0, 0, 0.25);
+    background-color: var(--ifm-color-primary);
+    width: 100%;
+    gap: 32px;
+    padding: 64px 0;
+}
+
 .links {
     display: flex;
     justify-content: center;
     align-items: center;
 
-    width: 100%;
-    background-color: var(--ifm-color-primary);
     gap: 32px;
-    padding: 32px;
-
-    box-shadow: inset 0px 5px 5px rgba(0, 0, 0, 0.25),
-        inset 0px -5px 5px rgba(0, 0, 0, 0.25);
 }
 
 .link {
@@ -82,7 +88,6 @@ html[data-theme="dark"] .title {
     align-items: flex-start;
 
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.45);
-
     padding: 24px;
     background-color: var(--ifm-background-surface-color);
     border-radius: var(--ifm-global-radius);
@@ -109,5 +114,72 @@ html[data-theme="dark"] .title {
         color: var(--ifm-navbar-link-color);
         height: auto;
         width: 100%;
+    }
+}
+
+.features {
+    background-color: var(--ifm-background-color);
+
+    h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    & > p {
+        max-width: 600px;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 3rem;
+    }
+
+    a {
+        text-decoration: none;
+        z-index: 10;
+        color: var(--ifm-color-scheme);
+    }
+
+    li {
+        height: 100%;
+    }
+
+    .viewAll {
+        background-color: transparent;
+        color: var(--ifm-navbar-link-color);
+        height: auto;
+        width: min-content;
+        margin-top: 2rem;
+        margin-left: auto;
+        margin-right: var(--ifm-spacing-horizontal);
+    }
+}
+
+.more {
+    background-color: var(--ifm-color-primary);
+    padding: 32px 64px;
+    border-radius: var(--ifm-card-border-radius);
+    box-shadow: var(--ifm-global-shadow-lw);
+    width: fit-content;
+    margin: auto;
+
+    h2 {
+        color: var(--ifm-color-gray-900);
+        width: 100%;
+        text-align: center;
+    }
+}
+.buttons {
+    display: flex;
+    gap: 32px;
+
+    a:first-child div {
+        background-color: var(--ifm-color-gray-900);
+        color: var(--ifm-color-primary);
+        border-color: var(--ifm-color-gray-900);
+    }
+
+    a:last-child div {
+        background-color: transparent;
+        border-color: var(--ifm-color-gray-900);
+        color: var(--ifm-color-gray-900);
     }
 }

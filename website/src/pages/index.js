@@ -15,6 +15,12 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.scss";
 import { Brush, Cube, Shield } from "../components/icons";
+import SearchBar from "@theme/SearchBar";
+import AddonCard from "./features/_components/AddonCard";
+import stylesFeatures from "./features/styles.module.scss";
+import Features from "./features";
+import FeatureCard from "./features/_components/FeatureCard";
+import { addons, features } from "../data";
 
 const links = [
     {
@@ -87,28 +93,141 @@ export default function Home() {
                         />
                     </div>
                     <p className="hero__subtitle">{siteConfig.tagline}</p>
+                    <div className="searchBarBox home">
+                        <SearchBar avoidKeyboardShortcuts />
+                    </div>
                 </div>
-                <div className={styles.links}>
-                    {links.map((link, i) => (
-                        <LinkModal key={i} link={link} />
-                    ))}
-                </div>
-                <div className={styles.more}>
-                    <p className="hero__subtitle">
-                        AYON offers core features and official addons with
-                        flexibility and customisation in mind.
-                    </p>
-                    <Link
-                        className={clsx(
-                            "button button--primary button--lg",
-                            styles.getStarted
-                        )}
-                        to={"/features"}
-                    >
-                        Supported Features
-                    </Link>
+                <div className={styles.linksWrapper}>
+                    <h2 className={clsx("hero__subtitle", styles.getStarted)}>
+                        Get Started
+                    </h2>
+                    <div className={styles.links}>
+                        {links.map((link, i) => (
+                            <LinkModal key={i} link={link} />
+                        ))}
+                    </div>
                 </div>
             </header>
+            <section
+                className={clsx(
+                    "margin-bottom--xl margin-top--xl container padding-top--lg padding-bottom--lg",
+                    styles.features
+                )}
+            >
+                <h2 className={clsx("hero__subtitle")}>Addons</h2>
+                <p>
+                    AYON is a highly modular system designed to cater to your
+                    specific needs. With its extensive library of both official
+                    and community-developed addons, it can seamlessly integrate
+                    with a variety of different software.
+                </p>
+                <div
+                    className={clsx(
+                        "container",
+                        stylesFeatures.featuresSection,
+                        stylesFeatures.addonsSection
+                    )}
+                >
+                    <ul
+                        className={clsx(
+                            "container",
+                            "clean-list",
+                            stylesFeatures.showcaseList
+                        )}
+                    >
+                        {[...addons].splice(0, 12).map((addon) => (
+                            <a
+                                href={`/features?addons=${addon.id}`}
+                                key={addon.title}
+                            >
+                                <AddonCard addon={addon} />
+                            </a>
+                        ))}
+                    </ul>
+                    <a href="/features?viewAll=addons">
+                        <div
+                            className={clsx(
+                                "button button--secondary button--md",
+                                "pagination-nav__link",
+                                styles.viewAll
+                            )}
+                        >
+                            {"View All Features"}
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section
+                className={clsx(
+                    "margin-bottom--xl container padding-top--lg padding-bottom--lg",
+                    styles.features
+                )}
+            >
+                <h2 className={clsx("hero__subtitle")}>Features</h2>
+                <p>
+                    AYON has a vast library of built-in features that can be
+                    utilized throughout the pipeline and addons.
+                </p>
+                <div
+                    className={clsx(
+                        "container",
+                        stylesFeatures.featuresSection,
+                        stylesFeatures.addonsSection
+                    )}
+                >
+                    <ul
+                        className={clsx(
+                            "container",
+                            "clean-list",
+                            stylesFeatures.showcaseList
+                        )}
+                    >
+                        {[...features].splice(0, 12).map((feature) => (
+                            <FeatureCard feature={feature} key={feature.id} />
+                        ))}
+                    </ul>
+                    <a href="/features#features">
+                        <div
+                            className={clsx(
+                                "button button--secondary button--md",
+                                "pagination-nav__link",
+                                styles.viewAll
+                            )}
+                        >
+                            {"View All Features"}
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section
+                className={clsx(
+                    "margin-bottom--xl container padding-top--lg padding-bottom--lg"
+                )}
+            >
+                <div className={styles.more}>
+                    <h2 className={clsx("hero__subtitle")}>More on ynput.io</h2>
+                    <div className={styles.buttons}>
+                        <a href="/features#features">
+                            <div
+                                className={clsx(
+                                    "button button--secondary button--lg"
+                                )}
+                            >
+                                Try AYON Beta
+                            </div>
+                        </a>
+                        <a href="/features#features">
+                            <div
+                                className={clsx(
+                                    "button button--secondary button--lg"
+                                )}
+                            >
+                                Join Our Community
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
         </Layout>
     );
 }
