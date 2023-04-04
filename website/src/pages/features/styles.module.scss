@@ -86,6 +86,11 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 24px;
+
+    /* max width 600px */
+    @media (max-width: 600px) {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
 }
 
 .headerList {

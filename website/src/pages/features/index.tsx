@@ -23,7 +23,7 @@ import ShowcaseFilterToggle, {
 } from "./_components/ShowcaseFilterToggle";
 import FeatureCard from "./_components/FeatureCard";
 
-import styles from "./styles.module.css";
+import styles from "./styles.module.scss";
 import SideBar from "./_components/SideBar";
 import HeaderCard from "./_components/HeaderCard";
 import { type Addon, type Feature, addons, features } from "../../data";

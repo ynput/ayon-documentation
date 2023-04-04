@@ -45,6 +45,7 @@
             padding: 0.5rem;
             scrollbar-gutter: stable;
             flex-grow: 1;
+            overflow-y: auto;
 
             ul {
                 list-style: none;

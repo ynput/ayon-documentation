@@ -78,7 +78,16 @@
 
 .cardFooter {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    span {
+        white-space: nowrap;
+    }
 }
 
 .tag {

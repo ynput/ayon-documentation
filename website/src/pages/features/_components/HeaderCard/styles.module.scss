@@ -80,6 +80,12 @@
     height: auto;
 }
 
+@media (max-width: 600px) {
+    .headerCard .button {
+        padding: 10px;
+    }
+}
+
 .cardContent {
     flex: 1;
     display: flex;
@@ -115,6 +121,11 @@
         gap: 5px;
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    // max width 1200px hide
+    @media (max-width: 1250px) {
+        display: none;
     }
 }
 

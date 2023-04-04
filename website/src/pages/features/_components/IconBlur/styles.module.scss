@@ -28,7 +28,10 @@
         margin: 0;
         z-index: 20;
         max-width: 90px;
-        white-space: nowrap;
+
+        white-space: pre-wrap;
+        word-break: keep-all;
+        display: inherit;
     }
 
     img {
@@ -60,5 +63,17 @@
         width: 80%;
         height: auto !important;
         margin: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .icon {
+        h3 {
+            display: none;
+        }
+
+        img {
+            margin-left: 0;
+        }
     }
 }
