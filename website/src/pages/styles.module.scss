@@ -78,6 +78,7 @@ html[data-theme="dark"] .title {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 
     gap: 32px;
 }
@@ -93,6 +94,7 @@ html[data-theme="dark"] .title {
     border-radius: var(--ifm-global-radius);
     max-width: 300px;
     text-align: left;
+    min-width: 250px;
 
     header {
         display: flex;

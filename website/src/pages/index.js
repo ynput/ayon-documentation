@@ -152,7 +152,7 @@ export default function Home() {
                                 styles.viewAll
                             )}
                         >
-                            {"View All Features"}
+                            View All Addons
                         </div>
                     </a>
                 </div>
@@ -194,7 +194,7 @@ export default function Home() {
                                 styles.viewAll
                             )}
                         >
-                            {"View All Features"}
+                            View All Features
                         </div>
                     </a>
                 </div>

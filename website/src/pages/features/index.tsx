@@ -266,7 +266,12 @@ function FeaturesCards() {
     });
 
     return (
-        <section className="margin-bottom--xl container padding-top--lg padding-bottom--lg">
+        <section
+            className="margin-bottom--xl container padding-top--lg padding-bottom--lg"
+            style={{
+                minHeight: "100vh",
+            }}
+        >
             {isAddonsSelected && (
                 <ul className={clsx("clean-list", styles.headerList)}>
                     {addonsFiltered.map((addon, index) => (

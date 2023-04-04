@@ -152,9 +152,7 @@
 
     height: auto;
 
-    &:not(:hover) {
-        border-color: transparent;
-    }
+    border-color: transparent;
 }
 
 .showcaseCardHeader {
