@@ -40,7 +40,12 @@ function HeaderCard({
             >
                 <Close />
             </button>
-            <div className={clsx(styles.showcaseCardImage)}>
+            <div
+                className={clsx(
+                    styles.showcaseCardImage,
+                    addon.icon && styles.blurWrapper
+                )}
+            >
                 {addon.icon ? (
                     <IconBlur icon={addon.icon} title={addon.title} iconOnly />
                 ) : (

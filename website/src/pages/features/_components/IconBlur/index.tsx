@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
 import ColorThief from "colorthief";
@@ -46,20 +46,76 @@ function IconBlur({
     title: string;
     iconOnly?: boolean;
 }) {
+    const blurRef = useRef<HTMLDivElement>(null);
+
     // hsl color
     const [domColor, setDomColor] = useState([0, 0, 0]);
     const [isLoading, setIsLoading] = useState(true);
 
-    const handleLoad = (e) => {
-        const colorThief = new ColorThief();
+    const handleLoad = (img) => {
+        if (!img) return;
 
-        const colors = colorThief.getColor(e.target);
+        try {
+            const colorThief = new ColorThief();
 
-        const hsl = rgbToHsl(colors);
+            const colors = colorThief.getColor(img);
 
-        setDomColor(hsl);
-        setIsLoading(false);
+            const hsl = rgbToHsl(colors);
+
+            setDomColor(hsl);
+
+            setIsLoading(false);
+
+            console.log("test");
+        } catch (error) {
+            console.log(error);
+        }
     };
+
+    useEffect(() => {
+        if (!blurRef.current) return;
+        const imgDiv = blurRef.current.querySelector("div");
+        const img = blurRef.current.querySelector("img");
+
+        const config = { attributes: true, childList: true, subtree: true };
+
+        const handleImg = (img) => {
+            if (img.complete) {
+                handleLoad(img);
+            } else {
+                img.addEventListener("load", () => handleLoad(img));
+            }
+        };
+
+        // Callback function to execute when mutations are observed
+        const callback = (mutationList, observer) => {
+            for (const mutation of mutationList) {
+                if (mutation.type === "childList") {
+                    // img is now in DOM
+                    const img = imgDiv?.querySelector("img");
+                    console.log(img);
+                    if (img) {
+                        handleImg(img);
+                    }
+                }
+            }
+        };
+
+        const observer = new MutationObserver(callback);
+
+        if (imgDiv) {
+            // Start observing the target node for configured mutations
+            observer.observe(imgDiv, config);
+        } else if (img) {
+            handleImg(img);
+        }
+
+        // cleanup event listener
+        return () => {
+            if (observer) observer.disconnect();
+            if (img) img.removeEventListener("load", () => handleLoad(img));
+        };
+    }, [blurRef.current]);
 
     let ratios = [-0.4, 0.4, -0.1];
 
@@ -98,39 +154,33 @@ function IconBlur({
             className={clsx(
                 styles.icon,
                 styles.showcaseCardImage,
-                iconOnly && styles.iconOnly
+                iconOnly && styles.iconOnly,
+                isLoading && styles.loading
             )}
             style={{
-                backgroundColor: isLoading
-                    ? "var(--ifm-card-background-color)"
-                    : bgColor,
+                backgroundColor: bgColor,
             }}
         >
-            {!isLoading && (
-                <>
-                    <div className={styles.blur} style={{ color: blurColor }}>
+            <>
+                <div className={styles.blur} style={{ color: blurColor }}>
+                    {title}
+                </div>
+                {!iconOnly && (
+                    <h3
+                        style={{
+                            color: titleColor,
+                        }}
+                    >
                         {title}
-                    </div>
-                    {!iconOnly && (
-                        <h3
-                            style={{
-                                color: titleColor,
-                            }}
-                        >
-                            {title}
-                            <br />
-                            Addon
-                        </h3>
-                    )}
-                </>
-            )}
-            <img
-                src={icon.default}
-                alt={title}
-                onLoad={handleLoad}
-                style={{ display: "none" }}
-            />
-            <IdealImage img={icon} alt={title} />
+                        <br />
+                        Addon
+                    </h3>
+                )}
+            </>
+
+            <div className={styles.iconContainer} ref={blurRef}>
+                <IdealImage img={icon} alt={title} aria-disabled />
+            </div>
         </div>
     );
 }

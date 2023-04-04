@@ -2,7 +2,7 @@
     "title": "Maya",
     "description": "Robust Maya implementation that can handle full CG workflow",
     "descriptionLong": "OpenPype includes very robust Maya implementation that can handle full CG workflow from model, through animation till final renders. Scene settings, Your artists won't need to touch file browser at all and OpenPype will take care of all the file management. Most of maya workflows are supported including gpucaches, referencing, nested references and render proxies.",
-    "features": ["sceneBuilder"],
+    "features": ["sceneBuilder", "rendering", "workfiles", "reviewables"],
     "docs": {
         "user": "artist_hosts_maya",
         "admin": "admin_hosts_maya"
@@ -20,10 +20,7 @@
         { "label": "Camera" },
         { "label": "CameraRig" },
         { "label": "RenderSetup" },
-        { "label": "Render" },
         { "label": "Plate" },
-        { "label": "Review" },
-        { "label": "Workfile" },
         { "label": ".ASS StandIn" },
         { "label": "Yeti Cache" },
         { "label": "Yeti Rig" },

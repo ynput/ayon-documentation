@@ -32,6 +32,20 @@
     }
 }
 
+.blurWrapper {
+    & > div > div {
+        max-width: 80%;
+        & > div {
+            margin: auto;
+
+            img {
+                // height: 100% !important;
+                object-fit: contain;
+            }
+        }
+    }
+}
+
 .showcaseCardImage {
     overflow: hidden;
     height: 100% !important;

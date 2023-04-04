@@ -11,12 +11,43 @@
     }
 }
 
+.iconContainer {
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    display: flex;
+
+    div {
+        margin-left: -2rem;
+        height: 100%;
+        background-image: none !important;
+
+        div {
+            display: none;
+        }
+
+        svg {
+            display: none;
+        }
+    }
+
+    img {
+        height: 100% !important;
+        width: auto;
+        object-fit: contain;
+
+        z-index: 20;
+    }
+}
+
 .icon {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
     position: relative;
+
+    transition: opacity 0.5s, background-color 0.3s;
 
     background-color: grey;
     padding: 20px 0;
@@ -32,13 +63,6 @@
         white-space: pre-wrap;
         word-break: keep-all;
         display: inherit;
-    }
-
-    img {
-        height: 100% !important;
-        width: auto;
-        margin-left: -2rem;
-        z-index: 20;
     }
 }
 
@@ -60,9 +84,26 @@
 
 .iconOnly {
     img {
-        width: 80%;
         height: auto !important;
         margin: 0;
+    }
+}
+
+.icon::after {
+    opacity: 0;
+    transition: opacity 0.1s;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--ifm-card-background-color);
+    z-index: 20;
+    scale: 1.1;
+}
+
+.loading {
+    background-color: transparent !important;
+    &::after {
+        opacity: 1;
     }
 }
 
