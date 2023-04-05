@@ -61,11 +61,9 @@ Here's a list of supported families
 | VrayScene               | Vray full scene export                           |                           |
 | ArnodldStandin          | All arnold .ass archives for rendering           | main, wet, dirty          |
 | LUT                     |                                                  |                           |
-| Nukenodes               |                                                  |                           |
 | Gizmo                   |                                                  |                           |
-| Nukenodes               |                                                  |                           |
 | Harmony.template        |                                                  |                           |
-| Harmony.palette        |                                                  |                           |
+| Harmony.palette         |                                                  |                           |
 
 
 

@@ -7,14 +7,15 @@
         "admin": "admin_hosts_aftereffects"
     },
     "github": "https://github.com/ynput/ayon-aftereffects",
-    "supportsTitle": "Families",
-    "supports": [
-        { "label": "Render" },
-        { "label": "Plate" },
-        { "label": "Image" },
-        { "label": "Audio" },
-        { "label": "Background" },
-        { "label": "Workfile" }
+    "families": [
+        "render",
+        "plate",
+        "image",
+        "audio",
+        "background",
+        "workfile",
+        "prerender",
+        "review"
     ],
     "features": ["rendering", "workfiles"]
 }

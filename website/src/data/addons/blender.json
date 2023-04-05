@@ -16,6 +16,16 @@
         { "label": "Point Cache" },
         { "label": "Camera" }
     ],
+    "families": [
+        "model",
+        "rig",
+        "layout",
+        "animation",
+        "camera",
+        "layout",
+        "review",
+        "pointcache"
+    ],
     "icon": "blender-icon.png",
     "github": "https://github.com/ynput/ayon-addons/tree/main/blender/dev"
 }

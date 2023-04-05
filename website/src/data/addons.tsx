@@ -7,9 +7,8 @@ export type Addon = {
     preview?: string;
     icon?: string;
     features?: string[];
+    families?: string[];
     docs?: { [type in DocType]?: String };
-    supports?: { label: string; docbase: string }[];
-    supportsTitle?: string;
     github?: string;
 };
 
@@ -52,6 +51,7 @@ export type Addon = {
 // 3. add the preview image in the addons/img folder "myAddon.png"
 // 4. add addon name ("myAddon") to either officialAddons or communityAddons
 
+// TODO: add all families and features to each addon
 const officialAddons = [
     "nuke",
     "ftrack",
@@ -82,6 +82,7 @@ const communityAddons = [];
 export const addonsIds = [...officialAddons, ...communityAddons];
 
 // Top 8 addons
+// DONE: all families have been added to "featured" addons
 export const featuredAddons = [
     "nuke",
     "ftrack",

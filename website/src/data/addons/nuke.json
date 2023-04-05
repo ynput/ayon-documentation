@@ -14,14 +14,6 @@
         "user": "artist_hosts_nuke",
         "admin": "admin_hosts_nuke"
     },
-    "supportsTitle": "Families",
-    "supports": [
-        { "label": "Model" },
-        { "label": "Camera" },
-        { "label": "Plate" },
-        { "label": "LUT" },
-        { "label": "Gizmo" },
-        { "label": "Prerender" }
-    ],
+    "families": ["nukenodes", "camera", "gizmo", "source", "render", "write"],
     "github": "https://github.com/ynput/ayon-addons/tree/main/nuke/dev"
 }
