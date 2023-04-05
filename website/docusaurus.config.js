@@ -24,7 +24,6 @@ const config = {
     // If you aren't using GitHub pages, you don't need these.
     organizationName: "ynput", // Usually your GitHub org/user name.
     projectName: "ayon-documentation", // Usually your repo name.
-
     presets: [
         [
             "classic",
@@ -66,14 +65,14 @@ const config = {
         ({
             navbar: {
                 items: [
-                    {
-                        type: "custom-logo",
-                        position: "left",
-                        logo: "/img/yn_symbol_BG_sa.svg",
-                        logoInverted: "/img/yn_symbol_W_sa.svg",
-                        to: "https://ynput.io/ayon/",
-                        title: "Ynput",
-                    },
+                    // {
+                    //     type: "custom-logo",
+                    //     position: "left",
+                    //     logo: "/img/yn_symbol_BG_sa.svg",
+                    //     logoInverted: "/img/yn_symbol_W_sa.svg",
+                    //     to: "https://ynput.io/ayon/",
+                    //     title: "Ynput",
+                    // },
                     {
                         type: "custom-logo",
                         position: "left",
@@ -111,17 +110,11 @@ const config = {
                         position: "right",
                     },
                     {
-                        label: "Community",
+                        label: "Socials",
                         position: "right",
                         items: [
                             {
-                                label: "GitHub",
-                                href: "https://github.com/ynput/OpenPype",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "Forum",
+                                label: "Discourse",
                                 href: "https://community.ynput.io/",
                                 target: "_blank",
                                 rel: null,
@@ -153,6 +146,11 @@ const config = {
                     },
                 ],
             },
+            colorMode: {
+                defaultMode: "dark",
+                disableSwitch: true,
+                respectPrefersColorScheme: false,
+            },
         }),
 
     plugins: [
@@ -165,7 +163,7 @@ const config = {
                 min: 640,
                 steps: 2,
                 // Use false to debug, but it incurs huge perf costs
-                disableInDev: false,
+                disableInDev: true,
             }),
         ],
         "docusaurus-plugin-sass",

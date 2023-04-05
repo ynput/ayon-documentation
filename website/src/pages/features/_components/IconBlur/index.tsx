@@ -65,8 +65,6 @@ function IconBlur({
             setDomColor(hsl);
 
             setIsLoading(false);
-
-            console.log("test");
         } catch (error) {
             console.log(error);
         }
