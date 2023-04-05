@@ -17,7 +17,7 @@
     position: relative;
     overflow: hidden;
     background-color: var(--ifm-background-surface-color);
-    min-height: calc(100vh - 60px);
+    min-height: calc(100vh - 60px - 48px);
     display: flex;
     flex-direction: column;
 }
