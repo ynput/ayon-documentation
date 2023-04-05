@@ -14,11 +14,10 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.scss";
-import { Brush, Cube, Shield } from "../components/icons";
+import { Brush, Cube, Shield } from "../components/Icons";
 import SearchBar from "@theme/SearchBar";
 import AddonCard from "./features/_components/AddonCard";
 import stylesFeatures from "./features/styles.module.scss";
-import Features from "./features";
 import FeatureCard from "./features/_components/FeatureCard";
 import { addons, features } from "../data";
 

@@ -11,35 +11,6 @@
     }
 }
 
-.iconContainer {
-    height: 100%;
-    position: relative;
-    z-index: 10;
-    display: flex;
-
-    div {
-        margin-left: -2rem;
-        height: 100%;
-        background-image: none !important;
-
-        div {
-            display: none;
-        }
-
-        svg {
-            display: none;
-        }
-    }
-
-    img {
-        height: 100% !important;
-        width: auto;
-        object-fit: contain;
-
-        z-index: 20;
-    }
-}
-
 .icon {
     display: flex;
     align-items: center;
@@ -63,6 +34,10 @@
         white-space: pre-wrap;
         word-break: keep-all;
         display: inherit;
+    }
+
+    > div {
+        margin-left: -2rem;
     }
 }
 

@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import styles from "./styles.module.scss";
 import ColorThief from "colorthief";
 import IdealImage from "@theme/IdealImage";
+import IdealImageWrapper from "../../../../components/IdealImageWrapper";
 
 function rgbToHsl(rgb: number[]): number[] {
     const [r, g, b] = rgb.map((value) => value / 255); // convert RGB values to range of 0 to 1
@@ -46,11 +47,10 @@ function IconBlur({
     title: string;
     iconOnly?: boolean;
 }) {
-    const blurRef = useRef<HTMLDivElement>(null);
-
     // hsl color
     const [domColor, setDomColor] = useState([0, 0, 0]);
-    const [isLoading, setIsLoading] = useState(true);
+    // is loading
+    const [loading, setLoading] = useState(true);
 
     const handleLoad = (img) => {
         if (!img) return;
@@ -64,56 +64,11 @@ function IconBlur({
 
             setDomColor(hsl);
 
-            setIsLoading(false);
+            setLoading(false);
         } catch (error) {
             console.log(error);
         }
     };
-
-    useEffect(() => {
-        if (!blurRef.current) return;
-        const imgDiv = blurRef.current.querySelector("div");
-        const img = blurRef.current.querySelector("img");
-
-        const config = { attributes: true, childList: true, subtree: true };
-
-        const handleImg = (img) => {
-            if (img.complete) {
-                handleLoad(img);
-            } else {
-                img.addEventListener("load", () => handleLoad(img));
-            }
-        };
-
-        // Callback function to execute when mutations are observed
-        const callback = (mutationList, observer) => {
-            for (const mutation of mutationList) {
-                if (mutation.type === "childList") {
-                    // img is now in DOM
-                    const img = imgDiv?.querySelector("img");
-                    console.log(img);
-                    if (img) {
-                        handleImg(img);
-                    }
-                }
-            }
-        };
-
-        const observer = new MutationObserver(callback);
-
-        if (imgDiv) {
-            // Start observing the target node for configured mutations
-            observer.observe(imgDiv, config);
-        } else if (img) {
-            handleImg(img);
-        }
-
-        // cleanup event listener
-        return () => {
-            if (observer) observer.disconnect();
-            if (img) img.removeEventListener("load", () => handleLoad(img));
-        };
-    }, [blurRef.current]);
 
     let ratios = [-0.4, 0.4, -0.1];
 
@@ -153,7 +108,7 @@ function IconBlur({
                 styles.icon,
                 styles.showcaseCardImage,
                 iconOnly && styles.iconOnly,
-                isLoading && styles.loading
+                loading && styles.loading
             )}
             style={{
                 backgroundColor: bgColor,
@@ -176,9 +131,7 @@ function IconBlur({
                 )}
             </>
 
-            <div className={styles.iconContainer} ref={blurRef}>
-                <IdealImage img={icon} alt={title} aria-disabled />
-            </div>
+            <IdealImageWrapper img={icon} alt={title} onLoad={handleLoad} />
         </div>
     );
 }
