@@ -16,6 +16,17 @@
     flex: 1 0;
 }
 
+.families {
+    h2 {
+        display: flex;
+        justify-content: space-between;
+
+        a {
+            font-size: 80%;
+        }
+    }
+}
+
 /* main */
 .showcaseContainer main {
     display: flex;

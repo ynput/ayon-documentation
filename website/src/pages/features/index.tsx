@@ -28,14 +28,16 @@ import SideBar from "./_components/SideBar";
 import HeaderCard from "./_components/HeaderCard";
 import {
     type Addon,
-    type Feature,
     addons,
     features,
     addonsIds,
     featuredAddons,
     topFeatures,
+    families,
+    FamilyType,
 } from "../../data";
 import AddonCard from "./_components/AddonCard";
+import FamilyCard from "./_components/FamilyCard";
 
 type UserState = {
     scrollTopPosition: number;
@@ -155,7 +157,6 @@ function FeaturesCards() {
 
     const [viewAll, setViewAll] = useState(false);
     const [viewAllFeatures, setViewAllFeatures] = useState(false);
-    const [viewALlFamilies, setViewALlFamilies] = useState(false);
 
     let isAddonsSelected = !!readSearchTags(location.search, "addons").length;
     let isSearching = !!search.length;
@@ -185,6 +186,8 @@ function FeaturesCards() {
 
     let featuresFiltered = features;
 
+    let familiesFiltered = families;
+
     // const isFeaturesFiltered = featuresFiltered.length !== features.length;
     let supportedAddons: Addon[] | null = [];
 
@@ -192,6 +195,12 @@ function FeaturesCards() {
     if (isAddonsSelected) {
         featuresFiltered = featuresFiltered.filter((feature) =>
             addonsFiltered.some((addon) => addon.features?.includes(feature.id))
+        );
+
+        familiesFiltered = familiesFiltered.filter((family) =>
+            addonsFiltered.some((addon) =>
+                addon.families?.includes(family.id as FamilyType)
+            )
         );
 
         // if the filtered addons has any addons in features that aren't in filtered addons
@@ -223,7 +232,7 @@ function FeaturesCards() {
         addonsToShow = supportedAddons;
     }
 
-    // if not searching or viewing all, limit to 8
+    // if not searching or viewing all, limit to top
     if (!viewAllFeatures && !isSearching) {
         featuresFiltered = featuresFiltered.filter(({ id }) =>
             topFeatures.includes(id)
@@ -240,6 +249,10 @@ function FeaturesCards() {
                 title.toLowerCase().includes(search.toLowerCase()) ||
                 description.toLowerCase().includes(search.toLowerCase()) ||
                 addonsToShow.some((addon) => addon.features?.includes(id))
+        );
+        // filter families by search
+        familiesFiltered = familiesFiltered.filter(({ title }) =>
+            title.toLowerCase().includes(search.toLowerCase())
         );
     }
 
@@ -375,6 +388,30 @@ function FeaturesCards() {
                                 {viewAllFeatures ? "View Less" : "View All"}
                             </div>
                         )}
+                    </div>
+                )}
+                {!!familiesFiltered.length && (
+                    <div
+                        className={clsx(
+                            "container",
+                            styles.featuresSection,
+                            styles.families
+                        )}
+                        id="features"
+                    >
+                        <Heading as="h2" className={styles.showcaseHeader}>
+                            {isAddonsSelected
+                                ? "Supported Families"
+                                : "All Families"}
+                            {!isAddonsSelected && (
+                                <a href="/artist_publish">What are families?</a>
+                            )}
+                        </Heading>
+                        <ul className={clsx("clean-list", styles.showcaseList)}>
+                            {familiesFiltered.map((family) => (
+                                <FamilyCard key={family.id} family={family} />
+                            ))}
+                        </ul>
                     </div>
                 )}
             </div>

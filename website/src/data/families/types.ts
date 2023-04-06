@@ -2,7 +2,6 @@ export type Family = {
     title: string;
     icon: string;
     docs?: string;
-    id?: string;
 };
 
 export type Families = Family[];
