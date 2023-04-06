@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
@@ -6,6 +6,8 @@ import { readSearchTags } from "../ShowcaseTagSelect";
 import { useLocation } from "@docusaurus/router";
 import { addons, Feature } from "../../../../data";
 import { addonsIds } from "../../../../data/addons";
+import IdealImageWrapper from "../../../../components/IdealImageWrapper";
+import Close from "../HeaderCard/close.svg";
 
 const TagComp = React.forwardRef<HTMLLIElement, any>(
     ({ tag, isActive, label }, ref) => (
@@ -74,18 +76,76 @@ function FeatureTag({
 }
 
 function FeatureCard({ feature }: { feature: Feature }) {
-    return (
-        <li key={feature.title} className={clsx("card", "shadow--md")}>
-            <div className="card__body">
-                <div className={clsx(styles.showcaseCardHeader)}>
-                    <Heading as="h4" className={styles.showcaseCardTitle}>
-                        {feature.title}
-                    </Heading>
-                </div>
+    const hasPreview = !!feature.preview?.default;
+    const isVideo = feature.preview?.default?.includes(".mp4");
 
-                <p className={styles.showcaseCardBody}>{feature.description}</p>
-            </div>
-        </li>
+    // modal open state
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const Media = ({ className }: { className?: string }) =>
+        hasPreview ? (
+            isVideo ? (
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    src={feature.preview?.default}
+                    className={className}
+                />
+            ) : feature.preview ? (
+                <IdealImageWrapper
+                    img={feature.preview}
+                    alt={feature.title}
+                    className={className}
+                />
+            ) : null
+        ) : null;
+
+    return (
+        <>
+            <li
+                key={feature.title}
+                className={clsx(
+                    "card",
+                    "shadow--md",
+                    hasPreview && styles.hasPreview
+                )}
+                onClick={() => hasPreview && setModalOpen(true)}
+            >
+                <div className={clsx("card__image")}>
+                    <div className={clsx(styles.showcaseCardImage)}>
+                        <div className={clsx(styles.showcaseCardImageInner)}>
+                            <Media />
+                        </div>
+                    </div>
+                </div>
+                <div className="card__body">
+                    <div className={clsx(styles.showcaseCardHeader)}>
+                        <Heading as="h4" className={styles.showcaseCardTitle}>
+                            {feature.title}
+                        </Heading>
+                    </div>
+
+                    <p className={styles.showcaseCardBody}>
+                        {feature.description}
+                    </p>
+                </div>
+            </li>
+            {modalOpen && (
+                <div className={styles.modal}>
+                    <div className={styles.modalInner}>
+                        <Media className={styles.modalMedia} />
+                        <button
+                            className={clsx("clean-btn", styles.close)}
+                            onClick={() => setModalOpen(false)}
+                        >
+                            <Close />
+                        </button>
+                    </div>
+                </div>
+            )}
+        </>
     );
 }
 

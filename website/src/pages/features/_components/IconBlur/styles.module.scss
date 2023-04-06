@@ -78,13 +78,21 @@
     }
 }
 
+.icon:not(.header) {
+    .imageWrapper {
+        margin-left: -2rem;
+    }
+}
+
 @media (max-width: 600px) {
     .icon {
         h3 {
             display: none;
         }
 
-        img {
+        margin-left: 0;
+
+        .imageWrapper {
             margin-left: 0;
         }
     }

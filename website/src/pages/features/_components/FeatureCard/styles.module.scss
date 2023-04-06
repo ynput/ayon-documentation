@@ -15,6 +15,11 @@
         height: 100% !important;
         object-fit: cover;
     }
+
+    video {
+        width: 100%;
+        object-fit: cover;
+    }
 }
 
 .showcaseCardHeader {
@@ -38,28 +43,11 @@
     transition: background-size ease-out 200ms;
 }
 
-.showcaseCardTitle a:not(:focus):hover {
-    background-size: 100% 1px;
-}
-
-.showcaseCardTitle,
-.showcaseCardHeader .svgIconFavorite {
-    margin-right: 0.25rem;
-}
-
-.showcaseCardHeader .svgIconFavorite {
-    color: var(--site-color-svg-icon-favorite);
-}
-
 .showcaseCardSrcBtn {
     margin-left: 6px;
     padding-left: 12px;
     padding-right: 12px;
     border: none;
-}
-
-.showcaseCardSrcBtn:focus-visible {
-    background-color: var(--ifm-color-secondary-dark);
 }
 
 [data-theme="dark"] .showcaseCardSrcBtn {
@@ -115,4 +103,51 @@
     border-radius: 50%;
     margin-left: 6px;
     margin-right: 6px;
+}
+
+.hasPreview {
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .modalInner {
+        max-width: 1920px;
+        position: relative;
+    }
+
+    .close {
+        // top right
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        border-radius: 100%;
+        z-index: 10;
+
+        width: 40px;
+        height: 40px;
+
+        transition: background-color var(--ifm-transition-fast);
+        background-color: var(--ifm-background-surface-color);
+
+        svg {
+            width: 70%;
+            height: 70%;
+            fill: var(--ifm-navbar-link-color);
+        }
+
+        &:hover {
+            background-color: var(--ifm-color-emphasis-200);
+        }
+    }
 }

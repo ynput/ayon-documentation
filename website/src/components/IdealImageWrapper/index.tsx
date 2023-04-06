@@ -9,6 +9,7 @@ type Props = {
     alt: string;
     isPreview?: boolean;
     style?: React.CSSProperties;
+    className?: string;
 };
 
 const IdealImageWrapper: FC<Props> = ({
@@ -17,6 +18,7 @@ const IdealImageWrapper: FC<Props> = ({
     alt,
     isPreview,
     style,
+    className,
 }) => {
     const [isLoading, setIsLoading] = useState(true);
 
@@ -75,7 +77,8 @@ const IdealImageWrapper: FC<Props> = ({
             className={clsx(
                 styles.wrapper,
                 isLoading && styles.loading,
-                isPreview && styles.isPreview
+                isPreview && styles.isPreview,
+                className
             )}
             ref={wrapperRef}
             style={style}

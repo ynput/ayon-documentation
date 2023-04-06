@@ -251,8 +251,12 @@ function FeaturesCards() {
                 addonsToShow.some((addon) => addon.features?.includes(id))
         );
         // filter families by search
-        familiesFiltered = familiesFiltered.filter(({ title }) =>
-            title.toLowerCase().includes(search.toLowerCase())
+        familiesFiltered = familiesFiltered.filter(
+            ({ title, id }) =>
+                title.toLowerCase().includes(search.toLowerCase()) ||
+                addonsToShow.some((addon) =>
+                    addon.families?.includes(id as FamilyType)
+                )
         );
     }
 
@@ -362,7 +366,7 @@ function FeaturesCards() {
                         <Heading as="h2" className={styles.showcaseHeader}>
                             {isAddonsSelected
                                 ? "Supported Features"
-                                : viewAllFeatures
+                                : viewAllFeatures || isSearching
                                 ? "All Features"
                                 : "Top Features"}
                         </Heading>

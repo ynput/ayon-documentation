@@ -39,7 +39,7 @@ const features: { [type in FeatureType]: Feature } = {
         title: "Loader",
         description:
             "Universal GUI for loading published assets into your DCC app.",
-        preview: "loader.png",
+        preview: "loader.mp4",
         docs: {
             user: "artist_tools_loader",
         },

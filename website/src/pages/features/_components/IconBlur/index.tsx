@@ -110,7 +110,8 @@ function IconBlur({
                 styles.icon,
                 styles.showcaseCardImage,
                 iconOnly && styles.iconOnly,
-                loading && styles.loading
+                loading && styles.loading,
+                isHeader && styles.header
             )}
             style={{
                 backgroundColor: bgColor,
@@ -137,7 +138,7 @@ function IconBlur({
                 img={icon}
                 alt={title}
                 onLoad={handleLoad}
-                style={{ marginLeft: isHeader ? "0" : "-2rem" }}
+                className={styles.imageWrapper}
             />
         </div>
     );
