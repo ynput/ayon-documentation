@@ -13,7 +13,7 @@ export type Addon = {
     features?: FeatureType[];
     families?: FamilyType[];
     addons?: AddonType[];
-    docs?: { [type in DocType]?: String };
+    docs?: { [type in DocType]?: string };
     github?: string;
     id?: string;
 };

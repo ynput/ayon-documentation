@@ -1,9 +1,12 @@
 import { communityAddons, officialAddons } from "./addons";
-import { type Addon } from "./types";
+import { type Addon as AddonObjectType } from "./types";
 
 export const addonsIds = [...officialAddons, ...communityAddons];
 
+// export types
 export type AddonType = (typeof addonsIds)[number];
+export type Addon = AddonObjectType & { id: AddonType };
+export type { DocType } from "./types";
 
 // load addons
 const addons: Addon[] = addonsIds.flatMap((featureId) => {
@@ -63,6 +66,3 @@ export default addons;
 
 // export addonsIds, featuredAddons
 export { featuredAddons, communityAddons, officialAddons } from "./addons";
-
-// export types
-export type { Addon, DocType } from "./types";

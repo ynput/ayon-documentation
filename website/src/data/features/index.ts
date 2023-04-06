@@ -1,9 +1,9 @@
 import featuresObject from "./data";
-import { type Features, type Feature } from "./types";
+import { FeatureType, type Feature as FeatureObjectType } from "./types";
 
 // convert to array with key as an id
 // check if preview exists
-const features: Features = Object.keys(featuresObject).map((key) => {
+const features: Feature[] = Object.keys(featuresObject).map((key) => {
     const feature = featuresObject[key] as Feature;
     // check if preview exists
     if (feature.preview) {
@@ -26,6 +26,8 @@ const features: Features = Object.keys(featuresObject).map((key) => {
 
 export default features;
 
+type Feature = FeatureObjectType & { id: FeatureType };
+
 // export types
-export type { Features, Feature };
+export type { Feature };
 export type { FeatureType } from "./types";

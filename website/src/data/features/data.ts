@@ -150,4 +150,4 @@ const features: { [type in FeatureType]: Feature } = {
     },
 };
 
-export default features;
+export default features as { [type in FeatureType]: Feature & { id: string } };

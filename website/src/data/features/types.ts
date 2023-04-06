@@ -8,8 +8,6 @@ export type Feature = {
     id?: string;
 };
 
-export type Features = Feature[];
-
 export type FeatureType =
     | "slates"
     | "workfiles"

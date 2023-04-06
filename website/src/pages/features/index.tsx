@@ -48,7 +48,7 @@ function restoreUserState(userState: UserState | null) {
 export function prepareUserState(): UserState | undefined {
     if (ExecutionEnvironment.canUseDOM) {
         return {
-            scrollTopPosition: window.scrollY,
+            scrollTopPosition: 0,
             focusedElementId: document.activeElement?.id,
         };
     }
@@ -60,26 +60,6 @@ const AddonQueryStringKey = "addons";
 
 export function readSearchAddons(search: string): string[] {
     return new URLSearchParams(search).getAll(AddonQueryStringKey) as string[];
-}
-
-function filterFeatures(
-    features: Feature[],
-    selectedTags: string[],
-    operator: Operator
-) {
-    if (selectedTags.length === 0) {
-        return features;
-    }
-
-    return features.filter((feature) => {
-        if (feature.tags?.length === 0) {
-            return false;
-        }
-        if (operator === "AND") {
-            return selectedTags.every((tag) => feature.tags?.includes(tag));
-        }
-        return selectedTags.some((tag) => feature.tags?.includes(tag));
-    });
 }
 
 function filterAddons(
@@ -102,14 +82,12 @@ function filterAddons(
     });
 }
 
-function useFeaturesFiltered(
-    features: Feature[],
+function useAddonsFiltered(
     addons: Addon[],
     disableSearch: boolean,
     disableTags?: boolean
 ) {
-    let key = "tags";
-    if (!features.length) key = "addons";
+    const key = "addons";
 
     const location = useLocation<UserState>();
     const [operator, setOperator] = useState<Operator>("OR");
@@ -126,10 +104,7 @@ function useFeaturesFiltered(
     }, [location, disableSearch, disableTags]);
 
     return useMemo(
-        () =>
-            !!features.length
-                ? filterFeatures(features, selectedTags, operator)
-                : filterAddons(addons, selectedTags, operator),
+        () => filterAddons(addons, selectedTags, operator),
         [selectedTags, operator, disableTags, location]
     );
 }
@@ -156,14 +131,11 @@ function FeaturesCards() {
 
     const toggleTag = useCallback(
         (addon: string, deleteSearch: boolean) => {
-            // remove search if there is one
-            const tags = readSearchAddons(location.search);
-            const newTags = toggleListItem(tags, addon);
+            const newTags = deleteSearch ? [] : [addon];
             const newSearch = replaceSearchTags(
                 location.search,
                 newTags,
-                "addons",
-                deleteSearch
+                "addons"
             );
             history.push({
                 ...location,
@@ -174,11 +146,9 @@ function FeaturesCards() {
         [location, history]
     );
 
-    const handleAddonClick = (id: string) => {
-        toggleTag(id, true);
-    };
-
     const [viewAll, setViewAll] = useState(false);
+    const [viewAllFeatures, setViewAllFeatures] = useState(false);
+    const [viewALlFamilies, setViewALlFamilies] = useState(false);
 
     let isAddonsSelected = !!readSearchTags(location.search, "addons").length;
     let isSearching = !!search.length;
@@ -195,8 +165,7 @@ function FeaturesCards() {
         }
     }, []);
 
-    const addonsFiltered = useFeaturesFiltered(
-        [],
+    const addonsFiltered = useAddonsFiltered(
         addons,
         isAddonsSelected,
         false
@@ -207,7 +176,7 @@ function FeaturesCards() {
         isAddonsSelected = false;
     }
 
-    let featuresFiltered = useFeaturesFiltered(features, [], true) as Feature[];
+    let featuresFiltered = features;
 
     // const isFeaturesFiltered = featuresFiltered.length !== features.length;
     let supportedAddons: Addon[] | null = [];
@@ -215,13 +184,13 @@ function FeaturesCards() {
     // now filter out any features that don't have the addon in addons
     if (isAddonsSelected) {
         featuresFiltered = featuresFiltered.filter((feature) =>
-            addonsFiltered.some((addon) => feature.addons?.includes(addon.id))
+            addonsFiltered.some((addon) => addon.features?.includes(feature.id))
         );
 
         // if the filtered addons has any addons in features that aren't in filtered addons
         const filteredAddonIds = addonsIds.filter(
             (id) =>
-                addonsFiltered.every((addon) => addon.features?.includes(id)) &&
+                addonsFiltered.every((addon) => addon.addons?.includes(id)) &&
                 addonsFiltered.every((addon) => addon.id !== id)
         );
 
@@ -233,25 +202,30 @@ function FeaturesCards() {
             }
         });
     }
-
     let addonsToShow = isAddonsSelected ? addons : addonsFiltered;
 
     if (!supportedAddons.length) {
         supportedAddons = null;
-        if (!viewAll && !isSearching)
+        if (!viewAll && !isSearching) {
             addonsToShow = addons.filter(({ id }) =>
                 featuredAddons.includes(id)
             );
+        }
     } else {
         addonsToShow = supportedAddons;
     }
 
     if (isSearching) {
-        // filter by search
-        featuresFiltered = featuresFiltered.filter(({ title }) =>
-            title.toLowerCase().includes(search.toLowerCase())
+        addonsToShow = addonsToShow.filter(({ id }) =>
+            id.includes(search.toLowerCase())
         );
-        addonsToShow = addonsToShow.filter(({ id }) => id.includes(search));
+        // filter by search
+        featuresFiltered = featuresFiltered.filter(
+            ({ title, description, id }) =>
+                title.toLowerCase().includes(search.toLowerCase()) ||
+                description.toLowerCase().includes(search.toLowerCase()) ||
+                addonsToShow.some((addon) => addon.features?.includes(id))
+        );
     }
 
     // sort addonsToShow by if id in featuredAddons
@@ -283,7 +257,7 @@ function FeaturesCards() {
                                 (!(index % 2) &&
                                     addonsFiltered.length - 1 === index)
                             }
-                            onClose={handleAddonClick}
+                            onClose={() => toggleTag(addon.id, true)}
                         />
                     ))}
                 </ul>
@@ -323,7 +297,7 @@ function FeaturesCards() {
                                 <AddonCard
                                     key={addon.title}
                                     addon={addon}
-                                    onClick={handleAddonClick}
+                                    onClick={() => toggleTag(addon.id, false)}
                                 />
                             ))}
                         </ul>
