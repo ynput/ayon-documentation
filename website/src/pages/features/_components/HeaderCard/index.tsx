@@ -23,7 +23,12 @@ function HeaderCard({
     return (
         <li
             key={addon.title}
-            className={clsx("card", "shadow--md", styles.headerCard)}
+            className={clsx(
+                "card",
+                "shadow--md",
+                styles.headerCard,
+                addon.preview && !addon.icon && styles.preview
+            )}
         >
             <button
                 className={clsx("clean-btn", styles.close)}

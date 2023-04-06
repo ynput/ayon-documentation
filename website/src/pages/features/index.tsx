@@ -404,7 +404,9 @@ function FeaturesCards() {
                                 ? "Supported Families"
                                 : "All Families"}
                             {!isAddonsSelected && (
-                                <a href="/artist_publish">What are families?</a>
+                                <a href="/docs/artist_publish">
+                                    What are families?
+                                </a>
                             )}
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>

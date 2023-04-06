@@ -81,7 +81,7 @@ const families: { [type in FamilyType]: Family } = {
     },
     review: {
         title: "review",
-        icon: "Smart Display",
+        icon: "smart_display",
     },
     texture: {
         title: "texture",

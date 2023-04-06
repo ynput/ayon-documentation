@@ -24,6 +24,10 @@
     --ifm-color-primary-lightest: #17ffc6;
 }
 
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
     --ifm-color-primary: #00d6a1;
