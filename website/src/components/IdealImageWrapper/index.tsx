@@ -7,9 +7,10 @@ type Props = {
     onLoad?: (ref: HTMLImageElement | null) => void;
     img: string;
     alt: string;
+    isPreview?: boolean;
 };
 
-const IdealImageWrapper: FC<Props> = ({ onLoad, img, alt }) => {
+const IdealImageWrapper: FC<Props> = ({ onLoad, img, alt, isPreview }) => {
     const [isLoading, setIsLoading] = useState(true);
 
     const handleLoad = (ref) => {
@@ -64,11 +65,14 @@ const IdealImageWrapper: FC<Props> = ({ onLoad, img, alt }) => {
 
     return (
         <div
-            className={clsx(styles.wrapper, isLoading && styles.loading)}
+            className={clsx(
+                styles.wrapper,
+                isLoading && styles.loading,
+                isPreview && styles.isPreview
+            )}
             ref={wrapperRef}
         >
             <IdealImage img={img} alt={alt} aria-disabled />
-            <img />
         </div>
     );
 };

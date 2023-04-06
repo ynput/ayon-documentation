@@ -27,6 +27,7 @@ function AddonCard({
                         <IdealImageWrapper
                             img={addon.preview}
                             alt={addon.title}
+                            isPreview
                         />
                     )}
                 </div>

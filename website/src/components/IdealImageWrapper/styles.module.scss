@@ -26,3 +26,9 @@
         z-index: 20;
     }
 }
+
+.isPreview {
+    img {
+        object-fit: cover;
+    }
+}
