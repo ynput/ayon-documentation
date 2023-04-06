@@ -19,6 +19,7 @@ export type FamilyType =
     | "cache"
     | "mayaAscii"
     | "render"
+    | "prerender"
     | "renderSetup"
     | "plate"
     | "write"

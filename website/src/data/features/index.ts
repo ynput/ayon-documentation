@@ -9,7 +9,7 @@ const features: Features = Object.keys(featuresObject).map((key) => {
     if (feature.preview) {
         try {
             // get img
-            const img = require(`./features/img/${feature.preview}`);
+            const img = require(`./img/${feature.preview}`);
 
             // add img to JSON
             feature.preview = img;

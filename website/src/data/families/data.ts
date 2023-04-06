@@ -55,6 +55,10 @@ const families: { [type in FamilyType]: Family } = {
         icon: "photo_library",
         docs: "#render",
     },
+    prerender: {
+        title: "Prerender",
+        icon: "photo_library",
+    },
     renderSetup: {
         title: "Render Setup",
         icon: "photo_library",

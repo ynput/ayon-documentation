@@ -13,7 +13,7 @@ const addons: Addon[] = addonsIds.flatMap((featureId) => {
 
         // try to load ts file
         try {
-            data = require(`./data/${featureId}.ts`);
+            data = require(`./data/${featureId}.ts`)?.default;
         } catch (error) {
             console.log("no ts file found");
 
