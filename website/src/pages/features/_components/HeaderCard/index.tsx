@@ -20,15 +20,6 @@ function HeaderCard({
 }) {
     if (!addon) return null;
 
-    const longestSupportLabel =
-        addon.supports?.reduce(
-            (a, b) => (a.label.length > b.label.length ? a : b),
-            { label: "" }
-        )?.label.length || 0;
-
-    const supportLength = addon.supports?.length || 0;
-    const flex = Math.max((supportLength * longestSupportLabel) / 100, 0.5);
-
     return (
         <li
             key={addon.title}
@@ -36,7 +27,7 @@ function HeaderCard({
         >
             <button
                 className={clsx("clean-btn", styles.close)}
-                onClick={() => onClose(addon.id)}
+                onClick={() => onClose(addon.id as string)}
             >
                 <Close />
             </button>
@@ -47,7 +38,12 @@ function HeaderCard({
                 )}
             >
                 {addon.icon ? (
-                    <IconBlur icon={addon.icon} title={addon.title} iconOnly />
+                    <IconBlur
+                        icon={addon.icon}
+                        title={addon.title}
+                        iconOnly
+                        isHeader
+                    />
                 ) : (
                     addon.preview && (
                         <IdealImage img={addon.preview} alt={addon.title} />
@@ -94,43 +90,6 @@ function HeaderCard({
                     )}
                 </div>
             </div>
-            {!!addon.supports?.length && showSupport && (
-                <div
-                    className={clsx(styles.supports)}
-                    style={{
-                        flex,
-                    }}
-                >
-                    <Heading as="h2" className={styles.showcaseCardTitle}>
-                        {addon.supportsTitle || "Supports"}
-                    </Heading>
-                    <ul
-                        style={{
-                            gridTemplateColumns: `repeat(auto-fill, minmax(${
-                                longestSupportLabel * 10
-                            }px, 1fr))`,
-                        }}
-                    >
-                        {addon.supports.map((support) => (
-                            <Link
-                                key={support.label}
-                                href={
-                                    support?.docbase
-                                        ? "/docs/" + support.docbase
-                                        : "#"
-                                }
-                                className={clsx(
-                                    "button button--secondary button--md",
-                                    styles.supportButton,
-                                    !support.docbase && styles.noLink
-                                )}
-                            >
-                                {support.label}
-                            </Link>
-                        ))}
-                    </ul>
-                </div>
-            )}
         </li>
     );
 }

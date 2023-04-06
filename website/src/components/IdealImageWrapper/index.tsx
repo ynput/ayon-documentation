@@ -8,9 +8,16 @@ type Props = {
     img: string;
     alt: string;
     isPreview?: boolean;
+    style?: React.CSSProperties;
 };
 
-const IdealImageWrapper: FC<Props> = ({ onLoad, img, alt, isPreview }) => {
+const IdealImageWrapper: FC<Props> = ({
+    onLoad,
+    img,
+    alt,
+    isPreview,
+    style,
+}) => {
     const [isLoading, setIsLoading] = useState(true);
 
     const handleLoad = (ref) => {
@@ -71,6 +78,7 @@ const IdealImageWrapper: FC<Props> = ({ onLoad, img, alt, isPreview }) => {
                 isPreview && styles.isPreview
             )}
             ref={wrapperRef}
+            style={style}
         >
             <IdealImage img={img} alt={alt} aria-disabled />
         </div>

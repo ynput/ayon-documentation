@@ -42,10 +42,12 @@ function IconBlur({
     icon,
     title,
     iconOnly,
+    isHeader,
 }: {
     icon: string;
     title: string;
     iconOnly?: boolean;
+    isHeader?: boolean;
 }) {
     // hsl color
     const [domColor, setDomColor] = useState([0, 0, 0]);
@@ -131,7 +133,12 @@ function IconBlur({
                 )}
             </>
 
-            <IdealImageWrapper img={icon} alt={title} onLoad={handleLoad} />
+            <IdealImageWrapper
+                img={icon}
+                alt={title}
+                onLoad={handleLoad}
+                style={{ marginLeft: isHeader ? "0" : "-2rem" }}
+            />
         </div>
     );
 }
