@@ -92,8 +92,8 @@ $hover: #f0f4fe !default;
     .navPills {
         margin: 0;
         > li > a {
+            font-weight: 500;
             color: $secondary;
-            line-height: 22px;
             &.active > a,
             > a.active {
                 color: $secondary;
@@ -126,7 +126,7 @@ $hover: #f0f4fe !default;
                 border-radius: 0;
                 padding: 6px 12px;
                 color: $primary;
-                font-size: var(--font-up-1);
+                font-size: var(--font-0);
                 line-height: var(--line-height-small);
                 box-sizing: border-box;
                 min-height: 30px;
@@ -147,6 +147,16 @@ $hover: #f0f4fe !default;
 
                 .d-icon {
                     opacity: 1;
+                }
+            }
+        }
+
+        li:first-child {
+            a {
+                color: $tertiary;
+
+                &:hover {
+                    background-color: white;
                 }
             }
         }

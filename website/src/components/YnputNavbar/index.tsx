@@ -25,6 +25,15 @@ const YnputNavbar = () => {
                                     className={styles.logoBig}
                                     id="brand-logo"
                                 >
+                                    AYON Docs
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="https://community.ynput.io/"
+                                    className={styles.logoBig}
+                                    id="brand-logo"
+                                >
                                     Community
                                 </a>
                             </li>
