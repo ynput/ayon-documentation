@@ -14,6 +14,13 @@
         color: var(--ifm-menu-color-active);
     }
     font-weight: var(--ifm-font-weight-bold);
+
+    span {
+        color: var(--ifm-menu-color);
+        opacity: 0.75;
+        font-weight: var(--ifm-font-weight-normal);
+        margin-left: 16px;
+    }
 }
 
 @media (min-width: 997px) {

@@ -74,25 +74,31 @@ function ShowcaseTagSelect(
         setSelected(tags.includes(tag));
     }, [tag, location]);
 
-    const toggleTag = useCallback(() => {
-        let tags: string[] = [];
-        if (isAddon) tags = readSearchAddons(location.search);
-        else tags = readSearchTags(location.search);
+    const toggleTag = useCallback(
+        (isShift?: boolean) => {
+            let tags: string[] = [];
+            if (isAddon) tags = readSearchAddons(location.search);
+            else tags = readSearchTags(location.search);
 
-        const newTags = toggleListItem(tags, tag);
+            const newTags =
+                isShift || (tags.length < 2 && tags[0] === tag)
+                    ? toggleListItem(tags, tag)
+                    : [tag];
 
-        const newSearch = replaceSearchTags(
-            location.search,
-            newTags,
-            isAddon ? "addons" : "tags"
-        );
+            const newSearch = replaceSearchTags(
+                location.search,
+                newTags,
+                isAddon ? "addons" : "tags"
+            );
 
-        history.push({
-            ...location,
-            search: newSearch,
-            state: prepareUserState(),
-        });
-    }, [tag, location, history]);
+            history.push({
+                ...location,
+                search: newSearch,
+                state: prepareUserState(),
+            });
+        },
+        [tag, location, history]
+    );
 
     return (
         <>
@@ -102,7 +108,11 @@ function ShowcaseTagSelect(
                 className="screen-reader-only"
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                        toggleTag();
+                        // is shift key pressed?
+                        let isShift = false;
+                        if (e.shiftKey) isShift = true;
+
+                        toggleTag(isShift);
                     }
                 }}
                 onFocus={(e) => {
@@ -117,7 +127,7 @@ function ShowcaseTagSelect(
                         new KeyboardEvent("blur")
                     );
                 }}
-                onChange={toggleTag}
+                onChange={(e) => toggleTag(e.nativeEvent.shiftKey)}
                 checked={selected}
                 {...rest}
             />

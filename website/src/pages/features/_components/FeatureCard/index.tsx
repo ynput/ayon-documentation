@@ -19,7 +19,7 @@ const TagComp = React.forwardRef<HTMLLIElement, any>(
     )
 );
 
-function ShowcaseCardTag({
+function FeatureTag({
     tags,
     addons: addonsTags,
 }: {
@@ -30,11 +30,7 @@ function ShowcaseCardTag({
         tag,
         label: tag.replace(/\b\w/g, (c) => c.toUpperCase()),
     }));
-    // add addons to tagObjects
-    addonsTags.forEach((addon) => {
-        const label = addons[addonsIds.indexOf(addon)]?.title || addon;
-        tagObjects.push({ tag: addon, label });
-    });
+
     const location = useLocation();
     const searchTags = readSearchTags(location.search);
     const searchAddons = readSearchTags(location.search, "addons");
@@ -89,13 +85,6 @@ function FeatureCard({ feature }: { feature: Feature }) {
 
                 <p className={styles.showcaseCardBody}>{feature.description}</p>
             </div>
-
-            <ul className={clsx("card__footer", styles.cardFooter)}>
-                <ShowcaseCardTag
-                    tags={feature.tags || []}
-                    addons={feature.addons || []}
-                />
-            </ul>
         </li>
     );
 }

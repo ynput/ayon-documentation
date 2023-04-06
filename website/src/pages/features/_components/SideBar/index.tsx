@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import React from "react";
-import { TagList, addons } from "@site/src/data";
+import { addons } from "@site/src/data";
 import ShowcaseTagSelect from "../ShowcaseTagSelect";
 import styles from "./styles.module.scss";
 
@@ -28,6 +28,7 @@ const SideBar = () => {
                     <nav aria-label="Docs sidebar">
                         <label className={clsx("menu__link", styles.title)}>
                             Addons
+                            <span>(shift for multi-select)</span>
                         </label>
                         <ul className="theme-doc-sidebar-menu menu__list">
                             {addons.map(({ id, title }, i) => (
@@ -38,21 +39,6 @@ const SideBar = () => {
                                     i={i}
                                     key={`showcase_checkbox_id_${id}`}
                                     isAddon
-                                />
-                            ))}
-                        </ul>
-                        <label className={clsx("menu__link", styles.title)}>
-                            Tags
-                        </label>
-                        <ul className="theme-doc-sidebar-menu menu__list">
-                            {TagList.map((tag, i) => (
-                                <ListItem
-                                    id={`showcase_checkbox_id_${tag}`}
-                                    tag={tag}
-                                    label={tag.replace(/\b\w/g, (c) =>
-                                        c.toUpperCase()
-                                    )}
-                                    key={`showcase_checkbox_id_${tag}`}
                                 />
                             ))}
                         </ul>

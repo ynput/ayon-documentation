@@ -17,7 +17,7 @@ function AddonCard({
         <li
             key={addon.title}
             className={clsx("card", "shadow--md", styles.isAddon)}
-            onClick={() => onClick && onClick(addon.id)}
+            onClick={() => onClick && onClick(addon.id as string)}
         >
             {addon.icon ? (
                 <IconBlur icon={addon.icon} title={addon.title} />

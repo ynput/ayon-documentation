@@ -24,6 +24,7 @@ input[type="checkbox"] + .checkboxLabel {
   opacity: 0.85;
   transition: opacity 200ms ease-out;
   border: 2px solid var(--ifm-color-secondary-darkest); */
+    user-select: none;
 }
 
 input:focus-visible + .checkboxLabel {
