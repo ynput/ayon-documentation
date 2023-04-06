@@ -26,9 +26,16 @@ import FeatureCard from "./_components/FeatureCard";
 import styles from "./styles.module.scss";
 import SideBar from "./_components/SideBar";
 import HeaderCard from "./_components/HeaderCard";
-import { type Addon, type Feature, addons, features } from "../../data";
+import {
+    type Addon,
+    type Feature,
+    addons,
+    features,
+    addonsIds,
+    featuredAddons,
+    topFeatures,
+} from "../../data";
 import AddonCard from "./_components/AddonCard";
-import { addonsIds, featuredAddons } from "../../data/addons";
 
 type UserState = {
     scrollTopPosition: number;
@@ -206,6 +213,7 @@ function FeaturesCards() {
 
     if (!supportedAddons.length) {
         supportedAddons = null;
+        // if not searching or viewing all, limit to 8
         if (!viewAll && !isSearching) {
             addonsToShow = addons.filter(({ id }) =>
                 featuredAddons.includes(id)
@@ -213,6 +221,13 @@ function FeaturesCards() {
         }
     } else {
         addonsToShow = supportedAddons;
+    }
+
+    // if not searching or viewing all, limit to 8
+    if (!viewAllFeatures && !isSearching) {
+        featuresFiltered = featuresFiltered.filter(({ id }) =>
+            topFeatures.includes(id)
+        );
     }
 
     if (isSearching) {
@@ -234,6 +249,17 @@ function FeaturesCards() {
             return -1;
         }
         if (!featuredAddons.includes(a.id) && featuredAddons.includes(b.id)) {
+            return 1;
+        }
+        return 0;
+    });
+
+    // sort featuresFiltered by if id in topFeatures
+    featuresFiltered.sort((a, b) => {
+        if (topFeatures.includes(a.id) && !topFeatures.includes(b.id)) {
+            return -1;
+        }
+        if (!topFeatures.includes(a.id) && topFeatures.includes(b.id)) {
             return 1;
         }
         return 0;
@@ -323,9 +349,10 @@ function FeaturesCards() {
                         <Heading as="h2" className={styles.showcaseHeader}>
                             {isAddonsSelected
                                 ? "Supported Features"
-                                : "All Features"}
+                                : viewAllFeatures
+                                ? "All Features"
+                                : "Top Features"}
                         </Heading>
-
                         <ul className={clsx("clean-list", styles.showcaseList)}>
                             {featuresFiltered.map((feature) => (
                                 <FeatureCard
@@ -334,6 +361,20 @@ function FeaturesCards() {
                                 />
                             ))}
                         </ul>
+                        {!isAddonsSelected && !isSearching && (
+                            <div
+                                className={clsx(
+                                    "button button--secondary button--md",
+                                    "pagination-nav__link",
+                                    styles.viewAll
+                                )}
+                                onClick={() =>
+                                    setViewAllFeatures(!viewAllFeatures)
+                                }
+                            >
+                                {viewAllFeatures ? "View Less" : "View All"}
+                            </div>
+                        )}
                     </div>
                 )}
             </div>

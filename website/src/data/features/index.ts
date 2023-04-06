@@ -31,3 +31,4 @@ type Feature = FeatureObjectType & { id: FeatureType };
 // export types
 export type { Feature };
 export type { FeatureType } from "./types";
+export { topFeatures } from "./data";

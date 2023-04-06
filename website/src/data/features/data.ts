@@ -1,5 +1,16 @@
 import { type FeatureType, type Feature } from "./types";
 
+export const topFeatures: FeatureType[] = [
+    "workfiles",
+    "loader",
+    "publisher",
+    "appLauncher",
+    "rendering",
+    "scriptBuilding",
+    "sceneManager",
+    "farmRendering",
+];
+
 // to add a new feature, make sure to add it to the FeatureType type first
 const features: { [type in FeatureType]: Feature } = {
     slates: {
