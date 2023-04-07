@@ -133,7 +133,7 @@ export default function Home() {
                         )}
                     >
                         {[...addons].splice(0, 12).map((addon) => (
-                            <AddonCard addon={addon} />
+                            <AddonCard addon={addon} key={addon.id} />
                         ))}
                     </ul>
                     <a href="/features?viewAll=addons">
