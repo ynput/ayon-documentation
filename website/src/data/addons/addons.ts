@@ -2,7 +2,7 @@ import { AddonType } from ".";
 
 // HOW TO CREATE AN ADDON CARD
 
-// 1. duplicate template.ts in the data folder as a template to get started
+// 1. duplicate template.ts (or any other addon) in the data folder as a template to get started
 // 2. rename the file to your addon name (e.g. myAddon.ts)
 // 3. fill in the addon data
 // 4. add the preview or logo image in the addons/img folder "myAddon-logo.png" or "myAddon-preview.png"
