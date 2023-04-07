@@ -10,7 +10,9 @@ import SearchBar from "@theme/SearchBar";
 import AddonCard from "./features/_components/AddonCard";
 import stylesFeatures from "./features/styles.module.scss";
 import FeatureCard from "./features/_components/FeatureCard";
-import { addons, features } from "../data";
+import { addons, families, features } from "../data";
+import FamilyCard from "./features/_components/FamilyCard";
+import Heading from "@theme/Heading";
 
 const links = [
     {
@@ -105,7 +107,11 @@ export default function Home() {
                     styles.features
                 )}
             >
-                <h2 className={clsx("hero__subtitle")}>Addons</h2>
+                <Link href="/features">
+                    <Heading as="h2" className={clsx("hero__subtitle")}>
+                        Addons
+                    </Heading>
+                </Link>
                 <p>
                     AYON is a highly modular system designed to cater to your
                     specific needs. With its extensive library of both official
@@ -127,12 +133,7 @@ export default function Home() {
                         )}
                     >
                         {[...addons].splice(0, 12).map((addon) => (
-                            <a
-                                href={`/features?addons=${addon.id}`}
-                                key={addon.title}
-                            >
-                                <AddonCard addon={addon} />
-                            </a>
+                            <AddonCard addon={addon} />
                         ))}
                     </ul>
                     <a href="/features?viewAll=addons">
@@ -154,7 +155,11 @@ export default function Home() {
                     styles.features
                 )}
             >
-                <h2 className={clsx("hero__subtitle")}>Features</h2>
+                <Link href="/features">
+                    <Heading as="h2" className={clsx("hero__subtitle")}>
+                        Features
+                    </Heading>
+                </Link>
                 <p>
                     AYON has a vast library of built-in features that can be
                     utilized throughout the pipeline and addons.
@@ -173,7 +178,7 @@ export default function Home() {
                             stylesFeatures.showcaseList
                         )}
                     >
-                        {[...features].splice(0, 12).map((feature) => (
+                        {[...features].splice(0, 8).map((feature) => (
                             <FeatureCard feature={feature} key={feature.id} />
                         ))}
                     </ul>
@@ -186,6 +191,54 @@ export default function Home() {
                             )}
                         >
                             View All Features
+                        </div>
+                    </a>
+                </div>
+            </section>
+            <section
+                className={clsx(
+                    "margin-bottom--xl container padding-top--lg padding-bottom--lg",
+                    styles.features
+                )}
+            >
+                <Link href="/docs/artist_publish">
+                    <Heading as="h2" className={clsx("hero__subtitle")}>
+                        Families
+                    </Heading>
+                </Link>
+                <p>
+                    Streamline your data management with our customizable family
+                    categorization system. Efficiently organize data instances
+                    and join the industry standard for efficient data handling
+                    today!
+                </p>
+                <div
+                    className={clsx(
+                        "container",
+                        stylesFeatures.featuresSection,
+                        stylesFeatures.addonsSection
+                    )}
+                >
+                    <ul
+                        className={clsx(
+                            "container",
+                            "clean-list",
+                            stylesFeatures.showcaseList
+                        )}
+                    >
+                        {[...families].splice(0, 16).map((family) => (
+                            <FamilyCard family={family} key={family.id} />
+                        ))}
+                    </ul>
+                    <a href="/features#families">
+                        <div
+                            className={clsx(
+                                "button button--secondary button--md",
+                                "pagination-nav__link",
+                                styles.viewAll
+                            )}
+                        >
+                            View All Families
                         </div>
                     </a>
                 </div>

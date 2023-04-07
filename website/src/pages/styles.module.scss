@@ -71,7 +71,8 @@ html[data-theme="dark"] .title {
     background-color: var(--ifm-color-primary);
     width: 100%;
     gap: 32px;
-    padding: 64px 0;
+    padding: 100px 0;
+    padding-bottom: 120px;
 }
 
 .links {
@@ -134,7 +135,7 @@ html[data-theme="dark"] .title {
         margin-bottom: 3rem;
     }
 
-    a {
+    a:has(div) {
         text-decoration: none;
         z-index: 10;
         color: var(--ifm-color-scheme);

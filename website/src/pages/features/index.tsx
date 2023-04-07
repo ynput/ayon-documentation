@@ -10,14 +10,14 @@ import clsx from "clsx";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
 import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
 
 import Heading from "@theme/Heading";
 import {
     readSearchTags,
     replaceSearchTags,
-    toggleListItem,
 } from "./_components/ShowcaseTagSelect";
-import ShowcaseFilterToggle, {
+import {
     type Operator,
     readOperator,
 } from "./_components/ShowcaseFilterToggle";
@@ -399,16 +399,16 @@ function FeaturesCards() {
                             styles.featuresSection,
                             styles.families
                         )}
-                        id="features"
+                        id="families"
                     >
                         <Heading as="h2" className={styles.showcaseHeader}>
                             {isAddonsSelected
                                 ? "Supported Families"
                                 : "All Families"}
                             {!isAddonsSelected && (
-                                <a href="/docs/artist_publish">
+                                <Link href="/docs/artist_publish">
                                     What are families?
-                                </a>
+                                </Link>
                             )}
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>
