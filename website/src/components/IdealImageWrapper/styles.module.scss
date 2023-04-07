@@ -1,0 +1,35 @@
+.wrapper {
+    height: 100%;
+    position: relative;
+    z-index: 10;
+    display: flex;
+
+    div {
+        height: 100%;
+        background-image: none !important;
+        width: 100%;
+
+        div {
+            display: none;
+        }
+
+        svg {
+            display: none;
+        }
+    }
+
+    img {
+        height: 100% !important;
+        width: auto;
+        object-fit: contain;
+
+        z-index: 20;
+    }
+}
+
+.isPreview {
+    img {
+        object-fit: cover;
+        width: 100%;
+    }
+}

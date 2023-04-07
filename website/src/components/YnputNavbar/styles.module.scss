@@ -1,0 +1,270 @@
+$primary: #000000 !default;
+$secondary: #ffffff !default;
+$tertiary: #00d6a1 !default;
+$quaternary: #468ad2 !default;
+$header_background: #ffffff !default;
+$header_primary: #000000 !default;
+$highlight: #ffff00 !default;
+$danger: #bb1122 !default;
+$success: #3d854d !default;
+$love: #9d256b !default;
+$primary-medium: #696969 !default;
+$primary-low-mid: #909090 !default;
+$highlight-high: #0036e6 !default;
+$highlight-medium: #e0e9ff !default;
+$highlight-low: #e0e9ff !default;
+$selected: #e2e9fe !default;
+$hover: #f0f4fe !default;
+
+.bHeader {
+    background-color: white;
+    width: 100%;
+    height: 48px;
+    margin-bottom: 0;
+    .title {
+        margin-right: 24px;
+        a {
+            color: $secondary;
+        }
+        &:visited {
+            color: $secondary;
+        }
+        .rtl & {
+            float: right;
+            margin-left: 24px;
+            margin-right: 0;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+.bHeader .navPills > li > a:hover {
+    color: white;
+    background-color: $tertiary;
+}
+
+.bHeader .navPills > li > a {
+    color: black;
+}
+
+.bHeader .navPills > li > a:hover {
+    color: white;
+}
+
+.wrap {
+    // increase page max-width to accommodate sidebar width
+    // max-width: calc(var(--d-sidebar-width) + var(--d-max-width));
+    // max-width: var(--d-max-width);
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 16px;
+
+    .contents {
+        position: relative;
+    }
+}
+
+.bHeader {
+    .contents {
+        margin: 8px 0;
+    }
+
+    .title {
+        display: inline;
+        img {
+            max-height: 32px;
+        }
+    }
+
+    nav.links {
+        display: inline-block;
+        vertical-align: top;
+
+        .rtl & {
+            float: right;
+        }
+    }
+
+    .navPills {
+        margin: 0;
+        > li > a {
+            font-weight: 500;
+            color: $secondary;
+            &.active > a,
+            > a.active {
+                color: $secondary;
+                background-color: $quaternary;
+            }
+        }
+    }
+
+    .navPills {
+        margin-left: 0;
+        list-style: none;
+        padding-left: 0;
+        li a {
+            display: block;
+            text-decoration: none;
+        }
+
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        list-style: none;
+
+        > li {
+            display: flex;
+            margin-right: 0.5em;
+
+            > a,
+            button {
+                border: none;
+                border-radius: 0;
+                padding: 6px 12px;
+                color: $primary;
+                font-size: var(--font-0);
+                line-height: var(--line-height-small);
+                box-sizing: border-box;
+                min-height: 30px;
+                display: flex;
+                align-items: center;
+                transition: background-color 0.2s, color 0.2s;
+
+                .d-icon {
+                    margin-right: 5px;
+                    opacity: 0.65;
+                }
+            }
+
+            a.active,
+            button.active {
+                color: $secondary;
+                background-color: $quaternary;
+
+                .d-icon {
+                    opacity: 1;
+                }
+            }
+        }
+
+        li:first-child {
+            a {
+                color: $tertiary;
+
+                &:hover {
+                    background-color: white;
+                }
+            }
+        }
+    }
+
+    .panel {
+        float: right;
+        position: relative;
+        .rtl & {
+            float: left;
+        }
+    }
+
+    ul.icons {
+        text-align: center;
+        margin: 0 0 0 5px;
+        > li {
+            float: left;
+            list-style: none;
+        }
+        a {
+            color: $primary !important;
+            width: 28px;
+            height: 28px;
+            font-size: 16px;
+            line-height: 28px;
+            display: inline-block;
+            margin: 2px;
+        }
+        .rtl & {
+            margin: 0 5px 0 0;
+            > li {
+                float: right;
+            }
+        }
+    }
+
+    .panel > ul.icons {
+        float: right;
+        a,
+        .d-icon {
+            color: $secondary;
+        }
+        .rtl & {
+            float: left;
+        }
+    }
+}
+// Theme: Brand Header Theme Component
+// Target: desktop scss
+// Last Edited: 2023-03-30 12:12:30 UTC
+.bHeader {
+    width: 100%;
+    height: 48px;
+    margin-bottom: 0;
+}
+
+.svgIcon {
+    height: 1em;
+    width: 1em;
+    line-height: 1;
+    display: inline-flex;
+    position: relative;
+    vertical-align: -0.125em;
+    fill: currentColor;
+    flex-shrink: 0; // Prevent the icon from shrinking if it's in a flexbox
+    overflow: visible;
+}
+
+// DISCOURSE HEADER
+:root {
+    --d-sidebar-width: 14em;
+
+    --d-sidebar-animation-time: 0.25s;
+    --d-sidebar-animation-ease: ease-in-out;
+    --d-sidebar-row-height: 30px;
+    // 1.25rem gets text left-aligned with the hamburger icon
+    --d-sidebar-row-horizontal-padding: 1.25rem;
+    --d-sidebar-row-vertical-padding: 0.33rem;
+    --d-sidebar-row-font-size: var(--font-down-1);
+    --d-max-width: 1110px;
+
+    --base-font-size-smallest: 0.815em;
+    --base-font-size-smaller: 0.875em;
+    --base-font-size: 0.938em;
+    --base-font-size-larger: 1.063em;
+    --base-font-size-largest: 1.118em;
+    --font-up-6: 2.296em;
+    --font-up-5: 2em;
+    --font-up-4: 1.7511em;
+    --font-up-3: 1.5157em;
+    --font-up-2: 1.3195em;
+    --font-up-1: 1.1487em;
+    --font-0: 1em;
+    --font-down-1: 0.8706em;
+    --font-down-2: 0.7579em;
+    --font-down-3: 0.6599em;
+    --font-down-4: 0.5745em;
+    --font-down-5: 0.5em;
+    --font-down-6: 0.4355em;
+    --font-up-3-rem: 1.5157rem;
+    --font-up-2-rem: 1.3195rem;
+    --font-up-1-rem: 1.1487rem;
+    --font-0-rem: 1rem;
+    --font-down-1-rem: 0.8706rem;
+    --font-down-2-rem: 0.7579rem;
+    --font-size-ios-input: 1.07em;
+    --line-height-small: 1;
+    --line-height-medium: 1.2;
+    --line-height-large: 1.4;
+}

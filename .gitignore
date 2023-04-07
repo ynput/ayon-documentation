@@ -1,0 +1,17 @@
+.DS_Store
+
+node_modules
+
+lib/core/metadata.js
+lib/core/MetadataBlog.js
+
+website/translated_docs
+website/build/
+website/node_modules
+website/i18n/*
+
+website/debug.log
+
+website/.docusaurus
+website/yarn.lock
+.vscode/settings.json

@@ -1,0 +1,21 @@
+{
+    "title": "Hiero",
+    "description": "Hiero is a versatile VFX tool for artists and teams. It helps you review, edit, and conform shots.",
+    "docs": {
+        "user": "artist_hosts_hiero",
+        "admin": "admin_hosts_hiero"
+    },
+    "preview": "hiero.png",
+    "supportsTitle": "Families",
+    "supports": [
+        { "label": "Render" },
+        { "label": "Plate" },
+        { "label": "Review" },
+        { "label": "LUT" },
+        { "label": "Nukenodes" },
+        { "label": "Gizmo" },
+        { "label": "Workfile" }
+    ],
+    "features": ["rendering"],
+    "github": "https://github.com/ynput/ayon-addons/tree/main/hiero/dev"
+}

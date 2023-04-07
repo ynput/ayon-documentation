@@ -1,0 +1,40 @@
+html[data-theme="dark"] .navbarLogo {
+    img:first-child {
+        display: none;
+    }
+    img:last-child {
+        display: block;
+    }
+}
+
+.logo {
+    flex: 0 0 auto;
+    height: 2rem;
+    position: relative;
+}
+
+.navbarLogo {
+    b {
+        margin-left: 0.5rem;
+    }
+
+    a {
+        &:hover {
+            img {
+                filter: brightness(0) saturate(100%) invert(57%) sepia(79%)
+                    saturate(1448%) hue-rotate(120deg) brightness(98%)
+                    contrast(101%);
+            }
+        }
+    }
+
+    img {
+        height: 100%;
+
+        transition: filter 0.1s;
+
+        &:last-child {
+            display: none;
+        }
+    }
+}

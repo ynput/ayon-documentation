@@ -1,0 +1,118 @@
+/**
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ *
+ * @format
+ */
+
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+    --ifm-color-primary: #00d6a1;
+    --ifm-color-primary-dark: #00c191;
+    --ifm-color-primary-darker: #00b689;
+    --ifm-color-primary-darkest: #009671;
+    --ifm-color-primary-light: #00ebb1;
+    --ifm-color-primary-lighter: #00f6b9;
+    --ifm-color-primary-lightest: #17ffc6;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme="dark"] {
+    --ifm-color-primary: #00d6a1;
+}
+/* Styling one class specially in dark mode */
+[data-theme="dark"] .white-text {
+    color: black;
+}
+
+body {
+    font-weight: var(--ifm-font-weight-normal);
+}
+
+h2 {
+    margin-bottom: 2rem;
+}
+
+h5,
+h6 {
+    font-weight: var(--ifm-font-weight-semibold);
+}
+
+.screen-reader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    clip-path: polygon(0 0, 0 0, 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+    white-space: nowrap;
+}
+
+.darkBackground {
+    padding: 2rem;
+    background: linear-gradient(
+        135deg,
+        rgba(135, 135, 135, 0.3) 60%,
+        rgba(100, 100, 100, 0.3) 60.01%
+    );
+    background-position: 50% 0;
+    position: relative;
+    color: black;
+    text-align: center;
+}
+
+.lightBackground {
+    padding: 2rem;
+    background: linear-gradient(-135deg, #f5fffb 40%, white 40.01%);
+    background-position: 50% 0;
+    position: relative;
+    color: black;
+}
+
+.footer__links {
+    text-align: center;
+}
+
+/* redoc */
+.menu-content {
+    top: 60px !important;
+}
+
+.menu-content .scrollbar-container > ul + div {
+    position: relative;
+}
+
+/* remove default logo */
+.navbar__items > a.navbar__brand {
+    display: none;
+}
+
+.custom-logo {
+    display: inline-flex;
+}
+
+.custom-logo + .custom-logo a {
+    margin-left: 1rem;
+}
+
+/* divider between logos */
+.custom-logo + .custom-logo::before {
+    content: "|";
+    display: inline-block;
+    position: absolute;
+}

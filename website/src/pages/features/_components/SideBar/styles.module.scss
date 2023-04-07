@@ -1,0 +1,64 @@
+.toolbar {
+    display: none;
+}
+
+.checkboxListItem {
+    margin: 8px 0;
+}
+
+.title {
+    color: var(--ifm-menu-color-active);
+    // remove hover effect
+    &:hover {
+        background-color: initial;
+        color: var(--ifm-menu-color-active);
+    }
+    font-weight: var(--ifm-font-weight-bold);
+
+    span {
+        color: var(--ifm-menu-color);
+        opacity: 0.75;
+        font-weight: var(--ifm-font-weight-normal);
+        margin-left: 16px;
+    }
+}
+
+@media (min-width: 997px) {
+    .toolbar {
+        display: block;
+        width: var(--doc-sidebar-width);
+        margin-top: calc(-1 * var(--ifm-navbar-height));
+        border-right: 1px solid var(--ifm-toc-border-color);
+        will-change: width;
+        transition: width var(--ifm-transition-fast) ease;
+        clip-path: inset(0);
+    }
+
+    .sidebarWrapper {
+        top: 0;
+        position: sticky;
+        height: 100%;
+        max-height: 100vh;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding-top: var(--ifm-navbar-height);
+            width: var(--doc-sidebar-width);
+        }
+
+        nav {
+            padding: 0.5rem;
+            scrollbar-gutter: stable;
+            flex-grow: 1;
+            overflow-y: auto;
+
+            ul {
+                list-style: none;
+                padding-left: 1rem;
+                margin: 0;
+            }
+        }
+    }
+}

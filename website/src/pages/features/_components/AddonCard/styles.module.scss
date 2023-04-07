@@ -1,0 +1,74 @@
+.image {
+    overflow: hidden;
+    height: 150px;
+    // border-bottom: 2px solid var(--ifm-color-emphasis-200);
+
+    border-radius: var(--ifm-card-border-radius);
+
+    // hidden div that's added at build
+    & > div {
+        height: 100% !important;
+    }
+
+    img {
+        height: 100% !important;
+        object-fit: cover;
+    }
+}
+
+/* addon */
+.card {
+    cursor: pointer;
+    --border-width: 0;
+    &::after {
+        transition: all 0.5s;
+
+        position: absolute;
+        border-radius: var(--ifm-card-border-radius);
+        opacity: 0;
+        content: "";
+        top: calc(-1 * var(--border-width));
+        left: calc(-1 * var(--border-width));
+        z-index: -1;
+        width: calc(100% + var(--border-width) * 2);
+        height: calc(100% + var(--border-width) * 2);
+    }
+}
+
+.link {
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.card:hover {
+    --border-width: 2px;
+    position: relative;
+    overflow: visible;
+
+    &::after {
+        content: "";
+        opacity: 1;
+
+        background: linear-gradient(
+            60deg,
+            hsl(165, 100%, 50%),
+            hsl(165, 100%, 35%),
+            hsl(168, 100%, 15%),
+            hsl(165, 100%, 35%),
+            hsl(165, 100%, 77%)
+        );
+        background-size: 300% 300%;
+        background-position: 0 50%;
+
+        animation: moveGradient 3.5s alternate infinite;
+    }
+}
+
+@keyframes moveGradient {
+    50% {
+        background-position: 100% 50%;
+    }
+}

@@ -1,0 +1,34 @@
+.link {
+    color: inherit;
+
+    &:hover {
+        text-decoration: unset;
+    }
+}
+
+.card {
+    &:hover {
+        color: var(--ifm-color-primary);
+    }
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    gap: 8px;
+}
+
+.title {
+    margin-bottom: 0;
+    flex: 1 1 auto;
+}
+
+.title,
+.header {
+    margin-right: 0.25rem;
+}
+
+.header {
+    color: var(--site-color-svg-icon-favorite);
+}

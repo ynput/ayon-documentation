@@ -1,0 +1,13 @@
+{
+    "title": "Fusion",
+    "description": "Fusion is a visual effects and motion graphics tool that helps you create high-quality effects.",
+    "docs": {
+        "user": "artist_hosts_resolve",
+        "admin": "admin_hosts_resolve"
+    },
+    "supportsTitle": "Families",
+    "supports": [{ "label": "Plate" }, { "label": "Review" }],
+    "features": ["workfiles", "rendering"],
+    "icon": "fusion-icon.png",
+    "github": "https://github.com/ynput/ayon-addons/tree/main/fusion/dev"
+}
