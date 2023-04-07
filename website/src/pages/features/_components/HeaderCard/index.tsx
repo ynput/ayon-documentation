@@ -93,7 +93,19 @@ function HeaderCard({
                                 styles.button
                             )}
                         >
-                            Github
+                            Code
+                        </Link>
+                    )}
+                    {addon.discussion && (
+                        <Link
+                            href={addon.discussion}
+                            className={clsx(
+                                "button button--secondary button--md",
+                                "pagination-nav__link",
+                                styles.button
+                            )}
+                        >
+                            Discussion
                         </Link>
                     )}
                 </div>

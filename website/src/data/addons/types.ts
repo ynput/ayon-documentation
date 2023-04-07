@@ -15,6 +15,7 @@ export type Addon = {
     addons?: AddonType[];
     docs?: { [type in DocType]?: string };
     github?: string;
+    discussion?: string;
     id?: string;
 };
 
@@ -27,5 +28,6 @@ export type Addon = {
 // families | An array of families that the addon supports | ["image", "video", "model"]
 // addons | An array of addons that the addon supports | ["nuke", "maya"]
 // docs | An object of documentation links for the addon | { "user": "artist_hosts_blender", "admin": "admin_hosts_blender", "developer": "dev_publishing" }
-// github | A link to the github repository of the addon
+// github | A link to the github code repository of the addon
+// discussion | A link to the discussion forum of the addon
 // id | The id of the addon, if not set (recommended) it will be the same as the filename | "blender"

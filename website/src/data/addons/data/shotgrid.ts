@@ -7,6 +7,7 @@ const addon: Addon = {
     icon: "shotgrid-icon.png",
     features: ["projectManager"],
     github: "https://github.com/ynput/ayon-addons/tree/main/shotgrid/dev",
+    discussion: "https://community.ynput.io/t/shotgrid-integration-addon/63",
 };
 
 export default addon;
