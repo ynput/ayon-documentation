@@ -40,8 +40,6 @@ export const officialAddons = [
     "celaction",
     "clockify",
     "flame",
-    "kitsu",
-    "muster",
     "resolve",
     "royalRender",
     "unreal",
@@ -49,17 +47,20 @@ export const officialAddons = [
 ] as const;
 
 // COMMUNITY ADDONS
-export const communityAddons = [] as const;
+export const communityAddons = [
+    "kitsu",
+    "muster",
+] as const;
 
 // featured addons
 // pick addons from community or official to be featured on the homepage
 export const featuredAddons: AddonType[] = [
     "nuke",
     "maya",
+    "unreal",
+    "houdini",
     "afterEffects",
-    "deadline",
-    "hiero",
+    "shotgrid",
     "blender",
-    "fusion",
-    "harmony",
+    "ftrack",
 ];
