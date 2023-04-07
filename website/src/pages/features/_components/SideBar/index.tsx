@@ -28,7 +28,7 @@ const SideBar = () => {
                     <nav aria-label="Docs sidebar">
                         <label className={clsx("menu__link", styles.title)}>
                             Addons
-                            <span>(shift for multi-select)</span>
+                            <span>(hold shift to compare)</span>
                         </label>
                         <ul className="theme-doc-sidebar-menu menu__list">
                             {addons.map(({ id, title }, i) => (

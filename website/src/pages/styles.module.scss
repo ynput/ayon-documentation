@@ -1,34 +1,20 @@
-/**
- * Copyright (c) Meta Platforms, Inc. and affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- *
- * @format
- */
-
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
 .header {
     text-align: center;
     position: relative;
     overflow: hidden;
-    background-color: var(--ifm-background-surface-color);
+    background-color: var(--ifm-background-color);
     min-height: calc(100vh - 60px - 48px);
     display: flex;
     flex-direction: column;
 }
 
 .hero {
-    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     max-width: 500px;
+    min-height: calc(500px - 60px);
     margin: auto;
     gap: 16px;
 
@@ -44,7 +30,8 @@
 }
 
 .logo {
-    width: 400px;
+    width: auto;
+    height: 145px;
     margin: 0 auto;
 }
 
@@ -71,8 +58,9 @@ html[data-theme="dark"] .title {
     background-color: var(--ifm-color-primary);
     width: 100%;
     gap: 32px;
-    padding: 100px 0;
-    padding-bottom: 120px;
+
+    flex: 1;
+    padding: 64px 0;
 }
 
 .links {
