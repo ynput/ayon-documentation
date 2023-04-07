@@ -426,10 +426,7 @@ function FeaturesCards() {
 export default function Features(): JSX.Element {
     return (
         <Layout title="Features">
-            <div
-                style={{ width: "100vw" }}
-                className={styles.showcaseContainer}
-            >
+            <div style={{ width: "100%" }} className={styles.showcaseContainer}>
                 <SideBar />
                 <main>
                     <FeaturesCards />

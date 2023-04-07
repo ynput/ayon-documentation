@@ -7,6 +7,7 @@ import { useLocation } from "@docusaurus/router";
 import { Feature } from "../../../../data";
 import IdealImageWrapper from "../../../../components/IdealImageWrapper";
 import Close from "../HeaderCard/close.svg";
+import Link from "@docusaurus/Link";
 
 const TagComp = React.forwardRef<HTMLLIElement, any>(
     ({ tag, isActive, label }, ref) => (
@@ -130,27 +131,57 @@ function FeatureCard({ feature }: { feature: Feature }) {
                 </button>
             </li>
 
-            <div
-                className={clsx(
-                    styles.modal,
-                    modalOpen ? styles.open : styles.closed
-                )}
-            >
+            {hasPreview && (
                 <div
-                    className={styles.backdrop}
-                    onClick={() => setModalOpen(false)}
-                />
-                <div className={styles.modalInner}>
-                    <Media className={styles.modalMedia} />
-                    <button
-                        className={clsx("clean-btn", styles.close)}
+                    className={clsx(
+                        styles.modal,
+                        modalOpen ? styles.open : styles.closed
+                    )}
+                >
+                    <div
+                        className={styles.backdrop}
                         onClick={() => setModalOpen(false)}
-                        tabIndex={modalOpen ? 0 : -1}
-                    >
-                        <Close />
-                    </button>
+                    />
+                    <div className={styles.modalInner}>
+                        <Media className={styles.modalMedia} />
+
+                        <div className="card__body">
+                            <div className={clsx(styles.header)}>
+                                <Heading as="h1" className={styles.title}>
+                                    {feature.title}
+                                </Heading>
+                                {feature.docs &&
+                                    Object.entries(feature.docs).map(
+                                        ([k, v]) => (
+                                            <Link
+                                                href={"/docs/" + v}
+                                                className={clsx(
+                                                    "button button--secondary button--md",
+                                                    "pagination-nav__link",
+                                                    styles.button
+                                                )}
+                                                key={k}
+                                                tabIndex={modalOpen ? 0 : -1}
+                                            >
+                                                {k.charAt(0).toUpperCase() +
+                                                    k.slice(1)}{" "}
+                                                Docs
+                                            </Link>
+                                        )
+                                    )}
+                            </div>
+                        </div>
+
+                        <button
+                            className={clsx("clean-btn", styles.close)}
+                            onClick={() => setModalOpen(false)}
+                            tabIndex={modalOpen ? 0 : -1}
+                        >
+                            <Close />
+                        </button>
+                    </div>
                 </div>
-            </div>
+            )}
         </>
     );
 }
