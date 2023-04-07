@@ -11,7 +11,7 @@ export const topFeatures: FeatureType[] = [
     "farmRendering",
 ];
 
-// to add a new feature, make sure to add it to the FeatureType type first (^^^above^^^)
+// to add a new feature, make sure to add it to the FeatureType type inside ./types.ts
 const features: { [type in FeatureType]: Feature } = {
     slates: {
         title: "Slates",
