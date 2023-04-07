@@ -14,11 +14,11 @@ const addon: Addon = {
         "reviewables",
         "publisher",
     ],
+    families: ["nukeNodes", "camera", "gizmo", "source", "render", "write"],
     docs: {
         user: "artist_hosts_nuke",
         admin: "admin_hosts_nuke",
     },
-    families: ["nukeNodes", "camera", "gizmo", "source", "render", "write"],
     github: "https://github.com/ynput/ayon-addons/tree/main/nuke/dev",
 };
 
