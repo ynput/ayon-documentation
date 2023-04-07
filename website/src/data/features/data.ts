@@ -5,7 +5,7 @@ export const topFeatures: FeatureType[] = [
     "loader",
     "publisher",
     "appLauncher",
-    "rendering",
+    "localRendering",
     "scriptBuilding",
     "sceneManager",
     "farmRendering",
@@ -25,14 +25,6 @@ const features: { [type in FeatureType]: Feature } = {
         preview: "workfiles.png",
         docs: {
             user: "artist_tools_workfiles",
-        },
-    },
-    creator: {
-        title: "Creator",
-        description:
-            "Universal GUI for defining content for publishing from your DCC app.",
-        docs: {
-            user: "artist_tools_creator",
         },
     },
     loader: {
@@ -113,10 +105,10 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Integrations with Deadline and Muster render managers. Render, publish and generate reviews on the farm.",
     },
-    remote: {
-        title: "Remote",
+    remoteWorkflow: {
+        title: "Remote Workflow",
         description:
-            "Production proven in fully remote workflows. Pype can run of cloud servers and storage.",
+            "Production proven in fully remote workflows. AYON can run of cloud servers and storage.",
     },
     sceneBuilder: {
         title: "Scene Builder",
@@ -131,15 +123,6 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Generate automated reviewable quicktimes and sequences in any format, with metadata burnins.",
     },
-    scriptBuilding: {
-        title: "Script Building",
-        description:
-            "Automatically build initial workfiles from published plates or renders",
-        preview: "script_building.png",
-        docs: {
-            user: "artist_hosts_nuke#build-first-work-file",
-        },
-    },
     colorManaged: {
         title: "Color Managed",
         description: "Fully colour managed outputs for work and review",
@@ -153,10 +136,10 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Template system for centrally controlled node parameters.",
     },
-    rendering: {
-        title: "Rendering",
+    localRendering: {
+        title: "Local Rendering",
         description:
-            "Support for local and farm renders, including baked reviews.",
+            "Support for local renders and their publishing.",
         preview: "rendering.png",
     },
 };

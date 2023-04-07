@@ -9,7 +9,12 @@ const addon: Addon = {
         user: "artist_kitsu",
         admin: "module_kitsu",
     },
-    github: "https://github.com/ynput/ayon-addons/tree/main/kitsu/dev",
+    features: ["appLauncher",
+    "reviewables",
+    "trayPublisher",
+    "projectManager",
+],
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/kitsu",
 };
 
 export default addon;

@@ -8,10 +8,22 @@ const addon: Addon = {
         user: "artist_hosts_resolve",
         admin: "admin_hosts_resolve",
     },
-    families: ["plate", "review"],
-    features: ["workfiles", "rendering", "reviewables"],
+    families: ["image", "review", "render", "plate", "model", "pointcache"],
+    features: [
+        "workfiles",
+        "loader",
+        "publisher",
+        "sceneManager",
+        "libraryLoader",
+        "reviewables",
+        "slates",
+        "colorManaged",
+        "localRendering",
+        "farmRendering",
+        "nodePresets",
+    ],
     icon: "fusion-icon.png",
-    github: "https://github.com/ynput/ayon-addons/tree/main/fusion/dev",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/fusion",
 };
 
 export default addon;

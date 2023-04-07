@@ -9,24 +9,22 @@ export type Feature = {
 };
 
 export type FeatureType =
-    | "slates"
     | "workfiles"
-    | "creator"
     | "loader"
     | "publisher"
     | "sceneManager"
-    | "projectManager"
     | "libraryLoader"
-    | "trayPublisher"
+    | "reviewables"
+    | "slates"
+    | "colorManaged"
+    | "farmRendering"
+    | "localRendering"
     | "appLauncher"
+    | "trayPublisher"
+    | "projectManager"
     | "configurationGUI"
     | "siteSync"
+    | "remoteWorkflow"
     | "timersManager"
-    | "farmRendering"
-    | "remote"
     | "sceneBuilder"
-    | "reviewables"
-    | "scriptBuilding"
-    | "colorManaged"
-    | "nodePresets"
-    | "rendering";
+    | "nodePresets";

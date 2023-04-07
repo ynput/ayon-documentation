@@ -14,7 +14,7 @@ const addon: Addon = {
     },
     github: "https://github.com/ynput/ayon-addon-name",
     families: ["render", "plate", "image", "background"],
-    features: ["rendering", "workfiles"],
+    features: ["localRendering", "workfiles"],
     addons: ["nuke", "flame"],
 };
 

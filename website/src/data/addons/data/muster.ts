@@ -8,7 +8,7 @@ const addon: Addon = {
     docs: {
         admin: "module_muster",
     },
-    github: "https://github.com/ynput/ayon-addons/tree/main/muster/dev",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/muster",
 };
 
 export default addon;

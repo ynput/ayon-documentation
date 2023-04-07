@@ -1,9 +1,9 @@
 import { type Addon } from "../types";
 
 const addon: Addon = {
-    title: "Houdini",
+    title: "3ds Max",
     description:
-        "Houdini is a 3D animation software tool set used for creating visual effects in film and television.",
+        "3ds Max is a 3D animation software tool set used for creating visual effects in film and television.",
     icon: "houdini-icon.png",
     features: [
         "workfiles",
@@ -11,9 +11,19 @@ const addon: Addon = {
         "publisher",
         "sceneManager",
         "libraryLoader",
+        "reviewables",
         "slates",
+        "colorManaged",
+        "farmRendering",
     ],
-    families: ["model", "pointcache", "VDBCache", "camera"],
+    families: [
+        "model",
+        "camera",
+        "workfile",
+        "cache",
+        "pointCloud",
+        "maxScene"
+    ],
     docs: {
         user: "artist_hosts_houdini",
         admin: "admin_hosts_houdini",

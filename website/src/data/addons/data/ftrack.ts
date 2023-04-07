@@ -9,7 +9,13 @@ const addon: Addon = {
     },
     preview: "ftrack.png",
     github: "https://github.com/ynput/ayon-ftrack",
-    features: ["appLauncher"],
+    features: ["appLauncher",
+    "reviewables",
+    "trayPublisher",
+    "projectManager",
+    "timersManager",
+    "appLauncher",
+],
 };
 
 export default addon;

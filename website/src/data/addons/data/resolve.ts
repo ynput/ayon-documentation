@@ -9,7 +9,7 @@ const addon: Addon = {
         user: "artist_hosts_resolve",
         admin: "admin_hosts_resolve",
     },
-    github: "https://github.com/ynput/ayon-addons/tree/main/resolve/dev",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/resolve",
 };
 
 export default addon;

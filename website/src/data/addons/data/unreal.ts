@@ -8,7 +8,7 @@ const addon: Addon = {
     docs: {
         user: "artist_hosts_unreal",
     },
-    github: "https://github.com/ynput/ayon-addons/tree/main/unreal/dev",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/unreal",
 };
 
 export default addon;

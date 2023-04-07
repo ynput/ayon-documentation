@@ -24,6 +24,7 @@ import { AddonType } from ".";
 
 // OFFICIAL ADDONS
 export const officialAddons = [
+    "core",
     "nuke",
     "ftrack",
     "houdini",
@@ -44,6 +45,7 @@ export const officialAddons = [
     "royalRender",
     "unreal",
     "slack",
+    "3dsmax"
 ] as const;
 
 // COMMUNITY ADDONS
