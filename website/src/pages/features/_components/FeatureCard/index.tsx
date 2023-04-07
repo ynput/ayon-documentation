@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { KeyboardEventHandler, useState } from "react";
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
@@ -109,42 +109,47 @@ function FeatureCard({ feature }: { feature: Feature }) {
                 className={clsx(
                     "card",
                     "shadow--md",
-                    hasPreview && styles.hasPreview
+                    hasPreview && styles.hasPreview,
+                    styles.card
                 )}
                 onClick={() => hasPreview && setModalOpen(true)}
             >
                 <div className={clsx("card__image")}>
-                    <div className={clsx(styles.showcaseCardImage)}>
-                        <div className={clsx(styles.showcaseCardImageInner)}>
-                            <Media />
-                        </div>
+                    <div className={clsx(styles.image)}>
+                        <Media />
                     </div>
                 </div>
                 <div className="card__body">
-                    <div className={clsx(styles.showcaseCardHeader)}>
-                        <Heading as="h4" className={styles.showcaseCardTitle}>
+                    <div className={clsx(styles.header)}>
+                        <Heading as="h4" className={styles.title}>
                             {feature.title}
                         </Heading>
                     </div>
 
-                    <p className={styles.showcaseCardBody}>
-                        {feature.description}
-                    </p>
+                    <p className={styles.body}>{feature.description}</p>
                 </div>
             </li>
-            {modalOpen && (
-                <div className={styles.modal}>
-                    <div className={styles.modalInner}>
-                        <Media className={styles.modalMedia} />
-                        <button
-                            className={clsx("clean-btn", styles.close)}
-                            onClick={() => setModalOpen(false)}
-                        >
-                            <Close />
-                        </button>
-                    </div>
+
+            <div
+                className={clsx(
+                    styles.modal,
+                    modalOpen ? styles.open : styles.closed
+                )}
+            >
+                <div
+                    className={styles.backdrop}
+                    onClick={() => setModalOpen(false)}
+                />
+                <div className={styles.modalInner}>
+                    <Media className={styles.modalMedia} />
+                    <button
+                        className={clsx("clean-btn", styles.close)}
+                        onClick={() => setModalOpen(false)}
+                    >
+                        <Close />
+                    </button>
                 </div>
-            )}
+            </div>
         </>
     );
 }

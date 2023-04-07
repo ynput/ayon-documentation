@@ -1,6 +1,8 @@
-.showcaseCardImage {
+.image {
     overflow: hidden;
     height: 150px;
+
+    transition: scale 0.15s;
     // border-bottom: 2px solid var(--ifm-color-emphasis-200);
 
     border-radius: var(--ifm-card-border-radius);
@@ -22,18 +24,18 @@
     }
 }
 
-.showcaseCardHeader {
+.header {
     display: flex;
     align-items: center;
     margin-bottom: 12px;
 }
 
-.showcaseCardTitle {
+.title {
     margin-bottom: 0;
     flex: 1 1 auto;
 }
 
-.showcaseCardTitle a {
+.title a {
     text-decoration: none;
     background: linear-gradient(
             var(--ifm-color-primary),
@@ -43,70 +45,59 @@
     transition: background-size ease-out 200ms;
 }
 
-.showcaseCardSrcBtn {
-    margin-left: 6px;
-    padding-left: 12px;
-    padding-right: 12px;
-    border: none;
-}
-
-[data-theme="dark"] .showcaseCardSrcBtn {
-    background-color: var(--ifm-color-emphasis-200) !important;
-    color: inherit;
-}
-
-[data-theme="dark"] .showcaseCardSrcBtn:hover {
-    background-color: var(--ifm-color-emphasis-300) !important;
-}
-
-.showcaseCardBody {
+.body {
     font-size: smaller;
     line-height: 1.66;
 }
 
-.cardFooter {
-    display: flex;
-    flex-wrap: nowrap;
-    overflow: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    span {
-        white-space: nowrap;
-    }
-}
-
-.tag {
-    font-size: 0.675rem;
-    border: 1px solid var(--ifm-color-secondary-darkest);
-    cursor: default;
-    margin-right: 6px;
-    margin-bottom: 6px !important;
-    border-radius: 12px;
-    display: inline-flex;
-    align-items: center;
-}
-
-.tag .textLabel {
-    margin: 0 8px;
-}
-
-.tag.isActive {
-    border: 1px solid var(--ifm-color-primary);
-}
-
-.tag .colorLabel {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    margin-left: 6px;
-    margin-right: 6px;
-}
-
 .hasPreview {
     cursor: pointer;
+
+    border: 1px solid var(--ifm-color-primary);
+    border-color: transparent;
+    margin: -1px;
+
+    transition: border-color 0.15s;
+
+    &:hover {
+        border-color: var(--ifm-color-primary);
+        border-width: 1px;
+
+        .image {
+            scale: 1.05;
+        }
+    }
+}
+
+.closed {
+    opacity: 0;
+    // hide it
+    user-select: none;
+    pointer-events: none;
+
+    .modalInner {
+        scale: 0.3;
+    }
+}
+
+.open {
+    opacity: 1;
+
+    .modalInner {
+        scale: 1;
+        left: 50%;
+        top: 50%;
+
+        transition: all 0.15s;
+    }
+}
+
+.modal {
+    transition: opacity 0.15s;
+
+    .modalInner {
+        transform-origin: 0 0;
+    }
 }
 
 .modal {
@@ -115,15 +106,28 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+    .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+        cursor: pointer;
+    }
 
     .modalInner {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 80%;
+        max-height: 80%;
         max-width: 1920px;
-        position: relative;
+        z-index: 10;
     }
 
     .close {
