@@ -76,7 +76,7 @@ function FeatureTag({
 }
 
 function FeatureCard({ feature }: { feature: Feature }) {
-    const hasPreview = !!feature.preview?.default;
+    const hasPreview = !!feature.preview;
     const isVideo = feature.preview?.default?.includes(".mp4");
 
     // modal open state
