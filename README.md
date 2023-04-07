@@ -14,7 +14,7 @@
 
 If you spot something incorrect or just think a page could do with some improvement, help us out!
 
-1. Make the changes to the relavant markdown file.
+1. Make the changes to the relevant markdown file.
 2. Make a PR documenting the changes.
 
 ## Addons
