@@ -13,10 +13,12 @@ function HeaderCard({
     addon,
     showSupport,
     onClose,
+    autoFocus,
 }: {
     addon: Addon;
     showSupport: boolean;
     onClose: (tag: string) => void;
+    autoFocus?: boolean;
 }) {
     if (!addon) return null;
 
@@ -33,6 +35,7 @@ function HeaderCard({
             <button
                 className={clsx("clean-btn", styles.close)}
                 onClick={() => onClose(addon.id as string)}
+                autoFocus={autoFocus}
             >
                 <Close />
             </button>

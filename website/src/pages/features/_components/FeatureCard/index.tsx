@@ -4,8 +4,7 @@ import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
 import { readSearchTags } from "../ShowcaseTagSelect";
 import { useLocation } from "@docusaurus/router";
-import { addons, Feature } from "../../../../data";
-import { addonsIds } from "../../../../data/addons";
+import { Feature } from "../../../../data";
 import IdealImageWrapper from "../../../../components/IdealImageWrapper";
 import Close from "../HeaderCard/close.svg";
 
@@ -112,22 +111,23 @@ function FeatureCard({ feature }: { feature: Feature }) {
                     hasPreview && styles.hasPreview,
                     styles.card
                 )}
-                onClick={() => hasPreview && setModalOpen(true)}
             >
-                <div className={clsx("card__image")}>
-                    <div className={clsx(styles.image)}>
-                        <Media />
+                <button onClick={() => setModalOpen(true)}>
+                    <div className={clsx("card__image")}>
+                        <div className={clsx(styles.image)}>
+                            <Media />
+                        </div>
                     </div>
-                </div>
-                <div className="card__body">
-                    <div className={clsx(styles.header)}>
-                        <Heading as="h4" className={styles.title}>
-                            {feature.title}
-                        </Heading>
-                    </div>
+                    <div className="card__body">
+                        <div className={clsx(styles.header)}>
+                            <Heading as="h4" className={styles.title}>
+                                {feature.title}
+                            </Heading>
+                        </div>
 
-                    <p className={styles.body}>{feature.description}</p>
-                </div>
+                        <p className={styles.body}>{feature.description}</p>
+                    </div>
+                </button>
             </li>
 
             <div
@@ -145,6 +145,7 @@ function FeatureCard({ feature }: { feature: Feature }) {
                     <button
                         className={clsx("clean-btn", styles.close)}
                         onClick={() => setModalOpen(false)}
+                        tabIndex={modalOpen ? 0 : -1}
                     >
                         <Close />
                     </button>

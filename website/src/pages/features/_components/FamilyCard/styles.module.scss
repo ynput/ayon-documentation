@@ -1,16 +1,14 @@
-.card {
-    a {
-        color: initial;
-
-        &:hover {
-            text-decoration: unset;
-        }
-    }
+.link {
+    color: inherit;
 
     &:hover {
-        a {
-            color: var(--ifm-color-primary);
-        }
+        text-decoration: unset;
+    }
+}
+
+.card {
+    &:hover {
+        color: var(--ifm-color-primary);
     }
 }
 

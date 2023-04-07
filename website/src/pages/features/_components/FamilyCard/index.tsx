@@ -7,14 +7,15 @@ import Link from "@docusaurus/Link";
 
 function FamilyCard({ family }: { family: Family }) {
     return (
-        <li
-            key={family.title}
-            className={clsx("card", "shadow--md", styles.card)}
+        <Link
+            href={`/docs/artist_publish${
+                family.docs ? family.docs : "#families"
+            }`}
+            className={styles.link}
         >
-            <Link
-                href={`/docs/artist_publish${
-                    family.docs ? family.docs : "#families"
-                }`}
+            <li
+                key={family.title}
+                className={clsx("card", "shadow--md", styles.card)}
             >
                 <div className="card__body">
                     <div className={clsx(styles.header)}>
@@ -26,8 +27,8 @@ function FamilyCard({ family }: { family: Family }) {
                         </Heading>
                     </div>
                 </div>
-            </Link>
-        </li>
+            </li>
+        </Link>
     );
 }
 

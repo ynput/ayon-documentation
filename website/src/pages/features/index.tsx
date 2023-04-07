@@ -127,6 +127,7 @@ function SearchBar({ value, setValue }) {
                 placeholder={"Search..."}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
+                autoFocus
             />
         </div>
     );
@@ -301,6 +302,7 @@ function FeaturesCards() {
                                     addonsFiltered.length - 1 === index)
                             }
                             onClose={() => toggleTag(addon.id, true)}
+                            autoFocus={index === 0}
                         />
                     ))}
                 </ul>
@@ -336,16 +338,12 @@ function FeaturesCards() {
                                 styles.showcaseList
                             )}
                         >
-                            {addonsToShow.map((addon) => (
-                                <AddonCard
-                                    key={addon.title}
-                                    addon={addon}
-                                    onClick={() => toggleTag(addon.id, false)}
-                                />
+                            {addonsToShow.map((addon, i) => (
+                                <AddonCard key={addon.title} addon={addon} />
                             ))}
                         </ul>
                         {!isAddonsSelected && !isSearching && (
-                            <div
+                            <button
                                 className={clsx(
                                     "button button--secondary button--md",
                                     "pagination-nav__link",
@@ -354,7 +352,7 @@ function FeaturesCards() {
                                 onClick={() => setViewAll(!viewAll)}
                             >
                                 {viewAll ? "View Less" : "View All"}
-                            </div>
+                            </button>
                         )}
                     </div>
                 )}
@@ -379,7 +377,7 @@ function FeaturesCards() {
                             ))}
                         </ul>
                         {!isAddonsSelected && !isSearching && (
-                            <div
+                            <button
                                 className={clsx(
                                     "button button--secondary button--md",
                                     "pagination-nav__link",
@@ -390,7 +388,7 @@ function FeaturesCards() {
                                 }
                             >
                                 {viewAllFeatures ? "View Less" : "View All"}
-                            </div>
+                            </button>
                         )}
                     </div>
                 )}
