@@ -5,12 +5,22 @@ const addon: Addon = {
     description:
         "Hiero is a versatile VFX tool for artists and teams. It helps you review, edit, and conform shots.",
     preview: "hiero.png",
-    features: ["rendering", "farmRendering", "workfiles"],
+    features: [
+        "workfiles",
+        "loader",
+        "publisher",
+        "sceneManager",
+        "libraryLoader",
+        "reviewables",
+        "colorManaged",
+        "localRendering",
+    ],
     families: [
         "render",
         "plate",
         "review",
         "lut",
+        "image",
         "nukeNodes",
         "gizmo",
         "workfile",
@@ -19,7 +29,7 @@ const addon: Addon = {
         user: "artist_hosts_hiero",
         admin: "admin_hosts_hiero",
     },
-    github: "https://github.com/ynput/ayon-addons/tree/main/hiero/dev",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/hiero",
 };
 
 export default addon;

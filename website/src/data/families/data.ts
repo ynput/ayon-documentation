@@ -16,11 +16,6 @@ const families: { [type in FamilyType]: Family } = {
         icon: "accessibility",
         docs: "#rig",
     },
-    assembly: {
-        title: "Assembly",
-        icon: "grid_view",
-        docs: "#assembly",
-    },
     layout: {
         title: "Layout",
         icon: "nature_people",
@@ -46,10 +41,6 @@ const families: { [type in FamilyType]: Family } = {
         icon: "animation",
         docs: "#cache",
     },
-    mayaAscii: {
-        title: "MayaAscii",
-        icon: "imagesmode",
-    },
     render: {
         title: "Render",
         icon: "photo_library",
@@ -67,10 +58,6 @@ const families: { [type in FamilyType]: Family } = {
         title: "Plate",
         icon: "camera_roll",
     },
-    write: {
-        title: "Write",
-        icon: "flag",
-    },
     image: {
         title: "Image",
         icon: "imagesmode",
@@ -80,11 +67,11 @@ const families: { [type in FamilyType]: Family } = {
         icon: "filter",
     },
     review: {
-        title: "review",
+        title: "Review",
         icon: "smart_display",
     },
     texture: {
-        title: "texture",
+        title: "Texture",
         icon: "Texture",
     },
     matchmove: {
@@ -147,18 +134,22 @@ const families: { [type in FamilyType]: Family } = {
         title: "Background",
         icon: "wallpaper",
     },
-    action: {
-        title: "Point Cache",
-        icon: "engineering",
-    },
     pointcache: {
         title: "Point Cache",
         icon: "grain",
     },
-    source: {
-        title: "Source",
-        icon: "settings_input_hdmi",
+    pointCloud: {
+        title: "Point Cloud",
+        icon: "grain",
     },
+    mayaScene: {
+        title: "Maya Scene",
+        icon: "home_repair_service",
+    },
+    maxScene: {
+        title: "Max Scene",
+        icon: "home_repair_service",
+    }
 };
 
 export default families;

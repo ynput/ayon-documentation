@@ -8,7 +8,16 @@ const addon: Addon = {
         user: "artist_hosts_blender",
         admin: "admin_hosts_blender",
     },
-    features: ["workfiles", "loader"],
+    features: [
+        "workfiles",
+        "loader",
+        "publisher",
+        "sceneManager",
+        "libraryLoader",
+        "reviewables",
+        "slates",
+        "colorManaged"
+    ],
     families: [
         "model",
         "rig",
@@ -20,7 +29,7 @@ const addon: Addon = {
         "pointcache",
     ],
     icon: "blender-icon.png",
-    github: "https://github.com/ynput/ayon-addons/tree/main/blender/dev",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/blender",
 };
 
 export default addon;

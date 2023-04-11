@@ -20,7 +20,17 @@ const addon: Addon = {
         "prerender",
         "review",
     ],
-    features: ["rendering", "workfiles"],
+    features: [
+        "workfiles",
+        "loader",
+        "publisher",
+        "sceneManager",
+        "libraryLoader",
+        "reviewables",
+        "slates",
+        "colorManaged",
+        "farmRendering",
+    ],
 };
 
 export default addon;

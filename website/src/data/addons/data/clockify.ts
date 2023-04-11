@@ -8,7 +8,7 @@ const addon: Addon = {
         admin: "module_clockify",
     },
     icon: "clockify-icon.png",
-    github: "https://github.com/ynput/ayon-addons/tree/main/clockify/dev",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/clockify",
 };
 
 export default addon;

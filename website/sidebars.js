@@ -131,37 +131,6 @@ module.exports = {
             ],
         },
         "admin_releases",
-        {
-            type: "category",
-            collapsed: false,
-            label: "2.0 legacy docs",
-            items: [
-                {
-                    type: "category",
-                    label: "Deployment",
-                    items: [
-                        "pype2/admin_getting_started",
-                        "pype2/admin_install",
-                        "pype2/admin_config",
-                        "pype2/admin_ftrack",
-                        "pype2/admin_hosts",
-                        "pype2/admin_pype_commands",
-                        "pype2/admin_setup_troubleshooting",
-                    ],
-                },
-                {
-                    type: "category",
-                    label: "Configuration",
-                    items: [
-                        "pype2/admin_presets_nukestudio",
-                        "pype2/admin_presets_ftrack",
-                        "pype2/admin_presets_maya",
-                        "pype2/admin_presets_plugins",
-                        "pype2/admin_presets_tools",
-                    ],
-                },
-            ],
-        },
     ],
     Dev: [
         "dev_introduction",

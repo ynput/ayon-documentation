@@ -24,6 +24,7 @@ import { AddonType } from ".";
 
 // OFFICIAL ADDONS
 export const officialAddons = [
+    "core",
     "nuke",
     "ftrack",
     "houdini",
@@ -40,26 +41,28 @@ export const officialAddons = [
     "celaction",
     "clockify",
     "flame",
-    "kitsu",
-    "muster",
     "resolve",
     "royalRender",
     "unreal",
     "slack",
+    "3dsmax"
 ] as const;
 
 // COMMUNITY ADDONS
-export const communityAddons = [] as const;
+export const communityAddons = [
+    "kitsu",
+    "muster",
+] as const;
 
 // featured addons
 // pick addons from community or official to be featured on the homepage
 export const featuredAddons: AddonType[] = [
     "nuke",
     "maya",
+    "unreal",
+    "houdini",
     "afterEffects",
-    "deadline",
-    "hiero",
+    "shotgrid",
     "blender",
-    "fusion",
-    "harmony",
+    "ftrack",
 ];
