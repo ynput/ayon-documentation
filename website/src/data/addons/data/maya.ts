@@ -14,6 +14,7 @@ const addon: Addon = {
         "farmRendering",
         "libraryLoader",
         "loader",
+        "slates",
         "publisher",
         "sceneManager"
     ],
