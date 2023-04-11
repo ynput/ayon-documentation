@@ -78,7 +78,7 @@ export default function Home() {
                             className={styles.logo}
                         />
                         <img
-                            src="img/AYON_whiteG_dot.svg"
+                            src="img/AYON.svg"
                             alt="AYON logo"
                             width="100"
                             height="100"
@@ -88,6 +88,11 @@ export default function Home() {
                     <p className="hero__subtitle">{siteConfig.tagline}</p>
                     <div className="searchBarBox home">
                         <SearchBar avoidKeyboardShortcuts />
+                    </div>
+                    <div className={styles.warning}>
+                        While we're transitioning from OpenPype, there are a lot
+                        of details the are factually incorrect. We're working on
+                        resolving all of them.
                     </div>
                 </div>
                 <div className={styles.linksWrapper}>

@@ -81,8 +81,8 @@ $hover: #f0f4fe !default;
     }
 
     nav.links {
-        display: inline-block;
         vertical-align: top;
+        float: right;
 
         .rtl & {
             float: right;
@@ -196,6 +196,7 @@ $hover: #f0f4fe !default;
 
     .panel > ul.icons {
         float: right;
+        padding-left: 0;
         a,
         .d-icon {
             color: $secondary;

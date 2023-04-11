@@ -17,6 +17,20 @@ const YnputNavbar = () => {
                             />
                         </a>
                     </div>
+                    <div className={clsx(styles.panel, styles.clearfix)}>
+                        <ul className={clsx(styles.icons, styles.clearfix)}>
+                            <li>
+                                <a href="https://twitter.com/ynput_io">
+                                    <Twitter className={styles.svgIcon} />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/ynput">
+                                    <Github className={styles.svgIcon} />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <nav className={styles.links}>
                         <ul className={clsx(styles.nav, styles.navPills)}>
                             <li>
@@ -45,20 +59,6 @@ const YnputNavbar = () => {
                             </li>
                         </ul>
                     </nav>
-                    <div className={clsx(styles.panel, styles.clearfix)}>
-                        <ul className={clsx(styles.icons, styles.clearfix)}>
-                            <li>
-                                <a href="https://twitter.com/ynput_io">
-                                    <Twitter className={styles.svgIcon} />
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://github.com/ynput">
-                                    <Github className={styles.svgIcon} />
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </header>
