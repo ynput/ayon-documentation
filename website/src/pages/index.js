@@ -78,7 +78,7 @@ export default function Home() {
                             className={styles.logo}
                         />
                         <img
-                            src="img/AYON.svg"
+                            src="img/AYON_whiteG_dot.svg"
                             alt="AYON logo"
                             width="100"
                             height="100"
