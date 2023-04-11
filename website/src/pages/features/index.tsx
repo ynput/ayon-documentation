@@ -234,7 +234,7 @@ function FeaturesCards() {
     }
 
     // if not searching or viewing all, limit to top
-    if (!viewAllFeatures && !isSearching) {
+    if (!viewAllFeatures && !isSearching && !isAddonsSelected) {
         featuresFiltered = featuresFiltered.filter(({ id }) =>
             topFeatures.includes(id)
         );
