@@ -23,9 +23,9 @@ AYON is a robust and interconnected pipeline platform and as such it comes with 
 
 <TabItem value="ayon">
 
-The main building block of all AYON projects. Each Folder can have a type, which by default include Episode, Sequence, Shot and AssetBuild, but can be expanded to any type a project might require. Folders can be parented to each other, forming a hierarchy in the same way as directories on disk.
+The main building block of all AYON projects. Each Folder can have a type, which by default includes Episode, Sequence, Shot, and AssetBuild, but can be expanded to any type a project might require. Folders can be parented to each other, forming a hierarchy in the same way as directories on disk.
 
-A folder can be identified by it's full path e.g.`assets/characters/bob` or by its unique ID. It is not possible to have two folder with the same name within the same parent. So you can have `sq01/sh010` and `sq02/sh010` in the same project, but not two shots named `sh010` within the same sequence.
+A folder can be identified by its full path, e.g., `assets/characters/bob`, or by its unique ID. It is not possible to have two folders with the same name within the same parent. So you can have `sq01/sh010` and `sq02/sh010` in the same project, but not two shots named `sh010` within the same sequence.
 
 
 </TabItem>
@@ -45,15 +45,13 @@ OpenPype has a limitation regarding duplicated names. Name of assets must be uni
 
 ### Subset
 
-Publishing any data from an Ayon Folder (a shot, asset build or any other type) results in a **Subset**.
+Publishing any data from an AYON Folder (a shot, asset build, or any other type) results in a **Subset**.
 
-The Subset type is referred to as [family](#family), for example a rig, model or a look.
-A single Folder can have many Subsets, even of a single family, named [variants](#variant).
-By default a Subset is named as a combination of family + variant. Sometimes prefixed with the task name (for example a workfile).
+The Subset type is referred to as [family](#family), for example, a rig, model, or a look. A single Folder can have many Subsets, even of a single family, named [variants](#variant). By default, a Subset is named as a combination of family + variant. Sometimes prefixed with the task name (for example, a workfile).
 
 ### Variant
 
-Usually, an asset needs to be created in multiple *'flavours'*. A character might have multiple different looks, model needs to be published in different resolutions, a standard animation rig might not be usable in a crowd system and so on. Variants are here to accommodate all this variety that might be needed within a single asset. A model might have variant: *'main'*, *'proxy'*, *'sculpt'*, while a Subset of *'look'* family could have Subsets *'main'*, *'dirty'*, *'damaged'*. Variants have some default recommendations for their names, but ultimately it's up to the artist to use them for separation of publishes when needed.
+Usually, an asset needs to be created in multiple *'flavors'*. A character might have multiple different looks, a model needs to be published in different resolutions, a standard animation rig might not be usable in a crowd system, and so on. Variants are here to accommodate all this variety that might be needed within a single asset. A model might have variant: *'main'*, *'proxy'*, *'sculpt'*, while a Subset of *'look'* family could have Subsets *'main'*, *'dirty'*, *'damaged'*. Variants have some default recommendations for their names, but ultimately it's up to the artist to use them for separation of publishes when needed.
 
 ### Version
 
@@ -61,17 +59,17 @@ A numbered iteration of a given Subset. Each Version has to contain at least one
 
 #### Hero version
 
-A hero version is a version that always corresponds to the latest published version. When a new publish is generated its written over the previous hero version replacing it in-place as opposed to regular versions where each new publish is a higher version number.
+A hero version is a version that always corresponds to the latest published version. When a new publish is generated, it's written over the previous hero version, replacing it in-place, as opposed to regular versions where each new publish is a higher version number.
 
 This is an optional feature. The generation of hero versions can be completely disabled in AYON by an admin through the Studio Settings.
 
 ### Representation
 
-Each published Subset version can be made up of multiple representations. These represents the actual data on disk as it's extracted from the DCC. These are most often different file formats of the same data, for example `.ABC` and `.OBJ` representations of a model, but can be a bit more abstract in nature. For example a video file with a model turnaround is also a representation of a given model version. The only difference is that the data is usable in a video player, rather than a DCC. 
+Each published Subset version can be made up of multiple representations. These represent the actual data on disk as it's extracted from the DCC. These are most often different file formats of the same data, for example, `.ABC` and `.OBJ` representations of a model, but can be a bit more abstract in nature. For example, a video file with a model turnaround is also a representation of a given model version. The only difference is that the data is usable in a video player, rather than a DCC.
 
 ### Family
 
-Each published [subset](#subset) can have exactly one family assigned to it. Family determines the type of data that the Subset holds. Family doesn't dictate the file type, but can enforce certain technical specifications. For example AYON default configuration expects `model` family to only contain geometry without any shaders or joints when it is published.
+Each published [subset](#subset) can have exactly one family assigned to it. Family determines the type of data that the Subset holds. Family doesn't dictate the file type, but can enforce certain technical specifications. For example, AYON's default configuration expects `model` family to only contain geometry without any shaders or joints when it is published.
 
 ### Task
 
@@ -92,6 +90,7 @@ The source scene file an artist works in within their task. These are versioned 
 ### Addon
 
 AYON is a modular system build up of many addons. Addon can be almost any larger part of the software, but most often it provides integration with another software which could be a DCC, another cloud service, but also complete expansion of AYON itself.
+
 ### Host
 
 A special kind of [Addon](#addon) providing deep integration with a third party Software or Application. These are usually DCC applications like Maya, Houdini or Nuke.
@@ -99,7 +98,6 @@ A special kind of [Addon](#addon) providing deep integration with a third party 
 ### Tool
 
 Small piece of software usually dedicated to a particular purpose. Most of AYON tools have GUI used directly by artists, but some are command line only.
-
 
 ### Publish
 
@@ -111,5 +109,4 @@ A publish instance is a single entry which defines a publish output within a [wo
 
 ### Load
 
-Process of importing previously published Subsets into your current scene, using any of the AYON tools.
-Loading asset using proper tools will ensure that all your scene content stays version controlled and updatable at a later point.
+Process of importing previously published Subsets into your current scene, using any of the AYON tools. Loading asset using proper tools will ensure that all your scene content stays version controlled and updatable at a later point.
