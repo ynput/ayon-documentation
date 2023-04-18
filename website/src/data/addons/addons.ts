@@ -50,8 +50,7 @@ export const officialAddons = [
 
 // COMMUNITY ADDONS
 export const communityAddons = [
-    "kitsu",
-    "muster",
+    "kitsu"
 ] as const;
 
 // featured addons
