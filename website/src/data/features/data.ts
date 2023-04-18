@@ -103,7 +103,7 @@ const features: { [type in FeatureType]: Feature } = {
             admin: "module_deadline",
         },
         description:
-            "Integrations with Deadline render managers. Render, publish and generate reviews on the farm.",
+            "Integrations with render managers. Render, publish and generate reviews on the farm.",
     },
     remoteWorkflow: {
         title: "Remote Workflow",
