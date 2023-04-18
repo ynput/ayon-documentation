@@ -32,7 +32,7 @@ Addons are distributed to local data on machine, locations are:
 
 ### Staging vs. Production
 :::warning
-This feature is **not yet available** in desktop application.
+This feature is **not yet available** in desktop application. Only production addon versions will be used now.
 :::
 
 You can have different versions of AYON addons you want to try from production versions. That can be used to avoid disruption of your production. Set staging versions of addons on AYON server.
