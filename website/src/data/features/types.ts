@@ -27,4 +27,5 @@ export type FeatureType =
     | "remoteWorkflow"
     | "timersManager"
     | "sceneBuilder"
-    | "nodePresets";
+    | "nodePresets"
+    | "burnins";

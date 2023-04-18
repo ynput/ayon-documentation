@@ -142,6 +142,12 @@ const features: { [type in FeatureType]: Feature } = {
             "Support for local renders and their publishing.",
         preview: "rendering.png",
     },
+    burnins: {
+        title: "Burnins",
+        description:
+            "Support for image metadata burnins.",
+        preview: "rendering.png",
+    },
 };
 
 export default features as { [type in FeatureType]: Feature & { id: string } };
