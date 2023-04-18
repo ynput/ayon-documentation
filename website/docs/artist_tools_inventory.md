@@ -5,7 +5,7 @@ sidebar_label: Inventory
 description: Manage already loaded subsets.
 ---
 
-# Inventory
+# Inventory Test
 
 With Scene Inventory, you can browse, update and change subsets loaded with [Loader](artist_tools_loader) into your scene or script.
 
