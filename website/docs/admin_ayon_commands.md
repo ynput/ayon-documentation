@@ -27,10 +27,10 @@ For more information [see here](admin_use.md#run-ayon).
 ## Commands
 
 | Command | Description | Arguments |
-| --- | --- |: --- :|
-| contextselection | Open Context selection dialog. |  |
-| module | Run command line arguments for modules. |  |
-| tray | Launch AYON Tray. | [📑](#tray-arguments)
+| --- | --- | --- |
+| contextselection | Open Context selection dialog. | [📑](#contextselection-arguments) |
+| module | Run command line arguments of addons/modules. | |
+| tray | Launch AYON Tray. | [📑](#tray-arguments) |
 | publish | AYON takes JSON from provided path and use it to publish data in it. | [📑](#publish-arguments) |
 | extractenvironments | Extract environment variables for entered context to a json file. | [📑](#extractenvironments-arguments) |
 | run | Execute given python script within AYON environment. | [📑](#run-arguments) |
@@ -41,6 +41,28 @@ For more information [see here](admin_use.md#run-ayon).
 
 ```shell
 ayon tray
+```
+
+---
+### `contextselection` arguments {#contextselection-arguments}
+| Argument | Description |
+| --- | --- |
+| `output_json_path` | Path to a json file where output will be stored. |
+| `--project` | Pre-define project context. Project cannot be changed when passed. |
+| `--asset` | Pre-define asset in project. Project must be passed. |
+| `--strict` | Full context must be set, or dialog cannot be confirmed. |
+
+**Example output:**
+```json
+{
+    "project": "OP01_CG_Demo",
+    "asset": "robot",
+    "task": "modeling"
+}
+```
+
+```shell
+ayon contextselection <PATH_TO_JSON> 
 ```
 
 ---
