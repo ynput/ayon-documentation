@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 ## Installation
 
-1. Clone this repository to your local machine.
+1. Clone [ayon-docker repository](https://github.com/ynput/ayon-docker) to your local machine.
 2. Tweak the `docker-compose.yml` file according to your requirements.
 3. You may use the `.env` file to set environment variables (for example, for SSO configuration).
 4. On Windows, comment-out or delete the `- "/etc/localtime:/etc/localtime:ro"` line from the `docker-compose.yml` file.
