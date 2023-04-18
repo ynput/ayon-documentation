@@ -8,6 +8,7 @@ import IdealImage from "@theme/IdealImage";
 import Close from "./close.svg";
 import { Addon } from "../../../../data";
 import IconBlur from "../IconBlur";
+import ReactMarkdown from "react-markdown";
 
 function HeaderCard({
     addon,
@@ -65,9 +66,11 @@ function HeaderCard({
                     </Heading>
                 </div>
                 <p className={styles.description}>
-                    {addon.descriptionLong && showSupport
-                        ? addon.descriptionLong
-                        : addon.description}
+                    {addon.descriptionLong && showSupport ? (
+                        <ReactMarkdown>{addon.descriptionLong}</ReactMarkdown>
+                    ) : (
+                        <ReactMarkdown>{addon.description}</ReactMarkdown>
+                    )}
                 </p>
                 <div className={clsx(styles.buttons)}>
                     {addon.docs &&
