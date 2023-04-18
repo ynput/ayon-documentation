@@ -6,7 +6,7 @@ description: Allows loading published subsets from the same project.
 ---
 
 # Loader
-Loader loads published subsets into your current scene or script.
+Test Loader loads published subsets into your current scene or script.
 
 ## Usage
 1. Open *Loader* from AYON menu.
