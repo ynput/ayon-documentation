@@ -7,71 +7,50 @@ sidebar_label: Distribute
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-To let your artists use AYON, you'll need to distribute the frozen executables to them.
+To let your artists use AYON pipeline, you'll need to distribute desktop application with frozen executables to them.
 
-Distribution consists of two parts
+### AYON Desktop application
 
- ### 1. AYON Igniter
- 
- This is the base application that will be installed locally on each workstation.
- It is self contained (frozen) software that also includes all of the AYON codebase with the version
- from the time of the build.
+This is the base application that should be installed locally on artist workstation. It is self-contained (frozen) software that also includes all required dependencies to run. At this moment is desktop application what OpenPype used as main application.
 
- Igniter package is around 1Gb and preparing an updated version requires you to re-build pype. That would be 
- inconvenient for regular and quick distribution of production updates and fixes. So you can distribute those
- independently, without requiring you artists to re-install every time.
+Desktop application contains logic for connection to AYON server with login UI. Distribution is manual.
 
- You can have multiple versions installed at the same time.
+:::info
+**Future plan:** Desktop application will be downloadable from server, and updates should happen automatically. Dependencies will be reduced to minimum, and missing dependencies will be installed from server based on enabled addons.
+:::
 
- ### 2. AYON Codebase
+### AYON Addons
 
-When you upgrade your studio pipeline deployment to a new version or make any local code changes, you can distribute these changes to your artists, without the need of re-building AYON, by using `create_zip` tool provided.
-The resulting zip needs to be made available to the artists and it will override their local AYON install with the updated version.
+Secondary distribution consist of addons. Each addon on server may also have a codebase to be used in desktop application. Addons in desktop application may add features like DCC integrations, integration for a services, enhanced publish plugins, helper tools etc.
 
-You have two ways of making this happen
+This distribution is automated and happens when desktop application is starting. When artist have running `tray`, it is also periodically checked for new updates. Addons distribution require to be downloaded, validated and extracted to user's machine to be able to use them.
 
-#### Automatic Updates
-
-Every time and Artist launches AYON on their workstation, it will look to a pre-defined 
-[ayon update location](admin_settings_system.md#ayon-deployment-control) for any versions that are newer than the
-latest, locally installed version. If such version is found, it will be downloaded,  
-automatically extracted to the correct place and launched. This will become the default 
-version to run for the artist, until a higher version is detected in the update location again.
-
-#### Manual Updates
-
-If for some reason you don't want to use the automatic updates, you can distribute your
-zips manually. Your artist will then have to put them to the correct place on their disk.
-Zips will be automatically unzipped there.
-
-The default locations are:
-
-- Windows: `%LOCALAPPDATA%\pypeclub\openpype`
-- Linux: `~/.local/share/pypeclub/openpype`
-- Mac: `~/Library/Application Support/pypeclub/openpype`
-
+Addons are distributed to local data on machine, locations are:
+- Windows: `%LOCALAPPDATA%\ynput\ayon\addons`
+- Linux: `~/.local/share/ynput/ayon/addons`
+- Mac: `~/Library/Application Support/ynput/ayon/addons`
 
 ### Staging vs. Production
-You can have version of AYON with experimental features you want to try somewhere, but you don't want to disrupt your production. You can set such version in th Settings.
+:::warning
+This feature is **not yet available** in desktop application.
+:::
 
-You can run AYON with `--use-staging` argument to use staging version specified in the Settings.
+You can have different versions of AYON addons you want to try from production versions. That can be used to avoid disruption of your production. Set staging versions of addons on AYON server.
+
+You can run AYON with `--use-staging` argument to use staging versions of addons.
 
 :::note
-Running staging version is identified by orange **P** icon in system tray.
+Running staging version is identified by orange AYON icon.
 :::
 
 ### AYON versioning
 
-AYON version control is based on semantic versioning.
+AYON version control for addons and desktop application is based on semantic versioning ([Look here more details](https://semver.org/)).
 
 :::note
-The version of AYON is indicated by the variable `__version__` in the file `.\ayon\version.py`.
+The version of AYON Desktop application is indicated by the variable `__version__` in the file `.\openpype\version.py`.
 :::
 
-For example AYON will consider the versions in this order: `3.8.0-nightly` < `3.8.0-nightly.1` < `3.8.0-rc.1` < `3.8.0` < `3.8.1-nightly.1` <`3.8.1` < `3.9.0` < `3.10.0` < `4.0.0`.
+For example AYON will consider the versions in this order: `1.0.0-nightly` < `1.0.0-nightly.1` < `1.0.0-rc.1` < `1.0.0` < `1.0.1-nightly.1` <`1.0.1` < `1.1.0` < `1.2.0` < `2.0.0`.
 
-See https://semver.org/ for more details.
-
-For studios customizing the source code of AYON, a practical approach could be to build by adding a name and a number after the PATCH and not to deploy 3.8.0 from original AYON repository. For example, your builds will be: `3.8.0-yourstudio.1` < `3.8.0-yourstudio.2` < `3.8.1-yourstudio.1`.
-
-Versions of Igniter and those coming in zips are compatible if they match major and minor version - `3.13.4` is compatible with `3.13.1` but not with `3.12.2` or `3.14.0`.
+For studios customizing the source code of AYON, a practical approach could be to build by adding a name and a number after the PATCH and not to deploy 1.0.0 from original AYON repository. For example, your builds will be: `1.0.0-yourstudio.1` < `1.0.0-yourstudio.2` < `1.0.1-yourstudio.1`.
