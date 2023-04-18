@@ -5,7 +5,7 @@ sidebar_label: AYON Commands
 ---
 
 :::info
-You can substitute `openpype_console` with `poetry run python start.py` if you want to run it
+You can substitute `ayon` with `poetry run python ayon_start.py` if you want to run it
 directly from sources.
 :::
 
@@ -40,7 +40,7 @@ For more information [see here](admin_use.md#run-ayon).
 ### `tray` arguments {#tray-arguments}
 
 ```shell
-openpype_console tray
+ayon tray
 ```
 
 ---
@@ -55,7 +55,7 @@ Run publishing based on metadata passed in json file e.g. on farm.
 | Positional argument | Path to metadata json file |
 
 ```shell
-pype publish <PATH_TO_JSON> --targes farm
+ayon publish <PATH_TO_JSON> --targes farm
 ```
 
 ---
@@ -74,7 +74,7 @@ Context options are `project`, `asset`, `task`, `app`
 | `--app` | Application name |
 
 ```shell
-openpype_console /home/openpype/env.json --project Foo --asset Bar --task modeling --app maya-2019
+ayon /home/openpype/env.json --project Foo --asset Bar --task modeling --app maya-2019
 ```
 
 ---
@@ -86,5 +86,5 @@ openpype_console /home/openpype/env.json --project Foo --asset Bar --task modeli
 Note that additional arguments are passed to the script.
 
 ```shell
-openpype_console run --script /foo/bar/baz.py arg1 arg2
+ayon run --script /foo/bar/baz.py arg1 arg2
 ```
