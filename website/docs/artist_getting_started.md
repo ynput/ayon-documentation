@@ -7,6 +7,64 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
+## Installation
+
+AYON comes in packages for Windows (10 or Server), Mac OS X (Mojave or higher), and Linux distribution (Centos, Ubuntu).
+
+Your studio administrator should provide you with an installation file. If you are testing or working by yourself, you can also grab installation files from the releases; https://github.com/ynput/OpenPype/releases
+
+:::important
+To install AYON you will need administrator permissions.
+:::
+
+:::note pick your platform
+<Tabs
+    defaultValue='win'
+    values={[
+        {label: 'Windows', value: 'win'},
+        {label: 'Linux', value: 'linux'},
+        {label: 'Mac OS X', value: 'mac'},
+    ]}>
+
+<TabItem value='win'>
+
+For installation on Windows, download and run the installation file `AYON-#.#.#.exe`.
+During the installation process, you can change the destination location path of the application,
+
+![Windows installation](assets/install_01.png)
+
+and create an icon on the desktop.
+
+![Windows create icon](assets/install_02.png)
+
+</TabItem>
+
+
+<TabItem value='linux'>
+
+For installation on your Linux distribution, download and unzip `AYON-#.#.#.zip`. A new folder `AYON-#.#.#` will be created.
+Inside this folder find and run `ayon_gui`,
+
+![Linux launch](assets/install_03.png)
+
+</TabItem>
+
+
+<TabItem value='mac'>
+
+For installation on Mac OS X, download and run dmg image file `AYON-#.#.#.dmg`.
+
+Drag the OpenPype icon into the Application folder.
+
+![Mac installation](assets/install_04.png)
+
+After the installation, you can find AYON among the other Applications.
+
+</TabItem>
+</Tabs>
+:::
+
+
 ## Working in the studio
 
 In studio environment you should have AYON already installed and deployed,  so you can start using it without much setup. Your admin has probably put AYON icon on your desktop or even had your computer set up so AYON will start automatically.

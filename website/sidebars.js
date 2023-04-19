@@ -25,8 +25,7 @@ module.exports = {
                         "artist_tools_subset_manager",
                         "artist_tools_sync_queue",
                     ],
-                },
-                "artist_install",
+                }
             ],
         },
         {
