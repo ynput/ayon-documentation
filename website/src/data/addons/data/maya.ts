@@ -3,8 +3,14 @@ import { type Addon } from "../types";
 const addon: Addon = {
     title: "Maya",
     description: "Robust Maya implementation that can handle full CG workflow",
-    descriptionLong:
-        "OpenPype includes very robust Maya implementation that can handle full CG workflow from model, through animation till final renders. Scene settings, Your artists won't need to touch file browser at all and OpenPype will take care of all the file management. Most of maya workflows are supported including gpucaches, referencing, nested references and render proxies.",
+    descriptionLong:`
+AYON includes very robust Maya implementation that can handle full CG workflow from model, 
+through animation till final renders and scene settings. Your artists
+won't need to touch file browser at all and AYON will take care of all the file management. 
+Most of maya workflows are supported including gpucaches, automatic shader, nested references and render proxies.
+
+**Versions**: \`2020\`, \`2021\`, \`2022\`, \`2023\`, \`2024\`
+         `,
     icon: "maya-icon.png",
     features: [
         "sceneBuilder",
