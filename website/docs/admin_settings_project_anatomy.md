@@ -130,6 +130,10 @@ Project attributes are used as default values for new *folders* created under a 
 
 ## Folder Types
 
+:::info
+Folder and its types is a upcoming feature. Templates are not supporting it yet.
+:::
+
 All hierarchical parents are called **folder**. Each folder is having its type for visual differentiation. Folders are also  accessible via templates as `{folder[type]}`.
 
 ![folders](assets/settings/anatomy_folder_types.png)
