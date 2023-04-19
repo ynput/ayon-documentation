@@ -73,22 +73,20 @@ module.exports = {
         "system_introduction",
         {
             type: "category",
-            label: "Getting Started",
-            items: [
-                "admin_builds",
-                "admin_distribute",
-                "admin_use",
-                "admin_ayon_commands",
-            ],
-        },
-        {
-            type: "category",
-            label: "Ayon server",
+            label: "AYON server",
             items: [
                 "admin_server_installation",
                 "admin_server_installing_addons",
                 "admin_server_provisioning",
                 "admin_server_services",
+            ],
+        },
+        {
+            type: "category",
+            label: "AYON desktop",
+            items: [
+                "admin_desktop_distribute",
+                "admin_desktop_run",
             ],
         },
         {

@@ -1,20 +1,39 @@
 ---
-id: admin_distribute
-title: Distribute
-sidebar_label: Distribute
+id: admin_desktop_distribute
+title: Desktop App - Distribution
+sidebar_label: Desktop distribution
 ---
 
-To enable your artists to use the AYON pipeline, you need to distribute the desktop application with frozen executables to them.
+To enable your artists to use the AYON pipeline, you need to distribute the desktop application with frozen executables to them. At this moment OpenPype v3 application is used for that purpose. The installation contains executables for both OpenPype v3 and AYON (That will change on release). The application requires connection to AYON server, make sure you have set up one.
 
 ## AYON Desktop Application
 
 The AYON desktop application is the base application that should be installed locally on the artist's workstation. It is self-contained (frozen) software that includes all the required dependencies to run. At the moment, the desktop application is what OpenPype uses as the main application.
 
-The desktop application contains the logic for connecting to the AYON server with the login UI. The distribution is manual.
+The desktop application contains the logic for connecting to the AYON server with the login UI.
 
-:::info
-**Future Plan:** The desktop application will be downloadable from the server, and updates will happen automatically. The dependencies will be reduced to a minimum, and the missing dependencies will be installed from the server based on enabled addons.
+### Install
+
+You can install desktop application on individual workstations the same way as any other software. When you create your build, you will end up with an installation package for the platform that was used for the build.
+
+- Windows: `OpenPype-3.0.0.msi`
+- Linux: `OpenPype-3.0.0.zip`
+- Mac: `OpenPype-3.0.0.dmg`
+ 
+:::info Future Plan
+The desktop application will be downloadable from the server, and updates will happen automatically. The dependencies will be reduced to a minimum, and the missing dependencies will be installed from the server based on enabled addons.
 :::
+
+Prepared builds can be found on https://github.com/ynput/OpenPype/releases for all major platforms.
+
+### Currently built on OS versions
+- Windows 10
+- Ubuntu 20.04
+- Centos 7.6
+- MacOS Mohave (10.14.6)
+
+In case your studio requires build for different OS version, or any specific build, please take a look at
+[Requirements](dev_requirements.md) and [Build](dev_build.md) for more details how to create binaries to distribute.
 
 ## AYON Addons
 
@@ -41,12 +60,13 @@ You can run AYON with the `--use-staging` argument to use staging versions of ad
 Running a staging version is identified by an orange AYON icon.
 :::
 
+
 ## AYON Versioning
 
 AYON version control for addons and desktop applications is based on semantic versioning ([click here for more details](https://semver.org/)).
 
 :::note
-The version of the AYON Desktop Application is indicated by the variable `__version__` in the file `.\openpype\version.py`.
+The version of the AYON Desktop Application is indicated by the variable `__version__` in the file `./openpype/version.py`.
 :::
 
 For example, AYON will consider the versions in this order: `1.0.0-nightly` < `1.0.0-nightly.1` < `1.0.0-rc.1` < `1.0.0` < `1.0.1-nightly.1` < `1.0.1` < `1.1.0` < `1.2.0` < `2.0.0`.
