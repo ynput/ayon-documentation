@@ -12,9 +12,11 @@ import TabItem from '@theme/TabItem';
 There is a couple of settings that could configure publishing process for **ToonBoom Harmony**.
 All of them are Project based, eg. each project could have different configuration.
 
-Location: Settings > Project > Harmony
+Location: Project Settings > Harmony (`ayon_server_url/manageProjects/projectSettings`)
 
 ![Harmony Project Settings](assets/admin_hosts_harmony_settings.png)
+
+## OCIO config
 
 ## Publish plugins
 
@@ -26,7 +28,25 @@ Set regex pattern(s) only for task names when publishing of Palettes should occu
 
 Use ".*" to publish Palettes for ALL tasks.
 
+### Validate Audio
+
+Ensures that there is an audio file in the scene.
+
+If you are sure that you want to send render without audio, you can
+disable this plugin by toggle next to plugin name.
+
+If enabled, artist might decide to disable validation for each publish (for special use cases).
+Limit this optionality by toggling `Optional`.
+`Active` toggle denotes that by default artists sees that optional validation as enabled.
+(Eg. admin allows artist disabling(`Optional`) validation but it is enabled(`Active`) by default.)
+
+### Validate Containers
+
+Checks if all imported assets through `Loader` are in latest version. Limits cases that older version of asset would be used.
+
 ### Validate Scene Settings
+
+Compares various values in current scene against values set in DB (or in Asset management system, eg. Ftrack).
 
 #### Skip Frame check for Assets with
 
@@ -34,16 +54,12 @@ Set regex pattern(s) for filtering Asset name that should skip validation of `fr
 
 #### Skip Resolution Check for Tasks
 
-Set regex pattern(s) for filtering Asset name that should skip validation or `Resolution` value from DB.
+Set regex pattern(s) for filtering Task name that should skip validation or `Resolution` value from DB.
 
 #### Skip Timeline Check for Tasks
 
 Set regex pattern(s) for filtering Task name that should skip validation `frameStart`, `frameEnd` check against values from DB.
 
-### Harmony Submit to Deadline
+## Render farm settings
 
-* `Use Published scene` - Set to True (green) when Deadline should take published scene as a source instead of uploaded local one.
-* `Priority` - priority of job on farm
-* `Primary Pool` - here is list of pool fetched from server you can select from.
-* `Secondary Pool`
-* `Frames Per Task` - number of sequence division between individual tasks (chunks) making one job on farm.
+* For setting up Deadline support see [here](module_deadline.md)
