@@ -89,7 +89,7 @@ module.exports = {
             items: [
                 "admin_server_installation",
                 "admin_server_installing_addons",
-                "admin_server_bootstrap_setup",
+                "admin_server_provisioning",
             ],
         },
         {
