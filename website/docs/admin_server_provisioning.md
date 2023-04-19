@@ -14,15 +14,7 @@ Ayon server offers a convenient method for bootstrapping its basic settings
 using a single JSON file. This enables you to quickly set up the server with 
 your desired configurations.
 
-By default, the server expects the configuration file to be located at `settings/template.json`. 
-The settings within this file will be applied each time you run the `make setup` command.
-
-```markdown
-settings/
-  └── template.json
-```
-
-## Security Considerations
+:::important Security Considerations
 
 Using the bootstrapped settings is particularly useful during the testing phase of your Ayon server. 
 However, once the server is properly set up and configured, 
@@ -31,10 +23,20 @@ it is strongly recommended to remove the `settings/template.json` file.
 The reason for this recommendation is that the `template.json` file may contain sensitive information, 
 such as secrets and passwords, in plain text. Storing these credentials in an unsecured manner 
 poses a security risk, as unauthorized users may gain access to the server's sensitive data.
+:::
 
 ## File structure
 
-The `template.json` file contains a dictionary with several optional keys that allow you to customize various aspects of your Ayon server. The available keys are:
+By default, the server expects the configuration file to be located at `settings/template.json`. 
+The settings within this file will be applied each time you run the `make setup` command.
+
+```markdown
+settings/
+  └── template.json
+```
+
+The `template.json` file contains a dictionary with several optional keys that allow you to 
+customize various aspects of your Ayon server. The available keys are:
 
 - `addons`
 - `settings`
