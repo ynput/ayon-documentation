@@ -31,7 +31,7 @@ This is the  outline of build steps. Most of them are done automatically via scr
 - On macOS application bundle and dmg image will be created from frozen and built code.
 - On Windows, you can create executable installer with `./tools/build_win_installer.ps1`[^1]
 
-### Clone AYON repository
+## Clone AYON repository
 
 ```powershell
 git clone --recurse-submodules https://github.com/ynput/OpenPype.git
@@ -399,7 +399,7 @@ can use [fetch_thirdparty_libs](#fetch_thirdparty_libs) script. It will take thi
 [ayon]
 
 [ayon.thirdparty.ffmpeg.windows]
-url = "https://distribute.ayon.io/thirdparty/ffmpeg-4.4-windows.zip"
+url = "https://distribute.openpype.io/thirdparty/ffmpeg-4.4-windows.zip"
 hash = "dd51ba29d64ee238e7c4c3c7301b19754c3f0ee2e2a729c20a0e2789e72db925"
 # ...
 ```
