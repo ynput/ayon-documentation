@@ -1,7 +1,7 @@
 ---
 id: admin_desktop_run
-title: Desktop App - Running
-sidebar_label: Running Desktop app
+title: Running AYON Desktop App
+sidebar_label: Running Desktop App
 ---
 
 import Tabs from '@theme/Tabs';
@@ -9,19 +9,19 @@ import TabItem from '@theme/TabItem';
 
 ## Run AYON
 
-To use AYON on a workstation simply run the executable `ayon` that was [installed](admin_desktop_distribute.md#install).
+To use AYON on a workstation, simply run the `ayon` executable that was [installed](admin_desktop_distribute.md#install).
 
 :::info
-Make sure the AYON executable is used and not OpenPype's.
+Make sure to use the AYON executable and not OpenPype's.
 :::
 
-On the first run the user will be prompted for AYON Server URL and credentials. This piece of information needs to be provided to the artist by the admin setting up AYON in the studio.
+On the first run, the user will be prompted for the AYON Server URL and credentials. This information needs to be provided by the admin who set up AYON in the studio.
 
-Once artist logs in, an api token is received which will AYON remember for the next launch, until token expire. From that moment AYON will do it's best to always keep up-to-date with the latest updates. 
+Once the artist logs in, they will receive an API token, which AYON will remember for the next launch until the token expires. From that moment, AYON will do its best to always keep up-to-date with the latest updates.
 
-If the launch was successful, the artist should see a green AYON logo in their tray menu.
+If the launch is successful, the artist should see a green AYON logo in their tray menu.
 
-:::tip
+:::tip Platforms
 <Tabs
   groupId="platforms"
   defaultValue="win"
@@ -30,42 +30,42 @@ If the launch was successful, the artist should see a green AYON logo in their t
     {label: 'Linux', value: 'linux'}
   ]}>
 <TabItem value="win">
-On Windows this icon might be hidden by default, in which case, the artist can simply drag the icon down to the tray.
+On Windows, this icon might be hidden by default. In this case, the artist can simply drag the icon down to the tray.
 </TabItem>
 <TabItem value="linux">
-Linux distributions usually don't have system tray available, and additional extensions have to be installed.
+Linux distributions usually don't have the system tray available, and additional extensions have to be installed.
 </TabItem>
 </Tabs>
 :::
 
 ### Launch checks
 
-When you run AYON executable, few check are made.
+When you run the AYON executable, a few checks are made.
 
-#### Check for AYON server url
+#### Check for AYON Server URL
 
-Server url should start with `https://` or `http://` .
+The server URL should start with `https://` or `http://`.
 
-When you start AYON first time, Login UI will show up to ask you for server url and credentials. It will then save it in secure way to your systems keyring - on Windows it is **Credential Manager**, on MacOS it will use its **Keychain**, on Linux it can be **GNOME Keyring** or other software, depending on your distribution.
+When you start AYON for the first time, the login UI will show up to ask you for the server URL and credentials. It will then save it securely to your system's keyring - on Windows, it is **Credential Manager**, on macOS, it will use its **Keychain**, on Linux, it can be **GNOME Keyring** or other software, depending on your distribution.
 
-This can be also set beforehand with environment variable `AYON_SERVER_URL`. If set it takes precedence over the one set in keyring.
+This can also be set beforehand with the environment variable `AYON_SERVER_URL`. If set, it takes precedence over the one set in the keyring.
 
-#### Check for AYON addons updates
+#### Check for AYON Add-ons Updates
 
-When connection to server is made, AYON will get various information from server - one among them is updates of addons. If addons are missing or outdated the right versions are downloaded, validated and extractor to artist workstation.
+When a connection to the server is made, AYON will get various information from the server - one among them is updates of add-ons. If add-ons are missing or outdated, the right versions are downloaded, validated, and extracted to the artist workstation.
 
 ### Runtime provided environment variables
 
-AYON is providing following environment variables for its subprocesses that can be used in various places, like scripting, etc.
+AYON provides the following environment variables for its subprocesses that can be used in various places, like scripting, etc.
 
 :::note
-Some of OpenPype environment variables don't have AYON variant yet. They will be replaced and removed over time.
+Some of OpenPype environment variables don't have an AYON variant yet. They will be replaced and removed over time.
 :::
 
 - `USE_AYON_SERVER` - AYON mode is enabled.
-- `AYON_VERSION` - String of current desktop application version - like `3.0.0`.
-- `AYON_ROOT` - Path to root of desktop application.
-- `OPENPYPE_EXECUTABLE` - Path to executable used to run AYON subprocesses - points to **python** executable in virtual environment when run from sources. If run from frozen code, it will point to either `ayon` or `ayon_console`.
+- `AYON_VERSION` - String of the current desktop application version, like `3.0.0`.
+- `AYON_ROOT` - Path to the root of the desktop application.
+- `OPENPYPE_EXECUTABLE` - Path to the executable used to run AYON subprocesses - points to the **python** executable in the virtual environment when run from sources. If run from frozen code, it will point to either `ayon` or `ayon_console`.
 - `OPENPYPE_HEADLESS_MODE` - Headless mode is enabled (`"1"`).
 - `OPENPYPE_USE_STAGING` - Staging mode is enabled (`"1"`).
 - `OPENPYPE_LOG_LEVEL` - Logging level for AYON logger.
