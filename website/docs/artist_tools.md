@@ -8,7 +8,6 @@ sidebar_label: Tools
 
 AYON offers a collection of core tools in tandem with the Integrations:
 
-- [Context Manager](artist_tools_context_manager)
 - [Creator](artist_tools_creator)
 - [Loader](artist_tools_loader)
 - [Library Loader](artist_tools_library_loader)
@@ -18,4 +17,3 @@ AYON offers a collection of core tools in tandem with the Integrations:
 - [Look Assigner](artist_tools_look_assigner)
 - [Subset Manager](artist_tools_subset_manager)
 - [Sync Queue](artist_tools_sync_queue)
-

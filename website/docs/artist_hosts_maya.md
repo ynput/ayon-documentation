@@ -6,7 +6,6 @@ sidebar_label: Maya
 
 ## AYON global tools
 
--   [Set Context](artist_tools_context_manager)
 -   [Work Files](artist_tools_workfiles)
 -   [Create](artist_tools_creator)
 -   [Load](artist_tools_loader)
