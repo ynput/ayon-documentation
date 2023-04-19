@@ -76,10 +76,8 @@ module.exports = {
             type: "category",
             label: "Getting Started",
             items: [
-                "admin_builds",
-                "admin_distribute",
-                "admin_use",
-                "admin_ayon_commands",
+                "admin_desktop_distribute",
+                "admin_desktop_run",
             ],
         },
         {
