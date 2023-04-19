@@ -41,7 +41,8 @@ This structure allows for multiple versions of addons to coexist, and makes it e
 
 ## Using Development Versions of Addons
 
-The common practice for working with development versions of addons is to use the `dev` directory instead of a specific version number. This allows you to separate the development version from production versions and makes it easier to test and debug your addons.
+The common practice for working with development versions of addons is to use the `dev` directory instead of a specific version number. 
+This allows you to separate the development version from production versions and makes it easier to test and debug your addons.
 
 To set up a development version of an addon, follow these steps:
 
