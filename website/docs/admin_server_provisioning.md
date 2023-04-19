@@ -220,7 +220,7 @@ Example:
 "defaultRoles": ["artist"]
 ```
 
-#### `roles` (array)
+#### `roles`
 
 Lists the roles assigned to the user on particular projects. 
 
