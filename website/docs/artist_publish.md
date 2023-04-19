@@ -28,42 +28,47 @@ Keep in mind that while publishing the data might take you some extra time, it w
 
 ## Families:
 
-The Instances are categorized into ‘families’ based on what type of data they contain. Some instances might have multiple families if needed. A shot camera will for example have families 'camera' and  'review' to indicate that it's going to be used for review quicktime, but also exported into a file on disk.
+Published subsets are categorized into ‘families’ based on what is their purpose in the production. Knowing a subset family should always tell you what to expect from the give publish. For example if something is marked as a `model` you know it passed through certain studio validations and you can expect it to be up to the studio standard, however, `mayaScene` doesn't provide the same confidence (because it's less strict during publishing), even though they might both actually contain the same model.  
 
-Following family definitions and requirements are AYON defaults and what we consider good industry practice, but most of the requirements can be easily altered to suit the studio or project needs.
+Following family definitions and requirements are the AYON defaults and what we consider good industry practice, but most of the requirements can be altered to suit the studio or project needs.
 Here's a list of supported families
 
-| Family                  | Comment                                          | Example Subsets           |
+| Family                  | Comment                                          | Example variants          |
 | ----------------------- | ------------------------------------------------ | ------------------------- |
 | [Model](#model)         | Cleaned geo without materials                    | main, proxy, broken       |
 | [Look](#look)           | Package of shaders, assignments and textures     | main, wet, dirty          |
 | [Rig](#rig)             | Characters or props with animation controls      | main, deform, sim         |
 | [Assembly](#assembly)   | A complex model made from multiple other models. | main, deform, sim         |
-| [Layout](#layout)       | Simple representation of the environment         | main,                     |
-| [Setdress](#setdress)   | Environment containing only referenced assets    | main,                     |
+| [Layout](#layout)       | Simple representation of the environment         | main, anim                |
+| [Setdress](#setdress)   | Environment containing only referenced assets    | main, messy, clean        |
 | [Camera](#camera)       | May contain trackers or proxy geo                | main, tracked, anim       |
 | [Animation](#animation) | Animation exported from a rig.                   | characterA, vehicleB      |
-| [Cache](#cache)         | Arbitrary animated geometry or fx cache          | rest, ROM , pose01        |
-| MayaAscii               | Maya publishes that don't fit other categories   |                           |
+| [PointCache](#pointcache)    | Arbitrary animated geometry                      | rest, ROM , pose01        |
+| VDBCache               |                                                   | fire, smoke               |
+| MayaScene               | Maya publishes that don't fit other categories   |                           |
 | [Render](#render)       | Rendered frames from CG or Comp                  |                           |
+| [PreRender](#prerender) | Rendered frames from CG or Comp                  |                           |
 | RenderSetup             | Scene render settings, AOVs and layers           |                           |
+| Audio                   |                                                   | animatic, mix           |
 | Plate                   | Ingested, transcode, conformed footage           | raw, graded, imageplane   |
-| Write                   | Nuke write nodes for rendering                   |                           |
 | Image                   | Any non-plate image to be used by artists        | Reference, ConceptArt     |
 | LayeredImage            | Software agnostic layered image with metadata    | Reference, ConceptArt     |
+| Background              | Software agnostic layered image with metadata    |                              |
 | Review                  | Reviewable video or image.                       |                           |
 | Matchmove               | Matchmoved camera, potentially with geometry     | main                      |
+| Review                  | Reviewable video or image.                       |                           |
 | Workfile                | Backup of the workfile with all its content      | uses the task name        |
-| Nukenodes               | Any collection of nuke nodes                     | maskSetup, usefulBackdrop |
+| NukeNodes               | Any collection of nuke nodes                     | maskSetup, usefulBackdrop |
 | Yeticache               | Cached out yeti fur setup                        |                           |
 | YetiRig                 | Yeti groom ready to be applied to geometry cache | main, destroyed           |
 | VrayProxy               | Vray proxy geometry for rendering                |                           |
 | VrayScene               | Vray full scene export                           |                           |
 | ArnodldStandin          | All arnold .ass archives for rendering           | main, wet, dirty          |
 | LUT                     |                                                  |                           |
+| Effect                     |                                                  |                           |
 | Gizmo                   |                                                  |                           |
-| Harmony.template        |                                                  |                           |
-| Harmony.palette         |                                                  |                           |
+| HarmonyTemplate        |                                                  |                           |
+| HarmonyPalette         |                                                  |                           |
 
 
 
