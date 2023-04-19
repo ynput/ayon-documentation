@@ -4,45 +4,39 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
-**AYON** is a python application built on top of many other open-source libraries, modules and projects.
-To be able to use it, you need those tools and set your environment. This
-requires additional software installed and set up correctly on your system.
+**AYON** is a modular python application build of two main parts.
 
-Fortunately this daunting task is mostly handled for you by AYON build and install scripts. **AYON** can
-install most of its requirements automatically but a few more things are needed in
-various usage scenarios.
+- AYON **server** installed centrally for the whole studio
+- AYON **desktop** (currently still called OpenPype), running on each artist workstation
+  
+To use AYON, you need to install both the server and the desktop app. Pre-built binaries of the desktop app for all platforms are available for download, but if you make any changes to the core of the app, you will need to build it yourself. Fortunately, AYON's build and install scripts handle this task for you. AYON can install most of its requirements automatically, but various usage scenarios may require additional steps.
 
 ## Studio Preparation
 
-You can find a detailed breakdown of technical requirements [here](dev_requirements), but in general AYON should be able
-to operate in most studios fairly quickly. The main obstacles are usually related to workflows and habits, that
-might not be fully compatible with what AYON is expecting or enforcing. It is recommended to go through artists [key concepts](artist_concepts) to get comfortable with the basics.
+You can find a detailed breakdown of technical requirements [here](dev_requirements), but in general, AYON should be able to operate in most studios fairly quickly. The main obstacles are usually related to workflows and habits that may not be fully compatible with what AYON expects or enforces. It is recommended to go through the [key concepts](artist_concepts) for artists to get comfortable with the basics.
 
-Keep in mind that if you run into any workflows that are not supported, it's usually just because we haven't hit
-that particular case and it can most likely be added upon request.
+Keep in mind that if you run into any workflows that are not supported, it is usually because AYON has not encountered that particular case and it can likely be added upon request.
+
+## Server
+
+AYON Server is the heart and soul of your studio pipeline. It provides a database for all the metadata about the projects, users, versions, relationships, and pretty much all other pipeline-related information. It also provides a web-based user interface to allow for working with your published data or project structures, without having to install AYON desktop. This is especially useful for producers and coordinators. Server UI is also used for managing all studio and project settings and to monitor all events that happen within a studio pipeline. You can also extend it with addons which can provide completely new functionality or improve what's already there.
 
 ## Artist Workstations
 
-To use **AYON** in production, it should be installed on each artist workstation, whether that is in the studio or at home in 
-case of a distributed workflow. Once started, it lives in the system tray menu bar and all of it's tools are executed locally on 
-the artist computer. There are no special requirements for the artist workstations if you are running AYON from a frozen build.
+To use AYON in production, the desktop app should be installed on each artist workstation, whether that is in the studio or at home in case of a distributed workflow. Once started, it lives in the system tray menu bar, and all of its tools are executed locally on the artist workstation. There are no special requirements for the artist workstations if you are running AYON from a frozen build.
 
-Each artist computer will need to be able to connect to your central mongo database to load and publish any work. They will also need
-access to your centralized project storage, unless you are running a fully distributed pipeline.
+Each artist workstation will need to be able to connect to your AYON server to load and publish any work. They will also need access to your centralized project storage, unless you are running a fully distributed pipeline.
 
 ## Centralized and Distributed?
 
-AYON supports a variety of studio setups, for example:
-
+AYON supports a variety of studio setups, such as:
 - Single physical location with monolithic project storage.
-- Fully remote studios, utilizing artist's home workstations.
+- Fully remote studios, utilizing artists' home workstations.
 - Distributed studios, running fully or partially on the cloud.
 - Hybrid setups with different storages per project.
-- And others that we probably didn't think of at all.
+- And others that we probably did not think of at all.
 
-It is totally up to you how you deploy and distribute AYON to your artist, but there are a few things to keep in mind:
-- While it is possible to store project files in different locations for different artist, it bring a lot of extra complexity
-to the table
-- Some DCCs do not support using Environment variables in file paths. This will make it very hard to maintain full multiplatform
-compatibility as well variable storage roots.
--   Relying on VPN connection and using it to work directly of network storage will be painfully slow.
+It is up to you how you deploy and distribute AYON to your artists, but there are a few things to keep in mind:
+- While it is possible to store project files in different locations for different artists, it brings a lot of extra complexity to the table.
+- Some DCCs do not support using environment variables in file paths. This will make it very hard to maintain full multiplatform compatibility as well variable storage roots.
+- Relying on a VPN connection and using it to work directly off network storage will be painfully slow.
