@@ -5,108 +5,102 @@ sidebar_label: AYON Commands
 ---
 
 :::info
-You can substitute `openpype_console` with `poetry run python start.py` if you want to run it
-directly from sources.
+You can substitute `ayon` with `poetry run python ayon_start.py` if you want to run it directly from sources.
 :::
 
 :::note
 Running AYON without any commands will default to `tray`.
 :::
 
-## Common arguments
-`--use-version` to specify explicit version to use:
-```shell
-openpype_console --use-version=3.0.0-foo+bar
-```
-`--headless` - to run AYON in headless mode (without using graphical UI)
+## Common Arguments
+
+`--headless` - to run AYON in headless mode (without using graphical UI).
 
 `--use-staging` - to use staging versions of AYON.
 
-`--list-versions` - to list available versions.
+`--verbose` `<level>` - change the log verbose level of AYON loggers.
 
-`--validate-version` - to validate integrity of given version
+`--debug` - set the debug flag, which affects logging.
 
-`--verbose` `<level>` - change log verbose level of AYON loggers
-
-`--debug` - set debug flag affects logging
-
-For more information [see here](admin_use.md#run-ayon).
+For more information, [see here](admin_use.md#run-ayon).
 
 ## Commands
 
 | Command | Description | Arguments |
-| --- | --- |: --- :|
-| contextselection | Open Context selection dialog. |  |
-| module | Run command line arguments for modules. |  |
-| repack-version | Tool to re-create version zip. | [📑](#repack-version-arguments) |
-| tray | Launch AYON Tray. | [📑](#tray-arguments)
-| launch | Launch application in AYON environment. | [📑](#launch-arguments) |
-| publish | AYON takes JSON from provided path and use it to publish data in it. | [📑](#publish-arguments) |
-| extractenvironments | Extract environment variables for entered context to a json file. | [📑](#extractenvironments-arguments) |
-| run | Execute given python script within AYON environment. | [📑](#run-arguments) |
-| interactive | Start python like interactive console session. | |
-| projectmanager | Launch Project Manager UI | [📑](#projectmanager-arguments) |
-| settings | Open Settings UI | [📑](#settings-arguments) |
+| --- | --- | --- |
+| contextselection | Open Context selection dialog. | [📑](#contextselection-arguments) |
+| module | Run command line arguments of addons/modules. | |
+| tray | Launch AYON Tray. | [📑](#tray-arguments) |
+| publish | AYON takes JSON from the provided path and uses it to publish data in it. | [📑](#publish-arguments) |
+| extractenvironments | Extract environment variables for the entered context to a JSON file. | [📑](#extractenvironments-arguments) |
+| run | Execute the given Python script within AYON environment. | [📑](#run-arguments) |
+| interactive | Start Python-like interactive console session. | |
 
 ---
-### `tray` arguments {#tray-arguments}
+
+### `tray` Arguments {#tray-arguments}
 
 ```shell
-openpype_console tray
-```
----
-
-### `launch` arguments {#launch-arguments}
-
-| Argument | Description |
-| --- | --- |
-| `--app` | Application name - this should be the key for application from Settings. |
-| `--project` | Project name (default taken from `AVALON_PROJECT` if set) |
-| `--asset` | Asset name (default taken from `AVALON_ASSET` if set) |
-| `--task` | Task name (default taken from `AVALON_TASK` is set) |
-| `--tools` | *Optional: Additional tools to add* |
-| `--user` | *Optional: User on behalf to run* |
-| `--ftrack-server` / `-fs` | *Optional: Ftrack server URL* |
-| `--ftrack-user` / `-fu` | *Optional: Ftrack user* |
-| `--ftrack-key` / `-fk` | *Optional: Ftrack API key* |
-
-For example to run Python interactive console in Pype context:
-```shell
-pype launch --app python --project my_project --asset my_asset --task my_task
+ayon tray
 ```
 
 ---
-### `publish` arguments {#publish-arguments}
 
-Run publishing based on metadata passed in json file e.g. on farm.
-
+### `contextselection` Arguments {#contextselection-arguments}
 | Argument | Description |
 | --- | --- |
-| `--targets` | define publishing targets (e.g. "farm") |
-| `--gui` (`-g`) | Show publishing |
-| Positional argument | Path to metadata json file |
+| `output_json_path` | Path to a JSON file where the output will be stored. |
+| `--project` | Pre-define project context. The project cannot be changed when passed. |
+| `--asset` | Pre-define asset in the project. The project must be passed. |
+| `--strict` | The full context must be set, or the dialog cannot be confirmed. |
+
+**Example output:**
+```json
+{
+    "project": "OP01_CG_Demo",
+    "asset": "robot",
+    "task": "modeling"
+}
+```
 
 ```shell
-pype publish <PATH_TO_JSON> --targes farm
+ayon contextselection <PATH_TO_JSON> 
 ```
 
 ---
-### `extractenvironments` arguments {#extractenvironments-arguments}
 
-Entered output filepath will be created if does not exists.
-All context options must be passed otherwise only ayon's global environments will be extracted.
-Context options are `project`, `asset`, `task`, `app`
+### `publish` Arguments {#publish-arguments}
+
+Run publishing based on metadata passed in the JSON file, for example, on a farm.
 
 | Argument | Description |
 | --- | --- |
-| `output_json_path` | Absolute path to the exported json file |
-| `--project` | Project name |
-| `--asset` | Asset name |
-| `--task` | Task name |
+| `--targets` | Define publishing targets (e.g., "farm"). |
+| `--gui` (`-g`) | Show publishing. |
+| Positional argument | Path to metadata JSON file. |
+
+```shell
+ayon publish <PATH_TO_JSON> --targes farm
+```
+
+---
+
+### `extractenvironments` Arguments {#extractenvironments-arguments}
+
+The entered output filepath will be created if it does not exist. 
+All context options must be passed; otherwise, only AYON's global environments will be extracted.
+Context options are `project`, `asset`, `task`, `app`.
+
+| Argument | Description |
+| --- | --- |
+| `output_json_path` | Absolute path to the exported JSON file. |
+| `--project` | Project name. |
+| `--asset` | Asset name. |
+| `--task` | Task name. |
 | `--app` | Application name |
 
 ```shell
-openpype_console /home/openpype/env.json --project Foo --asset Bar --task modeling --app maya-2019
+ayon /home/openpype/env.json --project Foo --asset Bar --task modeling --app maya-2019
 ```
 
 ---
@@ -118,32 +112,5 @@ openpype_console /home/openpype/env.json --project Foo --asset Bar --task modeli
 Note that additional arguments are passed to the script.
 
 ```shell
-openpype_console run --script /foo/bar/baz.py arg1 arg2
-```
-
----
-### `projectmanager` arguments {#projectmanager-arguments}
-`projectmanager` has no command-line arguments.
-```shell
-openpype_console projectmanager
-```
-
----
-### `settings` arguments {#settings-arguments}
-
-| Argument | Description |
-| `-d` / `--dev` | Run settings in developer mode. |
-
-```shell
-openpype_console settings
-```
-
----
-### `repack-version` arguments {#repack-version-arguments}
-Takes path to unzipped and possibly modified AYON version. Files will be
-zipped, checksums recalculated and version will be determined by folder name
-(and written to `version.py`).
-
-```shell
-./openpype_console repack-version /path/to/some/modified/unzipped/version/openpype-v3.8.3-modified
+ayon run --script /foo/bar/baz.py arg1 arg2
 ```
