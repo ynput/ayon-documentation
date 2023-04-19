@@ -16,7 +16,7 @@ const features: { [type in FeatureType]: Feature } = {
     slates: {
         title: "Slates",
         description: "Generate slates and attach them to rendered.",
-        preview: "slates.png",
+        preview: "slates.jpg",
     },
     workfiles: {
         title: "Workfiles",
@@ -103,7 +103,7 @@ const features: { [type in FeatureType]: Feature } = {
             admin: "module_deadline",
         },
         description:
-            "Integrations with Deadline and Muster render managers. Render, publish and generate reviews on the farm.",
+            "Integrations with render managers. Render, publish and generate reviews on the farm.",
     },
     remoteWorkflow: {
         title: "Remote Workflow",
@@ -141,6 +141,18 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Support for local renders and their publishing.",
         preview: "rendering.png",
+    },
+    burnins: {
+        title: "Burnins",
+        description:
+            "Support for image metadata burnins.",
+        preview: "burnins.png",
+    },
+    bakingColorspacePresets: {
+        title: "Baking Colorspace Presets",
+        description:
+            "Support for baking colorspace presets.",
+        preview: "baking_colorspace_presets.png",
     },
 };
 

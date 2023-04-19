@@ -4,74 +4,51 @@ title: Distribute
 sidebar_label: Distribute
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+To enable your artists to use the AYON pipeline, you need to distribute the desktop application with frozen executables to them.
 
-To let your artists use AYON, you'll need to distribute the frozen executables to them.
+## AYON Desktop Application
 
-Distribution consists of two parts
+The AYON desktop application is the base application that should be installed locally on the artist's workstation. It is self-contained (frozen) software that includes all the required dependencies to run. At the moment, the desktop application is what OpenPype uses as the main application.
 
- ### 1. AYON Igniter
- 
- This is the base application that will be installed locally on each workstation.
- It is self contained (frozen) software that also includes all of the AYON codebase with the version
- from the time of the build.
+The desktop application contains the logic for connecting to the AYON server with the login UI. The distribution is manual.
 
- Igniter package is around 1Gb and preparing an updated version requires you to re-build pype. That would be 
- inconvenient for regular and quick distribution of production updates and fixes. So you can distribute those
- independently, without requiring you artists to re-install every time.
-
- You can have multiple versions installed at the same time.
-
- ### 2. AYON Codebase
-
-When you upgrade your studio pipeline deployment to a new version or make any local code changes, you can distribute these changes to your artists, without the need of re-building AYON, by using `create_zip` tool provided.
-The resulting zip needs to be made available to the artists and it will override their local AYON install with the updated version.
-
-You have two ways of making this happen
-
-#### Automatic Updates
-
-Every time and Artist launches AYON on their workstation, it will look to a pre-defined 
-[ayon update location](admin_settings_system.md#ayon-deployment-control) for any versions that are newer than the
-latest, locally installed version. If such version is found, it will be downloaded,  
-automatically extracted to the correct place and launched. This will become the default 
-version to run for the artist, until a higher version is detected in the update location again.
-
-#### Manual Updates
-
-If for some reason you don't want to use the automatic updates, you can distribute your
-zips manually. Your artist will then have to put them to the correct place on their disk.
-Zips will be automatically unzipped there.
-
-The default locations are:
-
-- Windows: `%LOCALAPPDATA%\pypeclub\openpype`
-- Linux: `~/.local/share/pypeclub/openpype`
-- Mac: `~/Library/Application Support/pypeclub/openpype`
-
-
-### Staging vs. Production
-You can have version of AYON with experimental features you want to try somewhere, but you don't want to disrupt your production. You can set such version in th Settings.
-
-You can run AYON with `--use-staging` argument to use staging version specified in the Settings.
-
-:::note
-Running staging version is identified by orange **P** icon in system tray.
+:::info
+**Future Plan:** The desktop application will be downloadable from the server, and updates will happen automatically. The dependencies will be reduced to a minimum, and the missing dependencies will be installed from the server based on enabled addons.
 :::
 
-### AYON versioning
+## AYON Addons
 
-AYON version control is based on semantic versioning.
+The secondary distribution consists of addons. Each addon on the server may also have a codebase to be used in the desktop application. Addons in the desktop application can add features such as DCC integrations, integration for services, enhanced publish plugins, helper tools, etc.
 
-:::note
-The version of AYON is indicated by the variable `__version__` in the file `.\ayon\version.py`.
+This distribution is automated and happens when the desktop application is starting. When an artist is running the `tray`, it is periodically checked for new updates. Addons distribution requires downloading, validating, and extracting to the user's machine to be able to use them.
+
+Addons are distributed to local data on the machine, locations are:
+- Windows: `%LOCALAPPDATA%\ynput\ayon\addons`
+- Linux: `~/.local/share/ynput/ayon/addons`
+- Mac: `~/Library/Application Support/ynput/ayon/addons`
+
+## Staging vs. Production
+
+:::warning
+This feature is **not yet available** in the desktop application. Only production addon versions will be used now.
 :::
 
-For example AYON will consider the versions in this order: `3.8.0-nightly` < `3.8.0-nightly.1` < `3.8.0-rc.1` < `3.8.0` < `3.8.1-nightly.1` <`3.8.1` < `3.9.0` < `3.10.0` < `4.0.0`.
+You can have different versions of AYON addons you want to try from production versions. That can be used to avoid disruption of your production. Set staging versions of addons on the AYON server.
 
-See https://semver.org/ for more details.
+You can run AYON with the `--use-staging` argument to use staging versions of addons.
 
-For studios customizing the source code of AYON, a practical approach could be to build by adding a name and a number after the PATCH and not to deploy 3.8.0 from original AYON repository. For example, your builds will be: `3.8.0-yourstudio.1` < `3.8.0-yourstudio.2` < `3.8.1-yourstudio.1`.
+:::note
+Running a staging version is identified by an orange AYON icon.
+:::
 
-Versions of Igniter and those coming in zips are compatible if they match major and minor version - `3.13.4` is compatible with `3.13.1` but not with `3.12.2` or `3.14.0`.
+## AYON Versioning
+
+AYON version control for addons and desktop applications is based on semantic versioning ([click here for more details](https://semver.org/)).
+
+:::note
+The version of the AYON Desktop Application is indicated by the variable `__version__` in the file `.\openpype\version.py`.
+:::
+
+For example, AYON will consider the versions in this order: `1.0.0-nightly` < `1.0.0-nightly.1` < `1.0.0-rc.1` < `1.0.0` < `1.0.1-nightly.1` < `1.0.1` < `1.1.0` < `1.2.0` < `2.0.0`.
+
+For studios customizing the source code of AYON, a practical approach could be to build by adding a name and a number after the PATCH and not to deploy 1.0.0 from the original AYON repository. For example, your builds will be: `1.0.0-yourstudio.1` < `1.0.0-yourstudio.2` < `1.0.1-yourstudio.1`.
