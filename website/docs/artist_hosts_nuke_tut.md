@@ -10,7 +10,6 @@ AYON supports Nuke version **`11.0`** and above.
 
 ## AYON global tools
 
--   [Set Context](artist_tools_context_manager)
 -   [Work Files](artist_tools_workfiles)
 -   [Create](artist_tools_creator)
 -   [Load](artist_tools_loader)
@@ -179,7 +178,7 @@ After Nuke starts it will automatically **Apply All Settings** for you. If you a
 :::
 
 ### Save Nuke script â€“ the Work File
-Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming. 
+Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming.
 ![Context](assets/nuke_tut/nuke_WorkFileSaveAs.png)
 
 The Next Available Version checks the work folder for already used versions and offers the lowest unused version number automatically.
@@ -283,7 +282,7 @@ You can configure Nuke validators like Output Resolution in **Studio Settings â†
 ![Write Node Review](assets/nuke_tut/nuke_WriteNodeReview.png)
 
 When you turn the review checkbox on in your AYON write node, here is what happens:
-- AYON uses the current Nuke script to 
+- AYON uses the current Nuke script to
   - Load the render
   - Optionally apply LUT
   - Render Prores 4444 with the same resolution as your render
