@@ -19,6 +19,7 @@ and efficient management of complex projects.
         "sceneManager",
         "libraryLoader",
         "reviewables",
+        "burnins",
         "colorManaged"
     ],
     families: [

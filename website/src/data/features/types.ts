@@ -28,4 +28,5 @@ export type FeatureType =
     | "timersManager"
     | "sceneBuilder"
     | "nodePresets"
-    | "burnins";
+    | "burnins"
+    | "bakingColorspacePresets";

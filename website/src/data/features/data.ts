@@ -16,7 +16,7 @@ const features: { [type in FeatureType]: Feature } = {
     slates: {
         title: "Slates",
         description: "Generate slates and attach them to rendered.",
-        preview: "slates.png",
+        preview: "slates.jpg",
     },
     workfiles: {
         title: "Workfiles",
@@ -146,7 +146,13 @@ const features: { [type in FeatureType]: Feature } = {
         title: "Burnins",
         description:
             "Support for image metadata burnins.",
-        preview: "rendering.png",
+        preview: "burnins.png",
+    },
+    bakingColorspacePresets: {
+        title: "Baking Colorspace Presets",
+        description:
+            "Support for baking colorspace presets.",
+        preview: "baking_colorspace_presets.png",
     },
 };
 
