@@ -31,7 +31,7 @@ This is the  outline of build steps. Most of them are done automatically via scr
 - On macOS application bundle and dmg image will be created from frozen and built code.
 - On Windows, you can create executable installer with `./tools/build_win_installer.ps1`[^1]
 
-### Clone AYON repository
+### Clone AYON desktop repository (currently still called OpenPype)
 
 ```powershell
 git clone --recurse-submodules https://github.com/ynput/OpenPype.git
