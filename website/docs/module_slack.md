@@ -27,14 +27,10 @@ If you would like to enrich bot with an icon, Slack admin must add the icon afte
 Go to your Slack app home (something like https://api.slack.com/apps/XXXXXXXX/general?) > Basic information > Display Information.
 You can upload any image you want, or for your convenience locate prepared AYON icon in your installed AYON installation in `ayon\modules\slac\resources`.
 
-## System Settings
+## Settings
 
-To use notifications, *Slack Notifications* needs to be enabled globally in **AYON Settings/System/Modules/Slack Notifications**.
-
-![Configure module](assets/slack_system.png)
-
-
-## Project Settings
+If Slack addon is enabled on the server, admin can configure notification for all project (`User menu > Settings > Studio Settings`)
+or per project (`Project menu > select project > Manage projects > Project Settings`)
 
 ### Token
 Most important for module to work is to fill authentication token 
@@ -64,19 +60,22 @@ to send messages to 'public' channels (eg. bot doesn't need to join the channel 
 
 #### Upload thumbnail
 Integration can upload 'thumbnail' file (if present in an instance), for that bot must be 
-manually added to target channel by Slack admin!
+manually added to each target channel by Slack admin first!
 (In target channel write: ```/invite @ayonNotifier``)
 
 #### Upload review
 Integration can upload 'review' file (if present in an instance), for that bot must be 
-manually added to target channel by Slack admin!
+manually added to each target channel by Slack admin first!
 (In target channel write: ```/invite @ayonNotifier``)
 
-Burnin version (usually .mp4) is preferred if present.
+This option is limited by `Upload review maximum file size` value in `Profiles` section. It might make sense to limit uploading
+of reviews only up to certain size. If the review file hits that limit, only link to studio accessible location will be inserted instead.
+
+Burnin version of the review (usually .mp4) is preferred if present.
 
 Please be sure that this configuration is viable for your use case. In case of uploading large reviews to Slack, 
 all publishes will be slowed down and you might hit a file limit on Slack pretty soon (it is 5GB for Free version of Slack, any file cannot be bigger than 1GB).
-You might try to add `{review_filepath}` to message content. This link might help users to find review easier on their machines.
+You might try to add `{review_filepath}` to message content instead of using `Upload review`. This link might help users to find review easier on their machines.
 (It won't show a playable preview though!)
 
 #### Message
