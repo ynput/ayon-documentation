@@ -1,7 +1,7 @@
 ---
 id: admin_desktop_run
-title: Desktop App - Run
-sidebar_label: Desktop App - Run
+title: Desktop App - Running
+sidebar_label: Running Desktop app
 ---
 
 import Tabs from '@theme/Tabs';

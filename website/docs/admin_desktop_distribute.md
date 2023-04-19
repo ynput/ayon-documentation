@@ -1,7 +1,7 @@
 ---
 id: admin_desktop_distribute
-title: Desktop App - Distribute
-sidebar_label: Desktop App - Distribute
+title: Desktop App - Distribution
+sidebar_label: Desktop distribution
 ---
 
 To enable your artists to use the AYON pipeline, you need to distribute the desktop application with frozen executables to them. At this moment OpenPype v3 application is used for that purpose. The installation contains executables for both OpenPype v3 and AYON (That will change on release). The application requires connection to AYON server, make sure you have set up one.
