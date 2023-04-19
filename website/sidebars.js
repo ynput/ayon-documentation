@@ -14,7 +14,6 @@ module.exports = {
                     label: "Tools",
                     link: { type: "doc", id: "artist_tools" },
                     items: [
-                        "artist_tools_context_manager",
                         "artist_tools_creator",
                         "artist_tools_loader",
                         "artist_tools_library_loader",
