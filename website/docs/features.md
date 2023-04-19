@@ -238,18 +238,6 @@ Create preview quicktimes from rendered frames
 
 publish rendered outputs to Avalon and Ftrack
 
- ## Muster
-
-Publish to deadline from
-
-Maya
-
-Nuke
-
-Create preview quicktimes from rendered frames
-
-publish rendered outputs to Avalon and Ftrack
-
 ## Clockify
 
 Automatic timer start and stop in sync with Ftrack.

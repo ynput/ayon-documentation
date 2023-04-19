@@ -14,7 +14,6 @@ module.exports = {
                     label: "Tools",
                     link: { type: "doc", id: "artist_tools" },
                     items: [
-                        "artist_tools_context_manager",
                         "artist_tools_creator",
                         "artist_tools_loader",
                         "artist_tools_library_loader",
@@ -120,7 +119,6 @@ module.exports = {
                 "module_kitsu",
                 "module_site_sync",
                 "module_deadline",
-                "module_muster",
                 "module_clockify",
                 "module_slack",
             ],
