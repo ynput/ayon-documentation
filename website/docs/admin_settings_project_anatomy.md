@@ -7,27 +7,32 @@ sidebar_label: Project Anatomy
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Project Anatomy is the most important configuration piece for each project you work on with AYON. 
+Project Anatomy is the most important configuration piece for each project you work on with AYON.
 
-It defines: 
+It defines:
 - Project Root folders
 - File naming conventions
 - Folder structure templates
 - Default project attributes
-- Task Types
-- Applications and Tool versions
-- Colour Management
-- File Formats 
+- Folder types
+- Task types
+- Statuses
+- Tags
 
 Anatomy is the only configuration that is always saved as an project override. This is to make sure that any updates to AYON or Studio default values, don't affect currently running productions.
 
+<div class="col col--6 markdown">
+
 ![anatomy_01](assets/settings/anatomy_01.png)
+
+</div>
 
 ## Roots
 
 Roots define where files are stored with path to a shared folder.  It is required to set the  root path for each platform you are using in the studio. All paths must point to the same folder!
 
 ![roots01](assets/settings/anatomy_roots01.png)
+
 
 It is possible to set multiple roots when necessary. That may be handy when you need to store a specific type of data on another disk.
 ![roots02](assets/settings/anatomy_roots02.png)
@@ -39,7 +44,7 @@ Note how multiple roots are used here, to push different types of files to diffe
 
 ## Templates
 
-Templates define the project's folder structure and filenames. 
+Templates define the project's folder structure and filenames.
 
 We have a few required anatomy templates for AYON to work properly, however we keep adding more when needed.
 
@@ -54,7 +59,7 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `root[name]` | Path to root folder |
 | `project[name]` | Project's full name |
 | `project[code]` | Project's code |
-| `hierarchy` | All hierarchical parents as subfolders |
+| `hierarchy` | All parents path between project and asset |
 | `asset` | Name of asset or shot |
 | `task[name]` | Name of task |
 | `task[type]` | Type of task |
@@ -68,8 +73,9 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `frame` | Frame number for sequence files. |
 | `app` | Application Name |
 | `user` | User's login name (can be overridden in local settings) |
-| `output` |  |
-| `comment` |  |
+| `output` | Extract review output profile name |
+| `comment` | Publishing commit message |
+| `colorspace` | Colorspace profile name |
 
 </div>
 <div class="col col--7 markdown">
@@ -113,18 +119,20 @@ Template `{project[code]}_{asset}_{subset}<_{output}><.{@frame}>.{ext}` can hand
 
 ## Attributes
 
-Project attributes are used as default values for new assets created under project, except `Applications` and `Active project` which are project specific. Values of attributes that are **not** project specific are always used from assets. So if `tools` are not loading as expected it is because the assets have different values.
+Project attributes are used as default values for new *folders* created under a project, except `Applications` which is project specific. Values of attributes that are **not** project specific are always used from *folders*. So if `tools` are not loading as expected it is because the *folders* have different values.
 
 ![anatomy_attributes](assets/settings/anatomy_attributes.png)
-
-**Most of attributes don't need detailed explanation.**
 
 | Attribute | Description |
 | --- | --- |
 | `Applications` | List of applications that can be used in the project. At the moment used only as a possible filter of applications. |
 | `Tools` | List of application tools. This value can be overridden per asset. |
-| `Active project` | Project won't be visible in tools if enabled.<br/> - To revert check `Show Inactive projects` checkbox in project settings. |
 
+## Folder Types
+
+All hierarchical parents are called **folder**. Each folder is having its type for visual differentiation. Folders are also  accessible via templates as `{folder[type]}`.
+
+![folders](assets/settings/anatomy_folder_types.png)
 
 ## Task Types
 
@@ -132,4 +140,14 @@ Available task types on a project. Each task on an asset is referencing a task t
 
 ![tasks](assets/settings/anatomy_tasks.png)
 
-## Colour Management and Formats
+## Statuses
+
+Place to manage all your task statuses.
+
+![statuses](assets/settings/anatomy_statuses.png)
+
+## Tags
+
+Place to manage all project tags.
+
+![statuses](assets/settings/anatomy_tags.png)
