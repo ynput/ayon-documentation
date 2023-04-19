@@ -99,6 +99,49 @@ In this example, a `secret_api_key` is stored within the `secrets` key.
 This secret can be accessed by the server and addons, but will not be exposed to the users.
 
 
+## Roles
+
+User roles define the level of access and permissions a user has within a project. 
+Each role allows whitelisting certain rights to perform specific actions, 
+such as reading, creating, updating, and deleting project resources.
+
+If not provided, default roles "artist", "viewer" and "editor" are created.
+
+### Role definition example
+
+The following example demonstrates how to create a single role named "artist".
+This role grants users the ability to read and update subfolders, 
+but only if the user has tasks assigned on a parent folder.
+
+```json
+"roles" : [
+  {
+    "name": "artist",
+    "data": {
+      "read": {
+        "enabled": true,
+        "access_list": [{ "type": "assigned"}]
+      },
+      "create": {
+        "enabled": true,
+        "access_list": []
+      },
+      "delete": {
+        "enabled": true,
+        "access_list": []
+      },
+      "update": {
+        "enabled": true,
+        "access_list": [{ "type": "assigned"}]
+      }
+    }
+  }
+]
+```
+
+For more information on the role data structure, please refer to the API documentation.
+
+
 ### Users
 
 The `users` key is used to define user accounts for the Ayon server. 
@@ -171,7 +214,24 @@ This key is used when a service interacting with the server through the API.
 Lists the roles assigned to the user on new projects. 
 These roles determine the user's privileges and access levels within a project.
 
+Example:
+
+```json
+"defaultRoles": ["artist"]
+```
+
 #### `roles` (array)
 
 Lists the roles assigned to the user on particular projects. 
+
+Example:
+
+```json
+"roles": {
+  "example_project1": ["artist"],
+  "example_project2": ["artist", "viewer"]
+}
+```
+
+
 
