@@ -2,8 +2,15 @@ import { type Addon } from "../types";
 
 const addon: Addon = {
     title: "Hiero",
-    description:
-        "Hiero is a versatile VFX tool for artists and teams. It helps you review, edit, and conform shots.",
+    description :`
+Professional-grade video editing and compositing software designed for film, TV,
+and commercial post-production, offering seamless collaboration, streamlined workflows,
+and efficient management of complex projects.
+
+**Variants**: _Hiero_, _NukeStudio_
+
+**Versions**: \`11.3\`, \`12.2\`, \`13.2\`, \`14.0\`
+    `,
     preview: "hiero.png",
     features: [
         "workfiles",
@@ -12,17 +19,15 @@ const addon: Addon = {
         "sceneManager",
         "libraryLoader",
         "reviewables",
-        "colorManaged",
-        "localRendering",
+        "burnins",
+        "colorManaged"
     ],
     families: [
-        "render",
+        "audio",
         "plate",
         "review",
-        "lut",
-        "image",
-        "nukeNodes",
-        "gizmo",
+        "frame",
+        "effect",
         "workfile",
     ],
     docs: {
