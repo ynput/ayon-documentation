@@ -82,6 +82,16 @@ module.exports = {
         },
         {
             type: "category",
+            label: "Ayon server",
+            items: [
+                "admin_server_installation",
+                "admin_server_installing_addons",
+                "admin_server_provisioning",
+                "admin_server_services",
+            ],
+        },
+        {
+            type: "category",
             label: "Configuration",
             items: [
                 "admin_environment",
