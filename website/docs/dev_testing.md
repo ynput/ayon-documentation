@@ -5,94 +5,91 @@ sidebar_label: Testing
 ---
 
 ## Introduction
-As AYON is growing there also grows need for automatic testing. There are already bunch of tests present in root folder of AYON directory.
-But many tests should yet be created!
 
-### How to run (integration) tests
+As AYON is growing there also grows need for automatic testing. AYON Server API has its own test suite - [github.com/ynput/ayon-tests](https://github.com/ynput/ayon-tests). For AYON Desktop there are already bunch of tests present in test folder of AYON directory. Apart of unit testing there are also integration tests that mimics real production usage and are able to test whole workflows.
+
+:::note Tests are Work In Progress
+We are now in heavy effort to add more integration tests and
+enhance the whole experience of writing and executing tests.
+:::
+
+### Integration tests
+
+:::warning Integration tests and OpenPype mode
+Integration tests currently work only in **OpenPype** mode (MongoDB),
+not with **AYON** server.
+:::
 
 #### Requirements
-- installed DCC you want to test
-- `mongorestore` on a PATH
 
-You could check that `mongorestore` is available by running this in console (or cmd), it shouldn't fail and you should see version of utility:
-```commandline
+Tests are recreating fresh DB for each run, so **mongorestore**, **mongodump** and **mongoimport** command line tools must be installed and in `PATH`.
+
+You can find installers here: <https://www.mongodb.com/docs/database-tools/installation/installation/>
+
+You could check that **mongorestore** is available by running this in shell, it shouldn't fail and you should see version of the utility:
+
+```shell
 mongorestore --version
 ```
 
 If you would like just to experiment with provided integration tests, and have particular DCC installed on your machine, you could run test for this host by:
 
-- From source:
+```shell
+ ./.poetry/bin/poetry run python start.py runtests ./tests/integration/hosts/nuke
 ```
-- use AYON command 'runtests' from command line (`.venv` in ${AYON_ROOT} must be activated to use configured Python!)
-- `python ${AYON_ROOT}/start.py runtests ../tests/integration/hosts/nuke`
-```
-- From build:
-```
-- ${AYON_BUILD}/openpype_console runtests {ABSOLUTE_PATH_AYON_ROOT}/tests/integration/hosts/nuke`
-```
-Modify tests path argument to limit which tests should be run (`../tests/integration` will run all implemented integration tests).
 
-### Content of tests folder
+You can modify tests path argument to limit which tests should be run (otherwise `./tests/integration` will run all implemented integration tests).
 
-Main tests folder contains hierarchy of folders with tests and supporting lib files. It is intended that tests in each folder of the hierarchy could be run separately.
+**runtests** command accepts following arguments:
 
-Main folders in the structure:
-- `integration` - end to end tests in host applications, mimicking regular publishing process 
-- `lib` - helper classes
-- `resources` - test data skeletons etc.
-- `unit` - unit test covering methods and functions in OP
+- `-m <TEXT>` / `--mark <TEXT>`: run tests [marked](https://docs.pytest.org/en/7.1.x/how-to/mark.html) by `<TEXT>`
+- `-p <TEXT>` / `--pyargs <TEXT>`: You can use the `--pyargs` option to make test try interpreting arguments as python package names, deriving their file system path and then running the test.
+- `--test_data_folder <PATH>`: Unzipped directory path of a test file.
+- `-s` / `--persist`: Persist the test database and published files after testing.
+- `-a <TEXT>` / `--app_variant <TEXT>`: Specific application (host) variant to be used in tests, like `maya-2024`.
+- `--timeout <SECS>`: Timeout value in seconds for tests.
+- `-so` / `--setup_only`: Only create database, do not run tests.
 
 
-### lib folder
+Integration tests are setup to start DCC application with prepared work file, run publish process and compare results in database and file system automatically.
+This approach is implemented as it should work in any DCC application and should cover most common use cases. Not all hosts allow "real headless" publishing, but all hosts should allow to trigger publishing process programmatically when UI of the host is actually running.
 
-This location should contain library of helpers and miscellaneous classes used for integration or unit tests.
+There will be eventually possibility to build work file and publish it programmatically, this would work only in DCCs that support it (Maya, Nuke, Houdini, ...).
 
-Content:
-- `assert_classes.py` - helpers for easier use of assert expressions
-- `db_handler.py` - class for creation of DB dumps/restore/purge
-- `file_hanlder.py` - class for preparation/cleanup of test data
-- `testing_classes.py` - base classes for testing of publish in various DCCs
-
-### integration folder
-
-Contains end to end testing in a DCC. Currently it is setup to start DCC application with prepared worfkile, run publish process and compare results in DB and file system automatically.
-This approach is implemented as it should work in any DCC application and should cover most common use cases. Not all hosts allow "real headless" publishing, but all hosts should allow to trigger 
-publish process programmatically when UI of host is actually running.
-
-There will be eventually also possibility to build workfile and publish it programmatically, this would work only in DCCs that support it (Maya, Nuke).
-
-It is expected that each test class should work with single worfkile with supporting resources (as a dump of project DB, all necessary environment variables, expected published files etc.)
+It is expected that each test class should work with single work file with supporting resources (as a dump of project DB, all necessary environment variables, expected published files etc.)
 
 There are currently implemented basic publish tests for `Maya`, `Nuke`, `AfterEffects` and `Photoshop`. Additional hosts will be added.
 
-Each `test_` class should contain single test class based on `tests.lib.testing_classes.PublishTest`. This base class handles all necessary 
-functionality for testing in a host application.
+Each `test_` class should contain single test class based on `tests.lib.testing_classes.PublishTest`. This base class handles all necessary functionality for testing in a host application.
 
-#### Steps of publish test
+#### Publishing tests
 
-Each publish test consists of areas: 
+Each publishing test consists of following phases:
+
 - preparation
-- launch of host application
-- publish 
+- launch of host application (DCC)
+- publish
 - comparison of results in DB and file system
 - cleanup
 
 ##### Preparation
 
-Each test publish case expects zip file with this structure:
-- `expected` - published files after workfile is published (in same structure as in regular manual publish)
+Each publish test case expects zip file with this structure:
+
+- `expected` - published files after work file is published (in same structure as in regular manual publish)
 - `input`
-    - `dumps` - database dumps (check `tests.lib.db_handler` for implemented functionality)
-        - `ayon` - settings 
-        - `test_db` - skeleton of test project (contains project document, asset document etc.)
-    - `env_vars` - `env_var.json` file with a dictionary of all required environment variables
-    - `json` - json files with human readable content of databases
-    - `startup` - any required initialization scripts (for example Nuke requires one `init.py` file)
-    - `workfile` - contains single workfile
-    
-These folders needs to be zipped (in zip's root must be this structure directly!), currently zip files for all prepared tests are stored in AYON GDrive folder.
+  - `dumps` - database dumps (check `tests.lib.db_handler` for implemented functionality)
+  - `openpype` - settings
+  - `test_db` - skeleton of test project (contains project document, asset document etc.)
+  - `env_vars` - `env_var.json` file with a dictionary of all required environment variables
+  - `json` - json files with human readable content of databases
+  - `startup` - any required initialization scripts (for example Nuke requires one `init.py` file)
+  - `workfile` - contains single work file
+  
+These folders needs to be zipped as zip root. Currently zip files for all prepared tests are stored in AYON GDrive folder.
 
 Each test then goes in steps (by default):
+
 - download test data zip
 - create temporary folder and unzip there data zip file
 - purge test DB if exists, import dump files from unzipped folder
@@ -105,7 +102,7 @@ Each test then goes in steps (by default):
 
 ##### Launch of application and publish
 
-Integration tests are using same approach as AYON process regarding launching of host applications (eg. `ApplicationManager().launch`).
+Integration tests are using same approach as AYON Desktop process regarding launching of host applications (eg. `ApplicationManager().launch`).
 Each host application is in charge of triggering of publish process and closing itself. Different hosts handle this differently, Adobe products are handling this via injected "HEADLESS_PUBLISH" environment variable,
 Maya and Nuke must contain this in theirs startup files.
 
@@ -113,13 +110,17 @@ Base `PublishTest` class contains configurable timeout in case of publish proces
 
 ##### Comparison of results
 
-Each test class requires re-iplemented `PublishTest.test_db_asserts` fixture. This method is triggered after publish is finished and should
-compare current results in DB (each test has its own database which gets filled with dump data first, cleaned up after test finishing) with expected results.
+Each test class requires re-implemented `PublishTest.test_db_asserts` fixture. This method is triggered after publish is finished and should compare current results in DB (each test has its own database which gets filled with dump data first, cleaned up after test finishing) with expected results.
 
 `tests.lib.assert_classes.py` contains prepared method `count_of_types` which makes easier to write assert expression. This method also produces formatted error message.
 
-Basic use case:
-```DBAssert.count_of_types(dbcon, "version", 2)``` >> It is expected that DB contains only 2 documents of `type==version`
+**Basic use case:**
+
+```python
+DBAssert.count_of_types(dbcon, "version", 2)
+```
+
+It is expected that DB contains only 2 documents of `type==version`
 
 If zip file contains file structure in `expected` folder, `PublishTest.test_folder_structure_same` implements comparison of expected and published file structure,
 eg. if test case published all expected files.
@@ -134,15 +135,33 @@ In case you want to modify test data, use `PublishTest.TEST_DATA_FOLDER` to poin
 
 Both options are mostly useful for debugging during implementation of new test cases.
 
-#### Test configuration
+### Unit tests
 
-Each test case could be configured from command line with:
-- `test_data_folder` - use specific folder with extracted test zip file 
-- `persist` - keep content of temporary folder and database after test finishes
-- `app_variant` - run test for specific version of host app, matches app variants in Settings, eg. `2021` for Photoshop, `12-2` for Nuke
-- `timeout` - override default time (in seconds)
-
-### unit folder
-
-Here should be located unit tests for classes, methods of AYON etc. As most classes expect to be triggered in AYON context, best option is to
+Unit tests are in `./tests/unit` folder. THere should be located unit tests for classes, methods of AYON etc. As most classes expect to be triggered in AYON context, best option is to
 start these tests in similar fashion as `integration` tests (eg. via `runtests`).
+
+## Content of tests folder
+
+Main tests folder contains hierarchy of folders with tests and supporting lib files. It is intended that tests in each folder of the hierarchy could be run separately.
+
+Main folders in the structure:
+
+- `integration` - end to end tests in host applications, mimicking regular publishing process
+- `lib` - helper classes
+- `resources` - test data skeletons etc.
+- `unit` - unit test covering methods and functions in OP
+
+### `lib` folder
+
+This location should contain library of helpers and miscellaneous classes used for integration or unit tests.
+
+**Content:**
+
+- `assert_classes.py` - helpers for easier use of assert expressions
+- `db_handler.py` - class for creation of DB dumps/restore/purge
+- `file_hanlder.py` - class for preparation/cleanup of test data
+- `testing_classes.py` - base classes for testing of publish in various DCCs
+
+### `integration` folder
+
+There are host specific test in `hosts` sub-folder.
