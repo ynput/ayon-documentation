@@ -96,9 +96,9 @@ When you first start AYON, you will be asked to fill in some basic information.
 
 ![login](assets/artist_login.png)
 
-### Ayon Server URL
+### AYON Server URL
 
-You should have been supplied with Ayon server url from your studio administrator. The URL looks something like; `https://ayon.dev/`.
+You should have been supplied with AYON server url from your studio administrator. The URL looks something like; `https://ayon.dev/`.
 
 The `Username` and `Password` should also come from your studio administrator.
 
