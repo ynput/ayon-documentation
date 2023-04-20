@@ -1,17 +1,95 @@
 ---
-id: settings_project_global
-title: Project Global Setting
-sidebar_label: Global
+id: project_settings_core
+title: Core
+sidebar_label: Core
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Project settings can have project specific values. Each new project is using studio values defined in **default** project but these values can be modified or overridden per project.
+Project settings can have project specific values. Each new project is using studio values defined in **default** core settings but these values can be modified or overridden per project.
 
-:::warning Default studio values
-Projects always use default project values unless they have [project override](../admin_settings#project-overrides) (orange colour). Any changes in default project may affect all existing projects.
-:::
+![core_tools_creator_subset_template](assets/core_settings.png)
+
+Refer to Settings related to [Working with settings](../admin_settings) for more details.
+
+## Tools
+### Creator
+Settings related to [Creator tool](../artist_tools_creator).
+
+#### Subset name profiles
+![core_tools_creator_subset_template](assets/core_tools_creator_subset_template.png)
+
+Subset name helps to identify published content. More specific name helps with organization and avoid mixing of published content. Subset name is defined using one of templates defined in **Subset name profiles settings**. The template is filled with context information at the time of creation.
+
+Usage of template is defined by profile filtering using creator's family, host and task name. Profile without filters is used as default template and it is recommend to set default template. If default template is not available `"{family}{Task}"` is used.
+
+**Formatting keys**
+
+All templates can contain text and formatting keys **family**, **task** and **variant** e.g. `"MyStudio_{family}_{task}"` (example - not recommended in production).
+
+|Key|Description|
+|---|---|
+|family|Creators family|
+|task|Task under which is creation triggered|
+|variant|User input in creator tool|
+
+**Formatting keys have 3 variants with different letter capitalization.**
+
+|Task|Key variant|Description|Result|
+|---|---|---|---|
+|`bgAnim`|`{task}`|Keep original value as is.|`bgAnim`|
+|`bgAnim`|`{Task}`|Capitalize first letter of value.|`BgAnim`|
+|`bgAnim`|`{TASK}`|Each letter which be capitalized.|`BGANIM`|
+
+Template may look like `"{family}{Task}{Variant}"`.
+
+Some creators may have other keys as their context may require more information or more specific values. Make sure you've read documentation of host you're using.
+
+
+### Workfiles
+Settings related to [Workfile tool](../artist_tools_workfiles).
+
+#### Open last workfile at launch
+This feature allows you to define a rule for each task/host or toggle the feature globally to all tasks as they are visible in the picture.
+
+![core_tools_workfile_open_last_version](assets/core_tools_workfile_open_last_version.png)
+
+### Publish
+
+#### Template name profiles
+
+Allows to select [anatomy template](admin_settings_project_anatomy.md#templates) based on context of subset being published.
+
+For example for `render` profile you might want to publish and store assets in different location (based on anatomy setting) then for `publish` profile.
+Profile filtering is used to select between appropriate template for each context of published subsets.
+
+Applicable context filters:
+- **`hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
+- **`tasks`** - Current task. `["modeling", "animation"]`
+
+    ![core_integrate_new_template_name_profile](assets/core_integrate_new_template_name_profile.png)
+
+(This image shows use case where `render` anatomy template is used for subsets of families ['review, 'render', 'prerender'], `publish` template is chosen for all other.)
+
+#### Custom Staging Directory Profiles
+With this feature, users can specify a custom data folder path based on presets, which can be used during the creation and publishing stages.
+
+![core_tools_custom_staging_dir](assets/core_tools_custom_staging_dir.png)
+
+Staging directories are used as a destination for intermediate files (such as renders) before they are renamed and copied to proper location during the integration phase. They could be created completely dynamically in the temporary folder or for some DCCs in the `work` area.
+For example could be Nuke where the artist might want to temporarily render images into the `work` area to check them before they get published with the choice of "Use existing frames" when publishing.
+
+One of the key advantages of this feature is that it allows users to choose the folder for writing such intermediate files to take advantage of faster storage for rendering, which can help improve workflow efficiency. Additionally, this feature allows users to keep their intermediate extracted data persistent, and use their own infrastructure for regular cleaning.
+
+In some cases, these DCCs (Nuke, Houdini, Maya) automatically add a rendering path during the creation stage, which is then used in publishing. Creators and extractors of such DCCs need to use these profiles to fill paths when publishing to use this functionality.
+
+The custom staging folder uses a path template configured in `project_anatomy/templates/others` with `transient` being a default example path that could be used. The template requires a 'folder' key for it to be usable as custom staging folder.
+
+##### Known issues
+- Any DCC that uses prefilled paths and store them inside of workfile nodes needs to implement resolving these paths with a configured profiles.
+- If a studio uses Site Sync, remote artists need to have access to configured custom staging folder.
+- Each node on the rendering farm must have access to configured custom staging folder.
 
 ## Color Management (ImageIO)
 
@@ -20,7 +98,7 @@ AYON distributes its own OCIO configs. Those can be found in `{ayon install dir}
 :::
 
 ### Using OCIO config
-Global config path is set by default to AYON distributed configs. At the moment there are only two - **aces_1.2** and **nuke-default**. Since this path input is not platform specific it is required to use at least an environment variable do platform specific config root directory. Order of paths matter so first path found and existing first served.
+Global config path is set by default to AYON distributed configs. At the moment there are only two - **aces_1.2** and **nuke-default**. Since this path input is not platform specific it is required to use at least an environment variable for platform specific config root directory. Order of paths matter so first existing path found is used.
 
 Each OCIO config path input supports formatting using environment variables and [anatomy template keys](../admin_settings_project_anatomy#available-template-keys). The default global OCIO config path is `{AYON_ROOT}/vendor/bin/ocioconfig/OpenColorIOConfigs/aces_1.2/config.ocio`.
 
@@ -34,7 +112,7 @@ If config path is defined to particular shot target with following path inputs:
 1. `{root[work]}/{project[name]}/{hierarchy}/{asset}/config/aces.ocio`
 2. `{root[work]}/{project[name]}/{hierarchy}/config/aces.ocio`
 
-Procedure of resolving path (from above example) will look first into path 1st and if the path is not existing then it will try 2nd and if even that is not existing then it will fall back to global default.
+Procedure of resolving path (from above example) will look first into path number 1 and if the path does not exist then it will try path number 2. If none of the paths are found, it will fall back to global default.
 
 ### Using File rules
 File rules are inspired by [OCIO v2 configuration]((https://opencolorio.readthedocs.io/en/latest/guides/authoring/rules.html)). Each rule has a unique name which can be overridden by host-specific _File rules_ (example: `project_settings/nuke/imageio/file_rules/rules`).
@@ -44,6 +122,27 @@ The _input pattern_ matching uses REGEX expression syntax (try [regexr.com](http
 :::warning Colorspace name input
 The **colorspace name** value is a raw string input and no validation is run after saving project settings. We recommend to open the specified `config.ocio` file and copy pasting the exact colorspace names.
 :::
+
+## Publish plugins
+
+Publish plugins used across all integrations.
+
+### Tags
+
+A couple of settings make use of tags to customize the output.
+
+| Tag Name | Description |
+| ----------- | ----------- |
+| `Add burnins` | Adds burnins with the `ExtractBurnin` plugin. |
+| `Create review` | Creates a review from the output with the [`ExtractReview`](#extract-review) plugin. |
+| `Add review to Ftrack` | Uploads the review to Ftrack. |
+| `Add review to Shotgrid` | Uploads the review to Shotgrid. |
+| `Add review to Kitsu` | Uploads the review to Kitsu. |
+| `Delete output` | Deletes the output once its been processed by `ExtractBurnin` and [`ExtractReview`](#extract-review). |
+| `Add slate frame` | Adds the slate frame. |
+| `Skip handle frames` | If handles are present in the publish context, they will be ignored. |
+| `Output as image sequence` | Outputs as an image sequence |
+| `Do not add audio` | Skip any audio found in the publish context |
 
 ### Extract OIIO Transcode
 OIIOTools transcoder plugin with configurable output presets. Any incoming representation with `colorspaceData` is convertible to single or multiple representations with different target colorspaces or display and viewer names found in linked **config.ocio** file.
@@ -57,58 +156,34 @@ Notable parameters:
 - **`Colorspace`** - target colorspace, which must be available in used color config. (If `Transcoding type` is `Use Colorspace` value in configuration is used OR if empty value collected on instance from DCC).
 - **`Display & View`** - display and viewer colorspace. (If `Transcoding type` is `Use Display&View` values in configuration is used OR if empty values collected on instance from DCC).
 - **`Arguments`** - special additional command line arguments for `oiiotool`.
+- **[`Tags`](#tags)**
 
+#### Examples
 
 Example here describes use case for creation of new color coded review of png image sequence. Original representation's files are kept intact, review is created from transcoded files, but these files are removed in cleanup process.
-![global_oiio_transcode](assets/global_oiio_transcode.png)
+![core_oiio_transcode](assets/core_oiio_transcode.png)
 
 Another use case is to transcode in Maya only `beauty` render layers and use collected `Display` and `View` colorspaces from DCC.
-![global_oiio_transcode_in_Maya](assets/global_oiio_transcode.png)n
-
-## Profile filters
-
-Many of the settings are using a concept of **Profile filters**
-
-You can define multiple profiles to choose from for different contexts. Each filter is evaluated and a
-profile with filters matching the current context the most, is used.
-
-You can define profile without any filters and use it as **default**.
-
-Only **one or none** profile will be returned per context.
-
-All context filters are lists which may contain strings or Regular expressions (RegEx).
-- **`hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
-- **`families`** - Main family of processed subset. `["plate", "model"]`
-- **`tasks`** - Currently processed task. `["modeling", "animation"]`
-
-:::important Filtering
-Filters are optional. In case when multiple profiles match current context, profile with higher number of matched filters has higher priority than profile without filters.
-(The order the profiles in settings doesn't matter, only the precision of matching does.)
-:::
-
-## Publish plugins
-
-Publish plugins used across all integrations.
+![core_oiio_transcode_in_Maya](assets/core_oiio_transcode2.png)
 
 
 ### Extract Review
 Plugin responsible for automatic FFmpeg conversion to variety of formats.
 
-Extract review uses [profile filtering](#profile-filters) to render different outputs for different situations.
+Extract review uses profile filtering to render different outputs for different situations.
 
 Applicable context filters:
  **`hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
 - **`families`** - Main family of processed subset. `["plate", "model"]`
 
-![global_extract_review_profiles](assets/global_extract_review_profiles.png)
+![core_extract_review_profiles](assets/core_extract_review_profiles.png)
 
 **Output Definitions**
 
 A profile may generate multiple outputs from a single input. Each output must define unique name and output extension (use the extension without a dot e.g. **mp4**). All other settings of output definition are optional.
 
-![global_extract_review_output_defs](assets/global_extract_review_output_defs.png)
-- **`Tags`**
-    Define what will happen to output.
+![core_extract_review_output_defs](assets/core_extract_review_output_defs.png)
+- **[`Tags`](#tags)**
 
 - **`FFmpeg arguments`**
     These arguments are appended to ffmpeg arguments auto generated by publish plugin. Some of arguments are handled automatically like rescaling or letterboxes.
@@ -177,8 +252,8 @@ A profile may generate multiple outputs from a single input. Each output must de
     - **Fill color** - Line color on the edge of box (RGBA: 0-255)
     - **Example**
 
-    ![global_extract_review_letter_box_settings](assets/global_extract_review_letter_box_settings.png)
-    ![global_extract_review_letter_box](assets/global_extract_review_letter_box.png)
+    ![core_extract_review_letter_box_settings](assets/core_extract_review_letter_box_settings.png)
+    ![core_extract_review_letter_box](assets/core_extract_review_letter_box.png)
 
 - **`Background color`**
     - Background color can be used for inputs with possible transparency (e.g. png sequence).
@@ -194,100 +269,18 @@ A profile may generate multiple outputs from a single input. Each output must de
         - Nuke extractor settings path: `project_settings/nuke/publish/ExtractReviewDataMov/outputs/baking/add_custom_tags`
     - Filtering by input length. Input may be video, sequence or single image. It is possible that `.mp4` should be created only when input is video or sequence and to create review `.png` when input is single frame. In some cases the output should be created even if it's single frame or multi frame input.
 
-### IntegrateAssetNew
-
-Saves information for all published subsets into DB, published assets are available for other hosts, tools and tasks after.
-#### Template name profiles
-
-Allows to select [anatomy template](admin_settings_project_anatomy.md#templates) based on context of subset being published.
-
-For example for `render` profile you might want to publish and store assets in different location (based on anatomy setting) then for `publish` profile.
-[Profile filtering](#profile-filters) is used to select between appropriate template for each context of published subsets.
-
-Applicable context filters:
-- **`hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
-- **`tasks`** - Current task. `["modeling", "animation"]`
-
-    ![global_integrate_new_template_name_profile](assets/global_integrate_new_template_name_profile.png)
-
-(This image shows use case where `render` anatomy template is used for subsets of families ['review, 'render', 'prerender'], `publish` template is chosen for all other.)
-
-#### Subset grouping profiles
+### Integrate Subset Group
 
 Published subsets might be grouped together for cleaner and easier selection in the **[Subset Manager](artist_tools_subset_manager)**
 
-Group name is chosen with use of [profile filtering](#profile-filters)
+Group name is chosen with use of profile filtering.
 
 Applicable context filters:
-- **`families`** - Main family of processed subset. `["plate", "model"]`
-- **`hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
-- **`tasks`** - Current task. `["modeling", "animation"]`
+- **`Families`** - Main family of processed subset. `["plate", "model"]`
+- **`Hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
+- **`Task types`** - Current task. `["modeling", "animation"]`
+- **`Tasks names`** - Current task. `["model_characterA", "layout_sh010"]`
 
-    ![global_integrate_new_template_name_profile](assets/global_integrate_new_subset_group.png)
+    ![core_integrate_new_template_name_profile](assets/core_integrate_new_subset_group.png)
 
 (This image shows use case where only assets published from 'photoshop', for all families for all tasks should be marked as grouped with a capitalized name of Task where they are published from.)
-
-## Tools
-Settings for AYON tools.
-
-### Creator
-Settings related to [Creator tool](artist_tools_creator).
-
-#### Subset name profiles
-![global_tools_creator_subset_template](assets/global_tools_creator_subset_template.png)
-
-Subset name helps to identify published content. More specific name helps with organization and avoid mixing of published content. Subset name is defined using one of templates defined in **Subset name profiles settings**. The template is filled with context information at the time of creation.
-
-Usage of template is defined by profile filtering using creator's family, host and task name. Profile without filters is used as default template and it is recommend to set default template. If default template is not available `"{family}{Task}"` is used.
-
-**Formatting keys**
-
-All templates can contain text and formatting keys **family**, **task** and **variant** e.g. `"MyStudio_{family}_{task}"` (example - not recommended in production).
-
-|Key|Description|
-|---|---|
-|family|Creators family|
-|task|Task under which is creation triggered|
-|variant|User input in creator tool|
-
-**Formatting keys have 3 variants with different letter capitalization.**
-
-|Task|Key variant|Description|Result|
-|---|---|---|---|
-|`bgAnim`|`{task}`|Keep original value as is.|`bgAnim`|
-|`bgAnim`|`{Task}`|Capitalize first letter of value.|`BgAnim`|
-|`bgAnim`|`{TASK}`|Each letter which be capitalized.|`BGANIM`|
-
-Template may look like `"{family}{Task}{Variant}"`.
-
-Some creators may have other keys as their context may require more information or more specific values. Make sure you've read documentation of host you're using.
-
-
-### Publish
-
-#### Custom Staging Directory Profiles
-With this feature, users can specify a custom data folder path based on presets, which can be used during the creation and publishing stages.
-
-![global_tools_custom_staging_dir](assets/global_tools_custom_staging_dir.png)
-
-Staging directories are used as a destination for intermediate files (as renders) before they are renamed and copied to proper location during the integration phase. They could be created completely dynamically in the temp folder or for some DCCs in the `work` area.
-Example could be Nuke where artist might want to temporarily render pictures into `work` area to check them before they get published with the choice of "Use existing frames" on the write node.
-
-One of the key advantages of this feature is that it allows users to choose the folder for writing such intermediate files to take advantage of faster storage for rendering, which can help improve workflow efficiency. Additionally, this feature allows users to keep their intermediate extracted data persistent, and use their own infrastructure for regular cleaning.
-
-In some cases, these DCCs (Nuke, Houdini, Maya) automatically add a rendering path during the creation stage, which is then used in publishing. Creators and extractors of such DCCs need to use these profiles to fill paths in DCC's nodes to use this functionality.
-
-The custom staging folder uses a path template configured in `project_anatomy/templates/others` with `transient` being a default example path that could be used. The template requires a 'folder' key for it to be usable as custom staging folder.
-
-##### Known issues
-- Any DCC that uses prefilled paths and store them inside of workfile nodes needs to implement resolving these paths with a configured profiles.
-- If studio uses Site Sync remote artists need to have access to configured custom staging folder!
-- Each node on the rendering farm must have access to configured custom staging folder!
-
-### Workfiles
-All settings related to Workfile tool.
-
-#### Open last workfile at launch
-This feature allows you to define a rule for each task/host or toggle the feature globally to all tasks as they are visible in the picture.
-
-![global_tools_workfile_open_last_version](assets/global_tools_workfile_open_last_version.png)
