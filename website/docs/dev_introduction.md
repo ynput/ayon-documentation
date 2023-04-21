@@ -4,7 +4,5 @@ title: Introduction
 sidebar_label: Introduction
 ---
 
+Here you'll find the information needed if you want to build, extend or contriubte back to Ayon, it's aimed at developers, and in the future a section with the (code documentation)[https://github.com/ynput/OpenPype#building-documentation] will also be found here.
 
-Here you should find additional information targeted on developers who would like to contribute or dive deeper into AYON platform
-
-Currently there are details about automatic testing, in the future this should be location for API definition and documentation
