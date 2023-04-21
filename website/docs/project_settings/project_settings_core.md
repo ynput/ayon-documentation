@@ -7,7 +7,7 @@ sidebar_label: Core
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Project settings can have project specific values. Each new project is using studio values defined in **default** core settings but these values can be modified or overridden per project.
+Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project.
 
 ![core_tools_creator_subset_template](assets/core_settings.png)
 
