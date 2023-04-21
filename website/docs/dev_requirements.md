@@ -49,8 +49,8 @@ The hardware requirements and location of this computer vary depending on the nu
 
 ## Hardware
 
-There are no minimum hardware requirements for Ayon, once built, it takes ~400 MB of Disk space, and it should be deployed in all the machines that interact with Ayon.
-As a rule of thumb, if the computer can run a DCC or perform render workloads, it will be able to run Ayon.
+There are no minimum hardware requirements, once built, it takes ~400 MB of Disk space, and it should be deployed in all the machines that interact with AYON.
+As a rule of thumb, if the computer can run a DCC or perform render workloads, it will be able to run AYON.
 
 ### Ftrack Event Server
 For a well functioning ftrack event server, we recommend a linux virtual server with Ubuntu or CentOS. CPU and RAM allocation needs differ based on the studio size, but a 2GB of ram, with a dual core CPU and around 4GB of storage should suffice
@@ -70,7 +70,7 @@ and libraw (`sudo yum install boost-1.53.0 LibRaw`)
 
 ### Python Dependecies
 
-Ayon uses [Poetry](https://python-poetry.org/) to handle the dependencies, and you can see the full list of dependencies in the [`pyproject.yoml`](https://github.com/ynput/OpenPype/blob/develop/pyproject.toml), here is a list of these with their corresponging licenses:
+AYON uses [Poetry](https://python-poetry.org/) to handle the dependencies, and you can see the full list of dependencies in the [`pyproject.yoml`](https://github.com/ynput/OpenPype/blob/develop/pyproject.toml), here is a list of these with their corresponging licenses:
 
 ┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃ Compatible ┃ Package                  ┃ License(s)                                                           ┃

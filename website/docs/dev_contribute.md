@@ -4,15 +4,15 @@ title: Contribute to AYON development
 sidebar_label: Contribute
 ---
 
-Thanks for taking the time and effort to contribute back to Ayon!
+Thanks for taking the time and effort to contribute back to AYON!
 
 We follow a set of rules to ensure the project is in a healthy state and avoid duplicating efforts or avoid unnecessary development, in oreder to achieve that if you **found a bug** or are thinking on **developing** a new feature it's highly encouraged that you check with the community first:
- - [Ynput Community](https://community.ynput.io/): Open forums where all things Ayon are discussed, best place to propose new features or ask questions about the project.
+ - [Ynput Community](https://community.ynput.io/): Open forums where all things AYON are discussed, best place to propose new features or ask questions about the project.
  - [Discord](https://discord.gg/ynput): Discord Server for a more asyncronous conversation and memes.
 
 After checking with the above, situations that might arise:
 
-## You want to extend Ayon with a new feature
+## You want to extend AYON with a new feature
 - Open a new thread in the [Ynput Community](https://community.ynput.io/)
 - Do not open issue until the suggestion is discussed. We will convert accepted suggestions into backlog and point them to the relevant discussion thread to keep the context. Then depending on the outcome of the conversations you can then:
     - Open a [Github Issue](#you-found-a-bug)
@@ -34,8 +34,7 @@ We might also change the target of you PR to and intermediate branch, rather tha
 ## Contribution Guidelines
 
 ### Branching Strategy
-
-Ayon loosely follows Git Flow for branching, and there are three important (protected) branches:
+AYON loosely follows Git Flow for branching, and there are three important (protected) branches:
 - `main` - Production branch with the latest stable realase. Each release being a new tag.
 - `develop` - Development branch, all Pull Requests target this branch.
 - `release/3.x.x` - Testing branch for a release, once a release branch is created, no new features are accepted for the given release.
