@@ -56,7 +56,7 @@ Unreal handles models and rigs as [Static](https://docs.unrealengine.com/en-US/E
 
 These meshes can be loaded as FBX or as Alembic. The latter can be also be loaded as a point cache, but with some [limitations](https://docs.unrealengine.com/5.1/en-US/alembic-file-importer-in-unreal-engine/).
 
-The meshes will be loaded in the `AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
+The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
 
 ### Publishing
 
@@ -65,6 +65,24 @@ To publish a mesh from Unreal, you need to create a publish instance for the mes
 You can now click on **AYON → Publish ...** to open the Publisher screen. On the left, you will see all the publish instances that you have created. Select the ones that you want to publish, and click on **Publish**.
 
 ## Look development
+
+AYON supports look development in Unreal Engine.
+
+### Loading model
+
+First, you will need a model as Static Mesh. To load it, just choose **AYON → Load ...**, right-click your mesh and select **Import Static Mesh**. You will find the loaded Static Mesh in `/Content/AYON/Assets`.
+
+### Creating look
+
+To create the look, you will need to create the [Materials](https://docs.unrealengine.com/5.1/en-US/Engine/Rendering/Materials/) for the model you loaded, and assign them to the model. You can create the materials in Unreal, or you can import them from AYON as UAsset.
+
+### Publishing look
+
+Select the model with the materials in the Content Browser, and click on **AYON → Create ...**. This will open the Creator screen. From here, select *Material*, set the name of the subset, and click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+
+To get the look ready to be publishable, AYON will create a new folder `/Content/AYON/Looks`. In here, it will be created a folder that will contain a simple model with the materials you created assigned, that will be used to publish the look. This folder will be named after subset name you chose when creating the instance. You don't need to do anything with this folder, it is just for the publishing process.
+
+You can now click on **AYON → Publish ...** to open the Publisher screen. On the left, you will see all the publish instances that you have created. Select the ones that you want to publish, and click on **Publish**.
 
 ## UAssets
 
@@ -174,7 +192,7 @@ The rendering requires a layout loaded with the option to create the level seque
 
 To render and publish an episode, a scene or a shot, you will need to create a Render `AyonPublishInstance`. The publish instance for the rendering is based on one level sequence. That means that if you want to render the whole project (or a the whole episode), you will need to create it for the master level sequence, but if you want to render just one shot, you will need to create it for that shot.
 
-Navigate to the folder that contains the level sequence that you need to render. Select the level sequence, and then click on the AYON icon in Unreal’s main taskbar, and select **Create**. In the Creator window select **Render**, give it a name, and click **Create**. The render instance will be created in `/Content/Ayon/PublishInstances`.
+Navigate to the folder that contains the level sequence that you need to render. Select the level sequence, and then click on the AYON icon in Unreal’s main taskbar, and select **Create**. In the Creator window select **Render**, give it a name, and click **Create**. The render instance will be created in `/Content/AYON/PublishInstances`.
 
 ![Unreal OP Tools Create](assets/unreal_openpype_tools_create.png)
 
