@@ -86,6 +86,18 @@ You can now click on **AYON → Publish ...** to open the Publisher screen. On t
 
 ## UAssets
 
+Unreal Engine uses [UAssets](https://docs.unrealengine.com/5.1/en-US/working-with-assets-in-unreal-engine/) to store assets. AYON supports publishing and loading of this kind of assets.
+
+To publish UAssets, you will need to create a publish instance for the asset. To do this, select the asset in the Content Browser, and click on **AYON → Create ...**. This will open the Creator screen. From here, select *UAsset*, set the name of the subset, and click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+
+:::note
+Publishing UAssets has some limitations currently. You can only publish a single UAssets, and it must not have any dependencies.
+:::
+
+You can now click on **AYON → Publish ...** to open the Publisher screen. On the left, you will see all the publish instances that you have created. Select the ones that you want to publish, and click on **Publish**.
+
+To load a UAsset, just choose **AYON → Load ...**, right-click your asset and select **Load UAsset**. You will find the loaded UAsset in `/Content/AYON/Assets`.
+
 ## Layouts
 
 ### Layouts for linear animation
