@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project.
 
-![core_tools_creator_subset_template](assets/core_settings.png)
+![core_settings](assets/core_settings.png)
 
 Refer to Settings related to [Working with settings](../admin_settings) for more details.
 
