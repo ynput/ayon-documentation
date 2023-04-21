@@ -103,7 +103,7 @@ module.exports = {
                     items: [
                         "project_settings/settings_project_global",
                         "project_settings/settings_project_nuke",
-                        "project_settings/settings_project_standalone",
+                        "project_settings/project_settings_tray_publisher",
                     ],
                 },
             ],

@@ -1,35 +1,34 @@
 ---
-id: settings_project_standalone
-title: Project Standalone Publisher Setting
-sidebar_label: Standalone Publisher
+id: project_settings_tray_publisher
+title: Tray Publisher
+sidebar_label: Tray Publisher
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Project settings can have project specific values. Each new project is using studio values defined in **default** project but these values can be modified or overridden per project.
+Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project.
 
-:::warning Default studio values
-Projects always use default project values unless they have [project override](../admin_settings#project-overrides) (orange colour). Any changes in default project may affect all existing projects.
-:::
+![nuke_settings](assets/tray_publisher_settings.png)
+
+Refer to Settings related to [Working with settings](../admin_settings) for more details.
 
 ## Creator Plugins
 
-Contains list of implemented families to show in middle menu in Standalone Publisher. Each plugin must contain:
-- name
-- label
-- family
-- icon
-- default subset(s)
-- help (additional short information about family)
+Contains list of implemented families to show in middle menu in Tray Publisher. Each plugin must contain:
 
-![example of creator plugin](assets/standalone_creators.png)
+- **Family**
+- **Label**
+- **Icon**
+- **Extensions**
+
+![example of creator plugin](assets/tray_publisher_creators.png)
 
 ## Publish plugins
 
 ### Collect Textures
 
-Serves to collect all needed information about workfiles and textures created from those. Allows to publish 
+Serves to collect all needed information about workfiles and textures created from those. Allows to publish
 main workfile (for example from Mari), additional worfiles (from Substance Painter) and exported textures.
 
 Available configuration:
@@ -50,9 +49,9 @@ build name.)
 
 Example:
 
-- pattern: ```^([^.]+)(_[^_.]*)?_v([0-9]{3,}).+``` 
+- pattern: ```^([^.]+)(_[^_.]*)?_v([0-9]{3,}).+```
 - with groups: ```["asset", "filler", "version"]```
-  
+
 parses `corridorMain_v001` into three groups:
 - asset build (`corridorMain`)
 - filler (in this case empty)
@@ -60,9 +59,9 @@ parses `corridorMain_v001` into three groups:
 
 Advanced example (for texture files):
 
-- pattern: ```^([^_.]+)_([^_.]+)_v([0-9]{3,})_([^_.]+)_({color_space})_(1[0-9]{3}).+``` 
+- pattern: ```^([^_.]+)_([^_.]+)_v([0-9]{3,})_([^_.]+)_({color_space})_(1[0-9]{3}).+```
 - with groups: ```["asset", "shader", "version", "channel", "color_space", "udim"]```
-  
+
 parses `corridorMain_aluminiumID_v001_baseColor_linsRGB_1001.exr`:
 - asset build (`corridorMain`)
 - shader (`aluminiumID`)
