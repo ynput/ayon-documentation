@@ -102,7 +102,7 @@ To load a UAsset, just choose **AYON → Load ...**, right-click your asset and 
 
 ### Layouts for linear animation
 
-There are two different layout options in Unreal, depending on the type of project you are working on. This section explains how to handle layouts for linear animation. To do this, AYON generates [Master Sequences](https://docs.unrealengine.com/4.27/en-US/AnimatingObjects/Sequencer/Overview/TracksShot/) to track the whole level sequence hierarchy.
+There are two different layout options in Unreal, depending on the type of project you are working on. This section explains how to handle layouts for linear animation. To do this, AYON generates [Master Sequences](https://docs.unrealengine.com/5.1/en-US/master-sequences-shots-and-takes-in-unreal-engine/) to track the whole level sequence hierarchy.
 To set this mode, you should turn **on** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
 ![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
@@ -167,7 +167,7 @@ To set this mode, you should turn **off** the setting *Generate level sequences 
 
 The layout will be imported in the directory `/Content/AYON`. The layout will be split into two subfolders. In `/Content/AYON/Assets` you will find all the rigs and models contained in the layout, while the folder with the name of the layout will contain the levels and the level sequences.
 
-The layout level will and should contain only the data included in the layout. To add other elements, like the environment or the lighting, you have to create a master level, and add the layout level as a [streaming level](https://docs.unrealengine.com/5.0/en-US/level-streaming-in-unreal-engine/).
+The layout level will and should contain only the data included in the layout. To add other elements, like the environment or the lighting, you have to create a master level, and add the layout level as a [streaming level](https://docs.unrealengine.com/5.1/en-US/level-streaming-in-unreal-engine/).
 
 Create the master level and open it. Then, open the *Levels* window (from the menu **Windows → Levels**). Click on **Levels → Add Existing** and select the layout level and the other levels you with to include in the scene. The following example shows a master level in which have been added a level with lighing and the layout level.
 
