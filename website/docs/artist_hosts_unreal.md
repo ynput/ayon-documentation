@@ -127,6 +127,8 @@ The layout will be imported in the directory `/Content/AYON`. The layout will be
 
 Typically, in a linear animation project, the project will be split into several shots, and shots are organised in scenes. If the project is episodic, scenes will also be organised in episodes. To reflect this structure, whenever you load a layout, AYON will create the same hierarchy of your project with [Level Sequences](https://docs.unrealengine.com/5.1/en-US/unreal-engine-sequencer-movie-tool-overview/) and Levels.
 
+Cameras and Layouts follow the same structures, so when loading one of the two, you will get the same hierarchy. If you load one of them first, the whole hierarchy will be generated. If you load the other one later, and the hierarchy was already generated, the new asset will be added to the existing hierarchy.
+
 In the main folder of the layout (or the episode folder, in case of an episodic project), you will find the master level and the master level sequence and the folders for all the scenes in the episodes. AYON is then flexible to accomodate any kind of project structure, and each layer will have its own level sequence. Finally, each shot will have again their own level sequence, and their own level.
 
 After opening the master level, open the *Levels* window (from the menu **Windows → Levels**), and you will see the list of the levels of each shot of the episode for which a layout has been loaded.
@@ -141,7 +143,7 @@ After adding the environment level to the master level, you will need to set it 
 
 ![Unreal Level Streaming Method](assets/unreal_level_streaming_method.png)
 
- Otherwise, you will need to set the visibility in the master sequence.
+Otherwise, you will need to set the visibility in the master sequence.
 
 #### Update layouts
 
