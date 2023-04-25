@@ -27,16 +27,21 @@ Library loader is extended [loader](artist_tools_loader) which allows to load pu
 Library Loader contains functionality to export any selected asset, subsets and their version to configurable folder.
 Delivery follows structure based on defined template, this template must be configured first by Admin in the Settings.
 
-![delivery_action](assets/tools/tools_delivery_loader.png) 
+![delivery_action](assets/tools/tools_delivery_loader.png)
 
-* Usage
+### Usage
 - Select all required subsets for export (you can change theirs versions by double clicking on 'Version' value)
 - Right click and select **Deliver Versions** from context menu
+
+<div class="col col--6 markdown">
+
+![tools_delivery_action](assets/tools/tools_delivery_action.png) <!-- picture needs to be changed -->
+
+</div>
+
 - Select predefined Delivery template (must be configured by Admin system or project wide)
 - Fill value for root folder (folder will be created if it doesn't exist)
 - Filter out type of representation you are not interested in
 - Push **Deliver** button
 - Dialog must be kept open until export is finished
 - In a case of problems with any of the representation, that one will be skipped, description of error will be provided in the dialog
-
-

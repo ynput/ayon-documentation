@@ -92,12 +92,6 @@ Disable/Enable Standalone Publisher option
 
 **`Deadline Rest URL`** - URL to deadline webservice that. This URL must be reachable from every workstation that should be submitting render jobs to deadline via AYON.
 
-### Muster
-
-**`Muster Rest URL`** - URL to Muster webservice that. This URL must be reachable from every workstation that should be submitting render jobs to muster via AYON.
-
-**`templates mapping`** - you can customize Muster templates to match your existing setup here.
-
 ### Clockify
 
 **`Workspace Name`** - name of the clockify workspace where you would like to be sending all the timelogs.

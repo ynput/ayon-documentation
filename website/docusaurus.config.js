@@ -37,7 +37,7 @@ const config = {
                     // Please change this to your repo.
                     // Remove this to remove the "edit this page" links.
                     editUrl:
-                        "https://github.com/ynput/OpenPype/tree/develop/website",
+                        "https://github.com/ynput/ayon-documentation/tree/main/website",
                 },
                 theme: {
                     customCss: require.resolve("./src/css/custom.css"),
@@ -151,8 +151,8 @@ const config = {
             },
             colorMode: {
                 defaultMode: "dark",
-                disableSwitch: true,
-                respectPrefersColorScheme: false,
+                disableSwitch: false,
+                respectPrefersColorScheme: true,
             },
         }),
 
