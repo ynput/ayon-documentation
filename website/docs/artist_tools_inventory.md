@@ -73,10 +73,17 @@ User explicitly choose particular version even though newer / older can exist. T
 
 ### Update to Latest
 
-When some asset being outdated and newer version exists its marked in red color and new **Update to Latest** action appear in the menu.
+When some asset being outdated and newer version exists its marked in red color and new **Update to Latest** action appear in the **Actions menu** when right clicking.
 
 ![tools_inventory_08](assets/tools/tools_inventory_08.png)
 
+When multiple items being red / outdated, user can use dedicated "arrow icon" for updating them to latest version in one step. To see just the outdated items, use checkbox next to update icon for clarity. 
+
+![tools_inventory_09](assets/tools/tools_inventory_09.png)
+
+:::warning
+Do not forget to turn filter off afterwards to see items in the list again otherwise the list will seem empty when Inventory re-opened!
+:::
 ___
 
 ### Switch Asset
@@ -195,6 +202,18 @@ Here you can see several filters in the Inventory.
 
 ### Filter with Cherry-pick selection
 
+User has possibility to show just selected items by using ``Cherry-Pick`` action. By using this action again switches view back to full list.
+
+You can see quick demo below.
+
+import loaderVideo2 from './assets/video/tools_inventory_02.mp4'
+
+<video controls style={{width: "75%" }}>
+  <source src={loaderVideo2}/>
+</video>
+
+___
+
 <div class="row markdown">
 <div class="col col--6 markdown">
 
@@ -228,4 +247,7 @@ You can also Cherry-pick from Cherry-picked subsets.
 
 ___
 
-#### This concludes the basics of the Inventory tool.
+### This concludes the basics of the Inventory tool.
+
+___
+___
