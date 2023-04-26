@@ -61,17 +61,30 @@ AYON introduces two type of Unreal Assets: `AyonAssetContainer` and `AyonPublish
 
 ## Static and Skeletal Meshes
 
-Unreal handles models and rigs as [Static](https://docs.unrealengine.com/en-US/Engine/Content/Importing/FBX/StaticMeshes/index.html) and [Skeletal](https://docs.unrealengine.com/en-US/Engine/Content/Importing/FBX/SkeletalMeshes/index.html) Meshes. To load one of these kinds of assets, just choose **AYON → Load ...**, right-click your mesh and select **Import Static Mesh** or **Import Skeletal Mesh**.
-
+Unreal handles models and rigs as [Static](https://docs.unrealengine.com/en-US/Engine/Content/Importing/FBX/StaticMeshes/index.html) and [Skeletal](https://docs.unrealengine.com/en-US/Engine/Content/Importing/FBX/SkeletalMeshes/index.html) Meshes.
 These meshes can be loaded as FBX or as Alembic. The latter can be also be loaded as a point cache, but with some [limitations](https://docs.unrealengine.com/5.1/en-US/alembic-file-importer-in-unreal-engine/).
+
+### Loading
+
+To load a Mesh, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your mesh. 
+- Select **Import Static Mesh** or **Import Skeletal Mesh**.
 
 The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
 
 ### Publishing
 
-To publish a mesh from Unreal, you need to create a publish instance for the mesh. To do this, select the mesh in the Content Browser, and click on **AYON → Create ...**. This will open the Creator screen. From here, select *Static Mesh* or *Skeletal Mesh*, set the name of the subset, and click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+To publish a mesh from Unreal, you need to create a publish instance.
 
-You can now click on **AYON → Publish ...** to open the Publisher screen. On the left, you will see all the publish instances that you have created. Select the ones that you want to publish, and click on **Publish**.
+- Select the mesh in the Content Browser. 
+- Click on **AYON → Create ...** to open the Creator screen.
+  - In the Creator screen, select *Static Mesh* or *Skeletal Mesh*.
+  - Set the name of the subset.
+  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+- Click on **AYON → Publish ...** to open the Publisher screen. 
+  - On the left, you will see all the publish instances that you have created. 
+  - Select the ones that you want to publish, and click on **Publish**.
 
 ## Look development
 
@@ -79,7 +92,12 @@ AYON supports look development in Unreal Engine.
 
 ### Loading model
 
-First, you will need a model as Static Mesh. To load it, just choose **AYON → Load ...**, right-click your mesh and select **Import Static Mesh**. You will find the loaded Static Mesh in `/Content/AYON/Assets`.
+First, you will need a model as Static Mesh. To load it: 
+- Click on **AYON → Load ...**.
+- Right-click your mesh.
+- Select **Import Static Mesh**.
+
+You will find the loaded Static Mesh in `/Content/AYON/Assets`.
 
 ### Creating look
 
@@ -87,25 +105,48 @@ To create the look, you will need to create the [Materials](https://docs.unreale
 
 ### Publishing look
 
-Select the model with the materials in the Content Browser, and click on **AYON → Create ...**. This will open the Creator screen. From here, select *Material*, set the name of the subset, and click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+To publish a look from Unreal, you need to create a publish instance.
+
+- Select the model with the materials in the Content Browser.
+- Click on **AYON → Create ...** to open the Creator screen. 
+  - In the Creator screen, select *Look*.
+  - Set the name of the subset.
+  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+- Click on **AYON → Publish ...** to open the Publisher screen. 
+  - On the left, you will see all the publish instances that you have created. 
+  - Select the ones that you want to publish, and click on **Publish**.
 
 To get the look ready to be publishable, AYON will create a new folder `/Content/AYON/Looks`. In here, it will be created a folder that will contain a simple model with the materials you created assigned, that will be used to publish the look. This folder will be named after subset name you chose when creating the instance. You don't need to do anything with this folder, it is just for the publishing process.
-
-You can now click on **AYON → Publish ...** to open the Publisher screen. On the left, you will see all the publish instances that you have created. Select the ones that you want to publish, and click on **Publish**.
 
 ## UAssets
 
 Unreal Engine uses [UAssets](https://docs.unrealengine.com/5.1/en-US/working-with-assets-in-unreal-engine/) to store assets. AYON supports publishing and loading of this kind of assets.
 
-To publish UAssets, you will need to create a publish instance for the asset. To do this, select the asset in the Content Browser, and click on **AYON → Create ...**. This will open the Creator screen. From here, select *UAsset*, set the name of the subset, and click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+### Loading
+
+To load a UAsset, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your mesh. 
+- Select **Load UAsset**.
+
+The UAssets will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene.
+
+### Publishing
 
 :::note
 Publishing UAssets has some limitations currently. You can only publish a single UAssets, and it must not have any dependencies.
 :::
 
-You can now click on **AYON → Publish ...** to open the Publisher screen. On the left, you will see all the publish instances that you have created. Select the ones that you want to publish, and click on **Publish**.
+To publish a UAsset, you need to create a publish instance.
 
-To load a UAsset, just choose **AYON → Load ...**, right-click your asset and select **Load UAsset**. You will find the loaded UAsset in `/Content/AYON/Assets`.
+- Select the UAsset in the Content Browser. 
+- Click on **AYON → Create ...** to open the Creator screen.
+  - In the Creator screen, select *UAsset*.
+  - Set the name of the subset.
+  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
+- Click on **AYON → Publish ...** to open the Publisher screen.
+  - On the left, you will see all the publish instances that you have created.
+  - Select the ones that you want to publish, and click on **Publish**.
 
 ## Layouts
 
