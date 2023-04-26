@@ -8,6 +8,8 @@ sidebar_label: Unreal
 
 AYON in Unreal Engine allows you to create, publish and manage assets and scenes across different projects and platforms. AYON handles tasks such as versioning, validation, synchronization, rendering and publishing in Unreal.
 
+To launch **Unreal Engine** with AYON user does not use Epic Games Launcher but **AYON Launcher** instead.
+
 ## Getting started with Unreal Engine in AYON
 
 ### Prerequisites
@@ -19,10 +21,15 @@ AYON supports Unreal Engine 5.0 and 5.1. To use it, you need to install the [AYO
 While other hosts in AYON have specific workfiles for each task, Unreal Engine is a bit different.
 An Unreal project is made by design to contain all the content of a project, so it wouldn't make sense to have more than one.
 We recommend creating a task in AYON specifically for Unreal, and use that task to manage the Unreal project.
+This way user selects the dedicated task for Unreal Project in AYON Launcher and launch it by UE icon at the bottom.
 
+![Unreal Launcher](assets/unreal_launcher.png)
+
+
+:::note
 For linear animation projects, and in particular for episodic formats, we still recommend keeping only one Unreal project. Having a project for each episode would result in duplicated data between the episodes, and it would be hard to manage.
+:::
 
-<!-- TODO: ![Unreal Task]() -->
 
 ### AYON Menu and global AYON tools
 
@@ -34,7 +41,7 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 -   [Publish](artist_tools_publisher) is the tool to publish assets from Unreal to AYON.
 -   Render, which starts the render for a selected `AyonPublishInstance`.
 
-<!-- TODO: ![AYON Menu]() -->
+![Unreal AYON Menu](assets/unreal_ayon_menu.png)
 
 ### Default structure
 
@@ -43,6 +50,8 @@ The structure of the project data is handled by AYON. The first time you create 
 - `/Content/AYON/Assets` contains all the single assets that are loaded from AYON.
 - `/Content/AYON/PublishInstances` contains all the instances that are created in Unreal.
 - The rest of the directories are generated automatically when loading layouts and cameras. They will have the same structure of your project and will contain the levels and level sequences that are generated when you load those kinds of asset.
+
+![Unreal AYON Assets](assets/unreal_ayon_assets.png)
 
 To be better identifiable, these folders are colored with the AYON color palette.
 
