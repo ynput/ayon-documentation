@@ -126,7 +126,7 @@ Unreal Engine uses [UAssets](https://docs.unrealengine.com/5.1/en-US/working-wit
 
 To load a UAsset, follow these steps:
 - Choose **AYON → Load ...**.
-- Right-click your mesh. 
+- Right-click your asset.
 - Select **Load UAsset**.
 
 The UAssets will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene.
@@ -148,30 +148,28 @@ To publish a UAsset, you need to create a publish instance.
   - On the left, you will see all the publish instances that you have created.
   - Select the ones that you want to publish, and click on **Publish**.
 
-## Layouts
-
-### Layouts for linear animation
+## Layouts for linear animation
 
 There are two different layout options in Unreal, depending on the type of project you are working on. This section explains how to handle layouts for linear animation. To do this, AYON generates [Master Sequences](https://docs.unrealengine.com/5.1/en-US/master-sequences-shots-and-takes-in-unreal-engine/) to track the whole level sequence hierarchy.
 To set this mode, you should turn **on** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
 ![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
 
-#### Loading
+### Loading
 
-To load a layout, click on the AYON icon in Unreal’s main taskbar, and select **Load**.
+To load a layout, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your layout.
+- Select **Load Layout**.
 
 ![Unreal OP Tools Load](assets/unreal_openpype_tools_load.png)
-
-Select the task on the left, then right click on the layout asset and select **Load Layout**.
-
 ![Unreal Layout Load](assets/unreal_load_layout.png)
 
 If you need to load multiple layouts, you can select more than one task on the left, and you can load them together.
 
 ![Unreal Layout Load Batch](assets/unreal_load_layout_batch.png)
 
-#### Navigating the project
+### Navigating the project
 
 The layout will be imported in the directory `/Content/AYON`. The layout will be split into two subfolders. In `/Content/AYON/Assets` you will find all the rigs and models contained in the layout, while the folder with the name of the layout will contain the levels and the level sequences.
 
@@ -179,13 +177,22 @@ Typically, in a linear animation project, the project will be split into several
 
 Cameras and Layouts follow the same structures, so when loading one of the two, you will get the same hierarchy. If you load one of them first, the whole hierarchy will be generated. If you load the other one later, and the hierarchy was already generated, the new asset will be added to the existing hierarchy.
 
-In the main folder of the layout (or the episode folder, in case of an episodic project), you will find the master level and the master level sequence and the folders for all the scenes in the episodes. AYON is then flexible to accomodate any kind of project structure, and each layer will have its own level sequence. Finally, each shot will have again their own level sequence, and their own level.
+In the main folder of the layout (or the episode folder, in case of an episodic project), you will find the *master level* and the *master level sequence* and the folders for all the scenes in the episodes. AYON is then flexible to accomodate any kind of project structure, and each layer will have its own level sequence. Finally, each shot will have again their own level sequence, and their own level.
+
+#### Adding environment or lighting to the master level
 
 After opening the master level, open the *Levels* window (from the menu **Windows → Levels**), and you will see the list of the levels of each shot of the episode for which a layout has been loaded.
 
 ![Unreal Level List](assets/unreal_level_list.png)
 
 Here you will be able to add any other level that you need to the master level. For example, you can add the environment level to the master level, so that it is always loaded when you open the master level, or any level that contains the lighting.
+
+To add a level to the master level:
+
+- Open the *Levels* window from the menu  **Windows → Levels**.
+- Click on the **Levels** menu in the top right corner of the window.
+- Click **Add Existing...**.
+- Select the level you want to add to the master level.
 
 ![Unreal Add Level](assets/unreal_add_level.png)
 
@@ -195,52 +202,89 @@ After adding the environment level to the master level, you will need to set it 
 
 Otherwise, you will need to set the visibility in the master sequence.
 
-#### Update layouts
+<!-- TODO: Add image of visibility track from level sequence -->
+
+### Update layouts
 
 To manage loaded layouts, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
 ![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
-The version number will be in red if it isn’t the latest version. Right click on the element, and select Update if you need to update the layout.
+The version number will be in red if it isn’t the latest version. 
+
+To update the layout:
+- Right click on the element that has available updates.
+- Click **Update**.
 
 :::warning
 **DO NOT** update rigs or models imported with a layout. Update only the layout.
 :::
 
-### Layouts for interactive projects
+### Layouts from Maya
+
+### Layouts from Blender
+
+## Layouts for interactive projects
 
 There are two different layout options in Unreal, depending on the type of project you are working on. This section explains how to handle layouts for interactive projects. In this case, AYON will not generate the level sequences hierarchy, but will load the layout in a single level and with a single level sequence.
 To set this mode, you should turn **off** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
 ![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
 
-#### Loading
+### Loading
+
+To load a layout, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your layout.
+- Select **Load Layout**.
 
 The layout will be imported in the directory `/Content/AYON`. The layout will be split into two subfolders. In `/Content/AYON/Assets` you will find all the rigs and models contained in the layout, while the folder with the name of the layout will contain the levels and the level sequences.
 
-The layout level will and should contain only the data included in the layout. To add other elements, like the environment or the lighting, you have to create a master level, and add the layout level as a [streaming level](https://docs.unrealengine.com/5.1/en-US/level-streaming-in-unreal-engine/).
+The layout level will and should contain only the data included in the layout. To add other elements, like the environment or the lighting, you have to create a *master level*, and add the layout level as a [streaming level](https://docs.unrealengine.com/5.1/en-US/level-streaming-in-unreal-engine/).
 
-Create the master level and open it. Then, open the *Levels* window (from the menu **Windows → Levels**). Click on **Levels → Add Existing** and select the layout level and the other levels you with to include in the scene. The following example shows a master level in which have been added a level with lighing and the layout level.
+- Create the master level.
+  - To create a level, click on **File → New Level**.
+  - Select **Empty Level** or one of the presets.
+  - Save the level.
+- Open the master level.
+- Open the *Levels* window from the menu  **Windows → Levels**.
+- Click on the **Levels** menu in the top right corner of the window.
+- Click **Add Existing...**.
+- Select the level you want to add to the master level.
+
+The following example shows a master level in which have been added a level with lighing and the layout level.
 
 ![Unreal Add Level](assets/unreal_add_level.png)
 ![Unreal Level List](assets/unreal_level_list_no_sequences.png)
 
-### Layout on existing project
-
-In case you already loaded the assets in Unreal, or imported them manually, and have assembled a scene in Unreal, you can still load the layout to match the existing assets. To do so, after having published the layout, you can load it in Unreal by selecting **Load Layout on Existing Scene** in the Loader. This will create the *AyonAssetContainer* for each asset you have in the scene that does not have one yet, and will create the *AyonAssetContainer* for the layout.
-
-You have the option, in **Project Settings → Unreal Engine** to delete any unmatched asset in the scene.
-
-### Layouts from Maya
-
-### Layouts from Blender
-
 ### Publishing layouts
 
-AYON supports publishing of layouts directly from Unreal. To publish a layout, you will need to create a `AyonPublishInstance`. To do so, open a level and select the actors you want to include in the layout. Then, click on **AYON → Create ...**. This will open the Creator screen. From here, select *Layout*, set the name of the subset, and click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the layout.
+To publish a layout, you need to create a publish instance.
 
-You can now click on **AYON → Publish ...** to open the Publisher screen. On the left, you will see all the publish instances that you have created. Select the ones that you want to publish, and click on **Publish**.
+- Open a level from which you want to publish a layout from.
+- Select the actors you want to include in the layout.
+- Click on **AYON → Create ...** to open the Creator screen.
+  - In the Creator screen, select *UAsset*.
+  - Set the name of the subset.
+  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the layout.
+- Click on **AYON → Publish ...** to open the Publisher screen.
+  - On the left, you will see all the publish instances that you have created.
+  - Select the ones that you want to publish, and click on **Publish**.
+
+## Layout on existing project
+
+In case you already loaded the assets in Unreal, or imported them manually, and have assembled a scene in Unreal, you can still load the layout to match the existing assets. 
+
+- Publish a layout from Maya or Blender.
+- In Unreal, open a level that contains the assets you want to match with the layout.
+- Choose **AYON → Load ...**.
+- Right-click your layout.
+- Select **Load Layout on Existing Scene**.
+
+This will create the *AyonAssetContainer* for each asset you have in the scene that does not have one yet, and will create the *AyonAssetContainer* for the layout.
+
+You have the option, in **Project Settings → Unreal Engine** to delete any unmatched asset in the scene.
 
 ## Cameras
 
