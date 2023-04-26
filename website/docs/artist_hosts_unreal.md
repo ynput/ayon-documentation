@@ -31,15 +31,16 @@ For linear animation projects, and in particular for episodic formats, we still 
 :::
 
 
-### AYON Menu and global AYON tools
+### AYON Menu and Tools
 
 The AYON menu will be the main tool to interact with AYON in Unreal. It will allow you to create, load, publish and manage assets.
 
--   [Create](artist_tools_creator) is the tool to create metadata for asset publishing.
 -   [Load](artist_tools_loader) is the tool to load assets from AYON into Unreal.
+-   [Publisher](artist_tools_publisher) is the tool to create and publish assets from Unreal to AYON.
 -   [Manage (Inventory)](artist_tools_inventory) is the tool to manage loaded assets.
--   [Publish](artist_tools_publisher) is the tool to publish assets from Unreal to AYON.
--   Render, which starts the render for a selected `AyonPublishInstance`.
+-   Render - starts the render for a selected `AyonPublishInstance`.
+-   Experimental tools - contains tools under developement
+
 
 ![Unreal AYON Menu](assets/unreal_ayon_menu.png)
 
@@ -49,11 +50,13 @@ The structure of the project data is handled by AYON. The first time you create 
 
 - `/Content/AYON/Assets` contains all the single assets that are loaded from AYON.
 - `/Content/AYON/PublishInstances` contains all the instances that are created in Unreal.
-- The rest of the directories are generated automatically when loading layouts and cameras. They will have the same structure of your project and will contain the levels and level sequences that are generated when you load those kinds of asset.
+- `/Content/AYON/Shots` contains all shot data of your AYON project, keeping same structure as the AYON project outside Unreal,  UE levels and level sequences created when user loading Layout and Camera assets via **Load** tool.
 
 ![Unreal AYON Assets](assets/unreal_ayon_assets.png)
 
-To be better identifiable, these folders are colored with the AYON color palette.
+:::note
+AYON data folders are color coded by unique color scheme for easier navigation. As seen on the picture above.
+:::
 
 ### DataAssets
 
