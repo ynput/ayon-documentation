@@ -57,7 +57,15 @@ To be better identifiable, these folders are colored with the AYON color palette
 
 ### DataAssets
 
-AYON introduces two type of Unreal Assets: `AyonAssetContainer` and `AyonPublishInstance`. These assets are used to manage Ayon metadata in Unreal, and they are not meant to be used directly in the scene. The first ones are used to store metadata of loaded assets, while the second ones for metadata of assets that are going to be published.
+AYON introduces two type of Unreal Assets acting as sort of containers: `AyonAssetContainer`
+
+![Unreal AYON Asset CON](assets/unreal_asset_con.png)
+
+ and `AyonPublishInstance`.
+ 
+ ![Unreal AYON Asset Publish](assets/unreal_asset_publish.png)
+
+  These assets are **used only to manage Ayon metadata** in Unreal, and they are not meant to be used directly in the scene. The first ones are used to store metadata of loaded assets with ``_CON`` suffix in the name, while the second ones for metadata of assets that are going to be published with ``_INS`` suffix in the name.
 
 ## Static and Skeletal Meshes
 
