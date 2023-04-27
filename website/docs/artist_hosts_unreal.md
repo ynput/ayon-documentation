@@ -423,6 +423,17 @@ To update the camera:
 The rendering requires a layout loaded with the option to create the level sequences **on**.
 :::
 
+### Prerequisites
+
+To render with AYON in Unreal, you will need to set a new root in AYON Project Settings. This root will be the folder where all the renders will be published.
+
+- Open AYON Project Settings from the tray icon from **Admin → Studio Settings**
+- Go to **Project Settings → Anatomy → Roots**.
+- Add a new root with the name `renders`.
+- Add the path you want to use for the renders. This path should be an absolute path.
+
+![](assets/unreal_rendering_root.png)
+
 ### Creating the render instance
 
 To render and publish an episode, a scene or a shot, you will need to create a Render `AyonPublishInstance`. The publish instance for the rendering is based on one level sequence. That means that if you want to render the whole project (or a the whole episode), you will need to create it for the master level sequence, but if you want to render just one shot, you will need to create it for that shot.
