@@ -154,5 +154,6 @@ module.exports = {
         },
         "dev_deadline",
         "dev_colorspace",
+        "dev_event_system",
     ],
 };
