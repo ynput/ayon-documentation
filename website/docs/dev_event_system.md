@@ -15,9 +15,8 @@ This document provides an overview of the event system and its components.
 The event system is comprised of individual events, each with its own unique set of attributes and methods for handling payloads. 
 Events are organized by their topics, states, progress, and parent relationships. 
 
-## Event object
-
-An event is the primary unit of the event system. Each event may contain the following attributes:
+The event system also provides a set of functions for creating, updating, and deleting events,
+as well as querying events based on their attributes.
 
 ### Event types
 
@@ -179,7 +178,9 @@ Users can delete events from the system, removing them from the database (for pe
 
 The event system allows users to query events based on their attributes, such as topic, project, user and so on.
 
-Querying is available using GraphQL
+Querying is available using GraphQL API.
 
 ### Enroll
+
+Enroll endpoint is used by services to 
 
