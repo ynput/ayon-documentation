@@ -417,6 +417,44 @@ To update the camera:
 
 ## Animations
 
+:::note
+Loading animations requires a layout loaded with the option to create the level sequences **on**.
+:::
+
+AYON allows you to load animations in Unreal. To load an animation, you will first need to load a layout with the option to create the level sequences **on**. This is because the animations will be added to the same level sequences generated for the layout.
+
+### Loading the layout
+
+To load a layout, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your layout.
+- Select **Load Layout**.
+
+The layout will be imported in the directory `/Content/AYON`. For more information, we recommend reading the section dedicated to the [layout for linear animation](#layouts-for-linear-animation).
+
+### Loading the animation
+
+To load an animation, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your animation.
+- Select **Load Animation**.
+
+The animation itself will be imported in `/Content/AYON/Animations`.
+The animation will be added to the level sequence generated for the layout.
+
+### Updating
+
+To manage loaded animations, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+
+You will get a list of all the assets that have been loaded in the project.
+The version number will be in red if it isn’t the latest version.
+
+To update the animation:
+- Right click on the element that has available updates.
+- Click **Update**.
+
 ## Rendering
 
 :::note
