@@ -340,68 +340,80 @@ This will create the *AyonAssetContainer* for each asset you have in the scene t
 
 You have the option, in **Project Settings → Unreal Engine** to delete any unmatched asset in the scene.
 
-## Cameras
-
-### Cameras with master sequences
+## Cameras with master sequences
 
 There are two different camera options in Unreal, depending on the type of project you are working on. This section explains how to handle cameras with the generation of [Master Sequences](https://docs.unrealengine.com/5.1/en-US/master-sequences-shots-and-takes-in-unreal-engine/).
 To set this mode, you should turn **on** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
 ![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
 
-#### Loading
+### Loading
 
-To load a camera, click on the AYON icon in Unreal’s main taskbar, and select **Load**.
+To load a camera, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your camera.
+- Select **Load Camera**.
+
+<!-- TODO: Change images to camera -->
 
 ![Unreal OP Tools Load](assets/unreal_openpype_tools_load.png)
-
-Select the task on the left, then right click on the camera asset and select **Load Camera**.
-
 ![Unreal Layout Load](assets/unreal_load_layout.png)
 
 If you need to load multiple cameras, you can select more than one task on the left, and you can load them together.
 
 ![Unreal Layout Load Batch](assets/unreal_load_layout_batch.png)
 
-#### Navigating the project
+### Navigating the project
 
 The camera will be imported in the directory `/Content/AYON`.
+
 Typically, in a linear animation project, the project will be split into several shots, and shots are organised in scenes. If the project is episodic, scenes will also be organised in episodes. To reflect this structure, whenever you load a camera (or a layout), AYON will create the same hierarchy of your project with [Level Sequences](https://docs.unrealengine.com/5.1/en-US/unreal-engine-sequencer-movie-tool-overview/) and Levels.
 
 Cameras and Layouts follow the same structures, so when loading one of the two, you will get the same hierarchy. If you load one of them first, the whole hierarchy will be generated. If you load the other one later, and the hierarchy was already generated, the new asset will be added to the existing hierarchy.
 
 In the main folder of the camera (or the episode folder, in case of an episodic project), you will find the master level and the master level sequence and the folders for all the scenes in the episodes. AYON is then flexible to accomodate any kind of project structure, and each layer will have its own level sequence. Finally, each shot will have again their own level sequence, and their own level.
 
-#### Update cameras
+### Updating
 
 To manage loaded cameras, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
 ![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
-The version number will be in red if it isn’t the latest version. Right click on the element, and select Update if you need to update the camera.
+The version number will be in red if it isn’t the latest version. 
 
-### Cameras for a single level
+To update the camera:
+- Right click on the element that has available updates.
+- Click **Update**.
+
+## Cameras for a single level
 
 Cameras do not require a master sequence. If you are working on a project that does not require a master sequence, you can simply load the camera in the level you currently have open.
 To set this mode, you should turn **off** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
 ![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
 
-#### Loading
+### Loading
 
-To load the camera, click on the AYON icon in Unreal’s main taskbar, and select **Load**. Select the task on the left, then right click on the camera asset and select **Load Camera**.
+To load a camera, follow these steps:
+- Choose **AYON → Load ...**.
+- Right-click your camera.
+- Select **Load Camera**.
 
 In `/Content/AYON` you will find a folder with the name of the camera that contains the camera level sequence. The camera will be loaded in the current level open, so you will need to save it, if you haven’t already.
 
-#### Update cameras
+### Updating
 
 To manage loaded cameras, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
 ![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
-The version number will be in red if it isn’t the latest version. Right click on the element, and select Update if you need to update the camera.
+The version number will be in red if it isn’t the latest version. 
+
+To update the camera:
+- Right click on the element that has available updates.
+- Click **Update**.
 
 ## Animations
 
