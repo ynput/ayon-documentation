@@ -38,8 +38,8 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 -   [Load](artist_tools_loader) is the tool to load assets from AYON into Unreal.
 -   [Publisher](artist_tools_publisher) is the tool to create and publish assets from Unreal to AYON.
 -   [Manage (Inventory)](artist_tools_inventory) is the tool to manage loaded assets.
--   Render - starts the render for a selected `AyonPublishInstance`.
--   Experimental tools - contains tools under developement
+-   *Render* starts the render for a selected `AyonPublishInstance`.
+-   *Experimental tools* contains tools under developement
 
 
 ![Unreal AYON Menu](assets/unreal_ayon_menu.png)
@@ -50,7 +50,7 @@ The structure of the project data is handled by AYON. The first time you create 
 
 - `/Content/AYON/Assets` contains all the single assets that are loaded from AYON.
 - `/Content/AYON/PublishInstances` contains all the instances that are created in Unreal.
-- `/Content/AYON/Shots` contains all shot data of your AYON project, keeping same structure as the AYON project outside Unreal,  UE levels and level sequences created when user loading Layout and Camera assets via **Load** tool.
+- The rest of the directories contain all shot data of your AYON project, keeping same structure as the AYON project. In particular, they contain the levels and level sequences that are generated when you load Layout and Camera assets via **Load** tool.
 
 ![Unreal AYON Assets](assets/unreal_ayon_assets.png)
 
@@ -68,7 +68,7 @@ AYON introduces two type of Unreal Assets acting as sort of containers: `AyonAss
  
  ![Unreal AYON Asset Publish](assets/unreal_asset_publish.png)
 
-  These assets are **used only to manage Ayon metadata** in Unreal, and they are not meant to be used directly in the scene. The first ones are used to store metadata of loaded assets with ``_CON`` suffix in the name, while the second ones for metadata of assets that are going to be published with ``_INS`` suffix in the name.
+These assets are **used only to manage Ayon metadata** in Unreal, and they are not meant to be used directly in the scene. The first ones, with `_CON` suffix in the name, are used to store metadata of loaded assets, while the second ones, with `_INS` suffix in the name, for metadata of assets that are going to be published.
 
 ## Static and Skeletal Meshes
 
