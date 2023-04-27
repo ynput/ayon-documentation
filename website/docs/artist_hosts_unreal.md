@@ -434,16 +434,6 @@ To render with AYON in Unreal, you will need to set a new root in AYON Project S
 
 ![](assets/unreal_rendering_root.png)
 
-### Creating the render instance
-
-To render and publish an episode, a scene or a shot, you will need to create a Render `AyonPublishInstance`. The publish instance for the rendering is based on one level sequence. That means that if you want to render the whole project (or a the whole episode), you will need to create it for the master level sequence, but if you want to render just one shot, you will need to create it for that shot.
-
-Navigate to the folder that contains the level sequence that you need to render. Select the level sequence, and then click on the AYON icon in Unreal’s main taskbar, and select **Create**. In the Creator window select **Render**, give it a name, and click **Create**. The render instance will be created in `/Content/AYON/PublishInstances`.
-
-![Unreal OP Tools Create](assets/unreal_openpype_tools_create.png)
-
-![Unreal OP Instance Creator](assets/unreal_create_render.png)
-
 ### Render settings
 
 AYON offers a set of render settings that you can set from the Projects Settings. Settings like frame rate, frame range, and resolution can be set in the **Project Settings → Anatomy → Attributes**. Settings more specific to Unreal can be found in **Project Settings → Unreal Engine**, and these are:
@@ -451,6 +441,21 @@ AYON offers a set of render settings that you can set from the Projects Settings
 - Pre-roll Frames, the amount of warm up frames that will be rendered before the actual render.
 
 Additionally, AYON allows you to prepare a [preset of settings](https://docs.unrealengine.com/5.1/en-US/cinematic-render-settings-in-unreal-engine/) directly from the [Movie Render Queue](https://docs.unrealengine.com/5.1/en-US/render-cinematics-in-unreal-engine/) and pass them to the render. To do so, you will need to set the path of the preset in **Project Settings → Unreal Engine**.
+
+### Creating the render instance
+
+To render and publish an episode, a scene or a shot, you will need to create a Render `AyonPublishInstance`. The publish instance for the rendering is based on one level sequence. That means that if you want to render the whole project (or a the whole episode), you will need to create it for the master level sequence, but if you want to render just one shot, you will need to create it for that shot.
+
+- Navigate to the folder that contains the level sequence that you need to render.
+- Select the level sequence.
+- Click on **AYON → Create ...** to open the Creator screen.
+  - In the Creator screen, select *Render*.
+  - Set the name of the subset.
+  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to render and publish it.
+
+![Unreal OP Tools Create](assets/unreal_openpype_tools_create.png)
+
+![Unreal OP Instance Creator](assets/unreal_create_render.png)
 
 ### Start the rendering
 
@@ -462,10 +467,10 @@ To start the rendering, just select the render `AyonPublishInstance` you want to
 
 Once the render is finished, you can publish the render. Click on the AYON icon in Unreal’s main taskbar, and select **Publish**.
 
+- Click on **AYON → Publish ...** to open the Publisher screen.
+- On the left, you will see all the publish instances that you have created.
+  - They will be automatically reorganised to have an instance for each shot. So, for example, if you have created the render instance for the whole episode, here you will have an instance for each shot in the episode.
+- Select the ones that you want to publish, and click on **Publish**.
+
 ![Unreal OP Tools Publish](assets/unreal_openpype_tools_publish.png)
-
-On the left, in the list of publish instances, you will find the render instances that you created earlier. They will be automatically reorganised to have an instance for each shot. So, for example, if you have created the render instance for the whole episode, here you will have an instance for each shot in the episode.
-
 ![Unreal Publish Render](assets/unreal_publish_render.png)
-
-Click on the play button in the bottom right, and it will start the publishing process.
