@@ -64,9 +64,9 @@ AYON introduces two type of Unreal Assets acting as sort of containers: `AyonAss
 
 ![Unreal AYON Asset CON](assets/unreal_asset_con.png)
 
- and `AyonPublishInstance`.
+and `AyonPublishInstance`.
  
- ![Unreal AYON Asset Publish](assets/unreal_asset_publish.png)
+![Unreal AYON Asset Publish](assets/unreal_asset_publish.png)
 
 These assets are **used only to manage Ayon metadata** in Unreal, and they are not meant to be used directly in the scene. The first ones, with `_CON` suffix in the name, are used to store metadata of loaded assets, while the second ones, with `_INS` suffix in the name, for metadata of assets that are going to be published.
 
@@ -83,6 +83,19 @@ To load a Mesh, follow these steps:
 - Select **Import Static Mesh** or **Import Skeletal Mesh**.
 
 The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
+
+### Updating
+
+To manage loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+
+You will get a list of all the assets that have been loaded in the project.
+The version number will be in red if it isn’t the latest version.
+
+To update the asset:
+- Right click on the element that has available updates.
+- Click **Update**.
 
 ### Publishing
 
@@ -141,6 +154,19 @@ To load a UAsset, follow these steps:
 - Select **Load UAsset**.
 
 The UAssets will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene.
+
+### Updating
+
+To manage loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+
+You will get a list of all the assets that have been loaded in the project.
+The version number will be in red if it isn’t the latest version.
+
+To update the asset:
+- Right click on the element that has available updates.
+- Click **Update**.
 
 ### Publishing
 
@@ -215,14 +241,14 @@ Otherwise, you will need to set the visibility in the master sequence.
 
 <!-- TODO: Add image of visibility track from level sequence -->
 
-### Update layouts
+### Updating
 
 To manage loaded layouts, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
 ![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
-The version number will be in red if it isn’t the latest version. 
+The version number will be in red if it isn’t the latest version.
 
 To update the layout:
 - Right click on the element that has available updates.
@@ -268,6 +294,23 @@ The following example shows a master level in which have been added a level with
 
 ![Unreal Add Level](assets/unreal_add_level.png)
 ![Unreal Level List](assets/unreal_level_list_no_sequences.png)
+
+### Updating
+
+To manage loaded layouts, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+
+You will get a list of all the assets that have been loaded in the project.
+The version number will be in red if it isn’t the latest version.
+
+To update the layout:
+- Right click on the element that has available updates.
+- Click **Update**.
+
+:::warning
+**DO NOT** update rigs or models imported with a layout. Update only the layout.
+:::
 
 ### Publishing layouts
 
