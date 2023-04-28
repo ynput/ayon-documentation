@@ -103,6 +103,8 @@ ensuring that any system components or clients handling the event can rely on th
 
 #### payload
 
+The payload is a JSON object that contains the event data. Payload is only accessible via REST API.
+
 
 #### project
 
@@ -141,12 +143,16 @@ To update the status of an event, use the `update_event` function and set the st
 
 #### retries
 
+Number of times the event has been retried.
 
-#### payload
 
 #### created_at
 
+Timestamp of the event creation.
+
 #### updated_at
+
+Timestamp of the event last update.
 
 #### progress
 
@@ -180,7 +186,74 @@ The event system allows users to query events based on their attributes, such as
 
 Querying is available using GraphQL API.
 
-### Enroll
+### Enroll Endpoint
 
-Enroll endpoint is used by services to 
+The enroll endpoint can be used by services to request a new job for processing.
 
+Each job consists of a source event and a target event. 
+The source event is the event that triggered the job, while the target event is the event that should be created as a result of the job.
+
+To use this endpoint, the service must provide the source and target event topics. 
+If there isn't already an existing event with the specified target topic for the same source event, 
+a new event will be created and returned.
+
+
+#### Example scenario
+
+A smart coffe maker running Ayon service hosts brews coffee for the user each time a version is approved.
+
+The service periodically calls the enroll endpoint with the following parameters:
+
+```json
+{
+  "source topic": "entity.version.status_changed",
+  "target topic": "coffee_maker.brew_coffee_on_version_approved",
+  "description": "Checking whether i should brew coffee",
+}
+```
+
+The enroll endpoint will return a new event with the specified target topic (or 204 status code if there is no source event available).
+
+```json
+{
+  "id" : "ID_OF_THE_NEW_EVENT",
+  "depends_on" : "ID_OF_THE_SOURCE_EVENT",
+  "hash": "HASH_OF_THE_NEW_EVENT",
+  "status": "pending",
+}
+```
+
+The new event is now ready to be processed by the service. Using `[GET] /api/events/{souce_event_id}` endpoint, the service loads the source event data:
+
+```
+source_status = source_event["payload"]["newValue"]
+```
+
+if the souce_status is not "Approved", the service just finalies the new event with appropriate description using `[PATCH] /api/events/{new_event_id}` endpoint:
+
+```json
+{
+  "status": "finished",
+  "description": "Version is not approved, no coffee for you"
+}
+```
+
+If the source status is `Approved`, service changes the new event status to `in_progress` and starts brewing coffee.
+
+`[PATCH] /api/events/{new_event_id}`
+```json
+{
+  "status": "in_progress",
+  "description": "Coffee is ready"
+}
+```
+
+When the coffee is ready, the service updates the new event status to `finished` and adds a description:
+
+`[PATCH] /api/events/{new_event_id}`
+```json
+{
+  "status": "finished",
+  "description": "Coffee is ready"
+}
+```
