@@ -101,8 +101,8 @@ module.exports = {
                     type: "category",
                     label: "Project Settings",
                     items: [
-                        "project_settings/settings_project_global",
-                        "project_settings/project_settings_nuke",
+                        "project_settings/project_settings_core",
+                        "project_settings/settings_project_nuke",
                         "project_settings/settings_project_standalone",
                     ],
                 },
