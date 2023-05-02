@@ -53,7 +53,7 @@ If you do not know what an attributes value is supposed to be, for example for d
 
 ### Model Name Validator
 
-`ValidateRenderSettings`
+`ValidateModelName`
 
 This validator can enforce specific names for model members. It will check them against **Validation Regex**.
 There is special group in that regex - **shader**. If present, it will take that part of the name as shader name
@@ -87,38 +87,15 @@ When you publish your model with top group named like `foo_GRP` it will fail. Bu
 All regexes used here are in Python variant.
 :::
 
-### Maya > Deadline submitter
-This plugin provides connection between Maya and Deadline. It is using [Deadline Webservice](https://docs.thinkboxsoftware.com/products/deadline/10.0/1_User%20Manual/manual/web-service.html) to submit jobs to farm.
-![Maya > Deadline Settings](assets/maya-admin_submit_maya_job_to_deadline.png)
-
-You can set various aspects of scene submission to farm with per-project settings in **Setting UI**.
-
- - **Optional** will mark sumission plugin optional
- - **Active** will enable/disable plugin
- - **Tile Assembler Plugin** will set what should be used to assemble tiles on Deadline. Either **Open Image IO** will be used
-or Deadlines **Draft Tile Assembler**.
- - **Use Published scene** enable to render from published scene instead of scene in work area. Rendering from published files is much safer.
- - **Use Asset dependencies** will mark job pending on farm until asset dependencies are fulfilled - for example Deadline will wait for scene file to be synced to cloud, etc.
- - **Group name** use specific Deadline group for the job.
- - **Limit Groups** use these Deadline Limit groups for the job.
- - **Additional `JobInfo` data** JSON of additional Deadline options that will be embedded in `JobInfo` part of the submission data.
- - **Additional `PluginInfo` data** JSON of additional Deadline options that will be embedded in `PluginInfo` part of the submission data.
- - **Scene patches** - configure mechanism to add additional lines to published Maya Ascii scene files before they are used for rendering.
-This is useful to fix some specific renderer glitches and advanced hacking of Maya Scene files. `Patch name` is label for patch for easier orientation.
-`Patch regex` is regex used to find line in file, after `Patch line` string is inserted. Note that you need to add line ending.
-
-## Custom Menu
+## AYON Tools
 You can add your custom tools menu into Maya by extending definitions in **Maya -> Scripts Menu Definition**.
-![Custom menu definition](assets/maya-admin_scriptsmenu.png)
 
-:::note Work in progress
-This is still work in progress. Menu definition will be handled more friendly with widgets and not
-raw json.
-:::
+![Custom menu definition](assets/maya-admin_scriptsmenu.png)
 
 ## Multiplatform path mapping
 You can configure path mapping using Maya `dirmap` command. This will add bi-directional mapping between
 list of paths specified in **Settings**. You can find it in **Settings -> Project Settings -> Maya -> Maya Directory Mapping**
+
 ![Dirmap settings](assets/maya-admin_dirmap_settings.png)
 
 ## Templated Build Workfile
@@ -157,7 +134,7 @@ Fill in the necessary fields (the optional fields are regex filters)
 
  **2. Configure Template**
 
-- **Go to Studio settings > Project > Your DCC > Templated Build Settings**
+- **Go to Project Settings > Maya > Templated Build Settings**
 - Add a profile for your task and enter path to your template
 
 ![setting build template](assets/settings/template_build_workfile.png)
