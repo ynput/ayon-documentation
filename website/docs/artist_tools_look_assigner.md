@@ -9,6 +9,8 @@ description: Manage published looks to their respective model(s).
 
 The Look Manager takes care of assigning published looks to the correct model in the scene.
 
+![Look Assigner](assets/artist_tools_look_assigner.png)
+
 ## Details
 
 When a look is published it also stores the information about what shading networks need to be assigned to which models, but it also stores all the render attributes on the mesh necessary for a successful render.
@@ -23,4 +25,3 @@ Look Assigner has GUI is made of two parts. On the left you will see the list of
 4.  Choose "Assign".
 
 At this point you should have a model with all it's shaders applied correctly. The tool automatically loads the latest look available.
-
