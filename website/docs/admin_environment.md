@@ -22,9 +22,6 @@ import TabItem from '@theme/TabItem';
  - stringified numeric value of log level. [Here for more info](https://docs.python.org/3/library/logging.html#logging-levels)
  - example value: "10"
 
-## AYON_MONGO
-- If set it takes precedence over the one set in keyring
-- for more details on how to use it go [here](admin_use#check-for-mongodb-database-connection)
 
 ## AYON_USERNAME
 - if set it overrides system created username

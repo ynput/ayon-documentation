@@ -24,7 +24,7 @@ module.exports = {
                         "artist_tools_subset_manager",
                         "artist_tools_sync_queue",
                     ],
-                }
+                },
             ],
         },
         {
@@ -84,10 +84,7 @@ module.exports = {
         {
             type: "category",
             label: "AYON desktop",
-            items: [
-                "admin_desktop_distribute",
-                "admin_desktop_run",
-            ],
+            items: ["admin_desktop_distribute", "admin_desktop_run"],
         },
         {
             type: "category",
@@ -101,8 +98,8 @@ module.exports = {
                     type: "category",
                     label: "Project Settings",
                     items: [
-                        "project_settings/settings_project_global",
-                        "project_settings/settings_project_nuke",
+                        "project_settings/project_settings_core",
+                        "project_settings/project_settings_nuke",
                         "project_settings/settings_project_standalone",
                     ],
                 },

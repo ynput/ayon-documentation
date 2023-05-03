@@ -8,7 +8,7 @@ sidebar_label: TVPaint
 -   [Load](artist_tools_loader)
 -   [Scene Inventory](artist_tools_inventory)
 -   [Publish](artist_tools_publisher)
--   [Library](artist_tools_library)
+-   [Library](artist_tools_library_loader)
 
 
 ## Setup
