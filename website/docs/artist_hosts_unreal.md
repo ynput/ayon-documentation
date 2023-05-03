@@ -118,11 +118,18 @@ To update the asset:
 To publish a mesh from Unreal, you need to create a publish instance.
 
 - Select the mesh in the Content Browser. 
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Static Mesh* or *Skeletal Mesh*.
   - Set the name of the subset.
+  - Set *Use selection*.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-- Click on **AYON → Publish ...** to open the Publisher screen. 
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Model](assets/unreal_create_staticmesh.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created. 
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -151,11 +158,17 @@ To create the look, you will need to create the [Materials](https://docs.unreale
 To publish a look from Unreal, you need to create a publish instance.
 
 - Select the model with the materials in the Content Browser.
-- Click on **AYON → Create ...** to open the Creator screen. 
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Look*.
   - Set the name of the subset.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-- Click on **AYON → Publish ...** to open the Publisher screen. 
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Look](assets/unreal_create_look.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created. 
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -198,11 +211,17 @@ Publishing UAssets has some limitations currently. You can only publish a single
 To publish a UAsset, you need to create a publish instance.
 
 - Select the UAsset in the Content Browser. 
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *UAsset*.
   - Set the name of the subset.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-- Click on **AYON → Publish ...** to open the Publisher screen.
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Uasset](assets/unreal_create_uasset.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created.
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -338,11 +357,17 @@ To publish a layout, you need to create a publish instance.
 
 - Open a level from which you want to publish a layout from.
 - Select the actors you want to include in the layout.
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *UAsset*.
   - Set the name of the subset.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the layout.
-- Click on **AYON → Publish ...** to open the Publisher screen.
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Layout](assets/unreal_create_layout.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created.
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -512,20 +537,36 @@ AYON offers a set of render settings that you can set from the Projects Settings
 
 Additionally, AYON allows you to prepare a [preset of settings](https://docs.unrealengine.com/5.1/en-US/cinematic-render-settings-in-unreal-engine/) directly from the [Movie Render Queue](https://docs.unrealengine.com/5.1/en-US/render-cinematics-in-unreal-engine/) and pass them to the render. To do so, you will need to set the path of the preset in **Project Settings → Unreal Engine**.
 
-### Creating the render instance
+### Creating the render instance for existing hierarchy
 
 To render and publish an episode, a scene or a shot, you will need to create a Render `AyonPublishInstance`. The publish instance for the rendering is based on one level sequence. That means that if you want to render the whole project (or a the whole episode), you will need to create it for the master level sequence, but if you want to render just one shot, you will need to create it for that shot.
 
 - Navigate to the folder that contains the level sequence that you need to render.
 - Select the level sequence.
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Render*.
   - Set the name of the subset.
+  - Check the **Use Hierarchy** checkbox.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to render and publish it.
 
 ![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Render](assets/unreal_create_render_use_hierarchy.png)
 
-![Unreal AYON Instance Creator](assets/unreal_create_render.png)
+### Creating the render instance with new level sequence
+
+To render just a scene, without creating a whole hierarchy, you can create an `AyonPublishInstance` and a new level sequence from the Publisher.
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
+  - In the Creator screen, select *Render*.
+  - Set the name of the subset.
+  - Check the **Create a new Level Sequence** checkbox.
+  - Set *Start* and *End Frames*.
+  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to render and publish it.
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Render](assets/unreal_create_render_create_level_sequence.png)
 
 ### Start the rendering
 
@@ -537,10 +578,10 @@ To start the rendering, just select the render `AyonPublishInstance` you want to
 
 Once the render is finished, you can publish the render. Click on the AYON icon in Unreal’s main taskbar, and select **Publish**.
 
-- Click on **AYON → Publish ...** to open the Publisher screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
 - On the left, you will see all the publish instances that you have created.
   - They will be automatically reorganised to have an instance for each shot. So, for example, if you have created the render instance for the whole episode, here you will have an instance for each shot in the episode.
 - Select the ones that you want to publish, and click on **Publish**.
 
 ![Unreal AYON Tools Publish](assets/unreal_ayon_menu_publisher.png)
-![Unreal Publish Render](assets/unreal_publish_render.png)
