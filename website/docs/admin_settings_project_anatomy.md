@@ -59,7 +59,7 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `root[name]` | Path to root folder |
 | `project[name]` | Project's full name |
 | `project[code]` | Project's code |
-| `hierarchy` | All parents path between project and asset |
+| `hierarchy` | All folder between the asset and a project connected with `/` |
 | `asset` | Name of asset or shot |
 | `task[name]` | Name of task |
 | `task[type]` | Type of task |
