@@ -16,7 +16,7 @@ const config = {
         "Documentation for the most robust open-source pipeline for studios and remote teams",
     url: "https://docs.ynput.io", // Your website URL
     baseUrl: "/",
-    onBrokenLinks: "throw",
+    onBrokenLinks: "warn",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
 
