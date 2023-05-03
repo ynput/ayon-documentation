@@ -453,8 +453,13 @@ to update packages version, just run `poetry update` or delete lock file.
 ---
 
 ### create_zip
+
+:::warning
+this is a legacy distribution system from OpenPype and will be replace with a more robust approach in AYON.
+:::
+
 Script to create packaged AYON version from current sources. This will strip developer stuff and
-package it into zip that can be used for [auto-updates for studio wide distributions](admin_distribute.md#automatic-updates), etc.
+package it into zip that can be used for [auto-updates for studio wide distributions](admin_desktop_distribute.md#ayon-addons), etc.
 
 Alternative (but without clearing Python caches):
 

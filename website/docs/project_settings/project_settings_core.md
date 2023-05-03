@@ -115,7 +115,7 @@ If config path is defined to particular shot target with following path inputs:
 Procedure of resolving path (from above example) will look first into path number 1 and if the path does not exist then it will try path number 2. If none of the paths are found, it will fall back to global default.
 
 ### Using File rules
-File rules are inspired by [OCIO v2 configuration]((https://opencolorio.readthedocs.io/en/latest/guides/authoring/rules.html)). Each rule has a unique name which can be overridden by host-specific _File rules_ (example: `project_settings/nuke/imageio/file_rules/rules`).
+File rules are inspired by [OCIO v2 configuration](https://opencolorio.readthedocs.io/en/latest/guides/authoring/rules.html). Each rule has a unique name which can be overridden by host-specific _File rules_ (example: `project_settings/nuke/imageio/file_rules/rules`).
 
 The _input pattern_ matching uses REGEX expression syntax (try [regexr.com](https://regexr.com/)). Matching rules procedure's intention is to be used during publishing or loading of representation. Since the publishing procedure is run before integrator format publish template path, make sure the pattern is working or any work render path.
 
@@ -271,7 +271,7 @@ A profile may generate multiple outputs from a single input. Each output must de
 
 ### Integrate Subset Group
 
-Published subsets might be grouped together for cleaner and easier selection in the **[Subset Manager](artist_tools_subset_manager)**
+Published subsets might be grouped together for cleaner and easier selection in the **[Loader](artist_tools_loader.md)**
 
 Group name is chosen with use of profile filtering.
 

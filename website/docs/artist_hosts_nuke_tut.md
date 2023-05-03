@@ -195,11 +195,11 @@ More about [workfiles](artist_tools_workfiles).
 
 - **Open Workfile**
 
-  - You can [configure](project_settings/settings_project_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
+  - You can [configure](project_settings/project_settings_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
 
 - **Nuke Color Settings**
 
-  - [Color setting](project_settings/settings_project_nuke.md) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
+  - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
 :::
 
 ### Load plate
@@ -294,7 +294,7 @@ If you choose to publish on the farm, you will render and do reviews on the farm
 
 So far there is no option for using existing frames (from your local / check render) and just do the review on the farm.
 
-More info about [configuring reviews](pype2/admin_presets_plugins.md#extractreview).
+More info about [configuring reviews](project_settings/project_settings_core.md#extractreview).
 
 :::tip Admin Tip - Configuring Reviews
 You can configure reviewsin **Studio Settings → Project → Global → Publish plugins → ExtractReview / ExtractBurnin**

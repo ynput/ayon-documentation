@@ -121,7 +121,7 @@ With this action it's possible to delete up to 15 entities at once from active p
 * Entity types: Project
 * User roles: Pypeclub, Administrator, Project manager
 
-Allows project managers and coordinator to *set basic project attributes* needed for AYON to operate, *Create project folders* if you want and especially prepare project specific [settings](admin_settings_project).
+Allows project managers and coordinator to *set basic project attributes* needed for AYON to operate, *Create project folders* if you want and especially prepare project specific settings.
 
 :::tip
 It is possible to use this action during the lifetime of a project but we recommend using it only once at the start of the project.

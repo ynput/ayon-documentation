@@ -90,9 +90,9 @@ export default function Home() {
                         <SearchBar avoidKeyboardShortcuts />
                     </div>
                     <div className={styles.warning}>
-                        While we're transitioning from OpenPype, there are a lot
-                        of details the are factually incorrect. We're working on
-                        resolving all of them.
+                        While we're transitioning from OpenPype documentation, there are
+                        some details that might be factually incorrect and imaged that show the old OpenPype interface. We're working on
+                        resolving all of them. We'll appreciate if you notify us of any such discrepancies. 
                     </div>
                 </div>
                 <div className={styles.linksWrapper}>

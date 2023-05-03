@@ -26,7 +26,7 @@ All Workfile Builder related settings can be found here. This is a list of avail
 
 
 :::important Auto Load Last Version
-In case you want to set the auto load of the latest available version of workfiles, you can do it from [here](settings_project_global#open-last-workfile-at-launch).
+In case you want to set the auto load of the latest available version of workfiles, you can do it from [here](project_settings_core#open-last-workfile-at-launch).
 :::
 
 ### Create first workfile

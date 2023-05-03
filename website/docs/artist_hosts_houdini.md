@@ -11,7 +11,7 @@ sidebar_label: Houdini
 - [Load](artist_tools_loader)
 - [Manage (Inventory)](artist_tools_inventory)
 - [Publish](artist_tools_publisher)
-- [Library Loader](artist_tools_library-loader)
+- [Library Loader](artist_tools_library_loader)
 
 ## Publishing Alembic Cameras
 You can publish baked camera in Alembic format. Select your camera and go **AYON -> Create** and select **Camera (abc)**.
