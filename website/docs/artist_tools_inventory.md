@@ -244,10 +244,3 @@ To return to original state right-click anywhere in subsets list and press `Back
 :::tip
 You can also Cherry-pick from Cherry-picked subsets.
 :::
-
-___
-
-### This concludes the basics of the Inventory tool.
-
-___
-___
