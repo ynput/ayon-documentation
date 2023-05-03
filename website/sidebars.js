@@ -24,7 +24,7 @@ module.exports = {
                         "artist_tools_subset_manager",
                         "artist_tools_sync_queue",
                     ],
-                }
+                },
             ],
         },
         {
@@ -84,10 +84,7 @@ module.exports = {
         {
             type: "category",
             label: "AYON desktop",
-            items: [
-                "admin_desktop_distribute",
-                "admin_desktop_run",
-            ],
+            items: ["admin_desktop_distribute", "admin_desktop_run"],
         },
         {
             type: "category",
