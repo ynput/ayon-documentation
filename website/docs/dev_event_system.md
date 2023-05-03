@@ -105,6 +105,8 @@ ensuring that any system components or clients handling the event can rely on th
 
 The payload is a JSON object that contains the event data. Payload is only accessible via REST API.
 
+The structure (model) of the event payload must remain consistent within the same topic, 
+ensuring that any system components or clients handling the event can rely on the data format.
 
 #### project
 
@@ -122,9 +124,17 @@ This enables to keep the event in the database even if the user is deleted.
 
 #### sender
 
+Sender ID is a unique identifier used to tag events dispatched by a process. 
+It helps track the origin of events and enables the originating process to recognize 
+its own messages when they are returned through a WebSocket stream.
+
+The Sender ID can be the name of the service that generated the event or 
+in a web-based application, the Sender ID can be the identifier of the browser tab that initiated the action.
+
 #### depends_on
 
 The event ID (if any) that initiated the current event, establishing a parent-child relationship between events.
+This is explained in depth in the **enroll** section of this document
 
 #### status
 
@@ -145,7 +155,6 @@ To update the status of an event, use the `update_event` function and set the st
 
 Number of times the event has been retried.
 
-
 #### created_at
 
 Timestamp of the event creation.
@@ -161,7 +170,6 @@ The percentage of completion for the event.
 The value is NOT stored in the database, but when `update_event` with `progress` attribute is called, the value is 
 broadcasted using websocket connection to the connected clients - this may be used to update progress indicators in the UI.
 
-
 ## Event Management
 
 The Ayon server event system offers various methods for managing events, including:
@@ -171,6 +179,8 @@ The Ayon server event system offers various methods for managing events, includi
 Events may be created using `dispatch_event` function in python or via `[POST] /api/events` REST endpoint.
 At least `topic` must be specified in order to dispatch a new event.
 
+By default, dispatched events are persistent (stored in the database). In order to create Fire-and-forget event, 
+set the `store` argument of `dispatch_event` function (or respective REST counterpart) to False.
 
 ### Updating Events
 
@@ -186,7 +196,7 @@ The event system allows users to query events based on their attributes, such as
 
 Querying is available using GraphQL API.
 
-### Enroll Endpoint
+## Enroll Endpoint
 
 The enroll endpoint can be used by services to request a new job for processing.
 
@@ -198,62 +208,101 @@ If there isn't already an existing event with the specified target topic for the
 a new event will be created and returned.
 
 
-#### Example scenario
+### Example scenario
 
-A smart coffe maker running Ayon service hosts brews coffee for the user each time a version is approved.
+A smart coffe maker running Ayon service hosts brews coffee for the user each time a folder is approved.
 
-The service periodically calls the enroll endpoint with the following parameters:
+The service periodically calls the enroll endpoint and when a new event with topic `entity.version.status_changed` is emmited,
+and the new status is `Approved`, a new event is created.
 
-```json
-{
-  "source topic": "entity.version.status_changed",
-  "target topic": "coffee_maker.brew_coffee_on_version_approved",
-  "description": "Checking whether i should brew coffee",
-}
+Services are language-agonstic, so any language or library may be used.
+This is a minimal example using python `requests` library. 
+
+```python
+import time
+import requests
+
+from .config import config
+
+def main():
+    session = requests.session()
+    session.headers.update(
+        {
+            "Content-Type": "application/json",
+            "X-Api-Key": config.api_key,
+        }
+    )
+
+    while True:
+        time.sleep(2)
+
+        # Enroll to the event
+        # Pass an additional filter to only receive events where the folder status is "Approved".
+
+        req = {
+            "sourceTopic": "entity.folder.status_changed",
+            "targetTopic": "example.brew_coffee_on_approve",
+            "sender": config.service_name,
+            "description": "Preparing to brew coffee on folder approval",
+            "filter": {
+                "conditions": [
+                    {
+                        "path": ["payload", "newValue"],
+                        "value": "Approved",
+                    }
+                ]
+            }
+        }
+
+        try:
+            res = session.post(f"{config.server_url}/api/enroll", json=req)
+        except Exception as e:
+            print(e)
+            continue
+
+        # If there's nothing to do, just continue
+        if res.status_code != 200:
+            continue
+
+        enroll_data = res.json()
+
+        # If the status code is 200, the event was enrolled successfully, and the response
+        # contains the event id and the id of the event it depends on.
+        # The new event is created in the "pending" state.
+
+        source_event_id = enroll_data["dependsOn"]
+        target_event_id = enroll_data["id"]
+
+        # Load the source event data
+        source_event = session.get(f"{config.server_url}/api/events/{source_event_id}").json()
+        project_name = source_event["project"]
+        user_name = source_event["user"]
+
+        session.patch(
+            f"{config.server_url}/api/events/{target_event_id}", 
+            json={
+                "status": "in_progress",
+                "description": f"Brewing coffee for {user_name}...",
+                "project": project_name,
+            }
+        )
+
+        # Insert your coffee brewing code here
+        # You can use the same patch request to update the progress
+        print(f"Brewing coffee for {user_name}...")
+        time.sleep(10)
+
+        # Mark the event as finished
+        session.patch(
+            f"{config.server_url}/api/events/{target_event_id}",
+            json={
+                "status": "finished",
+                "description": f"Coffee for {user_name} brewed successfully",
+            }
+        )
+
+
+if __name__ == "__main__":
+    main()
 ```
 
-The enroll endpoint will return a new event with the specified target topic (or 204 status code if there is no source event available).
-
-```json
-{
-  "id" : "ID_OF_THE_NEW_EVENT",
-  "depends_on" : "ID_OF_THE_SOURCE_EVENT",
-  "hash": "HASH_OF_THE_NEW_EVENT",
-  "status": "pending",
-}
-```
-
-The new event is now ready to be processed by the service. Using `[GET] /api/events/{souce_event_id}` endpoint, the service loads the source event data:
-
-```
-source_status = source_event["payload"]["newValue"]
-```
-
-if the souce_status is not "Approved", the service just finalies the new event with appropriate description using `[PATCH] /api/events/{new_event_id}` endpoint:
-
-```json
-{
-  "status": "finished",
-  "description": "Version is not approved, no coffee for you"
-}
-```
-
-If the source status is `Approved`, service changes the new event status to `in_progress` and starts brewing coffee.
-
-`[PATCH] /api/events/{new_event_id}`
-```json
-{
-  "status": "in_progress",
-  "description": "Coffee is ready"
-}
-```
-
-When the coffee is ready, the service updates the new event status to `finished` and adds a description:
-
-`[PATCH] /api/events/{new_event_id}`
-```json
-{
-  "status": "finished",
-  "description": "Coffee is ready"
-}
-```
