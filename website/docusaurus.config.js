@@ -154,6 +154,15 @@ const config = {
                 disableSwitch: false,
                 respectPrefersColorScheme: true,
             },
+            algolia: {
+                // The application ID provided by Algolia
+                appId: "RLOQGA5MLU",
+
+                // Public API key: it is safe to commit it
+                apiKey: "98e725168db71b204e80f843f3e277e0",
+
+                indexName: "ayon-ynput",
+            },
         }),
 
     plugins: [
