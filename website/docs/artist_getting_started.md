@@ -79,7 +79,7 @@ administrator, because AYON versions and executables might not be compatible bet
 Installing AYON is possible by using the Installer or by unzipping downloaded ZIP archive to any drive location.
 
 :::tip Using the AYON Installer
-See the [Installation section](artist_install.md) for more information on how to use the AYON Installer
+See the [Installation section](#installation) for more information on how to use the AYON Installer
 :::
 
 You can run AYON by desktop "P" icon (if it exists after installing) or by directly executing **ayon_gui.exe** located in the AYON installation folder. This executable being suitable **for artists**, or alternatively by **ayon_console.exe** which is more suitable for **TDs/Admin** for debugging and error reporting. The later runs with a console window where all the necessary info will appear during user's work session.
@@ -114,4 +114,4 @@ If you're connected to your Studio, AYON will check for, and install updates aut
 
 ## Advanced Usage
 
-For more advanced use of AYON commands please visit [Admin section](admin_ayon_commands.md).
+For more advanced use of AYON commands please visit [Admin section](admin_desktop_run.md#commands).
