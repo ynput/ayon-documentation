@@ -238,6 +238,7 @@ def main():
 
         # Enroll to the event
         # Pass an additional filter to only receive events where the folder status is "Approved".
+        # For more information on filtering, see /api/query documentation
 
         req = {
             "sourceTopic": "entity.folder.status_changed",
@@ -247,7 +248,7 @@ def main():
             "filter": {
                 "conditions": [
                     {
-                        "path": ["payload", "newValue"],
+                        "key": "payload/newValue",
                         "value": "Approved",
                     }
                 ]
