@@ -406,7 +406,7 @@ function FeaturesCards() {
                                 ? "Supported Families"
                                 : "All Families"}
                             {!isAddonsSelected && (
-                                <Link href="/docs/artist_publish">
+                                <Link href="/docs/artist_publish#families">
                                     What are families?
                                 </Link>
                             )}

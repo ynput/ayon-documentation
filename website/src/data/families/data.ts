@@ -62,6 +62,10 @@ const families: { [type in FamilyType]: Family } = {
         title: "Image",
         icon: "imagesmode",
     },
+    frame: {
+        title: "Frame",
+        icon: "imagesmode",
+    },
     layeredImage: {
         title: "Layered Image",
         icon: "filter",
@@ -113,6 +117,10 @@ const families: { [type in FamilyType]: Family } = {
     lut: {
         title: "LUT",
         icon: "opacity",
+    },
+    effect: {
+        title: "Effect",
+        icon: "ev_shadow",
     },
     gizmo: {
         title: "Gizmo",
