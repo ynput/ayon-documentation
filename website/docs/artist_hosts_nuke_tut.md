@@ -10,7 +10,6 @@ AYON supports Nuke version **`11.0`** and above.
 
 ## AYON global tools
 
--   [Set Context](artist_tools_context_manager)
 -   [Work Files](artist_tools_workfiles)
 -   [Create](artist_tools_creator)
 -   [Load](artist_tools_loader)
@@ -179,7 +178,7 @@ After Nuke starts it will automatically **Apply All Settings** for you. If you a
 :::
 
 ### Save Nuke script – the Work File
-Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming. 
+Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming.
 ![Context](assets/nuke_tut/nuke_WorkFileSaveAs.png)
 
 The Next Available Version checks the work folder for already used versions and offers the lowest unused version number automatically.
@@ -196,11 +195,11 @@ More about [workfiles](artist_tools_workfiles).
 
 - **Open Workfile**
 
-  - You can [configure](project_settings/settings_project_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
+  - You can [configure](project_settings/project_settings_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
 
 - **Nuke Color Settings**
 
-  - [Color setting](project_settings/settings_project_nuke.md) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
+  - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
 :::
 
 ### Load plate
@@ -283,7 +282,7 @@ You can configure Nuke validators like Output Resolution in **Studio Settings �
 ![Write Node Review](assets/nuke_tut/nuke_WriteNodeReview.png)
 
 When you turn the review checkbox on in your AYON write node, here is what happens:
-- AYON uses the current Nuke script to 
+- AYON uses the current Nuke script to
   - Load the render
   - Optionally apply LUT
   - Render Prores 4444 with the same resolution as your render
@@ -295,7 +294,7 @@ If you choose to publish on the farm, you will render and do reviews on the farm
 
 So far there is no option for using existing frames (from your local / check render) and just do the review on the farm.
 
-More info about [configuring reviews](pype2/admin_presets_plugins.md#extractreview).
+More info about [configuring reviews](project_settings/project_settings_core.md#extractreview).
 
 :::tip Admin Tip - Configuring Reviews
 You can configure reviewsin **Studio Settings → Project → Global → Publish plugins → ExtractReview / ExtractBurnin**

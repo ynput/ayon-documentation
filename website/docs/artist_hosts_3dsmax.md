@@ -10,7 +10,6 @@ This part of documentation is still work in progress.
 
 <!-- ## AYON Global Tools
 
--   [Set Context](artist_tools_context_manager)
 -   [Work Files](artist_tools_workfiles)
 -   [Create](artist_tools_creator)
 -   [Load](artist_tools_loader)
@@ -30,7 +29,7 @@ By clicking the icon  ```AYON Menu``` rolls out.
 
 Choose ```AYON Menu > Launcher``` to open the ```Launcher``` window.
 
-When opened you can **choose** the **project** to work in from the list. Then choose the particular **asset** you want to work on then choose **task** 
+When opened you can **choose** the **project** to work in from the list. Then choose the particular **asset** you want to work on then choose **task**
 and finally **run 3dsmax by its icon** in the tools.
 
 ![Menu AYON](assets/3dsmax_tray_OP.png)
@@ -65,13 +64,13 @@ If not any workfile present simply hit ```Save As``` and keep ```Subversion``` e
 
 ![Save As Dialog](assets/3dsmax_SavingFirstFile_OP.png)
 
-AYON correctly names it and add version to the workfile. This basically happens whenever user trigger ```Save As``` action. Resulting into incremental version numbers like 
+AYON correctly names it and add version to the workfile. This basically happens whenever user trigger ```Save As``` action. Resulting into incremental version numbers like
 
 ```workfileName_v001```
 
 ```workfileName_v002```
 
- etc. 
+ etc.
 
 Basically meaning user is free of guessing what is the correct naming and other necessities to keep everything in order and managed.
 
@@ -105,12 +104,17 @@ Before proceeding further please check [Glossary](artist_concepts.md) and [What 
 
 ### Intro
 
-Current AYON integration (ver 3.15.0) supports only ```PointCache``` and ```Camera``` families now.
+Current AYON integration (ver 3.15.4) supports only ```PointCache```, ```Camera```, ```MaxScene```,  ```Render``` and  ```PointCloud``` families now.
 
 **Pointcache** family being basically any geometry outputted as Alembic cache (.abc) format
 
 **Camera** family being 3dsmax Camera object with/without animation outputted as native .max, FBX, Alembic format
 
+**MaxScene** family being 3dsmax scene outputted as native .max format
+
+**Render** family being 3dsmax scene submitted to AWS Thinkbox Deadline. Currently supports 3dsmax standard renderers, Vray and Redshift for multipass submissions. Only supports Arnold for beauty (RGBA) render submission.
+
+**PointCloud** family being 3dsmax point cloud generated from tyFlow plugin and outputted as PRT format. As tyFlow is an external plugin from 3dsmax, make sure to get it install before using the **PointCloud** family.
 
 ---
 
@@ -118,8 +122,58 @@ Current AYON integration (ver 3.15.0) supports only ```PointCache``` and ```Came
 This part of documentation is still work in progress.
 :::
 
+### Publishing Point Cache (Alembic)
+
+Simply select any animated geometry you want to export as alembic format and go **AYON -> Create** and select **Point Cache**. Make sure to keep your geometry selected before **Publish**. The output format of the geometry is Alembic (abc).
+
+### Loading Point Cache
+
+When you load the Point Cache via **AYON -> Load**, it creates the container which includes the Alembic object parented to the point cache object.
+### Publishing Camera
+
+Select the camera you want to export and go **AYON -> Create** and select **Camera**.
+User can go **Publish** and decide the export options by turning on/off the camera extractors.
+
+![Max Camera Extractor](assets/3dsmax_camera_extractors.png)
+
+### Loading Camera
+
+The loader provides several options to load camera. You can import camera in either native Max, Fbx and Alembic (abc) format.
+
+![Max Camera Loader](assets/3dsmax_camera_loaders.png)
+
+Similar to the Point Cache Instance, the Alembic camera loader will creates the container which includes the Alembic object parented to the point cache object.
+The Fbx and max scene Loader import the published camera object which is parented to the newly created container.
+
+### Publishing MaxScene
+
+Select any type of objects in the scene you want to export and go **AYON -> Create** and select **Max Scene**.
+
+### Loading MaxScene
+
+Similar to other max scene loader, it will create the new containers which includes the published max scene object.
+### Render
+
+After choosing your render setting, select the target camera for rendering in the scene and go **AYON -> Create** and select **Render**.
+When you go to **Publish**, you can set up the preferences before the deadline submission.
+
+![Max Render Setting](assets/3dsmax_deadline_render_settings.png)
+
+The Render Instance supports AOV renders for VRay, Redshift, and 3dsMax default renderers(i.e QuickSliver Hardware Renderer, ART Renderer, Scanline Renderer, VUE File Renderer). Merely supports beauty render for Arnold due to the pymxs API limitation.
+
+:::note
+Make sure removing the old render instance and create the new one if you switch from one renderer to another
+:::
+
+### Point Cloud
+
+:::note Reminder
+Point Cloud Instance only works when tyFlow plugin installed in 3dsmax
+:::
+### Publishing Point Cloud
+Select the tyFlow object(s) you want to export and go **AYON -> Create** and select **Point Cloud**. The exported object(s) would be in PRT format
+
+### Loading Point Cloud
+When you load the point cloud through **AYON -> Load**, Max will create *tycache* object in the 3dsmax modifier's list and load the published PRT.
+
 ## ...to be added
-
-
-
-

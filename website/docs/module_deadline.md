@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you need to set a few things up in both AYON and Deadline itself
 
-1. Deploy AYON executable to all nodes of Deadline farm. See [Install & Run](admin_use.md)
+1. Deploy AYON executable to all nodes of Deadline farm. See [Install & Run](admin_desktop_distribute.md)
 
 2. Enable Deadline Module in the [AYON Admin Settings](admin_settings_system.md#deadline).
 
