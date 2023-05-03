@@ -93,6 +93,7 @@ module.exports = {
                 "admin_environment",
                 "admin_settings",
                 "admin_settings_system",
+                "admin_colorspace",
                 "admin_settings_project_anatomy",
                 {
                     type: "category",
