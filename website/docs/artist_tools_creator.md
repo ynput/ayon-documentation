@@ -7,14 +7,7 @@ description: A tool to generate metadata for asset publishing.
 
 # Creator
 
-:::info
-Some DCC are using old Publisher and Creator as separated tools. Current Publisher is containing Creator as tab.
-
-![creator_tab](assets/tools/artist_tools_creator_publisher_tab.png)
-
-:::
-
-
+![creator_tab](assets/tools/tools_creator_1.png)
 
 ## Details
 
@@ -23,6 +16,13 @@ Despite the name, Creator isn't for making new content in your scene, but rather
 In Maya this means creating a set with everything you want to publish and assigning custom attributes to it so it gets picked up during publishing stage.
 
 In Nuke it's either converting an existing write node to a publishable one, or simply creating a write node with all the correct settings and outputs already set.
+
+:::info
+Current Publisher is containing Creator as tab.
+
+![creator_tab](assets/tools/artist_tools_creator_publisher_tab.png)
+
+:::
 
 ## Usage
 
