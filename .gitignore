@@ -13,5 +13,4 @@ website/i18n/*
 website/debug.log
 
 website/.docusaurus
-website/yarn.lock
 .vscode/settings.json
