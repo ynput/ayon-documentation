@@ -23,7 +23,7 @@ Hosts are divided into 3 groups regarding the level of control of a DCC's native
 
 2. **Remapped internal colorspace** - This application includes internal color management functionality, but it does not offer external control over this feature. To address this limitation, OpenPype uses mapping rules to remap the native colorspace names used in the internal color management system to the OpenColorIO (OCIO) color management system. Remapping feature is used in Publishing and Loading procedures.
 
-3. **Derived from OCIO** - This application does not include any built-in color management capabilities, OpenPype offers a solution to this limitation by deriving valid colorspace names for the OpenColorIO (OCIO) color management system from file paths, using File Rules feature only during Publishing.
+3. **Derived colorspace** - This application does not include any built-in color management capabilities, OpenPype offers a solution to this limitation by deriving valid colorspace names for the OpenColorIO (OCIO) color management system from file paths, using File Rules feature (publishing only).
 
 ![hosts](assets/settings/admin_colorspace_1.png)
 
@@ -46,17 +46,33 @@ File rules feature is mainly supported for OCIO v1. It is used to derive colorsp
 
 ### How does colorspace distribution work at host level
 #### OCIO managed
+When the host uses the OCIO config from OpenPype settings, the colorspace distribution is most accurately rendered. File rules come into play only during transcoding or when creating reviewable files. Upon publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document. If the representation lacks a [**colorspaceData**](dev_colorspace#data-model) key, the loading process resorts to File rules.
+
 ![distribution ocio managed](assets/settings/admin_colorspace_distribution_1.png)
 
 #### Remapped internal colorspace
+When the host uses the internal colorspace, the colorspace distribution employs the remapping rules which operate at the host level. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document.
+
+During loading of the representation, there is a chance that the [**colorspaceData**](dev_colorspace#data-model) key might be missing. In such a scenario, the loading process follows two steps. Firstly if necessary, it resorts to File rules matching, and then, it remaps the colorspace to match the internal colorspace names.
+
 ![distribution remapped](assets/settings/admin_colorspace_distribution_2.png)
 
-#### Derived from OCIO
+#### Derived colorspace
+When the host does not have any internal colorspace management, the colorspace distribution is derived from the file path. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document.
+
+Since the host does not have any internal colorspace management, the loading process is ignoring [**colorspaceData**](dev_colorspace#data-model).
+
 ![distribution derived](assets/settings/admin_colorspace_distribution_3.png)
 
 ## Configuration of global settings
 
 Text and images about the configuration of global settings.
+
+![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_1.png)
+![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_2.png)
+![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_3.png)
+![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_4.png)
+
 
 ## Configuration of host settings
 
