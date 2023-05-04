@@ -27,7 +27,7 @@ jobs:
           cache: yarn
           cache-dependency-path: './website/yarn.lock'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: 🔨 Test build website
         run: yarn build
   deploy-website:
@@ -45,7 +45,7 @@ jobs:
           cache: yarn
           cache-dependency-path: './website/yarn.lock'
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: 🔨 Build
         run: yarn run build
       - name: 📂 Sync files
