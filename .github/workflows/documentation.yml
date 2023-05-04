@@ -1,0 +1,58 @@
+name: 📜 Test and deploy documentation
+
+on:
+  pull_request:
+    branches: [main]
+    types: [review_requested, ready_for_review]
+    paths:
+    - 'website/**'
+  push:
+    branches: [main]
+    paths:
+    - 'website/**'
+  workflow_dispatch:
+
+jobs:
+  test-build:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'website'
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: './website/yarn.lock'
+      - name: Install dependencies
+        run: yarn install
+      - name: 🔨 Test build website
+        run: yarn build
+  deploy-website:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'website'
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: yarn
+          cache-dependency-path: './website/yarn.lock'
+      - name: Install dependencies
+        run: yarn install
+      - name: 🔨 Build
+        run: yarn run build
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ftp.openpype.io
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_password }}
+          protocol: ftps
+          local-dir: ./website/build/
