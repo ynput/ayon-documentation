@@ -52,7 +52,7 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 -   [Publisher](artist_tools_publisher) is the tool to create and publish assets from Unreal to AYON.
 -   [Manage (Inventory)](artist_tools_inventory) is the tool to manage loaded assets.
 -   *Render* starts the render for a selected `AyonPublishInstance`.
--   *Experimental tools* contains tools under developement
+-   *Experimental tools* contains tools under developement.
 
 
 ![Unreal AYON Menu](assets/unreal_ayon_menu.png)
@@ -92,8 +92,11 @@ These meshes can be loaded as FBX or as Alembic. The latter can be also be loade
 
 To load a Mesh, follow these steps:
 - Choose **AYON → Load ...**.
-- Right-click your mesh. 
+- Right-click your mesh.
 - Select **Import Static Mesh** or **Import Skeletal Mesh**.
+
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal AYON Load Model](assets/unreal_load_model.png)
 
 The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
 
@@ -101,7 +104,7 @@ The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be
 
 To manage loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+![Unreal AYON Tools Manage](assets/unreal_ayon_menu_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version.
@@ -115,11 +118,18 @@ To update the asset:
 To publish a mesh from Unreal, you need to create a publish instance.
 
 - Select the mesh in the Content Browser. 
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Static Mesh* or *Skeletal Mesh*.
   - Set the name of the subset.
+  - Set *Use selection*.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-- Click on **AYON → Publish ...** to open the Publisher screen. 
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Model](assets/unreal_create_staticmesh.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created. 
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -134,6 +144,9 @@ First, you will need a model as Static Mesh. To load it:
 - Right-click your mesh.
 - Select **Import Static Mesh**.
 
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal AYON Load Model](assets/unreal_load_model.png)
+
 You will find the loaded Static Mesh in `/Content/AYON/Assets`.
 
 ### Creating look
@@ -145,11 +158,17 @@ To create the look, you will need to create the [Materials](https://docs.unreale
 To publish a look from Unreal, you need to create a publish instance.
 
 - Select the model with the materials in the Content Browser.
-- Click on **AYON → Create ...** to open the Creator screen. 
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Look*.
   - Set the name of the subset.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-- Click on **AYON → Publish ...** to open the Publisher screen. 
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Look](assets/unreal_create_look.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created. 
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -166,13 +185,15 @@ To load a UAsset, follow these steps:
 - Right-click your asset.
 - Select **Load UAsset**.
 
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+
 The UAssets will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene.
 
 ### Updating
 
 To manage loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+![Unreal AYON Tools Manage](assets/unreal_ayon_menu_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version.
@@ -190,11 +211,17 @@ Publishing UAssets has some limitations currently. You can only publish a single
 To publish a UAsset, you need to create a publish instance.
 
 - Select the UAsset in the Content Browser. 
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *UAsset*.
   - Set the name of the subset.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-- Click on **AYON → Publish ...** to open the Publisher screen.
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Uasset](assets/unreal_create_uasset.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created.
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -203,7 +230,7 @@ To publish a UAsset, you need to create a publish instance.
 There are two different layout options in Unreal, depending on the type of project you are working on. This section explains how to handle layouts for linear animation. To do this, AYON generates [Master Sequences](https://docs.unrealengine.com/5.1/en-US/master-sequences-shots-and-takes-in-unreal-engine/) to track the whole level sequence hierarchy.
 To set this mode, you should turn **on** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
-![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
+![Unreal AYON Settings Level Sequence](assets/unreal_setting_level_sequence_on.png)
 
 ### Loading
 
@@ -212,7 +239,7 @@ To load a layout, follow these steps:
 - Right-click your layout.
 - Select **Load Layout**.
 
-![Unreal OP Tools Load](assets/unreal_openpype_tools_load.png)
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
 ![Unreal Layout Load](assets/unreal_load_layout.png)
 
 If you need to load multiple layouts, you can select more than one task on the left, and you can load them together.
@@ -258,7 +285,7 @@ Otherwise, you will need to set the visibility in the master sequence.
 
 To manage loaded layouts, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+![Unreal AYON Tools Manage](assets/unreal_ayon_menu_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version.
@@ -271,16 +298,12 @@ To update the layout:
 **DO NOT** update rigs or models imported with a layout. Update only the layout.
 :::
 
-### Layouts from Maya
-
-### Layouts from Blender
-
 ## Layouts for interactive projects
 
 There are two different layout options in Unreal, depending on the type of project you are working on. This section explains how to handle layouts for interactive projects. In this case, AYON will not generate the level sequences hierarchy, but will load the layout in a single level and with a single level sequence.
 To set this mode, you should turn **off** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
-![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
+![Unreal AYON Settings Level Sequence](assets/unreal_setting_level_sequence_off.png)
 
 ### Loading
 
@@ -288,6 +311,9 @@ To load a layout, follow these steps:
 - Choose **AYON → Load ...**.
 - Right-click your layout.
 - Select **Load Layout**.
+
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal Layout Load](assets/unreal_load_layout.png)
 
 The layout will be imported in the directory `/Content/AYON`. The layout will be split into two subfolders. In `/Content/AYON/Assets` you will find all the rigs and models contained in the layout, while the folder with the name of the layout will contain the levels and the level sequences.
 
@@ -312,7 +338,7 @@ The following example shows a master level in which have been added a level with
 
 To manage loaded layouts, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+![Unreal AYON Tools Manage](assets/unreal_ayon_menu_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version.
@@ -331,11 +357,17 @@ To publish a layout, you need to create a publish instance.
 
 - Open a level from which you want to publish a layout from.
 - Select the actors you want to include in the layout.
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *UAsset*.
   - Set the name of the subset.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the layout.
-- Click on **AYON → Publish ...** to open the Publisher screen.
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Layout](assets/unreal_create_layout.png)
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
   - On the left, you will see all the publish instances that you have created.
   - Select the ones that you want to publish, and click on **Publish**.
 
@@ -349,6 +381,9 @@ In case you already loaded the assets in Unreal, or imported them manually, and 
 - Right-click your layout.
 - Select **Load Layout on Existing Scene**.
 
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal Layout Load](assets/unreal_load_layout_existing.png)
+
 This will create the *AyonAssetContainer* for each asset you have in the scene that does not have one yet, and will create the *AyonAssetContainer* for the layout.
 
 You have the option, in **Project Settings → Unreal Engine** to delete any unmatched asset in the scene.
@@ -358,7 +393,7 @@ You have the option, in **Project Settings → Unreal Engine** to delete any unm
 There are two different camera options in Unreal, depending on the type of project you are working on. This section explains how to handle cameras with the generation of [Master Sequences](https://docs.unrealengine.com/5.1/en-US/master-sequences-shots-and-takes-in-unreal-engine/).
 To set this mode, you should turn **on** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
-![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
+![Unreal AYON Settings Level Sequence](assets/unreal_setting_level_sequence_on.png)
 
 ### Loading
 
@@ -369,12 +404,12 @@ To load a camera, follow these steps:
 
 <!-- TODO: Change images to camera -->
 
-![Unreal OP Tools Load](assets/unreal_openpype_tools_load.png)
-![Unreal Layout Load](assets/unreal_load_layout.png)
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal Layout Load](assets/unreal_load_camera.png)
 
 If you need to load multiple cameras, you can select more than one task on the left, and you can load them together.
 
-![Unreal Layout Load Batch](assets/unreal_load_layout_batch.png)
+![Unreal Layout Load Batch](assets/unreal_load_camera_batch.png)
 
 ### Navigating the project
 
@@ -390,7 +425,7 @@ In the main folder of the camera (or the episode folder, in case of an episodic 
 
 To manage loaded cameras, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+![Unreal AYON Tools Manage](assets/unreal_ayon_menu_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version. 
@@ -404,7 +439,7 @@ To update the camera:
 Cameras do not require a master sequence. If you are working on a project that does not require a master sequence, you can simply load the camera in the level you currently have open.
 To set this mode, you should turn **off** the setting *Generate level sequences when loading layouts* in AYON **Project Settings → Unreal Engine**.
 
-![Unreal OP Settings Level Sequence](assets/unreal_setting_level_sequence.png)
+![Unreal AYON Settings Level Sequence](assets/unreal_setting_level_sequence_off.png)
 
 ### Loading
 
@@ -413,13 +448,16 @@ To load a camera, follow these steps:
 - Right-click your camera.
 - Select **Load Camera**.
 
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal Layout Load](assets/unreal_load_camera.png)
+
 In `/Content/AYON` you will find a folder with the name of the camera that contains the camera level sequence. The camera will be loaded in the current level open, so you will need to save it, if you haven’t already.
 
 ### Updating
 
 To manage loaded cameras, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+![Unreal AYON Tools Manage](assets/unreal_ayon_menu_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version. 
@@ -443,6 +481,9 @@ To load a layout, follow these steps:
 - Right-click your layout.
 - Select **Load Layout**.
 
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal Layout Load](assets/unreal_load_layout.png)
+
 The layout will be imported in the directory `/Content/AYON`. For more information, we recommend reading the section dedicated to the [layout for linear animation](#layouts-for-linear-animation).
 
 ### Loading the animation
@@ -452,6 +493,9 @@ To load an animation, follow these steps:
 - Right-click your animation.
 - Select **Load Animation**.
 
+![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
+![Unreal Layout Load](assets/unreal_load_animation.png)
+
 The animation itself will be imported in `/Content/AYON/Animations`.
 The animation will be added to the level sequence generated for the layout.
 
@@ -459,7 +503,7 @@ The animation will be added to the level sequence generated for the layout.
 
 To manage loaded animations, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
-![Unreal OP Tools Manage](assets/unreal_openpype_tools_manage.png)
+![Unreal AYON Tools Manage](assets/unreal_ayon_menu_manage.png)
 
 You will get a list of all the assets that have been loaded in the project.
 The version number will be in red if it isn’t the latest version.
@@ -493,35 +537,51 @@ AYON offers a set of render settings that you can set from the Projects Settings
 
 Additionally, AYON allows you to prepare a [preset of settings](https://docs.unrealengine.com/5.1/en-US/cinematic-render-settings-in-unreal-engine/) directly from the [Movie Render Queue](https://docs.unrealengine.com/5.1/en-US/render-cinematics-in-unreal-engine/) and pass them to the render. To do so, you will need to set the path of the preset in **Project Settings → Unreal Engine**.
 
-### Creating the render instance
+### Creating the render instance for existing hierarchy
 
 To render and publish an episode, a scene or a shot, you will need to create a Render `AyonPublishInstance`. The publish instance for the rendering is based on one level sequence. That means that if you want to render the whole project (or a the whole episode), you will need to create it for the master level sequence, but if you want to render just one shot, you will need to create it for that shot.
 
 - Navigate to the folder that contains the level sequence that you need to render.
 - Select the level sequence.
-- Click on **AYON → Create ...** to open the Creator screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Render*.
   - Set the name of the subset.
+  - Check the **Use Hierarchy** checkbox.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to render and publish it.
 
-![Unreal OP Tools Create](assets/unreal_openpype_tools_create.png)
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Render](assets/unreal_create_render_use_hierarchy.png)
 
-![Unreal OP Instance Creator](assets/unreal_create_render.png)
+### Creating the render instance with new level sequence
+
+To render just a scene, without creating a whole hierarchy, you can create an `AyonPublishInstance` and a new level sequence from the Publisher.
+
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Create** tab.
+  - In the Creator screen, select *Render*.
+  - Set the name of the subset.
+  - Check the **Create a new Level Sequence** checkbox.
+  - Set *Start* and *End Frames*.
+  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to render and publish it.
+
+![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
+![Unreal AYON Create Render](assets/unreal_create_render_create_level_sequence.png)
 
 ### Start the rendering
 
 To start the rendering, just select the render `AyonPublishInstance` you want to render, and then click on the AYON icon in Unreal’s main taskbar, and select **Render**. You can render more than one instance at a time, if needed. Just select all the instances that you need to render before selecting the **Render** button from the AYON menu.
 
-![Unreal OP Tools Render](assets/unreal_openpype_tools_render.png)
+![Unreal AYON Tools Render](assets/unreal_ayon_menu_render.png)
 
 ### Publish the render
 
 Once the render is finished, you can publish the render. Click on the AYON icon in Unreal’s main taskbar, and select **Publish**.
 
-- Click on **AYON → Publish ...** to open the Publisher screen.
+- Click on **AYON → Publisher ...** to open the Publisher screen.
+  - On the top bar, switch to the **Publish** tab.
 - On the left, you will see all the publish instances that you have created.
   - They will be automatically reorganised to have an instance for each shot. So, for example, if you have created the render instance for the whole episode, here you will have an instance for each shot in the episode.
 - Select the ones that you want to publish, and click on **Publish**.
 
-![Unreal OP Tools Publish](assets/unreal_openpype_tools_publish.png)
-![Unreal Publish Render](assets/unreal_publish_render.png)
+![Unreal AYON Tools Publish](assets/unreal_ayon_menu_publisher.png)
