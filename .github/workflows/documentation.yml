@@ -30,9 +30,9 @@ jobs:
           elif [ -e package-lock.json ]; then
           npm ci
           else
-          npm i
+          yarn i
           fi
-          npm run build
+          yarn run build
   deploy-website:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
@@ -51,9 +51,9 @@ jobs:
           elif [ -e package-lock.json ]; then
           npm ci
           else
-          npm i
+          yarn i
           fi
-          npm run build
+          yarn run build
 
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
