@@ -14,7 +14,6 @@ module.exports = {
                     label: "Tools",
                     link: { type: "doc", id: "artist_tools" },
                     items: [
-                        "artist_tools_context_manager",
                         "artist_tools_creator",
                         "artist_tools_loader",
                         "artist_tools_library_loader",
@@ -26,7 +25,6 @@ module.exports = {
                         "artist_tools_sync_queue",
                     ],
                 },
-                "artist_install",
             ],
         },
         {
@@ -75,13 +73,18 @@ module.exports = {
         "system_introduction",
         {
             type: "category",
-            label: "Getting Started",
+            label: "AYON server",
             items: [
-                "admin_builds",
-                "admin_distribute",
-                "admin_use",
-                "admin_ayon_commands",
+                "admin_server_installation",
+                "admin_server_installing_addons",
+                "admin_server_provisioning",
+                "admin_server_services",
             ],
+        },
+        {
+            type: "category",
+            label: "AYON desktop",
+            items: ["admin_desktop_distribute", "admin_desktop_run"],
         },
         {
             type: "category",
@@ -95,9 +98,9 @@ module.exports = {
                     type: "category",
                     label: "Project Settings",
                     items: [
-                        "project_settings/settings_project_global",
-                        "project_settings/settings_project_nuke",
-                        "project_settings/settings_project_standalone",
+                        "project_settings/project_settings_core",
+                        "project_settings/project_settings_nuke",
+                        "project_settings/project_settings_tray_publisher",
                     ],
                 },
             ],
@@ -125,6 +128,7 @@ module.exports = {
                 "admin_hosts_nuke",
                 "admin_hosts_resolve",
                 "admin_hosts_harmony",
+                "admin_hosts_photoshop",
                 "admin_hosts_aftereffects",
                 "admin_hosts_tvpaint",
             ],

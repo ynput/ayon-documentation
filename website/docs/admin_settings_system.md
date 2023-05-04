@@ -36,13 +36,12 @@ We bundle FFmpeg tools for all platforms and OpenImageIO tools for Windows and L
 For example—when using different Linux distributions in a facility that do not have a consistent install location or to add OIIO support for MacOS. Values of both environment variables should lead to directory where tool executables are located instead of an explicit path to the binary executable. Using multiple paths are supported, separated by colons, is supported—e.g. */usr/local/bin:$HOME/.local/bin*
 
 ### AYON deployment control
-**`Versions Repository`** - Location where automatic update mechanism searches for zip files with AYON update packages. To read more about preparing AYON for automatic updates go to [Admin Distribute docs](admin_distribute.md#2-ayon-codebase)
 
 **`Production version`** - Define what is current production version. When value is not set then latest version available in versions repository is resolved as production version.
 
 **`Staging version`** - Define what is current staging version. When value is not set then latest staging version available in versions repository is resolved as staging version.
 
-For more information about Production and Staging go to [Distribute](admin_distribute.md#staging-vs-production).
+For more information about Production and Staging go to [Distribute](admin_desktop_distribute.md#staging-vs-production).
 
 **Production version** and **Staging version** fields will define which version will be used in studio. Filling explicit version will force new AYON processes to use it. That gives more control over studio deployment especially when some workstations don't have access to version repository (e.g. remote users). It can be also used to downgrade studio version when newer version have production breaking bug.
 
