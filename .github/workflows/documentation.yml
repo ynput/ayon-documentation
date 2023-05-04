@@ -16,15 +16,13 @@ jobs:
   test-deploy:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: 'website'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: yarn
+          cache-dependency-path: './website/yarn.lock'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: 🔨 Test build website
@@ -32,9 +30,6 @@ jobs:
   deploy-website:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: 'website'
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
@@ -42,6 +37,7 @@ jobs:
         with:
           node-version: 18
           cache: yarn
+          cache-dependency-path: './website/yarn.lock'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
       - name: 🔨 Build
