@@ -18,7 +18,7 @@ In Maya this means creating a set with everything you want to publish and assign
 In Nuke it's either converting an existing write node to a publishable one, or simply creating a write node with all the correct settings and outputs already set.
 
 :::info
-Current Publisher is containing Creator as tab.
+Current Publisher contains Creator as tab.
 
 ![creator_tab](assets/tools/artist_tools_creator_publisher_tab.png)
 
