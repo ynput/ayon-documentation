@@ -16,6 +16,9 @@ jobs:
   test-deploy:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'website'
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -30,6 +33,9 @@ jobs:
   deploy-website:
     if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: 'website'
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v3
