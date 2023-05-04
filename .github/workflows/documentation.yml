@@ -1,4 +1,4 @@
-name: 📜 Publish Documentation
+name: 📜 Test and deploy documentation
 
 on:
   pull_request:
@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-deploy:
+  test-build:
     if: github.event_name != 'push'
     runs-on: ubuntu-latest
     defaults:
