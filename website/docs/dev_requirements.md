@@ -72,96 +72,95 @@ and libraw (`sudo yum install boost-1.53.0 LibRaw`)
 
 AYON uses [Poetry](https://python-poetry.org/) to handle the dependencies, and you can see the full list of dependencies in the [`pyproject.yoml`](https://github.com/ynput/OpenPype/blob/develop/pyproject.toml), here is a list of these with their corresponging licenses:
 
-┏━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
-┃ Compatible ┃ Package                  ┃ License(s)                                                           ┃
-┡━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
-│ ✔          │ Deprecated               │ MIT License                                                          │
-│ ✖          │ OpenTimelineIO           │ Other/Proprietary License                                            │
-│ ✔          │ SecretStorage            │ BSD License                                                          │
-│ ✖          │ Unidecode                │ GNU General Public License v2 or later (GPLv2+)                      │
-│ ✔          │ acre                     │ GNU LESSER GENERAL PUBLIC LICENSE Version 3                          │
-│ ✔          │ aiohttp                  │ Apache Software License                                              │
-│ ✔          │ aiohttp-json-rpc         │ Apache Software License                                              │
-│ ✔          │ aiohttp-middlewares      │ BSD License                                                          │
-│ ✔          │ aiosignal                │ Apache Software License                                              │
-│ ✔          │ appdirs                  │ MIT License                                                          │
-│ ✔          │ arrow                    │ Apache Software License                                              │
-│ ✔          │ async-timeout            │ Apache Software License                                              │
-│ ✔          │ attrs                    │ MIT License                                                          │
-│ ✔          │ ayon-python-api          │ Apache License (2.0)                                                 │
-│ ✔          │ bcrypt                   │ Apache Software License                                              │
-│ ✔          │ blessed                  │ MIT License                                                          │
-│ ✔          │ cachetools               │ MIT License                                                          │
-│ ✔          │ certifi                  │ Mozilla Public License 2.0 (MPL 2.0)                                 │
-│ ✔          │ cffi                     │ MIT License                                                          │
-│ ✔          │ charset-normalizer       │ MIT License                                                          │
-│ ✔          │ click                    │ BSD License                                                          │
-│ ✔          │ clique                   │ Apache Software License                                              │
-│ ✔          │ coolname                 │ BSD License                                                          │
-│ ✔          │ cryptography             │ Apache Software License;; BSD License                                │
-│ ✔          │ dnspython                │ ISC                                                                  │
-│ ✔          │ dropbox                  │ MIT License                                                          │
-│ ✔          │ enlighten                │ Mozilla Public License 2.0 (MPL 2.0)                                 │
-│ ✔          │ evdev                    │ BSD License                                                          │
-│ ✔          │ frozenlist               │ Apache Software License                                              │
-│ ✔          │ ftrack-python-api        │ Apache Software License                                              │
-│ ✔          │ future                   │ MIT License                                                          │
-│ ✔          │ gazu                     │ GNU Library or Lesser General Public License (LGPL)                  │
-│ ✔          │ google-api-core          │ Apache Software License                                              │
-│ ✔          │ google-api-python-client │ Apache Software License                                              │
-│ ✔          │ google-auth              │ Apache Software License                                              │
-│ ✔          │ google-auth-httplib2     │ Apache Software License                                              │
-│ ✔          │ googleapis-common-protos │ Apache Software License                                              │
-│ ✔          │ httplib2                 │ MIT License                                                          │
-│ ✔          │ idna                     │ BSD License                                                          │
-│ ✔          │ importlib-metadata       │ Apache Software License                                              │
-│ ✔          │ jeepney                  │ MIT License                                                          │
-│ ✔          │ jinxed                   │ Mozilla Public License 2.0 (MPL 2.0)                                 │
-│ ✔          │ jsonschema               │ MIT License                                                          │
-│ ✔          │ keyring                  │ Python Software Foundation License;; MIT License                     │
-│ ✔          │ log4mongo                │ BSD License                                                          │
-│ ✔          │ multidict                │ Apache Software License                                              │
-│ ✖          │ opencolorio              │ Copyright Contributors to the OpenColorIO Project.                   │
-│ ✔          │ paramiko                 │ GNU Library or Lesser General Public License (LGPL)                  │
-│ ✔          │ pathlib2                 │ MIT License                                                          │
-│ ✔          │ pillow                   │ Historical Permission Notice and Disclaimer (HPND)                   │
-│ ✔          │ ply                      │ BSD                                                                  │
-│ ✔          │ prefixed                 │ Mozilla Public License 2.0 (MPL 2.0)                                 │
-│ ✔          │ protobuf                 │ 3-Clause BSD License                                                 │
-│ ✔          │ pyaaf2                   │ MIT License                                                          │
-│ ✔          │ pyasn1                   │ BSD License                                                          │
-│ ✔          │ pyasn1-modules           │ BSD License                                                          │
-│ ✔          │ pyblish-base             │ GNU Lesser General Public License v3 (LGPLv3)                        │
-│ ✔          │ pycparser                │ BSD License                                                          │
-│ ✔          │ pymongo                  │ Apache Software License                                              │
-│ ✔          │ pynacl                   │ Apache License 2.0                                                   │
-│ ✔          │ pynput                   │ GNU Lesser General Public License v3 (LGPLv3)                        │
-│ ✔          │ pyparsing                │ MIT License                                                          │
-│ ✔          │ pysftp                   │ BSD License                                                          │
-│ ✔          │ python-dateutil          │ Apache Software License;; BSD License                                │
-│ ✔          │ python-engineio          │ MIT License                                                          │
-│ ✔          │ python-socketio          │ MIT License                                                          │
-│ ✔          │ python-xlib              │ GNU Lesser General Public License v2 or later (LGPLv2+)              │
-│ ✖          │ python3-xlib             │ GPLv2                                                                │
-│ ✔          │ requests                 │ Apache Software License                                              │
-│ ✔          │ rsa                      │ Apache Software License                                              │
-│ ✔          │ semver                   │ BSD License                                                          │
-│ ✔          │ shotgun-api3             │ Copyright (c) 2009-2011, Shotgun Software Inc All rights reserved.   │
-│ ✔          │ six                      │ MIT License                                                          │
-│ ✔          │ slack-sdk                │ MIT License                                                          │
-│ ✔          │ "Qt.py"                  │ MIT License                                                          │
-│ ✔          │ QtPy                     │ MIT License                                                          │
-│ ✔          │ qtawesome                │ MIT License                                                          │
-│ ✔          │ speedcopy                │ Apache Software License                                              │
-│ ✔          │ stone                    │ MIT License                                                          │
-│ ✔          │ termcolor                │ MIT License                                                          │
-│ ✔          │ uritemplate              │ BSD License;; Apache Software License                                │
-│ ✔          │ urllib3                  │ MIT License                                                          │
-│ ✔          │ wcwidth                  │ MIT License                                                          │
-│ ✔          │ websocket-client         │ Apache Software License                                              │
-│ ✔          │ wrapt                    │ BSD License                                                          │
-│ ✔          │ wsrpc-aiohttp            │ Apache Software License                                              │
-│ ✔          │ yarl                     │ Apache Software License                                              │
-│ ✔          │ zipp                     │ MIT License                                                          │
-└────────────┴──────────────────────────┴──────────────────────────────────────────────────────────────────────┘
+
+| Compatible  | Package                  | License(s)                                                           |
+| ----------- | ------------------------ | -------------------------------------------------------------------- |
+| ✔          | Deprecated               | MIT License                                                          |
+| ✖          | OpenTimelineIO           | Other/Proprietary License                                            |
+| ✔          | SecretStorage            | BSD License                                                          |
+| ✖          | Unidecode                | GNU General Public License v2 or later (GPLv2+)                      |
+| ✔          | acre                     | GNU LESSER GENERAL PUBLIC LICENSE Version 3                          |
+| ✔          | aiohttp                  | Apache Software License                                              |
+| ✔          | aiohttp-json-rpc         | Apache Software License                                              |
+| ✔          | aiohttp-middlewares      | BSD License                                                          |
+| ✔          | aiosignal                | Apache Software License                                              |
+| ✔          | appdirs                  | MIT License                                                          |
+| ✔          | arrow                    | Apache Software License                                              |
+| ✔          | async-timeout            | Apache Software License                                              |
+| ✔          | attrs                    | MIT License                                                          |
+| ✔          | ayon-python-api          | Apache License (2.0)                                                 |
+| ✔          | bcrypt                   | Apache Software License                                              |
+| ✔          | blessed                  | MIT License                                                          |
+| ✔          | cachetools               | MIT License                                                          |
+| ✔          | certifi                  | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | cffi                     | MIT License                                                          |
+| ✔          | charset-normalizer       | MIT License                                                          |
+| ✔          | click                    | BSD License                                                          |
+| ✔          | clique                   | Apache Software License                                              |
+| ✔          | coolname                 | BSD License                                                          |
+| ✔          | cryptography             | Apache Software License;; BSD License                                |
+| ✔          | dnspython                | ISC                                                                  |
+| ✔          | dropbox                  | MIT License                                                          |
+| ✔          | enlighten                | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | evdev                    | BSD License                                                          |
+| ✔          | frozenlist               | Apache Software License                                              |
+| ✔          | ftrack-python-api        | Apache Software License                                              |
+| ✔          | future                   | MIT License                                                          |
+| ✔          | gazu                     | GNU Library or Lesser General Public License (LGPL)                  |
+| ✔          | google-api-core          | Apache Software License                                              |
+| ✔          | google-api-python-client | Apache Software License                                              |
+| ✔          | google-auth              | Apache Software License                                              |
+| ✔          | google-auth-httplib2     | Apache Software License                                              |
+| ✔          | googleapis-common-protos | Apache Software License                                              |
+| ✔          | httplib2                 | MIT License                                                          |
+| ✔          | idna                     | BSD License                                                          |
+| ✔          | importlib-metadata       | Apache Software License                                              |
+| ✔          | jeepney                  | MIT License                                                          |
+| ✔          | jinxed                   | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | jsonschema               | MIT License                                                          |
+| ✔          | keyring                  | Python Software Foundation License;; MIT License                     |
+| ✔          | log4mongo                | BSD License                                                          |
+| ✔          | multidict                | Apache Software License                                              |
+| ✖          | opencolorio              | Copyright Contributors to the OpenColorIO Project.                   |
+| ✔          | paramiko                 | GNU Library or Lesser General Public License (LGPL)                  |
+| ✔          | pathlib2                 | MIT License                                                          |
+| ✔          | pillow                   | Historical Permission Notice and Disclaimer (HPND)                   |
+| ✔          | ply                      | BSD                                                                  |
+| ✔          | prefixed                 | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | protobuf                 | 3-Clause BSD License                                                 |
+| ✔          | pyaaf2                   | MIT License                                                          |
+| ✔          | pyasn1                   | BSD License                                                          |
+| ✔          | pyasn1-modules           | BSD License                                                          |
+| ✔          | pyblish-base             | GNU Lesser General Public License v3 (LGPLv3)                        |
+| ✔          | pycparser                | BSD License                                                          |
+| ✔          | pymongo                  | Apache Software License                                              |
+| ✔          | pynacl                   | Apache License 2.0                                                   |
+| ✔          | pynput                   | GNU Lesser General Public License v3 (LGPLv3)                        |
+| ✔          | pyparsing                | MIT License                                                          |
+| ✔          | pysftp                   | BSD License                                                          |
+| ✔          | python-dateutil          | Apache Software License;; BSD License                                |
+| ✔          | python-engineio          | MIT License                                                          |
+| ✔          | python-socketio          | MIT License                                                          |
+| ✔          | python-xlib              | GNU Lesser General Public License v2 or later (LGPLv2+)              |
+| ✖          | python3-xlib             | GPLv2                                                                |
+| ✔          | requests                 | Apache Software License                                              |
+| ✔          | rsa                      | Apache Software License                                              |
+| ✔          | semver                   | BSD License                                                          |
+| ✔          | shotgun-api3             | Copyright (c) 2009-2011, Shotgun Software Inc All rights reserved.   |
+| ✔          | six                      | MIT License                                                          |
+| ✔          | slack-sdk                | MIT License                                                          |
+| ✔          | "Qt.py"                  | MIT License                                                          |
+| ✔          | QtPy                     | MIT License                                                          |
+| ✔          | qtawesome                | MIT License                                                          |
+| ✔          | speedcopy                | Apache Software License                                              |
+| ✔          | stone                    | MIT License                                                          |
+| ✔          | termcolor                | MIT License                                                          |
+| ✔          | uritemplate              | BSD License;; Apache Software License                                |
+| ✔          | urllib3                  | MIT License                                                          |
+| ✔          | wcwidth                  | MIT License                                                          |
+| ✔          | websocket-client         | Apache Software License                                              |
+| ✔          | wrapt                    | BSD License                                                          |
+| ✔          | wsrpc-aiohttp            | Apache Software License                                              |
+| ✔          | yarl                     | Apache Software License                                              |
+| ✔          | zipp                     | MIT License                                                          |
 
