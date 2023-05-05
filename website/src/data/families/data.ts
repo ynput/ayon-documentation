@@ -114,10 +114,6 @@ const families: { [type in FamilyType]: Family } = {
         title: "Arnold Standin",
         icon: "accessibility_new",
     },
-    lut: {
-        title: "LUT",
-        icon: "opacity",
-    },
     effect: {
         title: "Effect",
         icon: "ev_shadow",

@@ -33,7 +33,6 @@ export type FamilyType =
     | "vrayProxy"
     | "vrayScene"
     | "arnoldStandin"
-    | "lut"
     | "effect"
     | "gizmo"
     | "harmonyTemplate"
