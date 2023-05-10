@@ -4,22 +4,24 @@ title: Requirements
 sidebar_label: Requirements
 ---
 
-OpenPype is a monolithic project written in [**Python 3 (3.9.x)**](#python)  that requires a [**MongoDB**](#database) database to operate, and addheres to the versions defined in the [VFX Reference Platform](https://vfxplatform.com/).
+AYON is a modular project, the AYON server lies at the core of it, so to develop for AYON  we need an instance of it either in the localhost or in a remote server, refer to the [Admin Server Installation](admin_server_installation.md) for more.
+
+AYON is written in [**Python 3 (3.9.x)**](#python) and addheres to the versions defined in the [VFX Reference Platform](https://vfxplatform.com/).
 
 Some parts are kept on Python 2.7.x for compatibility purposes with, until all supported third-party software are updated to a newer Python version, you can see the progress at the [VFX Python3 tracker](https://vfxpy.com/).
 
-The main requirements needed to run and build OpenPype are:
+The main requirements needed to run and build AYON are:
 
 - A **Terminal** application:
     - PowerShell 5.0+ (Windows)
     - Bash (Linux and macOs)
 - [**Python 3.9.x**](#python)
-- [**MongoDB**](#database)
+- [**Ayon Server**](admin_server_installation.md)
 
 
 ## Supported Operating Systems
 
-OpenPype can be built and ran in any platform that supports the above requirements, the development team develops and thest it on the following list of Operating Systems:
+AYON can be built and ran in any platform that supports the above requirements, the development team develops and thest it on the following list of Operating Systems:
 - Windows 10
 - Ubuntu 20.04 LTS
 - CentOS 7
@@ -29,23 +31,12 @@ OpenPype can be built and ran in any platform that supports the above requiremen
 
 ## Python
 
-Python is only required if you want to build, develop or run from the source code, otherwise is **highly advised** to use the pre-built binaries found in the [Release page](https://github.com/ynput/OpenPype/releases) which includes Python.
+Python is only required if you want to [build](dev_build.md), develop or run from the source code, otherwise is **highly advised** to use the pre-built binaries found in the [Release page](https://github.com/ynput/OpenPype/releases) which includes Python.
 
 **Python 3.9.x** is the recommended version to use, as per [VFX platform CY2022](https://vfxplatform.com/).
 **Note**: Python 3.9.0 is not supported because of [this bug](https://github.com/python/cpython/pull/22670). Please, use higher versions of 3.9.x.
 
 And [Poetry](https://python-poetry.org/) is used to manage [dependencies](#dependencies).
-
-
-## Database
-
-OpenPype stores all the [Avalon](#dependencies) configuration in a [MongoDB Database](https://www.mongodb.com/try/download/community); this should be at least the version **MongoDB 4.4**.
-
-If no MongoDB is provided, OpenPype can run its own instance of MongoDB, **this is not meant to be used for production**, and it relies on MongoDB being installed in the computer, check the [MongoDB Instllation documentation](https://www.mongodb.com/docs/manual/administration/install-community/) for your Operating System.
-
-This database **has to be** reachable by any computer that needs to interact with OpenPype (a person's workstation, a render worker, etc.) so it should be installed in a reliable computer that's running constantly.
-The hardware requirements and location of this computer vary depending on the number of people and their location of people using OpenPype, the size of the projects being worked can also impact the performance of this computer, you can read more in the [Admin Server Installation](admin_server_installation.md).
-
 
 ## Hardware
 
@@ -58,7 +49,7 @@ For a well functioning ftrack event server, we recommend a linux virtual server 
 
 ## Dependencies
 
-OpenPyep is an project built on top of the following projects:
+AYON is an project built on top of the following projects:
 - [**Avalon**](https://github.com/getavalon)
 - [**Pyblish**](https://github.com/pyblish)
 - [**OpenTimelineIO**](https://github.com/PixarAnimationStudios/OpenTimelineIO)
