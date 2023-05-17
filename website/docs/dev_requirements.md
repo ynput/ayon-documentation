@@ -50,7 +50,6 @@ For a well functioning ftrack event server, we recommend a linux virtual server 
 ## Dependencies
 
 AYON is an project built on top of the following projects:
-- [**Avalon**](https://github.com/getavalon)
 - [**Pyblish**](https://github.com/pyblish)
 - [**OpenTimelineIO**](https://github.com/PixarAnimationStudios/OpenTimelineIO)
 - [**OpenImageIO**](https://github.com/OpenImageIO/oiio) [^centos7]
