@@ -155,7 +155,7 @@ Upgrading may not always be a straightforward process, and we understand that it
 
 #### Actual configuration:
 A studio is having on-going production with project configured imageio at op 3.15. All hosts are set to `linear rec709` space with following combination of settings:
-- Nuke host [**CMS**](admin_colorspace#used-acronyms) custom config was not activated and it was used as `nuke-default`
+- Nuke host [**CMS**](admin_colorspace#used-acronyms) custom config was not activated and it used `nuke-default`
 - Maya was set to internal ocio config in v2 `maya-scene-linear-rec709`
 - Global imageio custom config was set to `nuke-default`
 
