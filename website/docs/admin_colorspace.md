@@ -165,7 +165,7 @@ No need to do anything. Be aware that once the Global [**CMS**](admin_colorspace
 ### 2. Example of usage - [DCCs](admin_colorspace#used-acronyms) are set to native ACES OCIO config
 #### Actual configuration:
 A studio is having on-going production with project configured imageio at op 3.15. All hosts are set to `ACES 1.2` space with following combination of settings:
-   - Nuke host [**CMS**](admin_colorspace#used-acronyms) custom config was not activated and it was used OCIO with provided `aces_1.2`
+   - Nuke host [**CMS**](admin_colorspace#used-acronyms) custom config was not activated and it used OCIO with provided `aces_1.2`
    - Maya was set to internal ocio config in v2 `maya-aces_1.2`
    - Global imageio custom config was set to distributed `aces_1.2`
 
