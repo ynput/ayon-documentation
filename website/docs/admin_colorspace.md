@@ -185,7 +185,7 @@ A studio is having on-going production with project configured imageio at op 3.1
 #### Required action after the upgrade:
 1. Enable Global [**CMS**](admin_colorspace#used-acronyms).
 2. Add Studio OCIO config into any folder within Root defined storage.
-3. Add path to the project config into Global [**CMS**](admin_colorspace#used-acronyms) or host config paths to first position from top. Path should not be absolute and should point at Anatomy root storage template - a.g. `{root[work]}/configs/ocio/aces_1.2/config.ocio`
+3. Add path to the project config into Global [**CMS**](admin_colorspace#used-acronyms) or host config paths to first position from top. Path should not be absolute and should point at Anatomy root storage template - e.g. `{root[work]}/configs/ocio/aces_1.2/config.ocio`
 4. Enable Global File rules.
 
 ### Used acronyms:
