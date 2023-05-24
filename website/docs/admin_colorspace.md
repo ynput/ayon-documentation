@@ -17,7 +17,6 @@ Currently only limited amount of hosts are supported and only publishing is impl
 ## Key concept of colorspace distribution
 
 ### Host groups
-![hosts](assets/settings/admin_colorspace_1.png)
 
 Hosts are divided into 3 groups regarding the level of control of a DCC's native colorspace manageability.
 
@@ -27,8 +26,35 @@ Hosts are divided into 3 groups regarding the level of control of a DCC's native
 
 3. **Derived colorspace** - This application does not include any built-in color management capabilities, OpenPype offers a solution to this limitation by deriving valid colorspace names for the OpenColorIO (OCIO) color management system from file paths, using File Rules feature (publishing only).
 
+### Comparison of host group features
 
-### How does hosts overrides work
+| **Implementation**           |    **Publishing**    |      **Loading**     |    **Workfile**    |
+|------------------------------|:--------------------:|:--------------------:|:------------------:|
+| OCIO managed                 | :heavy_check_mark:   | :heavy_check_mark:   | :heavy_check_mark: |
+| Remapped internal colorspace | Remap internal->OCIO | Remap OCIO->internal |                    |
+| Derived colorspace           | File rules only      |                      |                    |
+
+
+| Host            | OCIO | Remapped | Derived |
+| --------------- | :--: | :------: | :-- --: |
+| Maya            |  x   |          |         |
+| Hiero           |  x   |          |         |
+| Fusion          |  x   |          |         |
+| Harmony         |  x   |          |         |
+| Houdini         |  x   |          |         |
+| Nuke            |  x   |          |         |
+| Unreal          |  x   |          |         |
+| Blender         |  x   |          |         |
+| AfterEffects    |  x   |          |         |
+| Resolve         |  x   |          |         |
+| Photoshop       |      |     x    |         |
+| Flame           |      |     x    |         |
+| TV Paint        |      |     x    |         |
+| TrayPublisher   |      |          |    x    |
+| CelAction       |      |          |    x    |
+| WebPublisher    |      |          |    x    |
+
+### Host specific overrides
 ![settings flow](assets/settings/admin_colorspace_2.png)
 
 Each project can have its own global config.ocio file. This file is used as a base for all hosts. Each host can override this config.ocio file with its own config.ocio file but it is recommended to derivate it from the global config.ocio file. This way the continuity of the color management is preserved.
@@ -37,19 +63,19 @@ Host can also override the global file rules. This is useful when multiple hosts
 
 
 
-### How does remapping work
+### Host specific remapping
 ![remapping](assets/settings/admin_colorspace_3.png)
 
 Remapping is used to remap the native colorspace names used in the internal color management system to the OpenColorIO (OCIO) color management system. Remapping feature is used in Publishing and Loading procedures.
 
 
-### How does file rules work
+### Host specific file rules
 ![file rules](assets/settings/admin_colorspace_4.png)
 
 File rules feature is mainly supported for OCIO v1. It is used to derive colorspace from the file path. This feature is used mainly during in publishing. The feature is activated during Loading only if a representation is not having `colorspaceData` key.
 
 
-### How does colorspace distribution work at host level
+### Host level colorspace distribution workflow
 #### OCIO managed
 ![distribution ocio managed](assets/settings/admin_colorspace_distribution_1.png)
 
@@ -184,7 +210,7 @@ A studio is having on-going production with project configured imageio at op 3.1
 
 #### Required action after the upgrade:
 1. Enable Global [**CMS**](admin_colorspace#used-acronyms).
-2. Add Studio OCIO config into any folder within Root defined storage.
+2. Add Studio OCIO config into any folder within Root defined storage (the suggested approach will enhance the security of the distribution, ensuring its smooth operation across various platforms and workflows).
 3. Add path to the project config into Global [**CMS**](admin_colorspace#used-acronyms) or host config paths to first position from top. Path should not be absolute and should point at Anatomy root storage template - e.g. `{root[work]}/configs/ocio/aces_1.2/config.ocio`
 4. Enable Global File rules.
 
