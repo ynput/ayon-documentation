@@ -123,7 +123,7 @@ avoids any hard-coding of paths that may be specific to one particular system.
 
 The example image above shows project level OCIO config file. This way the production is securing that any future changes on studio OCIO config file will not break any of old projects. It is recommended to use the project's OCIO config as starting point for all derivations of host level OCIO configs.
 
-### Activating file rules
+### File rules activation
 File rules are disabled by default. Once it is enabled it is applied to all hosts. It is possible to override them at the [host level](admin_colorspace#configuration-of-host-settings).
 
 ![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_4.png)
@@ -169,10 +169,10 @@ Please note that since representation data might be pointing at older versions, 
 
 We recommend using the `description` field to store information about the changes made to the OCIO config file. The file is in YAML format, and it's possible to use multiple lines in the `description` field only if `|` is used at the end of the line. Additionally, we add the `origin` and `changes` fields to the file. This allows you to track the origin of the OCIO config file and the changes made to it.
 
-### File rules override
+### File rules activation
 ![admin_colorspace_settings_host_filerules](assets/settings/admin_colorspace_settings_host_filerules_1.png)
 
-If global File rules are disabled, the host-level File rules are ignored.
+If the global File rules are disabled, but the host level File rules are enabled, then the host level rules will be applied. However, if the global File rules are enabled and the host level File rules are disabled, then the global rules will be applied.
 
 ## Upgrading from previous versions
 Upgrading may not always be a straightforward process, and we understand that its complexity can be frustrating. We strive to keep the upgrade process as simple as possible and to avoid any breaking changes. However, sometimes it's not possible, and we may need to introduce some breaking changes. This section aims to help you understand what needs to be done after the upgrade.
