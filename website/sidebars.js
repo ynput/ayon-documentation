@@ -101,7 +101,7 @@ module.exports = {
                     items: [
                         "project_settings/project_settings_core",
                         "project_settings/project_settings_nuke",
-                        "project_settings/settings_project_standalone",
+                        "project_settings/project_settings_tray_publisher",
                     ],
                 },
             ],
@@ -142,7 +142,6 @@ module.exports = {
         "dev_build",
         "dev_testing",
         "dev_contribute",
-        "dev_settings",
         {
             type: "category",
             label: "Hosts integrations",
