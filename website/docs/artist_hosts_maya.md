@@ -67,7 +67,18 @@ name of the group you have selected.
 wrapped in Model instance. This is usually what you want. Click on **Create** button.
 
 You'll notice then after you've created new Model instance, there is new set
-in Outliner called after your subset, in our case it is `modelMain`.
+in Outliner called after your subset, in our case it is `modelMain`. The `modelMain`
+set provides settings for you to includes some data when publishing. The settings can be found
+in the channel box when you select the set.
+
+![ModelMain Settings in Channel Box](assets/maya_model_main_custom_attributes.png)
+
+These settings allow you to include either **Write Color Sets**, **Write Face Sets**,
+or **Include Parent Hierarchy** as your exported preference before publishing.
+
+:::note
+The exported setting is solely valid for `Extract PointCache(Alembic)`.
+:::
 
 And that's it, you have your first model ready to publish.
 
