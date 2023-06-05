@@ -165,12 +165,22 @@ To check for yourself that model is published, open
 [Asset Loader](artist_tools_loader) - **AYON → Load...**.
 There you should see your model, named `modelMain`.
 
+You can load your model by either referencing or importing.
+Ayon can now support referencing the model in both Alembic
+and Maya ASCII(ma) format, while it can load the model in four
+different ways. You can choose to load your model in Alembic
+format in Vray Proxy, Arnold Standin or GPU Cache. You can also
+load the mesh in USD format if you have the multiverse USD plugin
+installed in your machine.
+
+![OBJ Extractor in Setting](assets/maya_loaders_options.png)
+
 ## Look development
 
 Look development in AYON is easy. It helps you with versioning different
 kinds of shaders and easy switching between them.
 
-Let se how it works.
+Let see how it works.
 
 ### Loading model
 
