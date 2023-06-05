@@ -245,11 +245,11 @@ A profile may generate multiple outputs from a single input. Each output must de
 
 - **`Letter Box`**
     - **Enabled** - Enable letter boxes
-    - **Ratio** - Ratio of letter boxes
+    - **Ratio** - Ratio of letter boxes. Ratio type is calculated from output image dimensions. If letterbox ratio > image ratio, _letterbox_ is applied. Otherwise _pillarbox_ will be rendered.
     - **Type** - **Letterbox** (horizontal bars) or **Pillarbox** (vertical bars)
     - **Fill color** - Fill color of boxes (RGBA: 0-255)
     - **Line Thickness** - Line thickness on the edge of box (set to `0` to turn off)
-    - **Fill color** - Line color on the edge of box (RGBA: 0-255)
+    - **Line color** - Line color on the edge of box (RGBA: 0-255)
     - **Example**
 
     ![core_extract_review_letter_box_settings](assets/core_extract_review_letter_box_settings.png)
