@@ -9,10 +9,19 @@ Arnold Scene Source can be published as a single file or a sequence of files, de
 When creating the instance, two objectsets are created; `content` and `proxy`. Meshes in the `proxy` objectset will be the viewport representation when loading as `standin`.
 
 ### Arnold Scene Source Proxy Workflow
-In order to utilize operators and proxies, the content and proxy nodes need to share the same names (including the shape names). This is done by parenting the content and proxy nodes into separate groups. For example:
+Users need to create Arnold Scene Source first. `AssMain` set is then created with `assMain_content_SET` and `assMain_proxy_SET` as its children.
+In order to utilize operators and proxies, the content and proxy nodes need to share the same names (including the shape names and CBIDs). This
+is done by parenting the content and proxy nodes into separate groups. For example:
 
 ![Arnold Scene Source](assets/maya-arnold_scene_source.png)
 
+Once you put the nodes into contents and proxies set, you are ready to see if it passes validation and gets published.
+Validators `ASS has relative texture paths` and `Validate Arnold Scene Source CBID` can allow you to set up
+the context correctly by using repair function.
+
+![Arnold Scene Source Validators](assets/maya_validators_ass_family.png)
+
+Once you pass the validator, you can publish your contents and proxies.
 ## Standin
 Arnold Scene Source `ass` and Alembic `abc` are supported to load as standins.
 
