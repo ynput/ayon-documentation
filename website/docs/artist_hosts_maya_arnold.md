@@ -30,6 +30,37 @@ manually by clicking file icon in the standin and change the files with `_proxy`
 
 ![Arnold Scene Source Loaders](assets/maya_ass_loader.png)
 
+## Look Development
+Standin Nodes are now supported for look assignment.If you publish the look development object with the look family, while you publish the object with Arnold Scene Source. You can assign the look to the published Arnold Scene Source `ass` and Alembic `abc` through `AYON -> Look Assigner...` when you load it as standin.
+
+![Arnold Standin](assets/maya_ass_look_assigner.png)
+
+:::note Limited support for shader assignments with standin nodes
+Limited amount of attributes supported by using operator to assign shaders to the loaded standins.
+
+```
+primaryVisibility
+castsShadows
+receiveShadows
+aiSelfShadows
+aiOpaque
+aiMatte
+aiVisibleInDiffuseTransmission
+aiVisibleInSpecularTransmission
+aiVisibleInVolume
+aiVisibleInDiffuseReflection
+aiVisibleInSpecularReflection
+aiSubdivUvSmoothing
+aiDispHeight
+aiDispPadding
+aiDispZeroValue
+aiStepSize
+aiVolumePadding
+aiSubdivType
+aiSubdivIterations
+```
+:::
+
 ### Standin Proxy Workflow
 If a subset has a proxy representation, this will be used as display in the viewport. At render time the standin path will be replaced using the recommended string replacement workflow;
 
