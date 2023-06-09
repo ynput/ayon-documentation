@@ -8,7 +8,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-Ftrack is currently the main project management option for AYON. This documentation assumes that you are familiar with Ftrack and its basic principles. If you're new to Ftrack, we recommend having a thorough look at [Ftrack Official Documentation](http://ftrack.rtd.ftrack.com/en/stable/).
+Ftrack is currently the main project management option for AYON. This documentation assumes that you are familiar with Ftrack and its basic principles. If you're new to Ftrack, we recommend having a thorough look at [Ftrack Official Documentation](https://help.ftrack.com/en/).
 
 ## Prepare Ftrack for AYON
 
@@ -228,7 +228,7 @@ Profiles are used to select when to add Ftrack family to the instance. One or mu
 
 Eg. If I want review created and uploaded to Ftrack for render published from Maya , setting is:
 
-Host names: 'Maya'
+Host names: 'maya'
 Families: 'render'
 Add Ftrack Family: enabled
 
