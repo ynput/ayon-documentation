@@ -15,7 +15,14 @@ and CBIDs). This is done by parenting the content and proxy nodes into separate 
 
 ![Arnold Scene Source](assets/maya-arnold_scene_source.png)
 
-Once you put the nodes into contents and proxies set, you are ready to see if it passes validation and gets published.
+Once you put geometry contents(grouped objects) and proxy groups respectively into contents and proxies set,
+you are ready to see if it passes validation and gets published.
+
+Besides the grouped contents and proxies, you can put meshes and proxies into contents and proxies set.
+It would pass validation too and gets published.
+
+![Mesh Objects for contents and proxies sets](assets/maya_creator_sets.png)
+
 Validators `ASS has relative texture paths` and `Validate Arnold Scene Source CBID` can allow you to set up
 the context correctly by using repair function.
 
