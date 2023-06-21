@@ -53,7 +53,6 @@ module.exports = {
                 "artist_hosts_houdini",
                 "artist_hosts_aftereffects",
                 "artist_hosts_resolve",
-                "artist_hosts_substancepainter",
                 "artist_hosts_photoshop",
                 "artist_hosts_tvpaint",
                 "artist_hosts_unreal",
@@ -102,6 +101,7 @@ module.exports = {
                     items: [
                         "project_settings/project_settings_core",
                         "project_settings/project_settings_tray_publisher",
+                        "project_settings/project_settings_royal_render"
                     ],
                 },
             ],
