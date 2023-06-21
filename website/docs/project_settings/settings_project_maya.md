@@ -51,7 +51,7 @@ For example here:
 
 → "command": define the command to implement the script in the button.
 
-→ "sourcetype": define the programmation langage of the script.
+→ "sourcetype": define the programming language of the script.
 
 → "title": define the button title (here it's "Edit shader name definitions")
 
