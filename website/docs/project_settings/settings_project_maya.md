@@ -40,7 +40,7 @@ The **source path** will be replaced by the **destination path**.
 Build a menu in Maya.
 ![Script Menu Definition](assets/settings_project_maya_ScriptMenuDefinition.png)
 
-For exemple here : 
+For example here: 
 - **Menu Name :** Write your menu name
 - **Menu Definition :**
 
