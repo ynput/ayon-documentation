@@ -5,7 +5,7 @@ sidebar_label: Deadline
 ---
 
 # Deadline Webservice URLs
-Enter here the Deadline Webservice URLs given by your studio. The Deadline Webservice is used to manage and communicate the deadlines of the render farm system.
+Enter here the Deadline Webservice URLs given by your studio. The [Deadline Webservice](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/web-service.html) is used by AYON to submit render jobs to the render farm system.
 
 ![Deadline Webservice URLs](assets/settings_project_deadline.png)
 
