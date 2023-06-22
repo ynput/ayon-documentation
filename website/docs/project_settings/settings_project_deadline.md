@@ -1,5 +1,5 @@
 ---
-id: settings_project_global
+id: settings_project_deadline
 title: Project Deadline Setting
 sidebar_label: Deadline
 ---
