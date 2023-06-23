@@ -5,7 +5,7 @@ sidebar_label: Maya
 ---
 
 # Open Workfile Post Initialization
-Open the Workfile on Maya's launch.
+Open the Workfile on Maya's launch. This changes default behaviour of opening last Workfile (that works by passing Workfile as argument when launching Maya). When enabled, last Workfile is loaded after Maya is fully initialized. This can help in certain scenarios where Workfile depends on Maya plugins that are not fully initialized yet when the scene is already opened.
 
 # Explicit Plugins Loading
 Determine the plugins to load on Maya's launch.
@@ -40,7 +40,7 @@ The **source path** will be replaced by the **destination path**.
 Build a menu in Maya.
 ![Script Menu Definition](assets/settings_project_maya_ScriptMenuDefinition.png)
 
-For exemple here : 
+For example here: 
 - **Menu Name :** Write your menu name
 - **Menu Definition :**
 
@@ -51,7 +51,7 @@ For exemple here :
 
 → "command": define the command to implement the script in the button.
 
-→ "sourcetype": define the programmation langage of the script.
+→ "sourcetype": define the programming language of the script.
 
 → "title": define the button title (here it's "Edit shader name definitions")
 
