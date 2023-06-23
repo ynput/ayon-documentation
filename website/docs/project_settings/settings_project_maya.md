@@ -63,6 +63,12 @@ For exemple here :
 
 # Render Settings
 Pre-define your render settings.
+- Enable or disable the **Apply Render Settings on creation** option.
+- Set your **Default render image folder**.
+- Enable or disable the **Include all lights in Render Setup Layers by default** option.
+- Define your **AOV Seprator character** ((-) dash, (_) underscore, (.) dot).
+- Enable or disable the **Remove existing AOV** option.
+- Enable or disable the **Reset Current Frame** option.
 
 ![Render Settings](assets/settings_project_maya_RenderSettings.png)
 
