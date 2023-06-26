@@ -1,6 +1,6 @@
 ---
 id: module_site_sync
-title: Site Sync Administration
+title: Site Sync Admin docs
 sidebar_label: Site Sync
 ---
 
