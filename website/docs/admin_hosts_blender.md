@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_blender
-title: Blender
+title: Blender Admin docs
 sidebar_label: Blender
 ---
 
