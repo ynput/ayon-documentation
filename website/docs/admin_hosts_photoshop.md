@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_photoshop
-title: Photoshop Settings
+title: Photoshop Admin docs
 sidebar_label: Photoshop
 ---
 
