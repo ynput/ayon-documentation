@@ -1,6 +1,6 @@
 ---
 id: module_deadline
-title: Deadline Administration
+title: Deadline Admin docs
 sidebar_label: Deadline
 ---
 

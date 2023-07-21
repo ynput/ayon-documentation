@@ -9,12 +9,64 @@ Arnold Scene Source can be published as a single file or a sequence of files, de
 When creating the instance, two objectsets are created; `content` and `proxy`. Meshes in the `proxy` objectset will be the viewport representation when loading as `standin`.
 
 ### Arnold Scene Source Proxy Workflow
-In order to utilize operators and proxies, the content and proxy nodes need to share the same names (including the shape names). This is done by parenting the content and proxy nodes into separate groups. For example:
+`AssMain` set is  created with `assMain_content_SET` and `assMain_proxy_SET` as its children.
+In order to utilize operators and proxies, the content and proxy nodes need to share the same names (including the shape names
+and CBIDs). This is done by parenting the content and proxy nodes into separate groups. For example:
 
 ![Arnold Scene Source](assets/maya-arnold_scene_source.png)
 
+Once you put geometry contents(grouped objects) and proxy groups respectively into contents and proxies set,
+you are ready to see if it passes validation and gets published.
+
+Besides the grouped contents and proxies, you can put meshes and proxies into contents and proxies set.
+It would pass validation too and gets published.
+
+![Mesh Objects for contents and proxies sets](assets/maya_creator_sets.png)
+
+Validators `ASS has relative texture paths` and `Validate Arnold Scene Source CBID` can allow you to set up
+the context correctly by using repair function.
+
+![Arnold Scene Source Validators](assets/maya_validators_ass_family.png)
+
+Once you pass the validator, you can publish your contents and proxies.
 ## Standin
 Arnold Scene Source `ass` and Alembic `abc` are supported to load as standins.
+When you load `ass` when the loaders, it will import two `ass` groups with standins as children.
+Both standins load `_proxy` ass files by default, and you can choose to change the `content`
+manually by clicking file icon in the standin and change the files with `_proxy` naming conventions.
+
+![Arnold Scene Source Loaders](assets/maya_ass_loader.png)
+
+## Look Development
+Standin Nodes are now supported for look assignment.If you publish the look development object with the look family, while you publish the object with Arnold Scene Source. You can assign the look to the published Arnold Scene Source `ass` and Alembic `abc` through `AYON -> Look Assigner...` when you load it as standin.
+
+![Arnold Standin](assets/maya_ass_look_assigner.png)
+
+:::note Limited support for shader assignments with standin nodes
+Limited amount of attributes supported by using operator to assign shaders to the loaded standins.
+
+```
+primaryVisibility
+castsShadows
+receiveShadows
+aiSelfShadows
+aiOpaque
+aiMatte
+aiVisibleInDiffuseTransmission
+aiVisibleInSpecularTransmission
+aiVisibleInVolume
+aiVisibleInDiffuseReflection
+aiVisibleInSpecularReflection
+aiSubdivUvSmoothing
+aiDispHeight
+aiDispPadding
+aiDispZeroValue
+aiStepSize
+aiVolumePadding
+aiSubdivType
+aiSubdivIterations
+```
+:::
 
 ### Standin Proxy Workflow
 If a subset has a proxy representation, this will be used as display in the viewport. At render time the standin path will be replaced using the recommended string replacement workflow;
