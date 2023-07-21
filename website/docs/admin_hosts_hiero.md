@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_hiero
-title: Hiero
+title: Hiero Admin docs
 sidebar_label: Hiero
 ---
 

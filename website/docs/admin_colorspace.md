@@ -20,11 +20,11 @@ Currently only limited amount of hosts are supported and only publishing is impl
 
 Hosts are divided into 3 groups regarding the level of control of a DCC's native colorspace manageability.
 
-1. **OCIO managed** - This application's colorspace management can be controlled through OpenPype settings. Specifically, the configured OpenColorIO (OCIO) config path is utilized in the application's workfile. Additionally, the File Rules feature can be leveraged for both publishing and loading procedures.
+1. **OCIO managed** - This application's colorspace management can be controlled through AYON settings. Specifically, the configured OpenColorIO (OCIO) config path is utilized in the application's workfile. Additionally, the File Rules feature can be leveraged for both publishing and loading procedures.
 
-2. **Remapped internal colorspace** - This application includes internal color management functionality, but it does not offer external control over this feature. To address this limitation, OpenPype uses mapping rules to remap the native colorspace names used in the internal color management system to the OpenColorIO (OCIO) color management system. Remapping feature is used in Publishing and Loading procedures.
+2. **Remapped internal colorspace** - This application includes internal color management functionality, but it does not offer external control over this feature. To address this limitation, AYON uses mapping rules to remap the native colorspace names used in the internal color management system to the OpenColorIO (OCIO) color management system. Remapping feature is used in Publishing and Loading procedures.
 
-3. **Derived colorspace** - This application does not include any built-in color management capabilities, OpenPype offers a solution to this limitation by deriving valid colorspace names for the OpenColorIO (OCIO) color management system from file paths, using File Rules feature (publishing only).
+3. **Derived colorspace** - This application does not include any built-in color management capabilities, AYON offers a solution to this limitation by deriving valid colorspace names for the OpenColorIO (OCIO) color management system from file paths, using File Rules feature (publishing only).
 
 ### Comparison of host group features
 
@@ -79,7 +79,7 @@ File rules feature is mainly supported for OCIO v1. It is used to derive colorsp
 #### OCIO managed
 ![distribution ocio managed](assets/settings/admin_colorspace_distribution_1.png)
 
-When the host uses the OCIO config from OpenPype settings, the colorspace distribution is most accurately rendered. File rules come into play only during transcoding or when creating reviewable files. Upon publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document. If the representation lacks a [**colorspaceData**](dev_colorspace#data-model) key, the loading process resorts to File rules.
+When the host uses the OCIO config from AYON settings, the colorspace distribution is most accurately rendered. File rules come into play only during transcoding or when creating reviewable files. Upon publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document. If the representation lacks a [**colorspaceData**](dev_colorspace#data-model) key, the loading process resorts to File rules.
 
 #### Remapped internal colorspace
 ![distribution remapped](assets/settings/admin_colorspace_distribution_2.png)
