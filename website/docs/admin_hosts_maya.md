@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_maya
-title: Maya
+title: Maya Admin docs
 sidebar_label: Maya
 ---
 

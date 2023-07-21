@@ -1,6 +1,6 @@
 ---
 id: module_clockify
-title: Clockify Administration 
+title: Clockify Admin docs 
 sidebar_label: Clockify
 ---
 
