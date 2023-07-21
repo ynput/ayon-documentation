@@ -1,6 +1,6 @@
 ---
 id: module_slack
-title: Slack Integration Administration
+title: Slack Admin docs
 sidebar_label: Slack
 ---
 
