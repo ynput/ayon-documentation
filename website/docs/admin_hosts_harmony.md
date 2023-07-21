@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_harmony
-title: ToonBoom Harmony Settings
+title: ToonBoom Harmony Admin docs
 sidebar_label: ToonBoom Harmony
 ---
 
