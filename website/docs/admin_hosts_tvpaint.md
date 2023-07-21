@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_tvpaint
-title: TVPaint
+title: TVPaint Admin docs
 sidebar_label: TVPaint
 ---
 

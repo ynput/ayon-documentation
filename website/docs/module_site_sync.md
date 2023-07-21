@@ -1,6 +1,6 @@
 ---
 id: module_site_sync
-title: Site Sync Administration
+title: Site Sync Admin docs
 sidebar_label: Site Sync
 ---
 
@@ -199,3 +199,23 @@ This is an example how to trigger background syncing process where active (sourc
 ```shell
 openpype_console syncserver --active_site studio
 ```
+
+
+## Copy Last Published Workfile
+
+When opening an asset in a given task, a prelaunch hook will check if a workfile is locally available for the given asset and task.
+If there's none, this hook will attempt to download the last published workfile in the `active` site, copy it in the `work` site
+(with the version number incremented) and open it.
+
+
+## `resources` folder
+
+When an artist uses unpacked resources such as images, it is necessary to ensure they will be available in other sites as well.
+For this purpose, they can be added to a folder named `resources` in the local workfile folder as follows:
+
+`{path_to_asset}/{task_name}/resources`
+
+The content of the `resources` folder can be published alongside the workfile (if featured in your host implementation).
+
+Finally, when the `Copy Last Published Workfile` all the resources listed in the workfile representation will be downloaded
+and added to the local workfile folder, inside the `resources` folder.
