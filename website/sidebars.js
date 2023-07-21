@@ -102,7 +102,6 @@ module.exports = {
                         "project_settings/project_settings_core",
                         "project_settings/project_settings_nuke",
                         "project_settings/project_settings_tray_publisher",
-                        "project_settings/project_settings_celaction",
                         "project_settings/settings_project_photoshop",
                     ],
                 },
