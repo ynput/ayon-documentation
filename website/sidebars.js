@@ -101,7 +101,7 @@ module.exports = {
                     items: [
                         "project_settings/project_settings_core",
                         "project_settings/project_settings_nuke",
-                        "project_settings/project_settings_after_effects",
+                        "project_settings/project_settings_tray_publisher",
                         "project_settings/settings_project_photoshop",
                     ],
                 },
