@@ -53,6 +53,7 @@ module.exports = {
                 "artist_hosts_houdini",
                 "artist_hosts_aftereffects",
                 "artist_hosts_resolve",
+                "artist_hosts_substancepainter",
                 "artist_hosts_photoshop",
                 "artist_hosts_tvpaint",
                 "artist_hosts_unreal",
