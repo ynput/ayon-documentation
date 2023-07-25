@@ -101,7 +101,7 @@ module.exports = {
                     label: "Project Settings",
                     items: [
                         "project_settings/project_settings_core",
-                        "project_settings/project_settings_tray_publisher"
+                        "project_settings/project_settings_tray_publisher",
                     ],
                 },
             ],
