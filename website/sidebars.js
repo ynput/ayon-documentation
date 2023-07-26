@@ -119,6 +119,7 @@ module.exports = {
                 "admin_hosts_photoshop",
                 "admin_hosts_aftereffects",
                 "admin_hosts_tvpaint",
+                "admin_hosts_unreal",
                 "module_ftrack",
                 "module_kitsu",
                 "module_site_sync",
