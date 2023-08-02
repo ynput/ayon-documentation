@@ -38,7 +38,12 @@ This functionality cannot deal with all cases and is not error proof, some inter
 openpype_console module kitsu push-to-zou -l me@domain.ext -p my_password
 ```
 
-## Integrate Kitsu Note
+# Entities naming pattern
+Allows to organize hierarchically the Episodes, Sequences and Shots into their folders.
+
+![Kitsu Naming Pattern](assets/settings_project_kitsu_NamingPattern.png)
+
+## Integrate Kitsu Note & Status Change Conditions
 Task status can be automatically set during publish thanks to `Integrate Kitsu Note`. This feature can be configured in:
 
 `Admin -> Studio Settings -> Project Settings -> Kitsu -> Integrate Kitsu Note`.
