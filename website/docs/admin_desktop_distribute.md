@@ -4,47 +4,40 @@ title: Desktop App - Distribution
 sidebar_label: Desktop distribution
 ---
 
-To enable your artists to use the AYON pipeline, you need to distribute the desktop application with frozen executables to them. At this moment OpenPype v3 application is used for that purpose. The installation contains executables for both OpenPype v3 and AYON (That will change on release). The application requires connection to AYON server, make sure you have set up one.
+To enable your artists to use the AYON pipeline, you need to distribute the desktop application with frozen executables to them. For that we have [AYON launcher](https://github.com/ynput/ayon-launcher). The application requires connection to AYON server, make sure you have set up one.
 
-## AYON Desktop Application
+## AYON Launcher - Desktop Application
 
-The AYON desktop application is the base application that should be installed locally on the artist's workstation. It is self-contained (frozen) software that includes all the required dependencies to run. At the moment, the desktop application is what OpenPype uses as the main application.
+The desktop application, AYON launcher, is the base application that should be installed locally on the artist's workstation. It is self-contained (frozen) software that includes all the required dependencies to run itself.
 
-The desktop application contains the logic for connecting to the AYON server with the login UI.
+The AYON launcher contains the logic for connecting to the AYON server and distribution of addons, dependency packages and different versions of AYON launcher. Distribution is based on bundles that are set on server.
 
 ### Install
 
-You can install desktop application on individual workstations the same way as any other software. When you create your build, you will end up with an installation package for the platform that was used for the build.
+You can install AYON launcher on individual workstations the same way as any other software. When you create your build, you will end up with an installation package for the platform that was used for the build.
 
-- Windows: `OpenPype-3.0.0.msi`
-- Linux: `OpenPype-3.0.0.zip`
-- Mac: `OpenPype-3.0.0.dmg`
+- Windows: `AYON-1.0.0-win-setup.exe`
+- Linux: `AYON-1.0.0-linux.tar.gz`
+- Mac: `AYON-1.0.0-Installer.dmg`
  
 :::info Future Plan
-The desktop application will be downloadable from the server, and updates will happen automatically. The dependencies will be reduced to a minimum, and the missing dependencies will be installed from the server based on enabled addons.
+The AYON launcher will be downloadable from the server. The python dependencies will be reduced to a minimum, all other dependencies will be installed from the server based on enabled addons. This already happens, but it is not possible to add binary dependent python module.
 :::
 
-Prepared builds can be found on https://github.com/ynput/OpenPype/releases for all major platforms.
+At this moment we don't have installers available to download. Please take a look at [AYON launcher README](https://github.com/ynput/ayon-launcher/blob/develop/README.md) for more details how to create binaries to distribute.
 
-### Currently built on OS versions
-- Windows 10
-- Ubuntu 20.04
-- Centos 7.6
-- MacOS Mohave (10.14.6)
+## Distribution
 
-In case your studio requires build for different OS version, or any specific build, please take a look at
-[Requirements](dev_requirements.md) and [Build](dev_build.md) for more details how to create binaries to distribute.
+Installed AYON launcher is entrypoint to addons and dependency packages. Based on server bundle can download additional integrations called "addons". Each addon on the server may also have a codebase to be used in the desktop application. Addons in the desktop application can add features such as DCC integrations, integration for services, enhanced publish plugins, helper tools, etc.
 
-## AYON Addons
+Each addon may require python dependency that is not available in AYON launcher, to supply the dependency a dependency package must be created. Dependency package contains additional python dependencies required by addon, the package can be created for specific bundle using [AYON Dependencies tool](https://github.com/ynput/ayon-dependencies-tool).
 
-The secondary distribution consists of addons. Each addon on the server may also have a codebase to be used in the desktop application. Addons in the desktop application can add features such as DCC integrations, integration for services, enhanced publish plugins, helper tools, etc.
-
-This distribution is automated and happens when the desktop application is starting. When an artist is running the `tray`, it is periodically checked for new updates. Addons distribution requires downloading, validating, and extracting to the user's machine to be able to use them.
+This distribution is automated and happens when the AYON launcher is starting. When an artist is running the `tray`, it is periodically checked for new updates. Addons distribution requires downloading, validating, and extracting to the user's machine to be able to use them.
 
 Addons are distributed to local data on the machine, locations are:
-- Windows: `%LOCALAPPDATA%\ynput\ayon\addons`
-- Linux: `~/.local/share/ynput/ayon/addons`
-- Mac: `~/Library/Application Support/ynput/ayon/addons`
+- Windows: `%LOCALAPPDATA%\Ynput\AYON\addons`
+- Linux: `~/.local/share/Ynput/AYON/addons`
+- Mac: `~/Library/Application Support/Ynput/AYON/addons`
 
 ## Staging vs. Production
 
