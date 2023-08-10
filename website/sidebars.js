@@ -53,6 +53,7 @@ module.exports = {
                 "artist_hosts_houdini",
                 "artist_hosts_aftereffects",
                 "artist_hosts_resolve",
+                "artist_hosts_substancepainter",
                 "artist_hosts_photoshop",
                 "artist_hosts_tvpaint",
                 "artist_hosts_unreal",
@@ -100,23 +101,9 @@ module.exports = {
                     label: "Project Settings",
                     items: [
                         "project_settings/project_settings_core",
-                        "project_settings/project_settings_nuke",
                         "project_settings/project_settings_tray_publisher",
-                        "project_settings/settings_project_photoshop"
                     ],
                 },
-            ],
-        },
-        {
-            type: "category",
-            label: "Modules",
-            items: [
-                "module_ftrack",
-                "module_kitsu",
-                "module_site_sync",
-                "module_deadline",
-                "module_clockify",
-                "module_slack",
             ],
         },
         {
@@ -133,6 +120,13 @@ module.exports = {
                 "admin_hosts_photoshop",
                 "admin_hosts_aftereffects",
                 "admin_hosts_tvpaint",
+                "admin_hosts_unreal",
+                "module_ftrack",
+                "module_kitsu",
+                "module_site_sync",
+                "module_deadline",
+                "module_clockify",
+                "module_slack"
             ],
         },
         "admin_releases",
