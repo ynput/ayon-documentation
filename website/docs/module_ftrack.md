@@ -1,6 +1,6 @@
 ---
 id: module_ftrack
-title: Ftrack Administration
+title: Ftrack Admin docs
 sidebar_label: Ftrack
 ---
 

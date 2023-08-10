@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_resolve
-title: DaVinci Resolve Setup
+title: DaVinci Resolve Admin docs
 sidebar_label: DaVinci Resolve
 ---
 
