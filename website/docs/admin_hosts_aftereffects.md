@@ -1,6 +1,6 @@
 ---
 id: admin_hosts_aftereffects
-title: AfterEffects Settings
+title: AfterEffects Admin docs
 sidebar_label: AfterEffects
 ---
 
