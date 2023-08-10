@@ -63,19 +63,28 @@ Some of OpenPype environment variables don't have an AYON variant yet. They will
 :::
 
 - `USE_AYON_SERVER` - AYON mode is enabled.
-- `AYON_VERSION` - String of the current desktop application version, like `3.0.0`.
+- `AYON_VERSION` - String of the current desktop application version, like `1.0.0`.
 - `AYON_ROOT` - Path to the root of the desktop application.
-- `OPENPYPE_EXECUTABLE` - Path to the executable used to run AYON subprocesses - points to the **python** executable in the virtual environment when run from sources. If run from frozen code, it will point to either `ayon` or `ayon_console`.
-- `OPENPYPE_HEADLESS_MODE` - Headless mode is enabled (`"1"`).
-- `OPENPYPE_USE_STAGING` - Staging mode is enabled (`"1"`).
-- `OPENPYPE_LOG_LEVEL` - Logging level for AYON logger.
+- `AYON_EXECUTABLE` - Path to the executable used to run AYON subprocesses - points to the **python** executable in the virtual environment when run from sources. If run from frozen code, it will point to either `ayon` (or `ayon_console` on windows).
+- `AYON_HEADLESS_MODE` - Headless mode is enabled (`"1"`).
+- `AYON_LOG_LEVEL` - Logging level for AYON logger.
+- `AYON_DEBUG` - Debug mode enabled (affecting logs).
+- `AYON_USE_STAGING` - Staging mode is enabled (`"1"`).
+- `AYON_BUNDLE_NAME` - Bundle name that is used.
+- `OPENPYPE_HEADLESS_MODE` - Variable leading to same value as `AYON_HEADLESS_MODE`.
+- `OPENPYPE_USE_STAGING` - Variable leading to same value as `AYON_USE_STAGING`.
+- `OPENPYPE_LOG_LEVEL` - Variable leading to same value as `AYON_LOG_LEVEL`.
+- `OPENPYPE_DEBUG` - Variable leading to same value as `AYON_DEBUG`.
 - `OPENPYPE_VERSION` - Variable leading to same value as `AYON_VERSION`.
+- `OPENPYPE_EXECUTABLE` - Variable leading to same value as `AYON_EXECUTABLE`.
 - `OPENPYPE_ROOT` - Variable leading to same path as `AYON_ROOT`.
 - `OPENPYPE_REPOS_ROOT` - Variable leading to same path as `AYON_ROOT`.
 
 ## Arguments
 
-Desktop can be launched with various arguments to change how behaves or what is launched.
+Desktop can be launched with various arguments to change how behaves or what is launched. The command arguments are defined by addons. The source of main command line handling is, ATM, `openpype` addon.
+
+It is possible to run python scripts when passed as positional argument `ayon ` 
 
 ### Common Arguments
 
@@ -87,6 +96,8 @@ These arguments apply to whole AYON process.
 
 `--verbose` `<level>` - change the log verbose level of AYON loggers.
 
+`--skip-bootstrap` - bootstrap is skipped (no updates and addons/dependency packages are not available).
+
 Level value can be integer in range `0-50` or one of enum strings `"notset" (0)`, `"debug" (10)`, `"info" (20)`, `"warning" (30)`, `"error" (40)`, `"critical" (50)`. Value is stored to `AYON_LOG_LEVEL` environment variable for next processes.
 
 ```shell
@@ -95,7 +106,7 @@ ayon --verbose debug
 
 `--debug` - set the debug flag, which affects logging.
 
-Enable debug flag for AYON process. Change value of environment variable `OPENPYPE_DEBUG` to `"1"`. At this moment affects only AYON loggers. Argument `--verbose` or environment variable `OPENPYPE_LOG_LEVEL` are used in preference to affect log level.
+Enable debug flag for AYON process. Change value of environment variable `AYON_DEBUG` to `"1"`. At this moment affects only AYON loggers. Argument `--verbose` or environment variable `AYON_LOG_LEVEL` are used in preference to affect log level.
 
 ```shell
 ayon --debug
@@ -107,7 +118,7 @@ Staging feature is **not yet available**. Only production addon versions will be
 :::
 
 
-## Commands
+## OpenPype addon Commands
 
 | Command | Description | Arguments |
 | --- | --- | --- |
