@@ -1,6 +1,6 @@
 ---
 id: module_kitsu
-title: Kitsu Administration
+title: Kitsu Admin docs
 sidebar_label: Kitsu
 ---
 
