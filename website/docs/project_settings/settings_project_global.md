@@ -364,7 +364,7 @@ Cleans up the staging directory on a farm after a successful publish. This will 
 Settings for OpenPype tools.
 
 ### Creator
-Settings related to [Creator tool](artist_tools_creator.).
+Settings related to [Creator tool](../artist_tools_creator.md).
 
 #### Families smart select
 **Families smart select** selects automatically an attributed **Family** on a specific task.
@@ -372,7 +372,7 @@ Settings related to [Creator tool](artist_tools_creator.).
 2. Add (+) or delete (-) a task.
 3. Switch position.
 
-For example, when you work on a *light* or *render* task. Go on the [**Creator**](artist_tools_creator.md) and the **Family** will be automatically positionned on **Render**.
+For example, when you work on a *light* or *render* task. Go on the [**Creator**](../artist_tools_creator.md) and the **Family** will be automatically positionned on **Render**.
 
 ![Families smart select](assets/tools_creator_familiesSmartSelect.png)
 
@@ -479,7 +479,7 @@ The custom staging folder uses a path template configured in `project_anatomy/te
 
 ## Site Sync (beta testing)
 #### Config
-Aim of the Site Sync [here](module_site_sync/#google-drive).
+Aim of the Site Sync [here](../module_site_sync#google-drive).
 
 ![Site Sync](assets/site_sync_beta_testing.png)
 
