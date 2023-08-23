@@ -95,7 +95,32 @@ Click on the subset color to show the color picker window.
 ![Loader Subsets Outliner Colors](assets/settings_project_maya_loadedSubsetsOutlinerColors.png)
 
 ## Reference Loader
-More informations [here](admin_hosts_maya/#reference-loader).
+### Namespace and Group Name
+Here you can create your own custom naming for the reference loader.
+
+The custom naming is split into two parts: namespace and group name. If you don't set the namespace or the group name, an error will occur.
+Here's the different variables you can use:
+
+<div class="row markdown">
+<div class="col col--5 markdown">
+
+| Token | Description |
+|---|---|
+|`{asset_name}` | Asset name |
+|`{asset_type}` | Asset type |
+|`{subset}` | Subset name |
+|`{family}` | Subset family |
+
+</div>
+</div>
+
+The namespace field can contain a single group of '#' number tokens to indicate where the namespace's unique index should go. The amount of tokens defines the zero padding of the number, e.g ### turns into 001.
+
+Warning: Note that a namespace will always be prefixed with a _ if it starts with a digit.
+
+Example:
+
+![Namespace and Group Name](assets/maya-admin_custom_namespace.png)
 
 # Workfile Build Settings
 Builder profiles are set of rules allowing artist Load any available versions for the context of the asset, which it is run from. Preset is having following attributes:
