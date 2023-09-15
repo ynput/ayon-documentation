@@ -110,38 +110,31 @@ const config = {
                     {
                         to: "/api",
                         label: "REST API Docs",
-                        position: "right",
+                        position: "left",
                     },
                     {
-                        label: "Socials",
+                        label: "Addons",
                         position: "right",
                         items: [
                             {
-                                label: "Discourse",
-                                href: "https://community.ynput.io/",
+                                label: "Web Publisher",
+                                href: "https://ynput.io/ayon/webpublisher",
                                 target: "_blank",
                                 rel: null,
                             },
                             {
-                                label: "Discord",
-                                href: "https://discord.gg/ynput",
+                                label: "Node Graph",
+                                href: "https://ynput.io/ayon/nodegraph",
                                 target: "_blank",
                                 rel: null,
-                            },
-                            {
-                                label: "LinkedIn",
-                                href: "https://www.linkedin.com/company/ynput",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "Twitter",
-                                href: "https://twitter.com/ynput_io",
-                                target: "_blank",
-                                rel: null,
-                            },
+                            }
                         ],
                         className: "navbar__link--community",
+                    },
+                    {
+                        to: "https://ynput.io/ayon/pricing",
+                        label: "Pricing",
+                        position: "right",
                     },
                     {
                         type: "search",

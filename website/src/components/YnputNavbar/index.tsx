@@ -34,25 +34,13 @@ const YnputNavbar = () => {
                     <nav className={styles.links}>
                         <ul className={clsx(styles.nav, styles.navPills)}>
                             <li>
-                                <a
-                                    href="https://community.ynput.io/"
-                                    className={styles.logoBig}
-                                    id="brand-logo"
-                                >
-                                    AYON Docs
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://community.ynput.io/"
-                                    className={styles.logoBig}
-                                    id="brand-logo"
-                                >
-                                    Community
-                                </a>
+                                <a href="https://ynput.io/ayon/">AYON Home</a>
                             </li>
                             <li>
                                 <a href="https://ynput.io/services">Services</a>
+                            </li>
+                            <li>
+                                <a href="https://community.ynput.io/">Community</a>
                             </li>
                             <li>
                                 <a href="https://ynput.io/contact">Contact</a>
