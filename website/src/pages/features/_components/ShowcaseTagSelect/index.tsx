@@ -127,7 +127,6 @@ function ShowcaseTagSelect(
                         new KeyboardEvent("blur")
                     );
                 }}
-                onChange={(e) => toggleTag(e.nativeEvent.shiftKey)}
                 checked={selected}
                 {...rest}
             />
@@ -135,6 +134,7 @@ function ShowcaseTagSelect(
                 ref={ref}
                 htmlFor={id}
                 className={clsx(styles.checkboxLabel, "menu__link")}
+                onClick={(e) => toggleTag(e.shiftKey)}
             >
                 {label}
             </label>
