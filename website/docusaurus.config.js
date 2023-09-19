@@ -118,13 +118,13 @@ const config = {
                         items: [
                             {
                                 label: "Web Publisher",
-                                href: "https://ynput.io/ayon/webpublisher",
+                                href: "https://ynput.io/ayon/addons/web-publisher/",
                                 target: "_blank",
                                 rel: null,
                             },
                             {
                                 label: "Node Graph",
-                                href: "https://ynput.io/ayon/nodegraph",
+                                href: "https://ynput.io/ayon/addons/node-graph",
                                 target: "_blank",
                                 rel: null,
                             }

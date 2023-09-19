@@ -84,8 +84,8 @@ module.exports = {
         },
         {
             type: "category",
-            label: "AYON desktop",
-            items: ["admin_desktop_distribute", "admin_desktop_run"],
+            label: "AYON Launcher",
+            items: ["admin_launcher_distribute", "admin_launcher_run"],
         },
         {
             type: "category",
