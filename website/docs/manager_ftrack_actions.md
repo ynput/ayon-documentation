@@ -66,13 +66,13 @@ Project Manager or Supervisor must set project's applications during project pre
 
 #### A group of actions that are used for AYON Administration.
 
-### Sync to Avalon
+### Sync to AYON
 * Entity types: Project, Typed Context
 * User roles: Pypeclub, Administrator, Project manager
 
-Synchronization to Avalon is key process to keep AYON data updated. Action updates selected entities (Project, Shot, Sequence, etc.) and all nested entities to Avalon database. If action is successfully finished [Sync Hier Attrs](#sync-hier-attrs) action is triggered.
+Synchronization to AYON is key process to keep AYON data updated. Action updates selected entities (Project, Shot, Sequence, etc.) and all nested entities to AYON database. If action is successfully finished [Sync Hier Attrs](#sync-hier-attrs) action is triggered.
 
-There are 2 versions of **Sync to Avalon**, first labeled as **server** second as **local**.
+There are 2 versions of **Sync to AYON**, first labeled as **server** second as **local**.
 * **server** version will be processed with [event server](module_ftrack.md#event-server)
 * **local** version will be processed with user's AYON tray application
 
@@ -82,7 +82,7 @@ It is recommended to use **local** version if possible to avoid unnecessary dece
 * Entity types: Project, Typed Context
 * User roles: Pypeclub, Administrator, Project manager
 
-Synchronization to Avalon of Ftrack's hierarchical Custom attributes is a bit complicated so we decided to split synchronization process into 2 actions. This action updates hierarchical Custom attributes of selected entities (Project, Shot, Sequence, etc.) and all their nested entities to pipeline database. This action is also triggered automatically after successfully finished [Sync To Avalon](#sync-to-avalon) action.
+Synchronization to AYON of Ftrack's hierarchical Custom attributes is a bit complicated so we decided to split synchronization process into 2 actions. This action updates hierarchical Custom attributes of selected entities (Project, Shot, Sequence, etc.) and all their nested entities to pipeline database. This action is also triggered automatically after successfully finished [Sync To AYON](#sync-to-ayon) action.
 
 There are 2 versions of **Sync Hier Attrs** first labeled as **server** second as **local**.
 * **server** version will be processed with [event server](module_ftrack.md#event-server)
@@ -166,9 +166,9 @@ You can add same note to multiple Asset Versions at once with this action.
 * Entity types: Typed Context, Task
 * User roles: Pypeclub, Administrator
 
-Action deletes Entities and Asset Versions from Ftrack and Avalon database.
+Action deletes Entities and Asset Versions from Ftrack and AYON database.
 
-You should use this action if you need to delete Entities or Asset Versions otherwise deletion will not take effect in Avalon database. Currently the action allows to only delete one entity at the time. Entity also must not have any children.
+You should use this action if you need to delete Entities or Asset Versions otherwise deletion will not take effect in AYON server. Currently the action allows to only delete one entity at the time. Entity also must not have any children.
 
 ---
 <div class="row markdown">

@@ -19,22 +19,22 @@ Do not forget to set up `applications` and `tools`, otherwise users won't be abl
 :::
 
 3. Now you can create Project hierarchy with shots, assets, tasks and others, which has [specific rules](#synchronization-rules). [Create Project Structure](manager_ftrack_actions.md#create-project-structure) action may help you with this step.
-4. Last step is to [synchronize](#synchronization-to-avalon-database) project to Avalon database.
+4. Last step is to [synchronize](#synchronization-to-ayon-server) project to AYON database.
 
 :::tip
 Turn on `auto-sync` attribute on your project in ftrack. That way you'll only need to synchronise the project once and all further changes will be propagated automatically.
 :::
 
-## Synchronization to Avalon database
-This process describes how data from Ftrack will get into Avalon database.
+## Synchronization to AYON server
+This process describes how data from Ftrack will get into AYON server.
 
 ### How to synchronize
-You can trigger synchronization manually using [Sync To Avalon](manager_ftrack_actions.md#sync-to-avalon) action.
+You can trigger synchronization manually using [Sync To AYON](manager_ftrack_actions.md#sync-to-ayon) action.
 
-Synchronization can also be automated with AYON's [event server](#event-server) and synchronization events. If your Ftrack is [prepared for AYON](module_ftrack.md#prepare-ftrack-for-ayon), the project should have custom attribute `Avalon auto-sync`. Check the custom attribute to allow auto-updates with event server.
+Synchronization can also be automated with AYON's [event server](#event-server) and synchronization events. If your Ftrack is [prepared for AYON](module_ftrack.md#prepare-ftrack-for-ayon), the project should have custom attribute `AYON auto-sync`. Check the custom attribute to allow auto-updates with event server.
 
 :::tip
-Always use `Sync To Avalon` action before you enable `Avalon auto-sync`!
+Always use `Sync To AYON` action before you enable `AYON auto-sync`!
 :::
 
 :::important
@@ -58,5 +58,3 @@ There are certain situations that are very hard, or even impossible to handle au
 - Renaming the Project
 
 If you need to move entity or change its name it is possible only in the acse when no-one has worked on it yet. Once work is in progreess, you must archive the old one and create new.
-
-To archive entities you should use [Archive Asset/Subset](manager_ftrack_actions.md#delete-asset/subset) action. This will remove the selected entity from ftrack and avalon database in mostly non-destructive way, so it can be recovered later. To completely delete all traces of this such entity you'll need to go to AYON archive and delete them from there.
