@@ -75,3 +75,13 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 
 </Tabs>
+
+
+## Updates
+
+If you are using our official docker images and docker compose for AYON server deployment, updating is as easy as 
+
+```shell
+docker pull ynput/ayon:latest #replace with corresponding image version if you don't want latest
+docker compose up -d --build
+```

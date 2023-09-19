@@ -91,7 +91,7 @@ export default function Home() {
                     </div>
                     <div className={styles.warning}>
                         While we're transitioning from OpenPype documentation, there are
-                        some details that might be factually incorrect and imaged that show the old OpenPype interface. We're working on
+                        some details that might be factually incorrect and images that show the old OpenPype interface. We're working on
                         resolving all of them. We'll appreciate if you notify us of any such discrepancies. 
                     </div>
                 </div>
@@ -246,35 +246,6 @@ export default function Home() {
                             View All Families
                         </div>
                     </a>
-                </div>
-            </section>
-            <section
-                className={clsx(
-                    "margin-bottom--xl container padding-top--lg padding-bottom--lg"
-                )}
-            >
-                <div className={styles.more}>
-                    <h2 className={clsx("hero__subtitle")}>More on ynput.io</h2>
-                    <div className={styles.buttons}>
-                        <a href="/features#features">
-                            <div
-                                className={clsx(
-                                    "button button--secondary button--lg"
-                                )}
-                            >
-                                Try AYON Beta
-                            </div>
-                        </a>
-                        <a href="/features#features">
-                            <div
-                                className={clsx(
-                                    "button button--secondary button--lg"
-                                )}
-                            >
-                                Join Our Community
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </section>
         </Layout>

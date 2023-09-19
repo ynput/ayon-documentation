@@ -1,7 +1,7 @@
 ---
-id: admin_desktop_distribute
-title: Desktop App - Distribution
-sidebar_label: Desktop distribution
+id: admin_launcher_distribute
+title: Launcher - Distribution
+sidebar_label: Launcher distribution
 ---
 
 To enable your artists to use the AYON pipeline, you need to distribute the desktop application with frozen executables to them. For that we have [AYON launcher](https://github.com/ynput/ayon-launcher). The application requires connection to AYON server, make sure you have set up one.

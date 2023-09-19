@@ -1,7 +1,7 @@
 ---
-id: admin_desktop_run
-title: Running AYON Desktop App
-sidebar_label: Running Desktop App
+id: admin_launcher_run
+title: Running AYON desktop launcher
+sidebar_label: Running Launcher
 ---
 
 import Tabs from '@theme/Tabs';
