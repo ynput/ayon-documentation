@@ -132,11 +132,6 @@ const config = {
                         className: "navbar__link--community",
                     },
                     {
-                        to: "https://ynput.io/ayon/pricing",
-                        label: "Pricing",
-                        position: "right",
-                    },
-                    {
                         type: "search",
                         position: "right",
                     },
