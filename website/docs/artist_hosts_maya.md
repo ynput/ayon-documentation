@@ -395,6 +395,19 @@ You can load Set dress / Layout using [Loader](artist_tools_loader)
 select **Reference Maya Ascii (ma)**. This will populate your scene with all those
 models you've put into layout.
 
+### Multi-shot Layout in AYON
+
+Multi-shot Layout Creator is automation that can quickly create Layouts for multiple
+selected shots and prepare Camera Sequencer with correct timeline information.
+
+It has 3 options:
+
+- **Shot Parent Folder**: is folder that servers as parent for all shots to be used for layout creation
+- **Group Loaded Assets**: is option that is propagated to the Layout instances themselves and indicate when you want to publish group of loaded asset
+- **Associated Task Name**: is a name of task that will be associated to the Layout if it exists with the specific shot
+
+*Note: if the `Associated Task Name` doesn't exist, created instance will be marked as invalid and will require some attention before publishing.*
+
 ## Rendering with AYON
 
 AYON in Maya can be used for submitting renders to render farm and for their
