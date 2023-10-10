@@ -42,4 +42,16 @@ export type FamilyType =
     | "pointcache"
     | "maxScene"
     | "mayaScene"
-    | "pointCloud";
+    | "pointCloud"
+    | "arnoldAss"
+    | "arnoldRender"
+    | "imagesequence"
+    | "hda"
+    | "karmaRender"
+    | "mantraRender"
+    | "redshiftProxy"
+    | "redshiftRender"
+    | "staticmesh"
+    | "vrayRender"
+    | "usd"
+    | "usdRender";

@@ -152,7 +152,55 @@ const families: { [type in FamilyType]: Family } = {
     },
     maxScene: {
         title: "Max Scene",
-        icon: "home_repair_service",
+        icon: "home_repair_service"
+    },
+    arnoldAss:{
+        title: "Arnold Scene Source",
+        icon: "grain"
+    },
+    arnoldRender:{
+        title: "Arnold Render",
+        icon: "photo_library"
+    },
+    imagesequence:{
+        title: "Composite (Image Sequence)" ,
+        icon: "photo_library"
+    },
+    hda:{
+        title: "Houdini Digital Asset (Hda)",
+        icon: "home_repair_service"
+    },
+    karmaRender:{
+        title: "Karma Render",
+        icon: "photo_library"
+    },
+    mantraRender:{
+        title: "Mantra Render",
+        icon: "photo_library"
+    },
+    redshiftProxy:{
+        title: "Redshift Proxy",
+        icon: "grain"
+    },
+    redshiftRender:{
+        title:"Redshift Render",
+        icon: "photo_library"
+    },
+    staticmesh:{
+        title: "Static Mesh",
+        icon: "grain"
+    },
+    vrayRender:{
+        title: "VRay Render",
+        icon: "photo_library"
+    },
+    usd:{
+        title: "USD (experimental)",
+        icon: "home_repair_service"
+    },
+    usdRender:{
+        title: "USD Render (experimental)",
+        icon: "photo_library"
     }
 };
 
