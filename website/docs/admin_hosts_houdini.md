@@ -28,22 +28,22 @@ For consistency reasons we always force all vars to be uppercase.
 e.g. `myvar` will be `MYVAR`
 :::
 
-![update-houdini-vars-context-change](assets/houdini/update-houdini-vars-context-change.png)
+![update-houdini-vars-context-change](assets/houdini/admin/update-houdini-vars-context-change.png)
 
 
 ## Color Management (ImageIO)
 
 Allows admins to override the global color management settings, check [Host specific overrides](https://ayon.ynput.io/docs/admin_colorspace#host-specific-overrides)
 
-![houdini-color-management](assets/houdini/houdini-color-management.png)
+![houdini-color-management](assets/houdini/admin/houdini-color-management.png)
 
 ## Shelves Manager
 You can add your custom [Shelves](https://www.sidefx.com/docs/houdini/shelf/index.html) into Houdini by setting your shelf sets, shelves and tools in **Houdini -> Shelves Manager**.
-![Custom menu definition](assets/houdini/houdini-admin_shelvesmanager.png)
+![Custom menu definition](assets/houdini/admin/houdini-admin_shelvesmanager.png)
 
 The Shelf Set Path is used to load a .shelf file to generate your shelf set. If the path is specified, you don't have to set the shelves and tools.
 
-![Shelves Creation](assets/houdini/settings_project_houdini_shelves.png)
+![Shelves Creation](assets/houdini/admin/settings_project_houdini_shelves.png)
 1. **Shelf set name:** enter the name of the **shelf set** you want to import or create.
 2. **Shelf Set Path (optional):** enter the Shelf set path (on Windows, MacOs or Linux) (optional).
 3. **(+/-) :** add or delete a **shelf set**.
@@ -61,7 +61,7 @@ The Shelf Set Path is used to load a .shelf file to generate your shelf set. If 
 
 Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work.
 
-![Custom menu definition](assets/houdini/houdini-shelf-example.png)
+![Custom menu definition](assets/houdini/admin/houdini-shelf-example.png)
 
 ## Creator plugins
 Enable or disable the plugins. Some of them have extra options such as defining the default subsets names.
@@ -106,3 +106,12 @@ For a detailed guide visit: [Ayon/Openpype Env Vars and Tools Configuration Expl
 
 Publishing and managing Lookdev in Houdini is within our plan.
 The current solution to publish materials is to use HDAs as you can publish most of Houdini nodes as hda.
+
+### How to submit houdini patch version to deadline ?
+
+We don't have to as it can be done implicitly by our `GlobalJobPreLoad`. 
+you would only need to 
+- update Houdini deadline config
+  ![faq-deadline-config](assets/houdini/admin/faq-deadline-config.png)
+- add Houdini dir to `PATH` environment variable and add `HOUDINI_VERSION` for each variant
+  ![faq-houdini-ayon-update-path](assets/houdini/admin/faq-houdini-ayon-update-path.png)
