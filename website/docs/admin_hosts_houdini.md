@@ -101,3 +101,8 @@ Ayon allows you to add environment variables as:
 4. Tool (it wil be available on demand per project per asset from project Editor)
 
 For a detailed guide visit: [Ayon/Openpype Env Vars and Tools Configuration Explained](https://community.ynput.io/t/openpype-env-vars-and-tools-configuration-explained/540)
+
+### How to publish lookdev from Houdini ? 
+
+Publishing and managing Lookdev in Houdini is within our plan.
+The current solution to publish materials is to use HDAs as you can publish most of Houdini nodes as hda.
