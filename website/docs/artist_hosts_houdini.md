@@ -13,21 +13,77 @@ sidebar_label: Houdini
 - [Publish](artist_tools_publisher)
 - [Library Loader](artist_tools_library_loader)
 
-## Publishing Alembic Cameras
+## Ayon Houdini Publish Process
+:::note
+Ayon shouldn't be opinionated on your workflow, it only ensures that your work meets your studio's technical specifications.
+:::
+
+The current publishing process is
+1. Create a publish instance using `Create` menu or tab menu
+2. Click publish! 
+   
+| Create Menu | Tab Menu |
+|--|--|
+| ![tab-menu](assets/houdini/artist/tab-menu.png) | ![create-menu](assets/houdini/artist/create-menu.png) |
+
+| Publish |
+|--|
+| ![publish-button](assets/houdini/artist/publish-button.png) |
+
+## Available Product Types
+
+### Alembic Camera 
 You can publish baked camera in Alembic format. Select your camera and go **AYON -> Create** and select **Camera (abc)**.
 This will create Alembic ROP in **out** with path and frame range already set. This node will have a name you've
-assigned in the **Creator** menu. For example if you name the subset `Default`, output Alembic Driver will be named
-`cameraDefault`. After that, you can **AYON -> Publish** and after some validations your camera will be published
+assigned in the **Creator** menu. For example if you name the subset `Main`, output Alembic Driver will be named
+`cameraMain`. After that, you can **AYON -> Publish** and after some validations your camera will be published
 to `abc` file.
 
-## Publishing Composites - Image Sequences
-You can publish image sequence directly from Houdini. You can use any `cop` network you have and publish image
-sequence generated from it. For example I've created simple **cop** graph to generate some noise:
-![Noise COP](assets/houdini_imagesequence_cop.png)
+import alembic_camera from './assets/houdini/artist/alembic_camera.mp4'
 
-If I want to publish it, I'll select node I like - in this case `radialblur1` and go **AYON -> Create** and
-select **Composite (Image Sequence)**. This will create `/out/imagesequenceNoise` Composite ROP (I've named my subset
-*Noise*) with frame range set. When you hit **Publish** it will render image sequence from selected node.
+<video controls style={{width: "75%" }}>
+  <source src={alembic_camera}/>
+</video>
+
+### Arnold Scene Source 
+### Arnold ROP 
+### Composite (Image Sequence) 
+You can publish image sequence directly from Houdini. You can use any `cop` network you have and publish image
+sequence generated from it.
+
+to publish it, I'll select node I like - in this case `radialblur1` and go **AYON -> Create** and
+select **Composite (Image Sequence)**. This will create `/out/imagesequenceNoise` with frame range set (you are free to change the default range set). When you hit **Publish** it will render image sequence from selected node.
+
+
+import composite_seq from './assets/houdini/artist/composite.mp4'
+
+<video controls style={{width: "75%" }}>
+  <source src={composite_seq}/>
+</video>
+
+
+### Houdini Digital Asset 
+### Karma ROP 
+### Mantra ROP 
+### PointCache (Abc)
+
+import alembic_pointcache from './assets/houdini/artist/alembic_pointcache.mp4'
+
+<video controls style={{width: "75%" }}>
+  <source src={alembic_pointcache}/>
+</video>
+
+### PointCache (Bgeo) 
+### Redshift Proxy 
+### Redshift ROP 
+### Review 
+### Static Mesh 
+### USD (experimental) 
+### USD render (experimental) 
+### VDB Cache 
+### VRay ROP
+
+---
 
 ## Publishing Point Caches (alembic)
 Publishing point caches in alembic format is pretty straightforward, but it is by default enforcing better compatibility
