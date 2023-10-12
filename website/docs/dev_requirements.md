@@ -43,10 +43,6 @@ And [Poetry](https://python-poetry.org/) is used to manage [dependencies](#depen
 There are no minimum hardware requirements, once built, it takes ~400 MB of Disk space, and it should be deployed in all the machines that interact with AYON.
 As a rule of thumb, if the computer can run a DCC or perform render workloads, it will be able to run AYON.
 
-### Ftrack Event Server
-For a well functioning ftrack event server, we recommend a linux virtual server with Ubuntu or CentOS. CPU and RAM allocation needs differ based on the studio size, but a 2GB of ram, with a dual core CPU and around 4GB of storage should suffice
-
-
 ## Dependencies
 
 AYON is an project built on top of the following projects:

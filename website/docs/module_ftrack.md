@@ -24,137 +24,33 @@ You can only use our Ftrack Actions and publish to Ftrack if each artist is logg
 
 
 ### Custom Attributes
-After successfully connecting AYON with you Ftrack, you can right click on any project in Ftrack and you should see a bunch of actions available. The most important one is called `AYON Admin` and contains multiple options inside.
+After successfully connecting AYON with you Ftrack, you can right-click on any project in Ftrack and you should see a bunch of actions available. The most important one is called `AYON Admin` and contains multiple options inside.
 
-To prepare Ftrack for working with AYON you'll need to run [AYON Admin - Create/Update Custom Attributes](manager_ftrack_actions.md#create-update-avalon-attributes), which creates and sets the Custom Attributes necessary for AYON to function.
-
+To prepare Ftrack for working with AYON you'll need to run [AYON Admin - Create/Update Custom Attributes](manager_ftrack_actions.md#create-update-custom-attributes), which creates and sets the Custom Attributes necessary for AYON to function.
 
 
 ## Event Server
-Ftrack Event Server is the key to automation of many tasks like _status change_, _thumbnail update_, _automatic synchronization to Avalon database_ and many more. Event server should run at all times to perform the required processing as it is not possible to catch some of them retrospectively with enough certainty.
+Ftrack Event Server is the key to automation of many tasks like _status change_, _thumbnail update_, _automatic synchronization to AYON server_ and many more. Event server should run at all times to perform the required processing as it is not possible to catch some of them retrospectively with enough certainty.
 
-### Running event server
-There are specific launch arguments for event server. With `openpype_console module ftrack eventserver` you can launch event server but without prior preparation it will terminate immediately. The reason is that event server requires 3 pieces of information: _Ftrack server url_, _paths to events_ and _credentials (Username and API key)_. Ftrack server URL and Event path are set from AYON's environments by default, but the credentials must be done separatelly for security reasons.
+### What you need?
+1. You need a user which is used to connect to ftrack server, and it's API key.
+2. A machine where the services will be running.
+
+### Which user to use?
+-   should have `Administrator` role
+-   the same user should not be used by an artist
+-   the user should have permissions for private projects you want to sync
 
 
+### How to run ftrack event server
+At this moment event server consist of 2 processes Leecher and Processor. There are prepared docker images for each process. We do recommend to use ASH (AYON service host) to be able to control them from AYON server web. In that case make sure you have running ASH and create both services in **Services** on server.
 
-:::note There are 2 ways of passing your credentials to event server.
-
-<Tabs
-  defaultValue="args"
-  values={[
-    {label: 'Additional Arguments', value: 'args'},
-    {label: 'Environments Variables', value: 'env'}
-  ]}>
-
-<TabItem value="args">
-
--  **`--ftrack-user "your.username"`** : Ftrack Username
--   **`--ftrack-api-key "00000aaa-11bb-22cc-33dd-444444eeeee"`** : User's API key
--   `--ftrack-url "https://yourdomain.ftrackapp.com/"` : Ftrack server URL _(it is not needed to enter if you have set `FTRACK_SERVER` in AYON' environments)_
-
-So if you want to use AYON's environments then you can launch event server for first time with these arguments `openpype_console.exe module ftrack eventserver --ftrack-user "my.username" --ftrack-api-key "00000aaa-11bb-22cc-33dd-444444eeeee" --store-credentials`. Since that time, if everything was entered correctly, you can launch event server with `openpype_console.exe module ftrack eventserver`.
-
-</TabItem>
-<TabItem value="env">
-
-- `FTRACK_API_USER` - Username _("your.username")_
-- `FTRACK_API_KEY` - User's API key _("00000aaa-11bb-22cc-33dd-444444eeeee")_
-- `FTRACK_SERVER` - Ftrack server url _("<https://yourdomain.ftrackapp.com/">)_
-
-</TabItem>
-</Tabs>
-:::
-
-:::caution
-We do not recommend setting your Ftrack user and api key environments in a persistent way, for security reasons. Option 1. passing them as arguments is substantially safer.
-:::
+There is option to run the services manually, in that case please check ftrack addon repository for more information.
 
 ### Where to run event server
 
-We recommend you to run event server on stable server machine with ability to connect to AYON database and Ftrack web server. Best practice we recommend is to run event server as service. It can be Windows or Linux.
-
-:::important
-Event server should **not** run more than once! It may cause major issues.
-:::
-
-### Which user to use
-
--   must have at least `Administrator` role
--   the same user should not be used by an artist
-
-
-:::note How to create Eventserver service
-<Tabs
-  defaultValue="linux"
-  values={[
-    {label: 'Linux', value: 'linux'},
-    {label: 'Windows', value: 'win'},
-  ]}>
-
-<TabItem value="linux">
-
-- create file:
-    `sudo vi /opt/openpype/run_event_server.sh`
--   add content to the file:
-```sh
-#!/usr/bin/env bash
-export AYON_MONGO=<ayon-mongo-url>
-
-pushd /mnt/path/to/openpype
-./openpype_console module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug
-```
--   change file permission:
-    `sudo chmod 0755 /opt/openpype/run_event_server.sh`
-
--   create service file:
-    `sudo vi /etc/systemd/system/openpype-ftrack-event-server.service`
--   add content to the service file
-
-```toml
-[Unit]
-Description=Run AYON Ftrack Event Server Service
-After=network.target
-
-[Service]
-Type=idle
-ExecStart=/opt/openpype/run_event_server.sh
-Restart=on-failure
-RestartSec=10s
-
-[Install]
-WantedBy=multi-user.target
-```
-
--   change file permission:
-    `sudo chmod 0755 /etc/systemd/system/openpype-ftrack-event-server.service`
-
--   enable service:
-    `sudo systemctl enable ayon-ftrack-event-server`
-
--   start service:
-    `sudo systemctl start ayon-ftrack-event-server`
-
-</TabItem>
-<TabItem value="win">
-
--   create service file: `ayon-ftrack-eventserver.bat`
--   add content to the service file:
-```sh
-@echo off
-set AYON_MONGO=<ayon-mongo-url>
-
-pushd \\path\to\ayon
-openpype_console.exe module ftrack eventserver --ftrack-user <ayon-admin-user> --ftrack-api-key <api-key> --debug
-```
--   download and install `nssm.cc`
--   create Windows service according to nssm.cc manual
--   you can also run eventserver as a standard Schedule task
--   be aware of using UNC path
-
-</TabItem>
-</Tabs>
-:::
+We recommend you to run event server on stable server machine with ability to connect to AYON server and Ftrack web server. Best practice we recommend is to run event server as service. It can be Windows or Linux.
+For a well functioning ftrack event server, we recommend a linux virtual server with Ubuntu or CentOS. CPU and RAM allocation needs differ based on the studio size, but a 2GB of ram, with a dual core CPU and around 4GB of storage should suffice.
 
 * * *
 
@@ -162,21 +58,17 @@ openpype_console.exe module ftrack eventserver --ftrack-user <ayon-admin-user> -
 
 Events are helpers for automation. They react to Ftrack Web Server events like change entity attribute, create of entity, etc.
 
-### Sync to Avalon
+### Sync to AYON
 
-Automatic [synchronization to pipeline database](manager_ftrack.md#synchronization-to-avalon-database).
+Automatic [synchronization to pipeline database](manager_ftrack.md#synchronization-to-ayon-server).
 
 This event updates entities on their changes Ftrack. When new entity is created or existing entity is modified. Interface with listing information is shown to users when [synchronization rules](manager_ftrack.md#synchronization-rules) are not met. This event may also undo changes when they might break pipeline. Namely _change name of synchronized entity_, _move synchronized entity in hierarchy_.
-
-:::important
-Deleting an entity by Ftrack's default is not processed for security reasons _(to delete entity use [Delete Asset/Subset action](manager_ftrack_actions.md#delete-asset-subset))_.
-:::
 
 ### Synchronize Hierarchical and Entity Attributes
 
 Auto-synchronization of hierarchical attributes from Ftrack entities.
 
-Related to [Synchronize to Avalon database](manager_ftrack.md#synchronization-to-avalon-database) event _(without it, it makes no sense to use this event)_. Hierarchical attributes must be synchronized with special way so we needed to split synchronization into 2 parts. There are [synchronization rules](manager_ftrack.md#synchronization-rules) for hierarchical attributes that must be met otherwise interface with messages about not meeting conditions is shown to user.
+Related to [Synchronize to AYON database](manager_ftrack.md#synchronization-to-ayon-server) event _(without it, it makes no sense to use this event)_. Hierarchical attributes must be synchronized with special way so we needed to split synchronization into 2 parts. There are [synchronization rules](manager_ftrack.md#synchronization-rules) for hierarchical attributes that must be met otherwise interface with messages about not meeting conditions is shown to user.
 
 ### Update Hierarchy thumbnails
 
@@ -187,12 +79,6 @@ Push thumbnails from version, up through multiple hierarchy levels
 Change status of next task from `Not started` to `Ready` when previous task is approved.
 
 Multiple detailed rules for next task update can be configured in the settings.
-
-### Delete Avalon ID from new entity
-
-Is used to remove value from `Avalon/Mongo Id` Custom Attribute when entity is created.
-
-`Avalon/Mongo Id` Custom Attribute stores id of synchronized entities in pipeline database. When user _Copy → Paste_ selection of entities to create similar hierarchy entities, values from Custom Attributes are copied too. That causes issues during synchronization because there are multiple entities with same value of `Avalon/Mongo Id`. To avoid this error we preventively remove these values when entity is created.
 
 ### Sync status from Task to Parent
 
