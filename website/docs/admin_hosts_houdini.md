@@ -109,8 +109,7 @@ The current solution to publish materials is to use HDAs as you can publish most
 
 ### How to submit houdini patch version to deadline ?
 
-We don't have to as it can be done implicitly by our `GlobalJobPreLoad`. 
-you would only need to 
+The custom AYON Deadline `GlobalJobPreLoad` functionality can help with that by adding the application specific environment variables before the job starts rendering. Using that we can point the Deadline Houdini plugin to e.g. just `houdini` for Deadline to find the executable by name instead of full path. To ensure it's found we just need to make sure the executable is available on the `PATH` environment variable. Like so:
 - update Houdini deadline config
   ![faq-deadline-config](assets/houdini/admin/faq-deadline-config.png)
 - add Houdini dir to `PATH` environment variable and add `HOUDINI_VERSION` for each variant

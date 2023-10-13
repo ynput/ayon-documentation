@@ -15,7 +15,7 @@ sidebar_label: Houdini
 
 ## Ayon Publishing Process
 :::note
-Ayon shouldn't be opinionated on your workflow, it only ensures that your work meets your studio's technical specifications.
+Ayon tries to not be opinionated on your workflow, it only ensures that your work meets your studio's technical specifications using studio project settings customizations to customize it for particular studio or project's needs.
 :::
 
 The current publishing process is
