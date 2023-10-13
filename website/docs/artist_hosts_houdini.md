@@ -22,7 +22,7 @@ The current publishing process is
 1. Create a publish instance using `Create` menu or tab menu
 2. Click publish! 
    
-| Create Menu | Tab Menu |
+| Tab Menu | Create Menu |
 |--|--|
 | ![tab-menu](assets/houdini/artist/tab-menu.png) | ![create-menu](assets/houdini/artist/create-menu.png) |
 
@@ -30,12 +30,19 @@ The current publishing process is
 |--|
 | ![publish-button](assets/houdini/artist/publish-button.png) |
 
-## Available Product Types
+## Create and publish products
 
 ### Alembic Camera 
-You can publish baked camera in Alembic format. Select your camera and go **AYON -> Create** and select **Camera (abc)**.
-This will create Alembic ROP in **out** with path and frame range already set. This node will have a name you've
-assigned in the **Creator** menu. For example if you name the subset `Main`, output Alembic Driver will be named
+Publish baked camera in Alembic format. 
+
+Steps:
+- Select your camera
+- Go **AYON -> Create**, select **Camera (abc)**, toggle **Use selection** and click **`Create 》`**. 
+  > *Alternatively, you can just select `Create Camera (abc)` from the tab menu.* ![alembic-camera-tab-menu](assets/houdini/artist/alembic-camera-tab-menu.png)
+- Ayon will create Alembic ROP in **out** with path and frame range already set.
+- After that, you can **AYON -> Publish** and after some validations your camera will be published to `abc` file.
+
+This node will have a name you've assigned in the **Creator** menu. For example if you name the subset `Main`, output Alembic Driver will be named
 `cameraMain`. After that, you can **AYON -> Publish** and after some validations your camera will be published
 to `abc` file.
 
@@ -157,3 +164,9 @@ switch versions between different hda types.
 
 When you load hda, it will install its type in your hip file and add published version as its definition file. When
 you switch version via Scene Manager, it will add its definition and set it as preferred.
+
+## FAQ
+
+### How does Ayon name ROP nodes ? 
+
+### Does Ayon work with vanilla Houdini ROPs and Deadline nodes ?
