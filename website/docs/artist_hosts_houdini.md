@@ -13,7 +13,7 @@ sidebar_label: Houdini
 - [Publish](artist_tools_publisher)
 - [Library Loader](artist_tools_library_loader)
 
-## Ayon Houdini Publish Process
+## Ayon Publishing Process
 :::note
 Ayon shouldn't be opinionated on your workflow, it only ensures that your work meets your studio's technical specifications.
 :::
@@ -37,14 +37,10 @@ Publish baked camera in Alembic format.
 
 Steps:
 - Select your camera
-- Go **AYON -> Create**, select **Camera (abc)**, toggle **Use selection** and click **`Create 》`**. 
+- Go **AYON -> Create**, select **Camera (abc)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Camera (abc)` from the tab menu.* ![alembic-camera-tab-menu](assets/houdini/artist/alembic-camera-tab-menu.png)
 - Ayon will create Alembic ROP in **out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your camera will be published to `abc` file.
-
-This node will have a name you've assigned in the **Creator** menu. For example if you name the subset `Main`, output Alembic Driver will be named
-`cameraMain`. After that, you can **AYON -> Publish** and after some validations your camera will be published
-to `abc` file.
 
 import alembic_camera from './assets/houdini/artist/alembic_camera.mp4'
 
@@ -55,12 +51,14 @@ import alembic_camera from './assets/houdini/artist/alembic_camera.mp4'
 ### Arnold Scene Source 
 ### Arnold ROP 
 ### Composite (Image Sequence) 
-You can publish image sequence directly from Houdini. You can use any `cop` network you have and publish image
-sequence generated from it.
+Publish image sequence from Houdini `cop` networks.
 
-to publish it, I'll select node I like - in this case `radialblur1` and go **AYON -> Create** and
-select **Composite (Image Sequence)**. This will create `/out/imagesequenceNoise` with frame range set (you are free to change the default range set). When you hit **Publish** it will render image sequence from selected node.
-
+Steps:
+- Select your cop node
+- Go **AYON -> Create**, select **Composite (Image Sequence)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
+  > *Alternatively, you can just select `Composite (Image Sequence)` from the tab menu.* ![composite-tab-menu](assets/houdini/artist/composite-tab-menu.png)
+- Ayon will create Composite ROP in **out** with path and frame range already set.
+- After that, you can **AYON -> Publish** and after some validations your cop will be published to `exr` file.
 
 import composite_seq from './assets/houdini/artist/composite.mp4'
 
@@ -169,4 +167,20 @@ you switch version via Scene Manager, it will add its definition and set it as p
 
 ### How does Ayon name ROP nodes ? 
 
+The default naming is consists of family name (product type) and variant name
+For example if you are creating a `camera` publish and set the variant to name `Main`
+Then Ayon will create a rop node with the name `cameraMain`.
+
+:::note 
+Admins are free to change the default naming.
+:::
+
+![composite-tab-menu](assets/houdini/artist/faq-subset-name.png)
+
 ### Does Ayon work with vanilla Houdini ROPs and Deadline nodes ?
+This feature is not implemented yet.
+
+### How to publish existing files on disk ?
+This feature is not implemented yet.
+
+For more info, Follow this Github Issue [Enhancement: Houdini publish existing caches/frames](https://github.com/ynput/OpenPype/issues/5767)
