@@ -25,7 +25,7 @@ sidebar_label: Houdini
 6. Not implemented yet
 
 ## Ayon Publishing Process
-:::note
+:::info
 Ayon tries to not be opinionated on your workflow, it only ensures that your work meets your studio's technical specifications using studio project settings customizations to customize it for particular studio or project's needs.
 :::
 
@@ -168,13 +168,13 @@ Steps:
 - Ayon will create Alembic ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the `.abc` file.
 
-:::note Node Selection
+:::info Node Selection
  When selecting an ObjNode, Ayon will try to get its sop output node with the minimum `Output Index` otherwise it will get the sop node with display flag.
 :::
 
 :::caution
- `path` attribute existence is a mandatory. 
- ayon doesn't enforce specific values, it only validates its presence and suggests a default value if `path` is missing.
+ Adding a `path` attribute to alembic point caches is a mandatory which achieves better compatibility with other DCCs.How
+you handle `path` attribute is up to you. Ayon does not enforce specific values, it only checks for `path` presence and suggests a default `path` value if it is missing.
 :::
 
 import alembic_pointcache from './assets/houdini/artist/alembic_pointcache.mp4'
@@ -229,7 +229,7 @@ Steps:
 - Ayon will create OpenGl ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
 
-:::note Notes
+:::info Notes
 **ColorManagement:** Specifying a value for `OCIO Colorspace` parameter is a mandatory if OCIO is enabled.
 Ayon doesn't enforce specific values, it only validates the value is an existent colorspace otherwise it suggests using default colorspace.
 
@@ -251,9 +251,9 @@ Steps:
   > *Alternatively, you can just select `Create Static Mesh (FBX)` from the tab menu.* 
   > ![filmbox-fbx-tab-menu](assets/houdini/artist/filmbox-fbx-tab-menu.png)
 - Ayon will create Flimbox FBX ROP in **/out** with path and frame range already set.
-- After that, you can **AYON -> Publish** and after some validations your render will be published to the `.fbx` file.
+- After that, you can **AYON -> Publish** and after some validations your mesh will be published to a `.fbx` file.
 
-:::note Node Name and subset name
+:::info Node Name and subset name
 By default, the name will be something like this `staticMeshMain`
 
 ![staticmesh-name-default](assets/houdini/artist/staticmesh-name-default.png)
@@ -269,8 +269,36 @@ import filmbox_fbx from './assets/houdini/artist/filmbox-fbx.mp4'
   <source src={filmbox_fbx}/>
 </video>
 
-### USD (experimental) 
-### USD render (experimental) 
+### USD (experimental)
+Publish Solaris Stage as USD file.
+
+![Solaris USD](assets/houdini/artist/houdini_usd_stage.png)
+
+:::caution
+This is an experimental product-type, and may not work properly.
+:::
+
+- Select your **lop** node
+- Go **AYON -> Create**, select **USD (experimental)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
+  > *Alternatively, you can just select `Create USD (experimental)` from the tab menu.* 
+  > ![usd-tab-menu](assets/houdini/artist/usd-tab-menu.png)
+- Ayon will create USD ROP in **/out** with path and frame range already set.
+- After that, you can **AYON -> Publish** and after some validations your Solaris Stage will be published to a `.usd` file.
+  
+### USD render (experimental)
+Publish USD Render.
+
+:::caution
+This is an experimental product-type, and may not work properly.
+:::
+
+- Select your **lop** node
+- Go **AYON -> Create**, select **USD render (experimental)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
+  > *Alternatively, you can just select `Create USD render (experimental)` from the tab menu.* 
+  > ![usd-render-tab-menu](assets/houdini/artist/usd-render-tab-menu.png)
+- Ayon will create USD ROP in **/out** with path and frame range already set.
+- After that, you can **AYON -> Publish** and after some validations your render will be published to a `.usd` file.
+  
 ### VDB Cache
 Publish VDB caches from Houdini.
 
@@ -280,10 +308,14 @@ Steps:
   > *Alternatively, you can just select `Create VDB Cache` from the tab menu.* 
   > ![vdb-geometry-rop](assets/houdini/artist/vdb-geometry-rop.png)
 - Ayon will create Geometry ROP in **/out** with path and frame range already set.
-- After that, you can **AYON -> Publish** and after some validations your render will be published to the `.vdb` file.
+- After that, you can **AYON -> Publish** and after some validations your vdb cache will be published to a `.vdb` file.
 
-:::note Node Selection
+:::info Node Selection
  When selecting an ObjNode, Ayon will try to get its sop output node with the minimum `Output Index` otherwise it will get the sop node with display flag.
+:::
+
+:::caution VDB and Volumes
+VDB publishing uses Houdini Geometry Rop Node which doesn't export volumes. Therefore, you should always convert any volumes to VDB.
 :::
 
 import vdb from './assets/houdini/artist/vdb.mp4'
@@ -305,72 +337,54 @@ Steps:
 
 ![vray-rop](assets/houdini/artist/vray-rop.png)
 
----
+## Load published products
+Loaded stuff is now by default wrapped in subnetwork node called `AVALON_CONTAINERS`.
+Artist can move nodes inside `AVALON_CONTAINERS` out without losing management ability.
 
-## Publishing Point Caches (alembic)
-Publishing point caches in alembic format is pretty straightforward, but it is by default enforcing better compatibility
-with other DCCs, so it needs data do be exported prepared in certain way. You need to add `path` attribute so objects
-in alembic are better structured. When using alembic round trip in Houdini (loading alembics, modifying then and
-then publishing modifications), `path` is automatically resolved by alembic nodes.
+For more info, Go to [Load](artist_tools_loader)
 
-In this example, I've created this node graph on **sop** level, and I want to publish it as point cache.
+import load_products from './assets/houdini/artist/load-publish-products.mp4'
 
-![Pointcache setup](assets/houdini_pointcache_path.png)
+<video controls style={{width: "75%" }}>
+  <source src={load_products}/>
+</video>
 
-*Note: `connectivity` will add index for each primitive and `primitivewrangle1` will add `path` attribute, so it will
-be for each primitive (`sphere1` and `sphere2`) as Maya is expecting - `strange_GRP/strange0_GEO/strange0_GEOShape`. How
-you handle `path` attribute is up to you, this is just an example.*
-
-Now select the `output0` node and go **AYON -> Create** and select **Point Cache**. It will create
-Alembic ROP `/out/pointcacheStrange`
-
-
-## Redshift
-:::note Work in progress
-This part of documentation is still work in progress.
-:::
-
-## USD (experimental support)
-### Publishing USD
-You can publish your Solaris Stage as USD file.
-![Solaris USD](assets/houdini_usd_stage.png)
-
-This is very simple test stage. I've selected `output` **lop** node and went to **AYON -> Create** where I've
-selected **USD**. This created `/out/usdDefault` USD ROP node.
-
-### Publishing USD render
-
-USD Render works in similar manner as USD file, except it will create **USD Render** ROP node in out and will publish
-images produced by it. If you have selected node in Solaris Stage it will by added as **lop path** to ROP.
-
-## Publishing VDB
-
-Publishing VDB files works as with other data types. In this example I've created simple PyroFX explosion from
-sphere. In `pyro_import` I've converted the volume to VDB:
-
-![VDB Setup](assets/houdini_vdb_setup.png)
-
-I've selected `vdb1` and went **AYON -> Create** and selected **VDB Cache**. This will create
-geometry ROP in `/out` and sets its paths to output vdb files. During the publishing process
-whole dops are cooked.
-
-## Publishing Houdini Digital Assets (HDA)
-
-## Loading HDA
-
+:::info Loading HDA
 When you load hda, it will install its type in your hip file and add published version as its definition file. When
 you switch version via Scene Manager, it will add its definition and set it as preferred.
+:::
+
+:::info Push to library project
+You can use the `loader` to push a product to a library project. 
+![push-to-library](assets/houdini/artist/push-to-library.png)
+:::
+
+## Manage Loaded products
+Use Inventory menu button to manage loaded products.
+
+Key features:
+1. Set Version
+2. Switch Asset
+3. Inventory Actions
+
+For more info, Go to [Manage (Inventory)](artist_tools_inventory)
+
+![manage-products](assets/houdini/artist/manage-products.png)
 
 ## FAQ
 
-### How does Ayon name ROP nodes ? 
+### How does Ayon name ROP nodes ? and is it safe to rename them ?
 
-The default naming consists of family name (product type) and variant name
+Nodes are named after their `subset` names by default.
+It's safe to change the node name but it's not safe to change the `subset` name (found in `Extra` attributes) without referring to your pipeline admin. 
+![extra-attributes-subset](assets/houdini/artist/extra-attributes-subset.png)
+
+The default subset naming profile consists of family name (product type) and variant name
 For example if you are creating a `camera` publish and set the variant to name `Main`
 Then Ayon will create a rop node with the name `cameraMain`.
 
-:::note 
-Admins are free to change the default naming.
+:::info 
+Admins are free to update subset naming profile.
 :::
 
 ![composite-tab-menu](assets/houdini/artist/faq-subset-name.png)
@@ -379,6 +393,4 @@ Admins are free to change the default naming.
 This feature is not implemented yet.
 
 ### How to publish existing files on disk ?
-This feature is not implemented yet.
-
-For more info, Follow this Github Issue [Enhancement: Houdini publish existing caches/frames](https://github.com/ynput/OpenPype/issues/5767)
+This feature is not implemented yet. For more info, Follow this Github Issue [Enhancement: Houdini publish existing caches/frames](https://github.com/ynput/OpenPype/issues/5767)
