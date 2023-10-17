@@ -63,11 +63,6 @@ The Shelf Set Path is used to load a .shelf file to generate your shelf set. If 
 11. **⇅:** change the **shelf** order into the **shelf set**.
 12.  **⇅:** change the **tool** order in it **shelf**.
 
-### Shelves Example
-
-Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work.
-
-![Custom menu definition](assets/houdini/admin/houdini-shelf-example.png)
 
 ## Creator plugins
 Enable or disable the plugins. Some of them have extra options such as defining the default subsets names.
