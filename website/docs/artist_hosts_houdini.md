@@ -16,7 +16,7 @@ sidebar_label: Houdini
 
 ## Ayon Menu
 
-![ayon-menu](assets/houdini/artist/ayon-menu.png)
+![ayon-menu](assets/houdini/artist/menu_ayon.png)
 
 1. asset_name, task_name
 2. Ayon create, publish, load and manage loaded assets
@@ -36,11 +36,11 @@ The current publishing process is
    
 | Tab Menu | Create Menu |
 |--|--|
-| ![tab-menu](assets/houdini/artist/tab-menu.png) | ![create-menu](assets/houdini/artist/create-menu.png) |
+| ![tab_menu](assets/houdini/artist/tab_menu.png) | ![menu_create_creator_ui](assets/houdini/artist/menu_create_creator_ui.png) |
 
 | Publish |
 |--|
-| ![publish-button](assets/houdini/artist/publish-button.png) |
+| ![publisher_ui_publish_button](assets/houdini/artist/publisher_ui_publish_button.png) |
 
 ## Create and publish products
 
@@ -51,14 +51,14 @@ Steps:
 - Select your camera
 - Go **AYON -> Create**, select **Camera (abc)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Create Camera (abc)` from the tab menu.* 
-  > ![alembic-camera-tab-menu](assets/houdini/artist/alembic-camera-tab-menu.png)
+  > ![tab_menu_alembic_camera](assets/houdini/artist/tab_menu_alembic_camera.png)
 - Ayon will create Alembic ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your camera will be published to `.abc` file.
 
-import alembic_camera from './assets/houdini/artist/alembic_camera.mp4'
+import publish_alembic_camera from './assets/houdini/artist/publish_alembic_camera.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={alembic_camera}/>
+  <source src={publish_alembic_camera}/>
 </video>
 
 ### Arnold Scene Source 
@@ -67,7 +67,7 @@ Publish Arnold .ass Archive.
 Steps:
 - Go **AYON -> Create**, select **Arnold ASS**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Arnold ASS` from the tab menu.* 
-  > ![arnold-ass-tab-menu](assets/houdini/artist/arnold-ass-tab-menu.png)
+  > ![tab_menu_arnold_ass](assets/houdini/artist/tab_menu_arnold_ass.png)
 - Ayon will create Arnold ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your scene source will be published to `.ass` file.
 
@@ -77,11 +77,11 @@ Publish Arnold Render.
 Steps:
 - Go **AYON -> Create**, select **Arnold ROP**, set **Variant** name, set user attributes and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Arnold ROP` from the tab menu.* 
-  > ![arnold-rop-tab-menu](assets/houdini/artist/arnold-rop-tab-menu.png)
+  > ![tab_menu_arnold_rop](assets/houdini/artist/tab_menu_arnold_rop.png)
 - Ayon will create Arnold ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
 
-![arnold-rop-publisher-ui](assets/houdini/artist/arnold-rop-publisher-ui.png)
+![publisher_ui_arnold_rop](assets/houdini/artist/publisher_ui_arnold_rop.png)
 
 
 ### Composite (Image Sequence) 
@@ -91,11 +91,11 @@ Steps:
 - Select your cop node
 - Go **AYON -> Create**, select **Composite (Image Sequence)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Composite (Image Sequence)` from the tab menu.* 
-  > ![composite-tab-menu](assets/houdini/artist/composite-tab-menu.png)
+  > ![tab_menu_composite_image_sequences](assets/houdini/artist/tab_menu_composite_image_sequences.png)
 - Ayon will create Composite ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your cop will be published to `exr` file.
 
-import composite_seq from './assets/houdini/artist/composite.mp4'
+import composite_seq from './assets/houdini/artist/publish_composite_image_sequences.mp4'
 
 <video controls style={{width: "75%" }}>
   <source src={composite_seq}/>
@@ -117,10 +117,10 @@ Steps:
 - Ayon will create a HDA definition in **/obj** and move your selection inside it.
 - After that, you can **AYON -> Publish** and after some validations your HDA will be published to `.hda` file.
   
-import hda from './assets/houdini/artist/hda.mp4'
+import publish_hda from './assets/houdini/artist/publish_hda.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={hda}/>
+  <source src={publish_hda}/>
 </video>
 
 ### Karma ROP
@@ -130,14 +130,14 @@ Steps:
 - Select your candidate objects
 - Go **AYON -> Create**, select **Karma ROP**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Karma ROP` from the tab menu.* 
-  > ![karma-rop](assets/houdini/artist/karma-rop.png)
+  > ![tab_menu_karma_rop](assets/houdini/artist/tab_menu_karma_rop.png)
 - Ayon will create Karma ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
 
-import karma_rop from './assets/houdini/artist/karma-rop.mp4'
+import publish_karma_render from './assets/houdini/artist/publish_karma_render.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={karma_rop}/>
+  <source src={publish_karma_render}/>
 </video>
 
 
@@ -148,14 +148,14 @@ Steps:
 - Select your candidate objects
 - Go **AYON -> Create**, select **Mantra ROP**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Mantra ROP` from the tab menu.* 
-  > ![mantra-rop](assets/houdini/artist/mantra-rop.png)
+  > ![tab_menu_mantra_rop](assets/houdini/artist/tab_menu_mantra_rop.png)
 - Ayon will create Mantra ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
 
-import mantra_rop from './assets/houdini/artist/mantra-rop.mp4'
+import publish_mantra_render from './assets/houdini/artist/publish_mantra_render.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={mantra_rop}/>
+  <source src={publish_mantra_render}/>
 </video>
 
 ### PointCache (Abc)
@@ -165,7 +165,7 @@ Steps:
 - Select your sop node or obj node
 - Go **AYON -> Create**, select **PointCache (Abc)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create PointCache (Abc)` from the tab menu.* 
-  > ![alembic-rop-tab-menu](assets/houdini/artist/alembic-rop-tab-menu.png)
+  > ![tab_menu_pointcache_alembic](assets/houdini/artist/tab_menu_pointcache_alembic.png)
 - Ayon will create Alembic ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the `.abc` file.
 
@@ -178,10 +178,10 @@ Steps:
 you handle `path` attribute is up to you. Ayon does not enforce specific values, it only checks for `path` presence and suggests a default `path` value if it is missing.
 :::
 
-import alembic_pointcache from './assets/houdini/artist/alembic_pointcache.mp4'
+import publish_pointcache_alembic from './assets/houdini/artist/publish_pointcache_alembic.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={alembic_pointcache}/>
+  <source src={publish_pointcache_alembic}/>
 </video>
 
 ### PointCache (Bgeo)
@@ -191,11 +191,11 @@ Steps:
 - Select your sop node
 - Go **AYON -> Create**, select **PointCache (Bgeo)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create PointCache (Bgeo)` from the tab menu.* 
-  > ![bgeo-rop-tab-menu](assets/houdini/artist/bgeo-rop-tab-menu.png)
+  > ![tab_menu_pointcache_bgeo](assets/houdini/artist/tab_menu_pointcache_bgeo.png)
 - Ayon will create Geometry ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected bgeo format.
 
-![pointcache-bgeo-publish](assets/houdini/artist/pointcache-bgeo-publish.png)
+![publish_pointcache_bgeo](assets/houdini/artist/publish_pointcache_bgeo.png)
 
 ### Redshift Proxy 
 Publish Bgeo point caches from Houdini.
@@ -204,7 +204,7 @@ Steps:
 - Select your sop node
 - Go **AYON -> Create**, select **Redshift Proxy**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Redshift Proxy` from the tab menu.* 
-  > ![redshift-proxy-rop-tab-menu](assets/houdini/artist/redshift-proxy-rop-tab-menu.png)
+  > ![tab_menu_redshift_proxy_rop](assets/houdini/artist/tab_menu_redshift_proxy_rop.png)
 - Ayon will create Redshift Proxy ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the `.rs` file.
 
@@ -215,7 +215,7 @@ Steps:
 - Select your candidate objects
 - Go **AYON -> Create**, select **Redshift ROP**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Redshift ROP` from the tab menu.* 
-  > ![redshift-rop-tab-menu](assets/houdini/artist/redshift-rop-tab-menu.png)
+  > ![tab_menu_redshift_rop](assets/houdini/artist/tab_menu_redshift_rop.png)
 - Ayon will create Redshift ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
   
@@ -226,7 +226,7 @@ Steps:
 - Select your candidate objects
 - Go **AYON -> Create**, select **Review**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Review` from the tab menu.* 
-  > ![review-rop](assets/houdini/artist/review-rop.png)
+  > ![tab_menu_review_rop](assets/houdini/artist/tab_menu_review_rop.png)
 - Ayon will create OpenGl ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
 
@@ -237,10 +237,10 @@ Ayon doesn't enforce specific values, it only validates the value is an existent
 **Convert to video and add burnins:** Ayon will do them automatically on publishing if they are enabled in studio settings.
 :::
 
-import review from './assets/houdini/artist/review.mp4'
+import publish_review from './assets/houdini/artist/publish_review.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={review}/>
+  <source src={publish_review}/>
 </video>
 
 ### Static Mesh (FBX)
@@ -250,7 +250,7 @@ Steps:
 - Select your sop node or obj node or obj subnetwork.
 - Go **AYON -> Create**, select **Static Mesh**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create Static Mesh (FBX)` from the tab menu.* 
-  > ![filmbox-fbx-tab-menu](assets/houdini/artist/filmbox-fbx-tab-menu.png)
+  > ![tab_menu_filmbox_fbx](assets/houdini/artist/tab_menu_filmbox_fbx.png)
 - Ayon will create Flimbox FBX ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your mesh will be published to a `.fbx` file.
 
@@ -264,10 +264,10 @@ If your admin used unreal static mesh namings, you'll find names be something li
 ![staticmesh-name-unreal](assets/houdini/artist/staticmesh-name-unreal.png)
 :::
 
-import filmbox_fbx from './assets/houdini/artist/filmbox-fbx.mp4'
+import publish_filmbox_fbx from './assets/houdini/artist/publish_filmbox_fbx.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={filmbox_fbx}/>
+  <source src={publish_filmbox_fbx}/>
 </video>
 
 ### USD (experimental)
@@ -282,7 +282,7 @@ This is an experimental product-type, and may not work properly.
 - Select your **lop** node
 - Go **AYON -> Create**, select **USD (experimental)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create USD (experimental)` from the tab menu.* 
-  > ![usd-tab-menu](assets/houdini/artist/usd-tab-menu.png)
+  > ![tab_menu_usd](assets/houdini/artist/tab_menu_usd.png)
 - Ayon will create USD ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your Solaris Stage will be published to a `.usd` file.
   
@@ -296,7 +296,7 @@ This is an experimental product-type, and may not work properly.
 - Select your **lop** node
 - Go **AYON -> Create**, select **USD render (experimental)**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create USD render (experimental)` from the tab menu.* 
-  > ![usd-render-tab-menu](assets/houdini/artist/usd-render-tab-menu.png)
+  > ![tab_menu_usd_render](assets/houdini/artist/tab_menu_usd_render.png)
 - Ayon will create USD ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to a `.usd` file.
   
@@ -307,7 +307,7 @@ Steps:
 - Select your sop node or obj node
 - Go **AYON -> Create**, select **VDB Cache**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create VDB Cache` from the tab menu.* 
-  > ![vdb-geometry-rop](assets/houdini/artist/vdb-geometry-rop.png)
+  > ![tab_menu_vdb_geometry_rop](assets/houdini/artist/tab_menu_vdb_geometry_rop.png)
 - Ayon will create Geometry ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your vdb cache will be published to a `.vdb` file.
 
@@ -319,10 +319,10 @@ Steps:
 VDB publishing uses Houdini Geometry Rop Node which doesn't export volumes. Therefore, you should always convert any volumes to VDB.
 :::
 
-import vdb from './assets/houdini/artist/vdb.mp4'
+import publish_vdb_cache from './assets/houdini/artist/publish_vdb_cache.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={vdb}/>
+  <source src={publish_vdb_cache}/>
 </video>
 
 ### VRay ROP
@@ -332,26 +332,26 @@ Steps:
 - Select your camera
 - Go **AYON -> Create**, select **VRay ROP**, toggle **Use selection**, set **Variant** name and click **`Create 》`**. 
   > *Alternatively, you can just select `Create VRay ROP` from the tab menu.* 
-  > ![vray-rop-tab-menu](assets/houdini/artist/vray-rop-tab-menu.png)
+  > ![tab_menu_vray_rop](assets/houdini/artist/tab_menu_vray_rop.png)
 - Ayon will create VRay ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
 
-![vray-rop](assets/houdini/artist/vray-rop.png)
+![publisher_ui_vray_rop](assets/houdini/artist/publisher_ui_vray_rop.png)
 
 ## Load published products
 Loading is done by
 - **load...** : load products from the current project
 - **library...** : load products from a library project
   
-![load-project-library](assets/houdini/artist/load-project-library.png)
+![menu_load_load_library](assets/houdini/artist/menu_load_load_library.png)
 
 Loaded stuff is by default wrapped in subnetwork node called `AVALON_CONTAINERS`.
 Artist can move nodes inside `AVALON_CONTAINERS` out without losing management ability. For more info, Go to [Load](artist_tools_loader) and [Library Loader](artist_tools_library_loader)
 
-import load_products from './assets/houdini/artist/load-publish-products.mp4'
+import loader_tool_demo from './assets/houdini/artist/loader_tool_demo.mp4'
 
 <video controls style={{width: "75%" }}>
-  <source src={load_products}/>
+  <source src={loader_tool_demo}/>
 </video>
 
 :::info Loading HDA
@@ -361,7 +361,7 @@ you switch version via Scene Manager, it will add its definition and set it as p
 
 :::info Push to library project
 You can use the `loader` to push a product to a library project. 
-![push-to-library](assets/houdini/artist/push-to-library.png)
+![push_to_library_project](assets/houdini/artist/push_to_library_project.png)
 :::
 
 ## Manage Loaded products
@@ -374,7 +374,7 @@ Key features:
 
 For more info, Go to [Manage (Inventory)](artist_tools_inventory)
 
-![manage-products](assets/houdini/artist/manage-products.png)
+![Inventory_manage_products](assets/houdini/artist/Inventory_manage_products.png)
 
 ## FAQ
 
@@ -382,7 +382,7 @@ For more info, Go to [Manage (Inventory)](artist_tools_inventory)
 
 Nodes are named after their `subset` names by default.
 It's safe to change the node name but it's not safe to change the `subset` name (found in `Extra` attributes) without referring to your pipeline admin. 
-![extra-attributes-subset](assets/houdini/artist/extra-attributes-subset.png)
+![extra_attributes_subset](assets/houdini/artist/extra_attributes_subset.png)
 
 The default subset naming profile consists of family name (product type) and variant name
 For example if you are creating a `camera` publish and set the variant to name `Main`
@@ -392,7 +392,7 @@ Then Ayon will create a rop node with the name `cameraMain`.
 Admins are free to update subset naming profiles.
 :::
 
-![composite-tab-menu](assets/houdini/artist/faq-subset-name.png)
+![faq_subset_name](assets/houdini/artist/faq_subset_name.png)
 
 ### Does Ayon work with vanilla Houdini ROPs and Deadline nodes ?
 This feature is not implemented yet.
