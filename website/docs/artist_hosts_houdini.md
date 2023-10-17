@@ -338,10 +338,14 @@ Steps:
 ![vray-rop](assets/houdini/artist/vray-rop.png)
 
 ## Load published products
-Loaded stuff is now by default wrapped in subnetwork node called `AVALON_CONTAINERS`.
-Artist can move nodes inside `AVALON_CONTAINERS` out without losing management ability.
+Loading is done by
+- **load...** : load products from the current project
+- **library...** : load products from a library project
+  
+![load-project-library](assets/houdini/artist/load-project-library.png)
 
-For more info, Go to [Load](artist_tools_loader)
+Loaded stuff is by default wrapped in subnetwork node called `AVALON_CONTAINERS`.
+Artist can move nodes inside `AVALON_CONTAINERS` out without losing management ability. For more info, Go to [Load](artist_tools_loader) and [Library Loader](artist_tools_library_loader)
 
 import load_products from './assets/houdini/artist/load-publish-products.mp4'
 
@@ -384,7 +388,7 @@ For example if you are creating a `camera` publish and set the variant to name `
 Then Ayon will create a rop node with the name `cameraMain`.
 
 :::info 
-Admins are free to update subset naming profile.
+Admins are free to update subset naming profiles.
 :::
 
 ![composite-tab-menu](assets/houdini/artist/faq-subset-name.png)
