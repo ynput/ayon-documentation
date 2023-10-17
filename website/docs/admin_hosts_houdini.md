@@ -3,6 +3,7 @@ id: admin_hosts_houdini
 title: Houdini Admin docs
 sidebar_label: Houdini
 ---
+[![Houdini addon - 0.1.4](https://img.shields.io/badge/Houdini%20addon-0.1.4-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)
 
 ## General
 ### Update Houdini Vars on context change
@@ -38,6 +39,11 @@ Allows admins to override the global color management settings, check [Host spec
 ![houdini-color-management](assets/houdini/admin/houdini-color-management.png)
 
 ## Shelves Manager
+
+:::info
+Shelves manager is partially working, you can use **Shelf Set Path**, and is waiting for some bug fixes to be fully compatible with Ayon.
+:::
+
 You can add your custom [Shelves](https://www.sidefx.com/docs/houdini/shelf/index.html) into Houdini by setting your shelf sets, shelves and tools in **Houdini -> Shelves Manager**.
 ![Custom menu definition](assets/houdini/admin/houdini-admin_shelvesmanager.png)
 
