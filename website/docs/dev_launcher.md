@@ -109,4 +109,12 @@ Environment variables that are set for backwards compatibility with openpype add
 
 
 ## Developer mode
-[Developer mode](dev_dev_mode) enables to skip standard distribution process of addons, and use local sources of addon code. This is useful for development of addon. Developer mode must be enabled and configured on AYON server. To use it in AYON launcher create dev bundle and use `--use-dev` argument, or define bundle name `--bundle <dev bundle name>` in cli arguments.
+[Developer mode](dev_dev_mode) enables to skip standard distribution process of addons, and use local sources of addon code. This is useful for development of addon. Developer mode must be enabled and configured on AYON server.
+
+There are 2 ways how to start in developer mode using command line arguments:
+1. Start AYON launcher with `--bundle <dev bundle name>`. Dev bundle cannot be set as production or staging.
+2. Using argument flag `--use-dev`. With this argument a dev bundle is found for logged user.
+
+Both options can be defined with environment variables `AYON_BUNDLE_NAME` and `AYON_USE_DEV` (value `1` to enable).
+
+Developer mode automatically disregard any production or staging information.
