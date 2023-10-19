@@ -1,62 +1,112 @@
 ---
 id: dev_launcher
-title: AYON Launcher - Desktop application
-sidebar_label: AYON Launcher
+title: AYON Launcher - Introduction
+sidebar_label: Introduction
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Introduction
-AYON launcher is desktop application. Basic information about AYON launcher is summarized in [admin documentation](admin_launcher_distribute). 
+For most recent documentation please use readme in [AYON launcher repository](https://github.com/ynput/ayon-launcher/blob/main/README.md).
 
-Building steps and more advanced usage can be found in [AYON launcher repository](https://github.com/ynput/ayon-launcher/blob/main/README.md).
+Desktop application launcher for AYON pipeline. You need AYON launcher to be able to interact with any of the integrated applications. It acts as the main entry point into the pipeline for all artists publishing and loading data with AYON. Even though AYON launcher is a standalone desktop application, it doesn't do anything until it's connected to an AYON server instance.
+
+The main purpose of application is to distribute updates based on current server state and to start main logic of core addon. At this moment core addon is `openpype` (this will change in near future).
+
+### Building AYON Desktop application
+
+We aim to closely follow [**VFX Reference Platform**](https://vfxplatform.com/)
+
+AYON is written in Python 3 with specific elements still running in Python2 until all DCCs are fully updated. To see the list of those, that are not quite there yet, go to [VFX Python3 tracker](https://vfxpy.com/)
+
+[CX_Freeze](https://cx-freeze.readthedocs.io/en/latest) is used to freeze the Python code and all of its dependencies, and [Poetry](https://python-poetry.org/) for virtual environment management.
+
+We provide comprehensive build steps:
+* [Windows](dev_launcher_build_windows)
+* [macOS](dev_launcher_build_macos)
+* [Linux](dev_launcher_build_linux)
+
+Output of the build process is installer with metadata file that can be distributed to workstations.
+
+### Upload installer to server
+
+Create installer information from json file on server and upload the installer file to be downloaded by users.
+
+### Windows
+Run `./tools/manage.ps1 upload --server <your server> --api-key <your api key>`
+
+### Linux & macOS
+Run `./tools/make.sh upload --server <your server> --api-key <your api key>`
+
+Upload command has more options, use `--help` to investigate them. For example, it is possible to use username & password instead of api key.
 
 
-## Development usage
-As described in admin documentation, AYON launcher can be launched in `Production` or `Staging` mode. For development is added another state `Development`. Development state requires to create develop bundles on server.
+### Running AYON Desktop application
 
-There are 2 ways how to start in development mode using command line arguments:
-1. Start AYON launcher with `--bundle <dev bundle name>`. Dev bundle cannot be set as production or staging.
-2. Using argument flag `--use-dev`. With this argument a dev bundle is found for logged user.
+AYON can be executed either from live sources (this repository) or from
+*"frozen code"* - executables that can be build using steps described above.
 
-Both options can be defined with environment variables `AYON_BUNDLE_NAME` and `AYON_USE_DEV` (value `1` to enable).
+### From sources
+AYON can be run directly from sources by activating virtual environment:
 
-Develop mode automatically disregard any production or staging information.
+```sh
+poetry run python start.py &args
+```
 
-### Develop mode benefits
-First of all dev bundles can enable/disable addons and change their versions on server.
+### From frozen code
 
-Benefit for AYON launcher is that it is possible to enable custom path to addon code. Which gives option to point directly to repository so changes in repository codebase is propagated when AYON launcher is started.
+You need to build AYON first. This will produce executable - `ayon.exe` and `ayon_console.exe` on Windows, `ayon` on Linux and `AYON {version}.app` for macOS.
 
-:::note
-Some addons have more complicated preparation of code for AYON launcher which reduce this benefit. And changes of server part of an addon (like settings) still require to upload changes to server.
-:::
+#### Windows
+Executable `ayon_console.exe` creates console with output - useful for debugging, `ayon.exe` does not create console, but does not have any stdout or stderr output.
 
-:::important
-Custom paths to addons only affects AYON launcher code and has no effect for server side code.
-:::
 
-### Steps to enable develop mode
-1. Log in to AYON server as admin user.
-2. In user settings select your user, enable `Developer` and save changes.
-![dev_user_settings](assets/ayon_user_developer.png)
-3. At top right corner should appear `Developer mode` checkbox (you may need to refresh page).
-![dev_user_settings](assets/ayon_developer_mode.png)
-4. Enable the checkbox.
+Startup
+-------------
+Once AYON launcher is installed and launched there are few ways how to affect what will happen. Default behavior will ask for login to server, if user did not log in yet, then starts distribution of updates, and last step is to start the main logic.
 
-### Steps to create develop bundle
-1. Go to Bundles page.
-2. Click on `Add new bundle`.
-3. Form for bundle creation should have `Dev bundle` checkbox and `Assigned dev`.
-4. Make sure `Dev bundle` is enabled.
-5. Assign yourself to the bundle (you can have assigned only one dev bundle at a time).
-6. Choose addons and their versions.
-7. Confirm Create new bundle.
-![dev_user_settings](assets/ayon_develop_bundle.png)
+Main logic is now using command line handling from `openpype` addon. If path to python script is passed it will start the python script as main logic instead.
 
-Select the bundle in list. You should be able to change addon versions and change custom paths.
+### Arguments
+There are reserver global arguments that cannot be used in any cli handling:
+- `--bundle <BUNDLE NAME>` - Force AYON to use specific bundle instead of the one that is set in the config file. This is useful for testing new bundles before they are released.
+- `--verbose <LOG LEVEL>` - Change logging level to one of the following: DEBUG, INFO, WARNING, ERROR, CRITICAL.
+- `--debug` - Simplified way how to change verbose to DEBUG. Also sets `AYON_DEBUG` environment variable to `1`.
+- `--skip-headers` - Skip headers in the console output.
+- `--use-dev` - Use dev bundle and settings, if bundle is not explicitly defined.
+- `--use-staging` - Use staging settings, and use staging bundle, if bundle is not explicitly defined. Cannot be combined with staging.
+- `--headless` - Tell AYON to run in headless mode. No UIs are shown during bootstrap. Affects `AYON_HEADLESS_MODE` environment variable. Custom logic must handle headless mode on own.
+- `--skip-bootstrap` - Skip bootstrap process. Used for inner logic of distribution.
 
-:::info
-Custom addon paths must be enabled. If custom path is enabled it is always used even if the path is not filled. 
-:::
+### Environment variables
+Environment variables that are set during startup:
+- **AYON_VERSION** - Version of AYON launcher.
+- **AYON_BUNDLE_NAME** - Name of bundle that is used.
+- **AYON_LOG_LEVEL** - Log level that is used.
+- **AYON_DEBUG** - Debug flag enabled when set to '1'.
+- **AYON_USE_STAGING** - Use staging settings when set to '1'.
+- **AYON_USE_DEV** - Use dev mode settings when set to '1'.
+- **AYON_HEADLESS_MODE** - Headless mode flag enabled when set to '1'.
+- **AYON_EXECUTABLE** - Path to executable that is used to run AYON.
+- **AYON_ROOT** - Root to AYON launcher content.
+
+- **AYON_MENU_LABEL** - Label for AYON menu -> TODO move to openpype addon.
+- **PYBLISH_GUI** - Default pyblish UI that should be used in pyblish -> TODO move to openpype addon.
+- **USE_AYON_SERVER** - Flag for openpype addon.
+
+- **SSL_CERT_FILE** - Use certificates from 'certifi' if 'SSL_CERT_FILE' is not set.
+
+Environment variables that are set for backwards compatibility with openpype addon:
+- **OPENPYPE_LOG_LEVEL** - Alias to **AYON_LOG_LEVEL**.
+- **OPENPYPE_DEBUG** - Alias to **AYON_DEBUG**.
+- **OPENPYPE_USE_STAGING** - Alias to **AYON_USE_STAGING**.
+- **OPENPYPE_HEADLESS_MODE** - Alias to **AYON_HEADLESS_MODE**.
+- **OPENPYPE_EXECUTABLE** - Alias to **AYON_EXECUTABLE**.
+- **OPENPYPE_ROOT** - Alias to **AYON_ROOT**.
+- **OPENPYPE_REPOS_ROOT** - Alias to **AYON_ROOT**.
+- **AVALON_LABEL** - Alias to **AYON_MENU_LABEL**.
+
+
+## Developer mode
+[Developer mode](dev_dev_mode) enables to skip standard distribution process of addons, and use local sources of addon code. This is useful for development of addon. Developer mode must be enabled and configured on AYON server. To use it in AYON launcher create dev bundle and use `--use-dev` argument, or define bundle name `--bundle <dev bundle name>` in cli arguments.
