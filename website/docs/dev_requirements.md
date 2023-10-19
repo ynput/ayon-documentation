@@ -31,7 +31,7 @@ AYON can be built and ran in any platform that supports the above requirements, 
 
 ## Python
 
-Python is only required if you want to [build](dev_build.md), develop or run from the source code, otherwise is **highly advised** to use the pre-built binaries found in the [Release page](https://github.com/ynput/OpenPype/releases) which includes Python.
+Python is only required if you want to build [AYON launcher](dev_launcher.md), develop or run from the source code, otherwise is **highly advised** to use the pre-built binaries found in the [Release page](https://github.com/ynput/OpenPype/releases) which includes Python.
 
 **Python 3.9.x** is the recommended version to use, as per [VFX platform CY2022](https://vfxplatform.com/).
 **Note**: Python 3.9.0 is not supported because of [this bug](https://github.com/python/cpython/pull/22670). Please, use higher versions of 3.9.x.

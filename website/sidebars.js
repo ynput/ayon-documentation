@@ -134,7 +134,7 @@ module.exports = {
     Dev: [
         "dev_introduction",
         "dev_requirements",
-        "dev_build",
+        "dev_launcher",
         "dev_testing",
         "dev_contribute",
         {
