@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Run AYON
 
-To use AYON on a workstation, simply run the `ayon` executable that was [installed](admin_desktop_distribute.md#install).
+To use AYON on a workstation, simply run the `ayon` executable that was [installed](admin_launcher_distribute.md#install).
 
 :::info
 Make sure to use the AYON executable and not OpenPype's.
