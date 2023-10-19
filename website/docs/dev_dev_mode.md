@@ -50,8 +50,8 @@ Custom paths to addons only affects AYON launcher code and has no effect for ser
 
 Configuration of custom addon paths have checkbox and path input. If checkbox is disabled the path is ignored and if is enabled then path is used, even if not filled. Point the path to the client code inside repository to be able to have git controlled changes that are directly propagated.
 
-:::warning
-Some addons have more complicated preparation of code for AYON launcher, in that case it is recommended to modify addon's create package script to extract client code to predefined directory.
+:::note
+Some addons have more complicated preparation of code for AYON launcher, in that case it is recommended to modify addon's create package script to extract client code to predefined directory. With that it is possible to use advantage of developer mode to some degree.
 :::
 
 ### Example of custom addon path
@@ -87,3 +87,7 @@ Start AYON launcher with `--use-dev` argument.
 ```
 
 AYON launcher should use code from the location we've defined. Try to do changes in the core, restart AYON launcher and validate if changes are propagated.
+
+:::note
+It is possible to use dev bundle even if is not assigned to the user. In that case replace `--use-dev` with `--bundle <deb bundle name>`.
+:::
