@@ -17,9 +17,13 @@ Make sure to use the AYON executable and not OpenPype's.
 
 On the first run, the user will be prompted for the AYON Server URL and credentials. This information needs to be provided by the admin who set up AYON in the studio.
 
+![login_dialog](assets/ayon_launcher_login.png)
+
 Once the artist logs in, they will receive an API token, which AYON will remember for the next launch until the token expires. From that moment, AYON will do its best to always keep up-to-date with the latest updates.
 
 If the launch is successful, the artist should see a green AYON logo in their tray menu.
+
+![tray_app](assets/ayon_launcher_tray.png)
 
 :::tip Platforms
 <Tabs
