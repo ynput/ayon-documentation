@@ -214,6 +214,15 @@ Note that additional arguments are passed to the script.
 ayon run --script /foo/bar/baz.py arg1 arg2
 ```
 
+:::note
+AYON launcher does support to run script directly which makes this command deprecated.
+```shell
+ayon /foo/bar/baz.py arg1 arg2
+```
+:::
+
+---
+
 :::info
 Running AYON without any commands will default to `tray`.
 :::
