@@ -7,50 +7,83 @@ sidebar_label: Developer mode
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Development usage
-As described in admin documentation, AYON launcher can be launched in `Production` or `Staging` mode. For development is added another state `Development`. Development state requires to create develop bundles on server.
+# Introduction
+As name suggest developer mode is in AYON ecosystem to help developers quickly propagate changes in code.
 
-There are 2 ways how to start in development mode using command line arguments:
-1. Start AYON launcher with `--bundle <dev bundle name>`. Dev bundle cannot be set as production or staging.
-2. Using argument flag `--use-dev`. With this argument a dev bundle is found for logged user.
+That is possible by adding special bundles. By default, bundles on AYON server can be marked as `Production` or `Staging`. In developer mode it is possible to create `Dev` bundle.
 
-Both options can be defined with environment variables `AYON_BUNDLE_NAME` and `AYON_USE_DEV` (value `1` to enable).
+## Pre-requirements
+- AYON server - 0.5.0
+- AYON launcher - 1.0.0-beta.6
+- addon openpype - 3.17.3
 
-Develop mode automatically disregard any production or staging information.
+## How to enable developer mode
+Developer mode is configured in WebUI of AYON server, must be allowed per user, user then can enable developer mode in WebUI.
 
-### Develop mode benefits
-First of all dev bundles can enable/disable addons and change their versions on server.
-
-Benefit for AYON launcher is that it is possible to enable custom path to addon code. Which gives option to point directly to repository so changes in repository codebase is propagated when AYON launcher is started.
-
-:::note
-Some addons have more complicated preparation of code for AYON launcher which reduce this benefit. And changes of server part of an addon (like settings) still require to upload changes to server.
-:::
-
-:::important
-Custom paths to addons only affects AYON launcher code and has no effect for server side code.
-:::
-
-### Steps to enable develop mode
+### How to enable developer mode
 1. Log in to AYON server as admin user.
-2. In user settings select your user, enable `Developer` and save changes.
+2. In user settings select your user, enable `Developer` checkbox and save changes.
    ![dev_user_settings](assets/ayon_user_developer.png)
 3. At top right corner should appear `Developer mode` checkbox (you may need to refresh page).
    ![dev_user_settings](assets/ayon_developer_mode.png)
 4. Enable the checkbox.
 
-### Steps to create develop bundle
-1. Go to Bundles page.
-2. Click on `Add new bundle`.
-3. Form for bundle creation should have `Dev bundle` checkbox and `Assigned dev`.
+### How to create dev bundle
+1. Make sure developer mode is enabled.
+2. Go to Bundles page (in Studio settings).
+3. Click on `Add new bundle`. Form for bundle creation should have `Dev bundle` checkbox and `Assigned dev`.
 4. Make sure `Dev bundle` is enabled.
-5. Assign yourself to the bundle (you can have assigned only one dev bundle at a time).
+5. Assign yourself to the bundle. Only one user can be assigned to dev bundle.
 6. Choose addons and their versions.
 7. Confirm Create new bundle.
    ![dev_user_settings](assets/ayon_develop_bundle.png)
 
-Select the bundle in list. You should be able to change addon versions and change custom paths.
 
-:::info
-Custom addon paths must be enabled. If custom path is enabled it is always used even if the path is not filled.
+## Dev bundle
+Dev bundles have almost the same data as standard bundles, but they cannot be marked as `Production` or `Staging`. It is possible to re-assigned them to different user.
+
+The main difference from standard bundles is that it is possible to change versions of addons or enable/disable them, and gives option to define custom path to addon code for AYON launcher.
+
+:::important
+Custom paths to addons only affects AYON launcher code and has no effect for server side code.
 :::
+
+Configuration of custom addon paths have checkbox and path input. If checkbox is disabled the path is ignored and if is enabled then path is used, even if not filled. Point the path to the client code inside repository to be able to have git controlled changes that are directly propagated.
+
+:::warning
+Some addons have more complicated preparation of code for AYON launcher, in that case it is recommended to modify addon's create package script to extract client code to predefined directory.
+:::
+
+### Example of custom addon path
+Small example how this could be used with [ayon-third-party](https://github.com/ynput/ayon-third-party) addon.
+
+#### 1. Define local directory with code
+In this example will be used `C:/code/addons`.
+```shell
+cd C:/code/addons
+```
+
+#### 2. Clone addon repository
+```shell
+git clone https://github.com/ynput/ayon-third-party
+```
+
+#### 3. Create addon package
+The addon must be available on server. If addon is already available on server skip to step 5.
+```shell
+python ./create_package.py
+```
+
+#### 4. Upload addon to server
+Open AYON server in browser. Go to `Studio settings` and select `Bundles` tab. Click to `Install addon` and upload zip from `C:/code/addons/ayon-third-party/package/`. 
+
+#### 5. Define custom path
+Select or create dev bundle. Enable `ayon-third-party` addon. Enable custom path and fill the path to `C:/code/addons/ayon-third-party/client`.
+
+#### 6. Run AYON launcher
+Start AYON launcher with `--use-dev` argument.
+```shell
+"C:/Users/MyUser/AppData/Local/Ynput/AYON/app/AYON 1.0.0-beta.6/ayon.exe" --use-dev
+```
+
+AYON launcher should use code from the location we've defined. Try to do changes in the core, restart AYON launcher and validate if changes are propagated.
