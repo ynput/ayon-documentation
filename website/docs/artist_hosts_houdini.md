@@ -3,7 +3,7 @@ id: artist_hosts_houdini
 title: Houdini
 sidebar_label: Houdini
 ---
-[![Houdini addon - 0.1.4](https://img.shields.io/badge/Houdini%20addon-0.1.4-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)
+[![Houdini addon - 0.1.5](https://img.shields.io/badge/Houdini%20addon-0.1.5-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)
 
 ## AYON global tools
 
@@ -38,9 +38,16 @@ The current publishing process is
 |--|--|
 | ![tab_menu](assets/houdini/artist/tab_menu.png) | ![menu_create_creator_ui](assets/houdini/artist/menu_create_creator_ui.png) |
 
-| Publish |
-|--|
-| ![publisher_ui_publish_button](assets/houdini/artist/publisher_ui_publish_button.png) |
+| Publisher UI | AYON Publish Button |
+|--|--|
+| ![publisher_ui_publish_button](assets/houdini/artist/publisher_ui_publish_button.png) | ![publisher_ui_publish_button](assets/houdini/artist/self_publish_button.png) |
+
+:::info
+ The **AYON Publish** button is a self-publish button that performs publishing in a native Houdini way.
+ Currently, it only tells the publisher what to include in the publishing, it also includes the connected Ayon ROPs because it calculates the dependency graph.
+ 
+ > The order of ROPs is not considered because the Publisher UI follows alphabetical order by default.
+:::
 
 ## Create and publish products
 

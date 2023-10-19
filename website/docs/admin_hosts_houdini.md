@@ -3,34 +3,34 @@ id: admin_hosts_houdini
 title: Houdini Admin docs
 sidebar_label: Houdini
 ---
-[![Houdini addon - 0.1.4](https://img.shields.io/badge/Houdini%20addon-0.1.4-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)
+[![Houdini addon - 0.1.5](https://img.shields.io/badge/Houdini%20addon-0.1.5-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)
 
 ## General
+
+### Add Self Publish Button
+
+Enabling this setting will cause Houdini creator to add a **self publish button** when creating new publish instances. More Info on how how the **self publish button** works [here](artist_hosts_houdini#ayon-publishing-process)
+
+![general_settings_self_publish_button](assets/houdini/admin/general_settings_self_publish_button.png)
+
 ### Update Houdini Vars on context change
 
 Allows admins to have a list of vars (e.g. JOB) with (dynamic) values that will be updated on context changes, e.g. when switching to another asset or task.
 
-Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work
-
-
-:::note
-If `Treat as directory` toggle is activated, Ayon will consider the given value as a path of a folder.
-
-If the folder does not exist on the context change it will be created by this feature so that the path will always try to point to an existing folder.
-:::
-
-Disabling `Update Houdini vars on context change` feature will leave all Houdini vars unmanaged and thus no context update changes will occur.
-
-> If `$JOB` is present in the Houdini var list and has an empty value, Ayon will set its value to `$HIP`
-
-
-:::note
-For consistency reasons we always force all vars to be uppercase.
-e.g. `myvar` will be `MYVAR`
+:::info
+**JOB** Var: If `JOB` is present in the Houdini var list and has an empty value, Ayon will set its value to `$HIP`
 :::
 
 ![update-houdini-vars-context-change](assets/houdini/admin/update-houdini-vars-context-change.png)
 
+1. **Update Houdini vars on context change :** Disabling this setting will leave all Houdini vars unmanaged and thus no context update changes will occur.
+2. **(+) :** add new Houdini variable
+3. **Var :** The Houdini variable you want to add. No need to include `$`.
+  > For consistency reasons we always force all vars to be uppercase. e.g. `myvar` will be `MYVAR`
+4. **Value :** The value you want Ayon to maintain. 
+  > Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work. For a list of available template keys go to [available template keys](#what-template-keys-are-available-for-use-in-houdini-settings)
+1. **Treat as directory :** If activated, Ayon will consider the given value as a path of a folder.
+  > If the folder does not exist on the context change it will be created by this feature so that the path will always try to point to an existing folder.
 
 ## Color Management (ImageIO)
 
@@ -40,21 +40,41 @@ Allows admins to override the global color management settings, check [Host spec
 
 ## Shelves Manager
 
-:::info
-Shelves manager is partially working, you can use **Shelf Set Path**, and is waiting for some bug fixes to be fully compatible with Ayon.
-:::
+Allows admins to add studio's [Shelves](https://www.sidefx.com/docs/houdini/shelf/index.html) and scripts into Houdini. 
 
-You can add your custom [Shelves](https://www.sidefx.com/docs/houdini/shelf/index.html) into Houdini by setting your shelf sets, shelves and tools in **Houdini -> Shelves Manager**.
-![Custom menu definition](assets/houdini/admin/houdini-admin_shelvesmanager.png)
+### Different Modes
+
+Shelves manager works in two modes: 
+1. Add a `.shelf` file. you are required only to fill in the `Shelf Set Path`.
+  ![houdini_shelves_manager_mode_1](assets/houdini/admin/houdini_shelves_manager_mode_1.png)
+
+2. Add Scripts and Ayon will create a shelf for you.
+  > *Currently, Ayon just adds the new shelf definition in `default.shelf`*
+  
+  ![houdini_shelves_manager_mode_2](assets/houdini/admin/houdini_shelves_manager_mode_2.png)
 
 The Shelf Set Path is used to load a .shelf file to generate your shelf set. If the path is specified, you don't have to set the shelves and tools.
 
-![Shelves Creation](assets/houdini/admin/settings_project_houdini_shelves.png)
+### Shelves Example
+
+:::info
+Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work. For a list of available template keys go to [available template keys](#what-template-keys-are-available-for-use-in-houdini-settings)
+:::
+
+In this example I made two shelves: 
+1. `Null Shelf` which defined in my `null_shelf.shelf` file
+2. `Ayon Shelf` which includes my script `Say Hello`
+   
+![houdini_shelves_manager_example](assets/houdini/admin/houdini_shelves_manager_example.png)
+
+
+### Shelves Manager Settings Reference
+![Shelves Creation](assets/houdini/admin/houdini_shelves_manager_settings.png)
 1. **Shelf set name:** enter the name of the **shelf set** you want to import or create.
 2. **Shelf Set Path (optional):** enter the Shelf set path (on Windows, MacOs or Linux) (optional).
-3. **(+/-) :** add or delete a **shelf set**.
-4. **(+/-) :** add a **shelf** to the **shelf set**.
-5. **(+/-) :** add a **tool** to this shelf.
+3. **(+) :** add a **shelf set**.
+4. **(+) :** add a **shelf** to the **shelf set**.
+5. **(+) :** add a **tool** to this shelf.
 6. **Shelf Name:** enter the **shelf**'s name you want to create.
 7. **Name:** enter the **tool** name you want to add to this **shelf**.
 8. **Script:** enter the tool's script to import it.
@@ -72,13 +92,20 @@ Enable or disable the plugins. Some of them have extra options such as defining 
 ## Publish plugings
 Enable or disable the plugins executed at publishing.
 
-**Publish plugins list:** Validate Latest Containers, Validate Mesh is Static, Validate Review Colorspace, Validate Subset Name, Validate Unreal Static Mesh Name,Validate workfile paths settings.
+**Publish plugins list:** Collect Rop Frame Range, Validate Latest Containers, Validate Mesh is Static, Validate Review Colorspace, Validate Subset Name, Validate Unreal Static Mesh Name,Validate workfile paths settings.
+
+### Collect Rop Frame Range
+
+Disable this if you want the publisher to ignore start and end handles specified in the asset data for publish instances.
+> Artists are allowed to override this value in the publisher UI.
+
+![houdini_publish_plugins_collectors_frame_range](assets/houdini/admin/houdini_publish_plugins_collectors_frame_range.png)
 
 ---
 
 ## FAQ
 
-### When will we need to modify Houdini addon code ?
+### When will I need to modify Houdini addon code ?
 We've spent a lot of time making it possible to customize Houdini addon from settings.
 e.g. you can add your studio's menus, tools and digital assets from settings. 
 
@@ -89,7 +116,9 @@ Still, you may need to modify Ayon addons only when :
 - Adding a new Ayon launcher tray tool
 
 ### How to add my menus, tools and digital assets to Houdini ?
-Mostly, you'd only need to update Environment to share these tools with your team. 
+Consider adding new shelves firstly as you can use them to share a lot of tools with your team.
+However, if you need to add custom python libraries or custom OTLs or custom menus, updating environment variables is your way to make them available to your team. 
+
 e.g., 
 - `PYTHONPATH` to add a custom python library path
 - `HOUDINI_MENU_PATH` to add a custom menu path
@@ -99,7 +128,7 @@ Ayon allows you to add environment variables as:
 1. Global environment variable (it wil be available for all DCCs)
 2. Application specific (it wil be available for a particular DCC)
 3. Application variant specific (it wil be available for a particular DCC version)
-4. Tool (it wil be available on demand per project per asset from project Editor)
+4. Tool (it wil be available on demand per DCC per project per asset)
 
 For a detailed guide visit: [Ayon/Openpype Env Vars and Tools Configuration Explained](https://community.ynput.io/t/openpype-env-vars-and-tools-configuration-explained/540)
 
@@ -115,3 +144,7 @@ The custom AYON Deadline `GlobalJobPreLoad` functionality can help with that by 
   ![faq-deadline-config](assets/houdini/admin/faq-deadline-config.png)
 - add Houdini dir to `PATH` environment variable and add `HOUDINI_VERSION` for each variant
   ![faq-houdini-ayon-update-path](assets/houdini/admin/faq-houdini-ayon-update-path.png)
+
+### What template keys are available for use in Houdini settings?
+Because Ayon is in Beta stage. Please refer to the code [here](https://github.com/ynput/OpenPype/blob/c61a601c78669d70c472c67016eeb77531f42bab/openpype/pipeline/context_tools.py#L671-L692) to check the current available template keys
+ 
