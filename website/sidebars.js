@@ -144,6 +144,7 @@ module.exports = {
                 "dev_launcher_build_linux"
             ],
         },
+        "dev_dev_mode",
         "dev_testing",
         "dev_contribute",
         {
