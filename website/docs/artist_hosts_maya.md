@@ -402,7 +402,7 @@ selected shots and prepare Camera Sequencer with correct timeline information.
 
 It has 3 options:
 
-- **Shot Parent Folder**: is folder that servers as parent for all shots to be used for layout creation
+- **Shot Parent Folder**: is folder that serves as parent for all shots to be used for layout creation
 - **Group Loaded Assets**: is option that is propagated to the Layout instances themselves and indicate when you want to publish group of loaded asset
 - **Associated Task Name**: is a name of task that will be associated to the Layout if it exists with the specific shot
 
