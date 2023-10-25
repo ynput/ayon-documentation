@@ -134,7 +134,17 @@ module.exports = {
     Dev: [
         "dev_introduction",
         "dev_requirements",
-        "dev_build",
+        {
+            type: "category",
+            label: "AYON launcher",
+            items: [
+                "dev_launcher",
+                "dev_launcher_build_windows",
+                "dev_launcher_build_macos",
+                "dev_launcher_build_linux"
+            ],
+        },
+        "dev_dev_mode",
         "dev_testing",
         "dev_contribute",
         {
