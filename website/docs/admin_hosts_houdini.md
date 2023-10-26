@@ -3,7 +3,7 @@ id: admin_hosts_houdini
 title: Houdini Admin docs
 sidebar_label: Houdini
 ---
-[![Houdini addon - 0.1.5](https://img.shields.io/badge/Houdini%20addon-0.1.5-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)
+[![Houdini addon - 0.2.6](https://img.shields.io/badge/Houdini%20addon-0.2.6-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)
 
 ## General
 
