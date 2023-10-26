@@ -28,7 +28,7 @@ Allows admins to have a list of vars (e.g. JOB) with (dynamic) values that will 
 3. **Var :** The Houdini variable you want to add. No need to include `$`.
   > For consistency reasons we always force all vars to be uppercase. e.g. `myvar` will be `MYVAR`
 4. **Value :** The value you want Ayon to maintain. 
-  > Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work. For a list of available template keys go to [available template keys](#what-template-keys-are-available-for-use-in-houdini-settings)
+  > Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work. For a list of available template keys go to [available template keys](#what-template-keys-are-available-for-use-in-houdini-settings).
 1. **Treat as directory :** If activated, Ayon will consider the given value as a path of a folder.
   > If the folder does not exist on the context change it will be created by this feature so that the path will always try to point to an existing folder.
 
@@ -44,55 +44,68 @@ Allows admins to add studio's [Shelves](https://www.sidefx.com/docs/houdini/shel
 
 ### Different Modes
 
-Shelves manager works in two modes: 
-1. Add a `.shelf` file. you are required only to fill in the `Shelf Set Path`.
+:::info
+You have two options to define a shelf which are mutually exclusive from one another:
+
+- If you set a Shelf Set Path that shelf is loaded, any scripts defined below it are ignored.
+- If you have no Shelf Set Path, then it'll create a shelf dynamically from the Shelf Scripts.
+:::
+
+Shelves manager works in two modes, it's either option 1 or 2.
+
+1. Add a `.shelf` file by only setting the `Shelf Set Name` and `Shelf Set Path`.
   ![houdini_shelves_manager_mode_1](assets/houdini/admin/houdini_shelves_manager_mode_1.png)
 
-2. Add Scripts and Ayon will create a shelf for you.
+2. **OR** set the `Shelf Set Name` and create `shelf definitions` with shelf scripts dynamically.
   > *Currently, Ayon just adds the new shelf definition in `default.shelf`*
   
   ![houdini_shelves_manager_mode_2](assets/houdini/admin/houdini_shelves_manager_mode_2.png)
 
-The Shelf Set Path is used to load a .shelf file to generate your shelf set. If the path is specified, you don't have to set the shelves and tools.
 
 ### Shelves Example
 
 :::info
-Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work. For a list of available template keys go to [available template keys](#what-template-keys-are-available-for-use-in-houdini-settings)
+Using template keys is supported but formatting keys capitalization variants is not, e.g. `{Asset}` and `{ASSET}` won't work. For a list of available template keys go to [available template keys](#what-template-keys-are-available-for-use-in-houdini-settings).
 :::
 
 In this example I made two shelves: 
-1. `Null Shelf` which defined in my `null_shelf.shelf` file
-2. `Ayon Shelf` which includes my script `Say Hello`
+1. `Null Shelf` which gets loaded from my pre-defined `null_shelf.shelf` file.
+2. `Ayon Shelf` which includes my script `Say Hello`.
    
 ![houdini_shelves_manager_example](assets/houdini/admin/houdini_shelves_manager_example.png)
-
-
-### Shelves Manager Settings Reference
-![Shelves Creation](assets/houdini/admin/houdini_shelves_manager_settings.png)
-1. **Shelf set name:** enter the name of the **shelf set** you want to import or create.
-2. **Shelf Set Path (optional):** enter the Shelf set path (on Windows, MacOs or Linux) (optional).
-3. **(+) :** add a **shelf set**.
-4. **(+) :** add a **shelf** to the **shelf set**.
-5. **(+) :** add a **tool** to this shelf.
-6. **Shelf Name:** enter the **shelf**'s name you want to create.
-7. **Name:** enter the **tool** name you want to add to this **shelf**.
-8. **Script:** enter the tool's script to import it.
-9. **Icon:** add the tool's icon.
-10. **Help:** add a help text to the tool. It shows when you rest the cursor on the tool
-11. **⇅:** change the **shelf** order into the **shelf set**.
-12.  **⇅:** change the **tool** order in it **shelf**.
 
 
 ## Creator plugins
 Enable or disable the plugins. Some of them have extra options such as defining the default subsets names.
 
-**Plugins list:** Create Alembic Camera, Create Arnold Ass, Create Arnold ROP, Create Composite (Image Sequence), Create Houdini Digital Asset, Create Karma ROP, Create Mantra ROP, Create PointCache (Abc), Create PointCache (Bgeo), Create Redshift Proxy, Create Redshift ROP, Create Review, Create Static Mesh, Create USD (experimental), Create USD render (experimental), Create VDB Cache, Create VRay ROP.
+- Create Alembic Camera
+- Create Arnold Ass
+- Create Arnold ROP
+- Create Composite (Image Sequence)
+- Create Houdini Digital Asset
+- Create Karma ROP
+- Create Mantra ROP
+- Create PointCache (Abc)
+- Create PointCache (Bgeo)
+- Create Redshift Proxy
+- Create Redshift ROP
+- Create Review
+- Create Static Mesh
+- Create USD (experimental)
+- Create USD render (experimental)
+- Create VDB Cache
+- Create VRay ROP
 
-## Publish plugings
+## Publish plugins
 Enable or disable the plugins executed at publishing.
 
-**Publish plugins list:** Collect Rop Frame Range, Validate Latest Containers, Validate Mesh is Static, Validate Review Colorspace, Validate Subset Name, Validate Unreal Static Mesh Name,Validate workfile paths settings.
+- Collect Rop Frame Range
+- Validate Latest Containers
+- Validate Mesh is Static
+- Validate Review Colorspace
+- Validate Subset Name
+- Validate Unreal Static Mesh Name
+- Validate workfile paths settings
 
 ### Collect Rop Frame Range
 
@@ -116,7 +129,7 @@ Still, you may need to modify Ayon addons only when :
 - Adding a new Ayon launcher tray tool
 
 ### How to add my menus, tools and digital assets to Houdini ?
-Consider adding new shelves firstly as you can use them to share a lot of tools with your team.
+First, consider adding custom shelves as you can easily use them to share a lot of tools with your team.
 However, if you need to add custom python libraries or custom OTLs or custom menus, updating environment variables is your way to make them available to your team. 
 
 e.g., 
@@ -125,17 +138,17 @@ e.g.,
 - `HOUDINI_OTL_PATH` to add a custom digital assets path
 
 Ayon allows you to add environment variables as:
-1. Global environment variable (it wil be available for all DCCs)
-2. Application specific (it wil be available for a particular DCC)
-3. Application variant specific (it wil be available for a particular DCC version)
-4. Tool (it wil be available on demand per DCC per project per asset)
+1. Global environment variable (it will be available for all DCCs)
+2. Application specific (it will be available for a particular DCC)
+3. Application variant specific (it will be available for a particular DCC version)
+4. Tool (it will be available on demand per DCC per project per asset)
 
 For a detailed guide visit: [Ayon/Openpype Env Vars and Tools Configuration Explained](https://community.ynput.io/t/openpype-env-vars-and-tools-configuration-explained/540)
 
 ### How to publish lookdev from Houdini ? 
 
 Publishing and managing Lookdev in Houdini is within our plan.
-The current solution to publish materials is to use HDAs as you can publish most of Houdini nodes as hda.
+The current solution to publish materials is to use HDAs as you can publish most of Houdini nodes as HDA.
 
 ### How to submit houdini patch version to deadline ?
 
