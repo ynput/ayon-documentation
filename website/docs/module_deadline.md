@@ -20,7 +20,9 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you ne
 
 4. Point AYON to your deadline webservice URL in the [AYON Admin Settings](admin_settings_system.md#deadline).
 
-5. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
+![Webservice url](assets/deadline_webserver_config.png)
+
+6. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
 
 
 ## Configuration
@@ -38,12 +40,14 @@ destinations accessible by DL process. Check permissions (must be executable and
 - Enable `Tools > Super User Mode` in Deadline Monitor
 
 - Go to `Tools > Configure Plugins...`, find `AYON` in the list on the left side, find location of AYON
-executable. It is recommended to use the `openpype_console` executable as it provides a bit more logging.
+executable. It is recommended to use the `ayon_console` executable as it provides a bit more logging.
 
 - In case of multi OS farms, provide multiple locations, each Deadline Worker goes through the list and tries to find the first accessible
  location for itself.
 
 ![Configure plugin](assets/deadline_configure_plugin.png)
+
+##
 
 ### AYONTileAssembler Plugin
 To setup tile rendering copy the `OpenPypeTileAssembler` plugin to the repository;
@@ -51,15 +55,19 @@ To setup tile rendering copy the `OpenPypeTileAssembler` plugin to the repositor
 
 ### Pools
 
-The main pools can be configured at `project_settings/deadline/publish/CollectDeadlinePools/primary_pool`, which is applied to the rendering jobs.
+The main pools can be configured at `ayon+settings://deadline/publish/CollectDeadlinePools`, which is applied to the rendering jobs.
 
-The dependent publishing job's pool uses `project_settings/deadline/publish/ProcessSubmittedJobOnFarm/deadline_pool`. If nothing is specified the pool will fallback to the primary pool above.
+The dependent publishing job's pool uses `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`. If nothing is specified the pool will fallback to the primary pool above.
 
 :::note maya tile rendering
 The logic for publishing job pool assignment applies to tiling jobs.
 :::
 
 ## Troubleshooting
+
+:::note guide
+You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
+:::
 
 #### Publishing jobs fail directly in DCCs
 
@@ -80,7 +88,7 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
 
 - Publishing job is failing with `ffmpeg not installed` error
 
-    AYON executable has to have access to `ffmpeg` executable, check AYON `Setting > General`
+    AYON executable has to have access to `ffmpeg` executable, check AYON `ayon+settings://ayon_third_party`
 
     ![FFmpeg setting](assets/ffmpeg_path.png)
 
@@ -95,7 +103,7 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
         - `Families`: "render"
         - `Add Ftrack Family` to "Enabled"
 
-    Make sure that you actually configured to create review for published subset in `project_settings/ftrack/publish/CollectFtrackFamily`
+    Make sure that you actually configured to create review for published subset in `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`
 
     ![Ftrack Family](assets/deadline_review.png)
 
@@ -107,7 +115,7 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
 
     Make sure that your Deadline is not limiting specific jobs to be run only on specific machines. (Eg. only some machines have installed particular application.)
 
-    Check `project_settings/deadline`
+    Check `ayon+settings://deadline/publish/HarmonySubmitDeadline`
 
     ![Deadline group](assets/deadline_group.png)
 
