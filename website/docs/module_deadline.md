@@ -22,7 +22,7 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you ne
 
 ![Webservice url](assets/deadline_webserver_config.png)
 
-6. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
+5. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
 
 
 ## Configuration
@@ -47,8 +47,6 @@ executable. It is recommended to use the `ayon_console` executable as it provide
 
 ![Configure plugin](assets/deadline_configure_plugin.png)
 
-##
-
 ### AYONTileAssembler Plugin
 To setup tile rendering copy the `OpenPypeTileAssembler` plugin to the repository;
 `[AYON]\ayon\modules\deadline\repository\custom\plugins\OpenPypeTileAssembler` > `[DeadlineRepository]\custom\plugins\OpenPypeTileAssembler`
@@ -69,30 +67,30 @@ The logic for publishing job pool assignment applies to tiling jobs.
 You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
 :::
 
-#### Publishing jobs fail directly in DCCs
+### Publishing jobs fail directly in DCCs
 
 - Double check that all previously described steps were finished
 - Check that `deadlinewebservice` is running on DL server
 - Check that user's machine has access to deadline server on configured port
 
-#### Jobs are failing on DL side
+### Jobs are failing on DL side
 
 Each publishing from AYON consists of 2 jobs, first one is rendering, second one is the publishing job (triggered after successful finish of the rendering job).
 
 ![Jobs in DL](assets/deadline_fail.png)
 
-- Jobs are failing with `AYON executable was not found` error
+- **<font size="4"> Jobs are failing with `AYON executable was not found` error </font>**
 
     Check if AYON is installed on the Worker handling this job and ensure `AYON` Deadline Plug-in is properly [configured](#configuration)
 
 
-- Publishing job is failing with `ffmpeg not installed` error
+- **<font size="4"> Publishing job is failing with `ffmpeg not installed` error </font>**
 
     AYON executable has to have access to `ffmpeg` executable, check AYON `ayon+settings://ayon_third_party`
 
     ![FFmpeg setting](assets/ffmpeg_path.png)
 
-- Both jobs finished successfully, but there is no review on Ftrack
+- **<font size="4"> Both jobs finished successfully, but there is no review on Ftrack </font>**
 
     Make sure that you correctly set published family to be send to Ftrack.
 
@@ -111,7 +109,7 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
       - Add "harmony" as a new key an ".*" as a value.
 
 
-- Rendering jobs are stuck in 'Queued' state or failing
+- **<font size="4"> Rendering jobs are stuck in 'Queued' state or failing </font>**
 
     Make sure that your Deadline is not limiting specific jobs to be run only on specific machines. (Eg. only some machines have installed particular application.)
 
