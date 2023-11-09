@@ -51,7 +51,7 @@ We have a few required anatomy templates for AYON to work properly, however we k
 ### Available template keys
 
 <div class="row markdown">
-<div class="col col--5 markdown">
+<div class="col col--7 markdown">
 
 
 | Context key | Description |
@@ -74,15 +74,15 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `app` | Application Name |
 | `user` | User's login name (can be overridden in local settings) |
 | `output` | Extract review output profile name |
-| `comment` | Publishing commit message |
+| `comment` | Subversion string from workfiles tool (only relevant for workfiles template right now.)|
 | `colorspace` | Colorspace profile name |
 | `originalDirname` | Original directory of published file  |
 | `originalBasename` | Original file name without extension |
 
 </div>
-<div class="col col--7 markdown">
+<div class="col col--5 markdown">
 
-| Date-Time key | Example result | Description |
+| Key | Example result | Description |
 | --- | --- | --- |
 | `d` | 1, 30 | Short day of month |
 | `dd` | 01, 30 | Day of month with 2 digits. |
@@ -106,6 +106,9 @@ We have a few required anatomy templates for AYON to work properly, however we k
 
 </div>
 </div>
+
+
+
 
 ### Anatomy reference keys
 
