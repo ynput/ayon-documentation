@@ -13,7 +13,7 @@ const addon: Addon = {
         "libraryLoader",
         "slates",
     ],
-    families: [
+    products: [
         "arnoldAss",
         "arnoldRender",
         "camera",

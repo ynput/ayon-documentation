@@ -26,14 +26,14 @@ All of these go into the publish folder for the given entity (shot, asset, seque
 Keep in mind that while publishing the data might take you some extra time, it will save much more time in the long run when your colleagues don’t need to dig through your work files trying to understand them and find that model you saved by hand.
 :::
 
-## Families:
+## Product Types:
 
-Published subsets are categorized into ‘families’ based on what is their purpose in the production. Knowing a subset family should always tell you what to expect from the give publish. For example if something is marked as a `model` you know it passed through certain studio validations and you can expect it to be up to the studio standard, however, `mayaScene` doesn't provide the same confidence (because it's less strict during publishing), even though they might both actually contain the same model.  
+Published products are categorized into ‘product types’ based on what is their purpose in the production. Knowing a product type should always tell you what to expect from the give publish. For example if something is marked as a `model` you know it passed through certain studio validations and you can expect it to be up to the studio standard, however, `mayaScene` doesn't provide the same confidence (because it's less strict during publishing), even though they might both actually contain the same model.  
 
-Following family definitions and requirements are the AYON defaults and what we consider good industry practice, but most of the requirements can be altered to suit the studio or project needs.
-Here's a list of supported families
+Following product type definitions and requirements are the AYON defaults and what we consider good industry practice, but most of the requirements can be altered to suit the studio or project needs.
+Here's a list of supported product types
 
-| Family                    | Comment                                            | Example variants          |
+| Product Type              | Comment                                            | Example variants          |
 | ------------------------- | -------------------------------------------------- | ------------------------- |
 | [Model](#model)           | Cleaned geo without materials.                     | main, proxy, broken       |
 | [Look](#look)             | Package of shaders, assignments and textures.      | main, wet, dirty          |
@@ -77,9 +77,9 @@ Here's a list of supported families
 
 Clean geometry without any material assignments. Published model can be as small as a single mesh, or as complex as a full building. That is purely up to the artist or the supervisor. Models can contain hierarchy defined by groups or nulls for better organisation.
 
-Apart from model subsets, we also support LODs as extra level on top of subset. To publish LODs, you just need to prepare subsets for publishing names `modelMySubsetName_LOD##`, if AYON finds `_LOD##` (hashes replaced with LOD level), it will automatically be considered a LOD of the given subset.
+Apart from model products, we also support LODs as extra level on top of product. To publish LODs, you just need to prepare products for publishing names `modelMyproductName_LOD##`, if AYON finds `_LOD##` (hashes replaced with LOD level), it will automatically be considered a LOD of the given product.
 
-Example Subsets:
+Example products:
 `modelMain`, `modelProxy`, `modelSculpt`, `modelBroken`, `modelMain_LOD01`, `modelMain_LOD02`
 
 Example representations:
@@ -90,7 +90,7 @@ Example representations:
 
 A package of materials, shaders, assignments, textures and attributes that collectively define a look of a model for rendering or preview purposes. This can usually be applied only to the model is was authored for, or its corresponding cache, however, material sharing across multiple models is also possible. A look should be fully self-contained and ready for rendering.
 
-Example Subsets:
+Example products:
 `lookMain`, `lookProxy`, `lookWet`, `lookDirty`, `lookBlue`, `lookRed`
 
 Example Representations:
@@ -105,7 +105,7 @@ contains the attributes and assignments and `/resources` folder with all the req
 
 Characters or props with animation controls or other parameters, ready to be referenced into a scene and animated. Animation Rigs tend to be very software specific, but in general they tend to consist of Geometry, Bones or Joints, Controllers and Deformers. AYON in maya supports both, self-contained rigs, that include everything in one file, but also rigs that use nested references to bring in geometry, or even skeleton. By default we bake rigs into a single file during publishing, but that behaviour can be turned off to keep the nested references live in the animation scenes.
 
-Example Subsets:
+Example products:
 `rigMain`, `rigMocap`, `rigSim`, `rigCamera`, `rigMuscle`
 
 Example Representations:
@@ -114,20 +114,20 @@ Example Representations:
 
 ### Assembly
 
-A subset created by combining two or more smaller subsets into a composed bigger asset.
+A product created by combining two or more smaller products into a composed bigger asset.
 A good example would be a restaurant table asset with the cutlery and chairs included,
 that will eventually be loaded into a restaurant Set. Instead of loading each individual
-fork and knife for each table in the restaurant, we can first prepare `assemblyRestaurantTable` subset
+fork and knife for each table in the restaurant, we can first prepare `assemblyRestaurantTable` product
 which will contain the table itself, with cutlery, flowers, plates and chairs nicely arranged.
 
 This table can then be loaded multiple times into the restaurant for easier scene management
 and updates.
 
-Extracted assembly doesn't contain any geometry directly, but rather information about all the individual subsets that are inside the assembly, their version and transformations. On top of that and alembic is exported which only holds any extra transforms and groups that are needed to fully re-create the original assembled scene.
+Extracted assembly doesn't contain any geometry directly, but rather information about all the individual products that are inside the assembly, their version and transformations. On top of that and alembic is exported which only holds any extra transforms and groups that are needed to fully re-create the original assembled scene.
 
 Assembly ca also be used as a sort of collection of elements that are often used together in the shots. For example if we're set dressing lot's of forest shots, it would make sense to make and assembly of all the forest elements for scattering so we don't have to load them individually into each shot.
 
-Example Subsets:
+Example products:
 `assemblyTable`, `assemblyForestElements`, `assemblyRoof`
 
 Example Representations:
@@ -155,7 +155,7 @@ Geometry with baked animation. Cache is usually exported as alembic,
 but can be potentially any other representation that makes sense in the given scenario.
 Cache is defined by the artist directly in the fx or animation scene.
 
-Example Subsets:
+Example products:
 `assemblyTable`, `assemblyForestElements`, `assemblyRoof`
 
 Example Representations:
@@ -169,7 +169,7 @@ as animation curves, cached out geometry or even fully animated rig with all the
 Animation cache is usually defined by a rigger in the rig file of a character or
 by FX TD in the effects rig, to ensure consistency of outputs.
 
-Example Subsets:
+Example products:
 `animationBob_01`, `animationJack_02`, `animationVehicleA`
 
 Example Representations:

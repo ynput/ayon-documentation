@@ -26,7 +26,7 @@ and select **Yeti Cache**. Leave `Use selection` checked. You should end up with
 ![Maya - Yeti Basic Setup](assets/maya-yeti_basic_setup_outline.jpg)
 
 You can see there is `yeticacheDefault` set. Instead of *Default* it could be named with
-whatever name you've entered in `subset` field during instance creation.
+whatever name you've entered in `product` field during instance creation.
 
 We are almost ready for publishing cache. You can check basic settings by selecting
 Yeti cache set and opening *Extra attributes* in Maya **Attribute Editor**.
@@ -90,7 +90,7 @@ Leave `Use selection` checked.
 
 Last step is to add our geometry to the rig instance, so middle+drag its
 geometry to `input_SET` under the `yetiRigMain` set representing rig instance.
-Note that its name can differ and is based on your subset name.
+Note that its name can differ and is based on your product name.
 
 ![Maya - Yeti Publish Setup](assets/maya-yeti_publish_setup.png)
 

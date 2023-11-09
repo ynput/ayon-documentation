@@ -16,7 +16,7 @@ const addon: Addon = {
         "colorManaged",
         "farmRendering",
     ],
-    families: [
+    products: [
         "model",
         "camera",
         "workfile",

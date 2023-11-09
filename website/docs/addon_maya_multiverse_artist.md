@@ -168,8 +168,8 @@ tune the materials as you please.
 The Multiverse Look will also publish textures in optimized mip-map format,
 currently supporting the `.tdl` (Texture Delight) mip map format of the 3Delight
 NSI renderer. MipMaps are required when the relative option is checked and you
-are publishing Multiverse Looks with the `final` or `-` subset, while they are
-not required with the `WIP` or `test` subsets. MipMaps are found automatically
+are publishing Multiverse Looks with the `final` or `-` product, while they are
+not required with the `WIP` or `test` products. MipMaps are found automatically
 as long as they exist alongside the original textures. Their generation can be
 automatic when using 3Delight for Maya or can be manual by using the `tdlmake`
 binary utility.

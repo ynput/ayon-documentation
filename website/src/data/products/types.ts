@@ -1,12 +1,12 @@
-export type Family = {
+export type Product = {
     title: string;
     icon: string;
     docs?: string;
 };
 
-export type Families = Family[];
+export type products = Product[];
 
-export type FamilyType =
+export type ProductType =
     | "model"
     | "look"
     | "rig"

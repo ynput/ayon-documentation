@@ -102,7 +102,7 @@ The supported families for Harmony are:
 - `workfile`
     - Only of type `zip`.
 
-To load, right-click on the subset you want and choose a representation:
+To load, right-click on the product you want and choose a representation:
 
 ![Loader](assets/photoshop_loader_load.gif) <!-- gif has to be changed (Harmony needed) -->
 

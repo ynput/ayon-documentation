@@ -47,27 +47,27 @@ publish. Go **AYON → Create... → Model**
 with correct name as you've started Maya or switched context to specific asset. You
 can edit that field to change it to different asset (but that one must already exists).
 
-`Subset` field is a name you can decide on. It should describe what kind of data you
+`Product` field is a name you can decide on. It should describe what kind of data you
 have in the model. For example, you can name it `Proxy` to indicate that this is
-low resolution stuff. See [Subset](artist_concepts.md#subset).
+low resolution stuff. See [Product](artist_concepts.md#product).
 
 :::note LOD support
-By changing subset name you can take advantage of _LOD support_ in AYON. Your
-asset can contain various resolution defined by different subsets. You can then
+By changing product name you can take advantage of _LOD support_ in AYON. Your
+asset can contain various resolution defined by different products. You can then
 switch between them very easy using [Inventory (Manage)](artist_tools_inventory).
 There LODs are conveniently grouped so they don't clutter Inventory view.
 
-Name your subset like `main_LOD1`. Important part is that `_LOD1`. You can have as many LODs as you need.
+Name your product like `main_LOD1`. Important part is that `_LOD1`. You can have as many LODs as you need.
 :::
 
-Read-only field just under it show final subset name, adding subset field to
+Read-only field just under it show final product name, adding product field to
 name of the group you have selected.
 
 `Use selection` checkbox will use whatever you have selected in Outliner to be
 wrapped in Model instance. This is usually what you want. Click on **Create** button.
 
 You'll notice then after you've created new Model instance, there is new set
-in Outliner called after your subset, in our case it is `modelMain`. The `modelMain`
+in Outliner called after your product, in our case it is `modelMain`. The `modelMain`
 set provides settings for you to includes some data when publishing. The settings can be found
 in the channel box when you select the set.
 
@@ -208,7 +208,7 @@ I am quite happy with it so I want to publish it as my first look.
 
 Select your model in outliner and ho **AYON → Create...**. From there
 select **Look**. Make sure `use selection` checkbox is checked.
-Mine subset name is `Main`. This will create _Look instance_ with a name **lookMain**.
+Mine product name is `Main`. This will create _Look instance_ with a name **lookMain**.
 
 Close _Creator_ window.
 
@@ -247,7 +247,7 @@ This is **Look Manager** window. Yours would be empty until you click **Get All 
 or **Get Assets From Selection**. You can use later to quick assign looks if you have
 multiple assets loaded in scene. Click on one of those button now.
 
-You should now see all assets and their subsets loaded in scene, and on right side
+You should now see all assets and their products loaded in scene, and on right side
 all applicable published looks.
 
 Select you asset and on the right side right click on `Main` look. Apply it.
@@ -297,7 +297,7 @@ Then I've put everything into `arm_rig` group.
 When you've prepared your hierarchy, it's time to create *Rig instance* in AYON.
 Select your whole rig hierarchy and go **AYON → Create...**. Select **Rig**.
 Set is created in your scene to mark rig parts for export. Notice that it has
-two subsets - `controls_SET` and `out_SET`. Put your controls into `controls_SET`
+two products - `controls_SET` and `out_SET`. Put your controls into `controls_SET`
 and geometry to `out_SET`. You should end up with something like this:
 
 ![Maya - Rig Hierarchy Example](assets/maya-rig_hierarchy_example.jpg)
@@ -341,7 +341,7 @@ Select its root and Go **AYON → Create...** and select **Point Cache**.
 
 After that, publishing will create corresponding **abc** files.
 
-When creating the instance, a objectset child `proxy` will be created. Meshes in the `proxy` objectset will be the viewport representation where loading supports proxies. Proxy representations are stored as `resources` of the subset.
+When creating the instance, a objectset child `proxy` will be created. Meshes in the `proxy` objectset will be the viewport representation where loading supports proxies. Proxy representations are stored as `resources` of the product.
 
 Example setup:
 
@@ -546,12 +546,12 @@ When publishing is finished, job is created on farm. This job has one more depen
 When render is finished, this other job triggers in and run publish again, but this time it is publishing rendered image sequence and creating quicktime movie for preview from it. Only those rendered sequences that have **beauty** AOV get preview as it doesn't make sense to make it for example from cryptomatte.
 :::
 
-### Attaching render to subset
+### Attaching render to product
 
-You can create render that will be attached to another subset you are publishing, rather than being published on its own. Let's assume, you want to render a model turnaround.
-In the scene from where you want to publish your model create *Render subset*. Prepare your render layer as needed and then drag
-model subset (Maya set node) under corresponding `LAYER_` set under *Render instance*. During publish, it will submit this render to farm and
-after it is rendered, it will be attached to your model subset.
+You can create render that will be attached to another product you are publishing, rather than being published on its own. Let's assume, you want to render a model turnaround.
+In the scene from where you want to publish your model create *Render product*. Prepare your render layer as needed and then drag
+model product (Maya set node) under corresponding `LAYER_` set under *Render instance*. During publish, it will submit this render to farm and
+after it is rendered, it will be attached to your model product.
 
 ### Tile Rendering
 :::note Deadline
@@ -578,7 +578,7 @@ any Maya scene. This helps TDs to distribute per asset/shots render settings for
 
 To publish render settings, go **AYON → Create...** and select **Render Setup Preset**.
 
-In your scene will appear set `rendersetup<subset>`. This one has no settings, only its presence
+In your scene will appear set `rendersetup<product>`. This one has no settings, only its presence
 in scene will trigger publishing of render settings.
 
 When you publish scene, current settings in **Render Settings** will be serialized to json file.
@@ -601,7 +601,7 @@ What we call review video is actually _playblast_ or _capture_ (depending on ter
 you are familiar with) made from pre-defined camera in scene. This is very useful
 in cases where you want to add turntable preview of your model for example. But it can
 be used to generate preview for animation, simulations, and so on. You can either
-publish review as separate subset version, or you can attach generated video to subset you
+publish review as separate product version, or you can attach generated video to product you
 are publishing - for example attach video of turntable rotation to published model as in
 following example.
 
@@ -632,7 +632,7 @@ to linear.
 To mark camera to be used for review, select camera `reviewCamera` and go **AYON → Create...**
 and choose **Review**.
 
-This will create set `review<subset>` including selected camera. You can set few options
+This will create set `review<product>` including selected camera. You can set few options
 on this set to control review video generation:
 
 * `Active` - control on/off state
