@@ -1,0 +1,4 @@
+{
+    "_comment" : " Badges are used to indicate the version of addons. The following badges are generated using https://michaelcurrin.github.io/badge-generator/#/generic , Supported icons https://simpleicons.org/",
+    "Houdini_Badge" : "[![Houdini addon - 0.2.6](https://img.shields.io/badge/Houdini%20addon-0.2.6-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)"
+}

@@ -37,6 +37,7 @@
     "devDependencies": {
         "@babel/eslint-parser": "^7.18.2",
         "@docusaurus/module-type-aliases": "2.4.0",
+        "docusaurus": "^1.14.7",
         "prettier": "^2.7.1"
     },
     "browserslist": {
