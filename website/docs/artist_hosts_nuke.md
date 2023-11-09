@@ -1,5 +1,5 @@
 ---
-id: artist_hosts_nuke_tut
+id: artist_hosts_nuke
 title: Nuke
 sidebar_label: Nuke
 ---

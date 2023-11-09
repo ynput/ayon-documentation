@@ -33,7 +33,7 @@ module.exports = {
             label: "Integrations",
             items: [
                 "artist_hosts_hiero",
-                "artist_hosts_nuke_tut",
+                "artist_hosts_nuke",
                 {
                     type: "category",
                     label: "Maya",
