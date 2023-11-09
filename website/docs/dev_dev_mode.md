@@ -38,7 +38,7 @@ Developer mode only affects the user that has activated it and no-one else.
 Dev bundles have almost the same data as standard bundles with a few key differences.
 
 - they cannot be marked as `Production` or `Staging`. 
-- It is possible to assigned them to a specific user.
+- It is possible to assign them to a specific user.
 - It is possible to change versions of addons or enable/disable them without re-creating the bundle.
 - You can define custom path to client side addon code for AYON launcher.
 
@@ -65,7 +65,7 @@ Some addons have more complicated preparation of code for AYON launcher, in that
 ## Working in developer mode
 
 Assuming you have turned on developer mode, created a dev bundle and assigned it to yourself, you can start working with 
-life code from AYON addons. The addon you want to work with must also be available on server, so AYON can source settings
+live code from AYON addons. The addon you want to work with must also be available on server, so AYON can source settings
 for it when working with the pipeline. Therefore you can't do live updates to settings models and have them show up on the server automatically, but if you point for example `maya` addon to you local maya addon folder, you can change all the maya pipeline code and it will be picked up on the fly. 
 
 ### Example of custom addon path
@@ -98,5 +98,5 @@ Start AYON launcher with `--use-dev` argument. This will automatically pick the 
 AYON launcher will then use code from the location we've defined, rather than downloading it from the server installed version. Try to do changes in the addon locally, restart AYON launcher and validate if changes are propagated.
 
 :::note
-It is possible to use dev bundle even if is not assigned to the user. In that case replace argument `--use-dev` with `--bundle <deb bundle name>`.
+It is possible to use dev bundle even if it is not assigned to the user. In that case replace argument `--use-dev` with `--bundle <deb bundle name>`.
 :::
