@@ -52,27 +52,27 @@ publish. Go **AYON → Create... → Model**.
 with correct name as you've started Blender or switched context to specific asset. You
 can edit that field to change it to different asset (but that one must already exists).
 
-`Subset` field is a name you can decide on. It should describe what kind of data you
+`Product` field is a name you can decide on. It should describe what kind of data you
 have in the model. For example, you can name it `Proxy` to indicate that this is
-low resolution stuff. See [Subset](artist_concepts.md#subset).
+low resolution stuff. See [Product](artist_concepts.md#product).
 
 <!-- :::note LOD support
-By changing subset name you can take advantage of _LOD support_ in AYON. Your
-asset can contain various resolution defined by different subsets. You can then
+By changing product name you can take advantage of _LOD support_ in AYON. Your
+asset can contain various resolution defined by different products. You can then
 switch between them very easy using [Inventory (Manage)](artist_tools_inventory).
 There LODs are conveniently grouped so they don't clutter Inventory view.
 
-Name your subset like `main_LOD1`. Important part is that `_LOD1`. You can have as many LODs as you need.
+Name your product like `main_LOD1`. Important part is that `_LOD1`. You can have as many LODs as you need.
 ::: -->
 
-Read-only field just under it show final subset name, adding subset field to
+Read-only field just under it show final product name, adding product field to
 name of the group you have selected.
 
 `Use selection` checkbox will use whatever you have selected in Outliner to be
 wrapped in Model instance. This is usually what you want. Click on **Create** button.
 
 You'll notice then after you've created new Model instance, there is a new
-collection in Outliner called after your asset and subset, in our case it is
+collection in Outliner called after your asset and product, in our case it is
 `character1_modelDefault`. The assets selected when creating the Model instance
 are linked in the new collection.
 
@@ -184,7 +184,7 @@ Select your whole rig hierarchy and go **AYON → Create...**. Select **Rig**.
 
 ![Blender - Rig Hierarchy Example](assets/blender-rig_create.jpg)
 
-A new collection named after the selected Asset and Subset should have been created.
+A new collection named after the selected Asset and Product should have been created.
 In our case, it is `character1_rigDefault`. All the selected armature and models
 have been linked in this new collection. You should end up with something like
 this:

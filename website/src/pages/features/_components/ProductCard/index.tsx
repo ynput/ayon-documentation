@@ -2,28 +2,28 @@ import React from "react";
 import clsx from "clsx";
 import Heading from "@theme/Heading";
 import styles from "./styles.module.scss";
-import { Family } from "../../../../data";
+import { Product } from "../../../../data";
 import Link from "@docusaurus/Link";
 
-function FamilyCard({ family }: { family: Family }) {
+function ProductCard({ product }: { product: Product }) {
     return (
         <Link
             href={`/docs/artist_publish${
-                family.docs ? family.docs : "#families"
+                product.docs ? product.docs : "#products"
             }`}
             className={styles.link}
         >
             <li
-                key={family.title}
+                key={product.title}
                 className={clsx("card", "shadow--md", styles.card)}
             >
                 <div className="card__body">
                     <div className={clsx(styles.header)}>
                         <span className="material-symbols-outlined">
-                            {family.icon}
+                            {product.icon}
                         </span>
                         <Heading as="h4" className={styles.title}>
-                            {family.title}
+                            {product.title}
                         </Heading>
                     </div>
                 </div>
@@ -32,4 +32,4 @@ function FamilyCard({ family }: { family: Family }) {
     );
 }
 
-export default React.memo(FamilyCard);
+export default React.memo(ProductCard);

@@ -1,7 +1,7 @@
 // export addons and features
 import addons from "./addons";
 import features from "./features";
-import families from "./families";
+import products from "./products";
 
 // export addons
 export { addons };
@@ -18,6 +18,6 @@ export { features };
 export { topFeatures } from "./features";
 export type { Feature, FeatureType } from "./features";
 
-// export families
-export { families };
-export type { Family, FamilyType } from "./families";
+// export products
+export { products };
+export type { Product, ProductType } from "./products";

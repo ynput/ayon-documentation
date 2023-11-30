@@ -18,7 +18,7 @@ const addon: Addon = {
         "localRendering",
         "nodePresets"
     ],
-    families: [
+    products: [
         "render",
         "plate",
         "review",

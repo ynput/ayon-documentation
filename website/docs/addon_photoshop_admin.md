@@ -33,7 +33,7 @@ Provides list of [variants](artist_concepts.md#variant) that will be shown to an
 Provides simplified publishing process. It will create single `image` instance for artist automatically. This instance will
 produce flatten image from all visible layers in a workfile.
 
-- Subset template for flatten image - provide template for subset name for this instance (example `imageBeauty`)
+- Product template for flatten image - provide template for product name for this instance (example `imageBeauty`)
 - Review - should be separate review created for this instance
 
 ### Create Review
@@ -59,9 +59,9 @@ Allows to create automatically `image` instances for configurable highlight colo
   - Flatten only - produce only merged `image` instance
   - No - produce only separate `image` instances
 
-#### Subset template for flatten image
+#### Product template for flatten image
 
-Template used to create subset name automatically (example `image{layer}Main` - uses layer name in subset name)
+Template used to create product name automatically (example `image{layer}Main` - uses layer name in product name)
 
 ### Collect Review
 
@@ -80,13 +80,13 @@ If enabled, artist might still decide to disable validation for each publish (fo
 Limit this optionality by toggling `Optional`.
 `Active` toggle denotes that by default artists sees that optional validation as enabled.
 
-### Validate naming of subsets and layers
+### Validate naming of products and layers
 
-Subset cannot contain invalid characters or extract to file would fail
+Product cannot contain invalid characters or extract to file would fail
 
 #### Regex pattern of invalid characters
 
-Contains weird characters like `/`, `/`, these might cause an issue when file (which contains subset name) is created on OS disk.
+Contains weird characters like `/`, `/`, these might cause an issue when file (which contains product name) is created on OS disk.
 
 #### Replacement character
 
