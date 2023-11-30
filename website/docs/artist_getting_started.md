@@ -61,7 +61,7 @@ For installation on Mac OS X, download and run dmg image file `AYON-#.#.#.dmg`.
 
 Drag the OpenPype icon into the Application folder.
 
-![A screenshot of the Mac Installation dialog whith the Applications and AYON install logo](assets/ayon_install_macos.png)
+![A screenshot of the Mac Installation dialog with the Applications and AYON install logo](assets/ayon_install_macos.png)
 
 After the installation, you can find AYON among the other Applications.
 
