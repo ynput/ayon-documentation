@@ -1,5 +1,5 @@
 ---
-id: addon_traypublisher
+id: addon_traypublisher_admin
 title: Tray Publisher
 sidebar_label: Tray Publisher
 ---

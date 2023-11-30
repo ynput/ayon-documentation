@@ -92,16 +92,10 @@ module.exports = {
             items: [
                 "admin_environment",
                 "admin_settings",
-                "admin_settings_system",
                 "admin_colorspace",
                 "admin_settings_project_anatomy",
-                {
-                    type: "category",
-                    label: "Project Settings",
-                    items: [
-                        "project_settings/project_settings_core"
-                    ],
-                },
+                "addon_core_settings",
+                "addon_applications_admin",
             ],
         },
         {
@@ -125,7 +119,7 @@ module.exports = {
                 "addon_deadline_admin",
                 "addon_clockify_admin",
                 "addon_slack_admin",
-                "addon_traypublisher"
+                "addon_traypublisher_admin"
             ],
         },
         "admin_releases",

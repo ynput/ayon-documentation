@@ -1,17 +1,37 @@
 ---
-id: project_settings_core
-title: Core
-sidebar_label: Core
+id: addon_core_settings
+title: Core addon settings
+sidebar_label: Core addon settings
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project.
+
+
+## General
+
+Settings applicable to the full studio.
 
 ![core_settings](assets/core_settings.png)
 
-Refer to Settings related to [Working with settings](../admin_settings) for more details.
+### Studio Name
+Full name of the studio (can be used as variable on some places)
+
+### Studio Code
+Studio acronym or a short code (can be used as variable on some places)
+
+### Global environment variables
+Globally applied environment variables that will be appended to any AYON process in the studio.
+
+### Disk mapping
+- Platform dependent configuration for mapping of virtual disk(s) on an artist's AYON machines before OP starts up.
+- Uses `subst` command, if configured volume character in `Destination` field already exists, no re-mapping is done for that character(volume).
+
+:::info
+Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project. Refer to Settings related to [Working with settings](admin_settings) for more details.
+:::
+
 
 ## Tools
 ### Creator
@@ -131,18 +151,19 @@ Publish plugins used across all integrations.
 
 A couple of settings make use of tags to customize the output.
 
-| Tag Name | Description |
-| ----------- | ----------- |
-| `Add burnins` | Adds burnins with the `ExtractBurnin` plugin. |
-| `Create review` | Creates a review from the output with the [`ExtractReview`](#extract-review) plugin. |
-| `Add review to Ftrack` | Uploads the review to Ftrack. |
-| `Add review to Shotgrid` | Uploads the review to Shotgrid. |
-| `Add review to Kitsu` | Uploads the review to Kitsu. |
-| `Delete output` | Deletes the output once its been processed by `ExtractBurnin` and [`ExtractReview`](#extract-review). |
-| `Add slate frame` | Adds the slate frame. |
-| `Skip handle frames` | If handles are present in the publish context, they will be ignored. |
-| `Output as image sequence` | Outputs as an image sequence |
-| `Do not add audio` | Skip any audio found in the publish context |
+| Tag value to be used | Tag Name | Description |
+| ----------- | ----------- | ----------- |
+| burnin | `Add burnins` | Adds burnins with the `ExtractBurnin` plugin. |
+| review | `Create review` | Creates a review from the output with the [`ExtractReview`](#extract-review) plugin. |
+| ftrackreview | `Add review to Ftrack` | Uploads the review to Ftrack. |
+| shotgridreview | `Add review to Shotgrid` | Uploads the review to Shotgrid. |
+| kitsureview | `Add review to Kitsu` | Uploads the review to Kitsu. |
+| syncsketchreview | `Add review to SyncSketch` | Uploads the review to SyncSketch. |
+| delete | `Delete output` | Deletes the output once its been processed by `ExtractBurnin` and [`ExtractReview`](#extract-review). |
+| slate-frame | `Add slate frame` | Adds the slate frame. |
+| no-handles | `Skip handle frames` | If handles are present in the publish context, they will be ignored. |
+| sequence | `Output as image sequence` | Outputs as an image sequence |
+| no-audio | `Do not add audio` | Skip any audio found in the publish context |
 
 ### Extract OIIO Transcode
 OIIOTools transcoder plugin with configurable output presets. Any incoming representation with `colorspaceData` is convertible to single or multiple representations with different target colorspaces or display and viewer names found in linked **config.ocio** file.
