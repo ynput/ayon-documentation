@@ -6,8 +6,8 @@ const addon: Addon = {
         "DaVinci Resolve is a professional non-linear editing and color grading software with a free version for basic editing and color correction.",
     icon: "resolve-icon.png",
     docs: {
-        user: "artist_hosts_resolve",
-        admin: "admin_hosts_resolve",
+        user: "addon_resolve_artist",
+        admin: "addon_resolve_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/resolve",
 };

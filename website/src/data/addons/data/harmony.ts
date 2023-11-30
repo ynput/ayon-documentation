@@ -33,8 +33,8 @@ const addon: Addon = {
         "image"
     ],
     docs: {
-        user: "artist_hosts_harmony",
-        admin: "admin_hosts_harmony",
+        user: "addon_harmony_artist",
+        admin: "addon_harmony_admin",
     },
 };
 

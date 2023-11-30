@@ -5,8 +5,8 @@ const addon: Addon = {
     description:
         "Blender is a free, open-source, and user-friendly 3D creation suite for artists.",
     docs: {
-        user: "artist_hosts_blender",
-        admin: "admin_hosts_blender",
+        user: "addon_blender_artist",
+        admin: "addon_blender_admin",
     },
     features: [
         "workfiles",

@@ -185,7 +185,7 @@ Let see how it works.
 ### Loading model
 
 In this example I have already published model of Buddha. To see how to publish
-model with AYON see [Publishing Model](artist_hosts_maya.md#publishing-models).
+model with AYON see [Publishing Model](addon_maya_artist.md#publishing-models).
 
 First of lets start with empty scene. Now go **AYON → Load...**
 
@@ -283,7 +283,7 @@ arm, just made out of simple boxes and I'll publish it.
 
 ![Maya - Simple model for rigging](assets/maya-rig_model_setup.jpg)
 
-For more information about publishing models, see [Publishing models](artist_hosts_maya.md#publishing-models).
+For more information about publishing models, see [Publishing models](addon_maya_artist.md#publishing-models).
 
 Now lets start with empty scene. Load your model - **AYON → Load...**, right
 click on it and select **Reference (abc)**.
@@ -413,7 +413,7 @@ It has 3 options:
 AYON in Maya can be used for submitting renders to render farm and for their
 subsequent publishing. Right now AYON support [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline).
 
-* For setting up Deadline support see [here](module_deadline.md)
+* For setting up Deadline support see [here](addon_deadline_admin.md)
 
 
 ### Creating basic render setup
@@ -555,7 +555,7 @@ after it is rendered, it will be attached to your model product.
 
 ### Tile Rendering
 :::note Deadline
-This feature is only supported when using Deadline. See [here](module_deadline#ayontileassembler-plugin) for setup.
+This feature is only supported when using Deadline. See [here](addon_deadline_admin#ayontileassembler-plugin) for setup.
 :::
 On the render instance objectset you'll find:
 
@@ -615,7 +615,7 @@ Create your model, import it or load from AYON. I'll just import model as OBJ
 file.
 
 After we have our model in, we need to set everything to be able to publish it
-as model - for detail see [Publishing models](artist_hosts_maya.md#publishing-models).
+as model - for detail see [Publishing models](addon_maya_artist.md#publishing-models).
 
 To recap - freeze transforms, rename it to `dragon_GEO` and put it into group
 `dragon_GRP`. Then select this group and **AYON → Create...** and choose **Model**.

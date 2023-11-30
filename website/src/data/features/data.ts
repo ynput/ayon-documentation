@@ -100,7 +100,7 @@ const features: { [type in FeatureType]: Feature } = {
     farmRendering: {
         title: "Farm rendering",
         docs: {
-            admin: "module_deadline",
+            admin: "addon_deadline_admin",
         },
         description:
             "Integrations with render managers. Render, publish and generate reviews on the farm.",

@@ -95,7 +95,7 @@ Enable it to define a default unit scale.
 //
 
 ### Workfile Builder
-Find more informations about the Workfile Builder in the [Nuke Documentation](admin_hosts_nuke#workfile-builder).
+Find more informations about the Workfile Builder in the [Nuke Documentation](addon_nuke_admin.md#workfile-builder).
 
 ### Publish plugins
  Find here the publish plugins.

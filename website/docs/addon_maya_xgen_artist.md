@@ -72,7 +72,7 @@ For example publishing `xgenMain` version 1 with the attribute `renderer` set to
 
 ### Connect Patches
 
-When loading in an Xgen version, it does not have any connections to anything in the workfile, so its static in the position it was published in. Use the [Connect Geometry](artist_hosts_maya#connect-geometry) action to connect Xgen to any matching loaded animated geometry.
+When loading in an Xgen version, it does not have any connections to anything in the workfile, so its static in the position it was published in. Use the [Connect Geometry](addon_maya_artist#connect-geometry) action to connect Xgen to any matching loaded animated geometry.
 
 ### Connect Guides
 
@@ -92,7 +92,7 @@ The animation container gets connected with the Xgen container, so if the animat
 
 ## Rendering
 
-To render with Xgen, follow the [Rendering With AYON](artist_hosts_maya#rendering-with-ayon) guide.
+To render with Xgen, follow the [Rendering With AYON](addon_maya_artist#rendering-with-ayon) guide.
 
 ### Details
 

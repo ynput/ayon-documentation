@@ -7,7 +7,7 @@ const addon: Addon = {
     icon: "slack-icon.png",
     github: "https://github.com/ynput/ayon-slack",
     docs: {
-        admin: "module_slack",
+        admin: "addon_slack_admin",
     },
 };
 

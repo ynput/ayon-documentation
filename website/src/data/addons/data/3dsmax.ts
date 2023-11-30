@@ -25,8 +25,8 @@ const addon: Addon = {
         "maxScene",
     ],
     docs: {
-        user: "artist_hosts_3dsmax",
-        admin: "admin_hosts_houdini",
+        user: "addon_3dsmax_artist",
+        admin: "addon_3dsmax_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/max",
 };

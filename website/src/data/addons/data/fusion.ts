@@ -4,10 +4,6 @@ const addon: Addon = {
     title: "Fusion",
     description:
         "Fusion is a visual effects and motion graphics tool that helps you create high-quality effects.",
-    docs: {
-        user: "artist_hosts_resolve",
-        admin: "admin_hosts_resolve",
-    },
     products: ["image", "review", "render", "plate", "model", "pointcache"],
     features: [
         "workfiles",

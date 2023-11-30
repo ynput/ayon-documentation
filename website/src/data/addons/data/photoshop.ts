@@ -8,8 +8,8 @@ const addon: Addon = {
     features: ["workfiles", "localRendering"],
     products: ["plate", "image", "layeredImage", "background"],
     docs: {
-        user: "artist_hosts_photoshop",
-        admin: "admin_hosts_photoshop",
+        user: "addon_photoshop_artist",
+        admin: "addon_photoshop_admin",
     },
 };
 

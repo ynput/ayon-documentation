@@ -7,7 +7,7 @@ const addon: Addon = {
     preview: "deadline.png",
     docs: {
         developer: "dev_deadline",
-        admin: "module_deadline",
+        admin: "addon_deadline_admin",
     },
     features: [
         "publisher", 

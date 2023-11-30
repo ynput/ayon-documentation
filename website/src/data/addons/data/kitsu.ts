@@ -6,8 +6,8 @@ const addon: Addon = {
         "Kitsu is a platform for Animation and VFX productions to bring teams and production tools in a single place.",
     icon: "kitsu-icon.png",
     docs: {
-        user: "artist_kitsu",
-        admin: "module_kitsu",
+        user: "addon_kitsu_artist",
+        admin: "addon_kitsu_admin",
     },
     features: ["appLauncher",
     "reviewables",

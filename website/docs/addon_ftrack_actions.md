@@ -73,7 +73,7 @@ Project Manager or Supervisor must set project's applications during project pre
 Synchronization to AYON is key process to keep AYON data updated. Action updates selected entities (Project, Shot, Sequence, etc.) and all nested entities to AYON database. If action is successfully finished [Sync Hier Attrs](#sync-hier-attrs) action is triggered.
 
 There are 2 versions of **Sync to AYON**, first labeled as **server** second as **local**.
-* **server** version will be processed with [event server](module_ftrack.md#event-server)
+* **server** version will be processed with [event server](addon_ftrack_admin#event-server)
 * **local** version will be processed with user's AYON tray application
 
 It is recommended to use **local** version if possible to avoid unnecessary deceleration of event server.
@@ -85,7 +85,7 @@ It is recommended to use **local** version if possible to avoid unnecessary dece
 Synchronization to AYON of Ftrack's hierarchical Custom attributes is a bit complicated so we decided to split synchronization process into 2 actions. This action updates hierarchical Custom attributes of selected entities (Project, Shot, Sequence, etc.) and all their nested entities to pipeline database. This action is also triggered automatically after successfully finished [Sync To AYON](#sync-to-ayon) action.
 
 There are 2 versions of **Sync Hier Attrs** first labeled as **server** second as **local**.
-* **server** version will be processed with [event server](module_ftrack.md#event-server)
+* **server** version will be processed with [event server](addon_ftrack_admin.md#event-server)
 * **local** version will be processed with user's AYON application
 
 It is recommended to use **local** version if possible to avoid unnecessary deceleration of event server.
