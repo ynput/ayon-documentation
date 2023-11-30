@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 ## Applications
 
-In this section you can manage what Applications are available to your studio, locations of their executables, and their additional environments. In AYON context, each application that is integrated is also called a `Host` and these two terms might be used interchangeably in the documentation.
+In this section you can manage what Applications are available to your studio, locations of their executables, and their additional environments. In AYON context, each application that is integrated is also called a `Host` and these two terms will be used interchangeably in the documentation.
 
 Each Host is made of two levels.
 1. **Application group** - This is the main name of the application and you can define extra environments that are applicable to all versions of the given application. For example any extra Maya scripts that are not
