@@ -98,7 +98,7 @@ There are currently 2 options of `render` item:
 
 When you want to load existing published work, you can use the `Loader` tool. You can reach it in the extension's panel.
 
-![Loader](assets/photoshop_loader.png) <!-- picture needs to be changed -->
+![Loader](assets/loader.png) <!-- picture needs to be changed -->
 
 The supported product types for loading into AfterEffects are:
 
@@ -112,7 +112,7 @@ The supported product types for loading into AfterEffects are:
 
 To load an item, right-click on the subset you want and choose a representation you want to load:
 
-![Loader](assets/photoshop_loader_load.gif)
+![Loader](assets/loader_load.gif)
 
 ### Manage
 
@@ -122,12 +122,12 @@ Now that we have some content loaded, you can manage which version is loaded. Th
 Loaded images have to stay as smart layers in order to be updated. If you rasterize the layer, you can no longer update it to a different version using AYON tools.
 :::
 
-![Loader](assets/photoshop_manage.png)
+![Loader](assets/manage.png)
 
 You can switch to a previous version of the image or update to the latest.
 
-![Loader](assets/photoshop_manage_switch.gif)
-![Loader](assets/photoshop_manage_update.gif)
+![Loader](assets/manage_switch.gif)
+![Loader](assets/manage_update.gif)
 
 #### Support help
 If you would like to ask for help admin or support, you could use any of the three options on the `Note` button on bottom left:

@@ -121,7 +121,7 @@ If there is an option of automatic repair, there will be `Repair` button on the 
 
 When you want to load existing published work, you can load in smart layers through the `Loader`. You can reach the `Loader` through the extension's `Load` button.
 
-![Loader](assets/photoshop_loader.png) <!-- picture needs to be changed -->
+![Loader](assets/loader.png)
 
 The supported product types for Photoshop are:
 
@@ -129,7 +129,7 @@ The supported product types for Photoshop are:
 
 To load an image, right-click on the product you want and choose a representation:
 
-![Loader](assets/photoshop_loader_load.gif)
+![Loader](assets/loader_load.gif)
 
 ### Manage
 
@@ -139,12 +139,12 @@ Now that we have some images loaded, we can manage which version is loaded. This
 Loaded images has to stay as smart layers in order to be updated. If you rasterize the layer, you cannot update it to a different version.
 :::
 
-![Loader](assets/photoshop_manage.png)
+![Loader](assets/manage.png)
 
 You can switch to a previous version of the image or update to the latest.
 
-![Loader](assets/photoshop_manage_switch.gif)
-![Loader](assets/photoshop_manage_update.gif)
+![Loader](assets/manage_switch.gif)
+![Loader](assets/manage_update.gif)
 
 
 #### Support help

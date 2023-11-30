@@ -90,7 +90,7 @@ To access the actions, you right click on the validator. If an action runs succe
 
 `AYON > Load`
 
-![Loader](assets/photoshop_loader.png)  <!-- picture has to be changed (Harmony needed) -->
+![Loader](assets/loader.png)  <!-- picture has to be changed (Harmony needed) -->
 
 The supported families for Harmony are:
 
@@ -104,7 +104,7 @@ The supported families for Harmony are:
 
 To load, right-click on the subset you want and choose a representation:
 
-![Loader](assets/photoshop_loader_load.gif) <!-- gif has to be changed (Harmony needed) -->
+![Loader](assets/loader_load.gif) <!-- gif has to be changed (Harmony needed) -->
 
 :::note
 Loading templates or workfiles will import the contents into scene. Referencing is not supported at the moment, so you will have to load newer versions into the scene.
@@ -114,12 +114,12 @@ Loading templates or workfiles will import the contents into scene. Referencing 
 
 `AYON > Manage`
 
-![Loader](assets/photoshop_manage.png)  <!-- picture has to be changed (Harmony needed) -->
+![Loader](assets/manage.png)  <!-- picture has to be changed (Harmony needed) -->
 
 You can switch to a previous version of the image or update to the latest.
 
-![Loader](assets/photoshop_manage_switch.gif) <!-- gif has to be changed (Harmony needed) -->
-![Loader](assets/photoshop_manage_update.gif) <!-- gif has to be changed (Harmony needed) -->
+![Loader](assets/manage_switch.gif) <!-- gif has to be changed (Harmony needed) -->
+![Loader](assets/manage_update.gif) <!-- gif has to be changed (Harmony needed) -->
 
 :::note
 Images and image sequences will be loaded into the scene as read nodes can coloured green. On startup the pipeline checks for any outdated read nodes and colours them red.
