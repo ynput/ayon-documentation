@@ -119,7 +119,7 @@ module.exports = {
                 "addon_deadline_admin",
                 "addon_clockify_admin",
                 "addon_slack_admin",
-                "addon_traypublisher_admin"
+                "addon_traypublisher_admin",
             ],
         },
         "admin_releases",
@@ -134,7 +134,7 @@ module.exports = {
                 "dev_launcher",
                 "dev_launcher_build_windows",
                 "dev_launcher_build_macos",
-                "dev_launcher_build_linux"
+                "dev_launcher_build_linux",
             ],
         },
         "dev_dev_mode",
@@ -143,7 +143,10 @@ module.exports = {
         {
             type: "category",
             label: "Hosts integrations",
-            items: ["dev_host_implementation", "dev_publishing"],
+            items: [
+                "dev_host_implementation",
+                "dev_publishing",
+            ],
         },
         "dev_deadline",
         "dev_colorspace",
