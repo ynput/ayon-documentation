@@ -12,11 +12,14 @@ import TabItem from '@theme/TabItem';
 There is a couple of settings that could configure publishing process for **AfterEffects**.
 All of them are Project based, eg. each project could have different configuration.
 
-Location: Settings > Project > AfterEffects
+Location: `ayon+settings://aftereffects/publish`
 
 ![AfterEffects Project Settings](assets/admin_hosts_aftereffects_settings.png)
 
 ## Publish plugins
+
+### Collect Review
+Enable/disable collecting reviews. If disabled, no review will be created at all. 
 
 ### Validate Scene Settings
 
@@ -27,6 +30,9 @@ Set regex pattern(s) to look for in a Task name to skip resolution check against
 #### Skip Timeline Check for Tasks
 
 Set regex pattern(s) to look for in a Task name to skip `frameStart`, `frameEnd` check against values from DB.
+
+### Validate Containers
+Enable/disable check for non latest loaded items in the scene.
 
 ### AfterEffects Submit to Deadline
 
