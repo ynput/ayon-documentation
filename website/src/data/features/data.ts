@@ -58,6 +58,12 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Tools for creating shots, assets and task within your project if you don't use third party project management",
     },
+    sgSync: {
+        title: "Shotgrid Sync",
+        description:
+            "A way to syncronize projects across AYON and Shotgrid, as well as react to events in either platform.",
+        preview: "shotgrid_sync.png",
+    },
     libraryLoader: {
         title: "Library Loader",
         description:
