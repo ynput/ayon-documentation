@@ -11,7 +11,12 @@ import TabItem from '@theme/TabItem';
 
 AYON comes in packages for Windows (10 or Server), Mac OS X (Mojave or higher), and Linux distribution (Centos, Ubuntu).
 
-Your studio administrator should provide you with an installation file. If you are testing or working by yourself, you can also grab installation files from the releases; https://github.com/ynput/OpenPype/releases
+In AYON you can download the installer from within the website:
+![A screenshot of the AYON main menu with the "Download Launcher" menu expanded](assets/ayon_download_installer.png)
+
+A "Download Launcher" blue button should be present, which provides a binary for the Operating System you are accessing the webistes, alternatively you can download a specific binary from the dropdown in the main menu.
+
+If you are testing or working by yourself, you can also grab installation files from the releases: https://github.com/ynput/ayon-launcher/releases
 
 :::important
 To install AYON you will need administrator permissions.
@@ -31,11 +36,11 @@ To install AYON you will need administrator permissions.
 For installation on Windows, download and run the installation file `AYON-#.#.#.exe`.
 During the installation process, you can change the destination location path of the application,
 
-![Windows installation](assets/install_01.png)
+![A screenshot ofa Windows installation dialog where the person can choose where to install AYON](assets/ayon_install_windows_01.png)
 
 and create an icon on the desktop.
 
-![Windows create icon](assets/install_02.png)
+![A screenshot of a Windows installation dialog where the person can choose to install AYON add the AYON shortcut to their desktop](assets/ayon_install_windows_02.png)
 
 </TabItem>
 
@@ -45,7 +50,7 @@ and create an icon on the desktop.
 For installation on your Linux distribution, download and unzip `AYON-#.#.#.zip`. A new folder `AYON-#.#.#` will be created.
 Inside this folder find and run `ayon_gui`,
 
-![Linux launch](assets/install_03.png)
+![A screenshot of the with a list of the contents of the AYON Linux zip](assets/ayon_install_linux.png)
 
 </TabItem>
 
@@ -56,7 +61,7 @@ For installation on Mac OS X, download and run dmg image file `AYON-#.#.#.dmg`.
 
 Drag the OpenPype icon into the Application folder.
 
-![Mac installation](assets/install_04.png)
+![A screenshot of the Mac Installation dialog whith the Applications and AYON install logo](assets/ayon_install_macos.png)
 
 After the installation, you can find AYON among the other Applications.
 
@@ -67,7 +72,7 @@ After the installation, you can find AYON among the other Applications.
 
 ## Working in the studio
 
-In studio environment you should have AYON already installed and deployed,  so you can start using it without much setup. Your admin has probably put AYON icon on your desktop or even had your computer set up so AYON will start automatically.
+In studio environment you should have AYON already installed and deployed, so you can start using it without much setup. Your admin has probably put AYON icon on your desktop or even had your computer set up so AYON will start automatically.
 
 If this is not the case, please contact your administrator to consult on how to launch AYON in your studio.
 
@@ -87,30 +92,35 @@ You can run AYON by desktop "P" icon (if it exists after installing) or by direc
 :::tip Is AYON running?
 AYON runs in the operating system's tray. If you see a green AYON icon in the tray you can easily tell AYON is currently running. Keep in mind that on Windows this icon might be hidden by default, in which case, the artist can simply drag the icon down to the tray.
 
-![Systray](assets/artist_systray.png)
+![A screenshot of the Windows System Tray showing the AYON icon](assets/artist_systray.png)
+:::
+
+:::tip Icon not showing on Linux
+Some Linux distributions do not ship with tray icons by defaults, mostly GNOME based, to get the icon, install the following extension: [Appindicator Support for GNOME Shell](https://extensions.gnome.org/extension/615/appindicator-support/)
 :::
 
 ## First Launch
 
 When you first start AYON, you will be asked to fill in some basic information.
 
-![login](assets/artist_login.png)
+![A screenshot of the AYON login dialog](assets/artist_login.png)
 
-### AYON Server URL
+### AYON Login Details
 
-You should have been supplied with AYON server url from your studio administrator. The URL looks something like; `https://ayon.dev/`.
+Your Studio should provide you with the AYON `url`, `username` and `password` to fill in the dialog.
 
-The `Username` and `Password` should also come from your studio administrator.
+:::tip Example details
+URL: `https://ayon.dev/`
+username: `johndoe`
+password: `v3ry53cur3p455w0rd`
+:::
 
-### AYON Version Repository
+If you want to try AYON and don't have a server, you can set up an account over at [AYON Cloud](https://ayon.cloud/)
 
-Sometimes your Studio might also ask you to fill in the path to its version repository. This is a location where AYON will search for the latest versions, check if it's up to date and where updates are installed from automatically.
-
-This path is usually taken from the database directly, so you shouldn't need it.
 
 ## Updates
 
-If you're connected to your Studio, AYON will check for, and install updates automatically every time you run it. That's why during the first start it can go through a quick update installation process, even though you might have just installed it.
+AYON updates automatically, based on your studio server, every time you launch it; that why on first time launch it might do a new installation, if your Studio is using a more recent version.on process, even though you might have just installed it.
 
 ## Advanced Usage
 
