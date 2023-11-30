@@ -48,14 +48,8 @@ publish. Go **AYON → Create... → Model**.
 
 ![Model create instance](assets/blender-model_create_instance.png)
 
-`Product` field is a name of asset you are working on - it should be already filled
-with correct name as you've started Blender or switched context to specific product. You
-can change the product you want to publish your model as by selecting it from
-the left column, and selecting the task in the bottom left corner.
-
-`Product` field is a name you can decide on. It should describe what kind of data you
-have in the model. For example, you can name it `Proxy` to indicate that this is
-low resolution stuff. See [Product](artist_concepts.md#product).
+See [Variant](artist_concepts.md#variant) and [Product](artist_concepts.md#product)
+for more detail on what they are and how they are used in AYON.
 
 `Use selection` toggle will use whatever you have selected in Outliner to be
 wrapped in Model instance. This is usually what you want. Click on **Create** button.
