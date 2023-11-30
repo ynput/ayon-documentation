@@ -99,8 +99,7 @@ module.exports = {
                     type: "category",
                     label: "Project Settings",
                     items: [
-                        "project_settings/project_settings_core",
-                        "project_settings/project_settings_tray_publisher",
+                        "project_settings/project_settings_core"
                     ],
                 },
             ],
@@ -125,7 +124,8 @@ module.exports = {
                 "addon_site_sync_admin",
                 "addon_deadline_admin",
                 "addon_clockify_admin",
-                "addon_slack_admin"
+                "addon_slack_admin",
+                "addon_traypublisher"
             ],
         },
         "admin_releases",
