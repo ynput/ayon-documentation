@@ -41,7 +41,7 @@ When you are ready to share some work, you will need to publish it. This is done
 
 There is always instance for workfile created automatically (see 'workfileCompositing' item in `Subsets to publish` column.) This allows to publish (and therefore backup) workfile which is used to produce another publishable elements (as `image` and `review` items).
 
-Main publishable item in AfterEffects will be of `render` family. Result of this item (instance) is picture sequence that could be a final delivery product or loaded and used in another DCCs.
+Main publishable item in AfterEffects will be of `render` product type. Result of this item (instance) is picture sequence that could be a final delivery product or loaded and used in another DCCs.
 
 First select existing composition and then press `Create >>>` in middle column of `Publisher`.
 
@@ -198,7 +198,7 @@ created by `Create placeholder`.
 
 ![Prepared template](assets/aftereffects_prepared_template.png)
 
-Load placeholder was configured to load `image` family, product with name `imageMain` and `png` representation.
+Load placeholder was configured to load `image` product type, product with name `imageMain` and `png` representation.
 
 Any additional layers could be added into composition, when `Build Workfile from template` will be used by an artist, load placeholders will be replace
 by loaded item(s).

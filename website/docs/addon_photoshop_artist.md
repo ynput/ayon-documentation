@@ -39,7 +39,7 @@ workfile which is used to produce another publishable elements (as `image` and `
 
 #### Create
 
-Main publishable item in Photoshop will be of `image` family. Result of this item (instance) is picture that could be loaded and used in another DCCs (for example as
+Main publishable item in Photoshop will be of `image` product type. Result of this item (instance) is picture that could be loaded and used in another DCCs (for example as
 single layer in composition in AfterEffects, reference in Maya etc).
 
 There are couple of options what to publish:
