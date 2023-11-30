@@ -11,7 +11,6 @@ sidebar_label: AfterEffects
 -   [Load](artist_tools_loader)
 -   [Publish](artist_tools_publisher)
 -   [Manage](artist_tools_inventory)
--   [Subset Manager](artist_tools_subset_manager)
 
 ## Setup
 
@@ -39,7 +38,7 @@ You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
 
 When you are ready to share some work, you will need to publish it. This is done by opening the `Publisher` through the `Publish...` button.
 
-There is always instance for workfile created automatically (see 'workfileCompositing' item in `Subsets to publish` column.) This allows to publish (and therefore backup) workfile which is used to produce another publishable elements (as `image` and `review` items).
+There is always instance for workfile created automatically (see 'workfileCompositing' item in `Products to publish` column.) This allows to publish (and therefore backup) workfile which is used to produce another publishable elements (as `image` and `review` items).
 
 Main publishable item in AfterEffects will be of `render` product type. Result of this item (instance) is picture sequence that could be a final delivery product or loaded and used in another DCCs.
 
@@ -49,7 +48,7 @@ After this process you should have something like this:
 
 ![Highlights](assets/aftereffects_publish_instance.png)
 
-Name of publishable instance (eg. subset name) could be configured with a template in `project_settings/global/tools/creator/subset_name_profiles`.
+Name of publishable instance (eg. product name) could be configured with a template in `project_settings/global/tools/creator/product_name_profiles`.
 (This must be configured by admin who has access to AYON Settings.)
 
 Trash icon under the list of instances allows to delete any selected `render` instance.
@@ -110,7 +109,7 @@ The supported product types for loading into AfterEffects are:
 - `audio`
 - `background` `(set of images sorted in predefined order)`
 
-To load an item, right-click on the subset you want and choose a representation you want to load:
+To load an item, right-click on the product you want and choose a representation you want to load:
 
 ![Loader](assets/photoshop_loader_load.gif)
 

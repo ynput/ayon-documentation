@@ -67,7 +67,7 @@ same settings.
 
 The Texture Set instance generates a publish per output map that is defined in
 the Substance Painter's export preset. For example a publish from a default
-PBR Metallic Roughness texture set results in six separate published subsets 
+PBR Metallic Roughness texture set results in six separate published products 
 (if all the channels exist in your file).
 
 ![Substance Painter PBR Metallic Roughness Export Preset](assets/substancepainter_pbrmetallicroughness_export_preset.png)

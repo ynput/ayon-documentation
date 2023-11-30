@@ -1,6 +1,6 @@
-import { type Family, FamilyType } from "./types";
+import { type Product, ProductType } from "./types";
 
-const families: { [type in FamilyType]: Family } = {
+const products: { [type in ProductType]: Product } = {
     model: {
         title: "Model",
         icon: "language",
@@ -154,6 +154,10 @@ const families: { [type in FamilyType]: Family } = {
         title: "Max Scene",
         icon: "home_repair_service"
     },
+    blenderScene: {
+        title: "Blender Scene",
+        icon: "home_repair_service"
+    },
     arnoldAss:{
         title: "Arnold Scene Source",
         icon: "grain"
@@ -204,4 +208,4 @@ const families: { [type in FamilyType]: Family } = {
     }
 };
 
-export default families;
+export default products;

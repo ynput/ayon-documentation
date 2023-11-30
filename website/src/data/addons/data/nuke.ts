@@ -25,7 +25,7 @@ Nuke is a powerful node-based compositing software used extensively in the film 
         "nodePresets",
         "bakingColorspacePresets",
     ],
-    families: [
+    products: [
         "nukeNodes",
         "camera",
         "gizmo",

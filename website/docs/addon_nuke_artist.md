@@ -125,13 +125,13 @@ It is usually enough if you once per while use this option just to make yourself
 <div class="row markdown">
 <div class="col col--6 markdown">
 
-This tool will append all available subsets into an actual node graph. It will look into database and get all last [versions](artist_concepts.md#version) of available [subsets](artist_concepts.md#subset).
+This tool will append all available products into an actual node graph. It will look into database and get all last [versions](artist_concepts.md#version) of available [products](artist_concepts.md#product).
 
 
 ##### Result
 
--   adds all last versions of subsets (rendered image sequences) as read nodes
--   ~~adds publishable write node as `renderMain` subset~~
+-   adds all last versions of products (rendered image sequences) as read nodes
+-   ~~adds publishable write node as `renderMain` product~~
 
 </div>
 <div class="col col--6 markdown">

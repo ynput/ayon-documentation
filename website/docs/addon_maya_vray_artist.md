@@ -18,9 +18,9 @@ Be aware that **vrmesh** cannot be used with looks as it doesn't retain IDs nece
 ### Creating VRay Proxy
 
 To create VRay Proxy, select geometry you want and - **AYON → Create ...** select **VRay Proxy**. Name your
-subset as you want and press **Create** button.
+product as you want and press **Create** button.
 
-This will create `vrayproxy` set for your subset. You can set some options in Attribute editor, mainly if you want
+This will create `vrayproxy` set for your product. You can set some options in Attribute editor, mainly if you want
 export animation instead of single frame.
 
 ![Maya - VRay Proxy Creation](assets/maya-vray_proxy.jpg)
@@ -36,7 +36,7 @@ You can load VRay Proxy using loader - **AYON → Loader ...**
 
 ![Maya - VRay Proxy Creation](assets/maya-vray_proxy-loader.jpg)
 
-Select your subset and right-click. Select **Import VRay Proxy (vrmesh)** to import it.
+Select your product and right-click. Select **Import VRay Proxy (vrmesh)** to import it.
 
 :::note
 Note that even if it states `vrmesh` in descriptions, if loader finds Alembic published along (default behavior) it will

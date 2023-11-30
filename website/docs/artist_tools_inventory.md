@@ -2,7 +2,7 @@
 id: artist_tools_inventory
 title: Inventory
 sidebar_label: Inventory
-description: Manage already loaded subsets.
+description: Manage already loaded products.
 ---
 
 # Inventory
@@ -34,9 +34,9 @@ ___
 
 ## Actions
 
-The Inventory has a simple GUI focused on efficiency. All Assets present in the current workfile are listed, sorted or grouped by asset, subset and representation names making it easy for user to manage those one by one or simultaneously in one step making possible changes of multiple assets at once.
+The Inventory has a simple GUI focused on efficiency. All Assets present in the current workfile are listed, sorted or grouped by asset, product and representation names making it easy for user to manage those one by one or simultaneously in one step making possible changes of multiple assets at once.
 
-User can **select** Asset / Subset **by left cliking** on a particular item in the list.
+User can **select** Asset / Product **by left cliking** on a particular item in the list.
 
 ![tools_inventory_02](assets/tools/tools_inventory_02.png)
 
@@ -87,13 +87,13 @@ Do not forget to turn filter off afterwards to see items in the list again other
 ___
 
 ### Switch Asset
-This action gives ability to switch asset, subset, representation and its version of currently selected asset(s).
+This action gives ability to switch asset, product, representation and its version of currently selected asset(s).
 
 
 ![tools_inventory_06](assets/tools/tools_inventory_06.png)
 
 
-Asset consists of multiple components and it is possible to switch any of these *(asset, subset, representation and version)*. There are some limitations though.
+Asset consists of multiple components and it is possible to switch any of these *(asset, product, representation and version)*. There are some limitations though.
 
 :::warning
 Limitation example: Asset consisting of `.ma` representation cannot be switched to `.abc` representation if not existing for target asset. This apply for any missing target data. 
@@ -105,28 +105,28 @@ Switch tool won't let you cross the border of limitations and inform you when yo
 
 Possible cases for switches:
 - switch **representation** (`.ma` to `.abc` or `.exr` to `.dpx`, etc.)
-- switch **subset** (`modelMain` to `modelHD`, etc.)
+- switch **product** (`modelMain` to `modelHD`, etc.)
     - `AND` keep same **representation** *(with limitations)*
     - `AND` switch **representation** *(with limitations)*
 - switch **asset** (`oakTree` to `elmTree`, etc.)
-    - `AND` keep same **subset** and **representation** *(with limitations)*
-    - `AND` keep same **subset** and switch **representation** *(with limitations)*
-    - `AND` switch **subset** and keep same **representation** *(with limitations)*
-    - `AND` switch **subset** and **representation** *(with limitations)*
+    - `AND` keep same **product** and **representation** *(with limitations)*
+    - `AND` keep same **product** and switch **representation** *(with limitations)*
+    - `AND` switch **product** and keep same **representation** *(with limitations)*
+    - `AND` switch **product** and **representation** *(with limitations)*
 
 
 :::tip
-User can switch multiple assets in one step if they contain same data types, being it `representation`, `subset`, `LOD` etc.
+User can switch multiple assets in one step if they contain same data types, being it `representation`, `product`, `LOD` etc.
 :::
 
-There is one more switch layer above subset for asset's LOD (Level Of Detail). That requires to have published subsets with suffix **"_LOD{number}"** where number represents level (e.g. modelMain_LOD1). Its possible to switch just `subset` but keep `LOD` and vice versa.
+There is one more switch layer above product for asset's LOD (Level Of Detail). That requires to have published products with suffix **"_LOD{number}"** where number represents level (e.g. modelMain_LOD1). Its possible to switch just `product` but keep `LOD` and vice versa.
  
 
 ![tools_scene_inventory_54](assets/tools/tools_scene_inventory_54.png) <!-- picture needs to be changed -->
 
 
 :::note
-This option is hidden if you didn't select subset that have published subset with LODs.
+This option is hidden if you didn't select product that have published product with LODs.
 :::
 
 ### Remove Items
@@ -159,15 +159,15 @@ Just collapse all folders in the list so everything inside folders become hidden
 Contains various context sensitive tools for user. Content heavily depending on use case / DCC host and AYON integration.
 
 <!-- ### Change version
-You can change versions of loaded assets / subsets with Inventory tool.
+You can change versions of loaded assets / products with Inventory tool.
 
 ![tools_scene_inventory_40](assets/tools/tools_scene_inventory_40.png)
 
 #### Update to the latest version
-Select containers or subsets you want to update, right-click selection and press `Update to latest`.
+Select containers or products you want to update, right-click selection and press `Update to latest`.
 
 #### Change to specific version
-Select containers or subsets you want to change, right-click selection, press `Set version`, select from dropdown version you want change to and press `OK` button to confirm.
+Select containers or products you want to change, right-click selection, press `Set version`, select from dropdown version you want change to and press `OK` button to confirm.
 
 
 ![tools_scene_inventory_30](assets/tools/tools_scene_inventory_30.png) -->
@@ -217,7 +217,7 @@ ___
 <div class="row markdown">
 <div class="col col--6 markdown">
 
-To keep only selected subsets right-click selection and press `Cherry-Pick (Hierarchy)` *(Border of subset list change to **orange** color when Cherry-pick filtering is set so you know filter is applied).*
+To keep only selected products right-click selection and press `Cherry-Pick (Hierarchy)` *(Border of product list change to **orange** color when Cherry-pick filtering is set so you know filter is applied).*
 
 </div>
 <div class="col col--6 markdown">
@@ -230,7 +230,7 @@ To keep only selected subsets right-click selection and press `Cherry-Pick (Hier
 <div class="row markdown">
 <div class="col col--6 markdown">
 
-To return to original state right-click anywhere in subsets list and press `Back to Full-View`.
+To return to original state right-click anywhere in products list and press `Back to Full-View`.
 
 </div>
 <div class="col col--6 markdown">
@@ -242,5 +242,5 @@ To return to original state right-click anywhere in subsets list and press `Back
 
 
 :::tip
-You can also Cherry-pick from Cherry-picked subsets.
+You can also Cherry-pick from Cherry-picked products.
 :::

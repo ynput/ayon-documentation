@@ -13,7 +13,7 @@ AYON is using [pyblish](https://pyblish.com/) for the publishing process. AYON e
 
 ## **Creating**
 
-Concept of Creating does not have to "create" anything yet, but prepare and store metadata about an "instance" (becomes a subset after the publish process). Created instance always has `family` which defines what kind of data will be published, the best example is `workfile` family. Storing of metadata is host specific and may be even a Creator plugin specific. Most hosts are storing metadata into a workfile (Maya scene, Nuke script, etc.) to an item or a node the same way as regular Pyblish instances, so consistency of host implementation is kept, but some features may require a different approach that is the reason why it is creator plugin responsibility. Storing the metadata to the workfile persists values, so the artist does not have to create and set what should be published and how over and over.
+Concept of Creating does not have to "create" anything yet, but prepare and store metadata about an "instance" (becomes a product after the publish process). Created instance always has `family` which defines what kind of data will be published, the best example is `workfile` family. Storing of metadata is host specific and may be even a Creator plugin specific. Most hosts are storing metadata into a workfile (Maya scene, Nuke script, etc.) to an item or a node the same way as regular Pyblish instances, so consistency of host implementation is kept, but some features may require a different approach that is the reason why it is creator plugin responsibility. Storing the metadata to the workfile persists values, so the artist does not have to create and set what should be published and how over and over.
 
 ### Created instance
 
@@ -27,14 +27,14 @@ Objected representation of created instance metadata defined by class **CreatedI
 | *creator_identifier | str | Identifier of creator that collected/created the instance. |
 | *creator_attributes | dict | Dictionary of attributes that are defined by the creator plugin (`get_instance_attr_defs`). |
 | *publish_attributes | dict | Dictionary of attributes that are defined by publish plugins. |
-| variant | str | Variant is entered by the artist on creation and may affect **subset**. |
-| subset | str | Name of instance. This name will be used as a subset name during publishing. Can be changed on context change or variant change. |
+| variant | str | Variant is entered by the artist on creation and may affect **product**. |
+| product | str | Name of instance. This name will be used as a product name during publishing. Can be changed on context change or variant change. |
 | active | bool | Is the instance active and will be published or not. |
 | asset | str | Name of asset in which context was created. |
 | task | str | Name of task in which context was created. Can be set to `None`. |
 
 :::note
-Task should not be required until the subset name template expects it.
+Task should not be required until the product name template expects it.
 :::
 
 object of **CreatedInstance** has method **data_to_store** which returns a dictionary that can be parsed to a json string. This method will return all data related to the instance so it can be re-created using `CreatedInstance.from_existing(data)`.
@@ -201,13 +201,13 @@ class RenderLayerCreator(Creator):
         ]
 ```
 
-- **`get_subset_name`** (method) - Calculate subset name based on passed data. Data can be extended using the `get_dynamic_data` method. Default implementation is using `get_subset_name` from `ayon.lib` which is recommended.
+- **`get_product_name`** (method) - Calculate product name based on passed data. Data can be extended using the `get_dynamic_data` method. Default implementation is using `get_product_name` from `ayon.lib` which is recommended.
 
-- **`get_dynamic_data`** (method) - Can be used to extend data for subset templates which may be required in some cases.
+- **`get_dynamic_data`** (method) - Can be used to extend data for product templates which may be required in some cases.
 
-Methods are used before instance creation and on instance subset name update. Update may require to have access to existing instance because dynamic data should be filled from there. Because of that is instance passed to `get_subset_name` and `get_dynamic_data` so the creator can handle that cases.
+Methods are used before instance creation and on instance product name update. Update may require to have access to existing instance because dynamic data should be filled from there. Because of that is instance passed to `get_product_name` and `get_dynamic_data` so the creator can handle that cases.
 
-This is one example where subset name template may contain `"{layer}"` which is filled during creation because the value is taken from selection. In that case `get_dynamic_data` returns value for `"layer"` -> `"{layer}"` so it can be filled in creation. But when subset name of already existing instance is updated it should return already existing value. Note: Creator must make sure the value is available on instance.
+This is one example where product name template may contain `"{layer}"` which is filled during creation because the value is taken from selection. In that case `get_dynamic_data` returns value for `"layer"` -> `"{layer}"` so it can be filled in creation. But when product name of already existing instance is updated it should return already existing value. Note: Creator must make sure the value is available on instance.
 
 ```python
 from ayon.lib import prepare_template_data
@@ -226,12 +226,12 @@ class SomeCreator(Creator):
         # - creator must know where to look for the value
         return {"layer": instance.data["layer"]}
 
-    def create(self, subset_name, instance_data, pre_create_data):
+    def create(self, product_name, instance_data, pre_create_data):
         # Fill the layer name in
         layer = get_selected_layer()
         layer_name = layer["name"]
         layer_fill_data = prepare_template_data({"layer": layer_name})
-        subset_name = subset_name.format(**layer_fill_data)
+        product_name = product_name.format(**layer_fill_data)
         instance_data["layer"] = layer_name
         ...
 ```
@@ -246,7 +246,7 @@ def create(self, instance_data, source_data):
     task_name = instance_data["task"]
     asset_name = instance_data["asset"]
     asset_doc = get_asset_by_name(self.project_name, asset_name)
-    self.get_subset_name(
+    self.get_product_name(
         variant, task_name, asset_doc, self.project_name, self.host_name)
 ```
 
@@ -294,7 +294,7 @@ def create(self):
     # Create new instance if does not exist yet
     if existing_instance is None:
         asset_doc = get_asset_by_name(project_name, asset_name)
-        subset_name = self.get_subset_name(
+        product_name = self.get_product_name(
             variant, task_name, asset_doc, project_name, host_name
         )
         data = {
@@ -307,7 +307,7 @@ def create(self):
         ))
 
         new_instance = CreatedInstance(
-            self.family, subset_name, data, self
+            self.family, product_name, data, self
         )
         self._add_instance_to_context(new_instance)
 
@@ -317,7 +317,7 @@ def create(self):
         or existing_instance["task"] != task_name
     ):
         asset_doc = get_asset_by_name(project_name, asset_name)
-        subset_name = self.get_subset_name(
+        product_name = self.get_product_name(
             variant, task_name, asset_doc, project_name, host_name
         )
         existing_instance["asset"] = asset_name
@@ -408,9 +408,9 @@ class CreateRender(Creator):
             )
         return attrs
 
-    def create(self, subset_name, instance_data, pre_create_data):
+    def create(self, product_name, instance_data, pre_create_data):
         # ARGS:
-        # - 'subset_name' - precalculated subset name
+        # - 'product_name' - precalculated product name
         # - 'instance_data' - context data
         #    - 'asset' - asset name
         #    - 'task' - task name
@@ -431,7 +431,7 @@ class CreateRender(Creator):
             raise CreatorError("Nothing to create. Select at least one item.")
 
         # Create instence object
-        new_instance = CreatedInstance(self.family, subset_name, data, self)
+        new_instance = CreatedInstance(self.family, product_name, data, self)
         # Pass value from pre create attribute to instance
         # - use them only when pre create date contain the data
         if "render_farm" in pre_create_data:
@@ -482,10 +482,10 @@ Xml file content has **&ltroot&gt** node which may contain any amount of **&lter
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <error id="main">
-        <title>Subset context</title>
-        <description>## Invalid subset context
+        <title>Product context</title>
+        <description>## Invalid product context
 
-Context of the given subset doesn't match your current scene.
+Context of the given product doesn't match your current scene.
 
 ### How to repair?
 
@@ -496,7 +496,7 @@ After that restart publishing with Reload button.
         <detail>
 ### How could this happen?
 
-The subset was created in different scene with different context
+The product was created in different scene with different context
 or the scene file was copy pasted from different context.
         </detail>
     </error>
@@ -586,7 +586,7 @@ List of instances always contains an `Options` item which is used to show attrib
 Instance view has at the bottom 3 buttons. Plus sign opens [create dialog](#create-dialog), bin removes selected instances and stripes swap card and list view.
 
 #### *Context options*
-It is possible to change variant or asset and task context of instances at the top part but all changes there must be confirmed. Confirmation will trigger recalculation of subset names and all new data are stored to instances.
+It is possible to change variant or asset and task context of instances at the top part but all changes there must be confirmed. Confirmation will trigger recalculation of product names and all new data are stored to instances.
 
 #### *Create attributes*
 Instance attributes display all created attributes of all selected instances. All attributes that have the same definition are grouped into one input and are visually indicated if values are not the same for selected instances. In most cases have **< Multiselection >** placeholder.

@@ -11,7 +11,7 @@ const addon: Addon = {
         "workfiles", 
         "reviewables",
     ],
-    families: ["workfile", "render", "review", "audio"],
+    products: ["workfile", "render", "review", "audio"],
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/celaction",
 };
 

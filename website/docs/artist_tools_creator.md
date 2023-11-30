@@ -29,5 +29,5 @@ Current Publisher contains Creator as tab.
 1.  Select what you want to publish from your scenes.
 2.  Either open creator with **Creator** menu item from the AYON menu or open **Publisher** and navigate to Create tab.
 3.  Choose what family (data type) you need to export.
-4.  Type the name for you export. This name is how others are going to be able to refer to this particular subset when loading it into their scenes. Every assets should have a Main subset, but can have any number of other variants.
+4.  Type the name for you export. This name is how others are going to be able to refer to this particular product when loading it into their scenes. Every assets should have a Main product, but can have any number of other variants.
 5.  Click on *Create*.
