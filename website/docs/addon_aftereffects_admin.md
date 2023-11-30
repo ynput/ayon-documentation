@@ -32,7 +32,11 @@ Set regex pattern(s) to look for in a Task name to skip resolution check against
 Set regex pattern(s) to look for in a Task name to skip `frameStart`, `frameEnd` check against values from DB.
 
 ### Validate Containers
-Enable/disable check for non latest loaded items in the scene.
+Checks if all imported assets to the workfile through `Loader` are in latest version. Limits cases that older version of asset would be used.
+
+If enabled, artist might still decide to disable validation for each publish (for special use cases).
+Limit this optionality by toggling `Optional`.
+`Active` toggle denotes that by default artists sees that optional validation as enabled.
 
 ### AfterEffects Submit to Deadline
 

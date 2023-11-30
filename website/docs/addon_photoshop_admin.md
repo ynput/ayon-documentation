@@ -12,9 +12,9 @@ import TabItem from '@theme/TabItem';
 There is a couple of settings that could configure publishing process for **Photoshop**.
 All of them are Project based, eg. each project could have different configuration.
 
-Location: Settings > Project > Photoshop
+Location: `ayon+settings://photoshop`
 
-![AfterEffects Project Settings](assets/admin_hosts_photoshop_settings.png)
+![Photoshop Project Settings](assets/admin_hosts_photoshop_settings.png)
 
 ## Color Management (ImageIO)
 
@@ -59,9 +59,9 @@ Allows to create automatically `image` instances for configurable highlight colo
   - Flatten only - produce only merged `image` instance
   - No - produce only separate `image` instances
 
-#### Subset template for flatten image
+#### Product name template for flatten image
 
-Template used to create subset name automatically (example `image{layer}Main` - uses layer name in subset name)
+Template used to create product name automatically (example `image{layer}Main` - uses layer name in product name)
 
 ### Collect Review
 
@@ -80,13 +80,13 @@ If enabled, artist might still decide to disable validation for each publish (fo
 Limit this optionality by toggling `Optional`.
 `Active` toggle denotes that by default artists sees that optional validation as enabled.
 
-### Validate naming of subsets and layers
+### Validate naming of products and layers
 
-Subset cannot contain invalid characters or extract to file would fail
+Product cannot contain invalid characters or extract to file would fail
 
 #### Regex pattern of invalid characters
 
-Contains weird characters like `/`, `/`, these might cause an issue when file (which contains subset name) is created on OS disk.
+Contains weird characters like `/`, `/`, these might cause an issue when file (which contains product name) is created on OS disk.
 
 #### Replacement character
 
@@ -94,7 +94,7 @@ Replace all offending characters with this one. `_` is default.
 
 ### Extract Image
 
-Controls extension formats of published instances of `image` family. `png` and `jpg` are by default.
+Controls extension formats of published instances of `image` product type. `png` and `jpg` are by default.
 
 ### Extract Review
 
@@ -102,7 +102,7 @@ Controls output definitions of extracted reviews to upload on Asset Management (
 
 #### Makes an image sequence instead of flatten image
 
-If multiple `image` instances are produced, glue created images into image sequence (`mov`) to review all of them separetely.
+If multiple `image` instances are produced, glue created images into image sequence (`mov`) to review all of them separately.
 Without it only flatten image would be produced.
 
 #### Maximum size of sources for review
