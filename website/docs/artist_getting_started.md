@@ -115,7 +115,7 @@ username: `johndoe`
 password: `v3ry53cur3p455w0rd`
 :::
 
-If you want to try AYON and don't have a server, you can set up an account over at [AYON Cloud](https://ayon.cloud/)
+If you want to try AYON and don't have a server, you can set up an account over at [AYON Cloud](https://ayon.cloud/).
 
 
 ## Updates
