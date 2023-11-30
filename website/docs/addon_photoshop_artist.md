@@ -14,11 +14,13 @@ sidebar_label: Photoshop
 
 ## Setup
 
-To install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select Photoshop in menu. Then go to `{path to pype}hosts/photoshop/api/extension.zxp`. Drag extension.zxp and drop it to Anastasyi's Extension Manager. The extension will install itself. 
+o install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select AfterEffects in menu. Then go to `{path to PS addon}hosts/photoshop/api/extension.zxp`.
+(Current location will be most likely in artist `AppData`, on Windows it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\openpype_X.X.X\openpype\hosts\photoshop\api`.
+This location is temporary until full separation of addons is implemented. Artist must start Tray at least once for Ayon server to populate this location.)
 
 ## Usage
 
-When you launch Photoshop you will be met with the Workfiles app. If dont have any previous workfiles, you can just close this window.
+When you launch Photoshop you will be met with the Workfiles app. If you don't have any previous workfiles, you can just close this window.
 
 In Photoshop you can find the tools in the `AYON` extension:
 
@@ -56,7 +58,7 @@ This will result in:
 (In Photoshop's `Layers` tab standard layers will be wrapped into group and enriched with ℗ symbol to denote publishable instance. With `Create separate instance for each selected` toggled off
 it will create only single publishable instance which will wrap all visible layers.)
 
-Name of publishable instance (eg. subset name) could be configured with a template in `project_settings/global/tools/creator/subset_name_profiles`.
+Name of publishable instance (eg. product name) could be configured with a template in `project_settings/global/tools/creator/subset_name_profiles`.
 (This must be configured by admin who has access to AYON Settings.)
 
 Trash icon under the list of instances allows to delete any selected `image` instance.
@@ -125,7 +127,7 @@ The supported families for Photoshop are:
 
 - `image`
 
-To load an image, right-click on the subset you want and choose a representation:
+To load an image, right-click on the product you want and choose a representation:
 
 ![Loader](assets/photoshop_loader_load.gif)
 
