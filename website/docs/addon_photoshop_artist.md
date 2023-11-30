@@ -123,7 +123,7 @@ When you want to load existing published work, you can load in smart layers thro
 
 ![Loader](assets/photoshop_loader.png) <!-- picture needs to be changed -->
 
-The supported families for Photoshop are:
+The supported product types for Photoshop are:
 
 - `image`
 

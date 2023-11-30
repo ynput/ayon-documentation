@@ -100,7 +100,7 @@ When you want to load existing published work, you can use the `Loader` tool. Yo
 
 ![Loader](assets/photoshop_loader.png) <!-- picture needs to be changed -->
 
-The supported families for loading into AfterEffects are:
+The supported product types for loading into AfterEffects are:
 
 - `image`
 - `plate`
