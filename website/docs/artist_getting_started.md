@@ -36,7 +36,7 @@ To install AYON you will need administrator permissions.
 For installation on Windows, download and run the installation file `AYON-#.#.#.exe`.
 During the installation process, you can change the destination location path of the application,
 
-![A screenshot ofa Windows installation dialog where the person can choose where to install AYON](assets/ayon_install_windows_01.png)
+![A screenshot of a Windows installation dialog where the person can choose where to install AYON](assets/ayon_install_windows_01.png)
 
 and create an icon on the desktop.
 
