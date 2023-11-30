@@ -42,6 +42,7 @@ export type ProductType =
     | "pointcache"
     | "maxScene"
     | "mayaScene"
+    | "blenderScene"
     | "pointCloud"
     | "arnoldAss"
     | "arnoldRender"

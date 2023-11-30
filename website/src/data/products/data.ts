@@ -154,6 +154,10 @@ const products: { [type in ProductType]: Product } = {
         title: "Max Scene",
         icon: "home_repair_service"
     },
+    blenderScene: {
+        title: "Blender Scene",
+        icon: "home_repair_service"
+    },
     arnoldAss:{
         title: "Arnold Scene Source",
         icon: "grain"

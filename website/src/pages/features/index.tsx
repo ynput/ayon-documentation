@@ -404,9 +404,9 @@ function FeaturesCards() {
                         <Heading as="h2" className={styles.showcaseHeader}>
                             {isAddonsSelected
                                 ? "Supported Product Types"
-                                : "All Products"}
+                                : "All Products Types"}
                             {!isAddonsSelected && (
-                                <Link href="/docs/artist_publish#products">
+                                <Link href="/docs/artist_concepts#product">
                                     What are products?
                                 </Link>
                             )}
