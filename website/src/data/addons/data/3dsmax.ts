@@ -1,10 +1,12 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "3ds Max",
     description:
         "3ds Max is a 3D animation software tool set used for creating visual effects in film and television.",
     icon: "3ds-max-icon.png",
+    badge: versions.Max_Badge,
     features: [
         "workfiles",
         "loader",
