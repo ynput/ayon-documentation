@@ -101,11 +101,11 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
         - `Families`: "render"
         - `Add Ftrack Family` to "Enabled"
 
-    Make sure that you actually configured to create review for published subset in `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`
+    Make sure that you actually configured to create review for published product in `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`
 
     ![Ftrack Family](assets/deadline_review.png)
 
-    Example: I want to create review for all reviewable subsets in Harmony :
+    Example: I want to create review for all reviewable products in Harmony :
       - Add "harmony" as a new key an ".*" as a value.
 
 

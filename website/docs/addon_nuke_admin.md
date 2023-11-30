@@ -57,7 +57,7 @@ Builder profiles are set of rules allowing artist Load any available versions fo
 
 - **Filter**: Each profile could be defined with task filter. In case no filter is defined, a profile will be working for all.
 
-- **Context section**: filtres for subset name (regex accepted), families, representation names and available Loader plugin.
+- **Context section**: filtres for product name (regex accepted), families, representation names and available Loader plugin.
 
 - **Linked Assets/Shots**: filters for asset builds to be added
 

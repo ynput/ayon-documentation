@@ -17,10 +17,10 @@ Refer to Settings related to [Working with settings](../admin_settings) for more
 ### Creator
 Settings related to [Creator tool](../artist_tools_creator).
 
-#### Subset name profiles
-![core_tools_creator_subset_template](assets/core_tools_creator_subset_template.png)
+#### Product name profiles
+![core_tools_creator_product_template](assets/core_tools_creator_product_template.png)
 
-Subset name helps to identify published content. More specific name helps with organization and avoid mixing of published content. Subset name is defined using one of templates defined in **Subset name profiles settings**. The template is filled with context information at the time of creation.
+Product name helps to identify published content. More specific name helps with organization and avoid mixing of published content. Product name is defined using one of templates defined in **Product name profiles settings**. The template is filled with context information at the time of creation.
 
 Usage of template is defined by profile filtering using creator's family, host and task name. Profile without filters is used as default template and it is recommend to set default template. If default template is not available `"{family}{Task}"` is used.
 
@@ -59,10 +59,10 @@ This feature allows you to define a rule for each task/host or toggle the featur
 
 #### Template name profiles
 
-Allows to select [anatomy template](admin_settings_project_anatomy.md#templates) based on context of subset being published.
+Allows to select [anatomy template](admin_settings_project_anatomy.md#templates) based on context of product being published.
 
 For example for `render` profile you might want to publish and store assets in different location (based on anatomy setting) then for `publish` profile.
-Profile filtering is used to select between appropriate template for each context of published subsets.
+Profile filtering is used to select between appropriate template for each context of published products.
 
 Applicable context filters:
 - **`hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
@@ -70,7 +70,7 @@ Applicable context filters:
 
     ![core_integrate_new_template_name_profile](assets/core_integrate_new_template_name_profile.png)
 
-(This image shows use case where `render` anatomy template is used for subsets of families ['review, 'render', 'prerender'], `publish` template is chosen for all other.)
+(This image shows use case where `render` anatomy template is used for products of families ['review, 'render', 'prerender'], `publish` template is chosen for all other.)
 
 #### Custom Staging Directory Profiles
 With this feature, users can specify a custom data folder path based on presets, which can be used during the creation and publishing stages.
@@ -174,7 +174,7 @@ Extract review uses profile filtering to render different outputs for different 
 
 Applicable context filters:
  **`hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
-- **`families`** - Main family of processed subset. `["plate", "model"]`
+- **`families`** - Main family of processed product. `["plate", "model"]`
 
 ![core_extract_review_profiles](assets/core_extract_review_profiles.png)
 
@@ -264,23 +264,23 @@ A profile may generate multiple outputs from a single input. Each output must de
 
 - **`Additional filtering`**
     - Profile filtering defines which group of output definitions is used but output definitions may require more specific filters on their own.
-    - They may filter by subset name (regex can be used) or publish families. Publish families are more complex as are based on knowing code base.
+    - They may filter by product name (regex can be used) or publish families. Publish families are more complex as are based on knowing code base.
     - Filtering by custom tags -> this is used for targeting to output definitions from other extractors using settings (at this moment only Nuke bake extractor can target using custom tags).
         - Nuke extractor settings path: `project_settings/nuke/publish/ExtractReviewDataMov/outputs/baking/add_custom_tags`
     - Filtering by input length. Input may be video, sequence or single image. It is possible that `.mp4` should be created only when input is video or sequence and to create review `.png` when input is single frame. In some cases the output should be created even if it's single frame or multi frame input.
 
-### Integrate Subset Group
+### Integrate Product Group
 
-Published subsets might be grouped together for cleaner and easier selection in the **[Loader](artist_tools_loader.md)**
+Published products might be grouped together for cleaner and easier selection in the **[Loader](artist_tools_loader.md)**
 
 Group name is chosen with use of profile filtering.
 
 Applicable context filters:
-- **`Families`** - Main family of processed subset. `["plate", "model"]`
+- **`Families`** - Main family of processed product. `["plate", "model"]`
 - **`Hosts`** - Host from which publishing was triggered. `["maya", "nuke"]`
 - **`Task types`** - Current task. `["modeling", "animation"]`
 - **`Tasks names`** - Current task. `["model_characterA", "layout_sh010"]`
 
-    ![core_integrate_new_template_name_profile](assets/core_integrate_new_subset_group.png)
+    ![core_integrate_new_template_name_profile](assets/core_integrate_new_product_group.png)
 
 (This image shows use case where only assets published from 'photoshop', for all families for all tasks should be marked as grouped with a capitalized name of Task where they are published from.)

@@ -8,7 +8,7 @@ const addon: Addon = {
         user: "artist_hosts_resolve",
         admin: "admin_hosts_resolve",
     },
-    families: ["image", "review", "render", "plate", "model", "pointcache"],
+    products: ["image", "review", "render", "plate", "model", "pointcache"],
     features: [
         "workfiles",
         "loader",

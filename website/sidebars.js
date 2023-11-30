@@ -21,7 +21,6 @@ module.exports = {
                         "artist_tools_inventory",
                         "artist_tools_workfiles",
                         "artist_tools_look_assigner",
-                        "artist_tools_subset_manager",
                         "artist_tools_sync_queue",
                     ],
                 },

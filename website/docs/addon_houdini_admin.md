@@ -83,7 +83,7 @@ In this example I made two shelves:
 
 
 ## Creator plugins
-Enable or disable the plugins. Some of them have extra options such as defining the default subsets names.
+Enable or disable the plugins. Some of them have extra options such as defining the default products names.
 
 - Create Alembic Camera
 - Create Arnold Ass
@@ -110,7 +110,7 @@ Enable or disable the plugins executed at publishing.
 - Validate Latest Containers
 - Validate Mesh is Static
 - Validate Review Colorspace
-- Validate Subset Name
+- Validate Product Name
 - Validate Unreal Static Mesh Name
 - Validate workfile paths settings
 

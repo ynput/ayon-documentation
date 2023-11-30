@@ -15,7 +15,7 @@ Unreal Engine is a powerful real-time 3D creation tool used by game developers, 
         "publisher",
         "sceneManager",
     ],
-    families: [
+    products: [
         "model",
         "pointcache",
         "look",
