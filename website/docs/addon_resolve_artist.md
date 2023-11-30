@@ -27,7 +27,7 @@ Before you are able to start with AYON tools in DaVinci Resolve, installation of
 
 ## Creating Shots from timeline items
 
-Before a clip can be published with [Publisher](artist_tools_publisher) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable subset.
+Before a clip can be published with [Publisher](artist_tools_publisher) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable product.
 
 Lets do it step by step.
 
@@ -39,7 +39,7 @@ Lets do it step by step.
 ### Color clips before opening Create menu
 
 
-Timeline video clips should be colored to `Chocolate` color for AYON to se it as selected for subset creation.
+Timeline video clips should be colored to `Chocolate` color for AYON to se it as selected for product creation.
 
 
 <div class="col col--6 markdown">
@@ -57,7 +57,7 @@ Timeline video clips should be colored to `Chocolate` color for AYON to se it as
 
 <div class="col col --6 markdown">
 
-To be able to work with dynamic subset name, which is based on track names it is recommended to rename those tracks to what type of plates their clips represent. Commonly used ones are `main`, `review`, `fg01`, `fg02`, `bg`, `bg01`, etc. It is completely up to you but we recommend to always have at least `main` plate. For example if a clip is on track **element** and subset family is set to **plate** then the resulting subset name will be **plateElement**
+To be able to work with dynamic product name, which is based on track names it is recommended to rename those tracks to what type of plates their clips represent. Commonly used ones are `main`, `review`, `fg01`, `fg02`, `bg`, `bg01`, etc. It is completely up to you but we recommend to always have at least `main` plate. For example if a clip is on track **element** and product family is set to **plate** then the resulting product name will be **plateElement**
 
 <br></br>
 </div>
@@ -65,7 +65,7 @@ To be able to work with dynamic subset name, which is based on track names it is
 <div class="col col--6 markdown">
 
 ![Create menu](assets/resolve_creator_subset_name.png)
-The name of the resulting *subset* can be seen in the **AYONData** marker.
+The name of the resulting *product* can be seen in the **AYONData** marker.
 <br></br><br></br>
 </div>
 
@@ -78,7 +78,7 @@ Simple track setup where we are only using `main` and  `review` track names.
 <div class="col col--6 markdown">
 
 ![Create menu](assets/resolve_create_vertical_rename_timeline.png)
-An example of used track names. The yellow frame is highlighting vertically aligned clips - which are going to be renamed and grouped together under one asset (shot) name. The concept of vertical renaming will be explained later in [Vertical Synchronization of Subset Attributes](#vertical-synchronization-of-subset-attributes).
+An example of used track names. The yellow frame is highlighting vertically aligned clips - which are going to be renamed and grouped together under one asset (shot) name. The concept of vertical renaming will be explained later in [Vertical Synchronization of Product Attributes](#vertical-synchronization-of-product-attributes).
 
 </div>
 </div>
@@ -107,7 +107,7 @@ After the menu widget is opened (it can take while so be patient please :).
 
 Hit `Create ...` and then set **Use selection** to active and select the family to **Create Publishable Clips**. 
 
-The Subset name can stay as it is, it is not going to be used because each clip will generate it's own name.
+The Product name can stay as it is, it is not going to be used because each clip will generate it's own name.
 
 </div>
 <div class="col col--6 markdown">
@@ -120,7 +120,7 @@ The Subset name can stay as it is, it is not going to be used because each clip 
 <div class="row markdown">
 <div class="col col--6 markdown">
 
-The new windows that opens, let's you define various attributes for your future subsets and shots.
+The new windows that opens, let's you define various attributes for your future products and shots.
 
 Set Rename clips to active if you wish to use different names of shots in pipeline then the original clip names conformed from EDL/XML.
 
@@ -159,7 +159,7 @@ Notice the relationship of following sections. Keys from **Shot Template Keyword
 </div>
 </div>
 
-### Vertical synchronization of subset attributes
+### Vertical synchronization of product attributes
 
 In case you are only working with two tracks on timeline where `main` track is going to be used as plates for compositors and `review` track holds mp4 clips for offlines and web preview. **Enable vertical sync** can be deactivated.
 
@@ -206,7 +206,7 @@ Notice that the main track clips and review had been merged into one instance. A
 <div class="col --6 markdown">
 
 ![Create menu](assets/resolve_publish_instance_other_plateSubsets.png)
-Also notice how the subset name is formed form a *track* name and *subset family* from previous steps.
+Also notice how the product name is formed form a *track* name and *product family* from previous steps.
 
 Also important is to notice the asset name in *AYONData* at marker - the name is the same for all **Vertically renamed** shots as they have been grouped together. Unfortunately Resolve is not allowing to rename the clips so the only way to know is to see it in marker's metadata.
 

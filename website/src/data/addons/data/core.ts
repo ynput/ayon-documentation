@@ -19,7 +19,7 @@ const addon: Addon = {
         "remoteWorkflow",
         "timersManager",
     ],
-    families: [],
+    products: [],
     docs: {
         user: "artist_tools",
         admin: "system_introduction",

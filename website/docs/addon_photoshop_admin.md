@@ -33,7 +33,7 @@ Provides list of [variants](artist_concepts.md#variant) that will be shown to an
 Provides simplified publishing process. It will create single `image` instance for artist automatically. This instance will
 produce flatten image from all visible layers in a workfile.
 
-- Subset template for flatten image - provide template for subset name for this instance (example `imageBeauty`)
+- Product template for flatten image - provide template for product name for this instance (example `imageBeauty`)
 - Review - should be separate review created for this instance
 
 ### Create Review

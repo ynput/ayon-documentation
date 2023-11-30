@@ -10,8 +10,8 @@ import SearchBar from "@theme/SearchBar";
 import AddonCard from "./features/_components/AddonCard";
 import stylesFeatures from "./features/styles.module.scss";
 import FeatureCard from "./features/_components/FeatureCard";
-import { addons, families, features } from "../data";
-import FamilyCard from "./features/_components/FamilyCard";
+import { addons, products, features } from "../data";
+import ProductCard from "./features/_components/ProductCard";
 import Heading from "@theme/Heading";
 
 const links = [
@@ -208,11 +208,11 @@ export default function Home() {
             >
                 <Link href="/docs/artist_publish">
                     <Heading as="h2" className={clsx("hero__subtitle")}>
-                        Families
+                        Products
                     </Heading>
                 </Link>
                 <p>
-                    Streamline your data management with our customizable family
+                    Streamline your data management with our customizable product
                     categorization system. Efficiently organize data instances
                     and join the industry standard for efficient data handling
                     today!
@@ -231,11 +231,11 @@ export default function Home() {
                             stylesFeatures.showcaseList
                         )}
                     >
-                        {[...families].splice(0, 16).map((family) => (
-                            <FamilyCard family={family} key={family.id} />
+                        {[...products].splice(0, 16).map((product) => (
+                            <ProductCard product={product} key={product.id} />
                         ))}
                     </ul>
-                    <a href="/features#families">
+                    <a href="/features#products">
                         <div
                             className={clsx(
                                 "button button--secondary button--md",
@@ -243,7 +243,7 @@ export default function Home() {
                                 styles.viewAll
                             )}
                         >
-                            View All Families
+                            View All Products
                         </div>
                     </a>
                 </div>

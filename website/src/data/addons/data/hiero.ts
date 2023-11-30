@@ -22,7 +22,7 @@ and efficient management of complex projects.
         "burnins",
         "colorManaged"
     ],
-    families: [
+    products: [
         "audio",
         "plate",
         "review",

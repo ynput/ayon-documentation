@@ -161,7 +161,7 @@ The supported families for TVPaint are:
 - `background`
 - `plate`
 
-To load a family item, right-click on the subset you want and import their representations, switch among the versions, delete older versions, copy files, etc.
+To load a family item, right-click on the product you want and import their representations, switch among the versions, delete older versions, copy files, etc.
 
 ![Loader](assets/tvp_loader.gif)
 

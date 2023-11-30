@@ -13,7 +13,7 @@ const addon: Addon = {
         developer: "developer_hosts_addonName",
     },
     github: "https://github.com/ynput/ayon-addon-name",
-    families: ["render", "plate", "image", "background"],
+    products: ["render", "plate", "image", "background"],
     features: ["localRendering", "workfiles"],
     addons: ["nuke", "flame"],
 };
@@ -26,7 +26,7 @@ export default addon;
 // preview? | A preview image of the addon | "blender.png"
 // icon? | A logo image of the addon | "blender-icon.png"
 // features? | An array of features that the addon supports | ["workfiles", "loader"]
-// families? | An array of families that the addon supports | ["image", "video", "model"]
+// products? | An array of products that the addon supports | ["image", "video", "model"]
 // addons? | An array of addons that the addon supports | ["nuke", "maya"]
 // docs? | An object of documentation links for the addon | { "user": "artist_hosts_blender", "admin": "admin_hosts_blender", "developer": "dev_publishing" }
 // github? | A link to the github repository of the addon

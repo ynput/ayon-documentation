@@ -267,7 +267,7 @@ Steps:
 - Ayon will create Flimbox FBX ROP in **/out** with path and frame range already set.
 - After that, you can **AYON -> Publish** and after some validations your mesh will be published to a `.fbx` file.
 
-:::info Node Name and subset name
+:::info Node Name and product name
 By default, the name will be something like this `staticMeshMain`
 
 ![staticmesh-name-default](assets/houdini/artist/staticmesh-name-default.png)
@@ -393,19 +393,19 @@ For more info, Go to [Manage (Inventory)](artist_tools_inventory)
 
 ### How does Ayon name ROP nodes ? and is it safe to rename them ?
 
-Nodes are named after their `subset` names by default.
-It's safe to change the node name but it's not safe to change the `subset` name (found in `Extra` attributes) without referring to your pipeline admin. 
-![extra_attributes_subset](assets/houdini/artist/extra_attributes_subset.png)
+Nodes are named after their `product` names by default.
+It's safe to change the node name but it's not safe to change the `product` name (found in `Extra` attributes) without referring to your pipeline admin. 
+![extra_attributes_product](assets/houdini/artist/extra_attributes_subsets.png)
 
-The default subset naming profile consists of family name (product type) and variant name
+The default product naming profile consists of family name (product type) and variant name
 For example if you are creating a `camera` publish and set the variant to name `Main`
 Then Ayon will create a rop node with the name `cameraMain`.
 
 :::info 
-Admins are free to update subset naming profiles.
+Admins are free to update product naming profiles.
 :::
 
-![faq_subset_name](assets/houdini/artist/faq_subset_name.png)
+![faq_product_name](assets/houdini/artist/faq_product_name.png)
 
 ### Does Ayon work with vanilla Houdini ROPs and Deadline nodes ?
 This feature is not implemented yet.

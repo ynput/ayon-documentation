@@ -16,7 +16,7 @@ const addon: Addon = {
         "nodePresets",
         "farmRendering",
     ],
-    families: [
+    products: [
         "harmonyTemplate",
         "harmonyPalette",
         "audio",

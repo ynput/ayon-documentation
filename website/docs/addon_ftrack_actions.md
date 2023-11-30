@@ -153,7 +153,7 @@ You can add same note to multiple Asset Versions at once with this action.
 <div class="row markdown">
 <div class="col col--10 markdown">
 
-## Delete Asset/Subset
+## Delete Asset/Product
 
 </div>
 <div class="col col--2 markdown">

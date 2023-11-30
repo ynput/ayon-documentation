@@ -1,5 +1,5 @@
 import { AddonType } from ".";
-import { type FamilyType } from "../families/types";
+import { type ProductType } from "../products/types";
 import { type FeatureType } from "../features/types";
 
 export type DocType = "user" | "admin" | "developer";
@@ -11,7 +11,7 @@ export type Addon = {
     preview?: string;
     icon?: string;
     features?: FeatureType[];
-    families?: FamilyType[];
+    products?: ProductType[];
     addons?: AddonType[];
     docs?: { [type in DocType]?: string };
     github?: string;
@@ -25,7 +25,7 @@ export type Addon = {
 // preview | A preview image of the addon | "blender.png"
 // icon | A logo image of the addon | "blender-icon.png"
 // features | An array of features that the addon supports | ["workfiles", "loader"]
-// families | An array of families that the addon supports | ["image", "video", "model"]
+// products | An array of products that the addon supports | ["image", "video", "model"]
 // addons | An array of addons that the addon supports | ["nuke", "maya"]
 // docs | An object of documentation links for the addon | { "user": "artist_hosts_blender", "admin": "admin_hosts_blender", "developer": "dev_publishing" }
 // github | A link to the github code repository of the addon
