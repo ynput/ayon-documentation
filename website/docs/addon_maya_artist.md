@@ -1,6 +1,6 @@
 ---
 id: addon_maya_artist
-title: Maya
+title: Maya Artist Docs
 sidebar_label: Maya
 ---
 

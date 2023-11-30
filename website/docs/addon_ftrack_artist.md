@@ -1,6 +1,6 @@
 ---
 id: addon_ftrack_artist
-title: Ftrack
+title: Ftrack Artist Docs
 sidebar_label: Artist
 ---
 

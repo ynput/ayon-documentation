@@ -1,6 +1,6 @@
 ---
 id: addon_clockify_admin
-title: Clockify Admin docs 
+title: Clockify Admin Docs 
 sidebar_label: Clockify
 ---
 

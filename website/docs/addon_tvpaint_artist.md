@@ -1,6 +1,6 @@
 ---
 id: addon_tvpaint_artist
-title: TVPaint
+title: TVPaint Artist Docs
 sidebar_label: TVPaint
 ---
 

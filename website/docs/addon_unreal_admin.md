@@ -1,6 +1,6 @@
 ---
 id: addon_unreal_admin
-title: Unreal Admin docs
+title: Unreal Admin Docs
 sidebar_label: Unreal
 ---
 

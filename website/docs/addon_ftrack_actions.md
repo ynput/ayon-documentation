@@ -1,7 +1,7 @@
 ---
 id: addon_ftrack_actions
 title: Ftrack Actions
-sidebar_label: Ftrack actions
+sidebar_label: Ftrack Actions
 ---
 
 Actions are small useful tools that help artists, managers and administrators.

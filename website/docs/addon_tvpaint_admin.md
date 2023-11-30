@@ -1,6 +1,6 @@
 ---
 id: addon_tvpaint_admin
-title: TVPaint Admin docs
+title: TVPaint Admin Docs
 sidebar_label: TVPaint
 ---
 

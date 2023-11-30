@@ -1,6 +1,6 @@
 ---
 id: addon_ftrack_admin
-title: Ftrack Admin docs
+title: Ftrack Admin Docs
 sidebar_label: Ftrack
 ---
 

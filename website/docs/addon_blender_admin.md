@@ -1,6 +1,6 @@
 ---
 id: addon_blender_admin
-title: Blender Admin docs
+title: Blender Admin Docs
 sidebar_label: Blender
 ---
 

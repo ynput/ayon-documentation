@@ -1,6 +1,6 @@
 ---
 id: addon_maya_admin
-title: Maya Admin docs
+title: Maya Admin Docs
 sidebar_label: Maya
 ---
 

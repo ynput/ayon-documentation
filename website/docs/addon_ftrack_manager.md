@@ -1,6 +1,6 @@
 ---
 id: addon_ftrack_manager
-title: Ftrack
+title: Ftrack Manager
 sidebar_label: Project Manager
 ---
 

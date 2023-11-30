@@ -1,6 +1,6 @@
 ---
 id: addon_aftereffects_artist
-title: AfterEffects
+title: AfterEffects Artist Docs
 sidebar_label: AfterEffects
 ---
 <!-- based on PS implementation, same principle and menu -->

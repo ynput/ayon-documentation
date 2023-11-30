@@ -1,6 +1,6 @@
 ---
 id: addon_substancepainter_artist
-title: Substance Painter
+title: Substance Painter Artist Docs
 sidebar_label: Substance Painter
 ---
 

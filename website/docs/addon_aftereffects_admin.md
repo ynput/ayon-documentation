@@ -1,6 +1,6 @@
 ---
 id: addon_aftereffects_admin
-title: AfterEffects Admin docs
+title: AfterEffects Admin Docs
 sidebar_label: AfterEffects
 ---
 

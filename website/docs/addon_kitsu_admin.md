@@ -1,6 +1,6 @@
 ---
 id: addon_kitsu_admin
-title: Kitsu Admin docs
+title: Kitsu Admin Docs
 sidebar_label: Kitsu
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: addon_harmony_admin
-title: ToonBoom Harmony Admin docs
+title: Harmony Admin Docs
 sidebar_label: ToonBoom Harmony
 ---
 

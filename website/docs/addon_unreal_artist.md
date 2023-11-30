@@ -1,6 +1,6 @@
 ---
 id: addon_unreal_artist
-title: Unreal
+title: Unreal Artist Docs
 sidebar_label: Unreal
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: addon_site_sync_admin
-title: Site Sync Admin docs
+title: Site Sync Admin Docs
 sidebar_label: Site Sync
 ---
 

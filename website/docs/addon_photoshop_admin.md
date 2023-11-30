@@ -1,6 +1,6 @@
 ---
 id: addon_photoshop_admin
-title: Photoshop Admin docs
+title: Photoshop Admin Docs
 sidebar_label: Photoshop
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: addon_slack_admin
-title: Slack Admin docs
+title: Slack Admin Docs
 sidebar_label: Slack
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: addon_resolve_artist
-title: DaVinci Resolve
+title: DaVinci Resolve Artist Docs
 sidebar_label: DaVinci Resolve
 ---
 
