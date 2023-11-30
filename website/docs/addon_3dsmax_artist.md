@@ -4,6 +4,13 @@ title: 3dsmax
 sidebar_label: 3dsmax
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Max_Badge}
+</ReactMarkdown>
+
 :::note Work in progress
 This part of documentation is still work in progress.
 :::
