@@ -50,7 +50,7 @@ and create an icon on the desktop.
 For installation on your Linux distribution, download and unzip `AYON-#.#.#.zip`. A new folder `AYON-#.#.#` will be created.
 Inside this folder find and run `ayon_gui`,
 
-![A screenshot of the with a list of the contents of the AYON Linux zip](assets/ayon_install_linux.png)
+![A screenshot of the list of the contents of the AYON Linux zip](assets/ayon_install_linux.png)
 
 </TabItem>
 
