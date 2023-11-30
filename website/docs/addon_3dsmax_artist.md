@@ -104,7 +104,8 @@ Before proceeding further please check [Glossary](artist_concepts.md) and [What 
 
 ### Intro
 
-Current AYON integration (ver 3.15.4) supports only ```PointCache```, ```Camera```, ```MaxScene```,  ```Render``` and  ```PointCloud``` families now.
+Current AYON integration (ver 3.15.4) supports only ```PointCache```, ```Camera```, ```MaxScene```,  ```Render```, ```PointCloud```
+```TyCache``` and ```Review``` families now.
 
 **Pointcache** family being basically any geometry outputted as Alembic cache (.abc) format
 
@@ -114,7 +115,10 @@ Current AYON integration (ver 3.15.4) supports only ```PointCache```, ```Camera`
 
 **Render** family being 3dsmax scene submitted to AWS Thinkbox Deadline. Currently supports 3dsmax standard renderers, Vray and Redshift for multipass submissions. Only supports Arnold for beauty (RGBA) render submission.
 
-**PointCloud** family being 3dsmax point cloud generated from tyFlow plugin and outputted as PRT format. As tyFlow is an external plugin from 3dsmax, make sure to get it install before using the **PointCloud** family.
+**PointCloud** and **TyCache** family being 3dsmax cache generated from tyFlow plugin and outputted as PRT(Pointcloud)/TYC(TyCache) format.
+As tyFlow is an external plugin from 3dsmax, make sure to get it install before using the **PointCloud** family.
+
+**Review** family being 3dsmax scene creating preview animation and outputted as video and image sequences(if users select keep image sequences)
 
 ---
 
@@ -152,6 +156,7 @@ Select any type of objects in the scene you want to export and go **AYON -> Crea
 ### Loading MaxScene
 
 Similar to other max scene loader, it will create the new containers which includes the published max scene object.
+
 ### Render
 
 After choosing your render setting, select the target camera for rendering in the scene and go **AYON -> Create** and select **Render**.
@@ -165,7 +170,7 @@ The Render Instance supports AOV renders for VRay, Redshift, and 3dsMax default 
 Make sure removing the old render instance and create the new one if you switch from one renderer to another
 :::
 
-### Point Cloud
+### Point Cloud/TyCache
 
 :::note Reminder
 Point Cloud Instance only works when tyFlow plugin installed in 3dsmax
@@ -173,7 +178,43 @@ Point Cloud Instance only works when tyFlow plugin installed in 3dsmax
 ### Publishing Point Cloud
 Select the tyFlow object(s) you want to export and go **AYON -> Create** and select **Point Cloud**. The exported object(s) would be in PRT format
 
-### Loading Point Cloud
+### Publishing TyCache
+Select the tyFlow object(s) you want to export and go **AYON -> Create**  and select **TyCache**, you can choose the attribute data of tyCache to be exported in TYC format.
+![Max Review Creator Setting](assets/3dsmax_tycache_settings.png)
+
+:::note Info for TyCache Attributes Option
+For users to have more information to know what the attributes they are exporting.
+**Channels**
+*Age* : tycacheChanAge, *Groups*: "tycacheChanGroups", *Position*: "tycacheChanPos",
+*Rotation*: "tycacheChanRot", *Scale*: "tycacheChanScale", *Velocity*: "tycacheChanVel",
+*Spin*: "tycacheChanSpin", *Shape*: "tycacheChanShape", *Material ID*: "tycacheChanMatID", *Mapping*: "tycacheChanMapping", *Materials*: "tycacheChanMaterials",
+*Custom Float*: "tycacheChanCustomFloat", *Custom Vectors*: "tycacheChanCustomVector",
+*Custom TMs*: "tycacheChanCustomTM", *PhysX Data*: "tycacheChanPhysX"
+**Mesh Files**
+*Backup at regular itnervals*: "tycacheMeshBackup"
+**Geometry Settings**
+*Include cloth geometry*: "tycacheAdditionalCloth",
+*Include actor skinned meshes*: "tycacheAdditionalSkin",
+*Include actor skinned meshes ID*: "tycacheAdditionalSkinID",
+*Include actor skinned meshes ID value*: "tycacheAdditionalSkinIDValue",
+*Include terrain geometry*:"tycacheAdditionalTerrain",
+*Include VDB geometry*: "tycacheAdditionalVDB",
+*Include spline path geometry*: "tycacheAdditionalSplinePaths",
+*Include additional geometry*: "tycacheAdditionalGeo",
+*Activate render-only modifiers*: "tycacheAdditionalGeoActivateModifiers"
+**Splines Settings**
+*Include Spline Paths operators*: "tycacheSplines",
+*Include additional splines*: "tycacheSplinesAdditionalSplines"
+:::
+
+### Loading Point Cloud/TyCache
 When you load the point cloud through **AYON -> Load**, Max will create *tycache* object in the 3dsmax modifier's list and load the published PRT.
+
+### Review
+Select the target camera you want to create preview animation and go **AYON -> Create** and select **Review**.You can set up the preferences(e.g. resolution) before creating the instance.
+![Max Review Creator Setting](assets/3dsmax_review_creator_setting.png)
+
+You can always edit if you want to create preview animation with different settings. You can also choose what to include in the preview animation.
+![Max Review Publish Setting](assets/3dsmax_review_publish_setting.png)
 
 ## ...to be added
