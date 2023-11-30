@@ -46,7 +46,7 @@ Because the saving to the network location happens in the background, be careful
 
 ![Creator](assets/harmony_creator.png)
 
-These are the families supported in Harmony:
+These are the product types supported in Harmony:
 
 - `Render`
     - This instance is for generating a render and review. This is a normal write node, but only PNGs are supported at the moment.
@@ -92,7 +92,7 @@ To access the actions, you right click on the validator. If an action runs succe
 
 ![Loader](assets/photoshop_loader.png)  <!-- picture has to be changed (Harmony needed) -->
 
-The supported families for Harmony are:
+The supported product types for Harmony are:
 
 - `image`
 - `harmony.template`
