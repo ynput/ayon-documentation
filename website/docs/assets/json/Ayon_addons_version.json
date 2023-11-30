@@ -1,4 +1,6 @@
 {
     "_comment" : " Badges are used to indicate the version of addons. The following badges are generated using https://michaelcurrin.github.io/badge-generator/#/generic , Supported icons https://simpleicons.org/",
-    "Houdini_Badge" : "[![Houdini addon - 0.2.6](https://img.shields.io/badge/Houdini%20addon-0.2.6-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)"
+    "Houdini_Badge" : "[![Houdini addon - 0.2.6](https://img.shields.io/badge/Houdini%20addon-0.2.6-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)",
+    "Maya_Badge" : "[![Maya addon - 0.1.6](https://img.shields.io/badge/Maya%20addon-0.1.6-3190b2)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/maya)",
+    "Nuke Badge" : "[![Nuke Addon - 0.1.5](https://img.shields.io/badge/Nuke%20Addon-0.1.5-fab41a?logo=nuke&logoColor=fab41a)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/nuke)"
 }
