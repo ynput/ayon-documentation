@@ -53,9 +53,9 @@ with correct name as you've started Blender or switched context to specific prod
 can change the product you want to publish your model as by selecting it from
 the left column, and selecting the task in the bottom left corner.
 
-`Variant` field is a name you can decide on. It should describe what kind of data you
+`Product` field is a name you can decide on. It should describe what kind of data you
 have in the model. For example, you can name it `Proxy` to indicate that this is
-low resolution stuff. See [Subset](artist_concepts.md#subset).
+low resolution stuff. See [Product](artist_concepts.md#product).
 
 `Use selection` toggle will use whatever you have selected in Outliner to be
 wrapped in Model instance. This is usually what you want. Click on **Create** button.

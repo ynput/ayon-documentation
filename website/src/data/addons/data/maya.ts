@@ -24,7 +24,7 @@ Most of maya workflows are supported including gpucaches, automatic shader, nest
         "publisher",
         "sceneManager"
     ],
-    families: [
+    products: [
         "model",
         "look",
         "rig",

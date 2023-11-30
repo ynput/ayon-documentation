@@ -2,7 +2,7 @@
 id: artist_tools_loader
 title: Loader
 sidebar_label: Loader
-description: Allows loading published subsets from the same project.
+description: Allows loading published products from the same project.
 ---
 
 # Loader
@@ -11,9 +11,9 @@ Use the **Loader** tool whenever you need to load available published assets int
 ## Usage
 1. Go to the **AYON** menu and choose the **Loader** tool.
 2. In the **Loader** window, go to the left pane with the file browser and select the **Asset** you would like to load into your workfile.
-3. In the middle pane, select a desired **subset** of the asset you chose beforehand.
-4. Right-click on the subset to show the **Actions** menu.
-5. Select the way the subset gets into your scene *(load, reference, ...)*.
+3. In the middle pane, select a desired **product** of the asset you chose beforehand.
+4. Right-click on the product to show the **Actions** menu.
+5. Select the way the product gets into your scene *(load, reference, ...)*.
 
 
 import loaderVideo from './assets/video/tools_loader_01.mp4'
@@ -24,7 +24,7 @@ import loaderVideo from './assets/video/tools_loader_01.mp4'
 
 ---
 
-Here's a screenshot of the Loader window with marked areas for Assets, Subsets, Info & Data, and the Action menu. You can use various types of filtering of items listed in each area.
+Here's a screenshot of the Loader window with marked areas for Assets, Products, Info & Data, and the Action menu. You can use various types of filtering of items listed in each area.
 
 ![tools_loader_1](assets/tools/tools_loader_01.png)
 
@@ -32,7 +32,7 @@ Here's a screenshot of the Loader window with marked areas for Assets, Subsets, 
 <div class="col col--6 markdown">
 
 ## Refresh data
-Data is not auto-refreshed to avoid database issues. To refresh assets or subsets, press the refresh button.
+Data is not auto-refreshed to avoid database issues. To refresh assets or products, press the refresh button.
 
 </div>
 <div class="col col--6 markdown">
@@ -44,7 +44,7 @@ Data is not auto-refreshed to avoid database issues. To refresh assets or subset
 
 ## Load another version
 
-By default, Loader loads the latest existing version, but you can load any other version too. Double-click on the **subset** in the **version column** to expose the dropdown and choose the version you want. Then, via the right click actions menu, load it.
+By default, Loader loads the latest existing version, but you can load any other version too. Double-click on the **product** in the **version column** to expose the dropdown and choose the version you want. Then, via the right click actions menu, load it.
  
 import loaderVideo2 from './assets/video/tools_loader_02.mp4'
  
@@ -69,12 +69,12 @@ import loaderVideo2 from './assets/video/tools_loader_02.mp4'
 
 ## Filtering
 
-### Filter Assets and Subsets by name
-To filter assets/subsets by name, type the name or part of it in the filter input box. Only assets/subsets containing the string remain visible
+### Filter Assets and Products by name
+To filter assets/products by name, type the name or part of it in the filter input box. Only assets/products containing the string remain visible
 
-### Filter Subsets by Family
+### Filter Products by Family
 
-To filter [subsets](artist_concepts.md#subset) by their [families](artist_publish.md#families) use the families list where you can check families you want to see or uncheck families you are not interested in.
+To filter [products](artist_concepts.md#product) by their [families](artist_publish.md#families) use the families list where you can check families you want to see or uncheck families you are not interested in.
 
 import loaderVideo3 from './assets/video/tools_loader_03.mp4'
 
@@ -83,15 +83,15 @@ import loaderVideo3 from './assets/video/tools_loader_03.mp4'
 </video>
 
 
-## Subset groups
+## Product groups
 
-Subsets may be grouped to improve readability in the **Loader**. You can toggle the visibility of groups with the `Enable Grouping` checkbox.
+Products may be grouped to improve readability in the **Loader**. You can toggle the visibility of groups with the `Enable Grouping` checkbox.
 
 ![tools_loader_40](assets/tools/tools_loader_40-small.png)
 
 
 ### Add to group or change current group
-You can set the group of selected subsets with the shortcut `Ctrl + G`. If needed, you can remove the existing group by selecting it first and hitting `Ctrl + G`, leaving its name empty, which removes the group completely.
+You can set the group of selected products with the shortcut `Ctrl + G`. If needed, you can remove the existing group by selecting it first and hitting `Ctrl + G`, leaving its name empty, which removes the group completely.
 
 import loaderVideo4 from './assets/video/tools_loader_04.mp4'
 

@@ -72,7 +72,7 @@ Object named `SomeCube_0001_foo_GEO` will pass but `SomeCube_GEO` will not and `
 There is a validation for top level group name too. You can specify whatever regex you'd like to use. Default will
 pass everything with `_GRP` suffix. You can use *named capturing groups* to validate against specific data. If you
 put `(?P<asset>.*)` it will try to match everything captured in that group against current asset name. Likewise you can
-use it for **subset** and **project** - `(?P<subset>.*)` and `(?P<project>.*)`.
+use it for **product** and **project** - `(?P<product>.*)` and `(?P<project>.*)`.
 
 **Example**
 
@@ -100,7 +100,7 @@ list of paths specified in **Settings**. You can find it in **Settings -> Projec
 
 ## Templated Build Workfile
 
-Building a workfile using a template designed by users. Helping to assert homogeneous subsets hierarchy and imports. Template stored as file easy to define, change and customize for production needs.
+Building a workfile using a template designed by users. Helping to assert homogeneous products hierarchy and imports. Template stored as file easy to define, change and customize for production needs.
 
  **1. Make a template**
 

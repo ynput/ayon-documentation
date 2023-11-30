@@ -33,11 +33,11 @@ import {
     addonsIds,
     featuredAddons,
     topFeatures,
-    families,
-    FamilyType,
+    products,
+    ProductType,
 } from "../../data";
 import AddonCard from "./_components/AddonCard";
-import FamilyCard from "./_components/FamilyCard";
+import ProductCard from "./_components/ProductCard";
 
 type UserState = {
     scrollTopPosition: number;
@@ -187,7 +187,7 @@ function FeaturesCards() {
 
     let featuresFiltered = features;
 
-    let familiesFiltered = families;
+    let productsFiltered = products;
 
     // const isFeaturesFiltered = featuresFiltered.length !== features.length;
     let supportedAddons: Addon[] | null = [];
@@ -198,9 +198,9 @@ function FeaturesCards() {
             addonsFiltered.some((addon) => addon.features?.includes(feature.id))
         );
 
-        familiesFiltered = familiesFiltered.filter((family) =>
+        productsFiltered = productsFiltered.filter((product) =>
             addonsFiltered.some((addon) =>
-                addon.families?.includes(family.id as FamilyType)
+                addon.products?.includes(product.id as ProductType)
             )
         );
 
@@ -251,12 +251,12 @@ function FeaturesCards() {
                 description.toLowerCase().includes(search.toLowerCase()) ||
                 addonsToShow.some((addon) => addon.features?.includes(id))
         );
-        // filter families by search
-        familiesFiltered = familiesFiltered.filter(
+        // filter products by search
+        productsFiltered = productsFiltered.filter(
             ({ title, id }) =>
                 title.toLowerCase().includes(search.toLowerCase()) ||
                 addonsToShow.some((addon) =>
-                    addon.families?.includes(id as FamilyType)
+                    addon.products?.includes(id as ProductType)
                 )
         );
     }
@@ -392,28 +392,28 @@ function FeaturesCards() {
                         )}
                     </div>
                 )}
-                {!!familiesFiltered.length && (
+                {!!productsFiltered.length && (
                     <div
                         className={clsx(
                             "container",
                             styles.featuresSection,
-                            styles.families
+                            styles.products
                         )}
-                        id="families"
+                        id="products"
                     >
                         <Heading as="h2" className={styles.showcaseHeader}>
                             {isAddonsSelected
-                                ? "Supported Families"
-                                : "All Families"}
+                                ? "Supported Product Types"
+                                : "All Products Types"}
                             {!isAddonsSelected && (
-                                <Link href="/docs/artist_publish#families">
-                                    What are families?
+                                <Link href="/docs/artist_concepts#product">
+                                    What are products?
                                 </Link>
                             )}
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>
-                            {familiesFiltered.map((family) => (
-                                <FamilyCard key={family.id} family={family} />
+                            {productsFiltered.map((product) => (
+                                <ProductCard key={product.id} product={product} />
                             ))}
                         </ul>
                     </div>

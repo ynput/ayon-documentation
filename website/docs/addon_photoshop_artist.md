@@ -32,7 +32,7 @@ When you are ready to share some work, you will need to publish. This is done by
 
 ![Publish](assets/photoshop_publish.png)
 
-There is always instance for workfile created automatically (see 'workfileArt' item in `Subsets to publish` column.) This allows to publish (and therefore backup)
+There is always instance for workfile created automatically (see 'workfileArt' item in `Products to publish` column.) This allows to publish (and therefore backup)
 workfile which is used to produce another publishable elements (as `image` and `review` items).
 
 #### Create
@@ -56,7 +56,7 @@ This will result in:
 (In Photoshop's `Layers` tab standard layers will be wrapped into group and enriched with ℗ symbol to denote publishable instance. With `Create separate instance for each selected` toggled off
 it will create only single publishable instance which will wrap all visible layers.)
 
-Name of publishable instance (eg. subset name) could be configured with a template in `project_settings/global/tools/creator/subset_name_profiles`.
+Name of publishable instance (eg. product name) could be configured with a template in `project_settings/global/tools/creator/product_name_profiles`.
 (This must be configured by admin who has access to AYON Settings.)
 
 Trash icon under the list of instances allows to delete any selected `image` instance.
@@ -95,7 +95,7 @@ by clicking on available tabs at the top of the dialog.
 #### Simplified publish
 
 There is a simplified workflow for simple use case where only single image should be created containing all visible layers.
-No image instances must be present in a workfile and `project_settings/photoshop/publish/CollectInstances/flatten_subset_template` must be filled in Settings.
+No image instances must be present in a workfile and `project_settings/photoshop/publish/CollectInstances/flatten_product_template` must be filled in Settings.
 Then artists just need to hit 'Publish' button in menu.
 
 #### Repair Validation Issues
@@ -125,7 +125,7 @@ The supported families for Photoshop are:
 
 - `image`
 
-To load an image, right-click on the subset you want and choose a representation:
+To load an image, right-click on the product you want and choose a representation:
 
 ![Loader](assets/photoshop_loader_load.gif)
 

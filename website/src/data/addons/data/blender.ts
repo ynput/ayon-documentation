@@ -18,7 +18,7 @@ const addon: Addon = {
         "slates",
         "colorManaged"
     ],
-    families: [
+    products: [
         "model",
         "rig",
         "layout",

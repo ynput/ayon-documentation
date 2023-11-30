@@ -11,36 +11,11 @@ import TabItem from '@theme/TabItem';
 AYON is a robust and interconnected pipeline platform and as such it comes with certain terminology. This page explains the most important terms and concepts that you will need on a daily basis while working with it. 
 
 
-## Folder
-:::note This is an important change between OpenPype and AYON
-<Tabs
-  groupId="version"
-  defaultValue="ayon"
-  values={[
-    {label: 'AYON', value: 'ayon'},
-    {label: 'OpenPype', value: 'openpype'},
-  ]}>
-
-<TabItem value="ayon">
+### Folder
 
 The main building block of all AYON projects. Each Folder can have a type, which by default includes Episode, Sequence, Shot, and AssetBuild, but can be expanded to any type a project might require. Folders can be parented to each other, forming a hierarchy in the same way as directories on disk.
 
 A folder can be identified by its full path, e.g., `assets/characters/bob`, or by its unique ID. It is not possible to have two folders with the same name within the same parent. So you can have `sq01/sh010` and `sq02/sh010` in the same project, but not two shots named `sh010` within the same sequence.
-
-
-</TabItem>
-<TabItem value="openpype">
-
-### Asset
-
-In AYON all the main entities the project is made from are internally considered *'Assets'*. Episode, sequence, shot, character, prop, etc. All of these behave identically in the pipeline. 
-
-AYON has a limitation regarding duplicated names. Name of assets must be unique across whole project.
-
-</TabItem>
-
-</Tabs>
-:::
 
 
 ### Product

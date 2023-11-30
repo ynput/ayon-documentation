@@ -204,8 +204,8 @@ A studio is having on-going production with project configured imageio at op 3.1
    - Nuke host [**CMS**](admin_colorspace#used-acronyms) is having defined creator nodes to corresponding colorspace name found in provided OCIO config
    - Maya is having activated OCIO v2 via OCIO env var and it is using provided OCIO config
    - Global File rules were defined to:
-        - capture all render family subsets to be **acescg** colorspace
-        - capture all plates family subsets to be **acescc** colorspace
+        - capture all render family products to be **acescg** colorspace
+        - capture all plates family products to be **acescc** colorspace
         - capture all mp4 extensions to be **Output Rec.709** colorspace
 
 #### Required action after the upgrade:

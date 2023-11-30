@@ -121,7 +121,7 @@ To publish a mesh from Unreal, you need to create a publish instance.
 - Click on **AYON → Publisher ...** to open the Publisher screen.
   - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Static Mesh* or *Skeletal Mesh*.
-  - Set the name of the subset.
+  - Set the name of the product.
   - Set *Use selection*.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
 
@@ -161,7 +161,7 @@ To publish a look from Unreal, you need to create a publish instance.
 - Click on **AYON → Publisher ...** to open the Publisher screen.
   - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Look*.
-  - Set the name of the subset.
+  - Set the name of the product.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
 
 ![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
@@ -172,7 +172,7 @@ To publish a look from Unreal, you need to create a publish instance.
   - On the left, you will see all the publish instances that you have created. 
   - Select the ones that you want to publish, and click on **Publish**.
 
-To get the look ready to be publishable, AYON will create a new folder `/Content/AYON/Looks`. In here, it will be created a folder that will contain a simple model with the materials you created assigned, that will be used to publish the look. This folder will be named after subset name you chose when creating the instance. You don't need to do anything with this folder, it is just for the publishing process.
+To get the look ready to be publishable, AYON will create a new folder `/Content/AYON/Looks`. In here, it will be created a folder that will contain a simple model with the materials you created assigned, that will be used to publish the look. This folder will be named after product name you chose when creating the instance. You don't need to do anything with this folder, it is just for the publishing process.
 
 ## UAssets
 
@@ -214,7 +214,7 @@ To publish a UAsset, you need to create a publish instance.
 - Click on **AYON → Publisher ...** to open the Publisher screen.
   - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *UAsset*.
-  - Set the name of the subset.
+  - Set the name of the product.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
 
 ![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
@@ -360,7 +360,7 @@ To publish a layout, you need to create a publish instance.
 - Click on **AYON → Publisher ...** to open the Publisher screen.
   - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *UAsset*.
-  - Set the name of the subset.
+  - Set the name of the product.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the layout.
 
 ![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
@@ -546,7 +546,7 @@ To render and publish an episode, a scene or a shot, you will need to create a R
 - Click on **AYON → Publisher ...** to open the Publisher screen.
   - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Render*.
-  - Set the name of the subset.
+  - Set the name of the product.
   - Check the **Use Hierarchy** checkbox.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to render and publish it.
 
@@ -560,7 +560,7 @@ To render just a scene, without creating a whole hierarchy, you can create an `A
 - Click on **AYON → Publisher ...** to open the Publisher screen.
   - On the top bar, switch to the **Create** tab.
   - In the Creator screen, select *Render*.
-  - Set the name of the subset.
+  - Set the name of the product.
   - Check the **Create a new Level Sequence** checkbox.
   - Set *Start* and *End Frames*.
   - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to render and publish it.

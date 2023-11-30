@@ -66,7 +66,7 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `task[short]` | Short name of task type (eg. 'Modeling' > 'mdl') |
 | `parent` | Name of hierarchical parent |
 | `version` | Version number |
-| `subset` | Subset name |
+| `product` | Product name |
 | `family` | Main family name |
 | `ext` | File extension |
 | `representation` | Representation name |
@@ -120,7 +120,7 @@ So if you set `project_anatomy/templates/defaults/version_padding` to `5` the `{
 
 In some cases of template formatting not all keys are available and should be just ignored. For example `{frame}` should be available only for sequences but we have single publish template. To handle these cases it is possible to use special characters to mark segment of template which should be ignored, if it can't be filled because of missing keys. To mark these segments use `<` and `>`.
 .
-Template `{project[code]}_{asset}_{subset}<_{output}><.{@frame}>.{ext}` can handle all 4 possible situations when `output` and `frame` keys are available or not. The optional segments can contain additional text, like in the example dot (`.`) for frame and underscore (`_`) for output, those are also ignored if the keys are not available. Optional segments without formatting keys are kept untouched: `<br/>` -> stays as `<br/>`. It is possible to nest optional segments inside optional segments `<{asset}<.{@frame}><br/>>` which may result in empty string if `asset` key is not available.
+Template `{project[code]}_{asset}_{product}<_{output}><.{@frame}>.{ext}` can handle all 4 possible situations when `output` and `frame` keys are available or not. The optional segments can contain additional text, like in the example dot (`.`) for frame and underscore (`_`) for output, those are also ignored if the keys are not available. Optional segments without formatting keys are kept untouched: `<br/>` -> stays as `<br/>`. It is possible to nest optional segments inside optional segments `<{asset}<.{@frame}><br/>>` which may result in empty string if `asset` key is not available.
 
 ## Attributes
 

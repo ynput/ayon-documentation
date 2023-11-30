@@ -15,7 +15,7 @@ const addon: Addon = {
         "farmRendering", 
         "reviewables", 
         "slates"],
-    families: ["render", "plate", "image", "review", "pointcache", "prerender"],
+    products: ["render", "plate", "image", "review", "pointcache", "prerender"],
     addons: ["nuke", "harmony", "maya", "afterEffects"],
 };
 

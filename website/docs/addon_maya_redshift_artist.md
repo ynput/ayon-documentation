@@ -15,7 +15,7 @@ proxy file per frame.
 ### Creating Redshift Proxy
 
 To mark data to publish as Redshift Proxy, select them in Maya and - **AYON → Create ...** and
-then select **Redshift Proxy**. You can name your subset and hit **Create** button.
+then select **Redshift Proxy**. You can name your product and hit **Create** button.
 
 You can enable animation in Attribute Editor:
 

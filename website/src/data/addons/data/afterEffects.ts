@@ -10,7 +10,7 @@ const addon: Addon = {
         admin: "admin_hosts_aftereffects",
     },
     github: "https://github.com/ynput/ayon-aftereffects",
-    families: [
+    products: [
         "render",
         "plate",
         "image",
