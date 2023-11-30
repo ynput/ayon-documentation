@@ -46,7 +46,7 @@ other convention.
 Now create **Model instance** from it to let AYON know what in the scene you want to
 publish. Go **AYON → Create... → Model**.
 
-![Model create instance](assets/blender-model_create_instance.jpg)
+![Model create instance](assets/blender-model_create_instance.png)
 
 `Asset` field is a name of asset you are working on - it should be already filled
 with correct name as you've started Blender or switched context to specific asset. You
@@ -86,13 +86,13 @@ your asset should reside. As in our case we are working on asset called
 be `project_XY_asset_task_version`, so in our case
 `simonetest_character1_modeling_v001.blend`. Let's save it.
 
-![Model create instance](assets/blender-save_modelling_file.jpg)
+![Model create instance](assets/blender-save_modelling_file.png)
 
 ### Publishing models
 
 Now let's publish it. Go **AYON → Publish...**. You will be presented with following window:
 
-![Model publish](assets/blender-model_pre_publish.jpg)
+![Model publish](assets/blender-model_pre_publish.png)
 
 Note that content of this window can differs by your pipeline configuration.
 For more detail see [Publisher](artist_tools_publisher).
@@ -119,7 +119,7 @@ green in validator section.
 For the sake of demonstration, I intentionally kept the model in Edit Mode, to
 trigger the validator designed to check just this.
 
-![Failed Model Validator](assets/blender-model_publish_error.jpg)
+![Failed Model Validator](assets/blender-model_publish_error.png)
 
 You can see our model is now marked red in left column and in right we have
 red box next to `Mesh is in Object Mode` validator.
@@ -147,6 +147,8 @@ when ready.
 Publish process will now take its course. Depending on data you are publishing
 it can take a while. You should end up with everything green and message
 **Finished successfully ...** You can now close publisher window.
+
+![Success Publish](assets/blender-model_publish_success.png)
 
 To check for yourself that model is published, open
 [Asset Loader](artist_tools_loader) - **AYON → Load...**.
