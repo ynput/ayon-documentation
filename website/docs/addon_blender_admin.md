@@ -89,7 +89,7 @@ Enable it to define a default unit scale.
 - **Apply on Opening Existing Files:** enbale it to set the unit scale defined below to apply it on exiting files you open.
 - **Base File Unit Scale:** define here the default unit scale. 
 
-![Set Unit Scale](assets/project_settings_blender_unitScale.png)
+![Set Unit Scale](assets/blender/admin/project_settings_blender_unitScale.png)
 
 ### Color Management (OCIO managed)
 //

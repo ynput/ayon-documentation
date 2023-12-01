@@ -39,14 +39,14 @@ need. You might need to adhere to specifications of your studio that can be diff
 between studios and projects but by default your geometry does not need any
 other convention.
 
-![Model example](assets/blender-model_example.jpg)
+![Model example](assets/blender/artist/blender-model_example.jpg)
 
 ### Creating instance
 
 Now create **Model instance** from it to let AYON know what in the scene you want to
 publish. Go **AYON → Create... → Model**.
 
-![Model create instance](assets/blender-model_create_instance.png)
+![Model create instance](assets/blender/artist/blender-model_create_instance.png)
 
 See [Variant](artist_concepts.md#variant) and [Product](artist_concepts.md#product)
 for more detail on what they are and how they are used in AYON.
@@ -69,13 +69,13 @@ your asset should reside. As in our case we are working on product called
 be `project_XY_product_task_version`, so in our case
 `test_suzanne_modeling_v001.blend`. Let's save it.
 
-![Model create instance](assets/blender-save_modelling_file.png)
+![Model create instance](assets/blender/artist/blender-save_modelling_file.png)
 
 ### Publishing models
 
 Now let's publish it. Go **AYON → Publish...**. You will be presented with following window:
 
-![Model publish](assets/blender-model_pre_publish.png)
+![Model publish](assets/blender/artist/blender-model_pre_publish.png)
 
 Note that content of this window can differs by your pipeline configuration.
 For more detail see [Publisher](artist_tools_publisher).
@@ -98,7 +98,7 @@ icon at the bottom next to the "Publish" button. Validators are run.
 For the sake of demonstration, I intentionally kept the model in Edit Mode, to
 trigger the validator designed to check just this.
 
-![Failed Model Validator](assets/blender-model_publish_error.png)
+![Failed Model Validator](assets/blender/artist/blender-model_publish_error.png)
 
 The report tab in the publisher window shows us that we have problem with
 validator `Validate Object Mode`.
@@ -121,7 +121,7 @@ Publish process will now take its course. Depending on data you are publishing
 it can take a while. You should end up in the report tab of the publisher window,
 with a success message and information about published data.
 
-![Success Publish](assets/blender-model_publish_success.png)
+![Success Publish](assets/blender/artist/blender-model_publish_success.png)
 
 You can now close publisher window.
 To check for yourself that model is published, open
@@ -145,7 +145,7 @@ When creating rigs in Blender, it is important to keep a specific structure for
 the bones and the geometry. Let's first create a model and its rig. For
 demonstration, I'll create a simple model for a robotic arm made of simple boxes.
 
-![Blender - Simple model for rigging](assets/blender-rig_model_setup.jpg)
+![Blender - Simple model for rigging](assets/blender/artist/blender-rig_model_setup.jpg)
 
 I have now created the armature `RIG_RobotArm`. While the naming is not important,
 you can just adhere to your naming conventions, the hierarchy is. Once the models
@@ -153,7 +153,7 @@ are skinned to the armature, the geometry must be organized in a separate Collec
 In this case, I have the armature in the main Collection, and the geometry in
 the `Geometry` Collection.
 
-![Blender - Rig Hierarchy Example](assets/blender-rig_hierarchy_example.jpg)
+![Blender - Rig Hierarchy Example](assets/blender/artist/blender-rig_hierarchy_example.jpg)
 
 When you've prepared your hierarchy, it's time to create *Rig instance* in AYON.
 Select your whole rig hierarchy and go **AYON → Create...**. Select **Rig**.
@@ -163,7 +163,7 @@ In our case, it is `character1_rigDefault`. All the selected armature and models
 have been linked in this new collection. You should end up with something like
 this:
 
-![Blender - Rig Hierarchy Example](assets/blender-rig_hierarchy_before_publish.jpg)
+![Blender - Rig Hierarchy Example](assets/blender/artist/blender-rig_hierarchy_before_publish.jpg)
 
 ### Publishing rigs
 
