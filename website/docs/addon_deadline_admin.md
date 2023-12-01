@@ -20,7 +20,7 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you ne
 
 4. Point AYON to your deadline webservice URL in the [AYON Admin Settings](admin_settings_system.md#deadline).
 
-![Webservice url](assets/deadline_webserver_config.png)
+![Webservice url](assets/deadline/admin/deadline_webserver_config.png)
 
 5. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
 
@@ -45,7 +45,7 @@ executable. It is recommended to use the `ayon_console` executable as it provide
 - In case of multi OS farms, provide multiple locations, each Deadline Worker goes through the list and tries to find the first accessible
  location for itself.
 
-![Configure plugin](assets/deadline_configure_plugin.png)
+![Configure plugin](assets/deadline/admin/deadline_configure_plugin.png)
 
 ### AYONTileAssembler Plugin
 To setup tile rendering copy the `OpenPypeTileAssembler` plugin to the repository;
@@ -77,7 +77,7 @@ You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-dead
 
 Each publishing from AYON consists of 2 jobs, first one is rendering, second one is the publishing job (triggered after successful finish of the rendering job).
 
-![Jobs in DL](assets/deadline_fail.png)
+![Jobs in DL](assets/deadline/admin/deadline_fail.png)
 
 - **<font size="4"> Jobs are failing with `AYON executable was not found` error </font>**
 
@@ -88,7 +88,7 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
 
     AYON executable has to have access to `ffmpeg` executable, check AYON `ayon+settings://ayon_third_party`
 
-    ![FFmpeg setting](assets/ffmpeg_path.png)
+    ![FFmpeg setting](assets/deadline/admin/ffmpeg_path.png)
 
 - **<font size="4"> Both jobs finished successfully, but there is no review on Ftrack </font>**
 
@@ -103,7 +103,7 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
 
     Make sure that you actually configured to create review for published product in `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`
 
-    ![Ftrack Family](assets/deadline_review.png)
+    ![Ftrack Family](assets/deadline/admin/deadline_review.png)
 
     Example: I want to create review for all reviewable products in Harmony :
       - Add "harmony" as a new key an ".*" as a value.
@@ -115,6 +115,6 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
 
     Check `ayon+settings://deadline/publish/HarmonySubmitDeadline`
 
-    ![Deadline group](assets/deadline_group.png)
+    ![Deadline group](assets/deadline/admin/deadline_group.png)
 
     Example: I have separated machines with "Harmony" installed into "harmony" group on Deadline. I want rendering jobs published from Harmony to run only on those machines.

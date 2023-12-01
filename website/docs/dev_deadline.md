@@ -17,7 +17,7 @@ if you submit job with 3.14.8, Deadline will try to find that particular version
 for rendering. This is handled by `AYON_VERSION` variable on job - you can delete it from
 there and then the version set in studio Settings will be used.
 
-![Deadline Job Version](assets/deadline_job_version.png)
+![Deadline Job Version](assets/deadline/dev/deadline_job_version.png)
 
 Deadline needs to bootstrap this version so it will try to look the closest compatible
 build. So to use version 3.14.8 on Deadline it is enough to have build 3.14.0 or similar - important
