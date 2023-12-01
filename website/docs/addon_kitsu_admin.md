@@ -48,7 +48,7 @@ There are three settings available:
 - `Note shortname` -> Which status shortname should be set automatically (Case sensitive).
 - `Status conditions` -> Conditions that need to be met for kitsu status to be changed. You can add as many conditions as you like. There are two fields to each conditions: `Condition` (Whether current status should be equal or not equal to the condition status) and `Short name` (Kitsu Shortname of the condition status).
 
-![Integrate Kitsu Note project settings](assets/integrate_kitsu_note_settings.png)
+![Integrate Kitsu Note project settings](assets/kitsu/admin/integrate_kitsu_note_settings.png)
 
 ## Q&A
 ### Is it safe to rename an entity from Kitsu?
