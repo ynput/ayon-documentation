@@ -14,7 +14,7 @@ All of them are Project based, eg. each project could have different configurati
 
 Location: Settings > Project > Photoshop
 
-![AfterEffects Project Settings](assets/admin_hosts_photoshop_settings.png)
+![AfterEffects Project Settings](assets/photoshop/admin/admin_hosts_photoshop_settings.png)
 
 ## Color Management (ImageIO)
 

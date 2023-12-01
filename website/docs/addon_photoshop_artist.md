@@ -30,7 +30,7 @@ You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
 
 When you are ready to share some work, you will need to publish. This is done by opening the `Publisher` through the `Publish...` button.
 
-![Publish](assets/photoshop_publish.png)
+![Publish](assets/photoshop/artist/photoshop_publish.png)
 
 There is always instance for workfile created automatically (see 'workfileArt' item in `Products to publish` column.) This allows to publish (and therefore backup)
 workfile which is used to produce another publishable elements (as `image` and `review` items).
@@ -51,7 +51,7 @@ For separate layers option keep `Create separate instance for each selected` tog
 
 This will result in:
 
-![Image instances creates](assets/photoshop_publish_images.png)
+![Image instances creates](assets/photoshop/artist/photoshop_publish_images.png)
 
 (In Photoshop's `Layers` tab standard layers will be wrapped into group and enriched with ℗ symbol to denote publishable instance. With `Create separate instance for each selected` toggled off
 it will create only single publishable instance which will wrap all visible layers.)
@@ -73,7 +73,7 @@ Publisher allows publishing into different context, just click on any instance, 
 If you would like to run validation rules set by your Studio, click on funnel icon at the bottom right. This will run through all
 enabled instances, you could see more information after clicking on `Details` tab.
 
-![Image instances creates](assets/photoshop_publish_validations.png)
+![Image instances creates](assets/photoshop/artist/photoshop_publish_validations.png)
 
 In this dialog you could see publishable instances in left column, triggered plugins in the middle and logs in the right column.
 
@@ -102,7 +102,7 @@ Then artists just need to hit 'Publish' button in menu.
 
 If there is some issue in validator phase, you will receive something like this:
 
-![Validation error](assets/photoshop_publish_failed.png)
+![Validation error](assets/photoshop/artist/photoshop_publish_failed.png)
 
 All validators will give some description about what the issue is. You can inspect this by clicking on items in the left column.
 
@@ -119,7 +119,7 @@ If there is an option of automatic repair, there will be `Repair` button on the 
 
 When you want to load existing published work, you can load in smart layers through the `Loader`. You can reach the `Loader` through the extension's `Load` button.
 
-![Loader](assets/photoshop_loader.png) <!-- picture needs to be changed -->
+![Loader](assets/photoshop/artist/photoshop_loader.png) <!-- picture needs to be changed -->
 
 The supported families for Photoshop are:
 
@@ -127,7 +127,7 @@ The supported families for Photoshop are:
 
 To load an image, right-click on the product you want and choose a representation:
 
-![Loader](assets/photoshop_loader_load.gif)
+![Loader](assets/photoshop/artist/photoshop_loader_load.gif)
 
 ### Manage
 
@@ -137,12 +137,12 @@ Now that we have some images loaded, we can manage which version is loaded. This
 Loaded images has to stay as smart layers in order to be updated. If you rasterize the layer, you cannot update it to a different version.
 :::
 
-![Loader](assets/photoshop_manage.png)
+![Loader](assets/photoshop/artist/photoshop_manage.png)
 
 You can switch to a previous version of the image or update to the latest.
 
-![Loader](assets/photoshop_manage_switch.gif)
-![Loader](assets/photoshop_manage_update.gif)
+![Loader](assets/photoshop/artist/photoshop_manage_switch.gif)
+![Loader](assets/photoshop/artist/photoshop_manage_update.gif)
 
 
 #### Support help
