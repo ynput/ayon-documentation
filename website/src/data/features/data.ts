@@ -86,7 +86,7 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Built in file synchronization between your central storage (cloud or physical) and all your freelancers",
         docs: {
-            admin: "module_site_sync",
+            admin: "addon_site_sync_admin",
         },
     },
     timersManager: {

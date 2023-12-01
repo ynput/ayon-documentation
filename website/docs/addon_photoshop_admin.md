@@ -124,4 +124,4 @@ Allows to open prepared workfile for an artist when no workfile exists. Useful t
 
 Could be configured per `Task type`, eg. `composition` task type could use different `.psd` template file than `art` task.
 Workfile template must be accessible for all artists.
-(Currently not handled by [SiteSync](module_site_sync.md))
+(Currently not handled by [SiteSync](addon_site_sync_admin.md))
