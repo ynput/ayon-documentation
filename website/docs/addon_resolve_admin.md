@@ -95,9 +95,9 @@ As it is shown in below picture you have to go to Fusion Tab and then in Fusion 
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_fusion_tab.png)
-![Create menu](assets/resolve_fusion_menu.png)
-![Create menu](assets/resolve_fusion_script_settings.png)
+![Create menu](assets/resolve/admin/resolve_fusion_tab.png)
+![Create menu](assets/resolve/admin/resolve_fusion_menu.png)
+![Create menu](assets/resolve/admin/resolve_fusion_script_settings.png)
 
 </div>
 </div>

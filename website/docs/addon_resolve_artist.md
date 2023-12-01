@@ -44,7 +44,7 @@ Timeline video clips should be colored to `Chocolate` color for AYON to se it as
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_select_clips_timeline_chocolate.png)
+![Create menu](assets/resolve/artist/resolve_select_clips_timeline_chocolate.png)
 
 </div>
 </div>
@@ -64,20 +64,20 @@ To be able to work with dynamic product name, which is based on track names it i
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_creator_subset_name.png)
+![Create menu](assets/resolve/artist/resolve_creator_subset_name.png)
 The name of the resulting *product* can be seen in the **AYONData** marker.
 <br></br><br></br>
 </div>
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_remame_track_names.png)
+![Create menu](assets/resolve/artist/resolve_remame_track_names.png)
 Simple track setup where we are only using `main` and  `review` track names.
 
 </div>
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_create_vertical_rename_timeline.png)
+![Create menu](assets/resolve/artist/resolve_create_vertical_rename_timeline.png)
 An example of used track names. The yellow frame is highlighting vertically aligned clips - which are going to be renamed and grouped together under one asset (shot) name. The concept of vertical renaming will be explained later in [Vertical Synchronization of Product Attributes](#vertical-synchronization-of-product-attributes).
 
 </div>
@@ -94,7 +94,7 @@ After all clips which are intended to be converted to publishable instances are 
 </div>
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_menu_openpype.png)
+![Create menu](assets/resolve/artist/resolve_menu_openpype.png)
 
 </div>
 
@@ -112,7 +112,7 @@ The Product name can stay as it is, it is not going to be used because each clip
 </div>
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_create_clips.png)
+![Create menu](assets/resolve/artist/resolve_create_clips.png)
 
 </div>
 </div>
@@ -133,7 +133,7 @@ As you can see the in `{shot}` key within *Shot Template Keywords* section, you 
 </div>
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_create_renaming_clips.png)
+![Create menu](assets/resolve/artist/resolve_create_renaming_clips.png)
 
 </div>
 </div>
@@ -154,7 +154,7 @@ Notice the relationship of following sections. Keys from **Shot Template Keyword
 </div>
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_create_template_filling.png)
+![Create menu](assets/resolve/artist/resolve_create_template_filling.png)
 
 </div>
 </div>
@@ -171,13 +171,13 @@ In multiple tracks scenario - as mentioned [here](#rename-timeline-track-names) 
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_create_single_track_rename_hero_track.png)
+![Create menu](assets/resolve/artist/resolve_create_single_track_rename_hero_track.png)
 
 </div>
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/resolve_create_vertical_rename_creator_ui.png)
+![Create menu](assets/resolve/artist/resolve_create_vertical_rename_creator_ui.png)
 
 </div>
 </div>
@@ -196,7 +196,7 @@ Once all `Chocolate` colored clips have gone through the [creator](#rcreate-menu
 <div class="row markdown">
 <div class="col --6 markdown">
 
-![Create menu](assets/resolve_publish_instance_review_main.png)
+![Create menu](assets/resolve/artist/resolve_publish_instance_review_main.png)
 Notice that the main track clips and review had been merged into one instance. And since it is main `hero` clip it is also holding all new shot metadata. For that reason it also create secon instance for each with `shot` family. This instance will create all shot hierarchy and pass frame range attributes to shot (asset).
 
 </div>
@@ -205,7 +205,7 @@ Notice that the main track clips and review had been merged into one instance. A
 <div class="row markdown">
 <div class="col --6 markdown">
 
-![Create menu](assets/resolve_publish_instance_other_plateSubsets.png)
+![Create menu](assets/resolve/artist/resolve_publish_instance_other_plateSubsets.png)
 Also notice how the product name is formed form a *track* name and *product family* from previous steps.
 
 Also important is to notice the asset name in *AYONData* at marker - the name is the same for all **Vertically renamed** shots as they have been grouped together. Unfortunately Resolve is not allowing to rename the clips so the only way to know is to see it in marker's metadata.
