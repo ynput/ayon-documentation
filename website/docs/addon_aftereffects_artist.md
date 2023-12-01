@@ -30,7 +30,7 @@ Workfiles tools takes care of saving your .AEP files in the correct location and
 
 In AfterEffects you'll find the tools in the `AYON` extension:
 
-![Extension](assets/photoshop_extension.png) <!-- same menu as in PS -->
+![Extension](assets/aftereffects/artist/ayon_menu.png)
 
 You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
 
@@ -46,7 +46,7 @@ First select existing composition and then press `Create >>>` in middle column o
 
 After this process you should have something like this:
 
-![Highlights](assets/aftereffects_publish_instance.png)
+![Highlights](assets/aftereffects/artist/aftereffects_publish_instance.png)
 
 Name of publishable instance (eg. product name) could be configured with a template in `project_settings/global/tools/creator/product_name_profiles`.
 (This must be configured by admin who has access to AYON Settings.)
@@ -72,7 +72,7 @@ AE might throw some warning windows during publishing locally, so please pay att
 If you would like to run validation rules set by your Studio, click on funnel icon at the bottom right. This will run through all enabled instances, you could see more information after clicking on `Details` tab.
 
 If there is some issue in validator phase, you will receive something like this:
-![Validation error](assets/aftereffects_publish_failed.png)
+![Validation error](assets/aftereffects/artist/aftereffects_publish_failed.png)
 
 All validators will give some description about what the issue is. You can inspect this by clicking on items in the left column.
 
@@ -85,7 +85,7 @@ There are currently 2 options of `render` item:
 - Render of farm - allows offload rendering and publishing to Deadline - requires Deadline module being enabled
 - Validate Scene Settings - enables validation plugin which controls setting in DB (or asset control system like Ftrak) and scene itself
 
-![Configuration of render instance](assets/aftereffects_render_instance.png)
+![Configuration of render instance](assets/aftereffects/artist/aftereffects_render_instance.png)
 
 #### Buttons on the bottom right are for:
 - `Refresh publishing` - set publishing process to starting position - useful if previous publish failed, or you changed configuration of a publish
@@ -97,7 +97,7 @@ There are currently 2 options of `render` item:
 
 When you want to load existing published work, you can use the `Loader` tool. You can reach it in the extension's panel.
 
-![Loader](assets/photoshop_loader.png) <!-- picture needs to be changed -->
+![Loader](assets/aftereffects/artist/aftereffects_loader.png)
 
 The supported families for loading into AfterEffects are:
 
@@ -111,7 +111,7 @@ The supported families for loading into AfterEffects are:
 
 To load an item, right-click on the product you want and choose a representation you want to load:
 
-![Loader](assets/photoshop_loader_load.gif)
+![Loader](assets/aftereffects/artist/aftereffects_load_animation.gif)
 
 ### Manage
 
@@ -121,12 +121,11 @@ Now that we have some content loaded, you can manage which version is loaded. Th
 Loaded images have to stay as smart layers in order to be updated. If you rasterize the layer, you can no longer update it to a different version using AYON tools.
 :::
 
-![Loader](assets/photoshop_manage.png)
+![Loader](assets/aftereffects/artist/aftereffects_manage.png)
 
 You can switch to a previous version of the image or update to the latest.
 
-![Loader](assets/photoshop_manage_switch.gif)
-![Loader](assets/photoshop_manage_update.gif)
+![Loader](assets/aftereffects/artist/aftereffects_manage_animation.gif)
 
 #### Support help
 If you would like to ask for help admin or support, you could use any of the three options on the `Note` button on bottom left:

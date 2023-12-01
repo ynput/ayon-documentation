@@ -22,7 +22,7 @@ When you launch Photoshop you will be met with the Workfiles app. If dont have a
 
 In Photoshop you can find the tools in the `AYON` extension:
 
-![Extension](assets/photoshop_extension.png) <!-- picture needs to be changed -->
+![Extension](assets/photoshop/artist/photoshop_extension.png) <!-- picture needs to be changed -->
 
 You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
 
