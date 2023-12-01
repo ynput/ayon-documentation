@@ -14,7 +14,7 @@ All of them are Project based, eg. each project could have different configurati
 
 Location: Project Settings > Harmony (`ayon_server_url/manageProjects/projectSettings`)
 
-![Harmony Project Settings](assets/admin_hosts_harmony_settings.png)
+![Harmony Project Settings](assets/harmony/admin/admin_hosts_harmony_settings.png)
 
 ## OCIO config
 
