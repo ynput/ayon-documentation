@@ -43,6 +43,7 @@ export const officialAddons = [
     "photoshop",
     "royalRender",
     "shotgrid",
+    "substancepainter",
     "slack",
     "tvpaint",
     "unreal"
