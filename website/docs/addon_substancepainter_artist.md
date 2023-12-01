@@ -70,7 +70,7 @@ the Substance Painter's export preset. For example a publish from a default
 PBR Metallic Roughness texture set results in six separate published products 
 (if all the channels exist in your file).
 
-![Substance Painter PBR Metallic Roughness Export Preset](assets/substancepainter_pbrmetallicroughness_export_preset.png)
+![Substance Painter PBR Metallic Roughness Export Preset](assets/substancepainter/artist/substancepainter_pbrmetallicroughness_export_preset.png)
 
 When publishing for example a texture set with variant **Main** six instances will
 be published with the variants: 
@@ -88,7 +88,7 @@ So `$mesh_$textureSet_BaseColor(_$colorSpace)(.$udim)` becomes `BaseColor`.
 
 An example output for PBR Metallic Roughness would be:
 
-![Substance Painter PBR Metallic Roughness Publish Example in Loader](assets/substancepainter_pbrmetallicroughness_published.png)
+![Substance Painter PBR Metallic Roughness Publish Example in Loader](assets/substancepainter/artist/substancepainter_pbrmetallicroughness_published.png)
 
 ## Known issues
 
