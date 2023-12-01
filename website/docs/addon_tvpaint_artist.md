@@ -14,25 +14,25 @@ sidebar_label: TVPaint
 ## Setup
 When you launch TVPaint with AYON for the very first time it is necessary to do some additional steps. Right after the TVPaint launching a few system windows will pop up.
 
-![permission](assets/tvp_permission.png)
+![permission](assets/tvpaint/artist/tvp_permission.png)
 
 Choose `Replace the file in the destination`. Then another window shows up.
 
-![permission2](assets/tvp_permission2.png)
+![permission2](assets/tvpaint/artist/tvp_permission2.png)
 
 Click on `Continue`.
 
 After opening TVPaint go to the menu bar: `Windows → Plugins → AYON`.
 
-![pypewindow](assets/tvp_hidden_window.gif)
+![pypewindow](assets/tvpaint/artist/tvp_hidden_window.gif)
 
 Another TVPaint window pop up. Please press `Yes`. This window will be presented in every single TVPaint launching. Unfortunately, there is no other way how to workaround it.
 
-![writefile](assets/tvp_write_file.png)
+![writefile](assets/tvpaint/artist/tvp_write_file.png)
 
 Now AYON Tools menu is in your TVPaint work area.
 
-![openpypetools](assets/tvp_openpype_menu.png)
+![openpypetools](assets/tvpaint/artist/tvp_openpype_menu.png)
 
 You can start your work.
 
@@ -48,7 +48,7 @@ To be able to publish, you have to mark what should be published. The marking pa
 TVPaint integration tries to not guess what you want to publish from the scene. Therefore, you should tell what you want to publish.
 :::
 
-![createlayer](assets/tvp_publisher.png)
+![createlayer](assets/tvpaint/artist/tvp_publisher.png)
 
 ### Review
 `Review` will render all visible layers and create a reviewable output.
@@ -81,7 +81,7 @@ You can change `variant` later in **Publish** tab.
 </div>
 <div class="col col--6 markdown">
 
-![createlayer](assets/tvp_create_layer.png)
+![createlayer](assets/tvpaint/artist/tvp_create_layer.png)
 
 </div>
 </div>
@@ -91,15 +91,15 @@ You can change `variant` later in **Publish** tab.
 
 In the bottom left corner of your timeline, you will note a **Color group** button.
 
-![colorgroups](assets/tvp_color_groups.png)
+![colorgroups](assets/tvpaint/artist/tvp_color_groups.png)
 
 It allows you to choose a group by checking one of the colors of the color list.
 
-![colorgroups](assets/tvp_color_groups2.png)
+![colorgroups](assets/tvpaint/artist/tvp_color_groups2.png)
 
 The timeline's animation layer can be marked by the color you pick from your Color group. Layers in the timeline with the same color are gathered into a group represents one render layer.
 
-![timeline](assets/tvp_timeline_color.png)
+![timeline](assets/tvpaint/artist/tvp_timeline_color.png)
 
 
 ### Render Pass
@@ -127,7 +127,7 @@ You can change `variant` or Render Layer later in **Publish** tab.
 </div>
 <div class="col col--6 markdown">
 
-![createpass](assets/tvp_create_pass.png)
+![createpass](assets/tvpaint/artist/tvp_create_pass.png)
 
 </div>
 </div>
@@ -140,7 +140,7 @@ You cannot change TVPaint layer name once you mark it as part of Render Pass. Yo
 
 In this example, AYON will render selected animation layers within the given color group. E.i. the layers *L020_colour_fx*, *L020_colour_mouth*, and *L020_colour_eye* will be rendered as one pass belonging to the yellow RenderLayer.
 
-![renderpass](assets/tvp_timeline_color2.png)
+![renderpass](assets/tvpaint/artist/tvp_timeline_color2.png)
 
 Now that you have created the required instances, you can publish them.
 - Fill the comment on the bottom of the window.
@@ -163,13 +163,13 @@ The supported families for TVPaint are:
 
 To load a family item, right-click on the product you want and import their representations, switch among the versions, delete older versions, copy files, etc.
 
-![Loader](assets/tvp_loader.gif)
+![Loader](assets/tvpaint/artist/tvp_loader.gif)
 
 ---
 
 ## Scene Inventory
 Scene Inventory shows you everything that you have loaded into your scene using AYON. You can reach it through the extension's `Scene Inventory` button.
 
-![sceneinventory](assets/tvp_scene_inventory.png)
+![sceneinventory](assets/tvpaint/artist/tvp_scene_inventory.png)
 
 You can switch to a previous version of the file or update it to the latest or delete items.
