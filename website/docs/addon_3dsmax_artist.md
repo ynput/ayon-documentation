@@ -27,12 +27,14 @@ Locate **AYON Icon** in the OS tray (if hidden dive in the tray toolbar).
 
 By clicking the icon  ```AYON Menu``` rolls out.
 
+![Menu AYON](assets/3dsmax_tray_OP.png)
+
 Choose ```AYON Menu > Launcher``` to open the ```Launcher``` window.
 
 When opened you can **choose** the **project** to work in from the list. Then choose the particular **asset** you want to work on then choose **task**
 and finally **run 3dsmax by its icon** in the tools.
 
-![Menu AYON](assets/3dsmax_tray_OP.png)
+![AYON Launcher](assets/3dsmax_Ayon_launcher.png)
 
 :::note Launcher Content
 The list of available projects, assets, tasks and tools will differ according to your Studio and need to be set in advance by supervisor/admin.
@@ -82,7 +84,7 @@ Here you can see resulting work file after ```Save As``` action.
 
 ## Understanding Context
 
-As seen on our example AYON created pretty first workfile and named it ```220901_couch_modeling_v001.max``` meaning it sits in the Project ```220901``` being it ```couch``` asset and workfile being ```modeling``` task and obviously ```v001``` telling user its first existing version of this workfile.
+As seen on our example AYON created pretty first workfile and named it ```il_asset_art_v002.max``` meaning it sits in the Project ```il``` being it ```asset``` asset and workfile being ```art``` task and obviously ```v002``` telling user its first existing version of this workfile.
 
 It is good to be aware that whenever you as a user choose ```asset``` and ```task``` you happen to be in so called **context** meaning that all user actions are in relation with particular ```asset```. This could be quickly seen in host application header and ```AYON Menu``` and its accompanying tools.
 
@@ -133,12 +135,18 @@ Simply select any animated geometry you want to export as alembic format and go 
 ### Loading Point Cache
 
 When you load the Point Cache via **AYON -> Load**, it creates the container which includes the Alembic object parented to the point cache object.
+
 ### Publishing Camera
 
 Select the camera you want to export and go **AYON -> Create** and select **Camera**.
 User can go **Publish** and decide the export options by turning on/off the camera extractors.
 
 ![Max Camera Extractor](assets/3dsmax_camera_extractors.png)
+
+:::warning Alembic compatibility
+The exported Alembic from the current alembic extractor may only be loaded in Max. It may not be compatible with the alembic loader in other DCCs
+such as Maya.
+:::
 
 ### Loading Camera
 
@@ -147,6 +155,8 @@ The loader provides several options to load camera. You can import camera in eit
 ![Max Camera Loader](assets/3dsmax_camera_loaders.png)
 
 Similar to the Point Cache Instance, the Alembic camera loader will creates the container which includes the Alembic object parented to the point cache object.
+
+
 The Fbx and max scene Loader import the published camera object which is parented to the newly created container.
 
 ### Publishing MaxScene
@@ -160,7 +170,7 @@ Similar to other max scene loader, it will create the new containers which inclu
 ### Render
 
 After choosing your render setting, select the target camera for rendering in the scene and go **AYON -> Create** and select **Render**.
-When you go to **Publish**, you can set up the preferences before the deadline submission.
+When you go to **Publish**, you can set up the preferences in either creator or AYON setting before the deadline submission.
 
 ![Max Render Setting](assets/3dsmax_deadline_render_settings.png)
 
@@ -216,5 +226,8 @@ Select the target camera you want to create preview animation and go **AYON -> C
 
 You can always edit if you want to create preview animation with different settings. You can also choose what to include in the preview animation.
 ![Max Review Publish Setting](assets/3dsmax_review_publish_setting.png)
+
+### Validators
+# Validate Loaded Plugin
 
 ## ...to be added
