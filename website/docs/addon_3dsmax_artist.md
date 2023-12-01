@@ -32,7 +32,7 @@ Choose ```AYON Menu > Launcher``` to open the ```Launcher``` window.
 When opened you can **choose** the **project** to work in from the list. Then choose the particular **asset** you want to work on then choose **task**
 and finally **run 3dsmax by its icon** in the tools.
 
-![Menu AYON](assets/3dsmax_tray_OP.png)
+![Menu AYON](assets/3dsmax/artist/3dsmax_tray_OP.png)
 
 :::note Launcher Content
 The list of available projects, assets, tasks and tools will differ according to your Studio and need to be set in advance by supervisor/admin.
@@ -43,7 +43,7 @@ The list of available projects, assets, tasks and tools will differ according to
 If 3dsmax has been launched via OP Launcher there should be **AYON Menu** visible in 3dsmax **top header** after start.
 This is the core functional area for you as a user. Most of your actions will take place here.
 
-![Menu AYON](assets/3dsmax_menu_first_OP.png)
+![Menu AYON](assets/3dsmax/artist/3dsmax_menu_first_OP.png)
 
 :::note AYON Menu
 User should use this menu exclusively for **Opening/Saving** when dealing with work files not standard ```File Menu``` even though user still being able perform file operations via this menu but preferably just performing quick saves during work session not saving actual workfile versions.
@@ -56,13 +56,13 @@ In AYON menu first go to ```Work Files``` menu item so **Work Files  Window** sh
  Here you can perform Save / Load actions as you would normally do with ```File Save ``` and ```File Open``` in the standard 3dsmax ```File Menu``` and navigate to different project components like assets, tasks, workfiles etc.
 
 
-![Menu AYON](assets/3dsmax_menu_OP.png)
+![Menu AYON](assets/3dsmax/artist/3dsmax_menu_OP.png)
 
 You first choose particular asset and assigned task and corresponding workfile you would like to open.
 
 If not any workfile present simply hit ```Save As``` and keep ```Subversion``` empty and hit ```Ok```.
 
-![Save As Dialog](assets/3dsmax_SavingFirstFile_OP.png)
+![Save As Dialog](assets/3dsmax/artist/3dsmax_SavingFirstFile_OP.png)
 
 AYON correctly names it and add version to the workfile. This basically happens whenever user trigger ```Save As``` action. Resulting into incremental version numbers like
 
@@ -78,7 +78,7 @@ Basically meaning user is free of guessing what is the correct naming and other 
 
 Here you can see resulting work file after ```Save As``` action.
 
-![Save As Dialog](assets/3dsmax_SavingFirstFile2_OP.png)
+![Save As Dialog](assets/3dsmax/artist/3dsmax_SavingFirstFile2_OP.png)
 
 ## Understanding Context
 
@@ -86,7 +86,7 @@ As seen on our example AYON created pretty first workfile and named it ```220901
 
 It is good to be aware that whenever you as a user choose ```asset``` and ```task``` you happen to be in so called **context** meaning that all user actions are in relation with particular ```asset```. This could be quickly seen in host application header and ```AYON Menu``` and its accompanying tools.
 
-![Workfile Context](assets/3dsmax_context.png)
+![Workfile Context](assets/3dsmax/artist/3dsmax_context.png)
 
 > Whenever you choose different ```asset``` and its ```task``` in **Work Files window** you are basically changing context to the current asset/task you have chosen.
 
@@ -134,13 +134,13 @@ When you load the Point Cache via **AYON -> Load**, it creates the container whi
 Select the camera you want to export and go **AYON -> Create** and select **Camera**.
 User can go **Publish** and decide the export options by turning on/off the camera extractors.
 
-![Max Camera Extractor](assets/3dsmax_camera_extractors.png)
+![Max Camera Extractor](assets/3dsmax/artist/3dsmax_camera_extractors.png)
 
 ### Loading Camera
 
 The loader provides several options to load camera. You can import camera in either native Max, Fbx and Alembic (abc) format.
 
-![Max Camera Loader](assets/3dsmax_camera_loaders.png)
+![Max Camera Loader](assets/3dsmax/artist/3dsmax_camera_loaders.png)
 
 Similar to the Point Cache Instance, the Alembic camera loader will creates the container which includes the Alembic object parented to the point cache object.
 The Fbx and max scene Loader import the published camera object which is parented to the newly created container.
@@ -157,7 +157,7 @@ Similar to other max scene loader, it will create the new containers which inclu
 After choosing your render setting, select the target camera for rendering in the scene and go **AYON -> Create** and select **Render**.
 When you go to **Publish**, you can set up the preferences before the deadline submission.
 
-![Max Render Setting](assets/3dsmax_deadline_render_settings.png)
+![Max Render Setting](assets/3dsmax/artist/3dsmax_deadline_render_settings.png)
 
 The Render Instance supports AOV renders for VRay, Redshift, and 3dsMax default renderers(i.e QuickSliver Hardware Renderer, ART Renderer, Scanline Renderer, VUE File Renderer). Merely supports beauty render for Arnold due to the pymxs API limitation.
 
