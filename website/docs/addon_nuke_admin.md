@@ -17,7 +17,7 @@ All Workfile Builder related settings can be found here. This is a list of avail
 - Define Builder Profiles With Filters
 
 
-![nuke_workfile_options_location](assets/nuke_workfile_builder_location.png)
+![nuke_workfile_options_location](assets/nuke/admin/nuke_workfile_builder_location.png)
 
 
 :::important Auto Load Last Version
@@ -29,7 +29,7 @@ In case you want to set the auto load of the latest available version of workfil
 By switchintg this feature on, AYON will generate initial workfile version. Following attributes are possible to configure:
 
 
-![nuke_workfile_options_create_first_version](assets/nuke_workfile_builder_create_first_workfile.png)
+![nuke_workfile_options_create_first_version](assets/nuke/admin/nuke_workfile_builder_create_first_workfile.png)
 
 
 #### Custom templates
@@ -38,7 +38,7 @@ Custom templates are added into nuke's node graph as nodes. List of task types c
 - Task types are sourced from project related Anatomy/Task Types
 
 
-![nuke_workfile_builder_template_task_type](assets/nuke_workfile_builder_template_task_type.png)
+![nuke_workfile_builder_template_task_type](assets/nuke/admin/nuke_workfile_builder_template_task_type.png)
 
 
  - multi platform path can be used in a variety of ways. Along the absolute path to a template file also an python formatting could be used. At the moment these keys are supported (image example below):
@@ -47,7 +47,7 @@ Custom templates are added into nuke's node graph as nodes. List of task types c
    - `asset`: name of asset/shot in context
    - `task[type, name, short_name]`: as they are defined on asset/shot and in **Anatomy/Task Type** on project context
 
-![nuke_workfile_builder_template_anatomy](assets/nuke_workfile_builder_template_anatomy.png)
+![nuke_workfile_builder_template_anatomy](assets/nuke/admin/nuke_workfile_builder_template_anatomy.png)
 
 #### Run Builder profiles on first launch
 Enabling this feature will look into available Builder's Prorfiles (look below for more information about this feature) and load available versions into node graph.
@@ -62,11 +62,11 @@ Builder profiles are set of rules allowing artist Load any available versions fo
 - **Linked Assets/Shots**: filters for asset builds to be added
 
 
-![nuke_workfile_builder_profiles](assets/nuke_workfile_builder_profiles.png)
+![nuke_workfile_builder_profiles](assets/nuke/admin/nuke_workfile_builder_profiles.png)
 
 ## Custom Menu
 You can add your custom tools menu into Nuke by extending definitions in **Nuke -> Scripts Menu Definition**.
-![Custom menu definition](assets/nuke-admin_scriptsmenu.png)
+![Custom menu definition](assets/nuke/admin/nuke-admin_scriptsmenu.png)
 
 :::note Work in progress
 This is still work in progress. Menu definition will be handled more friendly with widgets and not
@@ -75,4 +75,4 @@ raw json.
 
 ## Gizmo Menu
 You can add your custom toolbar menu into Nuke by setting your gizmo path and extending definitions in **Nuke -> Gizmo Menu**.
-![Custom menu definition](assets/nuke-admin_gizmomenu.png)
+![Custom menu definition](assets/nuke/admin/nuke-admin_gizmomenu.png)

@@ -208,49 +208,49 @@ This is a tool of Node Graph initialisation using a pre-created template.
 ### Add a profile
 The path to the template that will be used in the initialisation must be added as a profile on Project Settings.
 
-![Create menu](assets/nuke_addProfile.png)
+![Create menu](assets/hiero/artist/nuke_addProfile.png)
 
 ### Create Place Holder
 
-![Create menu](assets/nuke_createPlaceHolder.png)
+![Create menu](assets/hiero/artist/nuke_createPlaceHolder.png)
 
 This tool creates a Place Holder, which is a node that will be replaced by published instances.
 
-![Create menu](assets/nuke_placeHolderNode.png)
+![Create menu](assets/hiero/artist/nuke_placeHolderNode.png)
 #### Result
 - Create a red node called `PLACEHOLDER` which can be manipulated as wanted by using it in Node Graph.
 
-![Create menu](assets/nuke_placeholder.png)
+![Create menu](assets/hiero/artist/nuke_placeholder.png)
 
 :::note
 All published instances that will replace the place holder must contain unique input and output nodes in case they will not be imported as a single node. 
 :::
 
-![Create menu](assets/nuke_publishedinstance.png)
+![Create menu](assets/hiero/artist/nuke_publishedinstance.png)
 
 
 The information about these objects are given by the user by filling the extra attributes of the Place Holder
 
-![Create menu](assets/nuke_fillingExtraAttributes.png)
+![Create menu](assets/hiero/artist/nuke_fillingExtraAttributes.png)
 
 
 
 ### Update Place Holder
 This tool allows the user to change the information provided in the extra attributes of the selected Place Holder.
 
-![Create menu](assets/nuke_updatePlaceHolder.png)
+![Create menu](assets/hiero/artist/nuke_updatePlaceHolder.png)
 
 
 
 ### Build Workfile from template
 This tool imports the template used and replaces the existed PlaceHolders with the corresponding published objects (which can contain Place Holders too). In case there is no published items with the description given, the place holder will remain in the node graph.
 
-![Create menu](assets/nuke_buildWorfileFromTemplate.png)
+![Create menu](assets/hiero/artist/nuke_buildWorfileFromTemplate.png)
 
 #### Result
 - Replace `PLACEHOLDER` node in the template with the published instance corresponding to the information provided in extra attributes of the Place Holder
 
-![Create menu](assets/nuke_buildworkfile.png)
+![Create menu](assets/hiero/artist/nuke_buildworkfile.png)
 
 :::note
 In case the instance that will replace the Place holder **A** contains another Place Holder **B** that points to many published elements, all the nodes that were imported with **A** except **B** will be duplicated for each element that will replace **B**
@@ -259,7 +259,7 @@ In case the instance that will replace the Place holder **A** contains another P
 ### Update Workfile
 This tool can be used to check if some instances were published after the last build, so they will be imported.
 
-![Create menu](assets/nuke_updateWorkfile.png)
+![Create menu](assets/hiero/artist/nuke_updateWorkfile.png)
 
 :::note
 Imported instances must not be deleted because they contain extra attributes that will be used to update the workfile since the place holder is been deleted.

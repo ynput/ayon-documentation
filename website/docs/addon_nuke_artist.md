@@ -34,7 +34,7 @@ Use this feature in case you are not sure the frame range is correct.
 </div>
 <div class="col col--6 markdown">
 
-![Set Frame Ranges](assets/nuke_setFrameRanges.png) <!-- picture needs to be changed -->
+![Set Frame Ranges](assets/nuke/artist/nuke_setFrameRanges.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -42,7 +42,7 @@ Use this feature in case you are not sure the frame range is correct.
 
 <figure>
 
-![Set Frame Ranges Timeline](assets/nuke_setFrameRanges_timeline.png)
+![Set Frame Ranges Timeline](assets/nuke/artist/nuke_setFrameRanges_timeline.png)
 
 <figcaption>
 
@@ -69,7 +69,7 @@ This menu item will set correct resolution format for you defined by your produc
 </div>
 <div class="col col--6 markdown">
 
-![Set Resolution](assets/nuke_setResolution.png) <!-- picture needs to be changed -->
+![Set Resolution](assets/nuke/artist/nuke_setResolution.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -93,7 +93,7 @@ See [Nuke Color Management](artist_hosts_nuke_tut.md#nuke-color-management)
 </div>
 <div class="col col--6 markdown">
 
-![Set Colorspace](assets/nuke_setColorspace.png) <!-- picture needs to be changed -->
+![Set Colorspace](assets/nuke/artist/nuke_setColorspace.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -115,7 +115,7 @@ It is usually enough if you once per while use this option just to make yourself
 </div>
 <div class="col col--6 markdown">
 
-![Apply All Settings](assets/nuke_applyAllSettings.png) <!-- picture needs to be changed -->
+![Apply All Settings](assets/nuke/artist/nuke_applyAllSettings.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -136,7 +136,7 @@ This tool will append all available products into an actual node graph. It will 
 </div>
 <div class="col col--6 markdown">
 
-![Build First Work File](assets/nuke_buildFirstWorkfile.png)
+![Build First Work File](assets/nuke/artist/nuke_buildFirstWorkfile.png)
 
 </div>
 </div>
@@ -150,8 +150,8 @@ This QuickStart is short introduction to what AYON can do for you. It attempts t
 ### Launch Nuke - Shot and Task Context
 AYON has to know what shot and task you are working on. You need to run Nuke in context of the task, using Ftrack Action or AYON Launcher to select the task and run Nuke.
 
-![Run Nuke From Ftrack](assets/nuke_tut/nuke_RunNukeFtrackAction_p3.png)
-![Run Nuke From Launcher](assets/nuke_tut/nuke_RunNukeLauncher_p2.png)
+![Run Nuke From Ftrack](assets/nuke/artist/nuke_RunNukeFtrackAction_p3.png)
+![Run Nuke From Launcher](assets/nuke/artist/nuke_RunNukeLauncher_p2.png)
 
 :::tip Admin Tip - Nuke version
 You can [configure](admin_settings_project_anatomy.md#Attributes) which DCC version(s) will be available for current project in **Studio Settings → Project → Anatomy → Attributes → Applications**
@@ -160,7 +160,7 @@ You can [configure](admin_settings_project_anatomy.md#Attributes) which DCC vers
 ### Nuke Initial setup
 Nuke AYON menu shows the current context
 
-![Context](assets/nuke_tut/nuke_Context.png)
+![Context](assets/nuke/artist/nuke_Context.png)
 
 Launching Nuke with context stops your timer, and starts the clock on the shot and task you picked.
 
@@ -179,7 +179,7 @@ After Nuke starts it will automatically **Apply All Settings** for you. If you a
 
 ### Save Nuke script – the Work File
 Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming.
-![Context](assets/nuke_tut/nuke_WorkFileSaveAs.png)
+![Context](assets/nuke/artist/nuke_WorkFileSaveAs.png)
 
 The Next Available Version checks the work folder for already used versions and offers the lowest unused version number automatically.
 
@@ -205,13 +205,13 @@ More about [workfiles](artist_tools_workfiles).
 ### Load plate
 Use Load from AYON menu to load any plates or renders available.
 
-![Asset Load](assets/nuke_tut/nuke_AssetLoader.png)
+![Asset Load](assets/nuke/artist/nuke_AssetLoader.png)
 
 Pick the plate asset, right click and choose Load Image Sequence to create a Read node in Nuke.
 
 Note that the Read node created by AYON is green. Green color indicates the highest version of asset is loaded. Asset versions could be easily changed by [Manage](#managing-versions). Lower versions will be highlighted by orange color on the read node.
 
-![Asset Load](assets/nuke_tut/nuke_AssetLoadOutOfDate.png)
+![Asset Load](assets/nuke/artist/nuke_AssetLoadOutOfDate.png)
 
 More about [Asset loader](artist_tools_loader).
 
@@ -219,11 +219,11 @@ More about [Asset loader](artist_tools_loader).
 To create AYON managed Write node, select the Read node you just created, from AYON menu, pick Create.
 In the Instance Creator, pick Create Write Render, and Create.
 
-![AYON Create](assets/nuke_tut/nuke_Creator.png)
+![AYON Create](assets/nuke/artist/nuke_Creator.png)
 
 This will create a Group with a Write node inside.
 
-![AYON Create](assets/nuke_tut/nuke_WriteNodeCreated.png)
+![AYON Create](assets/nuke/artist/nuke_WriteNodeCreated.png)
 
 :::tip Admin Tip - Configuring write node
 You can configure write node parameters in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke → Nodes**
@@ -241,7 +241,7 @@ The Pyblish dialog shows the progress of the process.
 
 The left column of the dialog shows what will be published. Typically it is one or more renders or prerenders, plus work file.
 
-![AYON Publish](assets/nuke_tut/nuke_PyblishDialogNuke.png)
+![AYON Publish](assets/nuke/artist/nuke_PyblishDialogNuke.png)
 
 The right column shows the publish steps
 
@@ -260,13 +260,13 @@ The right column shows the publish steps
 Gathering all the info and validating usually takes just a few seconds. Creating reviews for long, high resolution shots can however take significant amount of time when publishing locally.
 
 ##### Pyblish Note and Intent
-![Note and Intent](assets/nuke_tut/nuke_PyblishDialogNukeNoteIntent.png)
+![Note and Intent](assets/nuke/artist/nuke_PyblishDialogNukeNoteIntent.png)
 
 Artist can add Note and Intent before firing the publish button. The Note and Intent is meant for easy communication between artist and supervisor. After publish, Note and Intent can be seen in Ftrack notes.
 
 ##### Pyblish Checkbox
 
-![Note and Intent](assets/nuke_tut/nuke_PyblishCheckBox.png)
+![Note and Intent](assets/nuke/artist/nuke_PyblishCheckBox.png)
 
 Pyblish Dialog tries to pack a lot of info in a small area. One of the more tricky parts is that it uses non-standard checkboxes. Some squares can be turned on and off by the artist, some are mandatory.
 
@@ -279,7 +279,7 @@ You can configure Nuke validators like Output Resolution in **Studio Settings �
 :::
 
 ### Review
-![Write Node Review](assets/nuke_tut/nuke_WriteNodeReview.png)
+![Write Node Review](assets/nuke/artist/nuke_WriteNodeReview.png)
 
 When you turn the review checkbox on in your AYON write node, here is what happens:
 - AYON uses the current Nuke script to
@@ -303,7 +303,7 @@ Reviews can be configured separately for each host, task, or family. For example
 
 ### Render and Publish
 
-![AYON Create](assets/nuke_tut/nuke_WriteNode.png)
+![AYON Create](assets/nuke/artist/nuke_WriteNode.png)
 
 Let’s say you want to render and publish the shot right now, with only a Read and Write node. You need to decide if you want to render, check the render and then publish it, or you want to execute the render and publish in one go.
 
@@ -311,11 +311,11 @@ If you wish to check your render before publishing, you can use your local machi
 
 If you want to render and publish on the farm in one go, run publish with On farm option selected in the write node to render and make the review on farm.
 
-![Versionless](assets/nuke_tut/nuke_RenderLocalFarm.png)
+![Versionless](assets/nuke/artist/nuke_RenderLocalFarm.png)
 
 ### Version-less Render
 
-![Versionless](assets/nuke_tut/nuke_versionless.png)
+![Versionless](assets/nuke/artist/nuke_versionless.png)
 
 AYON is configured so your render file names have no version number until the render is fully finished and published. The main advantage is that you can keep the render from the previous version and re-render only part of the shot. With care, this is handy.
 
@@ -327,7 +327,7 @@ When making quick farm publishes, like making two versions with different color 
 
 ### Managing Versions
 
-![Versionless](assets/nuke_tut/nuke_ManageVersion.png)
+![Versionless](assets/nuke/artist/nuke_ManageVersion.png)
 
 AYON checks all the assets loaded to Nuke on script open. All out of date assets are colored orange, up to date assets are colored green.
 
@@ -350,7 +350,7 @@ This video show how to publish effect from Hiero / Nuke Studio, and use the effe
 
 If your Pyblish dialog fails on Validate Containers, you might have an old asset loaded. Use AYON - Manage... to switch the asset(s) to the latest version.
 
-![Versionless](assets/nuke_tut/nuke_ValidateContainers.png)
+![Versionless](assets/nuke/artist/nuke_ValidateContainers.png)
 
 <iframe width="512px" height="288px" src="https://www.youtube.com/embed/hridMybn5nA" frameborder="0" modestbranding="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"></iframe>
 
