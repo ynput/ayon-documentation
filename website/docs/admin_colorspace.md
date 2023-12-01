@@ -55,7 +55,7 @@ Hosts are divided into 3 groups regarding the level of control of a DCC's native
 | WebPublisher    |      |          |    x    |
 
 ### Host specific overrides
-![settings flow](assets/settings/admin_colorspace_2.png)
+![settings flow](assets/color_settings/admin_colorspace_2.png)
 
 Each project can have its own global config.ocio file. This file is used as a base for all hosts. Each host can override this config.ocio file with its own config.ocio file but it is recommended to derivate it from the global config.ocio file. This way the continuity of the color management is preserved.
 
@@ -64,25 +64,25 @@ Host can also override the global file rules. This is useful when multiple hosts
 
 
 ### Host specific remapping
-![remapping](assets/settings/admin_colorspace_3.png)
+![remapping](assets/color_settings/admin_colorspace_3.png)
 
 Remapping is used to remap the native colorspace names used in the internal color management system to the OpenColorIO (OCIO) color management system. Remapping feature is used in Publishing and Loading procedures.
 
 
 ### Host specific file rules
-![file rules](assets/settings/admin_colorspace_4.png)
+![file rules](assets/color_settings/admin_colorspace_4.png)
 
 File rules feature is mainly supported for OCIO v1. It is used to derive colorspace from the file path. This feature is used mainly during in publishing. The feature is activated during Loading only if a representation is not having `colorspaceData` key.
 
 
 ### Host level colorspace distribution workflow
 #### OCIO managed
-![distribution ocio managed](assets/settings/admin_colorspace_distribution_1.png)
+![distribution ocio managed](assets/color_settings/admin_colorspace_distribution_1.png)
 
 When the host uses the OCIO config from AYON settings, the colorspace distribution is most accurately rendered. File rules come into play only during transcoding or when creating reviewable files. Upon publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document. If the representation lacks a [**colorspaceData**](dev_colorspace#data-model) key, the loading process resorts to File rules.
 
 #### Remapped internal colorspace
-![distribution remapped](assets/settings/admin_colorspace_distribution_2.png)
+![distribution remapped](assets/color_settings/admin_colorspace_distribution_2.png)
 
 When the host uses the internal colorspace, the colorspace distribution employs the remapping rules which operate at the host level. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document.
 
@@ -90,7 +90,7 @@ During loading of the representation, there is a chance that the [**colorspaceDa
 
 
 #### Derived colorspace
-![distribution derived](assets/settings/admin_colorspace_distribution_3.png)
+![distribution derived](assets/color_settings/admin_colorspace_distribution_3.png)
 
 When the host does not have any internal colorspace management, the colorspace distribution is derived from the file path. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document.
 
@@ -99,7 +99,7 @@ Since the host does not have any internal colorspace management, the loading pro
 
 ## Configuration of global settings
 ### Activating colorspace management on project
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_1.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_global_1.png)
 
 Colorspace management and distribution is disabled by default all project at the global level. Once it is enabled it is applied to all hosts. It is possible to override the global settings at the [host level](admin_colorspace#configuration-of-host-settings).
 
@@ -110,12 +110,12 @@ Please be aware that activating the studio default project colorspace management
 :::
 
 ### Config order
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_3.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_global_3.png)
 
 It's worth noting that the order in which the configuration paths are defined matters, with higher priority given to paths listed earlier in the configuration list. In the example image above, the production team decided to switch a project to use the `nuke-default` ([v1, linear, sRGB, rec709](https://opencolorio.readthedocs.io/en/latest/configurations/nuke_default.html)) OCIO config. This implies that all hosts will implement this config for publishing and loading within the [mentioned scope](admin_colorspace#how-does-colorspace-distribution-work-at-host-level).
 
 ### Project level config
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_2.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_global_2.png)
 
 To avoid potential issues, ensure that the OCIO configuration path is not an absolute path and includes at least
 the root token (Anatomy). This helps ensure that the configuration path remains valid across different environments and
@@ -126,37 +126,37 @@ The example image above shows project level OCIO config file. This way the produ
 ### File rules activation
 File rules are disabled by default. Once it is enabled it is applied to all hosts. It is possible to override them at the [host level](admin_colorspace#configuration-of-host-settings).
 
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_4.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_global_4.png)
 
 
 ## Configuration of host settings
 ### OCIO config override
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_host_config_2.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_host_config_2.png)
 
 The image above illustrates a possible use case with four levels defined, starting from the task-related configuration down to the project-level OCIO config file. The API functionality operates by testing if a file exists at the given path. If no file exists, the path is skipped, and the next path is tested down the order. This allows for the overriding of the OCIO config at any level.
 
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_host_config_1.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_host_config_1.png)
 
 Example of task level file structure.
 
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_host_config_3.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_host_config_3.png)
 
 Example of shot level file structure.
 
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_host_config_4.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_host_config_4.png)
 
 Example of shots sequence level file structure.
 
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_host_config_5.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_host_config_5.png)
 
 Example of project level file structure.
 
 ### OCIO config versioning
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_host_config_versioning_2.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_host_config_versioning_2.png)
 
 During production, it may be necessary to modify the OCIO config files. We recommend using a versioning system to keep track of changes. The path to the config file version used during publishing will be stored in the representation document. This allows you to track which version of the OCIO config file was used during publishing.
 
-![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_host_config_versioning_1.png)
+![admin_colorspace_settings_global](assets/color_settings/admin_colorspace_settings_host_config_versioning_1.png)
 
 :::warning
 
@@ -165,12 +165,12 @@ Please note that since representation data might be pointing at older versions, 
 :::
 
 #### OCIO config description
-![admin_colorspace_settings_host_config_versioning](assets/settings/admin_colorspace_settings_host_config_versioning_3.png)
+![admin_colorspace_settings_host_config_versioning](assets/color_settings/admin_colorspace_settings_host_config_versioning_3.png)
 
 We recommend using the `description` field to store information about the changes made to the OCIO config file. The file is in YAML format, and it's possible to use multiple lines in the `description` field only if `|` is used at the end of the line. Additionally, we add the `origin` and `changes` fields to the file. This allows you to track the origin of the OCIO config file and the changes made to it.
 
 ### File rules activation
-![admin_colorspace_settings_host_filerules](assets/settings/admin_colorspace_settings_host_filerules_1.png)
+![admin_colorspace_settings_host_filerules](assets/color_settings/admin_colorspace_settings_host_filerules_1.png)
 
 If the global File rules are disabled, but the host level File rules are enabled, then the host level rules will be applied. However, if the global File rules are enabled and the host level File rules are disabled, then the global rules will be applied.
 

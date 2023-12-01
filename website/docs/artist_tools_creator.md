@@ -7,7 +7,7 @@ description: A tool to generate metadata for asset publishing.
 
 # Creator
 
-![creator_tab](assets/tools/tools_creator_1.png)
+![creator_tab](assets/core/artist/tools_creator_1.png)
 
 ## Details
 
@@ -20,7 +20,7 @@ In Nuke it's either converting an existing write node to a publishable one, or s
 :::info
 Current Publisher contains Creator as tab.
 
-![creator_tab](assets/tools/artist_tools_creator_publisher_tab.png)
+![creator_tab](assets/core/artist/artist_tools_creator_publisher_tab.png)
 
 :::
 

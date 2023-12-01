@@ -11,7 +11,7 @@ AYON stores some of it's settings and configuration in local file system. These 
 
 **Local Settings** GUI can be started from the tray menu.
 
-![Local Settings](assets/settings/settings_local.png)
+![Local Settings](assets/core/admin/settings_local.png)
 
 ## Categories
 

@@ -22,7 +22,7 @@ status of synchronization (OK or Fail) etc.
 
 With this app artists can modify synchronized representation, for example mark failed representation for re-sync etc.
 
-![Sync Queue](assets/site_sync_sync_queue.png)
+![Sync Queue](assets/sitesync/artist/site_sync_sync_queue.png)
 
 Actions accessible by context menu on single (or multiple representations):
 - *Open in Explorer* - if site is locally accessible, open folder with it with OS based explorer

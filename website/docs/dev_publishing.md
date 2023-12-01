@@ -576,9 +576,9 @@ class MyExtendedPlugin(
 Main window of publisher shows instances and their values, collected by creators.
 
 **Card view**
-![Publisher UI - Card view](assets/publisher_card_view.png)
+![Publisher UI - Card view](assets/core/dev/publisher_card_view.png)
 **List view**
-![Publisher UI - List view](assets/publisher_list_view.png)
+![Publisher UI - List view](assets/core/dev/publisher_list_view.png)
 
 #### *Instances views*
 List of instances always contains an `Options` item which is used to show attributes of context plugins. Values from the item are saved and loaded using [host implementation](#required-functions-in-host-implementation) **get_context_data** and **update_context_data**. Instances are grouped by family and can be shown in card view (single selection) or list view (multi selection).
@@ -595,5 +595,5 @@ Instance attributes display all created attributes of all selected instances. Al
 Publish attributes work the same way as create attributes but the source of attribute definitions are pyblish plugins. Attributes are filtered based on families of selected instances and families defined in the pyblish plugin.
 
 ### Create dialog
-![Publisher UI - Create dialog](assets/publisher_create_dialog.png)
+![Publisher UI - Create dialog](assets/core/dev/publisher_create_dialog.png)
 Create dialog is used by artist to create new instances in a context. The context selection can be enabled/disabled by changing `create_allow_context_change` on [creator plugin](#creator). In the middle part the artist selects what will be created and what variant it is. On the right side is information about the selected creator and its pre-create attributes. There is also a question mark button which extends the window and displays more detailed information about the creator.

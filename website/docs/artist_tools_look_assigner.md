@@ -9,7 +9,7 @@ description: Manage published looks to their respective model(s).
 
 The Look Manager takes care of assigning published looks to the correct model in the scene.
 
-![Look Assigner](assets/artist_tools_look_assigner.png)
+![Look Assigner](assets/core/artist/artist_tools_look_assigner.png)
 
 ## Details
 

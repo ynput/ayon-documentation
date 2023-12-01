@@ -9,7 +9,7 @@ description: Publish versioned work progress into the project.
 
 Use publish to share your work with others. It collects, validates and exports the data in standardized way. Accessible through the AYON menu inside the host.
 
-![Publisher](assets/artist_tools_publisher01.png)
+![Publisher](assets/core/artist/artist_tools_publisher01.png)
 
 ## Details
 

@@ -25,7 +25,7 @@ Let's say that the last version of the comp you published was v003 and now you'r
 2. Select file from list - the latest version is the highest *(descendent ordering)*.
 3. Press `Open` button.
 
-![workfiles_1](assets/workfiles_1.png)
+![workfiles_1](assets/core/artist/workfiles_1.png)
 
 ### To save new workfile
 1. Open Workfiles tool from AYON menu inside the host.
@@ -33,7 +33,7 @@ Let's say that the last version of the comp you published was v003 and now you'r
 3. You can add optional comment to the filename, that will be appended at the end.
 4. Press `OK`.
 
-![workfiles_1](assets/workfiles_2.png)
+![workfiles_1](assets/core/artist/workfiles_2.png)
 
 :::note
 You can manually override the workfile version by unticking next available version and using the version menu to choose your own.

@@ -12,12 +12,12 @@ Library loader is extended [loader](artist_tools_loader) which allows to load pu
 <div class="row markdown">
 <div class="col col--6 markdown">
 
-![tools_library_1](assets/tools/tools_library_1-small.png) <!-- picture needs to be changed -->
+![tools_library_1](assets/core/artist/tools_library_1-small.png) <!-- picture needs to be changed -->
 
 </div>
 <div class="col col--6 markdown">
 
-![tools_library_2](assets/tools/tools_library_2-small.png) <!-- picture needs to be changed -->
+![tools_library_2](assets/core/artist/tools_library_2-small.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -27,7 +27,7 @@ Library loader is extended [loader](artist_tools_loader) which allows to load pu
 Library Loader contains functionality to export any selected asset, products and their version to configurable folder.
 Delivery follows structure based on defined template, this template must be configured first by Admin in the Settings.
 
-![delivery_action](assets/tools/tools_delivery_loader.png)
+![delivery_action](assets/core/artist/tools_delivery_loader.png)
 
 ### Usage
 - Select all required products for export (you can change theirs versions by double clicking on 'Version' value)
@@ -35,7 +35,7 @@ Delivery follows structure based on defined template, this template must be conf
 
 <div class="col col--6 markdown">
 
-![tools_delivery_action](assets/tools/tools_delivery_action.png) <!-- picture needs to be changed -->
+![tools_delivery_action](assets/core/artist/tools_delivery_action.png) <!-- picture needs to be changed -->
 
 </div>
 

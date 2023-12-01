@@ -12,7 +12,7 @@ You can think of it as sort of a manager with list of assets in your scene with 
 
 To use it go to **AYON** Menu > **Manage**  which opens **Inventory** for use.
 
-![tools_inventory_01](assets/tools/tools_inventory_01.png)
+![tools_inventory_01](assets/core/artist/tools_inventory_01.png)
 
 :::note
 Understanding [Key concepts](artist_concepts) and being aware of AYON terminology is a neccessity to be able to use this tool fully.
@@ -20,7 +20,7 @@ Understanding [Key concepts](artist_concepts) and being aware of AYON terminolog
 
 Here is a small demo of a usage in Maya DCC host and where to locate it and its basics:
 
-import loaderVideo from './assets/video/tools_inventory_01.mp4'
+import loaderVideo from './assets/core/artist/tools_inventory_01.mp4'
 
 <video controls style={{width: "75%" }}>
   <source src={loaderVideo}/>
@@ -38,11 +38,11 @@ The Inventory has a simple GUI focused on efficiency. All Assets present in the 
 
 User can **select** Asset / Product **by left cliking** on a particular item in the list.
 
-![tools_inventory_02](assets/tools/tools_inventory_02.png)
+![tools_inventory_02](assets/core/artist/tools_inventory_02.png)
 
 By **right clicking** then opens **Action** menu to interact with previously selected item being able to update, remove, switch the asset etc.
 
-![tools_inventory_03](assets/tools/tools_inventory_03.png)
+![tools_inventory_03](assets/core/artist/tools_inventory_03.png)
 
 
 <!-- To interact with any container, you need to right click it and you'll see a drop down with possible actions. The key actions for production are already implemented, but more will be added over time. -->
@@ -53,7 +53,7 @@ The items in the Inventory turns red when outdated and newer version (aka latest
 
 ## Types of Action
 
-![tools_inventory_04](assets/tools/tools_inventory_04.png)
+![tools_inventory_04](assets/core/artist/tools_inventory_04.png)
 
 ___
 
@@ -69,17 +69,17 @@ Hero version being unique master file asset which got overwritten each time publ
 
 User explicitly choose particular version even though newer / older can exist. This can be benefical when need to fallback to particular asset state from the past.
 
-![tools_inventory_05](assets/tools/tools_inventory_05.png)
+![tools_inventory_05](assets/core/artist/tools_inventory_05.png)
 
 ### Update to Latest
 
 When some asset being outdated and newer version exists its marked in red color and new **Update to Latest** action appear in the **Actions menu** when right clicking.
 
-![tools_inventory_08](assets/tools/tools_inventory_08.png)
+![tools_inventory_08](assets/core/artist/tools_inventory_08.png)
 
 When multiple items being red / outdated, user can use dedicated "arrow icon" for updating them to latest version in one step. To see just the outdated items, use checkbox next to update icon for clarity. 
 
-![tools_inventory_09](assets/tools/tools_inventory_09.png)
+![tools_inventory_09](assets/core/artist/tools_inventory_09.png)
 
 :::warning
 Do not forget to turn filter off afterwards to see items in the list again otherwise the list will seem empty when Inventory re-opened!
@@ -90,7 +90,7 @@ ___
 This action gives ability to switch asset, product, representation and its version of currently selected asset(s).
 
 
-![tools_inventory_06](assets/tools/tools_inventory_06.png)
+![tools_inventory_06](assets/core/artist/tools_inventory_06.png)
 
 
 Asset consists of multiple components and it is possible to switch any of these *(asset, product, representation and version)*. There are some limitations though.
@@ -101,7 +101,7 @@ Limitation example: Asset consisting of `.ma` representation cannot be switched 
 
 Switch tool won't let you cross the border of limitations and inform you when you have to specify more if impossible combination occurs *(It is also possible that there will be no possible combination for selected assets)*. Border is colored to red and confirm button is not enabled when specification is required.
 
-![tools_inventory_07](assets/tools/tools_inventory_07.png)
+![tools_inventory_07](assets/core/artist/tools_inventory_07.png)
 
 Possible cases for switches:
 - switch **representation** (`.ma` to `.abc` or `.exr` to `.dpx`, etc.)
@@ -122,7 +122,7 @@ User can switch multiple assets in one step if they contain same data types, bei
 There is one more switch layer above product for asset's LOD (Level Of Detail). That requires to have published products with suffix **"_LOD{number}"** where number represents level (e.g. modelMain_LOD1). Its possible to switch just `product` but keep `LOD` and vice versa.
  
 
-![tools_scene_inventory_54](assets/tools/tools_scene_inventory_54.png) <!-- picture needs to be changed -->
+![tools_scene_inventory_54](assets/core/artist/tools_scene_inventory_54.png) <!-- picture needs to be changed -->
 
 
 :::note
@@ -206,7 +206,7 @@ User has possibility to show just selected items by using ``Cherry-Pick`` action
 
 You can see quick demo below.
 
-import loaderVideo2 from './assets/video/tools_inventory_02.mp4'
+import loaderVideo2 from './assets/core/artist/tools_inventory_02.mp4'
 
 <video controls style={{width: "75%" }}>
   <source src={loaderVideo2}/>
@@ -222,7 +222,7 @@ To keep only selected products right-click selection and press `Cherry-Pick (Hie
 </div>
 <div class="col col--6 markdown">
 
-![tools_scene_inventory_62-small](assets/tools/tools_scene_inventory_62-small.png)
+![tools_scene_inventory_62-small](assets/core/artist/tools_scene_inventory_62-small.png)
 
 </div>
 </div>
@@ -235,7 +235,7 @@ To return to original state right-click anywhere in products list and press `Bac
 </div>
 <div class="col col--6 markdown">
 
-![tools_scene_inventory_63-small](assets/tools/tools_scene_inventory_63-small.png)
+![tools_scene_inventory_63-small](assets/core/artist/tools_scene_inventory_63-small.png)
 
 </div>
 </div>

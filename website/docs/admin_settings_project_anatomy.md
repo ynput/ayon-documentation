@@ -23,7 +23,7 @@ Anatomy is the only configuration that is always saved as an project override. T
 
 <div class="col col--6 markdown">
 
-![anatomy_01](assets/settings/anatomy_01.png)
+![anatomy_01](assets/anatomy_settings/anatomy_01.png)
 
 </div>
 
@@ -31,15 +31,15 @@ Anatomy is the only configuration that is always saved as an project override. T
 
 Roots define where files are stored with path to a shared folder.  It is required to set the  root path for each platform you are using in the studio. All paths must point to the same folder!
 
-![roots01](assets/settings/anatomy_roots01.png)
+![roots01](assets/anatomy_settings/anatomy_roots01.png)
 
 
 It is possible to set multiple roots when necessary. That may be handy when you need to store a specific type of data on another disk.
-![roots02](assets/settings/anatomy_roots02.png)
+![roots02](assets/anatomy_settings/anatomy_roots02.png)
 
 
 Note how multiple roots are used here, to push different types of files to different shared storage.
-![roots03](assets/settings/anatomy_roots03.png)
+![roots03](assets/anatomy_settings/anatomy_roots03.png)
 
 
 ## Templates
@@ -126,7 +126,7 @@ Template `{project[code]}_{asset}_{product}<_{output}><.{@frame}>.{ext}` can han
 
 Project attributes are used as default values for new *folders* created under a project, except `Applications` which is project specific. Values of attributes that are **not** project specific are always used from *folders*. So if `tools` are not loading as expected it is because the *folders* have different values.
 
-![anatomy_attributes](assets/settings/anatomy_attributes.png)
+![anatomy_attributes](assets/anatomy_settings/anatomy_attributes.png)
 
 | Attribute | Description |
 | --- | --- |
@@ -141,22 +141,22 @@ Templates are not supporting use of `{folder[type]}` yet.
 
 Read more about folders in User docs: [Folders](artist_concepts#folder)
 
-![folders](assets/settings/anatomy_folder_types.png)
+![folders](assets/anatomy_settings/anatomy_folder_types.png)
 
 ## Task Types
 
 Available task types on a project. Each task on an asset is referencing a task type on the project which allows access to additional task type attributes. At this moment only `short_name` is available (can be used in templates as `{task[short_name]}`).
 
-![tasks](assets/settings/anatomy_tasks.png)
+![tasks](assets/anatomy_settings/anatomy_tasks.png)
 
 ## Statuses
 
 Place to manage all your task statuses.
 
-![statuses](assets/settings/anatomy_statuses.png)
+![statuses](assets/anatomy_settings/anatomy_statuses.png)
 
 ## Tags
 
 Place to manage all project tags.
 
-![statuses](assets/settings/anatomy_tags.png)
+![statuses](assets/anatomy_settings/anatomy_tags.png)

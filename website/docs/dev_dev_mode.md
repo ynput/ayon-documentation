@@ -28,9 +28,9 @@ Developer mode only affects the user that has activated it and no-one else.
 ### Enabling developer mode
 1. Log in to AYON server as admin user.
 2. In user settings select your user, enable `Developer` checkbox and save changes.
-   ![dev_user_settings](assets/ayon_user_developer.png)
+   ![dev_user_settings](assets/core/dev/ayon_user_developer.png)
 3. `Developer mode` checkbox will appear in the top right corner (you may need to refresh page).
-   ![dev_user_settings](assets/ayon_developer_mode.png)
+   ![dev_user_settings](assets/core/dev/ayon_developer_mode.png)
 4. Enable the checkbox.
 
 
@@ -60,7 +60,7 @@ Some addons have more complicated preparation of code for AYON launcher, in that
 5. Assign yourself to the bundle. Only one user can be assigned to dev bundle.
 6. Choose addons and their versions.
 7. Confirm creation of the new bundle.
-   ![dev_user_settings](assets/ayon_develop_bundle.png)
+   ![dev_user_settings](assets/core/dev/ayon_develop_bundle.png)
 
 ## Working in developer mode
 

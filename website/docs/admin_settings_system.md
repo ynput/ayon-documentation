@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 
 Settings applicable to the full studio.
 
-![general_settings](assets/settings/settings_system_general.png)
+![general_settings](assets/core/admin/settings_system_general.png)
 
 ### Studio Name
 Full name of the studio (can be used as variable on some places)
@@ -52,8 +52,8 @@ If **`Version Repository`** is not set or is not accessible for workstation, the
 **`Version check interval`** - The AYON tray application has the ability to check if its version currently in use is up to date with the Studio's production/staging version. It is possible to modify how often the validation is triggered in minutes. The interval can also be set to `0`, which will turn off version validations, but it is not recommend.
 
 A dialog asking for restart is shown when AYON tray application detect that different version should be used.
-![general_settings](assets/settings/settings_system_version_update.png)
-![general_settings](assets/settings/settings_system_version_downgrade.png)
+![general_settings](assets/core/admin/settings_system_version_update.png)
+![general_settings](assets/core/admin/settings_system_version_downgrade.png)
 
 ## Modules
 
@@ -119,7 +119,7 @@ version dependent, can be added to `Maya` environment here.
 2. **Application versions** - Here you can define executables (per platform) for each supported version of
 the DCC and any default arguments (`--nukex` for instance). You can also further extend it's environment.
 
-![settings_applications](assets/settings/applications_01.png)
+![settings_applications](assets/applications_settings/applications_01.png)
 
 ### Environments
 
@@ -142,10 +142,10 @@ For instance:
 It is possible to add new version for any supported application. There are two ways of doing it.
 
 1. **Add new executable** to an existing application version. This is a good way if you have multiple fully compatible versions of your DCC across the studio. Nuke is a typical example where multiple artists might have different `v#` releases of the same minor Nuke release. For example `12.2v3` and `12.3v6`. When you add both to `12.2` Nuke executables they will be treated the same in AYON and the system will automatically pick the first that it finds on an artist machine when launching. Their order is also the order of their priority when choosing which version to run if multiple are present.
-![settings_applications](assets/settings/settings_addapplication.gif)
+![settings_applications](assets/applications_settings/settings_addapplication.gif)
 
 2. **Add version** in case you want this version to be selectable individually. This is usually used for bigger releases that might not be fully compatible with previous versions. Keep in mind that if you add the latest version of an Application that is not yet part of the official AYON release, you might run into problems with integration. We test all the new software versions for compatibility and most often, smaller or bigger updates to AYON code are necessary to keep everything running.
-![settings_applications](assets/settings/settings_addappversion.gif)
+![settings_applications](assets/applications_settings/settings_addappversion.gif)
 
 ## Tools
 
@@ -159,6 +159,6 @@ In the image before you can see that we set most of the environment variables in
 
 
 In this example MTOA will automatically will the `MAYA_VERSION`(which is set by Maya Application environment) and `MTOA_VERSION` into the `MTOA` variable. We then use the `MTOA` to set all the other variables needed for it to function within Maya.
-![tools](assets/settings/tools_01.png)
+![tools](assets/applications_settings/tools_01.png)
 
 All the tools defined in here can then be assigned to projects. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So if you just need to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project, it is possible.

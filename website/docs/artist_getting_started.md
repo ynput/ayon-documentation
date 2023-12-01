@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 AYON comes in packages for Windows (10 or Server), Mac OS X (Mojave or higher), and Linux distribution (Centos, Ubuntu).
 
 In AYON you can download the installer from within the website:
-![A screenshot of the AYON main menu with the "Download Launcher" menu expanded](assets/ayon_download_installer.png)
+![A screenshot of the AYON main menu with the "Download Launcher" menu expanded](assets/core/artist/ayon_download_installer.png)
 
 A "Download Launcher" blue button should be present, which provides a binary for the Operating System you are accessing the webistes, alternatively you can download a specific binary from the dropdown in the main menu.
 
@@ -36,11 +36,11 @@ To install AYON you will need administrator permissions.
 For installation on Windows, download and run the installation file `AYON-#.#.#.exe`.
 During the installation process, you can change the destination location path of the application,
 
-![A screenshot of a Windows installation dialog where the person can choose where to install AYON](assets/ayon_install_windows_01.png)
+![A screenshot of a Windows installation dialog where the person can choose where to install AYON](assets/core/artist/ayon_install_windows_01.png)
 
 and create an icon on the desktop.
 
-![A screenshot of a Windows installation dialog where the person can choose to install AYON add the AYON shortcut to their desktop](assets/ayon_install_windows_02.png)
+![A screenshot of a Windows installation dialog where the person can choose to install AYON add the AYON shortcut to their desktop](assets/core/artist/ayon_install_windows_02.png)
 
 </TabItem>
 
@@ -50,7 +50,7 @@ and create an icon on the desktop.
 For installation on your Linux distribution, download and unzip `AYON-#.#.#.zip`. A new folder `AYON-#.#.#` will be created.
 Inside this folder find and run `ayon_gui`,
 
-![A screenshot of the list of the contents of the AYON Linux zip](assets/ayon_install_linux.png)
+![A screenshot of the list of the contents of the AYON Linux zip](assets/core/artist/ayon_install_linux.png)
 
 </TabItem>
 
@@ -61,7 +61,7 @@ For installation on Mac OS X, download and run dmg image file `AYON-#.#.#.dmg`.
 
 Drag the OpenPype icon into the Application folder.
 
-![A screenshot of the Mac Installation dialog with the Applications and AYON install logo](assets/ayon_install_macos.png)
+![A screenshot of the Mac Installation dialog with the Applications and AYON install logo](assets/core/artist/ayon_install_macos.png)
 
 After the installation, you can find AYON among the other Applications.
 
@@ -92,7 +92,7 @@ You can run AYON by desktop "P" icon (if it exists after installing) or by direc
 :::tip Is AYON running?
 AYON runs in the operating system's tray. If you see a green AYON icon in the tray you can easily tell AYON is currently running. Keep in mind that on Windows this icon might be hidden by default, in which case, the artist can simply drag the icon down to the tray.
 
-![A screenshot of the Windows System Tray showing the AYON icon](assets/artist_systray.png)
+![A screenshot of the Windows System Tray showing the AYON icon](assets/core/artist/artist_systray.png)
 :::
 
 :::tip Icon not showing on Linux
@@ -103,7 +103,7 @@ Some Linux distributions do not ship with tray icons by defaults, mostly GNOME b
 
 When you first start AYON, you will be asked to fill in some basic information.
 
-![A screenshot of the AYON login dialog](assets/artist_login.png)
+![A screenshot of the AYON login dialog](assets/core/artist/artist_login.png)
 
 ### AYON Login Details
 

@@ -25,7 +25,7 @@ We use simple colour coding to show you any changes to the settings:
 - **Orange**: [Project Override](#project-overrides)
 - **Blue**: Changed and unsaved value
 
-![Colour coding](assets/settings/settings_colour_coding.png)
+![Colour coding](assets/core/admin/settings_colour_coding.png)
 
 You'll find that settings are split into categories:
 
@@ -56,11 +56,11 @@ To set studio default, just change the value in the system tab and press save. I
 
 In the Project settings tab, you need to select the **( Default )** project on the left, to set your studio defaults for projects. The rest works the same as in the System tab.
 
-![studio_defaults](assets/settings/studio_defaults.gif)
+![studio_defaults](assets/core/admin/studio_defaults.gif)
 
 You can also reset any settings to AYON default by doing `right click` and `remove from studio default`
 
-![studio_defaults](assets/settings/studio_defaults_remove.gif)
+![studio_defaults](assets/core/admin/studio_defaults_remove.gif)
 
 ### Project Overrides
 
@@ -73,8 +73,8 @@ In the image below you can see all three overrides at the same time.
 2. Maya has **studio-wide defaults configured**, which are inherited in the particular project - **green** colour of left bar.
 3. Nuke contains **project specific overrides** - **orange** colour of left bar.
 
-![colours_01](assets/settings/colours_02.png)
+![colours_01](assets/core/admin/colours_02.png)
 
 Override colours work as breadcrumbs to allow quick identification of what was changed and where. As you can see on this image, Orange colour is propagated up the hierarchy even though only a single value (sync render version with workfile toggle), was changed.
 
-![override_breadcumbs](assets/settings/override_breadcrumbs.png)
+![override_breadcumbs](assets/core/admin/override_breadcrumbs.png)
