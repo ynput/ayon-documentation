@@ -184,13 +184,13 @@ More about [workfiles](artist_tools_workfiles).
 - **Nuke Color Settings**
 
   - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in:
-    - ***Studio Settings* → Studio settings → [select Nuke] → Colorspaces**
-    - ***Projects Settings* → [select project] → Anatomy → Color Management and Output Formats → Nuke → Colorspaces**
+    - ***Studio Settings* → Studio settings → [select Nuke] → Color Management (imageio)**
+    - ***Projects Settings* → [select project] → [select Nuke] → Color Management (imageio)**
 :::
 
 ### Load plate
 Use Load from AYON menu to load any plates or renders available.
-
+![menu Load](assets/nuke_tut/nuke_menu_load.png)
 ![Asset Load](assets/nuke_tut/nuke_AssetLoader.png)
 
 Pick the plate asset, right click and choose Load Image Sequence to create a Read node in Nuke.
@@ -205,6 +205,7 @@ More about [Asset loader](artist_tools_loader).
 To create AYON managed Write node, select the Read node you just created, from AYON menu, pick Create.
 In the Instance Creator, pick Create Write Render, and Create.
 
+![menu create](assets/nuke_tut/nuke_menu_create.png)
 ![AYON Create](assets/nuke_tut/nuke_Creator.png)
 
 This will create a Group with a Write node inside.
@@ -227,7 +228,8 @@ The Pyblish dialog shows the progress of the process.
 
 The left column of the dialog shows what will be published. Typically it is one or more renders or prerenders, plus work file.
 
-![AYON Publish](assets/nuke_tut/nuke_PyblishDialogNuke.png)
+![AYON Publish](assets/nuke_tut/nuke_menu_publish.png)
+![AYON Publish](assets/nuke_tut/nuke_Publish_precreate.png)
 
 The right column shows the publish steps
 
@@ -245,23 +247,23 @@ The right column shows the publish steps
 
 Gathering all the info and validating usually takes just a few seconds. Creating reviews for long, high resolution shots can however take significant amount of time when publishing locally.
 
-##### Pyblish Note and Intent
-![Note and Intent](assets/nuke_tut/nuke_PyblishDialogNukeNoteIntent.png)
+##### Publish iteration Note
+![Publish Note](assets/nuke_tut/nuke_PyblishDialogNukeNoteIntent.png)
 
-Artist can add Note and Intent before firing the publish button. The Note and Intent is meant for easy communication between artist and supervisor. After publish, Note and Intent can be seen in Ftrack notes.
+Artist can add Note before firing the publish button. The Note is meant for easy communication between artist and supervisor. After publish, Note can be seen in any integrated Project Management platforms.
 
-##### Pyblish Checkbox
+##### Product publishing activation
 
-![Note and Intent](assets/nuke_tut/nuke_PyblishCheckBox.png)
+![publish checkbox](assets/nuke_tut/nuke_PyblishCheckBox.png)
 
-Pyblish Dialog tries to pack a lot of info in a small area. One of the more tricky parts is that it uses non-standard checkboxes. Some squares can be turned on and off by the artist, some are mandatory.
-
-If you run the publish and decide to not publish the Nuke script, you can turn it off right in the Pyblish dialog by clicking on the checkbox. If you decide to render and  publish the shot in lower resolution to speed up the turnaround, you have to turn off the Write Resolution validator. If you want to use an older version of the asset (older version of the plate...), you have to turn off the Validate containers, and so on.
+If you run the publish and decide to not publish the render product, you can turn it off right in the Publish dialog by clicking on the toggle.
 
 More info about [Using Pyblish](artist_tools_publisher)
 
 :::tip Admin Tip - Configuring validators
-You can configure Nuke validators like Output Resolution in **Studio Settings → Project → Nuke → Publish plugins**
+You can configure Nuke validators like Output Resolution in:
+  - ***Studio Settings* → Studio settings → [select Nuke] → Publish Plugins**
+  - ***Projects Settings* → [select project] → [select Nuke] → Publish Plugins**
 :::
 
 ### Review
