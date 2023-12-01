@@ -1,7 +1,7 @@
 ---
 id: addon_aftereffects_admin
-title: AfterEffects Admin Docs
-sidebar_label: AfterEffects
+title: After Effects Admin Docs
+sidebar_label: After Effects
 ---
 
 import Tabs from '@theme/Tabs';

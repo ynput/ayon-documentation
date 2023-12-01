@@ -1,7 +1,7 @@
 import { type Addon } from "../types";
 
 const addon: Addon = {
-    title: "3ds Max",
+    title: "3Ds Max",
     description:
         "3ds Max is a 3D animation software tool set used for creating visual effects in film and television.",
     icon: "3ds-max-icon.png",
