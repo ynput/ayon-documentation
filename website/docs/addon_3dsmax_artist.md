@@ -172,7 +172,9 @@ Similar to other max scene loader, it will create the new containers which inclu
 After choosing your render setting, select the target camera for rendering in the scene and go **AYON -> Create** and select **Render**.
 When you go to **Publish**, you can set up the preferences in either creator or AYON setting before the deadline submission.
 
-![Max Render Setting](assets/3dsmax_deadline_render_settings.png)
+![Max Render AYON Setting](assets/3dsmax_ayon_render_setting.png)
+
+![Max Render Creator Setting](assets/3dsmax_deadline_render_settings.png)
 
 The Render Instance supports AOV renders for VRay, Redshift, and 3dsMax default renderers(i.e QuickSliver Hardware Renderer, ART Renderer, Scanline Renderer, VUE File Renderer). Merely supports beauty render for Arnold due to the pymxs API limitation.
 
@@ -187,6 +189,10 @@ Point Cloud Instance only works when tyFlow plugin installed in 3dsmax
 :::
 ### Publishing Point Cloud
 Select the tyFlow object(s) you want to export and go **AYON -> Create** and select **Point Cloud**. The exported object(s) would be in PRT format
+You can add the attributes which needs to be exported in AYON setting before publishing.
+
+![Max Point Cloud Attributes Setting](assets/3dsmax_pointcloud_attributes.png)
+
 
 ### Publishing TyCache
 Select the tyFlow object(s) you want to export and go **AYON -> Create**  and select **TyCache**, you can choose the attribute data of tyCache to be exported in TYC format.
@@ -194,15 +200,22 @@ Select the tyFlow object(s) you want to export and go **AYON -> Create**  and se
 
 :::note Info for TyCache Attributes Option
 For users to have more information to know what the attributes they are exporting.
+
 **Channels**
+
 *Age* : tycacheChanAge, *Groups*: "tycacheChanGroups", *Position*: "tycacheChanPos",
 *Rotation*: "tycacheChanRot", *Scale*: "tycacheChanScale", *Velocity*: "tycacheChanVel",
-*Spin*: "tycacheChanSpin", *Shape*: "tycacheChanShape", *Material ID*: "tycacheChanMatID", *Mapping*: "tycacheChanMapping", *Materials*: "tycacheChanMaterials",
+*Spin*: "tycacheChanSpin", *Shape*: "tycacheChanShape", *Material ID*: "tycacheChanMatID",
+*Mapping*: "tycacheChanMapping", *Materials*: "tycacheChanMaterials",
 *Custom Float*: "tycacheChanCustomFloat", *Custom Vectors*: "tycacheChanCustomVector",
 *Custom TMs*: "tycacheChanCustomTM", *PhysX Data*: "tycacheChanPhysX"
+
 **Mesh Files**
+
 *Backup at regular itnervals*: "tycacheMeshBackup"
+
 **Geometry Settings**
+
 *Include cloth geometry*: "tycacheAdditionalCloth",
 *Include actor skinned meshes*: "tycacheAdditionalSkin",
 *Include actor skinned meshes ID*: "tycacheAdditionalSkinID",
@@ -212,7 +225,9 @@ For users to have more information to know what the attributes they are exportin
 *Include spline path geometry*: "tycacheAdditionalSplinePaths",
 *Include additional geometry*: "tycacheAdditionalGeo",
 *Activate render-only modifiers*: "tycacheAdditionalGeoActivateModifiers"
+
 **Splines Settings**
+
 *Include Spline Paths operators*: "tycacheSplines",
 *Include additional splines*: "tycacheSplinesAdditionalSplines"
 :::
@@ -221,13 +236,14 @@ For users to have more information to know what the attributes they are exportin
 When you load the point cloud through **AYON -> Load**, Max will create *tycache* object in the 3dsmax modifier's list and load the published PRT.
 
 ### Review
-Select the target camera you want to create preview animation and go **AYON -> Create** and select **Review**.You can set up the preferences(e.g. resolution) before creating the instance.
+Select the target camera you want to create preview animation and go **AYON -> Create** and select **Review**.You can set up the preferences(e.g. resolution) with the creator or AYON setting before creating the instance.
+
+![Max Review AYON Setting](assets/3dsmax_review_ayon_setting.png)
+
 ![Max Review Creator Setting](assets/3dsmax_review_creator_setting.png)
 
 You can always edit if you want to create preview animation with different settings. You can also choose what to include in the preview animation.
-![Max Review Publish Setting](assets/3dsmax_review_publish_setting.png)
 
-### Validators
-# Validate Loaded Plugin
+![Max Review Publish Setting](assets/3dsmax_review_publish_setting.png)
 
 ## ...to be added
