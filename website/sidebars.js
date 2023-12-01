@@ -125,6 +125,7 @@ module.exports = {
                 "addon_photoshop_admin",
                 "addon_site_sync_admin",
                 "addon_slack_admin",
+                "addon_substancepainter_admin",
                 "addon_tvpaint_admin",
                 "addon_unreal_admin"
             ],
