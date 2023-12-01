@@ -24,7 +24,7 @@ At the moment site sync is only able to deal with publishes files. No workfiles 
 
 To use synchronization, *Site Sync* needs to be enabled globally in **AYON Settings/System/Modules/Site Sync**.
 
-![Configure module](assets/site_sync_system.png)
+![Configure module](assets/sitesync/admin/site_sync_system.png)
 
 ### Sites 
 
@@ -52,7 +52,7 @@ Change of file status on one site actually means same change on 'alternate' site
 same location >> file is accessible on 'sftp' site right away, no need to sync it anyhow.)
 
 ##### Example
-![Configure module](assets/site_sync_system_sites.png)
+![Configure module](assets/sitesync/admin/site_sync_system_sites.png)
 Admin created new `sftp` site which is handled by `SFTP` provider. Somewhere in the studio SFTP server is deployed on a machine that has access to `studio` drive.
 
 Alternative sites work both way:
@@ -73,7 +73,7 @@ Each user should configure root folder for their 'local' site via **Local Settin
 
 Artists can also override which site they use as active and remote if need be. 
 
-![Local overrides](assets/site_sync_local_setting.png)
+![Local overrides](assets/sitesync/admin/site_sync_local_setting.png)
 
 
 ## Providers
@@ -108,7 +108,7 @@ For this use case admin needs to configure:
 
 Configuration would look like this:
 
-![Configure project](assets/site_sync_project_settings.png)
+![Configure project](assets/sitesync/admin/site_sync_project_settings.png)
 
 *Site Sync* for Google Drive works using its API: https://developers.google.com/drive/api/v3/about-sdk
 
@@ -140,21 +140,21 @@ Beware that ssh key expects OpenSSH format (`.pem`) not a Putty format (`.ppk`)!
 - Enable Site Sync module in Settings
 - Add side with SFTP provider
 
-![Enable syncing and create site](assets/site_sync_sftp_system.png)
+![Enable syncing and create site](assets/sitesync/admin/site_sync_sftp_system.png)
 
 - In Projects setting enable Site Sync (on default project - all project will be synched, or on specific project)
 - Configure SFTP connection and destination folder on a SFTP server (in screenshot `/upload`)
 
-![SFTP connection](assets/site_sync_project_sftp_settings.png)
+![SFTP connection](assets/sitesync/admin/site_sync_project_sftp_settings.png)
   
 - if you want to force syncing between local and sftp site for all users, use combination `active site: local`, `remote site: NAME_OF_SFTP_SITE`
 - if you want to allow only specific users to use SFTP syncing (external users, not located in the office), use `active site: studio`, `remote site: studio`. 
 
-![Select active and remote site on a project](assets/site_sync_sftp_project_setting_not_forced.png)
+![Select active and remote site on a project](assets/sitesync/admin/site_sync_sftp_project_setting_not_forced.png)
 
 - Each artist can decide and configure syncing from his/her local to SFTP via `Local Settings`
 
-![Select active and remote site on a project](assets/site_sync_sftp_settings_local.png)
+![Select active and remote site on a project](assets/sitesync/admin/site_sync_sftp_settings_local.png)
   
 ### Custom providers
 
@@ -169,7 +169,7 @@ you need to run Site Sync as a background process from a command line (via servi
 
 To configure all sites where all published files should be synced eventually you need to configure `project_settings/global/sync_server/config/always_accessible_on` property in Settings (per project) first.
 
-![Set another non artist remote site](assets/site_sync_always_on.png)
+![Set another non artist remote site](assets/sitesync/admin/site_sync_always_on.png)
 
 This is an example of:
 - Site Sync is enabled for a project

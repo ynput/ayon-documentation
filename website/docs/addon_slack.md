@@ -39,7 +39,7 @@ Most important for module to work is to fill authentication token
 This token should be available after installation of the app in the Slack dashboard.
 It is possible to create multiple tokens and configure different scopes for them.
 
-![Get token](assets/slack_token.png)
+![Get token](assets/slack/slack_token.png)
 
 ### Profiles
 Profiles are used to select when to trigger notification. One or multiple profiles
@@ -56,7 +56,7 @@ Eg. If I want to be notified when render is published from Maya, setting is:
 Multiple messages could be delivered to one or multiple channels, by default app allows Slack bot
 to send messages to 'public' channels (eg. bot doesn't need to join the channel first).
 
-![Configure module](assets/slack_project.png)
+![Configure module](assets/slack/slack_project.png)
 
 #### Upload thumbnail
 Integration can upload 'thumbnail' file (if present in an instance), for that bot must be 
