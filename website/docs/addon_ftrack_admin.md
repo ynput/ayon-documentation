@@ -4,6 +4,13 @@ title: Ftrack Admin Docs
 sidebar_label: Ftrack
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Ftrack_Badge}
+</ReactMarkdown>
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

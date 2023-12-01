@@ -4,6 +4,13 @@ title: Ftrack Actions
 sidebar_label: Ftrack Actions
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Ftrack_Badge}
+</ReactMarkdown>
+
 Actions are small useful tools that help artists, managers and administrators.
 To avoid overfilled action menu some actions are filtered by entity types and some of them by user roles permissions.
 

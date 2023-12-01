@@ -4,6 +4,13 @@ title: Xgen for Maya
 sidebar_label: Xgen
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
+
 AYON supports Xgen classic with the follow workflow. It eases the otherwise cumbersome issues around Xgen's side car files and hidden behaviour inside Maya. The workflow supports publishing, loading and updating of Xgen collections, along with connecting animation from geometry and (guide) curves.
 
 ## Setup

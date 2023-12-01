@@ -4,6 +4,13 @@ title: VRay for Maya
 sidebar_label: VRay
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
+
 ## Working with VRay in AYON
 
 ### #Using VRay Proxies

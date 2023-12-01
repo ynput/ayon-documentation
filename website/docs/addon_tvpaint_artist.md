@@ -4,6 +4,14 @@ title: TVPaint Artist Docs
 sidebar_label: TVPaint
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.TVPaint_Badge}
+</ReactMarkdown>
+
+
 -   [Work Files](artist_tools_workfiles)
 -   [Load](artist_tools_loader)
 -   [Scene Inventory](artist_tools_inventory)

@@ -1,4 +1,5 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Maya",
@@ -12,6 +13,7 @@ Most of maya workflows are supported including gpucaches, automatic shader, nest
 **Versions**: \`2020\`, \`2021\`, \`2022\`, \`2023\`, \`2024\`
          `,
     icon: "maya-icon.png",
+    badge: versions.Maya_Badge,
     features: [
         "sceneBuilder",
         "workfiles",

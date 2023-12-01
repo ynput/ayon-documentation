@@ -4,6 +4,13 @@ title: Photoshop Admin Docs
 sidebar_label: Photoshop
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Photoshop_Badge}
+</ReactMarkdown>
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

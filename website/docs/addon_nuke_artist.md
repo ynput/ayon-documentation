@@ -4,6 +4,13 @@ title: Nuke Artist Docs
 sidebar_label: Nuke
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Nuke_Badge}
+</ReactMarkdown>
+
 :::note
 AYON supports Nuke version **`11.0`** and above.
 :::

@@ -3,6 +3,12 @@ id: addon_ftrack_manager
 title: Ftrack Manager
 sidebar_label: Project Manager
 ---
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Ftrack_Badge}
+</ReactMarkdown>
 
 Ftrack is currently the main project management option for AYON. This documentation assumes that you are familiar with Ftrack and its basic principles. If you're new to Ftrack, we recommend having a thorough look at [Ftrack Official Documentation](https://help.ftrack.com/en/).
 
