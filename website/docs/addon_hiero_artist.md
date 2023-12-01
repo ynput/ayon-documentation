@@ -41,7 +41,7 @@ This tool will recreate all necessary AYON tags needed for successful publishing
 </div>
 <div class="col col--6 markdown">
 
-![Default Tags](assets/hiero_defaultTags.png) <!-- picture needs to be changed -->
+![Default Tags](assets/hiero/artist/hiero_defaultTags.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -60,7 +60,7 @@ This tool will set any defined colorspace definition from AYON `Settings / Proje
 </div>
 <div class="col col--6 markdown">
 
-![Default Tags](assets/hiero_menuColorspaceProject.png) <!-- picture needs to be changed -->
+![Default Tags](assets/hiero/artist/hiero_menuColorspaceProject.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -80,7 +80,7 @@ This tool will set any defined colorspace definition from AYON `Settings / Proje
 </div>
 <div class="col col--6 markdown">
 
-![Default Tags](assets/hiero_menuColorspaceClip.png) <!-- picture needs to be changed -->
+![Default Tags](assets/hiero/artist/hiero_menuColorspaceClip.png) <!-- picture needs to be changed -->
 
 </div>
 </div>
@@ -103,7 +103,7 @@ Because we don't support on-fly data conversion so in case of working with raw c
 
 <div class="col--6 markdown">
 
-![Create menu](assets/hiero_timelinePrep.png)
+![Create menu](assets/hiero/artist/hiero_timelinePrep.png)
 
 </div>
 
@@ -121,7 +121,7 @@ In AYON it is done by tagging a clip with our own metadata. Select all clips you
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/hiero_menuCreate.png)
+![Create menu](assets/hiero/artist/hiero_menuCreate.png)
 
 </div>
 
@@ -142,7 +142,7 @@ Hit **Create**
 
 <div class="col col--6 markdown">
 
-![Instance Creator](assets/hiero_instanceCreator.png)
+![Instance Creator](assets/hiero/artist/hiero_instanceCreator.png)
 
 </div>
 <div class="col col--6 markdown">
@@ -155,7 +155,7 @@ In case you wish to use *multiple elements of shots* workflow then keep **Enambl
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/hiero_createUIRename.png)
+![Create menu](assets/hiero/artist/hiero_createUIRename.png)
 
 </div>
 <div class="col col--6 markdown">
@@ -174,7 +174,7 @@ Handles can be defined here to. In case you wish to have individual clip set dif
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/hiero_createUIFrames.png)
+![Create menu](assets/hiero/artist/hiero_createUIFrames.png)
 
 </div>
 <div class="col col--6 markdown">
@@ -187,7 +187,7 @@ If you wish to change any individual properties of the shot then you are able to
 
 <div class="col col--6 markdown">
 
-![Create menu](assets/hiero_tagHandles.png)
+![Create menu](assets/hiero/artist/hiero_tagHandles.png)
 
 </div>
 </div>
