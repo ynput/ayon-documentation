@@ -6,8 +6,8 @@ const addon: Addon = {
         "After Effects is a powerful motion graphics and visual effects software that is used by professionals in the film, television, and web industries.",
     preview: "after-effects.png",
     docs: {
-        user: "addon_aftereffects_admin",
-        admin: "addon_aftereffects_artist",
+        user: "addon_aftereffects_artist",
+        admin: "addon_aftereffects_admin",
     },
     github: "https://github.com/ynput/ayon-aftereffects",
     products: [
