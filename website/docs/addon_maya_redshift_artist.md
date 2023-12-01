@@ -19,7 +19,7 @@ then select **Redshift Proxy**. You can name your product and hit **Create** but
 
 You can enable animation in Attribute Editor:
 
-![Maya - Yeti Rig Setup](assets/maya-create_rs_proxy.jpg)
+![Maya - Yeti Rig Setup](assets/maya/artist/maya-create_rs_proxy.jpg)
 
 ### Publishing Redshift Proxies
 
