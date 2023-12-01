@@ -12,9 +12,9 @@ AYON supports Nuke version **`11.0`** and above.
 
 -   [Work Files](artist_tools_workfiles)
 -   [Create](artist_tools_creator)
+-   [Publish](artist_tools_publisher)
 -   [Load](artist_tools_loader)
 -   [Manage (Inventory)](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
 -   [Library Loader](artist_tools_library_loader)
 
 ## Nuke specific tools
@@ -120,27 +120,6 @@ It is usually enough if you once per while use this option just to make yourself
 </div>
 </div>
 
-### Build Workfile
-
-<div class="row markdown">
-<div class="col col--6 markdown">
-
-This tool will append all available products into an actual node graph. It will look into database and get all last [versions](artist_concepts.md#version) of available [products](artist_concepts.md#product).
-
-
-##### Result
-
--   adds all last versions of products (rendered image sequences) as read nodes
--   ~~adds publishable write node as `renderMain` product~~
-
-</div>
-<div class="col col--6 markdown">
-
-![Build First Work File](assets/nuke_buildFirstWorkfile.png)
-
-</div>
-</div>
-
 ## Nuke QuickStart
 
 This QuickStart is short introduction to what AYON can do for you. It attempts to make an overview for compositing artists, and simplifies processes that are better described in specific parts of the documentation.
@@ -178,7 +157,8 @@ After Nuke starts it will automatically **Apply All Settings** for you. If you a
 :::
 
 ### Save Nuke script – the Work File
-Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming.
+Use AYON - Work files menu to create a new Nuke script. AYON offers you the pre-configured naming.
+![Context](assets/nuke_tut/nuke_WorkFileMenu.png)
 ![Context](assets/nuke_tut/nuke_WorkFileSaveAs.png)
 
 The Next Available Version checks the work folder for already used versions and offers the lowest unused version number automatically.
@@ -191,15 +171,21 @@ More about [workfiles](artist_tools_workfiles).
 :::tip Admin Tips
 - **Workfile Naming**
 
-  - The [workfile naming](admin_settings_project_anatomy.md#templates) is configured in anatomy, see **Studio Settings → Project → Anatomy → Templates → Work**
+  - The [workfile naming](admin_settings_project_anatomy.md#templates) is configured in anatomy
+    - ***Studio Settings* → Anatomy presets Tab → Templates → Work → default**
+    - ***Projects Settings* → [select project] → Anatomy Tab → Templates → Work → default**
 
 - **Open Workfile**
 
-  - You can [configure](project_settings/project_settings_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
+  - You can [configure](project_settings/project_settings_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup.
+    - ***Studio Settings* → Studio settings → [select Core] → Tools → Open last workfile on launch**
+    - ***Projects Settings* → [select project] → [select Core] → Tools → Open last workfile on launch**
 
 - **Nuke Color Settings**
 
-  - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
+  - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in:
+    - ***Studio Settings* → Studio settings → [select Nuke] → Colorspaces**
+    - ***Projects Settings* → [select project] → Anatomy → Color Management and Output Formats → Nuke → Colorspaces**
 :::
 
 ### Load plate
