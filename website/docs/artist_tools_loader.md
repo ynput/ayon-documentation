@@ -53,20 +53,6 @@ import loaderVideo2 from './assets/core/artist/tools_loader_02.mp4'
   <source src={loaderVideo2}/>
 </video>
 
-<!--
-<div class="row markdown">
-<div class="col col--6 markdown">
-
-  ![tools_loader_21](assets/tools/tools_loader_21.png)
-</div>
-<div class="col col--6 markdown">
-
-  ![tools_loader_22](assets/tools/tools_loader_22.png)
-</div>
-</div>
-
--->
-
 ## Filtering
 
 ### Filter Assets and Products by name

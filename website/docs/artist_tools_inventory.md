@@ -158,20 +158,6 @@ Just collapse all folders in the list so everything inside folders become hidden
 
 Contains various context sensitive tools for user. Content heavily depending on use case / DCC host and AYON integration.
 
-<!-- ### Change version
-You can change versions of loaded assets / products with Inventory tool.
-
-![tools_scene_inventory_40](assets/tools/tools_scene_inventory_40.png)
-
-#### Update to the latest version
-Select containers or products you want to update, right-click selection and press `Update to latest`.
-
-#### Change to specific version
-Select containers or products you want to change, right-click selection, press `Set version`, select from dropdown version you want change to and press `OK` button to confirm.
-
-
-![tools_scene_inventory_30](assets/tools/tools_scene_inventory_30.png) -->
-  
 ___
 
 ## Filtering
@@ -184,21 +170,6 @@ Here you can see several filters in the Inventory.
 <video controls style={{width: "75%" }}>
   <source src={loaderVideo}/>
 </video>
-
-<!--
-<div class="row markdown">
-<div class="col col--6 markdown">
-
-![tools_scene_inventory_60](assets/tools/tools_scene_inventory_60-small.png)
-
-</div>
-<div class="col col--6 markdown">
-
-![tools_scene_inventory_61](assets/tools/tools_scene_inventory_61-small.png)
-
-</div>
-</div>
--->
 
 ### Filter with Cherry-pick selection
 
