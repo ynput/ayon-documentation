@@ -369,7 +369,6 @@ select the object for caching in farm.
 2. When you go to Publish Tab and click the instance(s), you can set up your preferred
 **Frame per task**. If you want to publish the existing instances to farm, you can enable
 the toggled button **Submitting to Farm**.
-
 ![Houdini Farm Per Task](assets/houdini/artist/houdini_frame_per_task.png)
 
 3. Once you hit **Publish**, the cache would be submitted and rendered in deadline.
