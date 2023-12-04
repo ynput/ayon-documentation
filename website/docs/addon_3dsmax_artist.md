@@ -107,7 +107,7 @@ Before proceeding further please check [Glossary](artist_concepts.md) and [What 
 ### Intro
 
 Current AYON integration (ver 3.15.4) supports only ```PointCache```, ```Camera```, ```MaxScene```,  ```Render```, ```PointCloud```
-```TyCache``` and ```Review``` product types now.
+```TyCache```, ```RedshiftProxy``` and ```Review``` product types now.
 
 **Pointcache** product type being basically any geometry outputted as Alembic cache (.abc) format
 
@@ -117,16 +117,15 @@ Current AYON integration (ver 3.15.4) supports only ```PointCache```, ```Camera`
 
 **Render** product type being 3dsmax scene submitted to AWS Thinkbox Deadline. Currently supports 3dsmax standard renderers, Vray and Redshift for multipass submissions. Only supports Arnold for beauty (RGBA) render submission.
 
-**PointCloud** and **TyCache** product type being 3dsmax cache generated from tyFlow plugin and outputted as PRT(Pointcloud)/TYC(TyCache) format.
-As tyFlow is an external plugin from 3dsmax, make sure to get it install before using the **PointCloud** product type.
+**Point Cloud** and **TyCache** product type being 3dsmax cache generated from tyFlow plugin and outputted as PRT(Pointcloud)/TYC(TyCache) format.
+As tyFlow is an external plugin from 3dsmax, make sure to get it install before using the product types.
+
+**Redshift Proxy** product type being 3dsmax objects converted and outputted as RS format. As Redshift is an external plugin from 3dsmax,
+user require to install redshift before using the product type.
 
 **Review** product type being 3dsmax scene creating preview animation and outputted as video and image sequences(if users select keep image sequences)
 
 ---
-
-:::note Work in progress
-This part of documentation is still work in progress.
-:::
 
 ### Publishing Point Cache (Alembic)
 
@@ -186,7 +185,9 @@ Make sure removing the old render instance and create the new one if you switch 
 
 :::note Reminder
 Point Cloud Instance only works when tyFlow plugin installed in 3dsmax
+TyCache Instance only works when tyFlow Pro plugin installed in 3dsmax
 :::
+
 ### Publishing Point Cloud
 Select the tyFlow object(s) you want to export and go **AYON -> Create** and select **Point Cloud**. The exported object(s) would be in PRT format
 You can add the attributes which needs to be exported in AYON setting before publishing.
@@ -234,6 +235,15 @@ For users to have more information to know what the attributes they are exportin
 
 ### Loading Point Cloud/TyCache
 When you load the point cloud through **AYON -> Load**, Max will create *tycache* object in the 3dsmax modifier's list and load the published PRT.
+
+### Publishing Redshift Proxy
+:::note Reminder
+Redshift Proxy only works when Redshift is installed in 3dsMax and it is the current renderer in the scene.
+:::
+Select the object(s) you want to convert as redshift proxy and go **AYON -> Create**  and select **RedshiftProxy**. The exported objects will be outputted as RS format.
+
+### Loading Redshift Proxy
+You can load the redshift proxy through **AYON -> Load**, it will then load the redshift proxy with the converted object(s).
 
 ### Review
 Select the target camera you want to create preview animation and go **AYON -> Create** and select **Review**.You can set up the preferences(e.g. resolution) with the creator or AYON setting before creating the instance.
