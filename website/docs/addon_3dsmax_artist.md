@@ -246,9 +246,9 @@ You can always edit if you want to create preview animation with different setti
 
 ![Max Review Publish Setting](assets/3dsmax_review_publish_setting.png)
 
-### Validators
+## Validators
 
-## Validate Frame Range
+### Validate Frame Range
 This validator is optional to check if the frame range in the scene aligns with that in the AYON project settings.
 You can switch on/ off in either the project settings in AYON setting or the toggled button in Publisher Tab.
 
@@ -256,7 +256,7 @@ You can switch on/ off in either the project settings in AYON setting or the tog
 
 ![Max Validate Frame Range in Publisher](assets/3dsmax_validator_frame_range_publisher_setting.png)
 
-## Validate Attributes
+### Validate Attributes
 This validator is to make sure the property attributes are valid in 3dsMax.
 You need to put the data in JSON format in the AYON setting for attributes check.
 
@@ -277,11 +277,9 @@ E.g. If you want to check if ```renderers.current.separateAovFiles=true``` or
 ```
 :::
 
-## Validate Loaded Plugin
+### Validate Loaded Plugin
 This validator ensures the plugins are available for certain product types before publishing instances in 3dsMax.
 You need to click ```+``` button to add product type and the plugins you want to validate within it.
 
 ![Max Validate Loaded Plugins](assets/3dsmax_validator_loaded_plugins.png)
 
-
-## ...to be added
