@@ -107,20 +107,20 @@ Before proceeding further please check [Glossary](artist_concepts.md) and [What 
 ### Intro
 
 Current AYON integration (ver 3.15.4) supports only ```PointCache```, ```Camera```, ```MaxScene```,  ```Render```, ```PointCloud```
-```TyCache``` and ```Review``` families now.
+```TyCache``` and ```Review``` product types now.
 
-**Pointcache** family being basically any geometry outputted as Alembic cache (.abc) format
+**Pointcache** product type being basically any geometry outputted as Alembic cache (.abc) format
 
-**Camera** family being 3dsmax Camera object with/without animation outputted as native .max, FBX, Alembic format
+**Camera** product type being 3dsmax Camera object with/without animation outputted as native .max, FBX, Alembic format
 
-**MaxScene** family being 3dsmax scene outputted as native .max format
+**MaxScene** product type being 3dsmax scene outputted as native .max format
 
-**Render** family being 3dsmax scene submitted to AWS Thinkbox Deadline. Currently supports 3dsmax standard renderers, Vray and Redshift for multipass submissions. Only supports Arnold for beauty (RGBA) render submission.
+**Render** product type being 3dsmax scene submitted to AWS Thinkbox Deadline. Currently supports 3dsmax standard renderers, Vray and Redshift for multipass submissions. Only supports Arnold for beauty (RGBA) render submission.
 
-**PointCloud** and **TyCache** family being 3dsmax cache generated from tyFlow plugin and outputted as PRT(Pointcloud)/TYC(TyCache) format.
-As tyFlow is an external plugin from 3dsmax, make sure to get it install before using the **PointCloud** family.
+**PointCloud** and **TyCache** product type being 3dsmax cache generated from tyFlow plugin and outputted as PRT(Pointcloud)/TYC(TyCache) format.
+As tyFlow is an external plugin from 3dsmax, make sure to get it install before using the **PointCloud** product type.
 
-**Review** family being 3dsmax scene creating preview animation and outputted as video and image sequences(if users select keep image sequences)
+**Review** product type being 3dsmax scene creating preview animation and outputted as video and image sequences(if users select keep image sequences)
 
 ---
 
@@ -245,5 +245,43 @@ Select the target camera you want to create preview animation and go **AYON -> C
 You can always edit if you want to create preview animation with different settings. You can also choose what to include in the preview animation.
 
 ![Max Review Publish Setting](assets/3dsmax_review_publish_setting.png)
+
+### Validators
+
+## Validate Frame Range
+This validator is optional to check if the frame range in the scene aligns with that in the AYON project settings.
+You can switch on/ off in either the project settings in AYON setting or the toggled button in Publisher Tab.
+
+![Max Validate Frame Range in Ayon](assets/3dsmax_validator_frame_range_ayon_setting.png)
+
+![Max Validate Frame Range in Publisher](assets/3dsmax_validator_frame_range_publisher_setting.png)
+
+## Validate Attributes
+This validator is to make sure the property attributes are valid in 3dsMax.
+You need to put the data in JSON format in the AYON setting for attributes check.
+
+![Max Validate Attributes](assets/3dsmax_validator_attributes.png)
+
+:::note Example for inputting the JSON format in the setting.
+E.g. If you want to check if ```renderers.current.separateAovFiles=true``` or
+```renderers.current.MotionBlurShutterAngle=160.5``` etc..
+```
+{
+    "renderers.current": {
+        "separateAovFiles": true,
+        "MotionBlurShutterAngle": 160.5,
+        "PrimaryGIEngine": "#RS_GIENGINE_BRUTE_FORCE",
+        "OCIOViewName": "ACES 1.0 SDR-video"
+    }
+}
+```
+:::
+
+## Validate Loaded Plugin
+This validator ensures the plugins are available for certain product types before publishing instances in 3dsMax.
+You need to click ```+``` button to add product type and the plugins you want to validate within it.
+
+![Max Validate Loaded Plugins](assets/3dsmax_validator_loaded_plugins.png)
+
 
 ## ...to be added
