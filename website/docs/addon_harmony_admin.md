@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 There is a couple of settings that could configure publishing process for **ToonBoom Harmony**.
 All of them are Project based, eg. each project could have different configuration.
 
-Location: Project Settings > Harmony (`ayon_server_url/manageProjects/projectSettings`)
+Location: Project Settings > Harmony (`ayon+settings://harmony`)
 
 ![Harmony Project Settings](assets/admin_hosts_harmony_settings.png)
 
@@ -38,7 +38,7 @@ disable this plugin by toggle next to plugin name.
 If enabled, artist might decide to disable validation for each publish (for special use cases).
 Limit this optionality by toggling `Optional`.
 `Active` toggle denotes that by default artists sees that optional validation as enabled.
-(Eg. admin allows artist disabling(`Optional`) validation but it is enabled(`Active`) by default.)
+(Eg. admin allows artist disabling(`Optional`) validation, but it is enabled(`Active`) by default.)
 
 ### Validate Containers
 
