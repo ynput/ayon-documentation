@@ -6,8 +6,8 @@ const addon: Addon = {
     description:
         "ShotGrid is a cloud-based project management software that helps creative studios track and manage their projects, assets, and workflows.",
     icon: "shotgrid-icon.png",
+    features: ["sgSync"],
     badge: versions.ShotGrid_Badge,
-    features: ["projectManager"],
     github: "https://github.com/ynput/ayon-shotgrid",
     discussion: "https://community.ynput.io/t/shotgrid-integration-addon/63",
 };
