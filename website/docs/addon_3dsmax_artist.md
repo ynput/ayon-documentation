@@ -1,7 +1,7 @@
 ---
 id: addon_3dsmax_artist
-title: 3dsmax
-sidebar_label: 3dsmax
+title: 3Ds Max Artist Docs
+sidebar_label: 3Ds Max
 ---
 
 import ReactMarkdown from "react-markdown";

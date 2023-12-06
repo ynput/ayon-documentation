@@ -1,6 +1,6 @@
 ---
 id: addon_hiero_artist
-title: Hiero
+title: Hiero Artist Docs
 sidebar_label: Hiero / Nuke Studio
 ---
 

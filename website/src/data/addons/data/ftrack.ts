@@ -6,8 +6,8 @@ const addon: Addon = {
     description: "Ftrack is a project management tool for creative teams.",
     badge: versions.Ftrack_Badge,
     docs: {
-        user: "artist_ftrack",
-        admin: "module_ftrack",
+        user: "addon_ftrack_artist",
+        admin: "addon_ftrack_admin",
     },
     preview: "ftrack.png",
     github: "https://github.com/ynput/ayon-ftrack",

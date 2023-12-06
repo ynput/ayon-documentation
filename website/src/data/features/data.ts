@@ -94,7 +94,7 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Built in file synchronization between your central storage (cloud or physical) and all your freelancers",
         docs: {
-            admin: "module_site_sync",
+            admin: "addon_site_sync_admin",
         },
     },
     timersManager: {
@@ -108,7 +108,7 @@ const features: { [type in FeatureType]: Feature } = {
     farmRendering: {
         title: "Farm rendering",
         docs: {
-            admin: "module_deadline",
+            admin: "addon_deadline_admin",
         },
         description:
             "Integrations with render managers. Render, publish and generate reviews on the farm.",

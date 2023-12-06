@@ -1,6 +1,6 @@
 ---
 id: addon_hiero_admin
-title: Hiero Admin docs
+title: Hiero Admin Docs
 sidebar_label: Hiero
 ---
 

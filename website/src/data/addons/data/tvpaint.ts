@@ -10,8 +10,8 @@ const addon: Addon = {
     features: ["localRendering", "workfiles", "reviewables"],
     products: ["image", "audio"],
     docs: {
-        user: "artist_hosts_tvpaint",
-        admin: "admin_hosts_tvpaint",
+        user: "addon_tvpaint_artist",
+        admin: "addon_tvpaint_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/tvpaint",
 };

@@ -8,8 +8,8 @@ const addon: Addon = {
     icon: "resolve-icon.png",
     badge: versions.Resolve_Badge,
     docs: {
-        user: "artist_hosts_resolve",
-        admin: "admin_hosts_resolve",
+        user: "addon_resolve_artist",
+        admin: "addon_resolve_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/resolve",
 };

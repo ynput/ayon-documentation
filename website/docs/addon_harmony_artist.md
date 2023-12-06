@@ -1,7 +1,7 @@
 ---
 id: addon_harmony_artist
-title: Harmony
-sidebar_label: Harmony
+title: Harmony Artist Docs
+sidebar_label: ToonBoom Harmony
 ---
 
 import ReactMarkdown from "react-markdown";

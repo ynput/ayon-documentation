@@ -1,6 +1,6 @@
 ---
 id: addon_deadline_admin
-title: Deadline Admin docs
+title: Deadline Admin Docs
 sidebar_label: Deadline
 ---
 

@@ -33,8 +33,8 @@ and efficient management of complex projects.
         "workfile",
     ],
     docs: {
-        user: "artist_hosts_hiero",
-        admin: "admin_hosts_hiero",
+        user: "addon_hiero_artist",
+        admin: "addon_hiero_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/hiero",
 };

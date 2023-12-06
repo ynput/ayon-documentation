@@ -1,6 +1,6 @@
 ---
 id: addon_nuke_admin
-title: Nuke Admin docs
+title: Nuke Admin Docs
 sidebar_label: Nuke
 ---
 

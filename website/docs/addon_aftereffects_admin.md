@@ -1,7 +1,7 @@
 ---
 id: addon_aftereffects_admin
-title: AfterEffects Admin docs
-sidebar_label: AfterEffects
+title: After Effects Admin Docs
+sidebar_label: After Effects
 ---
 
 import ReactMarkdown from "react-markdown";

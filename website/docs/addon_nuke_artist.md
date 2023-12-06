@@ -1,6 +1,6 @@
 ---
 id: addon_nuke_artist
-title: Nuke
+title: Nuke Artist Docs
 sidebar_label: Nuke
 ---
 
@@ -95,7 +95,7 @@ This menu item will set correct Colorspace definitions for you. All has to be co
 -   set preview LUT to your viewers
 -   set correct colorspace to all discovered Read nodes (following expression set in settings)
 
-See [Nuke Color Management](artist_hosts_nuke_tut.md#nuke-color-management)
+See [Nuke Color Management](addon_nuke_artist.md#nuke-color-management)
 
 </div>
 <div class="col col--6 markdown">
@@ -171,7 +171,7 @@ Nuke AYON menu shows the current context
 
 Launching Nuke with context stops your timer, and starts the clock on the shot and task you picked.
 
-AYON makes initial setup for your Nuke script. It is the same as running [Apply All Settings](artist_hosts_nuke_tut.md#apply-all-settings) from the AYON menu.
+AYON makes initial setup for your Nuke script. It is the same as running [Apply All Settings](addon_nuke_artist.md#apply-all-settings) from the AYON menu.
 
 - Reads frame range and resolution from Avalon database, sets it in Nuke Project Settings,
 Creates Viewer node, sets it’s range and indicates handles by In and Out points.
@@ -202,11 +202,11 @@ More about [workfiles](artist_tools_workfiles).
 
 - **Open Workfile**
 
-  - You can [configure](project_settings/project_settings_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
+  - You can [configure](addon_nuke_admin#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
 
 - **Nuke Color Settings**
 
-  - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
+  - [Color setting](admin_colorspace#configuration-of-host-settings) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
 :::
 
 ### Load plate

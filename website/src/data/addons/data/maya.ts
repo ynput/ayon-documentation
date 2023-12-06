@@ -53,8 +53,8 @@ Most of maya workflows are supported including gpucaches, automatic shader, nest
         "mayaScene",
     ],
     docs: {
-        user: "artist_hosts_maya",
-        admin: "admin_hosts_maya",
+        user: "addon_maya_artist",
+        admin: "addon_maya_admin",
     },
 
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/maya",

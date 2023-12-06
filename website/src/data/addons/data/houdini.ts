@@ -35,8 +35,8 @@ const addon: Addon = {
         "usdRender"
     ],
     docs: {
-        user: "artist_hosts_houdini",
-        admin: "admin_hosts_houdini",
+        user: "addon_houdini_artist",
+        admin: "addon_houdini_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini",
 };

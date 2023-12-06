@@ -1,6 +1,6 @@
 ---
 id: addon_photoshop_artist
-title: Photoshop
+title: Photoshop Artist Docs
 sidebar_label: Photoshop
 ---
 

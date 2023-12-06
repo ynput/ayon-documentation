@@ -8,8 +8,8 @@ const addon: Addon = {
     icon: "kitsu-icon.png",
     badge: versions.Kitsu_Badge,
     docs: {
-        user: "artist_kitsu",
-        admin: "module_kitsu",
+        user: "addon_kitsu_artist",
+        admin: "addon_kitsu_admin",
     },
     features: ["appLauncher",
     "reviewables",

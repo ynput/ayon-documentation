@@ -9,7 +9,7 @@ const addon: Addon = {
     badge: versions.Deadline_Badge,
     docs: {
         developer: "dev_deadline",
-        admin: "module_deadline",
+        admin: "addon_deadline_admin",
     },
     features: [
         "publisher", 

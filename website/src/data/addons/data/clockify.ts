@@ -7,7 +7,7 @@ const addon: Addon = {
         "Clockify is a free time tracking software that helps you track your time across projects and tasks.",
     badge: versions.Clockify_Badge,
     docs: {
-        admin: "module_clockify",
+        admin: "addon_clockify_admin",
     },
     icon: "clockify-icon.png",
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/clockify",

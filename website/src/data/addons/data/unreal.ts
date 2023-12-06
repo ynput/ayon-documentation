@@ -27,8 +27,8 @@ Unreal Engine is a powerful real-time 3D creation tool used by game developers, 
         "render",
     ],
     docs: {
-        user: "artist_hosts_unreal",
-        admin: "admin_hosts_unreal",
+        user: "addon_unreal_artist",
+        admin: "addon_unreal_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/unreal",
 };

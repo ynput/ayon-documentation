@@ -1,6 +1,6 @@
 ---
 id: addon_houdini_artist
-title: Houdini
+title: Houdini Artist Docs
 sidebar_label: Houdini
 ---
 

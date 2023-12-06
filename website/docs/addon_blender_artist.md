@@ -1,6 +1,6 @@
 ---
 id: addon_blender_artist
-title: Blender
+title: Blender Artist Docs
 sidebar_label: Blender
 ---
 

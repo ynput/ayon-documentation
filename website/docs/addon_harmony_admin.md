@@ -1,6 +1,6 @@
 ---
 id: addon_harmony_admin
-title: ToonBoom Harmony Admin docs
+title: Harmony Admin Docs
 sidebar_label: ToonBoom Harmony
 ---
 
@@ -69,4 +69,4 @@ Set regex pattern(s) for filtering Task name that should skip validation `frameS
 
 ## Render farm settings
 
-* For setting up Deadline support see [here](module_deadline.md)
+* For setting up Deadline support see [here](addon_deadline_admin.md)

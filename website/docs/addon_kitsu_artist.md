@@ -1,6 +1,6 @@
 ---
 id: addon_kitsu_artist
-title: Kitsu
+title: Kitsu Artist Docs
 sidebar_label: Kitsu
 ---
 

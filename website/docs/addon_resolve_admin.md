@@ -1,6 +1,6 @@
 ---
 id: addon_resolve_admin
-title: DaVinci Resolve Admin docs
+title: DaVinci Resolve Admin Docs
 sidebar_label: DaVinci Resolve
 ---
 

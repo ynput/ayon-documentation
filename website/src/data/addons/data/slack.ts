@@ -9,7 +9,7 @@ const addon: Addon = {
     badge: versions.Slack_Badge,
     github: "https://github.com/ynput/ayon-slack",
     docs: {
-        admin: "module_slack",
+        admin: "addon_slack_admin",
     },
 };
 

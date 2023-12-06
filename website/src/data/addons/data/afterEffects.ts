@@ -8,8 +8,8 @@ const addon: Addon = {
     preview: "after-effects.png",
     badge: versions.Aftereffects_Badge,
     docs: {
-        user: "artist_hosts_aftereffects",
-        admin: "admin_hosts_aftereffects",
+        user: "addon_aftereffects_admin",
+        admin: "addon_aftereffects_artist",
     },
     github: "https://github.com/ynput/ayon-aftereffects",
     products: [

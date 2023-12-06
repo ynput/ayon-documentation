@@ -1,7 +1,7 @@
 ---
 id: addon_aftereffects_artist
-title: AfterEffects
-sidebar_label: AfterEffects
+title: After Effects Artist Docs
+sidebar_label: After Effects
 ---
 
 import ReactMarkdown from "react-markdown";
