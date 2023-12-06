@@ -4,6 +4,13 @@ title: Kitsu
 sidebar_label: Kitsu
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Kitsu_Badge}
+</ReactMarkdown>
+
 # How to use Kitsu in AYON
 
 ## Login to Kitsu module in AYON

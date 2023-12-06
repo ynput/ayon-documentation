@@ -4,6 +4,13 @@ title: Yeti for Maya
 sidebar_label: Yeti
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
+
 ## Working with Yeti in AYON
 
 AYON can work with [Yeti](https://peregrinelabs.com/yeti/) in two data modes.

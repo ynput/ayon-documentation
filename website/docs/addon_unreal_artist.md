@@ -4,6 +4,13 @@ title: Unreal
 sidebar_label: Unreal
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Unreal_Badge}
+</ReactMarkdown>
+
 ## Working with AYON in Unreal Engine
 
 AYON in Unreal Engine allows you to create, publish and manage assets and scenes across different projects and platforms. AYON handles tasks such as versioning, validation, synchronization, rendering and publishing in Unreal.

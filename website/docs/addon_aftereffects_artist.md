@@ -3,6 +3,14 @@ id: addon_aftereffects_artist
 title: AfterEffects
 sidebar_label: AfterEffects
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Aftereffects_Badge}
+</ReactMarkdown>
+
 <!-- based on PS implementation, same principle and menu -->
 ## Available Tools
 

@@ -40,6 +40,7 @@ const features: { [type in FeatureType]: Feature } = {
         title: "Publisher",
         description:
             "Universal GUI for validating and publishing content from your DCC app.",
+        preview: "publisher.mp4",
         docs: {
             user: "artist_tools_publisher",
         },
@@ -79,6 +80,7 @@ const features: { [type in FeatureType]: Feature } = {
     },
     appLauncher: {
         title: "App Launcher",
+        preview: "launcher.png",
         description:
             "Standalone GUI for launching application in the chosen context directly from tray",
     },
