@@ -4,6 +4,14 @@ title: Kitsu Admin docs
 sidebar_label: Kitsu
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Kitsu_Badge}
+</ReactMarkdown>
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

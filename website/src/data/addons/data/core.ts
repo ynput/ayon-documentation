@@ -1,9 +1,11 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Core",
     description: "A set of core pipeline tools and features available in all addons.",
     icon: "core-icon.png",
+    badge: versions.Core_Badge,
     features: [
         "workfiles",
         "loader",

@@ -4,6 +4,14 @@ title: Harmony
 sidebar_label: Harmony
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Harmony_Badge}
+</ReactMarkdown>
+
+
 ## Available Tools
 
 -   [Work Files](artist_tools_workfiles)

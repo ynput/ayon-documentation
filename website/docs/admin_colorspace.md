@@ -3,6 +3,12 @@ id: admin_colorspace
 title: Colorspace settings
 sidebar_label: Colorspace settings
 ---
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.ThirdPart_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
