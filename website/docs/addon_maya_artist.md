@@ -383,7 +383,7 @@ AYON allows to version and manage those sets.
 
 ### Publishing Set dress / Layout
 
-Working with Set dresses is very easy. Just load your assets maya/artist/into scene with
+Working with Set dresses is very easy. Just load your assets into scene with
 [Loader](artist_tools_loader) (**AYON → Load...**). Populate your scene as
 you wish, translate each piece to fit your need. When ready, select all imported
 stuff and go **AYON → Create...** and select **Set Dress** or **Layout**.
