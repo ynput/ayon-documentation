@@ -129,8 +129,6 @@ Now that we have some content loaded, you can manage which version is loaded. Th
 Loaded images have to stay as smart layers in order to be updated. If you rasterize the layer, you can no longer update it to a different version using AYON tools.
 :::
 
-![Loader](assets/manage.png)
-
 You can switch to a previous version of the image or update to the latest.
 
 ![Loader](assets/manage_switch.gif)
@@ -189,13 +187,13 @@ Load or Create placeholders could be used to provide dynamic content or preparat
 This one provide way how to load particular representation for particular product for particular asset for particular task.
 Eg. Whenever artist start `animation` task they want to load `png` representation of `imageMain` product of current context's asset.
 
-![Load placeholder](assets/aftereffects_load_placeholder.png)
+![Load placeholder](assets/aftereffects/artist/aftereffects_load_placeholder.png)
 
 #### Create Placeholder
 
 This allows to create new composition and when populated it will be enhanced with metadata for publish instance which will be created.
 
-![Create placeholder](assets/aftereffects_create_placeholder.png)
+![Create placeholder](assets/aftereffects/artist/aftereffects_create_placeholder.png)
 
 
 ### Example
@@ -203,13 +201,13 @@ This allows to create new composition and when populated it will be enhanced wit
 This is how it looks when `Load placeholder` was used to create `LOADERPLACEHOLDER` item which is added as a layer into `CREATEPLACEHOLDER` composition
 created by `Create placeholder`.
 
-![Prepared template](assets/aftereffects_prepared_template.png)
+![Prepared template](assets/aftereffects/artist/aftereffects_prepared_template.png)
 
 Load placeholder was configured to load `image` product type, product with name `imageMain` and `png` representation.
 
 Any additional layers could be added into composition, when `Build Workfile from template` will be used by an artist, load placeholders will be replace
 by loaded item(s).
 
-![Prepared template](assets/aftereffects_populated_template.png)
+![Prepared template](assets/aftereffects/artist/aftereffects_populated_template.png)
 
 Same prepared template could be used for any asset, in each case correct asset according to context will be used automatically.
