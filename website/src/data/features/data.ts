@@ -40,6 +40,7 @@ const features: { [type in FeatureType]: Feature } = {
         title: "Publisher",
         description:
             "Universal GUI for validating and publishing content from your DCC app.",
+        preview: "publisher.mp4",
         docs: {
             user: "artist_tools_publisher",
         },
@@ -58,6 +59,12 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Tools for creating shots, assets and task within your project if you don't use third party project management",
     },
+    sgSync: {
+        title: "Shotgrid Sync",
+        description:
+            "A way to syncronize projects across AYON and Shotgrid, as well as react to events in either platform.",
+        preview: "shotgrid_sync.png",
+    },
     libraryLoader: {
         title: "Library Loader",
         description:
@@ -73,6 +80,7 @@ const features: { [type in FeatureType]: Feature } = {
     },
     appLauncher: {
         title: "App Launcher",
+        preview: "launcher.png",
         description:
             "Standalone GUI for launching application in the chosen context directly from tray",
     },
@@ -86,7 +94,7 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Built in file synchronization between your central storage (cloud or physical) and all your freelancers",
         docs: {
-            admin: "module_site_sync",
+            admin: "addon_site_sync_admin",
         },
     },
     timersManager: {
@@ -100,7 +108,7 @@ const features: { [type in FeatureType]: Feature } = {
     farmRendering: {
         title: "Farm rendering",
         docs: {
-            admin: "module_deadline",
+            admin: "addon_deadline_admin",
         },
         description:
             "Integrations with render managers. Render, publish and generate reviews on the farm.",

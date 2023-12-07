@@ -1,8 +1,15 @@
 ---
 id: addon_substancepainter_artist
-title: Substance Painter
+title: Substance Painter Artist Docs
 sidebar_label: Substance Painter
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.SubstancePainter_Badge}
+</ReactMarkdown>
 
 ## AYON global tools
 
@@ -50,11 +57,17 @@ To publish your textures we must first create a `textureSet`
 publish instance. 
 
 To create a **TextureSet instance** we will use AYON's publisher tool. Go 
-to **AYON → Publish... → TextureSet**
+to **AYON → Publish... → Textures**
+
+![substance painter creator settings](assets/substance_painter/substancepainter_creator_settings.png)
 
 The texture set instance will define what Substance Painter export template (`.spexp`) to
 use and thus defines what texture maps will be exported from your workfile. This
 can be set with the **Output Template** attribute on the instance.
+
+You can always edit your setting in Publish tab before publishing the instance.
+
+![substance painter publisher settings](assets/substance_painter/substancepainter_publisher_settings.png)
 
 :::info
 The TextureSet instance gets saved with your Substance Painter project. As such, 

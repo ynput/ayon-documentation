@@ -1,15 +1,22 @@
 ---
 id: addon_resolve_artist
-title: DaVinci Resolve
+title: DaVinci Resolve Artist Docs
 sidebar_label: DaVinci Resolve
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Resolve_Badge}
+</ReactMarkdown>
 
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::warning
-Before you are able to start with AYON tools in DaVinci Resolve, installation of its own Python 3.6 interpreter and PySide 2 has to be done. Go to [Installation of python and pyside](admin_hosts_resolve.md#installation-of-python-and-pyside) link for more information
+Before you are able to start with AYON tools in DaVinci Resolve, installation of its own Python 3.6 interpreter and PySide 2 has to be done. Go to [Installation of python and pyside](addon_resolve_admin.md#installation-of-python-and-pyside) link for more information
 :::
 
 

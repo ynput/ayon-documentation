@@ -1,8 +1,16 @@
 ---
 id: addon_aftereffects_artist
-title: AfterEffects
-sidebar_label: AfterEffects
+title: After Effects Artist Docs
+sidebar_label: After Effects
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Aftereffects_Badge}
+</ReactMarkdown>
+
 <!-- based on PS implementation, same principle and menu -->
 ## Available Tools
 
@@ -40,7 +48,7 @@ When you are ready to share some work, you will need to publish it. This is done
 
 There is always instance for workfile created automatically (see 'workfileCompositing' item in `Products to publish` column.) This allows to publish (and therefore backup) workfile which is used to produce another publishable elements (as `image` and `review` items).
 
-Main publishable item in AfterEffects will be of `render` family. Result of this item (instance) is picture sequence that could be a final delivery product or loaded and used in another DCCs.
+Main publishable item in AfterEffects will be of `render` product type. Result of this item (instance) is picture sequence that could be a final delivery product or loaded and used in another DCCs.
 
 First select existing composition and then press `Create >>>` in middle column of `Publisher`.
 
@@ -97,9 +105,9 @@ There are currently 2 options of `render` item:
 
 When you want to load existing published work, you can use the `Loader` tool. You can reach it in the extension's panel.
 
-![Loader](assets/aftereffects/artist/aftereffects_loader.png)
+![Loader](assets/loader.png) <!-- picture needs to be changed -->
 
-The supported families for loading into AfterEffects are:
+The supported product types for loading into AfterEffects are:
 
 - `image`
 - `plate`
@@ -111,7 +119,7 @@ The supported families for loading into AfterEffects are:
 
 To load an item, right-click on the product you want and choose a representation you want to load:
 
-![Loader](assets/aftereffects/artist/aftereffects_load_animation.gif)
+![Loader](assets/loader_load.gif)
 
 ### Manage
 
@@ -121,11 +129,12 @@ Now that we have some content loaded, you can manage which version is loaded. Th
 Loaded images have to stay as smart layers in order to be updated. If you rasterize the layer, you can no longer update it to a different version using AYON tools.
 :::
 
-![Loader](assets/aftereffects/artist/aftereffects_manage.png)
+![Loader](assets/manage.png)
 
 You can switch to a previous version of the image or update to the latest.
 
-![Loader](assets/aftereffects/artist/aftereffects_manage_animation.gif)
+![Loader](assets/manage_switch.gif)
+![Loader](assets/manage_update.gif)
 
 #### Support help
 If you would like to ask for help admin or support, you could use any of the three options on the `Note` button on bottom left:
@@ -143,3 +152,64 @@ could be used right away.
 
 If you hit on unexpected behaviour with old instances, contact support first, then you could try to delete and recreate instances from scratch.
 Nuclear option is to purge workfile metadata in `Window > Metadata > Basic > Label`. This is only for most determined daredevils though!
+
+### Setting section
+
+Composition properties should be controlled by state in Asset Management System (Ftrack etc). Extension provides couple of buttons to trigger this propagation.
+
+#### Set Resolution
+
+Set width and height from AMS to composition.
+
+#### Set Frame Range
+
+Start frame and duration in workarea is set according to the settings in AMS. Handles are incorporated (not inclusive).
+It is expected that composition(s) is selected first before pushing this button!
+
+#### Apply All Settings
+
+Both previous settings are triggered at same time.
+
+### Experimental tools
+
+Currently empty. Could contain special tools available only for specific hosts for early access testing.
+
+
+### Workfile builder section
+
+Next 3 menu items handle creation and usage advanced workfile builder. This could be used to prepare workfile template with placeholders for loaded items and publishable items.
+This allow to build template with layers for guides, any text layers and layer for image content which get dynamically populated when template is used an populated by an artist.
+
+#### Create placeholder
+
+Load or Create placeholders could be used to provide dynamic content or preparation steps for publish.
+
+##### Load Placeholder
+
+This one provide way how to load particular representation for particular product for particular asset for particular task.
+Eg. Whenever artist start `animation` task they want to load `png` representation of `imageMain` product of current context's asset.
+
+![Load placeholder](assets/aftereffects_load_placeholder.png)
+
+#### Create Placeholder
+
+This allows to create new composition and when populated it will be enhanced with metadata for publish instance which will be created.
+
+![Create placeholder](assets/aftereffects_create_placeholder.png)
+
+
+### Example
+
+This is how it looks when `Load placeholder` was used to create `LOADERPLACEHOLDER` item which is added as a layer into `CREATEPLACEHOLDER` composition
+created by `Create placeholder`.
+
+![Prepared template](assets/aftereffects_prepared_template.png)
+
+Load placeholder was configured to load `image` product type, product with name `imageMain` and `png` representation.
+
+Any additional layers could be added into composition, when `Build Workfile from template` will be used by an artist, load placeholders will be replace
+by loaded item(s).
+
+![Prepared template](assets/aftereffects_populated_template.png)
+
+Same prepared template could be used for any asset, in each case correct asset according to context will be used automatically.

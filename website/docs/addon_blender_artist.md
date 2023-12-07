@@ -1,8 +1,15 @@
 ---
 id: addon_blender_artist
-title: Blender
+title: Blender Artist Docs
 sidebar_label: Blender
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Blender_Badge}
+</ReactMarkdown>
 
 ## AYON global tools
 

@@ -3,6 +3,14 @@ id: addon_maya_arnold_artist
 title: Arnold for Maya
 sidebar_label: Arnold
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
+
 ## Arnold Scene Source (.ass)
 Arnold Scene Source can be published as a single file or a sequence of files, determined by the frame range.
 

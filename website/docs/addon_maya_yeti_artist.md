@@ -4,6 +4,13 @@ title: Yeti for Maya
 sidebar_label: Yeti
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
+
 ## Working with Yeti in AYON
 
 AYON can work with [Yeti](https://peregrinelabs.com/yeti/) in two data modes.
@@ -68,7 +75,7 @@ when you open graph on this Yeti node, all nodes are as they were in publishing 
 
 Yeti Rigs are designed to connect to published models or animation rig. The workflow gives the Yeti Rig full control on that geometry to do additional things on top of whatever input comes in, e.g. deleting faces, pushing faces in/out, subdividing, etc.
 
-Let's start with a [model](artist_hosts_maya.md#loading-model) or [rig](artist_hosts_maya.md#loading-rigs) loaded into the scene. Here we are using a simple rig.
+Let's start with a [model](addon_maya_artist.md#loading-model) or [rig](addon_maya_artist.md#loading-rigs) loaded into the scene. Here we are using a simple rig.
 
 ![Maya - Yeti Simple Rig](assets/maya/artist/maya-yeti_simple_rig.png)
 

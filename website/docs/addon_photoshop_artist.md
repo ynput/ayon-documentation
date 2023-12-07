@@ -1,8 +1,15 @@
 ---
 id: addon_photoshop_artist
-title: Photoshop
+title: Photoshop Artist Docs
 sidebar_label: Photoshop
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Photoshop_Badge}
+</ReactMarkdown>
 
 ## Available Tools
 
@@ -14,11 +21,13 @@ sidebar_label: Photoshop
 
 ## Setup
 
-To install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select Photoshop in menu. Then go to `{path to pype}hosts/photoshop/api/extension.zxp`. Drag extension.zxp and drop it to Anastasyi's Extension Manager. The extension will install itself. 
+o install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select AfterEffects in menu. Then go to `{path to PS addon}hosts/photoshop/api/extension.zxp`.
+(Current location will be most likely in artist `AppData`, on Windows it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\openpype_X.X.X\openpype\hosts\photoshop\api`.
+This location is temporary until full separation of addons is implemented. Artist must start Tray at least once for Ayon server to populate this location.)
 
 ## Usage
 
-When you launch Photoshop you will be met with the Workfiles app. If dont have any previous workfiles, you can just close this window.
+When you launch Photoshop you will be met with the Workfiles app. If you don't have any previous workfiles, you can just close this window.
 
 In Photoshop you can find the tools in the `AYON` extension:
 
@@ -37,7 +46,7 @@ workfile which is used to produce another publishable elements (as `image` and `
 
 #### Create
 
-Main publishable item in Photoshop will be of `image` family. Result of this item (instance) is picture that could be loaded and used in another DCCs (for example as
+Main publishable item in Photoshop will be of `image` product type. Result of this item (instance) is picture that could be loaded and used in another DCCs (for example as
 single layer in composition in AfterEffects, reference in Maya etc).
 
 There are couple of options what to publish:
@@ -119,15 +128,15 @@ If there is an option of automatic repair, there will be `Repair` button on the 
 
 When you want to load existing published work, you can load in smart layers through the `Loader`. You can reach the `Loader` through the extension's `Load` button.
 
-![Loader](assets/photoshop/artist/photoshop_loader.png) <!-- picture needs to be changed -->
+![Loader](assets/loader.png)
 
-The supported families for Photoshop are:
+The supported product types for Photoshop are:
 
 - `image`
 
 To load an image, right-click on the product you want and choose a representation:
 
-![Loader](assets/photoshop/artist/photoshop_loader_load.gif)
+![Loader](assets/loader_load.gif)
 
 ### Manage
 
@@ -137,12 +146,12 @@ Now that we have some images loaded, we can manage which version is loaded. This
 Loaded images has to stay as smart layers in order to be updated. If you rasterize the layer, you cannot update it to a different version.
 :::
 
-![Loader](assets/photoshop/artist/photoshop_manage.png)
+![Loader](assets/manage.png)
 
 You can switch to a previous version of the image or update to the latest.
 
-![Loader](assets/photoshop/artist/photoshop_manage_switch.gif)
-![Loader](assets/photoshop/artist/photoshop_manage_update.gif)
+![Loader](assets/manage_switch.gif)
+![Loader](assets/manage_update.gif)
 
 
 #### Support help

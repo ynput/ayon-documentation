@@ -1,4 +1,5 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Unreal Engine",
@@ -10,6 +11,7 @@ Unreal Engine is a powerful real-time 3D creation tool used by game developers, 
 **Versions**: \`5.0\`, \`5.1\`
     `,
     preview: "unreal.png",
+    badge: versions.Unreal_Badge,
     features: [
         "loader",
         "publisher",
@@ -25,8 +27,8 @@ Unreal Engine is a powerful real-time 3D creation tool used by game developers, 
         "render",
     ],
     docs: {
-        user: "artist_hosts_unreal",
-        admin: "admin_hosts_unreal",
+        user: "addon_unreal_artist",
+        admin: "addon_unreal_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/unreal",
 };

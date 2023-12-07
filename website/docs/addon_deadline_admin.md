@@ -1,8 +1,15 @@
 ---
 id: addon_deadline_admin
-title: Deadline Admin docs
+title: Deadline Admin Docs
 sidebar_label: Deadline
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Deadline_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

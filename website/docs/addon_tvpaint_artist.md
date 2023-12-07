@@ -1,8 +1,16 @@
 ---
 id: addon_tvpaint_artist
-title: TVPaint
+title: TVPaint Artist Docs
 sidebar_label: TVPaint
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.TVPaint_Badge}
+</ReactMarkdown>
+
 
 -   [Work Files](artist_tools_workfiles)
 -   [Load](artist_tools_loader)
@@ -104,7 +112,7 @@ The timeline's animation layer can be marked by the color you pick from your Col
 
 ### Render Pass
 
-Render Passes are smaller individual elements of a [Render Layer](artist_hosts_tvpaint.md#render-layer). A `character` render layer might
+Render Passes are smaller individual elements of a [Render Layer](addon_tvpaint_artist.md#render-layer). A `character` render layer might
 consist of multiple render passes such as `Line`, `Color` and `Shadow`.
 
 Render Passes are specific because they have to belong to a particular Render Layer. You have to select to which Render Layer the pass belongs. Try to refresh if you don't see a specific Render Layer in the options.

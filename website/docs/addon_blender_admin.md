@@ -1,8 +1,15 @@
 ---
 id: addon_blender_admin
-title: Blender Admin docs
+title: Blender Admin Docs
 sidebar_label: Blender
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Blender_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -95,7 +102,7 @@ Enable it to define a default unit scale.
 //
 
 ### Workfile Builder
-Find more informations about the Workfile Builder in the [Nuke Documentation](admin_hosts_nuke#workfile-builder).
+Find more informations about the Workfile Builder in the [Nuke Documentation](addon_nuke_admin.md#workfile-builder).
 
 ### Publish plugins
  Find here the publish plugins.

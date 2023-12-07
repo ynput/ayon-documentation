@@ -1,4 +1,5 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Addon Name",
@@ -7,12 +8,13 @@ const addon: Addon = {
     descriptionLong: "If there's more to say, add a long description here.",
     preview: "addon-name-preview.png",
     icon: "addon-name-icon.png",
+    badge: versions.Teamplate_Badge,
     docs: {
         user: "artist_hosts_addonName",
         admin: "admin_hosts_addonName",
         developer: "developer_hosts_addonName",
     },
-    github: "https://github.com/ynput/ayon-addon-name",
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/modules/example_addons",
     products: ["render", "plate", "image", "background"],
     features: ["localRendering", "workfiles"],
     addons: ["nuke", "flame"],
