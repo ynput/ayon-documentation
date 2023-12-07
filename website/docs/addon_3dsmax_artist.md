@@ -34,14 +34,14 @@ Locate **AYON Icon** in the OS tray (if hidden dive in the tray toolbar).
 
 By clicking the icon  ```AYON Menu``` rolls out.
 
-![Menu AYON](assets/3dsmax/artist/3dsmax_tray_OP.png)
+![Menu AYON](assets/3dsmax/artist/3dsmax_ayon_tray_icon.png)
 
 Choose ```AYON Menu > Launcher``` to open the ```Launcher``` window.
 
 When opened you can **choose** the **project** to work in from the list. Then choose the particular **asset** you want to work on then choose **task**
 and finally **run 3dsmax by its icon** in the tools.
 
-![AYON Launcher](assets/3dsmax_Ayon_launcher.png)
+![AYON Launcher](assets/3dsmax/artist/3dsmax_Ayon_launcher.png)
 
 :::note Launcher Content
 The list of available projects, assets, tasks and tools will differ according to your Studio and need to be set in advance by supervisor/admin.
@@ -52,7 +52,7 @@ The list of available projects, assets, tasks and tools will differ according to
 If 3dsmax has been launched via OP Launcher there should be **AYON Menu** visible in 3dsmax **top header** after start.
 This is the core functional area for you as a user. Most of your actions will take place here.
 
-![Menu AYON](assets/3dsmax/artist/3dsmax_menu_first_OP.png)
+![Menu AYON](assets/3dsmax/artist/3dsmax_ayon_menu.png)
 
 :::note AYON Menu
 User should use this menu exclusively for **Opening/Saving** when dealing with work files not standard ```File Menu``` even though user still being able perform file operations via this menu but preferably just performing quick saves during work session not saving actual workfile versions.
@@ -65,13 +65,13 @@ In AYON menu first go to ```Work Files``` menu item so **Work Files  Window** sh
  Here you can perform Save / Load actions as you would normally do with ```File Save ``` and ```File Open``` in the standard 3dsmax ```File Menu``` and navigate to different project components like assets, tasks, workfiles etc.
 
 
-![Menu AYON](assets/3dsmax/artist/3dsmax_menu_OP.png)
+![Menu AYON](assets/3dsmax/artist/3dsmax_workfiles_menu.png)
 
 You first choose particular asset and assigned task and corresponding workfile you would like to open.
 
 If not any workfile present simply hit ```Save As``` and keep ```Subversion``` empty and hit ```Ok```.
 
-![Save As Dialog](assets/3dsmax/artist/3dsmax_SavingFirstFile_OP.png)
+![Save As Dialog](assets/3dsmax/artist/3dsmax_SavingFirstFile.png)
 
 AYON correctly names it and add version to the workfile. This basically happens whenever user trigger ```Save As``` action. Resulting into incremental version numbers like
 
@@ -87,7 +87,7 @@ Basically meaning user is free of guessing what is the correct naming and other 
 
 Here you can see resulting work file after ```Save As``` action.
 
-![Save As Dialog](assets/3dsmax/artist/3dsmax_SavingFirstFile2_OP.png)
+![Save As Dialog](assets/3dsmax/artist/3dsmax_SavingFirstFile2.png)
 
 ## Understanding Context
 
@@ -178,7 +178,7 @@ Similar to other max scene loader, it will create the new containers which inclu
 After choosing your render setting, select the target camera for rendering in the scene and go **AYON -> Create** and select **Render**.
 When you go to **Publish**, you can set up the preferences in either creator or AYON setting before the deadline submission.
 
-![Max Render AYON Setting](assets/3dsmax_ayon_render_setting.png)
+![Max Render AYON Setting](assets/3dsmax/artist/3dsmax_ayon_render_setting.png)
 
 ![Max Render Creator Setting](assets/3dsmax/artist/3dsmax_deadline_render_settings.png)
 
@@ -199,12 +199,12 @@ TyCache Instance only works when tyFlow Pro plugin installed in 3dsmax
 Select the tyFlow object(s) you want to export and go **AYON -> Create** and select **Point Cloud**. The exported object(s) would be in PRT format
 You can add the attributes which needs to be exported in AYON setting before publishing.
 
-![Max Point Cloud Attributes Setting](assets/3dsmax_pointcloud_attributes.png)
+![Max Point Cloud Attributes Setting](assets/3dsmax/artist/3dsmax_pointcloud_attributes.png)
 
 
 ### Publishing TyCache
 Select the tyFlow object(s) you want to export and go **AYON -> Create**  and select **TyCache**, you can choose the attribute data of tyCache to be exported in TYC format.
-![Max Review Creator Setting](assets/3dsmax_tycache_settings.png)
+![Max Review Creator Setting](assets/3dsmax/artist/3dsmax_tycache_settings.png)
 
 :::note Info for TyCache Attributes Option
 For users to have more information to know what the attributes they are exporting.
@@ -255,13 +255,13 @@ You can load the redshift proxy through **AYON -> Load**, it will then load the 
 ### Review
 Select the target camera you want to create preview animation and go **AYON -> Create** and select **Review**.You can set up the preferences(e.g. resolution) with the creator or AYON setting before creating the instance.
 
-![Max Review AYON Setting](assets/3dsmax_review_ayon_setting.png)
+![Max Review AYON Setting](assets/3dsmax/artist/3dsmax_review_ayon_setting.png)
 
-![Max Review Creator Setting](assets/3dsmax_review_creator_setting.png)
+![Max Review Creator Setting](assets/3dsmax/artist/3dsmax_review_creator_setting.png)
 
 You can always edit if you want to create preview animation with different settings. You can also choose what to include in the preview animation.
 
-![Max Review Publish Setting](assets/3dsmax_review_publish_setting.png)
+![Max Review Publish Setting](assets/3dsmax/artist/3dsmax_review_publish_setting.png)
 
 ## Validators
 
@@ -269,15 +269,15 @@ You can always edit if you want to create preview animation with different setti
 This validator is optional to check if the frame range in the scene aligns with that in the AYON project settings.
 You can switch on/ off in either the project settings in AYON setting or the toggled button in Publisher Tab.
 
-![Max Validate Frame Range in Ayon](assets/3dsmax_validator_frame_range_ayon_setting.png)
+![Max Validate Frame Range in Ayon](assets/3dsmax/artist/3dsmax_validator_frame_range_ayon_setting.png)
 
-![Max Validate Frame Range in Publisher](assets/3dsmax_validator_frame_range_publisher_setting.png)
+![Max Validate Frame Range in Publisher](assets/3dsmax/artist/3dsmax_validator_frame_range_publisher_setting.png)
 
 ### Validate Attributes
 This validator is to make sure the property attributes are valid in 3dsMax.
 You need to put the data in JSON format in the AYON setting for attributes check.
 
-![Max Validate Attributes](assets/3dsmax_validator_attributes.png)
+![Max Validate Attributes](assets/3dsmax/artist/3dsmax_validator_attributes.png)
 
 :::note Example for inputting the JSON format in the setting.
 E.g. If you want to check if ```renderers.current.separateAovFiles=true``` or
@@ -298,5 +298,5 @@ E.g. If you want to check if ```renderers.current.separateAovFiles=true``` or
 This validator ensures the plugins are available for certain product types before publishing instances in 3dsMax.
 You need to click ```+``` button to add product type and the plugins you want to validate within it.
 
-![Max Validate Loaded Plugins](assets/3dsmax_validator_loaded_plugins.png)
+![Max Validate Loaded Plugins](assets/3dsmax/artist/3dsmax_validator_loaded_plugins.png)
 
