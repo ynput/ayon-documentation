@@ -146,6 +146,8 @@ Now that we have some images loaded, we can manage which version is loaded. This
 Loaded images has to stay as smart layers in order to be updated. If you rasterize the layer, you cannot update it to a different version.
 :::
 
+![Loader](assets/photoshop/artist/manage.png)
+
 You can switch to a previous version of the image or update to the latest.
 
 ![Loader](assets/photoshop/artist/manage_switch.gif)

@@ -129,6 +129,8 @@ Now that we have some content loaded, you can manage which version is loaded. Th
 Loaded images have to stay as smart layers in order to be updated. If you rasterize the layer, you can no longer update it to a different version using AYON tools.
 :::
 
+![Loader](assets/photoshop/artist/manage.png)
+
 You can switch to a previous version of the image or update to the latest.
 
 ![Loader](assets/photoshop/artist/manage_switch.gif)

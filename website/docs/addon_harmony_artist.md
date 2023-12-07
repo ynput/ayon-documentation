@@ -122,6 +122,8 @@ Loading templates or workfiles will import the contents into scene. Referencing 
 
 `AYON > Manage`
 
+![Loader](assets/photoshop/artist/manage.png)
+
 You can switch to a previous version of the image or update to the latest.
 
 ![Loader](assets/photoshop/artist/manage_switch.gif) <!-- gif has to be changed (Harmony needed) -->
