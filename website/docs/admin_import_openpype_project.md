@@ -44,7 +44,7 @@ Thumbnails are supported, but you need to add folder where OpenPype is storing t
 You can only pack projects with one project root. For multi-root project, this is not currently supported.
 :::
 
-To import OpenPype project, you need to export it first. For that, you can use handy command `pack-project`.
+To migrate OpenPype project to AYON, you need to export it from OpenPype first. For that, you can use handy command `pack-project`.
 
 ```sh
 ./openpype_console.exe pack-project --project NAME_OF_YOUR_PROJECT --dirpath ../export/path --dbonly
