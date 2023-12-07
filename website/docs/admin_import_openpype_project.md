@@ -36,7 +36,7 @@ Thumbnails are supported, but you need to add folder where OpenPype is storing t
 :::
 
 
-### Importing process
+### OpenPype to AYON project migration
 
 #### I. Exporting project from OpenPype
 
