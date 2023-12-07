@@ -1,8 +1,15 @@
 ---
 id: addon_tvpaint_admin
-title: TVPaint Admin docs
+title: TVPaint Admin Docs
 sidebar_label: TVPaint
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.TVPaint_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

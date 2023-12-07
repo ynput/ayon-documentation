@@ -41,7 +41,7 @@ For example—when using different Linux distributions in a facility that do not
 
 **`Staging version`** - Define what is current staging version. When value is not set then latest staging version available in versions repository is resolved as staging version.
 
-For more information about Production and Staging go to [Distribute](admin_desktop_distribute.md#staging-vs-production).
+For more information about Production and Staging go to [Distribute](admin_launcher_distribute#staging-vs-production).
 
 **Production version** and **Staging version** fields will define which version will be used in studio. Filling explicit version will force new AYON processes to use it. That gives more control over studio deployment especially when some workstations don't have access to version repository (e.g. remote users). It can be also used to downgrade studio version when newer version have production breaking bug.
 

@@ -1,8 +1,15 @@
 ---
 id: addon_ftrack_artist
-title: Ftrack
+title: Ftrack Artist Docs
 sidebar_label: Artist
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Ftrack_Badge}
+</ReactMarkdown>
 
 # How to use Ftrack in AYON
 

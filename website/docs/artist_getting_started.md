@@ -124,4 +124,4 @@ AYON updates automatically, based on your studio server, every time you launch i
 
 ## Advanced Usage
 
-For more advanced use of AYON commands please visit [Admin section](admin_desktop_run.md#commands).
+For more advanced use of AYON commands please visit [Admin section](admin_launcher_run#arguments).

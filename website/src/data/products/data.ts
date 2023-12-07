@@ -205,6 +205,10 @@ const products: { [type in ProductType]: Product } = {
     usdRender:{
         title: "USD Render (experimental)",
         icon: "photo_library"
+    },
+    textureSet:{
+        title: "Texture Set",
+        icon: "photo_library"
     }
 };
 

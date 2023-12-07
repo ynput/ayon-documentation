@@ -1,8 +1,15 @@
 ---
 id: addon_maya_admin
-title: Maya Admin docs
+title: Maya Admin Docs
 sidebar_label: Maya
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
 
 ## Publish Plugins
 
