@@ -18,9 +18,9 @@ import TabItem from '@theme/TabItem';
 
 ## Wrap integration
 
-A Faceform **Wrap** is a topology transfer tool for creation of digital characters based on 3D scans of real actors or sculpts.
+A Faceform Wrap is a topology transfer tool for creating digital characters based on 3D scans of real actors or sculpts.
 
-As **Wrap** has no Python API its integration is a bit limited. It can now open predefined template workfile based on profiles.
+As Wrap has no Python API, its integration is a bit limited. It can now open predefined template workfiles based on profiles.
 These template workfiles could contain placeholders which will be textually replaced before starting and opening a workfile with Wrap.
 
 This must be configured by Ayon admin in: `ayon+settings://wrap/workfile_builder/custom_templates`
@@ -29,8 +29,8 @@ This must be configured by Ayon admin in: `ayon+settings://wrap/workfile_builder
 
 ### Template preparation
 
-Templates must be prepared manually in Wrap host. Appropriate artist can create `.wrap` workfile as expected and 
-mark read nodes controllable by Ayon by providing text placeholder value. 
+Templates must be prepared manually in Wrap host. Selected artist can build `.wrap` workfile as expected and
+mark read nodes controllable by Ayon by providing text placeholder value in the node's `File Name` path. 
 
 #### Read nodes
 Placeholder value points Ayon to specific representation of specific version for specific asset.
@@ -55,12 +55,12 @@ Example:
     `AYON.{currentAsset}.modelMain.{latest}.abc` - will load latest version of `abc` representation of `modelMain` product of
         currently opened asset from context 
 
-Any number of input nodes could be marked as `Ayon` placeholders. Each value will be resolved when opening workfile for a first
+Any number of input nodes could be marked as Ayon placeholders. Each value will be resolved when opening workfile for a first
 time or updated if opening for next times.
 
 ### Launching of Wrap
 
-Regular artist opens Wrap ordinary via Launcher. Before Wrap is opened `Scene Inventory` tool will be shown to highlight which items
+Regular artist opens Wrap ordinary via Launcher. Before Wrap is opened Scene Inventory tool will be shown to highlight which items
 were loaded when placeholders got resolved. Artist can see version, if loaded version is not the latest, it is highlighted by red color.
 
 ![Wrap Scene Inventory](assets/artist_hosts_wrap_scene_inventory.png)
@@ -75,14 +75,14 @@ This dialog MUST be closed for Wrap to be opened!
 #### Publish
 
 As there is no Python API to run code of Ayon directly in Wrap application, publish process is semi-manual. Artists must prepare
-workfile, save it and then publish it via [Publisher](docs/artist_tools_publisher) tool.
+workfile, save it and then publish it via Publisher: docs/artist_tools_publisher tool.
 
 There might be multiple write nodes inside of the workfile, but not all of them must be published via Ayon. Publishable nodes
-must contain `AYON_` prefix in their names. Whole name has then format `AYON_PUBLISHED_PRODUCT_NAME` (eg.`AYON_wrapRenderMain` - 
-this will publish `wrapRenderMain` product of `wrap` family.
+must contain AYON_ prefix in their names. Whole name has then format AYON_PUBLISHED_PRODUCT_NAME (eg.AYON_wrapRenderMain -
+this will publish wrapRenderMain product of wrap family.
 
-Artist should open `Publisher`, select published context in left column, drag&drop prepared workfile in the middle column and hit `Create`.
-There should appear new instance in the right column, next step would be to hit `Publish` to start publishing process.
+Artist should open Publisher, select published context in left column, drag&drop prepared workfile in the middle column and hit Create.
+There should appear new instance in the right column, next step would be to hit Publish to start publishing process.
 
 ![Wrap Publish](assets/artist_hosts_wrap_publish.png)
 
