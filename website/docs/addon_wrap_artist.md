@@ -1,7 +1,7 @@
 ---
-id: addon_photoshop_admin
-title: Photoshop Admin Docs
-sidebar_label: Photoshop
+id: addon_wrap_artist
+title: Wrap Artist Docs
+sidebar_label: Wrap
 ---
 
 import ReactMarkdown from "react-markdown";
