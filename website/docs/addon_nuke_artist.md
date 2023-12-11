@@ -19,9 +19,9 @@ AYON supports Nuke version **`11.0`** and above.
 
 -   [Work Files](artist_tools_workfiles)
 -   [Create](artist_tools_creator)
+-   [Publish](artist_tools_publisher)
 -   [Load](artist_tools_loader)
 -   [Manage (Inventory)](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
 -   [Library Loader](artist_tools_library_loader)
 
 ## Nuke specific tools
@@ -127,27 +127,6 @@ It is usually enough if you once per while use this option just to make yourself
 </div>
 </div>
 
-### Build Workfile
-
-<div class="row markdown">
-<div class="col col--6 markdown">
-
-This tool will append all available products into an actual node graph. It will look into database and get all last [versions](artist_concepts.md#version) of available [products](artist_concepts.md#product).
-
-
-##### Result
-
--   adds all last versions of products (rendered image sequences) as read nodes
--   ~~adds publishable write node as `renderMain` product~~
-
-</div>
-<div class="col col--6 markdown">
-
-![Build First Work File](assets/nuke_buildFirstWorkfile.png)
-
-</div>
-</div>
-
 ## Nuke QuickStart
 
 This QuickStart is short introduction to what AYON can do for you. It attempts to make an overview for compositing artists, and simplifies processes that are better described in specific parts of the documentation.
@@ -185,7 +164,8 @@ After Nuke starts it will automatically **Apply All Settings** for you. If you a
 :::
 
 ### Save Nuke script – the Work File
-Use AYON - Work files menu to create a new Nuke script. AYON offers you the preconfigured naming.
+Use AYON - Work files menu to create a new Nuke script. AYON offers you the pre-configured naming.
+![Context](assets/nuke_tut/nuke_WorkFileMenu.png)
 ![Context](assets/nuke_tut/nuke_WorkFileSaveAs.png)
 
 The Next Available Version checks the work folder for already used versions and offers the lowest unused version number automatically.
@@ -198,20 +178,26 @@ More about [workfiles](artist_tools_workfiles).
 :::tip Admin Tips
 - **Workfile Naming**
 
-  - The [workfile naming](admin_settings_project_anatomy.md#templates) is configured in anatomy, see **Studio Settings → Project → Anatomy → Templates → Work**
+  - The [workfile naming](admin_settings_project_anatomy.md#templates) is configured in anatomy
+    - ***Studio Settings* → Anatomy presets Tab → Templates → Work → default**
+    - ***Projects Settings* → [select project] → Anatomy Tab → Templates → Work → default**
 
 - **Open Workfile**
 
-  - You can [configure](addon_nuke_admin#create-first-workfile) Nuke to automatically open the last version, or create a file on startup. See **Studio Settings → Project → Global → Tools → Workfiles**
+  - You can [configure](project_settings/project_settings_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup.
+    - ***Studio Settings* → Studio settings → [select Core] → Tools → Open last workfile on launch**
+    - ***Projects Settings* → [select project] → [select Core] → Tools → Open last workfile on launch**
 
 - **Nuke Color Settings**
 
-  - [Color setting](admin_colorspace#configuration-of-host-settings) for Nuke can be found in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke**
+  - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in:
+    - ***Studio Settings* → Studio settings → [select Nuke] → Color Management (imageio)**
+    - ***Projects Settings* → [select project] → [select Nuke] → Color Management (imageio)**
 :::
 
 ### Load plate
 Use Load from AYON menu to load any plates or renders available.
-
+![menu Load](assets/nuke_tut/nuke_menu_load.png)
 ![Asset Load](assets/nuke_tut/nuke_AssetLoader.png)
 
 Pick the plate asset, right click and choose Load Image Sequence to create a Read node in Nuke.
@@ -226,6 +212,7 @@ More about [Asset loader](artist_tools_loader).
 To create AYON managed Write node, select the Read node you just created, from AYON menu, pick Create.
 In the Instance Creator, pick Create Write Render, and Create.
 
+![menu create](assets/nuke_tut/nuke_menu_create.png)
 ![AYON Create](assets/nuke_tut/nuke_Creator.png)
 
 This will create a Group with a Write node inside.
@@ -248,7 +235,8 @@ The Pyblish dialog shows the progress of the process.
 
 The left column of the dialog shows what will be published. Typically it is one or more renders or prerenders, plus work file.
 
-![AYON Publish](assets/nuke_tut/nuke_PyblishDialogNuke.png)
+![AYON Publish](assets/nuke_tut/nuke_menu_publish.png)
+![AYON Publish](assets/nuke_tut/nuke_Publish_precreate.png)
 
 The right column shows the publish steps
 
@@ -266,23 +254,23 @@ The right column shows the publish steps
 
 Gathering all the info and validating usually takes just a few seconds. Creating reviews for long, high resolution shots can however take significant amount of time when publishing locally.
 
-##### Pyblish Note and Intent
-![Note and Intent](assets/nuke_tut/nuke_PyblishDialogNukeNoteIntent.png)
+##### Publish iteration Note
+![Publish Note](assets/nuke_tut/nuke_PyblishDialogNukeNoteIntent.png)
 
-Artist can add Note and Intent before firing the publish button. The Note and Intent is meant for easy communication between artist and supervisor. After publish, Note and Intent can be seen in Ftrack notes.
+Artist can add Note before firing the publish button. The Note is meant for easy communication between artist and supervisor. After publish, Note can be seen in any integrated Project Management platforms.
 
-##### Pyblish Checkbox
+##### Product publishing activation
 
-![Note and Intent](assets/nuke_tut/nuke_PyblishCheckBox.png)
+![publish checkbox](assets/nuke_tut/nuke_PyblishCheckBox.png)
 
-Pyblish Dialog tries to pack a lot of info in a small area. One of the more tricky parts is that it uses non-standard checkboxes. Some squares can be turned on and off by the artist, some are mandatory.
-
-If you run the publish and decide to not publish the Nuke script, you can turn it off right in the Pyblish dialog by clicking on the checkbox. If you decide to render and  publish the shot in lower resolution to speed up the turnaround, you have to turn off the Write Resolution validator. If you want to use an older version of the asset (older version of the plate...), you have to turn off the Validate containers, and so on.
+If you run the publish and decide to not publish the render product, you can turn it off right in the Publish dialog by clicking on the toggle.
 
 More info about [Using Pyblish](artist_tools_publisher)
 
 :::tip Admin Tip - Configuring validators
-You can configure Nuke validators like Output Resolution in **Studio Settings → Project → Nuke → Publish plugins**
+You can configure Nuke validators like Output Resolution in:
+  - ***Studio Settings* → Studio settings → [select Nuke] → Publish Plugins**
+  - ***Projects Settings* → [select project] → [select Nuke] → Publish Plugins**
 :::
 
 ### Review
