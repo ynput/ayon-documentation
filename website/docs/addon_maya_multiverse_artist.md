@@ -4,6 +4,13 @@ title: Multiverse for Maya
 sidebar_label: Multiverse USD
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
+
 ## Working with Multiverse in AYON
 
 AYON supports creating, publishing and loading of [Multiverse | USD](

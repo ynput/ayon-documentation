@@ -1,8 +1,15 @@
 ---
 id: addon_harmony_admin
-title: ToonBoom Harmony Admin docs
+title: Harmony Admin Docs
 sidebar_label: ToonBoom Harmony
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Harmony_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,7 +19,7 @@ import TabItem from '@theme/TabItem';
 There is a couple of settings that could configure publishing process for **ToonBoom Harmony**.
 All of them are Project based, eg. each project could have different configuration.
 
-Location: Project Settings > Harmony (`ayon_server_url/manageProjects/projectSettings`)
+Location: Project Settings > Harmony (`ayon+settings://harmony`)
 
 ![Harmony Project Settings](assets/admin_hosts_harmony_settings.png)
 
@@ -38,7 +45,7 @@ disable this plugin by toggle next to plugin name.
 If enabled, artist might decide to disable validation for each publish (for special use cases).
 Limit this optionality by toggling `Optional`.
 `Active` toggle denotes that by default artists sees that optional validation as enabled.
-(Eg. admin allows artist disabling(`Optional`) validation but it is enabled(`Active`) by default.)
+(Eg. admin allows artist disabling(`Optional`) validation, but it is enabled(`Active`) by default.)
 
 ### Validate Containers
 
@@ -62,4 +69,4 @@ Set regex pattern(s) for filtering Task name that should skip validation `frameS
 
 ## Render farm settings
 
-* For setting up Deadline support see [here](module_deadline.md)
+* For setting up Deadline support see [here](addon_deadline_admin.md)
