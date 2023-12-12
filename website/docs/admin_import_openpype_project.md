@@ -16,7 +16,7 @@ The work area contains the scenes from which published data is generated. This d
 
 The second part of an OpenPype project is the metadata about versions and products. This information is stored in documents within a MongoDB database.
 
-When you load a version of a product into your scene, a record is created somewhere, that referenes that particular version and its representation - this is the ID of the corresponding document in the MongoDB database.
+When you load a version of a product into your scene, a record is created somewhere, that references that particular version and its representation - this is the ID of the corresponding document in the MongoDB database.
 
 ### Differences
 
@@ -36,9 +36,9 @@ Thumbnails are supported, but you need to add folder where OpenPype is storing t
 :::
 
 
-### OpenPype to AYON project migration
+## OpenPype to AYON project migration
 
-#### I. Exporting project from OpenPype
+### I. Exporting project from OpenPype
 
 :::note
 You can only pack projects with one project root. For multi-root project, this is not currently supported.
@@ -46,23 +46,54 @@ You can only pack projects with one project root. For multi-root project, this i
 
 To migrate OpenPype project to AYON, you need to export it from OpenPype first. For that, you can use handy command `pack-project`.
 
+
+#### Export from termnial:
+
 ```sh
 ./openpype_console.exe pack-project --project NAME_OF_YOUR_PROJECT --dirpath ../export/path --dbonly
 ```
 
-or from the sources:
+OR  from the sources:
 
 ```sh
-./.poetry/bin/poetry run python start.py --project NAME_OF_YOUR_PROJECT --dirpath ../export/path --dbonly
+./.poetry/bin/poetry run python start.py pack-project --project NAME_OF_YOUR_PROJECT --dirpath ../export/path --dbonly
 ```
 
 Just replace name of the project in `--project`. Destination, where the project will be packed is specified by `--dirpath`. Adding `--dbonly` will dump only MongoDB documents. If you use `--dbonly`, you also need to specify `--dirpath`.
 
 This will produce ZIP file with the project files, `database.json` file with the MongoDB dump and `metadata.json` that contains the project root definitions. Lets keep this zip file for later and setup the importer service itself.
 
-#### II. Installing OpenPype Importer Service for AYON
+![pack op project from terminal](assets/import_openpype/pack_op_project_from_terminal.png)
 
-##### Setting up ASH:
+#### Export from console:
+
+Alternatively, you can call `pack-project` from OpenPype's console as follows
+
+```python
+# ------------ Get All Projects ----------------
+from openpype.client import get_projects
+
+def get_all_projects():
+    return [prj["name"] for prj in get_projects()]
+
+# You can print the names of your projects to be 100% sure you have the correct name.
+print(get_all_projects())
+
+# -------------- Pack Project ------------------
+from openpype.lib.project_backpack import pack_project
+"""Check pack_project doc string for more info. """
+
+project = "project_name"
+destination_dir = "desired_output_path" # Optional path, Project's root is used if not passed.
+dbonly = True
+pack_project(project, destination_dir, dbonly)
+```
+
+![pack op project from terminal](assets/import_openpype/pack_op_project_from_console.png)
+
+### II. Installing OpenPype Importer Service for AYON
+
+#### Setting up ASH:
 
 First requirement is to have [ASH](https://github.com/ynput/ash) set up and running. ASH stands for *AYON Service Host* and it takes
 care for handling AYON Services. It Periodically checks the services declared in th AYON and starts
@@ -119,7 +150,13 @@ For development, you can also run it directly from Python 3.10+ using Poetry:
 poetry run -m ash
 ```
 
-##### Setting up OpenPype Importer Service:
+:::info
+**<font size="4">Alternatively,</font>** you can run ASH as a part of your main Ayon stack as mentioned in this community guide [AYON Beta Testing - Minimal step by step guide](https://community.ynput.io/t/ayon-beta-testing-minimal-step-by-step-guide/699#ayon-server-host-ash-18)
+
+This can be much easier to set up if you are not familiar with docker.
+:::
+
+#### Setting up OpenPype Importer Service:
 
 First, clone repository addon:
 
@@ -145,7 +182,7 @@ After upload, just restart the server and you'll be able to set the service.
 
 ---
 
-### More reading:
+## More reading:
 
 *ASH Service and OpenPype Import*: https://community.ynput.io/t/using-ayon-service-host/118
 
