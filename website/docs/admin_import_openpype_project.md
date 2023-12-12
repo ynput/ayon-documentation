@@ -36,7 +36,7 @@ Thumbnails are supported, but you need to add folder where OpenPype is storing t
 :::
 
 
-## OpenPype to AYON project migration
+## Project Migration prerequisites
 
 ### I. Exporting project from OpenPype
 
@@ -91,9 +91,7 @@ pack_project(project, destination_dir, dbonly)
 
 ![pack op project from terminal](assets/import_openpype/pack_op_project_from_console.png)
 
-### II. Installing OpenPype Importer Service for AYON
-
-#### Setting up ASH:
+### II. Setting up ASH
 
 First requirement is to have [ASH](https://github.com/ynput/ash) set up and running. ASH stands for *AYON Service Host* and it takes
 care for handling AYON Services. It Periodically checks the services declared in th AYON and starts
@@ -156,7 +154,16 @@ poetry run -m ash
 This can be much easier to set up if you are not familiar with docker.
 :::
 
-#### Setting up OpenPype Importer Service:
+## Project Migration Steps
+
+### I. Get OpenPype Importer Addon
+You two options, choose your preferred option.
+
+#### Option 1: Just Download It!
+Head to [`ayon-openpype-import` releases github page](https://github.com/ynput/ayon-openpype-import/releases) and download the latest release.
+
+#### Option 2: Export the addon yourself
+> This is useful when you want to test the current development code!
 
 First, clone repository addon:
 
@@ -170,15 +177,37 @@ Create server addon from the sources by running `create_package.py` script:
 python ./create_package.py
 ```
 
+### II. Installing OpenPype Importer Service for AYON
+#### Install Addon
 You'll find your freshly created addon zip in `package`.
 
 Next step is to upload this addon to AYON server. In AYON, press `S+S` or go to `Studio Settings -> Bundles`. From there, click on `Install addons` and drag'n'drop `openpype-import-x.x.x.zip` into the dialog.
 
 
-![Install Addon](assets/settings/ayon_install_addon_1.png)
+![Install Addon](assets/import_openpype/ayon_install_addon_1.png)
 
+#### Create new bundle!
 
-After upload, just restart the server and you'll be able to set the service.
+After upload, restart the server, create new bundle, and set OP importer addon version.
+
+![Set Addon Version](assets/import_openpype/set_op_import_addon_version.png)
+
+#### Install Importer Service
+
+As soon as you set your bundle to production and restart the server, you will notice the OpenPype Import tab.
+![OP Import Tab](assets/import_openpype/op_import_tab.png)
+
+> However, you still need to install the service for the tab to work.
+
+Go to services and create new service.
+
+![services](assets/import_openpype/services.png) 
+![install service](assets/import_openpype/install_service.png)
+
+### III. Import Projects
+Finally, Import OP projects.
+
+![Import](assets/import_openpype/import_project.gif)
 
 ---
 
