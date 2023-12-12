@@ -209,6 +209,10 @@ const products: { [type in ProductType]: Product } = {
     textureSet:{
         title: "Texture Set",
         icon: "photo_library"
+    },
+    wrap:{
+        title: "Wrap",
+        icon: "language"
     }
 };
 

@@ -56,4 +56,5 @@ export type ProductType =
     | "vrayRender"
     | "usd"
     | "usdRender"
-    | "textureSet";
+    | "textureSet"
+    | "wrap";

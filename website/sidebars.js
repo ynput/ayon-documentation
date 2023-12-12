@@ -66,6 +66,7 @@ module.exports = {
                 "addon_substancepainter_artist",
                 "addon_tvpaint_artist",
                 "addon_unreal_artist",
+                "addon_wrap_artist",
             ],
         },
     ],
@@ -127,7 +128,8 @@ module.exports = {
                 "addon_slack_admin",
                 "addon_substancepainter_admin",
                 "addon_tvpaint_admin",
-                "addon_unreal_admin"
+                "addon_unreal_admin",
+                "addon_wrap_admin"
             ],
         },
         "admin_releases",
