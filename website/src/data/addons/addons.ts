@@ -46,7 +46,8 @@ export const officialAddons = [
     "substancepainter",
     "slack",
     "tvpaint",
-    "unreal"
+    "unreal",
+    "wrap"
 ] as const;
 
 // COMMUNITY ADDONS
