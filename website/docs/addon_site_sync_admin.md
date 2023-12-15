@@ -20,7 +20,7 @@ which could be a physical disk, server, cloud storage. To be able to use site sy
 The general idea is that each user acts as an individual site and can download and upload any published project files when they are needed. that way, artist can have access to the whole project, but only every store files that are relevant to them on their home workstation. 
 
 :::note
-At the moment site sync is only able to deal with publishes files (eg. in `publish` folder). No workfiles (in `work` folder) will be synchronized. We are working on making workfile synchronization possible as well. 
+At the moment site sync is only able to deal with published files (eg. in `publish` folder). **No workfiles (in `work` folder) will be synchronized.** We are working on making workfile synchronization possible as well.
 :::
 
 ## Studio Settings
