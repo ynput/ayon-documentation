@@ -25,7 +25,7 @@ At the moment site sync is only able to deal with published files (eg. in `publi
 
 ## Studio Settings
 
-To use synchronization, *Site Sync* needs to be enabled globally in **ayon+settings://sitesync** and available in Bundle.
+First of all, you need to include Site Sync Addon to your bundle, and to use synchronization, *Site Sync* needs to be enabled globally in **ayon+settings://sitesync**.
 
 ![Configure module](assets/site_sync_system.png)
 
