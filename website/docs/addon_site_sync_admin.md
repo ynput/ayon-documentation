@@ -162,7 +162,7 @@ Beware that ssh key expects OpenSSH format (`.pem`) not a Putty format (`.ppk`)!
   
 ### Custom providers
 
-If a studio needs to use other services for cloud storage, or want to implement totally different storage providers, they can do so by writing their own provider plugin. We're working on a developer documentation, however, for now we recommend looking at `abstract_provider.py`and `gdrive.py` inside `ayon-sitesync/client/ayon-sitesync/providers` and using it as a template.
+If a studio needs to use other services for cloud storage, or want to implement totally different storage providers, they can do so by writing their own provider plugin. We're working on a developer documentation, however, for now we recommend looking at [`abstract_provider.py`](https://github.com/ynput/ayon-sitesync/blob/develop/client/ayon_sitesync/providers/abstract_provider.py) and [`gdrive.py`](https://github.com/ynput/ayon-sitesync/blob/develop/client/ayon_sitesync/providers/gdrive.py) inside `ayon-sitesync/client/ayon-sitesync/providers` and using it as a template.
 
 ### Running Site Sync in background
 
