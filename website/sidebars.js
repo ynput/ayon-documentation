@@ -132,6 +132,7 @@ module.exports = {
             ],
         },
         "admin_releases",
+        "admin_import_openpype_project"
     ],
     Dev: [
         "dev_introduction",
