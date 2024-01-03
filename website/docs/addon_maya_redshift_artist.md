@@ -4,6 +4,13 @@ title: Redshift for Maya
 sidebar_label: Redshift
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Maya_Badge}
+</ReactMarkdown>
+
 ## Working with Redshift in AYON
 
 ### Using Redshift Proxies

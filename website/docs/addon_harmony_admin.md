@@ -1,8 +1,15 @@
 ---
 id: addon_harmony_admin
-title: ToonBoom Harmony Admin docs
+title: Harmony Admin Docs
 sidebar_label: ToonBoom Harmony
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Harmony_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -62,4 +69,4 @@ Set regex pattern(s) for filtering Task name that should skip validation `frameS
 
 ## Render farm settings
 
-* For setting up Deadline support see [here](module_deadline.md)
+* For setting up Deadline support see [here](addon_deadline_admin.md)

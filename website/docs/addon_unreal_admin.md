@@ -1,8 +1,15 @@
 ---
 id: addon_unreal_admin
-title: Unreal Admin docs
+title: Unreal Admin Docs
 sidebar_label: Unreal
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Unreal_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

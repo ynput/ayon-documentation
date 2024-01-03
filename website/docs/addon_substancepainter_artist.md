@@ -1,8 +1,15 @@
 ---
 id: addon_substancepainter_artist
-title: Substance Painter
+title: Substance Painter Artist Docs
 sidebar_label: Substance Painter
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.SubstancePainter_Badge}
+</ReactMarkdown>
 
 ## AYON global tools
 

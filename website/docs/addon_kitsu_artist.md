@@ -1,8 +1,15 @@
 ---
 id: addon_kitsu_artist
-title: Kitsu
+title: Kitsu Artist Docs
 sidebar_label: Kitsu
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Kitsu_Badge}
+</ReactMarkdown>
 
 # How to use Kitsu in AYON
 
