@@ -31,6 +31,11 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you ne
 
 5. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
 
+6. Create service account on Ayon server http://YOUR_AYON/settings/users , `Generate new key` and store it, you would need it in Deadline plugin configuration.
+
+:::note guide
+You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
+:::
 
 ## Configuration
 
@@ -52,6 +57,8 @@ executable. It is recommended to use the `ayon_console` executable as it provide
 - In case of multi OS farms, provide multiple locations, each Deadline Worker goes through the list and tries to find the first accessible
  location for itself.
 
+- provide your Ayon server address and API key for service account generated in step 6 of [Preparation](#Preparation)
+
 ![Configure plugin](assets/deadline_configure_plugin.png)
 
 ### AYONTileAssembler Plugin
@@ -69,10 +76,6 @@ The logic for publishing job pool assignment applies to tiling jobs.
 :::
 
 ## Troubleshooting
-
-:::note guide
-You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
-:::
 
 ### Publishing jobs fail directly in DCCs
 
