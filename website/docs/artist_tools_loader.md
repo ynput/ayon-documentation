@@ -124,6 +124,5 @@ You can use multiselection for representations to mark them for downloading in o
 
 If the AYON Tray is running, these files will be transferred in the background for you and show up on the local active site.
 
-For more details of progress, state, or possible error details, open the [Sync Queue](#Sync-Queue) item in the AYON Tray app.
 
 ![tools_loader_sync](assets/tools/tools_loader_sync.png)

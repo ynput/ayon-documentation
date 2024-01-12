@@ -21,7 +21,6 @@ module.exports = {
                         "artist_tools_inventory",
                         "artist_tools_workfiles",
                         "artist_tools_look_assigner",
-                        "artist_tools_sync_queue",
                     ],
                 },
             ],
@@ -133,6 +132,7 @@ module.exports = {
             ],
         },
         "admin_releases",
+        "admin_import_openpype_project"
     ],
     Dev: [
         "dev_introduction",
