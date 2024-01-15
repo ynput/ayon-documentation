@@ -184,13 +184,13 @@ More about [workfiles](artist_tools_workfiles).
 
 - **Open Workfile**
 
-  - You can [configure](project_settings/project_settings_nuke.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup.
+  - You can [configure](addon_nuke_admin.md#create-first-workfile) Nuke to automatically open the last version, or create a file on startup.
     - ***Studio Settings* → Studio settings → [select Core] → Tools → Open last workfile on launch**
     - ***Projects Settings* → [select project] → [select Core] → Tools → Open last workfile on launch**
 
 - **Nuke Color Settings**
 
-  - [Color setting](project_settings/project_settings_nuke.md) for Nuke can be found in:
+  - [Color setting](admin_colorspace.md#configuration-of-host-settings) for Nuke can be found in:
     - ***Studio Settings* → Studio settings → [select Nuke] → Color Management (imageio)**
     - ***Projects Settings* → [select project] → [select Nuke] → Color Management (imageio)**
 :::
