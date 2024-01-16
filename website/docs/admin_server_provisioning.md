@@ -38,26 +38,11 @@ settings/
 The `template.json` file contains a dictionary with several optional keys that allow you to 
 customize various aspects of your Ayon server. The available keys are:
 
-- `addons`
 - `settings`
 - `secrets`
 - `users`
 - `roles`
 
-### Addons
-
-The `addons` key allows you to specify the production versions of addons that should be enabled on your Ayon server. The value of this key is a dictionary containing the addon names as keys and their respective version numbers as values.
-
-Example:
-
-```json
-"addons": {
-  "ftrack": "1.0.0",
-  "example": "1.0.0"
-}
-```
-
-In this example, two addons, `ftrack` and `example`, will be enabled with version `1.0.0`.
 
 ### Settings
 
@@ -234,6 +219,5 @@ Example:
   "example_project2": ["artist", "viewer"]
 }
 ```
-
 
 
