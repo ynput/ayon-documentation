@@ -413,7 +413,10 @@ function FeaturesCards() {
                         </Heading>
                         <ul className={clsx("clean-list", styles.showcaseList)}>
                             {productsFiltered.map((product) => (
-                                <ProductCard key={product.id} product={product} />
+                                <ProductCard
+                                    key={product.id}
+                                    product={product}
+                                />
                             ))}
                         </ul>
                     </div>

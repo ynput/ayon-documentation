@@ -66,6 +66,12 @@ function HeaderCard({
                     </Heading>
                 </div>
                 <p className={styles.description}>
+                    {addon.badge && showSupport ? (
+                        <ReactMarkdown>{addon.badge}</ReactMarkdown>
+                    ) : (
+                        <ReactMarkdown> </ReactMarkdown>
+                    )}
+
                     {addon.descriptionLong && showSupport ? (
                         <ReactMarkdown>{addon.descriptionLong}</ReactMarkdown>
                     ) : (

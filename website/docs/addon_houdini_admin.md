@@ -1,6 +1,6 @@
 ---
 id: addon_houdini_admin
-title: Houdini Admin docs
+title: Houdini Admin Docs
 sidebar_label: Houdini
 ---
 

@@ -1,6 +1,6 @@
 ---
 id: addon_houdini_artist
-title: Houdini
+title: Houdini Artist Docs
 sidebar_label: Houdini
 ---
 
@@ -350,6 +350,31 @@ Steps:
 - After that, you can **AYON -> Publish** and after some validations your render will be published to the selected format.
 
 ![publisher_ui_vray_rop](assets/houdini/artist/publisher_ui_vray_rop.png)
+
+
+## Publishing cache to Deadline
+Artist can publish cache to deadline while using local machine for other tasks which increases productivity.
+Caching on the farm is supported for:
+
+- **Arnold ASS (.ass)**
+- **Pointcache (.bgeo and .abc)**
+- **VDB (.vdb)**
+- **Redshift Proxy (.rs)**
+
+Follow these steps to submit your cache to deadline:
+1. you need to create the instance(s) with **Submitting to Farm** enabled, you also can still enable **Use selection** to
+select the object for caching in farm.
+![Houdini Farm Cache Creator](assets/houdini/artist/houdini_farm_cache_creator.png)
+
+2. When you go to Publish Tab and click the instance(s), you can set up your preferred
+**Frame per task**. If you want to publish the existing instances to farm, you can enable
+the toggled button **Submitting to Farm**.
+![Houdini Farm Per Task](assets/houdini/artist/houdini_frame_per_task.png)
+
+3. Once you hit **Publish**, the cache would be submitted and rendered in deadline.
+When the render is finished, all the caches would be located in your publish folder.
+You can see them in the Loader.
+![Houdini Farm Per Task](assets/houdini/artist/houdini_farm_cache_loader.png)
 
 ## Load published products
 Loading is done by

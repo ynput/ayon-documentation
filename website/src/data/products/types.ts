@@ -55,4 +55,6 @@ export type ProductType =
     | "staticmesh"
     | "vrayRender"
     | "usd"
-    | "usdRender";
+    | "usdRender"
+    | "textureSet"
+    | "wrap";

@@ -1,8 +1,15 @@
 ---
 id: addon_aftereffects_admin
-title: AfterEffects Admin docs
-sidebar_label: AfterEffects
+title: After Effects Admin Docs
+sidebar_label: After Effects
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Aftereffects_Badge}
+</ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -12,11 +19,14 @@ import TabItem from '@theme/TabItem';
 There is a couple of settings that could configure publishing process for **AfterEffects**.
 All of them are Project based, eg. each project could have different configuration.
 
-Location: Settings > Project > AfterEffects
+Location: `ayon+settings://aftereffects/publish`
 
 ![AfterEffects Project Settings](assets/admin_hosts_aftereffects_settings.png)
 
 ## Publish plugins
+
+### Collect Review
+Enable/disable collecting reviews. If disabled, no review will be created at all. 
 
 ### Validate Scene Settings
 
@@ -27,6 +37,13 @@ Set regex pattern(s) to look for in a Task name to skip resolution check against
 #### Skip Timeline Check for Tasks
 
 Set regex pattern(s) to look for in a Task name to skip `frameStart`, `frameEnd` check against values from DB.
+
+### Validate Containers
+Checks if all imported assets to the workfile through `Loader` are in latest version. Limits cases that older version of asset would be used.
+
+If enabled, artist might still decide to disable validation for each publish (for special use cases).
+Limit this optionality by toggling `Optional`.
+`Active` toggle denotes that by default artists sees that optional validation as enabled.
 
 ### AfterEffects Submit to Deadline
 

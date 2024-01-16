@@ -1,9 +1,10 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Maya",
     description: "Robust Maya implementation that can handle full CG workflow",
-    descriptionLong:`
+    descriptionLong: `
 AYON includes very robust Maya implementation that can handle full CG workflow from model, 
 through animation till final renders and scene settings. Your artists
 won't need to touch file browser at all and AYON will take care of all the file management. 
@@ -12,6 +13,7 @@ Most of maya workflows are supported including gpucaches, automatic shader, nest
 **Versions**: \`2020\`, \`2021\`, \`2022\`, \`2023\`, \`2024\`
          `,
     icon: "maya-icon.png",
+    badge: versions.Maya_Badge,
     features: [
         "sceneBuilder",
         "workfiles",
@@ -22,7 +24,7 @@ Most of maya workflows are supported including gpucaches, automatic shader, nest
         "loader",
         "slates",
         "publisher",
-        "sceneManager"
+        "sceneManager",
     ],
     products: [
         "model",
@@ -51,8 +53,8 @@ Most of maya workflows are supported including gpucaches, automatic shader, nest
         "mayaScene",
     ],
     docs: {
-        user: "artist_hosts_maya",
-        admin: "admin_hosts_maya",
+        user: "addon_maya_artist",
+        admin: "addon_maya_admin",
     },
 
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/maya",

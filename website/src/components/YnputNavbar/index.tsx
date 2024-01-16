@@ -40,7 +40,9 @@ const YnputNavbar = () => {
                                 <a href="https://ynput.io/services">Services</a>
                             </li>
                             <li>
-                                <a href="https://ynput.io/community/">Community</a>
+                                <a href="https://ynput.io/community/">
+                                    Community
+                                </a>
                             </li>
                             <li>
                                 <a href="https://ynput.io/company/">Company</a>

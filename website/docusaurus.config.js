@@ -50,7 +50,7 @@ const config = {
                 // Plugin Options for loading OpenAPI files
                 specs: [
                     {
-                        spec: "https://ayon.cloud/openapi.json",
+                        spec: "https://playground.ayon.app/openapi.json",
                         route: "/api",
                     },
                 ],
@@ -127,7 +127,7 @@ const config = {
                                 href: "https://ynput.io/ayon/addons/node-graph",
                                 target: "_blank",
                                 rel: null,
-                            }
+                            },
                         ],
                         className: "navbar__link--community",
                     },

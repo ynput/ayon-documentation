@@ -1,8 +1,15 @@
 ---
 id: addon_unreal_artist
-title: Unreal
+title: Unreal Artist Docs
 sidebar_label: Unreal
 ---
+
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Unreal_Badge}
+</ReactMarkdown>
 
 ## Working with AYON in Unreal Engine
 

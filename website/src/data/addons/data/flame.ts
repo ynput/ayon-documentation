@@ -1,4 +1,5 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Flame",
@@ -6,6 +7,7 @@ const addon: Addon = {
         "Flame Autodesk is a high-end visual effects and finishing software used by professional studios for film, television, and commercials.",
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/flame",
     icon: "flame-icon.png",
+    badge: versions.Flame_Badge,
     features: [
         "workfiles",
         "loader",
@@ -16,7 +18,7 @@ const addon: Addon = {
         "slates",
         "colorManaged",
         "localRendering",
-        "nodePresets"
+        "nodePresets",
     ],
     products: [
         "render",

@@ -17,6 +17,14 @@ If you spot something incorrect or just think a page could do with some improvem
 1. Make the changes to the relevant markdown file.
 2. Make a PR documenting the changes.
 
+## Build
+
+- Install Node.js https://nodejs.org/en/download
+- `npm install -g yarn`
+- `yarn add docusaurus --dev`
+- `cd {ayon-doc-repo}/website`
+- `yarn start`
+
 ## Addons
 
 Every addon is resembled by a typescript or JSON file in `src/data/addons/data`.

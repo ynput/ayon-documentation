@@ -10,6 +10,7 @@ export type Addon = {
     descriptionLong?: string;
     preview?: string;
     icon?: string;
+    badge?: string;
     features?: FeatureType[];
     products?: ProductType[];
     addons?: AddonType[];
