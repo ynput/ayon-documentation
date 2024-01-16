@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 1. Clone [ayon-docker repository](https://github.com/ynput/ayon-docker) to your local machine.
 2. Tweak the `docker-compose.yml` file according to your requirements.
-3. You may use the `.env` file to set environment variables (for example, for SSO configuration).
+3. You may use the `.env` file to set environment variables.
 4. Install addons to the `addons` directory.
 5. Modify the default settings in the `settings/template.json` file (see provisioning page).
 6. Run the stack using `docker compose up -d`
@@ -49,7 +49,7 @@ import TabItem from '@theme/TabItem';
 
 1. Clone [ayon-docker repository](https://github.com/ynput/ayon-docker) to your local machine.
 2. Tweak the `docker-compose.yml` file according to your requirements.
-3. You may use the `.env` file to set environment variables (for example, for SSO configuration).
+3. You may use the `.env` file to set environment variables.
 4. Comment-out or delete the `- "/etc/localtime:/etc/localtime:ro"` line from the `docker-compose.yml` file.
 5. Install addons to the `addons` directory.
 6. Modify the default settings in the `settings/template.json` file (see provisioning page).
@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
 
 1. Clone [ayon-docker repository](https://github.com/ynput/ayon-docker) to your local machine.
 2. Tweak the `docker-compose.yml` file according to your requirements.
-3. You may use the `.env` file to set environment variables (for example, for SSO configuration).
+3. You may use the `.env` file to set environment variables.
 4. Install addons to the `addons` directory.
 5. Modify the default settings in the `settings/template.json` file (see provisioning page).
 6. Run the stack using `docker compose up -d`
