@@ -75,7 +75,7 @@ module.exports = {
             type: "category",
             label: "AYON server",
             items: [
-                "admin_server_deloyment",
+                "admin_server_deployment",
                 "admin_server_installing_addons",
                 "admin_server_provisioning",
                 "admin_server_services",
