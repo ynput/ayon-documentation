@@ -18,7 +18,7 @@ const addon: Addon = {
         "libraryLoader",
         "reviewables",
         "slates",
-        "colorManaged"
+        "colorManaged",
     ],
     products: [
         "model",

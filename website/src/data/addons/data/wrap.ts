@@ -14,14 +14,11 @@ const addon: Addon = {
         "sceneManager",
         "libraryLoader",
     ],
-    products: [
-        "wrap",
-        "workfile",
-    ],
+    products: ["wrap", "workfile"],
     docs: {
         user: "addon_wrap_artist",
         admin: "addon_wrap_admin",
-    }
+    },
 };
 
 export default addon;

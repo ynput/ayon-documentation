@@ -15,10 +15,7 @@ const addon: Addon = {
         "libraryLoader",
         "colorManaged",
     ],
-    products: [
-        "workfile",
-        "textureSet",
-    ],
+    products: ["workfile", "textureSet"],
     docs: {
         user: "addon_substancepainter_artist",
         admin: "addon_substancepainter_admin",

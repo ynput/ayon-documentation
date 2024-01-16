@@ -32,7 +32,7 @@ const addon: Addon = {
         "vrayRender",
         "workfile",
         "usd",
-        "usdRender"
+        "usdRender",
     ],
     docs: {
         user: "addon_houdini_artist",
