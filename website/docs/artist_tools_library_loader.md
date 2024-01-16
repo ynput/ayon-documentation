@@ -2,12 +2,12 @@
 id: artist_tools_library_loader
 title: Library Loader
 sidebar_label: Library Loader
-description: Allows loading published subsets from projects of type "Library".
+description: Allows loading published products from projects of type "Library".
 ---
 
 # Library Loader
 
-Library loader is extended [loader](artist_tools_loader) which allows to load published subsets from Library projects. Controls are same but library loader has extra Combo Box which allows you to choose project you want to load from.
+Library loader is extended [loader](artist_tools_loader) which allows to load published products from Library projects. Controls are same but library loader has extra Combo Box which allows you to choose project you want to load from.
 
 <div class="row markdown">
 <div class="col col--6 markdown">
@@ -24,13 +24,13 @@ Library loader is extended [loader](artist_tools_loader) which allows to load pu
 
 ## Delivery Action
 
-Library Loader contains functionality to export any selected asset, subsets and their version to configurable folder.
+Library Loader contains functionality to export any selected asset, products and their version to configurable folder.
 Delivery follows structure based on defined template, this template must be configured first by Admin in the Settings.
 
 ![delivery_action](assets/tools/tools_delivery_loader.png)
 
 ### Usage
-- Select all required subsets for export (you can change theirs versions by double clicking on 'Version' value)
+- Select all required products for export (you can change theirs versions by double clicking on 'Version' value)
 - Right click and select **Deliver Versions** from context menu
 
 <div class="col col--6 markdown">

@@ -1,4 +1,5 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Nuke",
@@ -10,6 +11,7 @@ Nuke is a powerful node-based compositing software used extensively in the film 
 **Versions**: \`11.3\`, \`12.2\`, \`13.2\`, \`14.0\`
     `,
     preview: "nuke.png",
+    badge: versions.Nuke_Badge,
     features: [
         "workfiles",
         "loader",
@@ -25,7 +27,7 @@ Nuke is a powerful node-based compositing software used extensively in the film 
         "nodePresets",
         "bakingColorspacePresets",
     ],
-    families: [
+    products: [
         "nukeNodes",
         "camera",
         "gizmo",
@@ -38,8 +40,8 @@ Nuke is a powerful node-based compositing software used extensively in the film 
         "workfile",
     ],
     docs: {
-        user: "artist_hosts_nuke",
-        admin: "admin_hosts_nuke",
+        user: "addon_nuke_artist",
+        admin: "addon_nuke_admin",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/nuke",
 };

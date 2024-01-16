@@ -1,12 +1,14 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Blender",
     description:
         "Blender is a free, open-source, and user-friendly 3D creation suite for artists.",
+    badge: versions.Blender_Badge,
     docs: {
-        user: "artist_hosts_blender",
-        admin: "admin_hosts_blender",
+        user: "addon_blender_artist",
+        admin: "addon_blender_admin",
     },
     features: [
         "workfiles",
@@ -18,7 +20,7 @@ const addon: Addon = {
         "slates",
         "colorManaged"
     ],
-    families: [
+    products: [
         "model",
         "rig",
         "layout",

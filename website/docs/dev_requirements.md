@@ -4,133 +4,149 @@ title: Requirements
 sidebar_label: Requirements
 ---
 
+AYON is a modular project, the AYON server lies at the core of it, so to develop for AYON  we need an instance of it either in the localhost or in a remote server, refer to the [Admin Server Installation](admin_server_installation.md) for more.
 
-We aim to closely follow [**VFX Reference Platform**](https://vfxplatform.com/)
+AYON is written in [**Python 3 (3.9.x)**](#python) and addheres to the versions defined in the [VFX Reference Platform](https://vfxplatform.com/).
 
-AYON is written in Python 3 with specific elements still running in Python2 until all DCCs are fully updated. To see the list of those, that are not quite there yet, go to [VFX Python3 tracker](https://vfxpy.com/)
+Some parts are kept on Python 2.7.x for compatibility purposes with, until all supported third-party software are updated to a newer Python version, you can see the progress at the [VFX Python3 tracker](https://vfxpy.com/).
 
-The main things you will need to run and build pype are:
+The main requirements needed to run and build AYON are:
 
-- **Terminal** in your OS
+- A **Terminal** application:
     - PowerShell 5.0+ (Windows)
-    - Bash (Linux)
+    - Bash (Linux and macOs)
 - [**Python 3.9.x**](#python)
-- [**MongoDB**](#database)
+- [**Ayon Server**](admin_server_installation.md)
 
 
-## OS
+## Supported Operating Systems
 
-It can be built and ran on all common platforms. We develop and test on the following:
+AYON can be built and ran in any platform that supports the above requirements, the development team develops and thest it on the following list of Operating Systems:
+- Windows 10
+- Ubuntu 20.04 LTS
+- CentOS 7
+- macOS 10.15 "Catalina"
+- macOS 11.1 "Big Sur" - via Rosetta2 compatibility layer.
 
-- **Windows** 10
-- **Linux**
-    - **Ubuntu** 20.04 LTS
-    - **Centos** 7
-- **Mac OSX** 
-    - **10.15** Catalina
-    - **11.1** Big Sur (using Rosetta2)
-
-
-## Database 
-
-Database version should be at least **MongoDB 4.4**.
-
-Pype needs site-wide installation of **MongoDB**. It should be installed on
-reliable server, that all workstations (and possibly render nodes) can connect. This
-server holds **Avalon** database that is at the core of everything
-
-Depending on project size and number of artists working, connection speed and
-latency influence performance experienced by artists. If remote working is required, this mongodb
-server must be accessible from Internet or cloud solution can be used. Reasonable backup plan
-or high availability options are recommended. *Replication* feature of MongoDB should be considered. This is beyond the
-scope of this documentation, please refer to [MongoDB Documentation](https://docs.mongodb.com/manual/replication/).
-
-Pype can run its own instance of mongodb, mostly for testing and development purposes.
-For that it uses locally installed MongoDB.
-
-Download it from [mognoDB website](https://www.mongodb.com/download-center/community), install it and
-add to the `PATH`. On Windows, Pype tries to find it in standard installation destination or using `PATH`.
-
-To run mongoDB on server, use your server distribution tools to set it up (on Linux).
 
 ## Python
 
-**Python 3.9.x** is the recommended version to use (as per [VFX platform CY2022](https://vfxplatform.com/)).
-**Note**: We do not support 3.9.0 because of [this bug](https://github.com/python/cpython/pull/22670). Please, use higher versions of 3.9.x.
+Python is only required if you want to build [AYON launcher](dev_launcher.md), develop or run from the source code, otherwise is **highly advised** to use the pre-built binaries found in the [Release page](https://github.com/ynput/OpenPype/releases) which includes Python.
 
-If you're planning to run AYON on workstations from built executables (highly recommended), you will only need python for building and development, however, if you'd like to run from source centrally, every user will need python installed.
+**Python 3.9.x** is the recommended version to use, as per [VFX platform CY2022](https://vfxplatform.com/).
+**Note**: Python 3.9.0 is not supported because of [this bug](https://github.com/python/cpython/pull/22670). Please, use higher versions of 3.9.x.
+
+And [Poetry](https://python-poetry.org/) is used to manage [dependencies](#dependencies).
 
 ## Hardware
 
-AYON should be installed on all workstations that need to use it, the same as any other application.
-
-There are no specific requirements for the hardware. If the workstation can run
-the major DCCs, it most probably can run AYON.
-
-Installed, it takes around 400MB of space, depending on the platform
-
-
-For a well functioning ftrack event server, we recommend a linux virtual server with Ubuntu or CentOS. CPU and RAM allocation needs differ based on the studio size, but a 2GB of ram, with a dual core CPU and around 4GB of storage should suffice
-
-
-## Deployment
-
-For pushing pipeline updates to the artists, you will need to create a shared folder that 
-will be accessible with at least Read permission to every AYON user in the studio.
-This can also be hosted on the cloud in fully distributed deployments.
-
-
+There are no minimum hardware requirements, once built, it takes ~400 MB of Disk space, and it should be deployed in all the machines that interact with AYON.
+As a rule of thumb, if the computer can run a DCC or perform render workloads, it will be able to run AYON.
 
 ## Dependencies
 
-### Key projects we depend on
-
-- [**Avalon**](https://github.com/getavalon)
+AYON is an project built on top of the following projects:
 - [**Pyblish**](https://github.com/pyblish)
 - [**OpenTimelineIO**](https://github.com/PixarAnimationStudios/OpenTimelineIO)
 - [**OpenImageIO**](https://github.com/OpenImageIO/oiio) [^centos7]
 - [**FFmpeg**](https://github.com/FFmpeg/FFmpeg)
 
 [^centos7]: On Centos 7 you need to install additional libraries to support OIIO there - mainly boost
-and libraw (`sudo yum install boost-1.53.0` and `sudo yum install LibRaw`)
+and libraw (`sudo yum install boost-1.53.0 LibRaw`)
 
-### Python modules we use and their licenses
+### Python Dependecies
 
-|               Package               |                           License                            |
-|-------------------------------------|--------------------------------------------------------------|
-|              acre 1.0.0             |        GNU Lesser General Public License v3 (LGPLv3)         |
-|            aiohttp 3.7.3            |                           Apache 2                           |
-|       aiohttp-json-rpc 0.13.3       |                          Apache 2.0                          |
-|            appdirs 1.4.4            |                             MIT                              |
-|           blessed 1.17.12           |                             MIT                              |
-|             click 7.1.2             |                         BSD-3-Clause                         |
-|             clique 1.5.0            |                     Apache License (2.0)                     |
-|            coverage 5.3.1           |                          Apache 2.0                          |
-|           cx-Freeze 6.5.1           |              Python Software Foundation License              |
-|            docutils 0.16            | public domain, Python, 2-Clause BSD, GPL 3 (see COPYING.txt) |
-|             flake8 3.8.4            |                             MIT                              |
-|       ftrack-python-api 2.0.0       |                     Apache License (2.0)                     |
-|             jinxed 1.0.1            |                           MPLv2.0                            
-|           log4mongo 1.7.0           |                             BSD                              |
-|      OpenTimelineIO 0.14.0.dev1     |                 Modified Apache 2.0 License                  |
-|             Pillow 8.1.0            |                             HPND                             |
-|          pyblish-base 1.8.8         |                             LGPL                             |
-|          pycodestyle 2.6.0          |                        Expat license                         |
-|           pydocstyle 5.1.1          |                             MIT                              |
-|             pylint 2.6.0            |                             GPL                              |
-|            pymongo 3.11.2           |                 Apache License, Version 2.0                  |
-|             pynput 1.7.2            |                            LGPLv3                            |
-|             PyQt5 5.15.2            |                            GPL v3                            |
-|             pytest 6.2.1            |                             MIT                              |
-|          pytest-cov 2.11.0          |                             MIT                              |
-|          pytest-print 0.2.1         |                             MIT                              |
-|         pywin32-ctypes 0.2.0        |                             BSD                              |
-|             Qt.py 1.3.2             |                             MIT                              |
-|              six 1.15.0             |                             MIT                              |
-|           speedcopy 2.1.0           |                           UNKNOWN                            |
-|             Sphinx 3.4.3            |                             BSD                              |
-|     sphinx-qt-documentation 0.3     |                         BSD-3-Clause                         |
-|    sphinxcontrib-websupport 1.2.4   |                             BSD                              |
-|             tqdm 4.56.0             |                    MPLv2.0, MIT Licences                     |
-|             wheel 0.36.2            |                             MIT                              |
-|         wsrpc-aiohttp 3.1.1         |                   Apache Software License                    |
+AYON uses [Poetry](https://python-poetry.org/) to handle the dependencies, and you can see the full list of dependencies in the [`pyproject.yoml`](https://github.com/ynput/OpenPype/blob/develop/pyproject.toml), here is a list of these with their corresponging licenses:
+
+
+| Compatible  | Package                  | License(s)                                                           |
+| ----------- | ------------------------ | -------------------------------------------------------------------- |
+| ✔          | Deprecated               | MIT License                                                          |
+| ✖          | OpenTimelineIO           | Other/Proprietary License                                            |
+| ✔          | SecretStorage            | BSD License                                                          |
+| ✖          | Unidecode                | GNU General Public License v2 or later (GPLv2+)                      |
+| ✔          | acre                     | GNU LESSER GENERAL PUBLIC LICENSE Version 3                          |
+| ✔          | aiohttp                  | Apache Software License                                              |
+| ✔          | aiohttp-json-rpc         | Apache Software License                                              |
+| ✔          | aiohttp-middlewares      | BSD License                                                          |
+| ✔          | aiosignal                | Apache Software License                                              |
+| ✔          | appdirs                  | MIT License                                                          |
+| ✔          | arrow                    | Apache Software License                                              |
+| ✔          | async-timeout            | Apache Software License                                              |
+| ✔          | attrs                    | MIT License                                                          |
+| ✔          | ayon-python-api          | Apache License (2.0)                                                 |
+| ✔          | bcrypt                   | Apache Software License                                              |
+| ✔          | blessed                  | MIT License                                                          |
+| ✔          | cachetools               | MIT License                                                          |
+| ✔          | certifi                  | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | cffi                     | MIT License                                                          |
+| ✔          | charset-normalizer       | MIT License                                                          |
+| ✔          | click                    | BSD License                                                          |
+| ✔          | clique                   | Apache Software License                                              |
+| ✔          | coolname                 | BSD License                                                          |
+| ✔          | cryptography             | Apache Software License;; BSD License                                |
+| ✔          | dnspython                | ISC                                                                  |
+| ✔          | dropbox                  | MIT License                                                          |
+| ✔          | enlighten                | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | evdev                    | BSD License                                                          |
+| ✔          | frozenlist               | Apache Software License                                              |
+| ✔          | ftrack-python-api        | Apache Software License                                              |
+| ✔          | future                   | MIT License                                                          |
+| ✔          | gazu                     | GNU Library or Lesser General Public License (LGPL)                  |
+| ✔          | google-api-core          | Apache Software License                                              |
+| ✔          | google-api-python-client | Apache Software License                                              |
+| ✔          | google-auth              | Apache Software License                                              |
+| ✔          | google-auth-httplib2     | Apache Software License                                              |
+| ✔          | googleapis-common-protos | Apache Software License                                              |
+| ✔          | httplib2                 | MIT License                                                          |
+| ✔          | idna                     | BSD License                                                          |
+| ✔          | importlib-metadata       | Apache Software License                                              |
+| ✔          | jeepney                  | MIT License                                                          |
+| ✔          | jinxed                   | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | jsonschema               | MIT License                                                          |
+| ✔          | keyring                  | Python Software Foundation License;; MIT License                     |
+| ✔          | log4mongo                | BSD License                                                          |
+| ✔          | multidict                | Apache Software License                                              |
+| ✖          | opencolorio              | Copyright Contributors to the OpenColorIO Project.                   |
+| ✔          | paramiko                 | GNU Library or Lesser General Public License (LGPL)                  |
+| ✔          | pathlib2                 | MIT License                                                          |
+| ✔          | pillow                   | Historical Permission Notice and Disclaimer (HPND)                   |
+| ✔          | ply                      | BSD                                                                  |
+| ✔          | prefixed                 | Mozilla Public License 2.0 (MPL 2.0)                                 |
+| ✔          | protobuf                 | 3-Clause BSD License                                                 |
+| ✔          | pyaaf2                   | MIT License                                                          |
+| ✔          | pyasn1                   | BSD License                                                          |
+| ✔          | pyasn1-modules           | BSD License                                                          |
+| ✔          | pyblish-base             | GNU Lesser General Public License v3 (LGPLv3)                        |
+| ✔          | pycparser                | BSD License                                                          |
+| ✔          | pymongo                  | Apache Software License                                              |
+| ✔          | pynacl                   | Apache License 2.0                                                   |
+| ✔          | pynput                   | GNU Lesser General Public License v3 (LGPLv3)                        |
+| ✔          | pyparsing                | MIT License                                                          |
+| ✔          | pysftp                   | BSD License                                                          |
+| ✔          | python-dateutil          | Apache Software License;; BSD License                                |
+| ✔          | python-engineio          | MIT License                                                          |
+| ✔          | python-socketio          | MIT License                                                          |
+| ✔          | python-xlib              | GNU Lesser General Public License v2 or later (LGPLv2+)              |
+| ✖          | python3-xlib             | GPLv2                                                                |
+| ✔          | requests                 | Apache Software License                                              |
+| ✔          | rsa                      | Apache Software License                                              |
+| ✔          | semver                   | BSD License                                                          |
+| ✔          | shotgun-api3             | Copyright (c) 2009-2011, Shotgun Software Inc All rights reserved.   |
+| ✔          | six                      | MIT License                                                          |
+| ✔          | slack-sdk                | MIT License                                                          |
+| ✔          | "Qt.py"                  | MIT License                                                          |
+| ✔          | QtPy                     | MIT License                                                          |
+| ✔          | qtawesome                | MIT License                                                          |
+| ✔          | speedcopy                | Apache Software License                                              |
+| ✔          | stone                    | MIT License                                                          |
+| ✔          | termcolor                | MIT License                                                          |
+| ✔          | uritemplate              | BSD License;; Apache Software License                                |
+| ✔          | urllib3                  | MIT License                                                          |
+| ✔          | wcwidth                  | MIT License                                                          |
+| ✔          | websocket-client         | Apache Software License                                              |
+| ✔          | wrapt                    | BSD License                                                          |
+| ✔          | wsrpc-aiohttp            | Apache Software License                                              |
+| ✔          | yarl                     | Apache Software License                                              |
+| ✔          | zipp                     | MIT License                                                          |
+

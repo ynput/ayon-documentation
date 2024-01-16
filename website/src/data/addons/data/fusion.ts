@@ -1,14 +1,16 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Fusion",
     description:
         "Fusion is a visual effects and motion graphics tool that helps you create high-quality effects.",
+    badge: versions.Fusion_Badge,
     docs: {
         user: "artist_hosts_resolve",
         admin: "admin_hosts_resolve",
     },
-    families: ["image", "review", "render", "plate", "model", "pointcache"],
+    products: ["image", "review", "render", "plate", "model", "pointcache"],
     features: [
         "workfiles",
         "loader",

@@ -1,4 +1,5 @@
 import { type Addon } from "../types";
+import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Addon Name",
@@ -7,13 +8,14 @@ const addon: Addon = {
     descriptionLong: "If there's more to say, add a long description here.",
     preview: "addon-name-preview.png",
     icon: "addon-name-icon.png",
+    badge: versions.Teamplate_Badge,
     docs: {
         user: "artist_hosts_addonName",
         admin: "admin_hosts_addonName",
         developer: "developer_hosts_addonName",
     },
-    github: "https://github.com/ynput/ayon-addon-name",
-    families: ["render", "plate", "image", "background"],
+    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/modules/example_addons",
+    products: ["render", "plate", "image", "background"],
     features: ["localRendering", "workfiles"],
     addons: ["nuke", "flame"],
 };
@@ -26,7 +28,7 @@ export default addon;
 // preview? | A preview image of the addon | "blender.png"
 // icon? | A logo image of the addon | "blender-icon.png"
 // features? | An array of features that the addon supports | ["workfiles", "loader"]
-// families? | An array of families that the addon supports | ["image", "video", "model"]
+// products? | An array of products that the addon supports | ["image", "video", "model"]
 // addons? | An array of addons that the addon supports | ["nuke", "maya"]
 // docs? | An object of documentation links for the addon | { "user": "artist_hosts_blender", "admin": "admin_hosts_blender", "developer": "dev_publishing" }
 // github? | A link to the github repository of the addon

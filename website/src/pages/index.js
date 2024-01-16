@@ -10,8 +10,8 @@ import SearchBar from "@theme/SearchBar";
 import AddonCard from "./features/_components/AddonCard";
 import stylesFeatures from "./features/styles.module.scss";
 import FeatureCard from "./features/_components/FeatureCard";
-import { addons, families, features } from "../data";
-import FamilyCard from "./features/_components/FamilyCard";
+import { addons, products, features } from "../data";
+import ProductCard from "./features/_components/ProductCard";
 import Heading from "@theme/Heading";
 
 const links = [
@@ -90,9 +90,9 @@ export default function Home() {
                         <SearchBar avoidKeyboardShortcuts />
                     </div>
                     <div className={styles.warning}>
-                        While we're transitioning from OpenPype, there are a lot
-                        of details the are factually incorrect. We're working on
-                        resolving all of them.
+                        While we're transitioning from OpenPype documentation, there are
+                        some details that might be factually incorrect and images that show the old OpenPype interface. We're working on
+                        resolving all of them. We'll appreciate if you notify us of any such discrepancies. 
                     </div>
                 </div>
                 <div className={styles.linksWrapper}>
@@ -208,11 +208,11 @@ export default function Home() {
             >
                 <Link href="/docs/artist_publish">
                     <Heading as="h2" className={clsx("hero__subtitle")}>
-                        Families
+                        Products
                     </Heading>
                 </Link>
                 <p>
-                    Streamline your data management with our customizable family
+                    Streamline your data management with our customizable product
                     categorization system. Efficiently organize data instances
                     and join the industry standard for efficient data handling
                     today!
@@ -231,11 +231,11 @@ export default function Home() {
                             stylesFeatures.showcaseList
                         )}
                     >
-                        {[...families].splice(0, 16).map((family) => (
-                            <FamilyCard family={family} key={family.id} />
+                        {[...products].splice(0, 16).map((product) => (
+                            <ProductCard product={product} key={product.id} />
                         ))}
                     </ul>
-                    <a href="/features#families">
+                    <a href="/features#products">
                         <div
                             className={clsx(
                                 "button button--secondary button--md",
@@ -243,38 +243,9 @@ export default function Home() {
                                 styles.viewAll
                             )}
                         >
-                            View All Families
+                            View All Products
                         </div>
                     </a>
-                </div>
-            </section>
-            <section
-                className={clsx(
-                    "margin-bottom--xl container padding-top--lg padding-bottom--lg"
-                )}
-            >
-                <div className={styles.more}>
-                    <h2 className={clsx("hero__subtitle")}>More on ynput.io</h2>
-                    <div className={styles.buttons}>
-                        <a href="/features#features">
-                            <div
-                                className={clsx(
-                                    "button button--secondary button--lg"
-                                )}
-                            >
-                                Try AYON Beta
-                            </div>
-                        </a>
-                        <a href="/features#features">
-                            <div
-                                className={clsx(
-                                    "button button--secondary button--lg"
-                                )}
-                            >
-                                Join Our Community
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </section>
         </Layout>

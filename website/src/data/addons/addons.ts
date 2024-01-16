@@ -25,27 +25,29 @@ import { AddonType } from ".";
 // OFFICIAL ADDONS
 export const officialAddons = [
     "core",
-    "nuke",
-    "ftrack",
-    "houdini",
-    "maya",
+    "3dsmax",
     "afterEffects",
-    "deadline",
-    "hiero",
     "blender",
-    "fusion",
-    "harmony",
-    "tvpaint",
-    "photoshop",
-    "shotgrid",
     "celaction",
     "clockify",
-    "flame",
     "resolve",
+    "deadline",
+    "flame",
+    "ftrack",
+    "fusion",
+    "harmony",
+    "hiero",
+    "houdini",
+    "maya",
+    "nuke",
+    "photoshop",
     "royalRender",
-    "unreal",
+    "shotgrid",
+    "substancepainter",
     "slack",
-    "3dsmax"
+    "tvpaint",
+    "unreal",
+    "wrap"
 ] as const;
 
 // COMMUNITY ADDONS
@@ -56,12 +58,12 @@ export const communityAddons = [
 // featured addons
 // pick addons from community or official to be featured on the homepage
 export const featuredAddons: AddonType[] = [
-    "nuke",
-    "maya",
-    "unreal",
-    "houdini",
     "afterEffects",
-    "shotgrid",
     "blender",
     "ftrack",
+    "houdini",
+    "maya",
+    "nuke",
+    "shotgrid",
+    "unreal",
 ];

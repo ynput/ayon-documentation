@@ -19,31 +19,22 @@ Let's say that the last version of the comp you published was v003 and now you'r
 
 ## Usage
 
-<div class="row markdown">
-<div class="col col--6 markdown">
-
 ### To open existing file:
 
-1. Open Workfiles tool from AYON menu
-2. Select file from list - the latest version is the highest *(descendent ordering)*
-3. Press `Open` button
-
-</div>
-<div class="col col--6 markdown">
+1. Open Workfiles tool from AYON menu inside the host.
+2. Select file from list - the latest version is the highest *(descendent ordering)*.
+3. Press `Open` button.
 
 ![workfiles_1](assets/workfiles_1.png)
 
-</div>
-</div>
-
-
 ### To save new workfile
-1. Open Workfiles tool from AYON menu
-2. Press `Save As` button
-3. You can add optional comment to the filename, that will be appended at the end
-4. Press `OK`
+1. Open Workfiles tool from AYON menu inside the host.
+2. Press `Save As` button.
+3. You can add optional comment to the filename, that will be appended at the end.
+4. Press `OK`.
+
+![workfiles_1](assets/workfiles_2.png)
 
 :::note
 You can manually override the workfile version by unticking next available version and using the version menu to choose your own.
 :::
-

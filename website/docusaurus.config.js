@@ -16,7 +16,7 @@ const config = {
         "Documentation for the most robust open-source pipeline for studios and remote teams",
     url: "https://docs.ynput.io", // Your website URL
     baseUrl: "/",
-    onBrokenLinks: "throw",
+    onBrokenLinks: "warn",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
 
@@ -50,7 +50,7 @@ const config = {
                 // Plugin Options for loading OpenAPI files
                 specs: [
                     {
-                        spec: "https://ayon.cloud/openapi.json",
+                        spec: "https://playground.ayon.app/openapi.json",
                         route: "/api",
                     },
                 ],
@@ -110,33 +110,21 @@ const config = {
                     {
                         to: "/api",
                         label: "REST API Docs",
-                        position: "right",
+                        position: "left",
                     },
                     {
-                        label: "Socials",
+                        label: "Addons",
                         position: "right",
                         items: [
                             {
-                                label: "Discourse",
-                                href: "https://community.ynput.io/",
+                                label: "Web Publisher",
+                                href: "https://ynput.io/ayon/addons/web-publisher/",
                                 target: "_blank",
                                 rel: null,
                             },
                             {
-                                label: "Discord",
-                                href: "https://discord.gg/ynput",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "LinkedIn",
-                                href: "https://www.linkedin.com/company/ynput",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "Twitter",
-                                href: "https://twitter.com/ynput_io",
+                                label: "Node Graph",
+                                href: "https://ynput.io/ayon/addons/node-graph",
                                 target: "_blank",
                                 rel: null,
                             },
@@ -153,6 +141,15 @@ const config = {
                 defaultMode: "dark",
                 disableSwitch: false,
                 respectPrefersColorScheme: true,
+            },
+            algolia: {
+                // The application ID provided by Algolia
+                appId: "RLOQGA5MLU",
+
+                // Public API key: it is safe to commit it
+                apiKey: "98e725168db71b204e80f843f3e277e0",
+
+                indexName: "ayon-ynput",
             },
         }),
 

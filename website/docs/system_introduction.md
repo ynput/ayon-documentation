@@ -7,9 +7,9 @@ sidebar_label: Introduction
 **AYON** is a modular python application build of two main parts.
 
 - AYON **server** installed centrally for the whole studio
-- AYON **desktop** (currently still called OpenPype), running on each artist workstation
+- AYON **launcher** running on each artist workstation
   
-To use AYON, you need to install both the server and the desktop app. Pre-built binaries of the desktop app for all platforms are available for download, but if you make any changes to the core of the app, you will need to build it yourself. Fortunately, AYON's build and install scripts handle this task for you. AYON can install most of its requirements automatically, but various usage scenarios may require additional steps.
+To use AYON, you need to install both the server and the launcher app. Pre-built binaries of the desktop launcher for all platforms are [available for download](https://github.com/ynput/ayon-launcher), but if you make any changes to the core of the app, you will need to build it yourself. Fortunately, AYON's build and install scripts handle this task for you. AYON can install most of its requirements automatically, but various usage scenarios may require additional steps.
 
 ## Studio Preparation
 
@@ -23,7 +23,7 @@ AYON Server is the heart and soul of your studio pipeline. It provides a databas
 
 ## Artist Workstations
 
-To use AYON in production, the desktop app should be installed on each artist workstation, whether that is in the studio or at home in case of a distributed workflow. Once started, it lives in the system tray menu bar, and all of its tools are executed locally on the artist workstation. There are no special requirements for the artist workstations if you are running AYON from a frozen build.
+To use AYON in production, the launcher app should be installed on each artist workstation, whether that is in the studio or at home in case of a distributed workflow. Once started, it lives in the system tray menu bar, and all of its tools are executed locally on the artist workstation. There are no special requirements for the artist workstations if you are running AYON from a frozen build.
 
 Each artist workstation will need to be able to connect to your AYON server to load and publish any work. They will also need access to your centralized project storage, unless you are running a fully distributed pipeline.
 
