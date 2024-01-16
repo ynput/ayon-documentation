@@ -75,7 +75,7 @@ module.exports = {
             type: "category",
             label: "AYON server",
             items: [
-                "admin_server_installation",
+                "admin_server_deployment",
                 "admin_server_installing_addons",
                 "admin_server_provisioning",
                 "admin_server_services",
@@ -160,5 +160,6 @@ module.exports = {
         },
         "dev_deadline",
         "dev_colorspace",
+        "dev_event_system",
     ],
 };

@@ -61,12 +61,6 @@ worker:
     - "AYON_SERVER_URL=https://ayon.example.com"
 ```
 
-:::important Server URL 
-Make sure to use an IP address that is accessible from the host machine for the `AYON_SERVER_URL` environment variable, 
-as services are spawned outside the Docker stack and cannot use the Docker DNS resolver. 
-:::
-
-
 
 Troubleshooting
 ---------------
@@ -94,5 +88,4 @@ docker stop <container_id>
 ```
 
 Since the containers are started with the `--remove` flag, they will be automatically removed once they are stopped.
-
 

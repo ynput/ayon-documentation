@@ -38,50 +38,9 @@ settings/
 The `template.json` file contains a dictionary with several optional keys that allow you to 
 customize various aspects of your Ayon server. The available keys are:
 
-- `addons`
-- `settings`
 - `secrets`
 - `users`
-- `roles`
-
-### Addons
-
-The `addons` key allows you to specify the production versions of addons that should be enabled on your Ayon server. The value of this key is a dictionary containing the addon names as keys and their respective version numbers as values.
-
-Example:
-
-```json
-"addons": {
-  "ftrack": "1.0.0",
-  "example": "1.0.0"
-}
-```
-
-In this example, two addons, `ftrack` and `example`, will be enabled with version `1.0.0`.
-
-### Settings
-
-The `settings` key is used to specify particular settings for an addon. 
-It is possible to configure multiple versions of each addon using this key. 
-The value of this key is a dictionary containing the addon names as keys, 
-and another dictionary as values with the addon version number as the key 
-and the settings for that version as the value.
-
-Example:
-
-```json
-"settings": {
-  "ftrack": {
-    "1.0.0": {
-      "server_url": "https://example.ftrack.com"
-    }
-  }
-}
-```
-
-In this example, the `ftrack` addon's version `1.0.0` is configured with a custom `server_url` setting. 
-Multiple versions of the same addon can be configured by adding additional 
-version numbers with their respective settings within the addon dictionary.
+- `accessGroups`
 
 ### Secrets
 
@@ -101,13 +60,13 @@ In this example, a `secret_api_key` is stored within the `secrets` key.
 This secret can be accessed by the server and addons, but will not be exposed to the users.
 
 
-## Roles
+## Access groups
 
-User roles define the level of access and permissions a user has within a project. 
+User access groups define the level of access and permissions a user has within a project. 
 Each role allows whitelisting certain rights to perform specific actions, 
 such as reading, creating, updating, and deleting project resources.
 
-If not provided, default roles "artist", "viewer" and "editor" are created.
+If not provided, default access groups "artist", "viewer" and "editor" are created.
 
 ### Role definition example
 
@@ -116,7 +75,7 @@ This role grants users the ability to read and update subfolders,
 but only if the user has tasks assigned on a parent folder.
 
 ```json
-"roles" : [
+"accessGroups" : [
   {
     "name": "artist",
     "data": {
@@ -211,29 +170,27 @@ Represents the user's password. This field is required for authentication purpos
 Contains the API key associated with service users. 
 This key is used when a service interacting with the server through the API.
 
-#### `defaultRoles` (array of strings)
+#### `defaultAccessGroups` (array of strings)
 
-Lists the roles assigned to the user on new projects. 
-These roles determine the user's privileges and access levels within a project.
+Lists the access groups assigned to the user on new projects. 
+These access groups determine the user's privileges and access levels within a project.
 
 Example:
 
 ```json
-"defaultRoles": ["artist"]
+"defaultAccessGroups": ["artist"]
 ```
 
-#### `roles`
+#### `accessGroups`
 
-Lists the roles assigned to the user on particular projects. 
+Lists the access groups assigned to the user on particular projects. 
 
 Example:
 
 ```json
-"roles": {
+"accessGroups": {
   "example_project1": ["artist"],
   "example_project2": ["artist", "viewer"]
 }
 ```
-
-
 
