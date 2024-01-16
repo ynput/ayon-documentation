@@ -3,7 +3,7 @@ import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Hiero",
-    description :`
+    description: `
 Professional-grade video editing and compositing software designed for film, TV,
 and commercial post-production, offering seamless collaboration, streamlined workflows,
 and efficient management of complex projects.
@@ -22,16 +22,9 @@ and efficient management of complex projects.
         "libraryLoader",
         "reviewables",
         "burnins",
-        "colorManaged"
+        "colorManaged",
     ],
-    products: [
-        "audio",
-        "plate",
-        "review",
-        "frame",
-        "effect",
-        "workfile",
-    ],
+    products: ["audio", "plate", "review", "frame", "effect", "workfile"],
     docs: {
         user: "addon_hiero_artist",
         admin: "addon_hiero_admin",

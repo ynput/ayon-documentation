@@ -47,13 +47,11 @@ export const officialAddons = [
     "slack",
     "tvpaint",
     "unreal",
-    "wrap"
+    "wrap",
 ] as const;
 
 // COMMUNITY ADDONS
-export const communityAddons = [
-    "kitsu"
-] as const;
+export const communityAddons = ["kitsu"] as const;
 
 // featured addons
 // pick addons from community or official to be featured on the homepage

@@ -128,11 +128,11 @@ module.exports = {
                 "addon_substancepainter_admin",
                 "addon_tvpaint_admin",
                 "addon_unreal_admin",
-                "addon_wrap_admin"
+                "addon_wrap_admin",
             ],
         },
         "admin_releases",
-        "admin_import_openpype_project"
+        "admin_import_openpype_project",
     ],
     Dev: [
         "dev_introduction",
@@ -144,7 +144,7 @@ module.exports = {
                 "dev_launcher",
                 "dev_launcher_build_windows",
                 "dev_launcher_build_macos",
-                "dev_launcher_build_linux"
+                "dev_launcher_build_linux",
             ],
         },
         "dev_dev_mode",

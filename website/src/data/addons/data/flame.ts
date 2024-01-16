@@ -18,7 +18,7 @@ const addon: Addon = {
         "slates",
         "colorManaged",
         "localRendering",
-        "nodePresets"
+        "nodePresets",
     ],
     products: [
         "render",
