@@ -11,11 +11,7 @@ const addon: Addon = {
         user: "addon_kitsu_artist",
         admin: "addon_kitsu_admin",
     },
-    features: ["appLauncher",
-    "reviewables",
-    "trayPublisher",
-    "projectManager",
-],
+    features: ["appLauncher", "reviewables", "trayPublisher", "projectManager"],
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/kitsu",
 };
 

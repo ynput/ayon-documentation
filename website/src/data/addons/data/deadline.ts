@@ -12,11 +12,12 @@ const addon: Addon = {
         admin: "addon_deadline_admin",
     },
     features: [
-        "publisher", 
-        "colorManaged", 
-        "farmRendering", 
-        "reviewables", 
-        "slates"],
+        "publisher",
+        "colorManaged",
+        "farmRendering",
+        "reviewables",
+        "slates",
+    ],
     products: ["render", "plate", "image", "review", "pointcache", "prerender"],
     addons: ["nuke", "harmony", "maya", "afterEffects"],
 };

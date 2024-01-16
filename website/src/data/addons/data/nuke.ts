@@ -3,7 +3,7 @@ import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
     title: "Nuke",
-    description:`
+    description: `
 Nuke is a powerful node-based compositing software used extensively in the film and television industry for creating high-quality visual effects, offering a range of advanced tools and features for efficient and flexible workflows.
 
 **Variants**: _NukeX_, _NukeAssist_

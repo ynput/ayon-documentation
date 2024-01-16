@@ -32,7 +32,7 @@ const addon: Addon = {
         "render",
         "prerender",
         "review",
-        "image"
+        "image",
     ],
     docs: {
         user: "addon_harmony_artist",
