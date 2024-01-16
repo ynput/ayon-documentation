@@ -1,5 +1,5 @@
 ---
-id: project_settings_tray_publisher
+id: addon_traypublisher_admin
 title: Tray Publisher
 sidebar_label: Tray Publisher
 ---
@@ -16,17 +16,16 @@ import TabItem from '@theme/TabItem';
 
 Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project.
 
-![nuke_settings](assets/tray_publisher_settings.png)
-
-Refer to Settings related to [Working with settings](../admin_settings) for more details.
+Refer to Settings related to [Working with settings](admin_settings) for more details.
 
 ## Creator Plugins
 
 Contains list of implemented families to show in middle menu in Tray Publisher. Each plugin must contain:
 
-- **Family**
+- **Product type**
 - **Label**
 - **Icon**
 - **Extensions**
 
-![example of creator plugin](assets/tray_publisher_creators.png)
+![example of simple creator plugin](assets/admin_traypublisher_settings_simple.png)
+![example of complex creator plugin](assets/admin_traypublisher_settings_simple_extensions.png)
