@@ -108,3 +108,27 @@ As it is shown in below picture you have to go to Fusion Tab and then in Fusion 
 
 </div>
 </div>
+
+### Custom DaVinci Resolve Python 3.x interpreter
+
+On the frontend page of the website, in the **Studio Settings** -> **Applications** -> **Resolve** section, you can change the environment variables to configure a custom python interpreter. 
+
+e.g. An example of a possible configuration, or use hard-coded and write it in the environment configuration.
+
+```bash
+{
+    "RESOLVE_UTILITY_SCRIPTS_SOURCE_DIR": [],
+    "RESOLVE_PYTHON3_HOME": {
+        "windows": "{CUSTOM_RESOLVE_PYTHON_HOME}",
+        "darwin": "{CUSTOM_RESOLVE_PYTHON_HOME}",
+        "linux": "{CUSTOM_RESOLVE_PYTHON_HOME}"
+    }
+}
+```
+
+Set your python 3.x interpreter directory to the environment variable `CUSTOM_RESOLVE_PYTHON_HOME`.
+
+Next, you'll need to use your custom python interpreter to install some of the necessary packages
+
+1. `python -m pip install PySide2`
+2. `python -m pip install OpenTimelineIO`
