@@ -22,7 +22,7 @@ A folder can be identified by its full path, e.g., `assets/characters/bob`, or b
 
 Publishing any data from an AYON Folder (a shot, asset build, or any other type) results in a **Product**.
 
-Each product must be of exactly one [type](#product-type), for example, a rig, model, or a look. A single Folder can have many Products, even of a single family, named [variants](#variant). By default, a Product is named as a combination of its type + variant. Sometimes prefixed with the task name (often in case of a workfile product).
+Each product must be of exactly one type, for example, a rig, model, or a look. A single Folder can have many Products, even of a single family, named [variants](#variant). By default, a Product is named as a combination of its type + variant. Sometimes prefixed with the task name (often in case of a workfile product).
 
  Product type doesn't dictate the file type, but can enforce certain technical specifications. For example, AYON's default configuration expects `model` product type to only contain geometry without any shaders or joints when it is published.
 

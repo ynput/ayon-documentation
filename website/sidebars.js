@@ -75,7 +75,7 @@ module.exports = {
             type: "category",
             label: "AYON server",
             items: [
-                "admin_server_installation",
+                "admin_server_deployment",
                 "admin_server_installing_addons",
                 "admin_server_provisioning",
                 "admin_server_services",
@@ -92,17 +92,10 @@ module.exports = {
             items: [
                 "admin_environment",
                 "admin_settings",
-                "admin_settings_system",
                 "admin_colorspace",
                 "admin_settings_project_anatomy",
-                {
-                    type: "category",
-                    label: "Project Settings",
-                    items: [
-                        "project_settings/project_settings_core",
-                        "project_settings/project_settings_tray_publisher",
-                    ],
-                },
+                "addon_core_settings",
+                "addon_applications_admin",
             ],
         },
         {
@@ -128,6 +121,13 @@ module.exports = {
                 "addon_substancepainter_admin",
                 "addon_tvpaint_admin",
                 "addon_unreal_admin",
+                "addon_ftrack_admin",
+                "addon_kitsu_admin",
+                "addon_site_sync_admin",
+                "addon_deadline_admin",
+                "addon_clockify_admin",
+                "addon_slack_admin",
+                "addon_traypublisher_admin",
                 "addon_wrap_admin",
             ],
         },
@@ -153,9 +153,13 @@ module.exports = {
         {
             type: "category",
             label: "Hosts integrations",
-            items: ["dev_host_implementation", "dev_publishing"],
+            items: [
+                "dev_host_implementation",
+                "dev_publishing",
+            ],
         },
         "dev_deadline",
         "dev_colorspace",
+        "dev_event_system",
     ],
 };

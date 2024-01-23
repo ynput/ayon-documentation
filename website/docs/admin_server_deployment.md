@@ -1,7 +1,7 @@
 ---
-id: admin_server_installation
-title: Installing Ayon server 
-sidebar_label: Server installation
+id: admin_server_deployment
+title: Server deployment
+sidebar_label: Server deployment
 ---
 
 import Tabs from '@theme/Tabs';
@@ -32,12 +32,13 @@ import TabItem from '@theme/TabItem';
 
 1. Clone [ayon-docker repository](https://github.com/ynput/ayon-docker) to your local machine.
 2. Tweak the `docker-compose.yml` file according to your requirements.
-3. You may use the `.env` file to set environment variables (for example, for SSO configuration).
+3. You may use the `.env` file to set environment variables.
 4. Install addons to the `addons` directory.
 5. Modify the default settings in the `settings/template.json` file (see provisioning page).
 6. Run the stack using `docker compose up -d`
 7. Run `make setup`
-8. Once the setup is complete, navigate to [http://localhost:5000/](http://localhost:5000/) in your web browser and log in as `admin/admin`.
+8. Once the setup is complete, navigate to [http://localhost:5000/](http://localhost:5000/)
+9. If you haven't used `template.json` file to create a user, you will be prompted to create one now.
 
 </ReactMarkdown>
 </TabItem>
@@ -48,7 +49,7 @@ import TabItem from '@theme/TabItem';
 
 1. Clone [ayon-docker repository](https://github.com/ynput/ayon-docker) to your local machine.
 2. Tweak the `docker-compose.yml` file according to your requirements.
-3. You may use the `.env` file to set environment variables (for example, for SSO configuration).
+3. You may use the `.env` file to set environment variables.
 4. Comment-out or delete the `- "/etc/localtime:/etc/localtime:ro"` line from the `docker-compose.yml` file.
 5. Install addons to the `addons` directory.
 6. Modify the default settings in the `settings/template.json` file (see provisioning page).
@@ -64,7 +65,7 @@ import TabItem from '@theme/TabItem';
 
 1. Clone [ayon-docker repository](https://github.com/ynput/ayon-docker) to your local machine.
 2. Tweak the `docker-compose.yml` file according to your requirements.
-3. You may use the `.env` file to set environment variables (for example, for SSO configuration).
+3. You may use the `.env` file to set environment variables.
 4. Install addons to the `addons` directory.
 5. Modify the default settings in the `settings/template.json` file (see provisioning page).
 6. Run the stack using `docker compose up -d`

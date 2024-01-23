@@ -83,3 +83,12 @@ raw json.
 ## Gizmo Menu
 You can add your custom toolbar menu into Nuke by setting your gizmo path and extending definitions in **Nuke -> Gizmo Menu**.
 ![Custom menu definition](assets/nuke-admin_gizmomenu.png)
+
+## Creator Plugins
+
+### Exposed Knobs
+`ayon+settings://nuke/create/CreateWriteRender/exposed_knobs`
+
+This list links knobs from the write node inside, to the publish group. The name of the knobs can be found when hovering over the knob, in the tooltip in bold.
+
+![](assets/nuke-knob_name.png)
