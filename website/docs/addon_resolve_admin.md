@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Resolve requirements
-Resolve is using its own python interpreter which cannot be connected to Ayon. This interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Bellow you can find instructions on how to install them into an installed Python of your choice.
+Resolve uses a separate Python interpreter (it does not come with Python itself). The interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Bellow you can find instructions on how to install them into an installed Python of your choice.
 
 Resolve 17 is using Python 3.6.2
 Resolve 18 is using Python 3.9.x
@@ -31,25 +31,94 @@ Open your server Studio settings and go to **Application** addon `ayon+settings:
 
 ### Installing Python dependencies
 
-#### PySide2
+#### PySide2 or PySide6
 
 AYON is using its own window widget inside Resolve, for that reason PySide2 (or PySide6 if on MacOS) has to be installed into the python.
+
+<Tabs
+  groupId="platforms"
+  defaultValue="win"
+  values={[
+    {label: 'Windows', value: 'win'},
+    {label: 'Linux', value: 'linux'},
+    {label: 'Mac', value: 'mac'},
+  ]}>
+
+<TabItem value="win">
+
 
 ```bash
 cd <a path you had set to RESOLVE_PYTHON3_HOME>
 python.exe -m pip install PySide2
 ```
 
+</TabItem>
+<TabItem value="linux">
+
+
+```bash
+cd <a path you had set to RESOLVE_PYTHON3_HOME>
+python3 -m pip install PySide2
+```
+
+</TabItem>
+<TabItem value="mac">
+
+
+```bash
+cd <a path you had set to RESOLVE_PYTHON3_HOME>
+python3 -m pip install PySide6
+```
+
+</TabItem>
+</Tabs>
+
 ### OpenTimelineIO
+
+:::warning Permissions
+Installation guide for OpenTimelineIO in Python 3.6 can be found [here](https://github.com/ynput/OpenPype/blob/develop/openpype/hosts/resolve/README.markdown#basic-setup).
+:::
 
 AYON is using OpenTimelineIO for editorial publishing. OpenTimelineIO has to be installed into the python.
 
-```bash
+<Tabs
+  groupId="platforms"
+  defaultValue="win"
+  values={[
+    {label: 'Windows', value: 'win'},
+    {label: 'Linux', value: 'linux'},
+    {label: 'Mac', value: 'mac'},
+  ]}>
+
+<TabItem value="win">
+
 
 ```bash
 cd <a path you had set to RESOLVE_PYTHON3_HOME>
 python.exe -m pip install OpenTimelineIO
 ```
+
+</TabItem>
+<TabItem value="linux">
+
+
+```bash
+cd <a path you had set to RESOLVE_PYTHON3_HOME>
+python3 -m pip install OpenTimelineIO
+```
+
+</TabItem>
+<TabItem value="mac">
+
+
+```bash
+cd <a path you had set to RESOLVE_PYTHON3_HOME>
+python3 -m pip install OpenTimelineIO
+```
+
+</TabItem>
+</Tabs>
+
 
 ### Debugging if Python is not working in Resolve
 
