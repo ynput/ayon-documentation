@@ -15,7 +15,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Resolve requirements
-Resolve is using its own python interpreter which cannot be connected to Ayon. This interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Bellow you can find instructions on how to install them into an installed Python of your choice.
+Resolve is using its own python interpreter which cannot be connected to Ayon. This interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Below you can find instructions on how to install them into an installed Python of your choice.
 
 Resolve 17 is using Python 3.6.2
 Resolve 18 is using Python 3.9.x
