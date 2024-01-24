@@ -47,7 +47,7 @@ AYON is using OpenTimelineIO for editorial publishing. OpenTimelineIO has to be 
 ```bash
 
 ```bash
-cd <a path you had set to RESOLVE_PYTHON3_HOME>
+cd <path to RESOLVE_PYTHON3_HOME>
 python.exe -m pip install OpenTimelineIO
 ```
 
