@@ -94,7 +94,7 @@ AYON is using OpenTimelineIO for editorial publishing. OpenTimelineIO has to be 
 
 
 ```bash
-cd <a path you had set to RESOLVE_PYTHON3_HOME>
+cd <path to RESOLVE_PYTHON3_HOME>
 python.exe -m pip install OpenTimelineIO
 ```
 
@@ -123,7 +123,7 @@ python3 -m pip install OpenTimelineIO
 ### Debugging if Python is not working in Resolve
 
 
-#### Set Resolve's Fusion settings for Python 3.6 interpreter
+#### Set Resolve's Fusion settings for Python 3 interpreter
 
 In case Resolve is not showing Ayon menu, please have a look into Resolve's console and click to P3 tab. If it is not working then Python is not correctly connected to Resolve. One of the reasons might be that Fusion is not set to use Python 3.6 interpreter.
 
