@@ -12,7 +12,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 </ReactMarkdown>
 
 :::note
-AYON supports Nuke version **`11.0`** and above.
+AYON supports Nuke version **`13.0`** and above.
 :::
 
 ## AYON global tools
