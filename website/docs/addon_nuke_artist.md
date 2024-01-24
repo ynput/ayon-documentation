@@ -308,6 +308,11 @@ If you want to render and publish on the farm in one go, run publish with On far
 
 ![Versionless](assets/nuke_tut/nuke_RenderLocalFarm.png)
 
+#### Render Attributes
+
+- `Workfile Dependency` - when submitting the render to Deadline, the workfile is will added as an asset dependency putting the job in pending state initially. Once the workfile path is available to Deadline, the job will be released.
+- `Use Published Workfile` - when submitting the render to Deadline, the workfile used for rendering will be the published workfile. If false, the workfile from the work area will be used.
+
 ### Version-less Render
 
 ![Versionless](assets/nuke_tut/nuke_versionless.png)
