@@ -129,6 +129,7 @@ module.exports = {
                 "addon_slack_admin",
                 "addon_traypublisher_admin",
                 "addon_wrap_admin",
+                "addon_syncsketch_admin",
             ],
         },
         "admin_releases",
