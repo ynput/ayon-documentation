@@ -111,7 +111,7 @@ As it is shown in below picture you have to go to Fusion Tab and then in Fusion 
 
 ### Custom DaVinci Resolve Python 3.x interpreter
 
-On the frontend page of the website, in the **Studio Settings** -> **Applications** -> **Resolve** section, you can change the environment variables to configure a custom python interpreter. 
+In the **Studio Settings** -> **Applications** -> **Resolve** section, you can change the environment variables to configure a custom python interpreter. 
 
 e.g. An example of a possible configuration, or use hard-coded and write it in the environment configuration.
 
