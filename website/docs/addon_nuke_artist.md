@@ -12,7 +12,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 </ReactMarkdown>
 
 :::note
-AYON supports Nuke version **`11.0`** and above.
+AYON supports Nuke version **`13.0`** and above.
 :::
 
 ## AYON global tools
@@ -307,6 +307,11 @@ If you wish to check your render before publishing, you can use your local machi
 If you want to render and publish on the farm in one go, run publish with On farm option selected in the write node to render and make the review on farm.
 
 ![Versionless](assets/nuke_tut/nuke_RenderLocalFarm.png)
+
+#### Render Attributes
+
+- `Workfile Dependency` - when submitting the render to Deadline, the workfile is will added as an asset dependency putting the job in pending state initially. Once the workfile path is available to Deadline, the job will be released.
+- `Use Published Workfile` - when submitting the render to Deadline, the workfile used for rendering will be the published workfile. If false, the workfile from the work area will be used.
 
 ### Version-less Render
 
