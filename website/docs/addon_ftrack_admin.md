@@ -83,9 +83,15 @@ Push thumbnails from version, up through multiple hierarchy levels
 
 ### Update status on task action
 
-Change status of next task from `Not started` to `Ready` when previous task is approved.
+When launching an action on a task in Ftrack, the status of the task can be updated. The mapping happens from the value to key, ei. if the key is `Ready` and the value is `Not Ready`, then the status will be updated to `Ready` if its `Not Ready`.
+The mapping happens on a first-come-first-serve basis, from the top to the bottom.
 
-Multiple detailed rules for next task update can be configured in the settings.
+There are two special tokens that can be used; `__any__` and `__ignore__`
+
+`__any__` - if this is in the value of a mapping, then any task status will be changed to the key (status) when launching an action.
+`__ignore__` - if this is in the key of a mapping, then any status (case insensitive) in the values will be ignored for updating the task status.
+
+By default any task status will be updated to `In Progress` when launching an action.
 
 ### Sync status from Task to Parent
 
