@@ -132,3 +132,6 @@ Next, you'll need to use your custom python interpreter to install some of the n
 
 1. `python -m pip install PySide2`
 2. `python -m pip install OpenTimelineIO`
+
+### Enable Scripting
+In Resolve go to `DaVinci Resolve > Preferences > System > General`. Set `External scripting using` to `Local`.
