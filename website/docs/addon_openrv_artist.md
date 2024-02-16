@@ -1,14 +1,14 @@
 ---
 id: addon_openrv_artist
 title: OpenRV Artist Docs
-sidebar_label: Wrap
+sidebar_label: OpenRV
 ---
 
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 <ReactMarkdown>
-{versions.Wrap_Badge}
+{versions.OpenRV_Badge}
 </ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
