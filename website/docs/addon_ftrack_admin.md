@@ -101,7 +101,9 @@ List of parent object types where this is triggered ("Shot", "Asset build", etc.
 
 This will sync the status from the task to the latest asset version on the task.
 
-NOTE: Due to a potential infitine status update loop, the event server user and the user updating the task status, need to be different. If it is the same user, the status will not be synced.
+:::note
+ Due to a potential infinite status update loop, the event server user and the user updating the task status, need to be different. If it is the same user, the status will not be synced.
+:::
 
 ### Sync status from Version to Task
 
