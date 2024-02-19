@@ -48,7 +48,8 @@ export const officialAddons = [
     "tvpaint",
     "unreal",
     "wrap",
-    "openrv"
+    "openrv",
+    "syncsketch"
 ] as const;
 
 // COMMUNITY ADDONS
