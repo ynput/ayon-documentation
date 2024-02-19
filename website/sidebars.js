@@ -66,6 +66,7 @@ module.exports = {
                 "addon_tvpaint_artist",
                 "addon_unreal_artist",
                 "addon_wrap_artist",
+                "addon_openrv_artist",
             ],
         },
     ],

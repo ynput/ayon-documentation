@@ -79,11 +79,11 @@ const config = {
                     {
                         type: "custom-logo",
                         position: "left",
-                        logo: "/img/AYON_blackG_dot.svg",
-                        logoInverted: "/img/AYON_whiteG_dot.svg",
+                        logo: "/img/AYON_docs_black.svg",
+                        logoInverted: "/img/AYON_docs_white.svg",
                         to: "/",
                         logoStyle: {
-                            height: "1.5rem",
+                            height: "2.5rem",
                             top: -2,
                         },
                     },
