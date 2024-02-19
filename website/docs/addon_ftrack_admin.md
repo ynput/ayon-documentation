@@ -97,6 +97,14 @@ By default any task status will be updated to `In Progress` when launching an ac
 
 List of parent object types where this is triggered ("Shot", "Asset build", etc. Skipped if it is empty)
 
+### Sync status from Task to Asset Version
+
+This will sync the status from the task to the latest asset version on the task.
+
+:::note
+ Due to a potential infinite status update loop, the event server user and the user updating the task status, need to be different. If it is the same user, the status will not be synced.
+:::
+
 ### Sync status from Version to Task
 
 Updates Task status based on status changes on its Asset Version.
