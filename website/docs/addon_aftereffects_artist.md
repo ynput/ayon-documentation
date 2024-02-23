@@ -24,6 +24,11 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 To install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select AfterEffects in menu. Then go to `{path to pype}hosts/aftereffects/api/extension.zxp`. 
 
+(Current location will be most likely in artist `AppData`, on Windows it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\openpype_X.X.X\openpype\hosts\aftereffects\api`.
+On Linux look in `~/.local/share/Ynput/AYON/addons`, on Mac `~/Library/Application Support/Ynput/AYON/addons`)
+This location is temporary until full separation of addons is implemented. Artist must start Tray at least once for Ayon server to populate this location.)
+
+
 Drag extension.zxp and drop it to Anastasyi's Extension Manager. The extension will install itself. 
 
 ## Implemented functionality
