@@ -93,7 +93,9 @@ Otherwise, a new user is created and the first part of the email address (before
 ![Addon settings](assets/keycloak/keycloak-addon-settings.png)
 
 Roles are re-applied every time the user logs in.
-Identity Providers and User Federation
+
+### Identity Providers and User Federation
+
 Configure any identity providers (e.g., Google, Facebook) or user federation (e.g., LDAP, Active Directory) 
 for your realm as needed. This allows for authentication using external user databases or social logins.
 
