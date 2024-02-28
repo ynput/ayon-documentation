@@ -12,7 +12,7 @@ Currently, we support Google and Discord, but thanks to the addon's modular desi
 integrating additional providers is straightforward, 
 promising easy scalability to meet evolving user needs.
 
-This addon requires a valid license. See [https://ynput.io/ayon/pricing/](https://ynput.io/ayon/pricing/)
+This addon requires a valid AYON SSO license. See [https://ynput.io/ayon/pricing/](https://ynput.io/ayon/pricing/)
 for more information.
 
 Google
