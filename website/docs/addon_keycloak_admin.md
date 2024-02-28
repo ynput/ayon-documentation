@@ -7,7 +7,7 @@ sidebar_label: Keycloak
 Keycloak addon provides SSO for Ayon using Keycloak (https://keycloak.org). 
 Keycloak is an open-source IAM server supporting Google SSO, LDAP/AD user federation, 2FA, and more.
 
-This addon requires a valid SSO license. 
+This addon requires a valid AYON SSO license. 
 See [https://ynput.io/ayon/pricing/](https://ynput.io/ayon/pricing/) for more information.
 
 This guide outlines the steps to configure a new Keycloak instance for authentication. 
