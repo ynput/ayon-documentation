@@ -7,6 +7,9 @@ sidebar_label: Keycloak
 Keycloak addon provides SSO for Ayon using Keycloak (https://keycloak.org). 
 Keycloak is an open-source IAM server supporting Google SSO, LDAP/AD user federation, 2FA, and more.
 
+This addon requires a valid SSO license. 
+See [https://ynput.io/ayon/pricing/](https://ynput.io/ayon/pricing/) for more information.
+
 This guide outlines the steps to configure a new Keycloak instance for authentication. 
 Follow these steps to create a realm, set up a client, configure client settings, and manage user roles.
 
@@ -78,14 +81,21 @@ In the "Roles" tab, create roles, that you then be able to map to ayon user leve
 
 ![Create realm](assets/keycloak/keycloak-roles.png)
 
-When user logs in, assigned client roles in Keycloak are matched to role mapping settings of the addon and if there is a match, Ayon role and Access groups are assigned to the user. If no Keycloak role matches and "Default role" is enabled, the user is assigned the default one. if "Default role" is disabled, the user is denied access to Ayon.
+When user logs in, assigned client roles in Keycloak are matched to role mapping settings of the addon 
+and if there is a match, Ayon role and Access groups are assigned to the user. 
+If no Keycloak role matches and "Default role" is enabled, the user is assigned the default one. 
+If "Default role" is disabled, the user is denied access to Ayon.
 
-Users are matched using their email address. If the user with the same email already exists in Ayon, the existing account will be used and access rights updated according to Keycloak addon rules. Otherwise, a new user is created and the first part of the email address (before @) will be used as their username.
+Users are matched using their email address. If the user with the same email already exists in Ayon, 
+the existing account will be used and access rights updated according to Keycloak addon rules. 
+Otherwise, a new user is created and the first part of the email address (before @) will be used as their username.
 
 ![Create realm](assets/keycloak/keycloak-addon-settings.png)
 
 Roles are re-applied every time the user logs in.
 Identity Providers and User Federation
-Configure any identity providers (e.g., Google, Facebook) or user federation (e.g., LDAP, Active Directory) for your realm as needed. This allows for authentication using external user databases or social logins.
+Configure any identity providers (e.g., Google, Facebook) or user federation (e.g., LDAP, Active Directory) 
+for your realm as needed. This allows for authentication using external user databases or social logins.
 
-Please refer to Keycloak documentation for more information on configuring identity providers and their mapping to client roles.
+Please refer to Keycloak documentation for more information on configuring 
+identity providers and their mapping to client roles.
