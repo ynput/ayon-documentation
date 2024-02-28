@@ -80,6 +80,7 @@ module.exports = {
                 "admin_server_installing_addons",
                 "admin_server_provisioning",
                 "admin_server_services",
+                "admin_server_email",
             ],
         },
         {
