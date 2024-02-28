@@ -45,6 +45,7 @@ are assigned just once to new users. Therefore, an administrator has the flexibi
 to modify a user's role within Ayon's user management system. 
 Subsequent logins by the user will reflect their updated role.
 
+After restarting the server and logging out, you will see a new "Log in using Google" button on the login page.
 
 Discord
 -------
@@ -53,9 +54,9 @@ Discord
 and create OAuth2 client and secrets
 - Add `https://yourserver/login/discord` to a valid redirect url list
 - In Ayon secrets, create `discord_sso_client_id` and `discord_sso_client_secret` records with values you got during app creation
-- In SSO Addon settings, turn "Discord" tab on
-- Restart the server
-- After log out, you should see new "Log in using Discord" button
+- In SSO Addon settings, turn on "Discord"
+
+After restarting the server and logging out, you will see a new "Log in using Discord" button on the login page.
 
 Due to privacy concerns, Discord only support sign-in for users that already exist in Ayon.
 Users are matched by their email address and their profiles are not updated in any way.

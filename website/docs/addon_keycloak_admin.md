@@ -38,11 +38,11 @@ for production and staging instances, or to hard limit access to a particular in
 
 Navigate to the realm's client page and click "Create client".
 
-![Create realm](assets/keycloak/keycloak-create-client-1.png)
+![Create client](assets/keycloak/keycloak-create-client-1.png)
 
 Select "OpenID Connect" as the "Client Protocol".
 
-![Create realm](assets/keycloak/keycloak-create-client-2.png)
+![Create client](assets/keycloak/keycloak-create-client-2.png)
 
 Assign a unique ID to your client in the "Client ID" field. It may be an instance identifier for example. 
 
@@ -54,7 +54,7 @@ In Ayon, save this value to the secrets database as `keycloak_client_id`
 After creating the client, enable "Client Authentication" on the next page. 
 Leave the other settings at their default values unless specific changes are required for your setup.
 
-![Create realm](assets/keycloak/keycloak-create-client-3.png)
+![Create client](assets/keycloak/keycloak-create-client-3.png)
 
 Add `http://yourserver/*` to the "Valid Redirect URIs" field. 
 This URI is where Keycloak will send the authentication response. 
@@ -62,7 +62,7 @@ This URI is where Keycloak will send the authentication response.
 For "Web Origins", enter the `host:port` format, such as `localhost:3000` or `mydomain.example.app`. 
 This setting specifies the allowed origins for CORS.
 
-![Create realm](assets/keycloak/keycloak-create-client-4.png)
+![Create client](assets/keycloak/keycloak-create-client-4.png)
 
 
 ### Client Authentication and Secrets
@@ -70,7 +70,7 @@ This setting specifies the allowed origins for CORS.
 After setting up the client, go to the "Credentials" tab and create/copy the client secret. 
 This secret is used to authenticate your client with Keycloak. 
 
-![Create realm](assets/keycloak/keycloak-client-sercret.png)
+![Secrets](assets/keycloak/keycloak-client-sercret.png)
 
 In Ayon, save it to the secrets database as `keycloak_client_secret`
 
@@ -79,7 +79,7 @@ In Ayon, save it to the secrets database as `keycloak_client_secret`
 
 In the "Roles" tab, create roles, that you then be able to map to ayon user levels and access groups
 
-![Create realm](assets/keycloak/keycloak-roles.png)
+![Client roles](assets/keycloak/keycloak-roles.png)
 
 When user logs in, assigned client roles in Keycloak are matched to role mapping settings of the addon 
 and if there is a match, Ayon role and Access groups are assigned to the user. 
@@ -90,7 +90,7 @@ Users are matched using their email address. If the user with the same email alr
 the existing account will be used and access rights updated according to Keycloak addon rules. 
 Otherwise, a new user is created and the first part of the email address (before @) will be used as their username.
 
-![Create realm](assets/keycloak/keycloak-addon-settings.png)
+![Addon settings](assets/keycloak/keycloak-addon-settings.png)
 
 Roles are re-applied every time the user logs in.
 Identity Providers and User Federation
@@ -99,3 +99,6 @@ for your realm as needed. This allows for authentication using external user dat
 
 Please refer to Keycloak documentation for more information on configuring 
 identity providers and their mapping to client roles.
+
+
+After restarting the server and logging out, you will see a new "Log in using Keycloak" button on the login page.
