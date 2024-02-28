@@ -125,7 +125,7 @@ python3 -m pip install OpenTimelineIO
 
 #### Set Resolve's Fusion settings for Python 3 interpreter
 
-In case Resolve is not showing Ayon menu, please have a look into Resolve's console and click to P3 tab. If it is not working then Python is not correctly connected to Resolve. One of the reasons might be that Fusion is not set to use Python 3.6 interpreter.
+In case Resolve is not showing Ayon menu, please have a look into Resolve's console and click to _Py3_ tab. If it is not working then Python is not correctly connected to Resolve. One of the reasons might be that Fusion is not set to use Python 3.6 interpreter.
 
 As it is shown in below picture you have to go to Fusion Tab and then in Fusion menu find Fusion Settings. Go to Fusion/Script and find Default Python Version and switch to Python 3.6
 
