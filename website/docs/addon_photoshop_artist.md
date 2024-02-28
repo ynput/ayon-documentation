@@ -21,7 +21,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Setup
 
-o install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select AfterEffects in menu. Then go to `{path to PS addon}hosts/photoshop/api/extension.zxp`.
+To install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select Photoshop in menu. Then go to `{path to PS addon}hosts/photoshop/api/extension.zxp`.
 
 (Current location will be most likely in artist `AppData`, on Windows it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\openpype_X.X.X\openpype\hosts\photoshop\api`.
 On Linux look in `~/.local/share/Ynput/AYON/addons`, on Mac `~/Library/Application Support/Ynput/AYON/addons`)
