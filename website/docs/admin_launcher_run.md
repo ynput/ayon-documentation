@@ -178,7 +178,7 @@ Run publishing based on metadata passed in the JSON file, for example, on a farm
 | Positional argument | Path to metadata JSON file. |
 
 ```shell
-ayon publish <PATH_TO_JSON> --targes farm
+ayon publish <PATH_TO_JSON> --targets farm
 ```
 
 ---
@@ -198,7 +198,7 @@ Context options are `project`, `asset`, `task`, `app`.
 | `--app` | Application name. |
 
 ```shell
-ayon /home/openpype/env.json --project Foo --asset Bar --task modeling --app maya-2019
+ayon extractenvironments /home/openpype/env.json --project Foo --asset Bar --task modeling --app maya-2019
 ```
 
 ---
