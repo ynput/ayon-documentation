@@ -37,6 +37,13 @@ In Photoshop you can find the tools in the `AYON` extension:
 
 You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
 
+:::note guide
+On newer MacOS you need to:
+- go to `Applications/Adobe Photoshop XXXX`
+- right clicking on the `Adobe Photoshop XXXX.app`
+- then `Get Info`, check `Open using Rosetta`
+:::
+
 ### Publish
 
 When you are ready to share some work, you will need to publish. This is done by opening the `Publisher` through the `Publish...` button.
