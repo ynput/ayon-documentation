@@ -47,6 +47,13 @@ In AfterEffects you'll find the tools in the `AYON` extension:
 
 You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
 
+:::note guide
+On newer MacOS you need to:
+- go to `Applications/Adobe AfterEffects XXXX`
+- right clicking on the `Adobe AfterEffects XXXX.app`
+- then `Get Info`, check `Open using Rosetta`
+:::
+
 ### Publish
 
 When you are ready to share some work, you will need to publish it. This is done by opening the `Publisher` through the `Publish...` button.
