@@ -352,7 +352,10 @@ Steps:
 ![publisher_ui_vray_rop](assets/houdini/artist/publisher_ui_vray_rop.png)
 
 
-## Publishing cache to Deadline
+## Deadline submission and publishing
+Currently, The `Publisher Tool` is used to submit and publish your cache or render from deadline.
+
+### Publishing cache to Deadline
 Artist can publish cache to deadline while using local machine for other tasks which increases productivity.
 Caching on the farm is supported for:
 
@@ -375,6 +378,42 @@ the toggled button **Submitting to Farm**.
 When the render is finished, all the caches would be located in your publish folder.
 You can see them in the Loader.
 ![Houdini Farm Per Task](assets/houdini/artist/houdini_farm_cache_loader.png)
+
+### Publishing render to Deadline
+
+Rendering on the farm is supported for:
+- **Karma ROP**
+- **Mantra ROP**
+- **Redshift ROP**
+- **Arnold ROP**
+- **VRay ROP**
+
+On instance creation, There are two main settings : 
+- `Submitting to Farm`:
+  Where you choose either to submit to farm or render locally. 
+  *Local Render is not implemented yet. So, please keep it enabled.*
+- `Split export and render jobs`:
+  It enables exporting render scene descriptions/proxies e.g. `.ifd`, `.rs`, `.ass`, `.vrscene`
+  It effectively save render licenses.
+
+![Houdini Render Creator](assets/houdini/artist/houdini_render_creator.png)
+
+On Publishing, You can find some of deadline options.
+![Houdini Render Publish](assets/houdini/artist/houdini_render_publish.png)
+
+Here's how it looks like on Deadline in both cases.
+   
+| Split Jobs | No Split |
+|--|--|
+| ![Houdini Render Publish Split](assets/houdini/artist/houdini_render_publish_split.png) | ![Houdini Render Publish No Split](assets/houdini/artist/houdini_render_publish_no_split.png) |
+
+:::note Enable/disable splitting
+To enable/disable split after publish instance creation. 
+You'd need to find the export option in ROP node and enable/disable it.
+E.g In Mantra:
+
+![Houdini Render Publish Split Setting](assets/houdini/artist/houdini_render_publish_split_setting.png)
+:::
 
 ## Load published products
 Loading is done by
