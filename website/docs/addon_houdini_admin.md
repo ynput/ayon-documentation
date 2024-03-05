@@ -106,7 +106,8 @@ Enable or disable the plugins. Some of them have extra options such as defining 
 ## Publish plugins
 Enable or disable the plugins executed at publishing.
 
-- Collect Rop Frame Range
+- Collect Asset Handles
+- Collect Chunk Size
 - Validate Latest Containers
 - Validate Mesh is Static
 - Validate Review Colorspace
@@ -114,7 +115,7 @@ Enable or disable the plugins executed at publishing.
 - Validate Unreal Static Mesh Name
 - Validate workfile paths settings
 
-### Collect Rop Frame Range
+### Collect Asset Handles
 
 Disable this if you want the publisher to ignore start and end handles specified in the asset data for publish instances.
 > Artists are allowed to override this value in the publisher UI.
