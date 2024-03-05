@@ -39,7 +39,7 @@ between studios and projects but by default your geometry has to be named proper
 For example `sphere_GEO` or `cube1_GEO`. Geometry needs to have freezed transformations
 and must reside under one group, for example `model_GRP`.
 
-![Model example](assets/maya-model_hierarchy_example.jpg)
+![Model example](assets/maya/artist/maya-model_hierarchy_example.jpg)
 
 Note that `sphere_GEO` has frozen transformations.
 
@@ -48,7 +48,7 @@ Note that `sphere_GEO` has frozen transformations.
 Now create **Model instance** from it to let AYON know what in the scene you want to
 publish. Go **AYON → Create... → Model**
 
-![Model create instance](assets/maya-model_create_instance.jpg)
+![Model create instance](assets/maya/artist/maya-model_create_instance.jpg)
 
 `Asset` field is a name of asset you are working on - it should be already filled
 with correct name as you've started Maya or switched context to specific asset. You
@@ -78,7 +78,7 @@ in Outliner called after your product, in our case it is `modelMain`. The `model
 set provides settings for you to includes some data when publishing. The settings can be found
 in the channel box when you select the set.
 
-![ModelMain Settings in Channel Box](assets/maya_model_main_custom_attributes.png)
+![ModelMain Settings in Channel Box](assets/maya/artist/maya_model_main_custom_attributes.png)
 
 These settings allow you to include either **Write Color Sets**, **Write Face Sets**,
 or **Include Parent Hierarchy** as your exported preference before publishing.
@@ -99,7 +99,7 @@ your asset should reside. As in our case we are working on asset called
 
 Now let's publish it. Go **AYON → Publish...**. You will be presented with following window:
 
-![Model publish](assets/maya-model_pre_publish.jpg)
+![Model publish](assets/maya/artist/maya-model_pre_publish.jpg)
 
 Note that content of this window can differs by your pipeline configuration.
 For more detail see [Publisher](artist_tools_publisher).
@@ -126,14 +126,12 @@ green in validator section.
 To make things interesting, I intentionally forgot to freeze transformations
 on `sphere_GEO` as I know it will trigger validator designed to check just this.
 
-![Failed Model Validator](assets/maya-model_publish_error.jpg)
+
 
 You can see our model is now marked red in left column and in right we have
 red box next to `Transform Zero (Freeze)` validator.
 
-You can click on arrow next to it to see more details:
-
-![Failed Model Validator details](assets/maya-model_freeze_error_details.jpg)
+![Failed Model Validator details](assets/maya/artist/maya-model_freeze_error_details.jpg)
 
 From there you can see in **Records** entry that there is problem with `sphere_GEO`.
 Some validators have option to fix problem for you or just select objects that
@@ -143,7 +141,7 @@ In main overview you can notice little up arrow in a circle next to validator
 name. Right click on it and you can see menu item `select invalid`. This
 will select offending object in Maya.
 
-![Model Validator Selected Invalid](assets/maya-model-validator-select-invalid.png)
+![Model Validator Selected Invalid](assets/maya/artist/maya-model-validator-select-invalid.png)
 
 Fix is easy. Without closing Publisher window we just freeze transformations.
 Then we need to reset it to make it notice changes we've made. Click on arrow
@@ -154,7 +152,7 @@ There are also `repair` actions for some validators. e.g. Mesh ColorSets
 If you can't pass the validator, you can right-click and hit `repair`. It will
 fix the stuff which triggers the validator in the scene.
 
-![Model Validator Repair](assets/maya_model_publishing_repair_action.png)
+![Model Validator Repair](assets/maya/artist/maya_model_publishing_repair_action.png)
 
 When everything pass all the validations, you can write some comment if you want
 and click play icon button to publish the instance when ready.
@@ -164,9 +162,9 @@ it can take a while. You should end up with everything green and message
 **Finished successfully ...** You can now close publisher window.
 
 Ayon is able to publish model data in Alembic, Maya Scene, OBJ format; where
-OBJ publisher needs to be enabled in the Settings.
+OBJ publisher needs to be enabled in the Settings. `ayon+settings://maya/publish/ExtractObj`
 
-![OBJ Extractor in Setting](assets/maya_obj_extractor_settings.png)
+![OBJ Extractor in Setting](assets/maya/artist/maya_obj_extractor_settings.png)
 
 To check for yourself that model is published, open
 [Asset Loader](artist_tools_loader) - **AYON → Load...**.
@@ -180,7 +178,7 @@ format in Vray Proxy, Arnold Standin or GPU Cache. You can also
 load the mesh in USD format if you have the multiverse USD plugin
 installed in your machine.
 
-![OBJ Extractor in Setting](assets/maya_loaders_options.png)
+![OBJ Extractor in Setting](assets/maya/artist/maya_loaders_options.png)
 
 ## Look development
 
@@ -196,7 +194,7 @@ model with AYON see [Publishing Model](addon_maya_artist.md#publishing-models).
 
 First of lets start with empty scene. Now go **AYON → Load...**
 
-![Model loading](assets/maya-model_loading.jpg)
+![Model loading](assets/maya/artist/maya-model_loading.jpg)
 
 Here I am loading `modelBuddha`, its version 1 for asset **foo**.  Just right-click
 on it and select **Reference (abc)**. This will load model into scene as alembic.
@@ -207,7 +205,7 @@ Now you can close Loader window.
 Now you can create whatever look you want. Assign shaders, textures, etc. to model.
 In my case, I assigned simple Arnolds _aiSurfaceShader_ and changed its color to red.
 
-![Look Dev - Red Buddha](assets/maya-look_dev-red_buddha.jpg)
+![Look Dev - Red Buddha](assets/maya/artist/maya-look_dev-red_buddha.jpg)
 
 I am quite happy with it so I want to publish it as my first look.
 
@@ -238,7 +236,7 @@ Now lets see how look are applied. Start new empty scene, load your published
 model there as before (using _Reference (abc)_). If you didn't notice until now,
 there are few yellow icons in left shelf:
 
-![Maya - shortcut icons](assets/maya-shortcut_buttons.jpg)
+![Maya - shortcut icons](assets/maya/artist/maya-shortcut_buttons.jpg)
 
 Those are shortcuts for **Look Manager**, [Work Files](artist_tools_workfiles),
 [Load](artist_tools_loader), and [Manage (Inventory)](artist_tools_inventory).
@@ -248,7 +246,7 @@ Those can be found even in top menu, but that depends on your studio setup.
 You are interested now in **Look Manager** - first item with brush icon. Select
 your Buddha model and open **Look Manager**.
 
-![Maya - Look Manager](assets/maya-look_dev-look_manager.jpg)
+![Maya - Look Manager](assets/maya/artist/maya-look_dev-look_manager.jpg)
 
 This is **Look Manager** window. Yours would be empty until you click **Get All Assets**
 or **Get Assets From Selection**. You can use later to quick assign looks if you have
@@ -288,7 +286,7 @@ easily managed. Currently AYON doesn't allow to publish model at the same time a
 its rig so for demonstration purposes, I'll first create simple model for robotic
 arm, just made out of simple boxes and I'll publish it.
 
-![Maya - Simple model for rigging](assets/maya-rig_model_setup.jpg)
+![Maya - Simple model for rigging](assets/maya/artist/maya-rig_model_setup.jpg)
 
 For more information about publishing models, see [Publishing models](addon_maya_artist.md#publishing-models).
 
@@ -307,7 +305,7 @@ Set is created in your scene to mark rig parts for export. Notice that it has
 two products - `controls_SET` and `out_SET`. Put your controls into `controls_SET`
 and geometry to `out_SET`. You should end up with something like this:
 
-![Maya - Rig Hierarchy Example](assets/maya-rig_hierarchy_example.jpg)
+![Maya - Rig Hierarchy Example](assets/maya/artist/maya-rig_hierarchy_example.jpg)
 
 ### Publishing rigs
 
@@ -352,7 +350,13 @@ When creating the instance, a objectset child `proxy` will be created. Meshes in
 
 Example setup:
 
-![Maya - Point Cache Example](assets/maya-pointcache_setup.png)
+| Create Point Cache | Adjust Hierarchy |
+|--|--|
+| ![Maya - PointCache 1 Example](assets/maya/artist/maya-pointcache_setup_1.png) | ![Maya - PointCache 2 Example](assets/maya/artist/maya-pointcache_setup_2.png) | 
+
+| Publish Point Cache |
+|--|
+| ![Maya - PointCache 3 Example](assets/maya/artist/maya-pointcache_setup_3.png) |
 
 #### Options
 
@@ -374,7 +378,7 @@ Loading point cache means creating reference to **abc** file with Go **AYON → 
 
 Example result:
 
-![Maya - Point Cache Example](assets/maya-pointcache_loaded.png)
+![Maya - Point Cache Example](assets/maya/artist/maya-pointcache_loaded.png)
 
 ## Set dressing in Maya
 
@@ -469,7 +473,7 @@ fetch machine pool list.
 
 So now my scene now looks like this:
 
-![Maya - Render scene Setup](assets/maya-render_setup.jpg)
+![Maya - Render scene Setup](assets/maya/artist/maya-render_setup.jpg)
 
 You can see that it created `renderingMain` set and under it `LAYER_Main`. This set corresponds to
 **Main** render layer in Render Setup. This was automatically created because I had not created any
@@ -483,7 +487,7 @@ renderer you use - for example if you render with Arnold, it is `maya/<Scene>/<R
 
 There are few setting on *Render instance* `renderingMain` in **Attributes Editor**:
 
-![Maya - Render attributes](assets/maya-renderglobals.jpg)
+![Maya - Render attributes](assets/maya/artist/maya-renderglobals.jpg)
 
 Few options that needs explaining:
 
@@ -501,7 +505,9 @@ Now if you run publish, you notice there is in right column new item called
 `Render Layers` and in it there is our new layer `Main (999_abc_0010) [1-10]`. First part is
 layer name, second `(999_abc_0010)` is asset name and rest is frame range.
 
-![Maya - Render Publish errors](assets/maya-render_publish_detail1.jpg)
+| Invalid Render Settings | No Default Camera |
+|--|--|
+| ![Maya - Render Publish errors 1](assets/maya/artist/maya-render_publish_detail1.jpg) | ![Maya - Render Publish errors 2](assets/maya/artist/maya-render_publish_detail2.jpg) |
 
 You see I already tried to run publish but was stopped by few errors. Lets go
 through them one by one just to see what we need to set up further in scene for
@@ -653,7 +659,7 @@ Next step is to move your model set to review set so it will be connected to eac
 
 This is my scene:
 
-![Maya - Review model setup](assets/maya-model_review_setup.jpg)
+![Maya - Review model setup](assets/maya/artist/maya-model_review_setup.jpg)
 
 You see that `modelMain` in under `reviewMain` with `reviewCamera`.
 
