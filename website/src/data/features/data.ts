@@ -102,8 +102,8 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Service for monitoring the user activity to start, stop and synchronise time tracking.",
         docs: {
-            admin: "admin_settings_system#timers-manager",
         },
+        github: "https://github.com/ynput/ayon-core/tree/develop/client/ayon_core/modules/timers_manager"
     },
     farmRendering: {
         title: "Farm rendering",
