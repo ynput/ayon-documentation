@@ -21,8 +21,10 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Setup
 
-o install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select AfterEffects in menu. Then go to `{path to PS addon}hosts/photoshop/api/extension.zxp`.
-(Current location will be most likely in artist `AppData`, on Windows it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\openpype_X.X.X\openpype\hosts\photoshop\api`.
+To install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select Photoshop in menu. Then go to `{path to PS addon}hosts/photoshop/api/extension.zxp`.
+
+(Current location will be most likely in artist `AppData`, on Windows it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\core_X.X.X\ayon_core\hosts\photoshop\api`.
+On Linux look in `~/.local/share/Ynput/AYON/addons`, on Mac `~/Library/Application Support/Ynput/AYON/addons`)
 This location is temporary until full separation of addons is implemented. Artist must start Tray at least once for Ayon server to populate this location.)
 
 ## Usage
@@ -34,6 +36,13 @@ In Photoshop you can find the tools in the `AYON` extension:
 ![Extension](assets/photoshop_extension.png) <!-- picture needs to be changed -->
 
 You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
+
+:::note guide
+On newer MacOS you need to:
+- go to `Applications/Adobe Photoshop XXXX`
+- right clicking on the `Adobe Photoshop XXXX.app`
+- then `Get Info`, check `Open using Rosetta`
+:::
 
 ### Publish
 
