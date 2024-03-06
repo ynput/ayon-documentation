@@ -21,7 +21,7 @@ When creating the instance, two objectsets are created; `content` and `proxy`. M
 In order to utilize operators and proxies, the content and proxy nodes need to share the same names (including the shape names
 and CBIDs). This is done by parenting the content and proxy nodes into separate groups. For example:
 
-![Arnold Scene Source](assets/maya-arnold_scene_source.png)
+![Arnold Scene Source](assets/maya/arnold_artist/arnold_scene_source.png)
 
 Once you put geometry contents(grouped objects) and proxy groups respectively into contents and proxies set,
 you are ready to see if it passes validation and gets published.
@@ -29,12 +29,12 @@ you are ready to see if it passes validation and gets published.
 Besides the grouped contents and proxies, you can put meshes and proxies into contents and proxies set.
 It would pass validation too and gets published.
 
-![Mesh Objects for contents and proxies sets](assets/maya_creator_sets.png)
+![Mesh Objects for contents and proxies sets](assets/maya/arnold_artist/creator_sets.png)
 
 Validators `ASS has relative texture paths` and `Validate Arnold Scene Source CBID` can allow you to set up
 the context correctly by using repair function.
 
-![Arnold Scene Source Validators](assets/maya_validators_ass_family.png)
+![Arnold Scene Source Validators](assets/maya/arnold_artist/validators_ass_family.png)
 
 Once you pass the validator, you can publish your contents and proxies.
 ## Standin
@@ -43,12 +43,12 @@ When you load `ass` when the loaders, it will import two `ass` groups with stand
 Both standins load `_proxy` ass files by default, and you can choose to change the `content`
 manually by clicking file icon in the standin and change the files with `_proxy` naming conventions.
 
-![Arnold Scene Source Loaders](assets/maya_ass_loader.png)
+![Arnold Scene Source Loaders](assets/maya/arnold_artist/ass_loader.png)
 
 ## Look Development
 Standin Nodes are now supported for look assignment.If you publish the look development object with the look family, while you publish the object with Arnold Scene Source. You can assign the look to the published Arnold Scene Source `ass` and Alembic `abc` through `AYON -> Look Assigner...` when you load it as standin.
 
-![Arnold Standin](assets/maya_ass_look_assigner.png)
+![Arnold Standin](assets/maya/arnold_artist/ass_look_assigner.png)
 
 :::note Limited support for shader assignments with standin nodes
 Limited amount of attributes supported by using operator to assign shaders to the loaded standins.
@@ -86,5 +86,5 @@ Since the content and proxy nodes share the same names and hierarchy, any manual
 
 :::note for advanced users
 You can stop the proxy swapping by disabling the string replacement operator found in the container.
-![Arnold Standin](assets/maya-arnold_standin.png)
+![Arnold Standin](assets/maya/arnold_artist/arnold_standin.png)
 :::
