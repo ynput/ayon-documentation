@@ -30,7 +30,7 @@ product as you want and press **Create** button.
 This will create `vrayproxy` set for your product. You can set some options in Attribute editor, mainly if you want
 export animation instead of single frame.
 
-![Maya - VRay Proxy Creation](assets/maya-vray_proxy.jpg)
+![Maya - VRay Proxy Creation](assets/maya/vray_artist/vray_proxy.jpg)
 
 ### Publishing VRay Proxies
 
@@ -41,7 +41,7 @@ Alembic file.
 
 You can load VRay Proxy using loader - **AYON → Loader ...**
 
-![Maya - VRay Proxy Creation](assets/maya-vray_proxy-loader.jpg)
+![Maya - VRay Proxy Creation](assets/maya/vray_artist/vray_proxy-loader.jpg)
 
 Select your product and right-click. Select **Import VRay Proxy (vrmesh)** to import it.
 
