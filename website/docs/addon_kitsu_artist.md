@@ -22,3 +22,16 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 :::tip
 In Kitsu, All the publish actions executed by `pyblish` will be attributed to the currently logged-in user.
 :::
+
+## Integrate Kitsu Note and Review
+
+If they are enabled in Kitsu addon settings. 
+- Your publish comment will be used as Kitsu note.
+- When publishing a Review or Render, publisher can upload them to kitsu.
+
+> Depending on the kitsu addon configuration, publisher also can update the task status.
+
+| Publish Comment | Kitsu Note and Review |
+|--|--|
+| ![kitsu Note 1](assets/kitsu/artist/kitsu_note_1.png) | ![kitsu Note 2](assets/kitsu/artist/kitsu_note_2.png) |
+
