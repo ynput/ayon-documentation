@@ -58,7 +58,7 @@ To configure Multiverse in AYON, an admin privileges needs to setup a new
 AYON tool in the AYON Project Settings, using a similar configuration as
 the one depicted here:
 
-![Maya - Multiverse Setup](assets/maya/multiverse_artist/setup.png)
+![Maya - Multiverse Setup](assets/maya/artist/multiverse_setup.png)
 
 
 ```
@@ -110,13 +110,13 @@ You can choose the USD file format in the Creators' set nodes:
 - Overrides: `.usda` (default) or `.usd`
 - Looks: `.ma` (default)
 
-![Maya - Multiverse Asset Creator](assets/maya/multiverse_artist/openpype_asset_creator.png)
+![Maya - Multiverse Asset Creator](assets/maya/artist/openpype_asset_creator.png)
 
-![Maya - Multiverse Asset Creator](assets/maya/multiverse_artist/openpype_composition_creator.png)
+![Maya - Multiverse Asset Creator](assets/maya/artist/openpype_composition_creator.png)
 
-![Maya - Multiverse Asset Creator](assets/maya/multiverse_artist/openpype_override_creator.png)
+![Maya - Multiverse Asset Creator](assets/maya/artist/openpype_override_creator.png)
 
-![Maya - Multiverse Asset Creator](assets/maya/multiverse_artist/openpype_look_creator.png)
+![Maya - Multiverse Asset Creator](assets/maya/artist/openpype_look_creator.png)
 
 ### Publishers
 
@@ -125,7 +125,7 @@ are available. The first three write USD files to disk, while look writes a Maya
 file along with the mip-mapped textures. All communicate publish info to the
 AYON database.
 
-![Maya - Multiverse Publisher](assets/maya/multiverse_artist/openpype_publishers.png)
+![Maya - Multiverse Publisher](assets/maya/artist/openpype_publishers.png)
 
 
 ### Loader
@@ -136,7 +136,7 @@ to the various viewport draw options the user can strategically decide how to
 minimize the cost of viewport draw effectively being able to load any data, this
 allows to bring into Maya scenes of virtually unlimited complexity.
 
-![Maya - Multiverse Loader](assets/maya/multiverse_artist/openpype_loader.png)
+![Maya - Multiverse Loader](assets/maya/artist/openpype_loader.png)
 
 :::tip Note
 When using the Loader, Multiverse, by design, never "imports" USD data into the
