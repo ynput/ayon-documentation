@@ -29,7 +29,10 @@ If they are enabled in Kitsu addon settings.
 - Your publish comment will be used as Kitsu note.
 - When publishing a Review or Render, publisher can upload them to kitsu.
 
-> Depending on the kitsu addon configuration, publisher also can update the task status.
+:::note Notes
+- Depending on the kitsu addon configuration, publisher also can update the task status.
+- Admins are able to configure `Custom Comment Template`, [learn More](addon_kitsu_admin#custom-comment-template-example).
+:::
 
 | Publish Comment | Kitsu Note and Review |
 |--|--|

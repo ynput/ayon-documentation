@@ -114,17 +114,17 @@ Available settings:
 
 ![Integrate Kitsu Note project settings](assets/kitsu/admin/integrate_kitsu_note_settings.png)
 
+#### Custom Comment Template example
+Here's an example template that makes a nice table.
+- `| comment | version | product type | name |\n|--|--|--|--|\n| {comment} | {version} | {productType} | {name} |`
+  
 :::tip Custom Comment Template
 Artists need only to provide comment in publisher UI. 
 And, `Integrate Kitsu Note` will do the hard work for them.
 ![](assets/kitsu/admin/kitsu_comment_publisher.png)
-:::
-
-Custom Comment Template example:
-- `| comment | version | product type | name |\n|--|--|--|--|\n| {comment} | {version} | {productType} | {name} |`
 
 ![](assets/kitsu/admin/kitsu_comment_template.png)
-
+:::
 ### Sync Settings
 
 - `Delete Projects`: Enabling 'Delete projects' will remove projects on Ayon when they get deleted on Kitsu
