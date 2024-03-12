@@ -74,7 +74,7 @@ Builder profiles are set of rules allowing artist Load any available versions fo
 
 1. Add a "slate" node above the instance node. The workflow requires the slate node to have "slate" in the name to detect it.
 
-![](assets/nuke-admin_slate_graph.png)
+![](assets/nuke_admin_slate_graph.png)
 
 Here is the slate group from the example above;
 
