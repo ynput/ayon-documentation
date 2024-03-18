@@ -1,5 +1,11 @@
+function sorted(a, b) {
+    const nameA = typeof a == 'string' ? a : (a.items[0] || a.label);
+    const nameB = typeof b == 'string' ? b : (b.items[0] || b.label);
+    return nameA > nameB ? 1 : -1;
+}
+
 module.exports = {
-  artist: [
+    artist: [
     {
       type: "category",
       collapsed: false,
@@ -67,7 +73,15 @@ module.exports = {
         "addon_unreal_artist",
         "addon_wrap_artist",
         "addon_openrv_artist",
-      ],
+        {
+            type: "category",
+            label: "Aquarium",
+            items: [
+                "addon_aquarium_artist",
+                "addon_aquarium_manager",
+            ],
+        },
+      ].sort(sorted),
     },
   ],
   Admin: [
@@ -108,7 +122,6 @@ module.exports = {
         "addon_3dsmax_admin",
         "addon_aftereffects_admin",
         "addon_blender_admin",
-        "addon_clockify_admin",
         "addon_resolve_admin",
         "addon_deadline_admin",
         "addon_ftrack_admin",
@@ -116,7 +129,6 @@ module.exports = {
         "addon_hiero_admin",
         "addon_houdini_admin",
         "addon_keycloak_admin",
-        "addon_kitsu_admin",
         "addon_maya_admin",
         "addon_nuke_admin",
         "addon_photoshop_admin",
@@ -126,16 +138,13 @@ module.exports = {
         "addon_substancepainter_admin",
         "addon_tvpaint_admin",
         "addon_unreal_admin",
-        "addon_ftrack_admin",
         "addon_kitsu_admin",
-        "addon_site_sync_admin",
-        "addon_deadline_admin",
         "addon_clockify_admin",
-        "addon_slack_admin",
         "addon_traypublisher_admin",
         "addon_wrap_admin",
         "addon_syncsketch_admin",
-      ],
+        "addon_aquarium_admin"
+      ].sort(sorted),
     },
     "admin_releases",
     "admin_import_openpype_project",
@@ -167,5 +176,12 @@ module.exports = {
     "dev_deadline",
     "dev_colorspace",
     "dev_event_system",
+    {
+      type: "category",
+      label: "Integrations",
+      items: [
+        "addon_aquarium_developer"
+      ].sort(sorted),
+    },
   ],
 };
