@@ -51,7 +51,7 @@ values={[
 5. Manually install addons to the `addons` directory or automatically install later on (recommended).
 6. Modify the default settings in the `settings/template.json` file (see [provisioning page](https://ayon.ynput.io/docs/admin_server_provisioning/#configuration-file)).
 7. Run the stack using `docker compose up -d`
-8. Run `manage.ps1 setup` to set up the server.
+8. Run `manage.ps1 setup` to set up the server. If you get a permission error, you may need to set your execution policy to `RemoteSigned` by running `Set-ExecutionPolicy RemoteSigned` in PowerShell [stackoverflow](https://stackoverflow.com/questions/10635/why-are-my-powershell-scripts-not-running).
 9. Once the setup is complete, navigate to [http://localhost:5000/](http://localhost:5000/) in your web browser and log in as `admin/admin`.
 
 </ReactMarkdown>
