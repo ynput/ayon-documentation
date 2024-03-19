@@ -75,6 +75,13 @@ The dependent publishing job's pool uses `ayon+settings://deadline/publish/Proce
 The logic for publishing job pool assignment applies to tiling jobs.
 :::
 
+### Authentication
+Deadline supports username and passwords authentication to protect webservice from unwanted requests. (In Deadline `Tools>Configure Repository Options>Web Service Settings>Require Authentication`)
+
+For this admin needs to enable authentication requirement for DL in `ayon+settings://deadline/require_authentication`.
+
+Artists then need to provide their credentials in `Site Settings`.
+
 ## Troubleshooting
 
 ### Publishing jobs fail directly in DCCs
