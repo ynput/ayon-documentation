@@ -58,7 +58,7 @@ This is the core functional area for you as a user. Most of your actions will ta
 
 
 :::note AYON Menu
-User should use this menu exclusively for **Opening/Saving** when dealing with work files not standard ```File Menu``` even though user still being able perform file operations via this menu but preferably just performing quick saves during work session not saving actual workfile versions.
+User should use this menu exclusively for **Opening/Saving** when dealing with work files not standard ```File Tool``` even though user still being able perform file operations via this menu but preferably just performing quick saves during work session not saving actual workfile versions.
 :::
 
 ## Working With Scene Files

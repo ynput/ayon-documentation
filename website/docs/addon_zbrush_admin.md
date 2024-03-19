@@ -39,9 +39,8 @@ copied from ``.zbrushmetadata/{YOUR_PREVIOUS_WORKFILE_NAME}`` to
 
 There is a file named ``current_file.txt`` to merely stores the current filepath so that the Zbrush can recognize what the current file is.
 
-:::note Limitation for getting current_file.txt
-Current file
+:::note Limitation for metadata
+All the AYON-related data is only relevant when users use the workfile tool to open and save as the ``.zpr`` file in Zbrush.
+If users manually use `Save As` and `Open` from the `File` tool in Zbrush,
+the AYON data would not be saved and kept correctly into ``.zbrushmetadata`` folder.
 :::
-
-## Manipulating data with zmetadata
-Although it is not advised to touch with the ``.zburshmetadata``
