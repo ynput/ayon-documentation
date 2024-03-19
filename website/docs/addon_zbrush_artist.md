@@ -101,3 +101,19 @@ This concludes the basics of working with workfiles in Zbrush using AYON and its
 :::warning Important
 Before proceeding further please check [Glossary](artist_concepts.md) and [What Is Publishing?](artist_publish.md) So you have clear idea about terminology.
 :::
+
+### Intro
+
+Current AYON integration supports only ```Model``` product types now.
+
+**Model** product type being any mesh outputted as either ``ABC``, ``FBX`` or ``OBJ`` format, depending on what users choose as export output.
+
+---
+
+### Publishing Model
+
+Go **AYON -> Create** and select **Model**. Make sure to select your geometry in the subtool menu before **Publish**. AYON supports ``ABC``, ``FBX`` or ``OBJ`` as the export output of the geometry.
+
+### Loading Model
+You can load the model from other DCCs via **AYON -> Load**. It imports the model in the formats such as ``ABC``, ``FBX``, ``OBJ`` and ``MA``.
+

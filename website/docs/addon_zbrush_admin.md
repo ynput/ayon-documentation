@@ -12,4 +12,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 :::note Work in progress
 This part of documentation is still work in progress.
+Explain briefly about the pipeline of the zbrush (i.e. zbrushmetadata)
 :::
+
+### Intro to Zbrush Workflow
