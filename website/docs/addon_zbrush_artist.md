@@ -112,7 +112,7 @@ Current AYON integration supports only ```Model``` product types now.
 
 ### Publishing Model
 
-Go **AYON -> Create** and select **Model**. Make sure to select your geometry in the subtool menu before **Publish**. AYON supports ``ABC``, ``FBX`` or ``OBJ`` as the export output of the geometry. Users can also choose subdivision level before the export. The subdivision level is set to 0 by default, which asks Zbrush to export the mesh in the current subdivision level.
+Go **AYON -> Create** and select **Model**. Make sure to select your geometry in the subtool menu before **Publish**.Users can also choose subdivision level before the export. The subdivision level is set to 0 by default, which asks Zbrush to export the mesh in the current subdivision level.
 
 ### Loading Model
 You can load the model from other DCCs via **AYON -> Load**. It imports the model in the formats such as ``ABC``, ``FBX``, ``OBJ`` and ``MA``.
