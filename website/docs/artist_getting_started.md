@@ -110,12 +110,10 @@ When you first start AYON, you will be asked to fill in some basic information.
 Your Studio should provide you with the AYON `url`, `username` and `password` to fill in the dialog.
 
 :::tip Example details
-URL: `https://ayon.dev/`
+URL: `https://mystudio.ayon.app/`
 username: `johndoe`
 password: `v3ry53cur3p455w0rd`
 :::
-
-If you want to try AYON and don't have a server, you can set up an account over at [AYON Cloud](https://ayon.cloud/).
 
 
 ## Updates

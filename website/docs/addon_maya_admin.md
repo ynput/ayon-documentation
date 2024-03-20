@@ -44,7 +44,7 @@ For **Arnold**:
 Additional check can be added via Settings - **Project Settings > Maya > Publish plugin > ValidateRenderSettings**.
 You can add as many options as you want for every supported renderer. In first field put node type and attribute and in the second required value. You can create multiple values for an attribute, but when repairing it'll be the first value in the list that get selected.
 
-![Settings example](assets/maya-admin_render_settings_validator.png)
+![Settings example](assets/maya/admin/render_settings_validator.png)
 
 In this example we've put `aiOptions.AA_samples` in first one and `6` to second to enforce
 Arnolds Camera (AA) samples to 6.
@@ -68,7 +68,7 @@ and it will compare it with list of shaders defined either in file name specifie
 database file that is per project and can be directly edited from Maya's *AYON Tools > Edit Shader name definitions* when
 **Use database shader name definitions** is on. This list defines simply as one shader name per line.
 
-![Settings example](assets/maya-admin_model_name_validator.png)
+![Settings example](assets/maya/admin/model_name_validator.png)
 
 For example - you are using default regex `(.*)_(\d)*_(?P<shader>.*)_(GEO)` and you have two shaders defined
 in either file or database `foo` and `bar`.
@@ -97,13 +97,13 @@ All regexes used here are in Python variant.
 ## AYON Tools
 You can add your custom tools menu into Maya by extending definitions in **Maya -> Scripts Menu Definition**.
 
-![Custom menu definition](assets/maya-admin_scriptsmenu.png)
+![Custom menu definition](assets/maya/admin/scriptsmenu.png)
 
 ## Multiplatform path mapping
 You can configure path mapping using Maya `dirmap` command. This will add bi-directional mapping between
 list of paths specified in **Settings**. You can find it in **Settings -> Project Settings -> Maya -> Maya Directory Mapping**
 
-![Dirmap settings](assets/maya-admin_dirmap_settings.png)
+![Dirmap settings](assets/maya/admin/dirmap_settings.png)
 
 ## Templated Build Workfile
 
@@ -113,17 +113,17 @@ Building a workfile using a template designed by users. Helping to assert homoge
 
 Make your template. Add families and everything needed for your tasks. Here is an example template for the modeling task using a placeholder to import a gauge.
 
-![maya outliner](assets/maya-workfile-outliner.png)
+![maya outliner](assets/maya/admin/workfile-outliner.png)
 
 If needed, you can add placeholders when the template needs to load some assets. **AYON > Template Builder > Create Placeholder**
 
-![create placeholder](assets/maya-create_placeholder.png)
+![create placeholder](assets/maya/admin/create_placeholder.png)
 
 - **Configure placeholders**
 
 Fill in the necessary fields (the optional fields are regex filters)
 
-![new place holder](assets/maya-placeholder_new.png)
+![new place holder](assets/maya/admin/placeholder_new.png)
 
 
     - Builder type: Whether the the placeholder should load current asset representations or linked assets representations
@@ -144,7 +144,7 @@ Fill in the necessary fields (the optional fields are regex filters)
 - **Go to Project Settings > Maya > Templated Build Settings**
 - Add a profile for your task and enter path to your template
 
-![setting build template](assets/settings/template_build_workfile.png)
+![setting build template](assets/maya/admin/template_build_workfile.png)
 
 **3. Build your workfile**
 
@@ -152,4 +152,4 @@ Fill in the necessary fields (the optional fields are regex filters)
 
 - Build your workfile
 
-![maya build template](assets/maya-build_workfile_from_template.png)
+![maya build template](assets/maya/admin/build_workfile_from_template.png)

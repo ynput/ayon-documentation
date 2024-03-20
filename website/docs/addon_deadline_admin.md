@@ -21,16 +21,21 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you ne
 
 1. Deploy AYON executable to all nodes of Deadline farm. See [Install & Run](admin_launcher_distribute.md)
 
-2. Enable Deadline Module in the [AYON Admin Settings](admin_settings_system.md#deadline).
+2. Create a new AYON Bundle with Deadline Addon version.
 
 3. Set up *Deadline Web API service*. For more details on how to do it, see [here](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/web-service.html).
 
-4. Point AYON to your deadline webservice URL in the [AYON Admin Settings](admin_settings_system.md#deadline).
+4. Point AYON to your deadline webservice URL in the Deadline settings `ayon+settings://deadline/deadline_urls/0/value`.
 
 ![Webservice url](assets/deadline_webserver_config.png)
 
 5. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
 
+6. Create service account on Ayon server http://YOUR_AYON/settings/users , `Generate new key` and store it, you would need it in Deadline plugin configuration.
+
+:::note guide
+You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
+:::
 
 ## Configuration
 
@@ -52,6 +57,8 @@ executable. It is recommended to use the `ayon_console` executable as it provide
 - In case of multi OS farms, provide multiple locations, each Deadline Worker goes through the list and tries to find the first accessible
  location for itself.
 
+- provide your Ayon server address and API key for service account generated in step 6 of [Preparation](#Preparation)
+
 ![Configure plugin](assets/deadline_configure_plugin.png)
 
 ### AYONTileAssembler Plugin
@@ -68,11 +75,14 @@ The dependent publishing job's pool uses `ayon+settings://deadline/publish/Proce
 The logic for publishing job pool assignment applies to tiling jobs.
 :::
 
-## Troubleshooting
+### Authentication
+Deadline supports username and passwords authentication to protect webservice from unwanted requests. (In Deadline `Tools>Configure Repository Options>Web Service Settings>Require Authentication`)
 
-:::note guide
-You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
-:::
+For this admin needs to enable authentication requirement for DL in `ayon+settings://deadline/require_authentication`.
+
+Artists then need to provide their credentials in `Site Settings`.
+
+## Troubleshooting
 
 ### Publishing jobs fail directly in DCCs
 

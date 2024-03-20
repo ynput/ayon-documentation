@@ -89,11 +89,6 @@ export default function Home() {
                     <div className="searchBarBox home">
                         <SearchBar avoidKeyboardShortcuts />
                     </div>
-                    <div className={styles.warning}>
-                        While we're transitioning from OpenPype documentation, there are
-                        some details that might be factually incorrect and images that show the old OpenPype interface. We're working on
-                        resolving all of them. We'll appreciate if you notify us of any such discrepancies. 
-                    </div>
                 </div>
                 <div className={styles.linksWrapper}>
                     <h2 className={clsx("hero__subtitle", styles.getStarted)}>
@@ -212,10 +207,10 @@ export default function Home() {
                     </Heading>
                 </Link>
                 <p>
-                    Streamline your data management with our customizable product
-                    categorization system. Efficiently organize data instances
-                    and join the industry standard for efficient data handling
-                    today!
+                    Streamline your data management with our customizable
+                    product categorization system. Efficiently organize data
+                    instances and join the industry standard for efficient data
+                    handling today!
                 </p>
                 <div
                     className={clsx(

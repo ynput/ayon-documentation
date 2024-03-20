@@ -34,7 +34,8 @@ There need to be done several setup steps first before running the AYON integrat
 
 To install the `extension manager` , open the following link and download it first [Anastasyi's Extension Manager](https://install.anastasiy.com/).
 Open Anastasyi's Extension Manager and select Photoshop in the menu. Then go to `{path to PS addon}hosts/photoshop/api/extension.zxp`.
-Current location will be most likely in `/User/AppData`, on `WINDOWS` it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\openpype_xx.xx.xx\openpype\hosts\photoshop\api`.
+Current location will be most likely in `/User/AppData`, on `WINDOWS` it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\core_xx.xx.xx\ayon_core\hosts\photoshop\api`.
+On Linux look in `~/.local/share/Ynput/AYON/addons`, on Mac `~/Library/Application Support/Ynput/AYON/addons`
 
 :::info
 The file path being temporary until final AYON release though. User also has to start `AYON Launcher`  tray app at least for once to populate aformentioned filepath with those files.
@@ -52,6 +53,16 @@ After that you will be introduced to `AYON` toolset on the right side of the Pho
 
 You can also locate the extension panel in Photoshop Menu by going to `Window` > `Extensions` > `AYON` if necessary or collapse the menu by hitting the `AYON` icon next to it.
 
+![Extension](assets/photoshop_extension.png) <!-- picture needs to be changed -->
+
+You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
+
+:::note guide
+On newer MacOS you need to:
+- go to `Applications/Adobe Photoshop XXXX`
+- right clicking on the `Adobe Photoshop XXXX.app`
+- then `Get Info`, check `Open using Rosetta`
+:::
 ![Extension](assets/photoshop_extension_menu.png)
 
 ### Saving active Photoshop document as Workfile

@@ -152,68 +152,68 @@ const products: { [type in ProductType]: Product } = {
     },
     maxScene: {
         title: "Max Scene",
-        icon: "home_repair_service"
+        icon: "home_repair_service",
     },
     blenderScene: {
         title: "Blender Scene",
-        icon: "home_repair_service"
+        icon: "home_repair_service",
     },
-    arnoldAss:{
+    arnoldAss: {
         title: "Arnold Scene Source",
-        icon: "grain"
+        icon: "grain",
     },
-    arnoldRender:{
+    arnoldRender: {
         title: "Arnold Render",
-        icon: "photo_library"
+        icon: "photo_library",
     },
-    imagesequence:{
-        title: "Composite (Image Sequence)" ,
-        icon: "photo_library"
+    imagesequence: {
+        title: "Composite (Image Sequence)",
+        icon: "photo_library",
     },
-    hda:{
+    hda: {
         title: "Houdini Digital Asset (Hda)",
-        icon: "home_repair_service"
+        icon: "home_repair_service",
     },
-    karmaRender:{
+    karmaRender: {
         title: "Karma Render",
-        icon: "photo_library"
+        icon: "photo_library",
     },
-    mantraRender:{
+    mantraRender: {
         title: "Mantra Render",
-        icon: "photo_library"
+        icon: "photo_library",
     },
-    redshiftProxy:{
+    redshiftProxy: {
         title: "Redshift Proxy",
-        icon: "grain"
+        icon: "grain",
     },
-    redshiftRender:{
-        title:"Redshift Render",
-        icon: "photo_library"
+    redshiftRender: {
+        title: "Redshift Render",
+        icon: "photo_library",
     },
-    staticmesh:{
+    staticmesh: {
         title: "Static Mesh",
-        icon: "grain"
+        icon: "grain",
     },
-    vrayRender:{
+    vrayRender: {
         title: "VRay Render",
-        icon: "photo_library"
+        icon: "photo_library",
     },
-    usd:{
+    usd: {
         title: "USD (experimental)",
-        icon: "home_repair_service"
+        icon: "home_repair_service",
     },
-    usdRender:{
+    usdRender: {
         title: "USD Render (experimental)",
-        icon: "photo_library"
+        icon: "photo_library",
     },
-    textureSet:{
+    textureSet: {
         title: "Texture Set",
-        icon: "photo_library"
+        icon: "photo_library",
     },
-    wrap:{
+    wrap: {
         title: "Wrap",
-        icon: "language"
-    }
+        icon: "language",
+    },
 };
 
 export default products;
