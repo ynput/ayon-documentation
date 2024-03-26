@@ -54,7 +54,7 @@ export const officialAddons = [
 ] as const;
 
 // COMMUNITY ADDONS
-export const communityAddons = ["kitsu"] as const;
+export const communityAddons = ["kitsu", "aquarium"] as const;
 
 // featured addons
 // pick addons from community or official to be featured on the homepage
