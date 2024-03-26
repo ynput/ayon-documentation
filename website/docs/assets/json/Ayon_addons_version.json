@@ -14,7 +14,7 @@
     "Harmony_Badge" : "[![Harmony Addon - 0.1.2](https://img.shields.io/badge/Harmony_Addon-0.1.2-8bcbb8)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/harmony)",
     "Hiero_Badge" : "[![Hiero Addon - 0.1.0](https://img.shields.io/badge/Hiero_Addon-0.1.0-fab41a)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/hiero)",
     "Houdini_Badge" : "[![Houdini addon - 0.2.6](https://img.shields.io/badge/Houdini_Addon-0.2.6-FF4713?logo=houdini)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini)",
-    "Kitsu_Badge" : "[![Kitsu Addon - 0.1.3](https://img.shields.io/badge/Kitsu_Addon-0.1.3-e56b27)](https://github.com/ynput/ayon-kitsu)",
+    "Kitsu_Badge" : "[![Kitsu Addon - 1.1.0](https://img.shields.io/badge/Kitsu_Addon-1.1.0-e56b27)](https://github.com/ynput/ayon-kitsu)",
     "Max_Badge" : "[![3Ds Max Addon - 0.1.2](https://img.shields.io/badge/3Ds_Max_Addon-0.1.2-3190b2)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/max)",
     "Maya_Badge" : "[![Maya addon - 0.1.6](https://img.shields.io/badge/Maya_Addon-0.1.6-3190b2)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/maya)",
     "Muster_Badge" : "[![Muster Addon - 0.1.1](https://img.shields.io/badge/Muster_Addon-0.1.1-1589b8)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/muster)",
