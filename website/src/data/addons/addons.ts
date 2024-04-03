@@ -49,7 +49,8 @@ export const officialAddons = [
     "unreal",
     "wrap",
     "openrv",
-    "syncsketch"
+    "syncsketch",
+    "zbrush"
 ] as const;
 
 // COMMUNITY ADDONS
