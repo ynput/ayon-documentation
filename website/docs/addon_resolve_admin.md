@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 :::caution Free Resolve limitation
 
 Free Resolve won't work properly with our resolve addon.
-Unfortunately, this is not our limitation but BMD Resolve. Free resolve doesn't have access to python api.
+This limitation exists due to the constraints set by BMD Resolve and not our own. It's important to note here that the free version of resolve does not grant access to Python API.
 :::
 
 ## Resolve requirements
