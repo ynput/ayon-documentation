@@ -14,6 +14,12 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+:::caution Free Resolve limitation
+
+Free Resolve won't work properly with our resolve addon.
+Unfortunately, this is not our limitation but BMD Resolve. Free resolve doesn't have access to python api.
+:::
+
 ## Resolve requirements
 Resolve uses a separate Python interpreter (it does not come with Python itself). The interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Bellow you can find instructions on how to install them into an installed Python of your choice.
 
