@@ -72,7 +72,7 @@ Clicking on the button will :
 - Upload that JSON file to Aquarium
 
 :::info
-This process is asynchronous. So if your Ayon project is really big, the import will take few minutes. Fow now, the only way to track the completion of the import, is to use Aquarium API, to list all the jobs of your bot.
+This process is asynchronous. So if your Ayon project is really big, the import will take few minutes. For now, the only way to track the completion of the import, is to use Aquarium API, to list all the jobs of your bot.
 
 In a next release, we will provide an interface from Ayon, to display the progression. Feel free to [reach us](mailto:support@fatfi.sh) if you are interested or if you need assistance.
 
