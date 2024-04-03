@@ -23,8 +23,8 @@ This limitation exists due to the constraints set by BMD Resolve and not our own
 ## Resolve requirements
 Resolve uses a separate Python interpreter (it does not come with Python itself). The interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Bellow you can find instructions on how to install them into an installed Python of your choice.
 
-- Resolve 17 - our recommended version `Python 3.6.2`
-- Resolve 18 - our recommended version range `Python 3.10.x` (in complience with Ayon)
+- Resolve Studio 17 - our recommended version `Python 3.6.2`
+- Resolve Studio 18 - our recommended version range `Python 3.10.x` (in complience with Ayon)
 
 
 ### Configuring settings for Python home directory
