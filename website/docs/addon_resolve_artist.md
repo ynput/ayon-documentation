@@ -1,6 +1,6 @@
 ---
 id: addon_resolve_artist
-title: DaVinci Resolve Artist Docs
+title: DaVinci Resolve Studio - Artist Docs
 sidebar_label: DaVinci Resolve
 ---
 
@@ -16,10 +16,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::warning
-Before you are able to start with AYON tools in DaVinci Resolve, installation of its own Python 3.6 interpreter and PySide 2 has to be done. Go to [Installation of python and pyside](addon_resolve_admin.md#installation-of-python-and-pyside) link for more information
+Before you are able to start with AYON tools in DaVinci Resolve, installation of its own Python 3.6 interpreter and PySide 2 has to be done. Go to [Installation of python and pyside](addon_resolve_admin.md#installation-of-python-and-pyside) link for more information. 
 :::
 
-
+:::note
+Resolve Studio is the only version that works with the Ayon toolkit because of external scripting requirements.
+:::
 
 ## AYON global tools
 
