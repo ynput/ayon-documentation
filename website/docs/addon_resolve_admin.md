@@ -1,6 +1,6 @@
 ---
 id: addon_resolve_admin
-title: DaVinci Resolve Admin Docs
+title: DaVinci Resolve Studio - Admin Docs
 sidebar_label: DaVinci Resolve
 ---
 
@@ -20,6 +20,9 @@ Resolve uses a separate Python interpreter (it does not come with Python itself)
 - Resolve 17 - our recommended version `Python 3.6.2`
 - Resolve 18 - our recommended version range `Python 3.10.x` (in complience with Ayon)
 
+:::warning
+Resolve Studio is the only version that works with the Ayon toolkit because of external scripting requirements which the free edition of Resolve is lacking.
+:::
 
 ### Configuring settings for Python home directory
 To be able to run python in Resolve you need to set `RESOLVE_PYTHON3_HOME` environment variable to the directory path of your Python interpreter version.
