@@ -48,7 +48,7 @@ This addon is composed by 3 main parts:
 
 #### Client
 
-Client code is used in the [Ayon Launcher](ayon-launcher), the AYON pipeline desktop application.
+Client code is used in the [Ayon Launcher](https://github.com/ynput/ayon-launcher), the AYON pipeline desktop application.
 
 :::info
 The client integration is not finished yet.
