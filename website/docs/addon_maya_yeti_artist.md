@@ -24,13 +24,13 @@ Let start by creating simple Yeti setup, just one object and Yeti node. Open new
 empty scene in Maya and create sphere. Then select sphere and go **Yeti → Create Yeti Node on Mesh**
 Open Yeti node graph **Yeti → Open Graph Editor** and create setup like this:
 
-![Maya - Yeti Basic Graph](assets/maya-yeti_basic_setup.jpg)
+![Maya - Yeti Basic Graph](assets/maya/artist/yeti_basic_setup.jpg)
 
 It doesn't matter what setting you use now, just select proper shape in first
 *Import* node. Select your Yeti node and create *Yeti Cache instance* - **AYON → Create...**
 and select **Yeti Cache**. Leave `Use selection` checked. You should end up with this setup:
 
-![Maya - Yeti Basic Setup](assets/maya-yeti_basic_setup_outline.jpg)
+![Maya - Yeti Basic Setup](assets/maya/artist/yeti_basic_setup_outline.jpg)
 
 You can see there is `yeticacheDefault` set. Instead of *Default* it could be named with
 whatever name you've entered in `product` field during instance creation.
@@ -38,7 +38,7 @@ whatever name you've entered in `product` field during instance creation.
 We are almost ready for publishing cache. You can check basic settings by selecting
 Yeti cache set and opening *Extra attributes* in Maya **Attribute Editor**.
 
-![Maya - Yeti Basic Setup](assets/maya-yeti_cache_attributes.jpg)
+![Maya - Yeti Basic Setup](assets/maya/artist/yeti_cache_attributes.jpg)
 
 Those attributes there are self-explanatory, but:
 
@@ -77,11 +77,11 @@ Yeti Rigs are designed to connect to published models or animation rig. The work
 
 Let's start with a [model](addon_maya_artist.md#loading-model) or [rig](addon_maya_artist.md#loading-rigs) loaded into the scene. Here we are using a simple rig.
 
-![Maya - Yeti Simple Rig](assets/maya-yeti_simple_rig.png)
+![Maya - Yeti Simple Rig](assets/maya/artist/yeti_simple_rig.png)
 
 We'll need to prepare the scene a bit. We want some Yeti hair on the ball geometry, so duplicating the geometry, adding the Yeti hair and grouping it together.
 
-![Maya - Yeti Hair Setup](assets/maya-yeti_hair_setup.png)
+![Maya - Yeti Hair Setup](assets/maya/artist/yeti_hair_setup.png)
 
 :::note yeti nodes and types
 You can use any number of Yeti nodes and types, but they have to have unique names.
@@ -89,7 +89,7 @@ You can use any number of Yeti nodes and types, but they have to have unique nam
 
 Now we need to connect the Yeti Rig with the animation rig. Yeti Rigs work by publishing the attribute connections from its input nodes and reconnect them later in the pipeline. This means we can only use attribute connections to from outside of the Yeti Rig hierarchy. Internal to the Yeti Rig hierarchy, we can use any complexity of node connections. We'll connnect the Yeti Rig geometry to the animation rig, with the transform and mesh attributes.
 
-![Maya - Yeti Rig Setup](assets/maya-yeti_rig_setup.png)
+![Maya - Yeti Rig Setup](assets/maya/artist/yeti_rig_setup.png)
 
 Now we are ready for publishing. Select the Yeti Rig group (`rig_GRP`) and
 create *Yeti Rig instance* - **AYON → Create...** and select **Yeti Rig**.
@@ -99,7 +99,7 @@ Last step is to add our geometry to the rig instance, so middle+drag its
 geometry to `input_SET` under the `yetiRigMain` set representing rig instance.
 Note that its name can differ and is based on your product name.
 
-![Maya - Yeti Publish Setup](assets/maya-yeti_publish_setup.png)
+![Maya - Yeti Publish Setup](assets/maya/artist/yeti_publish_setup.png)
 
 You can have any number of nodes in the Yeti Rig, but only nodes with incoming attribute connections from outside of the Yeti Rig hierarchy is needed in the `input_SET`.
 
@@ -119,6 +119,6 @@ select you Yeti rig and right+click on it. In context menu you should see
 
 To connect the Yeti Rig with published animation, we'll load in the animation and use the Inventory to establish the connections.
 
-![Maya - Yeti Publish Setup](assets/maya-yeti_load_connections.png)
+![Maya - Yeti Publish Setup](assets/maya/artist/yeti_load_connections.png)
 
 The Yeti Rig should now be following the animation. :tada:

@@ -14,7 +14,6 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-
 ## Workfile Builder
 
 All Workfile Builder related settings can be found here. This is a list of available features:
@@ -70,6 +69,85 @@ Builder profiles are set of rules allowing artist Load any available versions fo
 
 
 ![nuke_workfile_builder_profiles](assets/nuke_workfile_builder_profiles.png)
+
+## Slate Workflow
+
+1. Add a "slate" node above the instance node. The workflow requires the slate node to have "slate" in the name to detect it.
+
+![](assets/nuke_admin_slate_graph.png)
+
+Here is the slate group from the example above;
+
+```
+set cut_paste_input [stack 0]
+version 15.0 v2
+push $cut_paste_input
+Group {
+ name slate_group
+ selected true
+ xpos -172
+ ypos -163
+}
+ ColorBars {
+  inputs 0
+  name ColorBars1
+  xpos 410
+  ypos -202
+ }
+ Text2 {
+  font_size_toolbar 100
+  font_width_toolbar 100
+  font_height_toolbar 100
+  message "THIS IS A SLATE"
+  old_message {{84 72 73 83 32 73 83 32 65 32 83 76 65 84 69}
+    }
+  box {0 0 1920 1080}
+  xjustify center
+  yjustify center
+  transforms {{0 2}
+    }
+  cursor_position 15
+  center {960 540}
+  cursor_initialised true
+  autofit_bbox false
+  initial_cursor_position {{0 1080}
+    }
+  group_animations {{0} imported: 0 selected: items: "root transform/"}
+  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
+    }
+  name Text2
+  xpos 410
+  ypos -130
+ }
+ Input {
+  inputs 0
+  name footage
+  selected true
+  xpos 279
+  ypos -170
+ }
+ Switch {
+  inputs 2
+  which {{"\[python (nuke.root()\\\[\\\"first_frame\\\"\\].value()\\ -\\ 1)\\ ==\\ nuke.frame()]"}}
+  name Switch1
+  xpos 279
+  ypos -130
+ }
+ Output {
+  name Output1
+  xpos 279
+  ypos -30
+ }
+end_group
+```
+
+Any node can be used as a slate node, so feel free to customize or insert your studios own slate node. Just ensure it has `slate` in the name.
+
+2. Make sure the slate node is actually showing something by looking into `first-frame - 1`.
+
+3. Add tag `slate-frame` into settings at `ayon+settings://core/publish/ExtractReview/profiles/0/outputs/1/tags`.
+
+4. Make sure the render write node is marked as reviewable.
 
 ## Custom Menu
 You can add your custom tools menu into Nuke by extending definitions in **Nuke -> Scripts Menu Definition**.
