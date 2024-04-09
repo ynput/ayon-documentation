@@ -220,6 +220,15 @@ A profile may generate multiple outputs from a single input. Each output must de
     - **Input arguments** input definition arguments of video or image sequence - this setting has limitations as you have to know what is input.
     - **Output arguments** other FFmpeg output arguments like codec definition.
 
+:::tip Time Code argument
+**Time Code argument:** `-timecode {timecode}`
+
+Time Code `{timecode}` key is supported which is evaluated in the format `HH:MM:SS:FF`.
+> It helps loading review files into Resolve - by having this timecode metadata included then Resolve 'understands' what the start frame / timecode is of the loaded media.
+
+![core_extract_review_out_args](assets/core_extract_review_out_args.png)
+:::
+
 - **`Output width`** and **`Output height`**
     - It is possible to rescale output to specified resolution and keep aspect ratio.
     - If value is set to 0, source resolution will be used.
