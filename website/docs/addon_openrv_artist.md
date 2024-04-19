@@ -37,7 +37,7 @@ You should find `Ayon` menu next to `Window`. All Ayon target publish operations
 
 You can load any image, image sequences or movies (`.mov`, `.mp4`) via `Load` option in `Ayon` menu.
 
-![Ayon Loader](assets/openrv_load.png)
+![Ayon Loader](assets/openrv/openrv_load.png)
 
 (You could confirm or re-arrange order of loaded elements in `Tools > Session Manager`).
 
@@ -45,7 +45,7 @@ You can load any image, image sequences or movies (`.mov`, `.mp4`) via `Load` op
 
 `Manage` options prints a list of loaded elements and allows to update them to latest version if necessary.
 
-![Ayon Scene Inventory](assets/openrv_manage.png)
+![Ayon Scene Inventory](assets/openrv/openrv_manage.png)
 
 ## Publish
 
@@ -54,7 +54,17 @@ Whenever you are ready to publish final product of a review, press `Publish` but
 An instance of `workfile` product type will be created automatically for you. This a primary product type that gets versioned and tracked in `Ayon`.
 It produces versioned `.rv` workfile.
 
-![Ayon Publish](assets/openrv_publish.png)
+![Ayon Publish](assets/openrv/openrv_publish.png)
 
 Hit `Publish` button in bottom right corner whenever ready. If there are no validation issues, `workfile` instance should be published and current `working` workfile 
 versioned up.
+
+## Open in OpenRV
+
+If your OpenRV is opened with `-network` flag (set in `ayon+settings://applications/applications/openrv/variants`) 
+
+![OpenRV networking](assets/openrv/openrv_networking.png)
+
+you can load and play any reviewable item directly from Tray Loader or any DCC.
+
+![Play in OpenRV](assets/openrv/openrv_open.png)
