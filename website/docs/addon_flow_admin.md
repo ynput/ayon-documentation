@@ -61,30 +61,79 @@ To get the addon's frontend tab working and sync all Flow projects, you need to 
 *   ShotGrid's Script API key (`ayon+settings://shotgrid/service_settings/script_key`)
 *   ShotGrid's Script Name (`ayon+settings://shotgrid/service_settings/script_name`)
 
+#### Setting up the ShotGrid URL
 First, enter your Flow server URL in the **Shotgrid URL** field. It looks something like `https://yourcompany.shotgrid.autodesk.com`.
 
+#### Setting up the ShotGrid's Script API key for Services
 Next, in the Services section, put your **ShotGrid's Script API key**. You should already have this key. Then, add your **ShotGrid's Script Name**. If you've followed the steps before, you might name it `ayon_connector`.
 
 ![Ayon Scripts items](assets/shotgrid/ay_server_scripts_items.png)
 
+#### Setting login types for Users
 You need to decide how users will log into the Ayon Desktop app. Here are three options:
 
 1. **Via Environment variable** - This is the default login method. Enter the user's email as `AYON_SG_USERNAME` on each user's computer in your studio. With this method, users won't see their login details on the Tray app widget.
 ![Ayon user login env](assets/shotgrid/ay_user_login_env.png)
 
-1. **Via Tray App with password** - Users log in with their email and password. It's a common method, and you can set permissions in Flow. You can create different permission groups for users. However, sometimes users might not have access to certain projects.
+2. **Via Tray App with password** - Users log in with their email and password. It's a common method, and you can set permissions in Flow. You can create different permission groups for users. However, sometimes users might not have access to certain projects.
 ![Ayon user login password](assets/shotgrid/ay_user_login_pass.png)
 
-1. **Via Tray App with shared API key** - Users log in with their email only. The shared secret API key is in the addon settings. This lets you set one permission group for all users.
+3. **Via Tray App with shared API key** - Users log in with their email only. The shared secret API key is in the addon settings. This lets you set one permission group for all users.
 ![Ayon user login shared](assets/shotgrid/ay_user_login_shared.png)
 
-- setting up the script key for services
-- setting user login type
-- setting up user script key for user login
-- setting up Local storage settings
-- setting up Anatomy preset to be used with Flow addon > How to create Anatomy preset
-- selecting enabled entities for synchronization
-- settings for attribute synchronization
+
+#### Setting up local storage for Flow
+
+In order to use power of Flows file system you have to configure local storage settings. This is done by enabling local storage and adding local storage name which had been previously configured in **Flow's Admin menu** > **Site preferences** > **File management**. Here it is important to **Enable linking to local files** (1) and create preset (2) for multiplatform file system. Copy name of the created preset (3) and paste it in Ayon Studio settings.
+![Flow local storage](assets/shotgrid/sg_local_storage.png)
+
+Paths should be mirroring defined paths in Ayon Anatomy root configuration. ![Anatomy roots](assets/shotgrid/ay_anatomy_roots.png)
+
+The name of the preset copied previously should be pasted in Ayon Studio settings. ![Ayon local storage](assets/shotgrid/ay_local_storage.png)
+
+#### Anatomy preset configuration
+
+To use the Flow addon with Ayon, you need to set up an Anatomy preset. This preset helps sync things between Ayon and Flow. To get started, you can create a new preset or pick an existing one. Right now, the only thing to remember is that _Task Types_, _Folder Types_, and _Statuses_ should each have only one item. Make sure it matches a common item you'd find in Flow.
+
+Here's how to add a **Comp** task type with the shortcode **cmp**. Make sure to include it in the **Flow Admin menu** under **Pipeline steps**.
+
+Follow these steps for Folder Type and Statuses too, as explained below.
+
+To create new Anatomy preset follow these steps:
+
+![Ayon anatomy preset](assets/shotgrid/sg_anatomy_preset.png)
+
+1. Go to **Anatomy presets** tab in Studio settings
+2. Hit Save as new preset button
+3. Name it something like Flow or SG
+4. Remove all Folder types except one - make sure it has corresponding type in Flow
+5. Remove all Task types except one - make sure it has corresponding type in Flow
+6. Remove all Statuses except one - make sure it has corresponding status in Flow
+
+And now the anatomy preset is ready to be used in Flow addon settings.
+
+![Ayon anatomy preset set](assets/shotgrid/ay_anatomy_preset_set.png)
+
+#### Selecting enabled entities for synchronization
+
+Flow's enabled entity enumerator (`ayon+settings://shotgrid/compatibility_settings/shotgrid_enabled_entities`) lets us pick which entities to sync between Ayon and Flow. We do this by choosing the entities from the list and saving our choices. But remember, we must also turn on these entities in Flow's Project Tracking settings. Ensure all required entities are visible (not hidden).
+
+![Flow enabled entities](assets/shotgrid/sg_tracking_settings.png)
+
+
+#### Configuring folder attributes synchronization
+
+To sync folder attributes between Ayon and Flow, set up the **Folder Attributes Map**. Choose attributes to sync by adding the name to the **SG** column (1). Attributes with no value won't be considered. Use the **Scope** column (2) to pick only the Flow entities that should have the attribute. For instance, the **fps** attribute might be used only for Versions, Shots, and Project entities.
+
+:::note SG attribute names
+Use names without the "sg_" prefix, even though they exist in Flow's Field registry with this prefix. The system adds them automatically during synchronization. We first check if a name exists without the prefix and then try it with the prefix for the specific entity. If it's already in the registry, we use it; if not, we create it in Flow's field registry.
+
+Check the Available Fields in **Flow's Admin menu** > **Fields**
+:::
+
+Here is a typical example of folder attributes mapping:
+
+![Flow folder attributes](assets/shotgrid/ay_attribute_mapping.png)
 
 ### Starting Ayon Flow addon service
 
