@@ -135,12 +135,6 @@ Here is a typical example of folder attributes mapping:
 
 ![Flow folder attributes](assets/shotgrid/ay_attribute_mapping.png)
 
-### Starting Ayon Flow addon service
-
-
-### Creating Flow project and linking them together
-
-### Configuring plugin settings
 
 #### Targeting reviewables to Flow
 
