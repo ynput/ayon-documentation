@@ -14,7 +14,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-:::note Addon name
+:::info Addon name
 In Ayon, we've been using the name Shotgrid. But since we plan to change it, we'll start calling it Flow addon in our documentation. Sometimes, we might use SG too, just to keep things interesting.
 :::
 
