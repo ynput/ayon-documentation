@@ -135,6 +135,7 @@ module.exports = {
         "addon_traypublisher_admin",
         "addon_wrap_admin",
         "addon_syncsketch_admin",
+        "addon_flow_admin",
       ],
     },
     "admin_releases",
