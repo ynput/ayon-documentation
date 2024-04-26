@@ -51,7 +51,7 @@ Add the ayon_connector key to Ayon Secrets and name it some easy way so here in 
 
 #### Flow addon Studio settings configuration
 
-:::note Addon Frontend Tab
+:::tip Addon Frontend Tab
 To be able to use Shotgrid tab in Studio settings you need to have correctly configured addon at production bundle state. Please restart the server after you finalized the settings. After that, you should see the Shotgrid tab in Studio settings.
 :::
 
