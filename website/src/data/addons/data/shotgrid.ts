@@ -8,6 +8,9 @@ const addon: Addon = {
     icon: "flow-icon.png",
     features: ["sgSync"],
     badge: versions.Flow_Badge,
+    docs: {
+        admin: "addon_flow_admin",
+    },
     github: "https://github.com/ynput/ayon-shotgrid",
     discussion: "https://community.ynput.io/t/shotgrid-integration-addon/63",
 };
