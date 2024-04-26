@@ -31,4 +31,5 @@ export type FeatureType =
     | "nodePresets"
     | "burnins"
     | "bakingColorspacePresets"
-    | "scriptBuilding";
+    | "scriptBuilding"
+    | "sgSync";
