@@ -67,7 +67,7 @@ cd "C:\Program Files\Ynput\[AYON Launcher Version]"
 Admins are able to define extend simple create plugins via [Tray publisher addon settings](https://ayon.ynput.io/docs/addon_traypublisher_admin#creator-plugins).
 :::
 
-### Editorial Simple Creator
+### Editorial Simple
 ...
 
 ![](assets/traypublisher/artist/editorial_simple.png)
