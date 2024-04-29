@@ -121,6 +121,34 @@ Disable this if you want the publisher to ignore start and end handles specified
 
 ![houdini_publish_plugins_collectors_frame_range](assets/houdini/admin/houdini_publish_plugins_collectors_frame_range.png)
 
+--- 
+
+## Stock Product Types
+A list of stock product types that come with Ynput's Houdini addon.
+
+| Product Type Label | Product Type Name | Description | 
+|--|--|--|
+| `Arnold ASS` | `ass` | Arnold Scene Source .ass Archive. |
+| `Arnold ROP` | `arnold_rop` | Arnold Render. |
+| `Camera (Abc)` | `camera` |  Single baked camera from Alembic ROP. |
+| `Composite (Image Sequence)` | `imagesequence` | Composite ROP to Image Sequence. |
+| `Houdini Digital Asset (Hda)` | `hda` | Houdini Digital Asset file. |
+| `Karma ROP` | `karma_rop` | Karma Render. |
+| `Mantra IFD` | `mantraifd` | Mantra .ifd Archive. |
+| `Mantra ROP` | `mantra_rop` | Mantra Render. |
+| `PointCache (Abc)` | `pointcache` | pointcache as Alembic. |
+| `PointCache (Bgeo)` | `pointcache` | pointcache as BGEO. |
+| `Redshift ROP` | `redshift_rop` | Redshift Render. |
+| `Review` | `review` | Review with OpenGL ROP. |
+| `Static Mesh (FBX)` | `staticMesh` | Static Meshes as FBX. |
+| `USD (experimental)` | `usd` | Universal Scene Description. |
+| `USD Render (experimental)` | `usdrender` | USD Render. |
+| `VDB Cache` | `vbdcache` | OpenVDB from Geometry ROP. |
+| `VRay ROP` | `vray_rop` | VRay Render. |
+
+* **Product Type Label:** It's mostly used in AYON UI e.g. Publisher Tool.
+* **Product Type Name:** The name used in the background. AYON Settings expects you to use this name not the label.
+
 ---
 
 ## FAQ
