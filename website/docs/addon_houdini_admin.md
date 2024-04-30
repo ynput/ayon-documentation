@@ -16,7 +16,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ### Add Self Publish Button
 
-Enabling this setting will cause Houdini creator to add a **self publish button** when creating new publish instances. More Info on how how the **self publish button** works [here](artist_hosts_houdini#ayon-publishing-process)
+Enabling this setting will cause Houdini creator to add a **self publish button** when creating new publish instances. More Info on how how the **self publish button** works [here](addon_houdini_artist#ayon-publishing-process)
 
 ![general_settings_self_publish_button](assets/houdini/admin/general_settings_self_publish_button.png)
 
@@ -106,7 +106,9 @@ Enable or disable the plugins. Some of them have extra options such as defining 
 ## Publish plugins
 Enable or disable the plugins executed at publishing.
 
-- Collect Rop Frame Range
+- Collect Asset Handles
+- Collect Chunk Size
+- Validate Instance in same Context
 - Validate Latest Containers
 - Validate Mesh is Static
 - Validate Review Colorspace
@@ -114,12 +116,43 @@ Enable or disable the plugins executed at publishing.
 - Validate Unreal Static Mesh Name
 - Validate workfile paths settings
 
-### Collect Rop Frame Range
+### Collect Asset Handles
 
 Disable this if you want the publisher to ignore start and end handles specified in the asset data for publish instances.
 > Artists are allowed to override this value in the publisher UI.
 
 ![houdini_publish_plugins_collectors_frame_range](assets/houdini/admin/houdini_publish_plugins_collectors_frame_range.png)
+
+### Validate Instance in same Context
+When working in per-shot style you always publish data in context of current asset (shot). This validator checks if this is so. It is optional so it can be disabled when needed.
+
+--- 
+
+## Stock Product Types
+A list of stock product types that come with Ynput's Houdini addon.
+
+| Product Type Label | Product Type Name | Description | 
+|--|--|--|
+| `Arnold ASS` | `ass` | Arnold Scene Source .ass Archive. |
+| `Arnold ROP` | `arnold_rop` | Arnold Render. |
+| `Camera (Abc)` | `camera` |  Single baked camera from Alembic ROP. |
+| `Composite (Image Sequence)` | `imagesequence` | Composite ROP to Image Sequence. |
+| `Houdini Digital Asset (Hda)` | `hda` | Houdini Digital Asset file. |
+| `Karma ROP` | `karma_rop` | Karma Render. |
+| `Mantra IFD` | `mantraifd` | Mantra .ifd Archive. |
+| `Mantra ROP` | `mantra_rop` | Mantra Render. |
+| `PointCache (Abc)` | `pointcache` | pointcache as Alembic. |
+| `PointCache (Bgeo)` | `pointcache` | pointcache as BGEO. |
+| `Redshift ROP` | `redshift_rop` | Redshift Render. |
+| `Review` | `review` | Review with OpenGL ROP. |
+| `Static Mesh (FBX)` | `staticMesh` | Static Meshes as FBX. |
+| `USD (experimental)` | `usd` | Universal Scene Description. |
+| `USD Render (experimental)` | `usdrender` | USD Render. |
+| `VDB Cache` | `vbdcache` | OpenVDB from Geometry ROP. |
+| `VRay ROP` | `vray_rop` | VRay Render. |
+
+* **Product Type Label:** It's mostly used in AYON UI e.g. Publisher Tool.
+* **Product Type Name:** The name used in the background. AYON Settings expects you to use this name not the label.
 
 --- 
 

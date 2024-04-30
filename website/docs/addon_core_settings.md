@@ -42,7 +42,7 @@ Project settings can have project specific values. Each new project is using stu
 
 ## Tools
 ### Creator
-Settings related to [Creator tool](../artist_tools_creator).
+Settings related to [Creator tool](artist_tools_creator).
 
 #### Product name profiles
 ![core_tools_creator_product_template](assets/core_tools_creator_product_template.png)
@@ -75,7 +75,7 @@ Some creators may have other keys as their context may require more information 
 
 
 ### Workfiles
-Settings related to [Workfile tool](../artist_tools_workfiles).
+Settings related to [Workfile tool](artist_tools_workfiles).
 
 #### Open last workfile at launch
 This feature allows you to define a rule for each task/host or toggle the feature globally to all tasks as they are visible in the picture.
@@ -86,7 +86,7 @@ This feature allows you to define a rule for each task/host or toggle the featur
 
 #### Template name profiles
 
-Allows to select [anatomy template](admin_settings_project_anatomy.md#templates) based on context of product being published.
+Allows to select [anatomy template](admin_settings_project_anatomy#templates) based on context of product being published.
 
 For example for `render` profile you might want to publish and store assets in different location (based on anatomy setting) then for `publish` profile.
 Profile filtering is used to select between appropriate template for each context of published products.
@@ -127,7 +127,7 @@ AYON distributes its own OCIO configs. Those can be found in `{ayon install dir}
 ### Using OCIO config
 Global config path is set by default to AYON distributed configs. At the moment there are only two - **aces_1.2** and **nuke-default**. Since this path input is not platform specific it is required to use at least an environment variable for platform specific config root directory. Order of paths matter so first existing path found is used.
 
-Each OCIO config path input supports formatting using environment variables and [anatomy template keys](../admin_settings_project_anatomy#available-template-keys). The default global OCIO config path is `{AYON_ROOT}/vendor/bin/ocioconfig/OpenColorIOConfigs/aces_1.2/config.ocio`.
+Each OCIO config path input supports formatting using environment variables and [anatomy template keys](admin_settings_project_anatomy#available-template-keys). The default global OCIO config path is `{AYON_ROOT}/vendor/bin/ocioconfig/OpenColorIOConfigs/aces_1.2/config.ocio`.
 
 If the project settings for a particular host has its own OCIO config **enabled** and set to at least one path and the path exists, it overrides the global OCIO config for that host.
 
@@ -219,6 +219,15 @@ A profile may generate multiple outputs from a single input. Each output must de
     - **Audio filters** additional FFmpeg filters that would be defined in `-filter:a` or `-af` command line arguments.
     - **Input arguments** input definition arguments of video or image sequence - this setting has limitations as you have to know what is input.
     - **Output arguments** other FFmpeg output arguments like codec definition.
+
+:::tip Time Code argument
+**Time Code argument:** `-timecode {timecode}`
+
+Time Code `{timecode}` key is supported which is evaluated in the format `HH:MM:SS:FF`.
+> It helps loading review files into Resolve - by having this timecode metadata included then Resolve 'understands' what the start frame / timecode is of the loaded media.
+
+![core_extract_review_out_args](assets/core_extract_review_out_args.png)
+:::
 
 - **`Output width`** and **`Output height`**
     - It is possible to rescale output to specified resolution and keep aspect ratio.
