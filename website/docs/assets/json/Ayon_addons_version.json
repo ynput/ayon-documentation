@@ -24,7 +24,7 @@
     "Photoshop_Badge" : "[![Photoshop Addon - 0.1.0](https://img.shields.io/badge/Photoshop_Addon-0.1.0-041d36?logo=adobephotoshop)](https://github.com/ynput/OpenPype/tree/develop/server_addon/photoshop)",
     "Resolve_Badge" : "[![Davinci Resolve Addon - 0.1.0](https://img.shields.io/badge/Davinci_Resolve_Addon-0.1.0-2f4a67)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/resolve)",
     "RoyalRender_Badge" : "[![Royal Render Addon - 0.1.1](https://img.shields.io/badge/Royal_Render_Addon-0.1.1-black)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/royalrender)",
-    "ShotGrid_Badge" : "[![ShotGrid Addon - 0.2.9](https://img.shields.io/badge/ShotGrid_Addon-0.2.9-3190b2)](https://github.com/ynput/ayon-shotgrid)",
+    "Flow_Badge" : "[![Flow (ShotGrid) Addon - 0.4.0](https://img.shields.io/badge/Flow_(ShotGrid)_Addon-0.4.0-3190b2)](https://github.com/ynput/ayon-shotgrid)",
     "SitSync_Badge" : "![SiteSync Addon - 1.0.1](https://img.shields.io/badge/SiteSync_Addon-1.0.1-00d6a1)",
     "Slack_Badge" : "[![Slack Addon - 1.0.1](https://img.shields.io/badge/Slack_Addon-1.0.1-4A154B?logo=slack&logoColor=a9e3cc)](https://github.com/ynput/ayon-slack)",
     "SubstancePainter_Badge" : "[![Substance Painter Addon - 0.1.0](https://img.shields.io/badge/Substance_Painter_Addon-0.1.0-e1212e)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/substancepainter)",
