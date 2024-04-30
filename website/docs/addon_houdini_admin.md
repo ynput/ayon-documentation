@@ -16,7 +16,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ### Add Self Publish Button
 
-Enabling this setting will cause Houdini creator to add a **self publish button** when creating new publish instances. More Info on how how the **self publish button** works [here](artist_hosts_houdini#ayon-publishing-process)
+Enabling this setting will cause Houdini creator to add a **self publish button** when creating new publish instances. More Info on how how the **self publish button** works [here](addon_houdini_artist#ayon-publishing-process)
 
 ![general_settings_self_publish_button](assets/houdini/admin/general_settings_self_publish_button.png)
 
