@@ -94,6 +94,43 @@ When you publish your model with top group named like `foo_GRP` it will fail. Bu
 All regexes used here are in Python variant.
 :::
 
+### Extract Alembic
+
+`ExtractAlembic`
+
+![ExtractAlembic](assets/maya/admin/alembic_settings.png)
+
+The settings below will become the default when extracting the alembics for `pointcache` and `animation`. Any attributes exposed in `Exposed Overrides` will be visible to the users to edit when publishing. When a user edits an attribute, the default settings below no longer has any effects on the publishing values. To enforce settings even when exposing attributes, you can utilize the validators; `ValidateAlembicDefaultsPointcache` and `ValidateAlembicDefaultsAnimation`.
+
+- **Euler Filter**: Apply Euler filter while sampling rotations.
+- **Renderable Only**: Only export renderable visible shapes.
+- **Strip Namespaces**: Namespaces will be stripped off of the node before being written to Alembic.
+- **UVs Only**: If this flag is present, only uv data for PolyMesh and SubD shapes will be written to the Alembic file.
+- **UV Write**: UV data for PolyMesh and SubD shapes will be written to the Alembic file.
+- **Verbose**: Prints the current frame that is being evaluated.
+- **Visible Only**: Only export dag objects visible during frame range.
+- **Whole Frame Geo**: Data for geometry will only be written out on whole frames.
+- **World Space**: Any root nodes will be stored in world space.
+- **Write Color Sets**: Write vertex colors with the geometry.
+- **Write Face Sets**: Write face sets with the geometry.
+- **Write Normals**: Write normals with the deforming geometry.
+- **Write UV Sets**: Write all uv sets on MFnMeshes as vector 2 indexed geometry parameters with face varying scope.
+- **Write Visibility**: Visibility state will be stored in the Alembic file. Otherwise everything written out is treated as visible.
+- **Pre Roll**: When enabled, the pre roll start frame is used to pre roll the evaluation of the mesh. From the pre roll start frame to the Alembic start frame, will not be written to disk. This can be used for simulation run-up.
+- **Pre Roll Start Frame**: The frame to start scene evaluation at. This is used to set the starting frame for time-dependent translations and can be used to evaluate run-up that isn't actually translated. NOTE: Pre Roll needs to be enabled for this start frame to be considered.
+- **Data Format**: The data format to use to write the file.
+- **Bake Attributes**: List of attributes that will be included in the Alembic export.
+- **Bake Attribute Prefixes**: List of attribute prefixes for attributes that will be included in the Alembic export.
+- **Custom Attributes**: Attributes matching by name will be included in the Alembic export. Attributes should be separated by semi-colon ;.
+- **Custom Attributes Prefix**: Attributes starting with these prefixes will be included in the Alembic export. Attributes should be separated by semi-colon ;.
+- **User Attr**: Attributes matching by name will be included in the Alembic export. Attributes should be separated by semi-colon ;.
+- **User Attr Prefix**: Attributes starting with these prefixes will be included in the Alembic export. Attributes should be separated by semi-colon ;.
+- **Mel Per Frame Callback**: When each frame (and the static frame) is evaluated the string specified is evaluated as a Mel command.
+- **Mel Post Job Callback**: When the translation has finished the string specified is evaluated as a Mel command.
+- **Python Per Frame Callback**: When each frame (and the static frame) is evaluated the string specified is evaluated as a python command.
+- **Python Post Job Callback**: When the translation has finished the string specified is evaluated as a python command.
+- **Exposed Overrides**: These are the attributes from above that will be exposed in the publisher for users to edit when publishing.
+
 ## AYON Tools
 You can add your custom tools menu into Maya by extending definitions in **Maya -> Scripts Menu Definition**.
 
