@@ -21,11 +21,11 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you ne
 
 1. Deploy AYON executable to all nodes of Deadline farm. See [Install & Run](admin_launcher_distribute.md)
 
-2. Enable Deadline Module in the [AYON Admin Settings](admin_settings_system.md#deadline).
+2. Create a new AYON Bundle with Deadline Addon version.
 
 3. Set up *Deadline Web API service*. For more details on how to do it, see [here](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/web-service.html).
 
-4. Point AYON to your deadline webservice URL in the [AYON Admin Settings](admin_settings_system.md#deadline).
+4. Point AYON to your deadline webservice URL in the Deadline settings `ayon+settings://deadline/deadline_urls/0/value`.
 
 ![Webservice url](assets/deadline_webserver_config.png)
 
@@ -74,6 +74,13 @@ The dependent publishing job's pool uses `ayon+settings://deadline/publish/Proce
 :::note maya tile rendering
 The logic for publishing job pool assignment applies to tiling jobs.
 :::
+
+### Authentication
+Deadline supports username and passwords authentication to protect webservice from unwanted requests. (In Deadline `Tools>Configure Repository Options>Web Service Settings>Require Authentication`)
+
+For this admin needs to enable authentication requirement for DL in `ayon+settings://deadline/require_authentication`.
+
+Artists then need to provide their credentials in `Site Settings`.
 
 ## Publish Plugins
 

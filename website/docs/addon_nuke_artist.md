@@ -289,7 +289,7 @@ If you choose to publish on the farm, you will render and do reviews on the farm
 
 So far there is no option for using existing frames (from your local / check render) and just do the review on the farm.
 
-More info about [configuring reviews](project_settings/project_settings_core.md#extractreview).
+More info about [configuring reviews](addon_core_settings#extract-review).
 
 :::tip Admin Tip - Configuring Reviews
 You can configure reviewsin **Studio Settings → Project → Global → Publish plugins → ExtractReview / ExtractBurnin**

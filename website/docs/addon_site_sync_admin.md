@@ -73,14 +73,26 @@ The attributes that can be configured will vary between sites and their provider
 
 ## Site settings
 
-Each user should configure root folder for their 'local' site via **Root** tab in AYON Server. This folder will be used for all files that the user publishes or downloads while working on a project. 
+Each user should configure root folder for their 'local' site via **Local roots overrides** in `Site Settings` tab in AYON Server. This folder will be used for all files that the user publishes or downloads while working on a project. 
 
 ![Local overrides](assets/site_sync_local_root.png)
+
+:::tip
+There is also possibility to override local location of `studio` site. That could be found in `Roots` tab. (This 
+configuration is applicable even without Site Sync, it just allows artist to use different drive/folder of their `studio` location. 
+Could be because required value is not available, not enough space on that disk etc.)
+
+![Local overrides](assets/site_sync_override_roots.png)
+:::
 
 Artists can also override which site they use as active and remote to activet Site Sync functionality if sites are not set in Project Settings.
 Here artist could also change all user based configuration based on provider (for example password for sftp user etc.)
 
 ![Local overrides](assets/site_sync_local_setting.png)
+
+:::info
+Various use cases are explained in [Introduction to Site Sync in OpenPype / AYON | YouTube](https://www.youtube.com/watch?v=NEJ3kCeggn0)
+:::
 
 
 ## Providers

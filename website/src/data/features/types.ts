@@ -5,6 +5,7 @@ export type Feature = {
     description: string;
     preview?: string;
     docs?: { [type in DocType]?: String };
+    github?: string;
     id?: string;
 };
 
@@ -29,4 +30,6 @@ export type FeatureType =
     | "sceneBuilder"
     | "nodePresets"
     | "burnins"
-    | "bakingColorspacePresets";
+    | "bakingColorspacePresets"
+    | "scriptBuilding"
+    | "sgSync";

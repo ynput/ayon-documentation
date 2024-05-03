@@ -60,9 +60,9 @@ const features: { [type in FeatureType]: Feature } = {
             "Tools for creating shots, assets and task within your project if you don't use third party project management",
     },
     sgSync: {
-        title: "Shotgrid Sync",
+        title: "Flow (Shotgrid) Sync",
         description:
-            "A way to syncronize projects across AYON and Shotgrid, as well as react to events in either platform.",
+            "A way to synchronize projects across AYON and Flow (Shotgrid), as well as react to events in either platform.",
         preview: "shotgrid_sync.png",
     },
     libraryLoader: {
@@ -102,8 +102,8 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Service for monitoring the user activity to start, stop and synchronise time tracking.",
         docs: {
-            admin: "admin_settings_system#timers-manager",
         },
+        github: "https://github.com/ynput/ayon-core/tree/develop/client/ayon_core/modules/timers_manager"
     },
     farmRendering: {
         title: "Farm rendering",

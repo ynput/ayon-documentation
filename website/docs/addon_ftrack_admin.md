@@ -20,7 +20,7 @@ Ftrack is currently the main project management option for AYON. This documentat
 ## Prepare Ftrack for AYON
 
 ### Server URL
-If you want to connect Ftrack to AYON you might need to make few changes in Ftrack settings. These changes would take a long time to do manually, so we prepared a few Ftrack actions to help you out. First, you'll need to launch AYON settings, enable [Ftrack module](admin_settings_system.md#Ftrack), and enter the address to your Ftrack server.
+If you want to connect Ftrack to AYON you might need to make few changes in Ftrack settings. These changes would take a long time to do manually, so we prepared a few Ftrack actions to help you out. First, you'll need to have Ftrack enabled in your AYON bundle, and enter the address to your Ftrack server.
 
 ### Login
 Once your server is configured, restart AYON and you should be prompted to enter your [Ftrack credentials](addon_kitsu_artist.md#How-to-use-Ftrack-in-AYON) to be able to run our Ftrack actions. If you are already logged in to Ftrack in your browser, it is enough to press `Ftrack login` and it will connect automatically.
@@ -96,6 +96,14 @@ By default any task status will be updated to `In Progress` when launching an ac
 ### Sync status from Task to Parent
 
 List of parent object types where this is triggered ("Shot", "Asset build", etc. Skipped if it is empty)
+
+### Sync status from Task to Asset Version
+
+This will sync the status from the task to the latest asset version on the task.
+
+:::note
+ Due to a potential infinite status update loop, the event server user and the user updating the task status, need to be different. If it is the same user, the status will not be synced.
+:::
 
 ### Sync status from Version to Task
 
