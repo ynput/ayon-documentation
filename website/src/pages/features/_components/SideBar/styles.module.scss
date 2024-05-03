@@ -51,6 +51,7 @@
         nav {
             padding: 0.5rem;
             scrollbar-gutter: stable;
+            padding-bottom: var(--ifm-navbar-height); // Allow the last element of the list to be visible
             flex-grow: 1;
             overflow-y: auto;
 

@@ -60,10 +60,22 @@ const features: { [type in FeatureType]: Feature } = {
             "Tools for creating shots, assets and task within your project if you don't use third party project management",
     },
     sgSync: {
-        title: "Shotgrid Sync",
+        title: "Flow (Shotgrid) Sync",
         description:
-            "A way to syncronize projects across AYON and Shotgrid, as well as react to events in either platform.",
+            "A way to synchronize projects across AYON and Flow (Shotgrid), as well as react to events in either platform.",
         preview: "shotgrid_sync.png",
+    },
+    aquariumSync: {
+        title: "Aquarium Sync",
+        description:
+            "Keep Ayon syncronized with your Aquarium's project, and create Aquarium from Ayon.",
+        preview: "aquarium_sync.png",
+        github: "https://github.com/ynput/ayon-aquarium",
+        docs: {
+            user: "addon_aquarium_artist",
+            admin: "addon_aquarium_admin",
+            developer: "addon_aquarium_developer",
+        },
     },
     libraryLoader: {
         title: "Library Loader",

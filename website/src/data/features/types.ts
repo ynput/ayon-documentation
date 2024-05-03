@@ -31,4 +31,6 @@ export type FeatureType =
     | "nodePresets"
     | "burnins"
     | "bakingColorspacePresets"
-    | "scriptBuilding";
+    | "scriptBuilding"
+    | "aquariumSync"
+    | "sgSync";
