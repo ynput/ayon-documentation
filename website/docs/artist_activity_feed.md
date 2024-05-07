@@ -58,7 +58,7 @@ In this example, Felix leaves a comment on his Compositing task, mentioning the 
 
 ### Relations
 
-Certain activity items can be related to another entity besides their origin. For instance, comments made on versions are related to their parent task. When a comment is made on a version, this relation causes the comment to be visible on the task itself. This operates similarly to mentions but without requiring an explicit mention
+Certain activity items can be related to another entity besides their origin. For instance, comments made on versions are related to their parent task. When a comment is made on a version, this relation causes the comment to be visible on the task itself. This operates similarly to mentions but without requiring an explicit mention.
 
 ![Activity feed relations](assets/activity_feed/activity-feed-relations.png)
 
