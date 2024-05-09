@@ -28,7 +28,7 @@ Initially, the activity feed will be accessible on tasks and versions but may po
 1. Comments
 2. Status changes
 3. Assignee changes
-4. Published versions (coming in a later update)
+4. Published versions
 
 ![Activity feed types](assets/activity_feed/activity-feed-types.png)
 
@@ -73,6 +73,16 @@ Comments fully support [github flavoured](https://github.github.com/gfm/#:~:text
 Checklists can be created and checked/unchecked by any user. They do not affect the status of the task but provide a general idea of the remaining work on a task. They are useful for reviews to keep track of whether feedback has been addressed.
 
 ![Activity feed checklists](assets/activity_feed/activity-feed-checklists.png)
+
+### Versions
+
+Published versions will appear in the activity feed, allowing you to track when a new version is published and understand its context. To view all versions without grouping, utilize the "Published Versions" filter.
+
+![Activity feed versions](assets/activity_feed/activity-feed-versions.png)
+
+Click on a version to access its details and activity feed. Any comments made on a version will be visible in the parent activity feed.
+
+![Activity feed versions slide out](assets/activity_feed/activity-feed-versions-slideout.png)
 
 ### Attachments
 
