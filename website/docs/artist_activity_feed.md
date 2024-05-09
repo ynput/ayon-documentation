@@ -80,7 +80,7 @@ Published versions will appear in the activity feed, allowing you to track when 
 
 ![Activity feed versions](assets/activity_feed/activity-feed-versions.png)
 
-Click on a version to access its details and activity feed. Any comments made on a version will be visible in the parent activity feed.
+Click on a version to access its details and activity feed. Any comments made on a version will be visible in the parent task activity feed.
 
 ![Activity feed versions slide out](assets/activity_feed/activity-feed-versions-slideout.png)
 
@@ -94,4 +94,10 @@ You can attach any type of file to a comment. Common image types will be preview
 In addition to using the attachments button, you can drag and drop files or even paste images directly from your clipboard.
 
 Review workflow: Capture a screenshot -> Markup in your preferred app -> Paste the marked-up image as an attachment.
+:::
+
+:::note
+Attachment files are stored in the docker storage space `/storage/server/uploads`. When a comment is deleted a background worker cleans up unused files.
+
+There is currently no file size limit but we intend to introduce a default that can be configurable.
 :::
