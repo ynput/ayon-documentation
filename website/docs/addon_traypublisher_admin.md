@@ -37,7 +37,11 @@ Contains list of implemented families to show in middle menu in Tray Publisher. 
 You can use TrayPublisher to upload CSV data in two ways: interactive mode or headless mode (CLI). You can set up the CSV columns and what kind of data they should have. For each column, you can pick a data type and if it's needed or not. Plus, you can set a default value for when some data is missing.
 
 :::info CSV publishing
-This prototype isn't set up to **create missing hierarchy folders if they're not there** yet. Right now, the CSV data must pass a preflight check, so we don't need to validate it.
+Tray publisher pushes your products into an existing tasks in AYON.
+Tray publisher doesn't support **creating missing entities if they don't exist** yet.
+Currently, the CSV data must pass a preflight check, so we don't need to validate it.
+
+Please ensure your shots and assets are created in your project. 
 :::
 
 ## Feature settings
