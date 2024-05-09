@@ -28,7 +28,7 @@ Initially, the activity feed will be accessible on tasks and versions but may po
 1. Comments
 2. Status changes
 3. Assignee changes
-4. Published versions (coming in a later update)
+4. Published versions
 
 ![Activity feed types](assets/activity_feed/activity-feed-types.png)
 
@@ -74,6 +74,16 @@ Checklists can be created and checked/unchecked by any user. They do not affect 
 
 ![Activity feed checklists](assets/activity_feed/activity-feed-checklists.png)
 
+### Versions
+
+Published versions will appear in the activity feed, allowing you to track when a new version is published and understand its context. To view all versions without grouping, utilize the "Published Versions" filter.
+
+![Activity feed versions](assets/activity_feed/activity-feed-versions.png)
+
+Click on a version to access its details and activity feed. Any comments made on a version will be visible in the parent task activity feed.
+
+![Activity feed versions slide out](assets/activity_feed/activity-feed-versions-slideout.png)
+
 ### Attachments
 
 You can attach any type of file to a comment. Common image types will be previewable inside the web app, and we plan to support previewable videos in the future.
@@ -84,4 +94,10 @@ You can attach any type of file to a comment. Common image types will be preview
 In addition to using the attachments button, you can drag and drop files or even paste images directly from your clipboard.
 
 Review workflow: Capture a screenshot -> Markup in your preferred app -> Paste the marked-up image as an attachment.
+:::
+
+:::note
+Attachment files are stored in the docker storage space `/storage/server/uploads`. When a comment is deleted a background worker cleans up unused files.
+
+There is currently no file size limit but we intend to introduce a default that can be configurable.
 :::
