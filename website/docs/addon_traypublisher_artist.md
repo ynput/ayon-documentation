@@ -15,7 +15,7 @@ Tray Publisher is a standalone tool for publishing products into AYON pipeline.
 It can be accessed via UI or command line.
 
 
-## Tray Publisher UI
+## Tray Publisher
 How to use it ? 
 1. Access the tool via Tray menu.
 ![](assets/traypublisher/artist/open_publisher.gif)
@@ -30,23 +30,12 @@ How to use it ?
 3. Then you'll be able to access the published product via AYON Loader.
 ![](assets/traypublisher/artist/check_in_loader.gif)
 
+## Tray Publisher CLI Interface
 
-## Tray Publisher command line
-Currently, Tray publisher supports two commands
-1. `launch` : Shows publisher UI
-2. `ingestcsv` : Ingest CSV file into project.
-
-### Shows publisher UI
-```shell
-cd "C:\Program Files\Ynput\[AYON Launcher Version]"
-.\ayon_console.exe addon traypublisher launch
-```
-
-### Ingest CSV file into project
-```shell
-cd "C:\Program Files\Ynput\[AYON Launcher Version]"
-.\ayon_console.exe addon traypublisher ingestcsv --filepath '[CSV FILE ABS PATH]' --project [PROJECT_NAME] --folder-path [/FOLDER/PATH] --task [TASK NAME] --ignore-validators
-```
+:::info Tray CLI Interface
+Tray Publisher provides a CLI Interface (Windows Only).
+To know more about it: [Tray Publisher Admin Docs](https://ayon.ynput.io/docs/addon_traypublisher_admin#cli-interface).
+:::
 
 ## Default Product Types
 ### Simple Create Plugins
