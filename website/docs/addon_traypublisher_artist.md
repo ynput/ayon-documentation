@@ -64,7 +64,7 @@ cd "C:\Program Files\Ynput\[AYON Launcher Version]"
 - `audio`: Audio files for review or final delivery.
 
 :::tip Simple Create Plugins
-Admins are able to define extend simple create plugins via [Tray publisher addon settings](https://ayon.ynput.io/docs/addon_traypublisher_admin#creator-plugins).
+Admins are able to extend simple create plugins via [Tray publisher addon settings](https://ayon.ynput.io/docs/addon_traypublisher_admin#creator-plugins).
 :::
 
 ### Editorial Simple
