@@ -83,7 +83,20 @@ It should be fixed soon.
 
 
 ### CSV Ingest 
-...
+This feature allows mass publishing arbitrary files through a CSV file.
+It requires a CSV file and then drag and drop it inside the Tray Publisher.
+The CSV columns should follow the columns specified in your AYON tray publisher settings.
+- `ayon+settings://traypublisher/create/IngestCSV/columns_config/columns`
+
+
+Find example CSV file here: [ay_240319_0001.zip](https://github.com/ynput/ayon-core/files/14651928/ay_240319_0001.zip)
+
+:::info CSV Ingest
+This is a working prototype and doesn't include all expected features.
+e.g. it doesn't support creating missing hierarchy folders in case they are missing.
+Therefore, please ensure that hierarchy folders exist before publishing.
+:::
+
 
 ## Default Validators
 Tray Publisher provides simple validators. 
