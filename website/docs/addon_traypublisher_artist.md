@@ -39,6 +39,11 @@ To know more about it: [Tray Publisher Admin Docs](https://ayon.ynput.io/docs/ad
 
 ## Default Product Types
 ### Simple Create Plugins
+
+:::tip Simple Create Plugins
+Admins are able to change (remove/add/modify) simple create plugins via [Tray publisher addon settings](https://ayon.ynput.io/docs/addon_traypublisher_admin#creator-plugins).
+:::
+
 - `workfiles`: Workfiles are full scenes from any application that are directly edited by artists. They represent a state of work on a task at a given point and are usually not directly referenced into other scenes.
 - `model`: Models should only contain geometry data, without any extras like cameras, locators or bones. *Keep in mind that models published from tray publisher are not validated for correctness.* 
 - `pointcache`: Alembic or bgeo cache of animated data
@@ -51,10 +56,6 @@ To know more about it: [Tray Publisher Admin Docs](https://ayon.ynput.io/docs/ad
 - `rig`: CG rigged character or prop. Rig should be clean of any extra data and directly loadable into it's respective application.	
 - `simpleUnrealTexture`: Texture files with Unreal Engine naming conventions.
 - `audio`: Audio files for review or final delivery.
-
-:::tip Simple Create Plugins
-Admins are able to extend simple create plugins via [Tray publisher addon settings](https://ayon.ynput.io/docs/addon_traypublisher_admin#creator-plugins).
-:::
 
 
 ### Editorial Simple
