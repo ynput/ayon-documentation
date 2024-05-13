@@ -71,7 +71,16 @@ The workflow remains the same but the settings have been moved to AYON Server in
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oSDskPRINHU?si=21H2ZOsrwgXoKKyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Batch Movies
-...
+
+It's capable of publishing individual mov files to specific shots based on file name.
+<!-- TODO: Add File name pattern once the creator is fixed. 
+For context, the Batch mov creator doesn't work. -->
+
+:::note
+Currently, This creator doesn't work as expected.
+It should be fixed soon.
+:::
+
 
 ### CSV Ingest 
 ...
