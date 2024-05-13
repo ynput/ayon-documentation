@@ -15,4 +15,3 @@ AYON offers a collection of core tools in tandem with the Integrations:
 - [Inventory](artist_tools_inventory)
 - [Workfiles](artist_tools_workfiles)
 - [Look Assigner](artist_tools_look_assigner)
-- [Product Manager](artist_tools_product_manager)
