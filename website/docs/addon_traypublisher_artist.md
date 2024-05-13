@@ -56,10 +56,19 @@ To know more about it: [Tray Publisher Admin Docs](https://ayon.ynput.io/docs/ad
 Admins are able to extend simple create plugins via [Tray publisher addon settings](https://ayon.ynput.io/docs/addon_traypublisher_admin#creator-plugins).
 :::
 
-### Editorial Simple
-...
 
-![](assets/traypublisher/artist/editorial_simple.png)
+### Editorial Simple
+
+Tray Publisher Editorial workflow allows mass setup of shots from reference video and EDL (Edit Decision List).
+
+:::info
+The following video were created for Openpype (AYON's predecessor).
+The workflow remains the same but the settings have been moved to AYON Server instead.
+:::
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/yGfWAI44hGw?si=4LfZnNzbSh8pF8wZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oSDskPRINHU?si=21H2ZOsrwgXoKKyU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ### Batch Movies
 ...
