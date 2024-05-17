@@ -25,7 +25,7 @@ At the moment site sync is only able to deal with published files (eg. in `publi
 
 ## Studio Settings
 
-First of all, you need to include Site Sync Addon to your bundle, and to use synchronization, *Site Sync* needs to be enabled globally in **ayon+settings://sitesync**.
+First of all, you need to include `Site Sync Addon` to your bundle, and to use synchronization, *Site Sync* needs to be enabled globally in **ayon+settings://sitesync**.
 
 ![Configure module](assets/site_sync_system.png)
 
@@ -206,7 +206,7 @@ To do this:
 - open `Site Settings` in the `Ayon Server` (`ayon+settings://sitesync?project=ayon_test&site=studio`)
 - configure for each project necessary active site and remote site
 - close `Tray`
-- run Ayon launcher from a command line with `syncservice` and `--active_site` arguments
+- run AYON launcher from a command line with `syncservice` and `--active_site` arguments
 
 
 This is an example how to trigger background syncing process where active (source) site is `studio`. 
