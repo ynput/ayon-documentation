@@ -33,7 +33,7 @@ How to use it ?
 ## Tray Publisher CLI Interface
 
 :::info Tray CLI Interface
-Tray Publisher provides a CLI Interface (Windows Only).
+Tray Publisher provides a CLI Interface.
 To know more about it: [Tray Publisher Admin Docs](https://ayon.ynput.io/docs/addon_traypublisher_admin#cli-interface).
 :::
 
