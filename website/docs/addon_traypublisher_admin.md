@@ -82,3 +82,17 @@ cd "C:\Program Files\Ynput\AYON 1.0.2"
 3. CSV folder: `ayon+entity://Moawiya/shots/mw_110_01_0060?task=comp`
 4. CSV folder: `ayon+entity://Moawiya/shots/mw_110_01_0080?task=comp`
 5. Follow the CLI command above and ingest the data.
+
+
+# Editorial package
+
+Creator labeled as 'Editorial package' allows artists to import whole folder with OTIO file and resources easily. 
+This product type provides easy sharing of OTIO metadata for loading and creating timeline in other DCCs.
+
+One might want to convert all attached movie like resources into desired output format. That could be achieved by configuring
+`ayon+settings://traypublisher/publish/ExtractEditorialPckgConversion`
+
+![Editorial package](assets/traypublisher/editorial_package_conversion.png)
+
+To skip conversion please toggle `Conversion enabled` to off. This propagates to Traypublisher UI where artists
+could decide if they want to convert ad-hoc.

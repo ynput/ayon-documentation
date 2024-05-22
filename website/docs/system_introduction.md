@@ -13,7 +13,7 @@ To use AYON, you need to install both the server and the launcher app. Pre-built
 
 ## Studio Preparation
 
-You can find a detailed breakdown of technical requirements [here](dev_requirements), but in general, AYON should be able to operate in most studios fairly quickly. The main obstacles are usually related to workflows and habits that may not be fully compatible with what AYON expects or enforces. It is recommended to go through the [key concepts](artist_concepts) for artists to get comfortable with the basics.
+You can find a detailed breakdown of technical requirements [here](dev_requirements.md), but in general, AYON should be able to operate in most studios fairly quickly. The main obstacles are usually related to workflows and habits that may not be fully compatible with what AYON expects or enforces. It is recommended to go through the [key concepts](artist_concepts.md) for artists to get comfortable with the basics.
 
 Keep in mind that if you run into any workflows that are not supported, it is usually because AYON has not encountered that particular case and it can likely be added upon request.
 
