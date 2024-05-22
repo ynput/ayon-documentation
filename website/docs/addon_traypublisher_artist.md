@@ -30,11 +30,9 @@ How to use it ?
 3. Then you'll be able to access the published product via AYON Loader.
 ![](assets/traypublisher/artist/check_in_loader.gif)
 
-## Tray Publisher CLI Interface
-
 :::info Tray CLI Interface
-Tray Publisher provides a CLI Interface.
-To know more about it: [Tray Publisher Admin Docs](https://ayon.ynput.io/docs/addon_traypublisher_admin#cli-interface).
+Tray Publisher also provides a CLI Interface.
+For more info: [Tray Publisher Admin Docs](addon_traypublisher_admin#cli-interface).
 :::
 
 ## Default Product Types
