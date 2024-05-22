@@ -211,7 +211,7 @@ To do this:
 
 This is an example how to trigger background syncing process where active (source) site is `studio`. 
 (It is expected that AYON is installed on a machine, `ayon_console` is on PATH. If not, add full path to executable.
-[)](ayon+settings://sitesync?project=ayon_test&site=studio1)
+)
 ```shell
 ayon_console addon sitesync syncservice --active_site studio
 ```
