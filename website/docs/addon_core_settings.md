@@ -99,6 +99,16 @@ Applicable context filters:
 
 (This image shows use case where `render` anatomy template is used for products of families ['review, 'render', 'prerender'], `publish` template is chosen for all other.)
 
+### Filter creator profiles
+
+This provides a way how to limit list of provided Creators in Publisher based on current context. This should
+help artists decision which creator they should use.
+
+If you want to limit which creators should be shown, provide some profile, based on host name and task info.
+Put creator identifier to `Allowed Creator Identifiers`, in most cases it should be same value as resulting product type (lower cased).
+
+![core_tools_custom_staging_dir](assets/tools/core_tools_filter_creators.png)
+
 #### Custom Staging Directory Profiles
 With this feature, users can specify a custom data folder path based on presets, which can be used during the creation and publishing stages.
 
