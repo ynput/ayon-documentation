@@ -105,9 +105,12 @@ This provides a way how to limit list of provided Creators in Publisher based on
 help artists decision which creator they should use.
 
 If you want to limit which creators should be shown, provide some profile, based on host name and task info.
-Put creator identifier to `Allowed Creator Identifiers`, in most cases it should be same value as resulting product type (lower cased).
+Put creator label to `Allowed Creator Labels`, easiest way is to open DCC, select creator label in the list of creators and copy&paste it to Settings.
+Regular expression is supported (eg. `Image.*` would show all `ImageHD`, `ImageLD`, `ImageThumb` creators).
 
-![core_tools_custom_staging_dir](assets/tools/core_tools_filter_creators.png)
+Logging is provided in debug mode (`ayon_console --debug`) to highlight if profile matched and filtering is happening.
+
+![core_tools_filter_creators](assets/tools/core_tools_filter_creators.png)
 
 #### Custom Staging Directory Profiles
 With this feature, users can specify a custom data folder path based on presets, which can be used during the creation and publishing stages.
