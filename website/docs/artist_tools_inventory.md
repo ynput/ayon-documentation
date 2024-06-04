@@ -15,7 +15,7 @@ To use it go to **AYON** Menu > **Manage**  which opens **Inventory** for use.
 ![tools_inventory_01](assets/tools/tools_inventory_01.png)
 
 :::note
-Understanding [Key concepts](artist_concepts) and being aware of AYON terminology is a neccessity to be able to use this tool fully.
+Understanding [Key concepts](artist_concepts.md) and being aware of AYON terminology is a neccessity to be able to use this tool fully.
 :::
 
 Here is a small demo of a usage in Maya DCC host and where to locate it and its basics:
