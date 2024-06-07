@@ -112,6 +112,11 @@ Logging is provided in debug mode (`ayon_console --debug`) to highlight if profi
 
 ![core_tools_filter_creators](assets/tools/core_tools_filter_creators.png)
 
+::: note
+In the example shown above only available creators with labels starting with `Render` (eg. `Render`, `RenderLOD` etc.) for `animation` task started in `AfterEffects`.
+No other creators will be shown for use when this filter profile being active. No other DCCs or even tasks in `AfterEffects` would be affected.
+:::
+
 #### Custom Staging Directory Profiles
 With this feature, users can specify a custom data folder path based on presets, which can be used during the creation and publishing stages.
 
