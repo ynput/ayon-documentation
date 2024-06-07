@@ -12,7 +12,7 @@ and efficient management of complex projects.
 
 **Versions**: \`11.3\`, \`12.2\`, \`13.2\`, \`14.0\`
     `,
-    preview: "hiero.png",
+    icon: "hiero.png",
     badge: versions.Hiero_Badge,
     features: [
         "workfiles",
