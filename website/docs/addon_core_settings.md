@@ -101,11 +101,14 @@ Applicable context filters:
 
 ### Filter creator profiles
 
-This provides a way how to limit list of provided Creators in Publisher based on current context. This should
-help artists decision which creator they should use.
+This feature offers settings that narrow down the list of creators appearing in Publisher according to the specific context, thereby making it easier for artists to choose the right creator for their work.
+Each profile consists of 
+- A list of host names.
+- Task Types drop down menu.
+- A list of task names, which can serve as an alternative to task types.
+- A list of Creator Labels, where you can add the labels of the creators you want to be displayed.
 
-If you want to limit which creators should be shown, provide some profile, based on host name and task info.
-Put creator label to `Allowed Creator Labels`, easiest way is to open DCC, select creator label in the list of creators and copy&paste it to Settings.
+If you would like to show creator, put its creator label to `Allowed Creator Labels`, easiest way is to open DCC, select creator label in the list of creators and copy&paste it to Settings.
 Regular expression is supported (eg. `Image.*` would show all `ImageHD`, `ImageLD`, `ImageThumb` creators).
 
 Logging is provided in debug mode (`ayon_console --debug`) to highlight if profile matched and filtering is happening.
