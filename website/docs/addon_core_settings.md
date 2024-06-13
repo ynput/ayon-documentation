@@ -345,6 +345,11 @@ Create profiles to control how the plugin functions:
    - d. **Expansion (+)**: Add more definitions to fit your need.
 3. **Expansion (+)**: Add more profiles.
 
+:::info Placeholders and template keys
+To see a list of available template keys, please visit the [template keys](admin_settings_project_anatomy#available-template-keys) section.
+Additionally, be aware that some keys are exclusive to specific hosts. Nevertheless, these keys should function properly as we often align the addon features to ensure compatibility.
+:::
+
 :::tip Link Burnin by name
 You can link `Extract Review` profiles to a specific burn-in by using its name. 
 However, you're limited to choosing among burn-ins that are within the same burn-in profile.
