@@ -345,6 +345,18 @@ Create profiles to control how the plugin functions:
    - d. **Expansion (+)**: Add more definitions to fit your need.
 3. **Expansion (+)**: Add more profiles.
 
+:::tip Link Burnin by name
+You can link `Extract Review` profiles to a specific burn-in by using its name. 
+However, you're limited to choosing among burn-ins that are within the same burn-in profile.
+
+In my example, both `focal_length_burnin` and `default_burnin` are within the same burn-in profile.
+
+| **Extract Burnin** | **Extract Review** |
+|--|--|
+| ![](assets/core/admin/different_burnin_profiles.png) | ![](assets/core/admin/link_to_burnin_by_name.png) |
+
+:::
+
 ### Integrate Product Group
 
 Published products might be grouped together for cleaner and easier selection in the **[Loader](artist_tools_loader.md)**
