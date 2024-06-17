@@ -327,6 +327,62 @@ Time Code `{timecode}` key is supported which is evaluated in the format `HH:MM:
         - Nuke extractor settings path: `project_settings/nuke/publish/ExtractReviewDataMov/outputs/baking/add_custom_tags`
     - Filtering by input length. Input may be video, sequence or single image. It is possible that `.mp4` should be created only when input is video or sequence and to create review `.png` when input is single frame. In some cases the output should be created even if it's single frame or multi frame input.
 
+### Extract Burnin
+
+:::info
+Remember to include the `burnin` tag when using `Extract Burnin`. Add it in the `Extract Review` settings to ensure it works correctly.
+:::
+
+The `Extract Burnin` plugin is a powerful tool for adding important details when publishing reviews. It comes with six placeholders that you can use right away.
+![](assets/core/admin/extract_burnin.png)
+
+**<font size="5">Customizing Extract Burnin</font>**
+
+You have the freedom to tailor the Extract Burnin to your needs. There are two main areas you can adjust:
+- **Burnin Formatting Options**: Change how the text looks.
+- **Profiles**: Set up different rules and data for the plugin.
+
+#### Burnin formatting options
+
+![](assets/core/admin/extract_burnin_format_settings.png)
+
+Adjust text appearance and position with these settings:
+1. Text Settings:
+   - Choose font size, color, and background color.
+   - Set x offset, y offset, and padding to position the text just right.
+2. Custom Font Path:
+   - Use a specific font by providing its file path.
+  
+#### Profiles
+![](assets/core/admin/extract_burnin_profile_settings.png)
+
+Create profiles to control how the plugin functions:
+1. Define the Context:
+   - Choose specific products, hosts, and tasks that the plugin will identify and work with.
+2. Burnin definitions:
+   - a. **Name**: Burnin definition name.
+   - b. **Placeholders Customization**: Tailor the placeholder text using [template keys](admin_settings_project_anatomy#available-template-keys), allowing flexibility for each user and context.
+   - c. **Additional Filtering**: Add extra filters to manage the use of multiple burnin definitions effectively.
+   - d. **Expansion (+)**: Add more definitions to fit your need.
+3. **Expansion (+)**: Add more profiles.
+
+:::info Placeholders and template keys
+To see a list of available template keys, please visit the [template keys](admin_settings_project_anatomy#available-template-keys) section.
+Additionally, be aware that some keys are exclusive to specific hosts. Nevertheless, these keys should function properly as we often align the addon features to ensure compatibility.
+:::
+
+:::tip Link Burnin by name
+You can link `Extract Review` profiles to a specific burn-in by using its name. 
+However, you're limited to choosing among burn-ins that are within the same burn-in profile.
+
+In my example, both `focal_length_burnin` and `default_burnin` are within the same burn-in profile.
+
+| **Extract Burnin** | **Extract Review** |
+|--|--|
+| ![](assets/core/admin/different_burnin_profiles.png) | ![](assets/core/admin/link_to_burnin_by_name.png) |
+
+:::
+
 ### Integrate Product Group
 
 Published products might be grouped together for cleaner and easier selection in the **[Loader](artist_tools_loader.md)**
