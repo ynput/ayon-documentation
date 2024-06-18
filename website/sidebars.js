@@ -84,7 +84,7 @@ module.exports = {
             type: "category",
             collapsed: false,
             label: "Production Tracking",
-            items: ["artist_my_tasks_page", "artist_activity_feed"],
+            items: ["artist_my_tasks_page", "artist_activity_feed", "artist_inbox"],
         },
     ],
     Admin: [
