@@ -69,7 +69,7 @@ Open the `AYON > Loader...`, and navigate to the published `Xgen` version. On ri
 ![Xgen Load](assets/maya/artist/xgen_load.gif)
 
 :::warning
-Save your maya workfile if you didn't before attempting to load Xgen product into your scene as it needs to be saved first because of Xgen side car files writting! Otherwise warning message appears telling you to do so...
+Save your maya workfile if you didn't before attempting to load Xgen product into your scene as it needs to be saved first because of Xgen side car files writing! Otherwise warning message appears telling you to do so...
 :::
 
 When loading an `Xgen` product and version the following happens:
