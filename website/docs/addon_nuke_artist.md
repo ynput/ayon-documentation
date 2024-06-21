@@ -127,6 +127,41 @@ It is usually enough if you once per while use this option just to make yourself
 </div>
 </div>
 
+
+### Push to Project
+
+<div class="row markdown">
+<div class="col col--6 markdown">
+
+This tool enables you to transfer your workfile to any accessible project. It simplifies packing and moving a workfile to a Library project. Additionally, It's handy when a shot spans multiple projects and requires the same workfile in each. The tool systematically processes all linked resources and relocates them to the new destination within the `/resources` folder.
+
+</div>
+<div class="col col--6 markdown">
+
+![Push to Project menu](assets/nuke/push_to_project_menu.png) <!-- picture needs to be changed -->
+
+</div>
+</div>
+
+<div class="row markdown">
+<div class="col col--6 markdown">
+
+1. Choose the desired project for the workfile.
+2. Pick the specific folder within the project for the workfile.
+3. Determine the task context.
+4. Click 'OK' and await completion.
+
+A confirmation message will display the workfile's destination path.
+
+</div>
+<div class="col col--6 markdown">
+
+![Push to Project dialogue](assets/nuke/push_to_project_dialogue.png) <!-- picture needs to be changed -->
+
+</div>
+</div>
+
+
 ## Nuke QuickStart
 
 This QuickStart is short introduction to what AYON can do for you. It attempts to make an overview for compositing artists, and simplifies processes that are better described in specific parts of the documentation.
