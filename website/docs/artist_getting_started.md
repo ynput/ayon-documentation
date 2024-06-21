@@ -9,7 +9,7 @@ import TabItem from '@theme/TabItem';
 
 ## Installation
 
-**AYON** and its installation files are available for all major operating systems: **Windows** 10 (Server, WIN 11 and newer), **macOS** (Mojave or later), and **Linux distributions (Rocky Linux, Ubuntu and formerly CentOS).
+**AYON** and its installation files are available for all major operating systems: **Windows** 10 (Server, WIN 11 and newer), **macOS** (Mojave or later), and **Linux** distributions (Rocky Linux, Ubuntu and formerly CentOS).
 
 Besides getting AYON installation files from Github you also have option to get those via `AYON server` webUI in the `Studio Settings` section.
 
