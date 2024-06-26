@@ -69,7 +69,7 @@ html[data-theme="dark"] .title {
     gap: 32px;
     flex: 1;
     padding: 64px 0;
-    max-height: 50vh;
+    min-height: 50vh;
 
     background-color: var(--ifm-background-surface-color);
 }
@@ -81,6 +81,12 @@ html[data-theme="dark"] .title {
     flex-wrap: wrap;
 
     gap: 32px;
+}
+
+@media screen and (max-width: 475) {
+    .Links {
+        flex-direction: column;
+    }
 }
 
 .link {
