@@ -82,6 +82,16 @@ For this admin needs to enable authentication requirement for DL in `ayon+settin
 
 Artists then need to provide their credentials in `Site Settings`.
 
+## Publish Plugins
+
+### Process submitted job on farm
+
+`ProcessSubmittedJobOnFarm`
+
+#### List of family names to transfer to generated instances (AOVs for example)
+
+`families_transfer` - Because each AOV becomes its own instance when publishing on the farm, this attribute will ensure the AOV instances have these families if present on the rendering instance.
+
 ## Troubleshooting
 
 ### Publishing jobs fail directly in DCCs
