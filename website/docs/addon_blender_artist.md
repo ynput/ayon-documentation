@@ -234,8 +234,8 @@ select your rig, right click on it and click **Link rig (blend)**.
 
 ## Layouts in Blender
 
-A layout is a set of elements that populate a scene. AYON allows to version
-and manage those sets.
+A **Layout** is a set of loaded products that are loaded in your scene. You can produce
+layout from selected products and version manage such set via AYON toolset.
 
 ### Publishing a layout
 
