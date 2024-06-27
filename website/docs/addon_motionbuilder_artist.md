@@ -15,6 +15,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 This part of documentation is still work in progress.
 :::
 ## First Steps With AYON
+With AYON plugins in Motionbuilder, you can save/load project in workfile tools, load your rig/character/animation into the scene, and publish your scene and animation.
 
 Locate **AYON Icon** in the OS tray (if hidden dive in the tray toolbar).
 
@@ -63,16 +64,24 @@ Both **Animation** and **Workfile** product type are outputting the animation in
 Select the objects in the scene you want to export and go **AYON -> Create** and select **Animation**.
 There are several FBX options available being user customizable in AYON: *Embed Media*, *Save Selected Models Only*, *Keep Transform Hierarchy*
 
+*Embed Media*: Embed all media in the FBX file. If the FBX is saved in ASCII mode, it is not impossible to embed media
+
+*Save Selected Models Only*: Only selected models will be saved.
+
+*Keep Transform Hierarchy*: Indicate if transform hierarchy is kept when SaveSelectedModelsOnly is true. Default value is false to ensure consistent behavior with SaveSelected operation via file menu.
+
+
 ![AYON Creator](assets/motionbuilder_creator.png)
 
 If you turn on *Save Selected Models Only*, and select your model in the scene, the model is added to the created set. AYON would solely publish the animated model under the set.
 
 
-## Loading Point Cache
-The loader only imports the asset in FBX format which is published from ```Animation```, ```Camera```, ```Model```and ```Rig```.
+## Loading Products
+The pointcache loader only imports the asset in FBX format which is published from ```Animation```, ```Camera```, ```Model```and ```Rig```.
 
 The loader will create the set which includes the loaded assets. All these assets are with the namespace, which is useful for updating assets.
 
+## Removing Products
 If the users remove the assets by going to **AYON -> Manage**, right-click and **Remove items**. The assets would be removed along with its namespace.
 
 ![Motionbuilder Scene Inventory](assets/motionbuilder_scene_inventory.png)
