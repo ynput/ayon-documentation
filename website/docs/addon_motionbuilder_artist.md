@@ -64,7 +64,7 @@ Both **Animation** and **Workfile** product type are outputting the animation in
 Select the objects in the scene you want to export and go **AYON -> Create** and select **Animation**.
 There are several FBX options available being user customizable in AYON: *Embed Media*, *Save Selected Models Only*, *Keep Transform Hierarchy*
 
-*Embed Media*: Embed all media in the FBX file. If the FBX is saved in ASCII mode, it is not impossible to embed media
+*Embed Media*: When enabled, it is possible to embed all media into FBX file. If the FBX being in ASCII format then it is impossible to embed any media in.
 
 *Save Selected Models Only*: Only selected models will be saved.
 
