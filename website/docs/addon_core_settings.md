@@ -42,7 +42,7 @@ Project settings can have project specific values. Each new project is using stu
 
 ## Tools
 ### Creator
-Settings related to [Creator tool](../artist_tools_creator).
+Settings related to [Creator tool](artist_tools_creator).
 
 #### Product name profiles
 ![core_tools_creator_product_template](assets/core_tools_creator_product_template.png)
@@ -75,7 +75,7 @@ Some creators may have other keys as their context may require more information 
 
 
 ### Workfiles
-Settings related to [Workfile tool](../artist_tools_workfiles).
+Settings related to [Workfile tool](artist_tools_workfiles).
 
 #### Open last workfile at launch
 This feature allows you to define a rule for each task/host or toggle the feature globally to all tasks as they are visible in the picture.
@@ -86,7 +86,7 @@ This feature allows you to define a rule for each task/host or toggle the featur
 
 #### Template name profiles
 
-Allows to select [anatomy template](admin_settings_project_anatomy.md#templates) based on context of product being published.
+Allows to select [anatomy template](admin_settings_project_anatomy#templates) based on context of product being published.
 
 For example for `render` profile you might want to publish and store assets in different location (based on anatomy setting) then for `publish` profile.
 Profile filtering is used to select between appropriate template for each context of published products.
@@ -98,6 +98,27 @@ Applicable context filters:
     ![core_integrate_new_template_name_profile](assets/core_integrate_new_template_name_profile.png)
 
 (This image shows use case where `render` anatomy template is used for products of families ['review, 'render', 'prerender'], `publish` template is chosen for all other.)
+
+### Filter creator profiles
+
+This feature offers settings that narrow down the list of creators appearing in Publisher according to the specific context, thereby making it easier for artists to choose the right creator for their work.
+Each profile consists of 
+- A list of host names.
+- Task Types drop down menu.
+- A list of task names, which can serve as an alternative to task types.
+- A list of Creator Labels, where you can add the labels of the creators you want to be displayed.
+
+If you would like to show creator, put its creator label to `Allowed Creator Labels`, easiest way is to open DCC, select creator label in the list of creators and copy&paste it to Settings.
+Regular expression is supported (eg. `Image.*` would show all `ImageHD`, `ImageLD`, `ImageThumb` creators).
+
+Logging is provided in debug mode (`ayon_console --debug`) to highlight if profile matched and filtering is happening.
+
+![core_tools_filter_creators](assets/tools/core_tools_filter_creators.png)
+
+::: note
+In the example shown above only available creators with labels starting with `Render` (eg. `Render`, `RenderLOD` etc.) for `animation` task started in `AfterEffects`.
+No other creators will be shown for use when this filter profile being active. No other DCCs or even tasks in `AfterEffects` would be affected.
+:::
 
 #### Custom Staging Directory Profiles
 With this feature, users can specify a custom data folder path based on presets, which can be used during the creation and publishing stages.
@@ -127,7 +148,7 @@ AYON distributes its own OCIO configs. Those can be found in `{ayon install dir}
 ### Using OCIO config
 Global config path is set by default to AYON distributed configs. At the moment there are only two - **aces_1.2** and **nuke-default**. Since this path input is not platform specific it is required to use at least an environment variable for platform specific config root directory. Order of paths matter so first existing path found is used.
 
-Each OCIO config path input supports formatting using environment variables and [anatomy template keys](../admin_settings_project_anatomy#available-template-keys). The default global OCIO config path is `{AYON_ROOT}/vendor/bin/ocioconfig/OpenColorIOConfigs/aces_1.2/config.ocio`.
+Each OCIO config path input supports formatting using environment variables and [anatomy template keys](admin_settings_project_anatomy#available-template-keys). The default global OCIO config path is `{AYON_ROOT}/vendor/bin/ocioconfig/OpenColorIOConfigs/aces_1.2/config.ocio`.
 
 If the project settings for a particular host has its own OCIO config **enabled** and set to at least one path and the path exists, it overrides the global OCIO config for that host.
 
@@ -220,6 +241,15 @@ A profile may generate multiple outputs from a single input. Each output must de
     - **Input arguments** input definition arguments of video or image sequence - this setting has limitations as you have to know what is input.
     - **Output arguments** other FFmpeg output arguments like codec definition.
 
+:::tip Time Code argument
+**Time Code argument:** `-timecode {timecode}`
+
+Time Code `{timecode}` key is supported which is evaluated in the format `HH:MM:SS:FF`.
+> It helps loading review files into Resolve - by having this timecode metadata included then Resolve 'understands' what the start frame / timecode is of the loaded media.
+
+![core_extract_review_out_args](assets/core_extract_review_out_args.png)
+:::
+
 - **`Output width`** and **`Output height`**
     - It is possible to rescale output to specified resolution and keep aspect ratio.
     - If value is set to 0, source resolution will be used.
@@ -296,6 +326,62 @@ A profile may generate multiple outputs from a single input. Each output must de
     - Filtering by custom tags -> this is used for targeting to output definitions from other extractors using settings (at this moment only Nuke bake extractor can target using custom tags).
         - Nuke extractor settings path: `project_settings/nuke/publish/ExtractReviewDataMov/outputs/baking/add_custom_tags`
     - Filtering by input length. Input may be video, sequence or single image. It is possible that `.mp4` should be created only when input is video or sequence and to create review `.png` when input is single frame. In some cases the output should be created even if it's single frame or multi frame input.
+
+### Extract Burnin
+
+:::info
+Remember to include the `burnin` tag when using `Extract Burnin`. Add it in the `Extract Review` settings to ensure it works correctly.
+:::
+
+The `Extract Burnin` plugin is a powerful tool for adding important details when publishing reviews. It comes with six placeholders that you can use right away.
+![](assets/core/admin/extract_burnin.png)
+
+**<font size="5">Customizing Extract Burnin</font>**
+
+You have the freedom to tailor the Extract Burnin to your needs. There are two main areas you can adjust:
+- **Burnin Formatting Options**: Change how the text looks.
+- **Profiles**: Set up different rules and data for the plugin.
+
+#### Burnin formatting options
+
+![](assets/core/admin/extract_burnin_format_settings.png)
+
+Adjust text appearance and position with these settings:
+1. Text Settings:
+   - Choose font size, color, and background color.
+   - Set x offset, y offset, and padding to position the text just right.
+2. Custom Font Path:
+   - Use a specific font by providing its file path.
+  
+#### Profiles
+![](assets/core/admin/extract_burnin_profile_settings.png)
+
+Create profiles to control how the plugin functions:
+1. Define the Context:
+   - Choose specific products, hosts, and tasks that the plugin will identify and work with.
+2. Burnin definitions:
+   - a. **Name**: Burnin definition name.
+   - b. **Placeholders Customization**: Tailor the placeholder text using [template keys](admin_settings_project_anatomy#available-template-keys), allowing flexibility for each user and context.
+   - c. **Additional Filtering**: Add extra filters to manage the use of multiple burnin definitions effectively.
+   - d. **Expansion (+)**: Add more definitions to fit your need.
+3. **Expansion (+)**: Add more profiles.
+
+:::info Placeholders and template keys
+To see a list of available template keys, please visit the [template keys](admin_settings_project_anatomy#available-template-keys) section.
+Additionally, be aware that some keys are exclusive to specific hosts. Nevertheless, these keys should function properly as we often align the addon features to ensure compatibility.
+:::
+
+:::tip Link Burnin by name
+You can link `Extract Review` profiles to a specific burn-in by using its name. 
+However, you're limited to choosing among burn-ins that are within the same burn-in profile.
+
+In my example, both `focal_length_burnin` and `default_burnin` are within the same burn-in profile.
+
+| **Extract Burnin** | **Extract Review** |
+|--|--|
+| ![](assets/core/admin/different_burnin_profiles.png) | ![](assets/core/admin/link_to_burnin_by_name.png) |
+
+:::
 
 ### Integrate Product Group
 
