@@ -85,7 +85,11 @@ module.exports = {
             type: "category",
             collapsed: false,
             label: "Production Tracking",
-            items: ["artist_my_tasks_page", "artist_activity_feed", "artist_inbox"],
+            items: [
+                "artist_my_tasks_page",
+                "artist_activity_feed",
+                "artist_inbox",
+            ],
         },
     ],
     Admin: [
@@ -183,6 +187,15 @@ module.exports = {
             type: "category",
             label: "Integrations",
             items: ["addon_aquarium_developer"].sort(sorted),
+        },
+    ],
+    Server: [
+        "server_introduction",
+        {
+            type: "category",
+            label: "AYON Frontend",
+            collapsed: false,
+            items: ["server_api_architecture", "server_theme"],
         },
     ],
 };
