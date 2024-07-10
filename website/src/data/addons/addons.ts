@@ -39,6 +39,7 @@ export const officialAddons = [
     "hiero",
     "houdini",
     "maya",
+    "motionbuilder",
     "nuke",
     "photoshop",
     "royalRender",
