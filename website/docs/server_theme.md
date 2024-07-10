@@ -64,10 +64,30 @@ This color is a custom color outside of the theme color.
   var(--color-hl-developer-surface-hover)
 ```
 
-**Other variables**
+### Production and Staging
+
+Two specific colors are used to specify the difference between "production" and "staging". These color are outside of the theme color.
+
+![Production and Staging UI elements](./assets/server/prod_and_staging.png)
+
+```CSS
+  var(--color-hl-production)
+  var(--color-hl-production-hover)
+  var(--color-hl-production-active)
+
+  var(--color-hl-staging)
+  var(--color-hl-staging-hover)
+  var(--color-hl-staging-active)
+```
+
+:::note
+Text on top of these colors should always be dark.
+:::
+
+## Useful Variables
 
 -   **Padding**: `--padding-s` (4px) `--padding-m` (8px) `--padding-l` (16px)
--   **Border radius**: --border-radius-m (4px) --border-radius-l (8px) (there are more but they are wrong, this needs fixing)
+-   **Border radius**: `--border-radius-m` (4px) `--border-radius-l` (8px) (there are more but they are wrong, this needs fixing)
 
 ## Typography
 
