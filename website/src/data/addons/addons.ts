@@ -18,9 +18,9 @@ import { AddonType } from ".";
 // When using a icon image, a blurred background will be generated and a color palette will be extracted from the image
 
 // USING A PREVIEW IMAGE
-// Sometimes icon images doesn't work as expected, in that case you can add a preview image that will be used instead
+// Sometimes icon images don't work as expected, in that case you can add a preview image that will be used instead
 // Preview images should be around 1:2 ratio (landscape), include a blurred background and have the text "myAddon Addon" baked into the image.
-// It's harder to match a preview image to the rest of the addons so it's recommended to use a icon image when possible
+// It's harder to match a preview image to the rest of the addons so it's recommended to use an icon image when possible
 
 // OFFICIAL ADDONS
 export const officialAddons = [
@@ -39,6 +39,7 @@ export const officialAddons = [
     "hiero",
     "houdini",
     "maya",
+    "motionbuilder",
     "nuke",
     "photoshop",
     "royalRender",
@@ -50,7 +51,7 @@ export const officialAddons = [
     "wrap",
     "openrv",
     "syncsketch",
-    "zbrush"
+    "zbrush",
 ] as const;
 
 // COMMUNITY ADDONS
