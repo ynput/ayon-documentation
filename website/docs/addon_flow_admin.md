@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 In Ayon, we've been using the name Shotgrid. But since we plan to change it, we'll start calling it Flow addon in our documentation. Sometimes, we might use SG too, just to keep things interesting.
 :::
 
-### Introduction
+## Introduction
 
 Flow ( previously known as ShotGrid or ShotGun) is a production tracking and asset management software that helps studios manage their projects, assets, and shots. The Ayon Flow integration allows you to seamlessly connect your Ayon Studio with Flow and automate the synchronization of your project data between the two systems. The integration enables you to synchronize folder attributes, status, tags, and reviewables between Ayon and Flow
 
@@ -35,21 +35,21 @@ Current version of the integration also supports following features:
   - via Tray widget for User email input - with secret shared User api key set in addon settings
 
 
-### Configuring Ayon
+## Configuring Ayon
 
 Before any project can be synchronized form Flow first we need to configure the addon's Studio settings.
 
-#### Setting up Flow Script connection
+### Setting up Flow Script connection
 
 1. Go to your Flow server and within your admin menu (1) select Scripts menu item (2). ![Flow Scripts](assets/shotgrid/sg_server_scripts.png)
 2. You'll need to create a new item for each access level and give it a name. We're calling our items `ayon_connector` and _`ayon_user_publishing`_. Each item is linked to a different **permission group**. It's important to know that the `ayon_connector` script is only for services, while `ayon_user_publishing` is for users logging into the Ayon Desktop app. This helps us manage different access levels. ![Flow Scripts items](assets/shotgrid/sg_server_scripts_items.png)
 3. When you create a script item, remember to save the generated hash key right away because it's only shown once.
 
-#### Setting Ayon Secrets
+### Setting Ayon Secrets
 
 Add the ayon_connector key to Ayon Secrets and name it some easy way so here in our example we are naming it `sg_server_script_key`. You can also add the `ayon_user_publishing` secret here just for future reference, but it will never be used as within SG addon settings.
 
-#### Flow addon Studio settings configuration
+### Flow addon Studio settings configuration
 
 :::tip Addon Frontend Tab
 To be able to use Shotgrid tab in Studio settings you need to have correctly configured addon at **production bundle** state. Please restart the server after you finalized the settings. After that, you should see the Shotgrid tab in Studio settings.
@@ -61,15 +61,15 @@ To get the addon's frontend tab working and sync all Flow projects, you need to 
 *   ShotGrid's Script API key (`ayon+settings://shotgrid/service_settings/script_key`)
 *   ShotGrid's Script Name (`ayon+settings://shotgrid/service_settings/script_name`)
 
-#### Setting up the ShotGrid URL
+### Setting up the ShotGrid URL
 First, enter your Flow server URL in the **Shotgrid URL** field. It looks something like `https://yourcompany.shotgrid.autodesk.com`.
 
-#### Setting up the ShotGrid's Script API key for Services
+### Setting up the ShotGrid's Script API key for Services
 Next, in the Services section, put your **ShotGrid's Script API key**. You should already have this key. Then, add your **ShotGrid's Script Name**. If you've followed the steps before, you might name it `ayon_connector`.
 
 ![Ayon Scripts items](assets/shotgrid/ay_server_scripts_items.png)
 
-#### Setting login types for Users
+### Setting login types for Users
 You need to decide how users will log into the Ayon Desktop app. Here are three options:
 
 1. **Via Environment variable** - This is the default login method. Enter the user's email as `AYON_SG_USERNAME` on each user's computer in your studio. With this method, users won't see their login details on the Tray app widget.
@@ -82,7 +82,7 @@ You need to decide how users will log into the Ayon Desktop app. Here are three 
 ![Ayon user login shared](assets/shotgrid/ay_user_login_shared.png)
 
 
-#### Setting up local storage for Flow
+### Setting up local storage for Flow
 
 In order to use power of Flows file system you have to configure local storage settings. This is done by enabling local storage and adding local storage name which had been previously configured in **Flow's Admin menu** > **Site preferences** > **File management**. Here it is important to **Enable linking to local files** (1) and create preset (2) for multiplatform file system. Copy name of the created preset (3) and paste it in Ayon Studio settings.
 ![Flow local storage](assets/shotgrid/sg_local_storage.png)
@@ -91,7 +91,7 @@ Paths should be mirroring defined paths in Ayon Anatomy root configuration. ![An
 
 The name of the preset copied previously should be pasted in Ayon Studio settings. ![Ayon local storage](assets/shotgrid/ay_local_storage.png)
 
-#### Anatomy preset configuration
+### Anatomy preset configuration
 
 To use the Flow addon with Ayon, you need to set up an Anatomy preset. This preset helps sync things between Ayon and Flow. To get started, you can create a new preset or pick an existing one. Right now, the only thing to remember is that _Task Types_, _Folder Types_, and _Statuses_ should each have only one item. Make sure it matches a common item you'd find in Flow.
 
@@ -114,14 +114,14 @@ And now the anatomy preset is ready to be used in Flow addon settings.
 
 ![Ayon anatomy preset set](assets/shotgrid/ay_anatomy_preset_set.png)
 
-#### Selecting enabled entities for synchronization
+### Selecting enabled entities for synchronization
 
 Flow's enabled entity enumerator (`ayon+settings://shotgrid/compatibility_settings/shotgrid_enabled_entities`) lets us pick which entities to sync between Ayon and Flow. We do this by choosing the entities from the list and saving our choices. But remember, we must also turn on these entities in Flow's Project Tracking settings. Ensure all required entities are visible (not hidden).
 
 ![Flow enabled entities](assets/shotgrid/sg_tracking_settings.png)
 
 
-#### Configuring folder attributes synchronization
+### Configuring folder attributes synchronization
 
 To sync folder attributes between Ayon and Flow, set up the **Folder Attributes Map**. Choose attributes to sync by adding the name to the **SG** column (1). Attributes with no value won't be considered. Use the **Scope** column (2) to pick only the Flow entities that should have the attribute. For instance, the **fps** attribute might be used only for Versions, Shots, and Project entities.
 
@@ -136,7 +136,7 @@ Here is a typical example of folder attributes mapping:
 ![Flow folder attributes](assets/shotgrid/ay_attribute_mapping.png)
 
 
-#### Targeting reviewables to Flow
+### Targeting reviewables to Flow
 
 You can effortlessly ensure that all reviewables will be uploaded to Flow. For this purpose, you simply need to attach a specific tag to Extract Review output presets. You can achieve this by following these steps:
 
