@@ -88,6 +88,7 @@ module.exports = {
             items: [
                 "artist_my_tasks_page",
                 "artist_activity_feed",
+                "artist_reviewables",
                 "artist_inbox",
             ],
         },
