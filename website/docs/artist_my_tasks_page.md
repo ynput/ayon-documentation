@@ -85,7 +85,7 @@ Switch to the list view for a data-rich, minimalist layout that prioritizes effi
 ![Group tasks](assets/home_tasks/home_tasks_list.png)
 
 :::tip
-To collapse or expand a group in the list view, simply hover over the group and press To collapse or expand a group in the list view, simply hover over the group and press **C** on your keyboard. on your keyboard.
+To collapse or expand a group in the list view, simply hover over the group and press To collapse or expand a group in the list view, simply hover over the group and press **C** on your keyboard.
 
 ![Group tasks](assets/home_tasks/home_tasks_list_collapse.png)
 :::
