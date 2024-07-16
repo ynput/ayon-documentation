@@ -66,6 +66,7 @@ module.exports = {
                         "addon_maya_redshift_artist",
                     ],
                 },
+                "addon_motionbuilder_artist",
                 "addon_nuke_artist",
                 "addon_photoshop_artist",
                 "addon_substancepainter_artist",
@@ -84,7 +85,12 @@ module.exports = {
             type: "category",
             collapsed: false,
             label: "Production Tracking",
-            items: ["artist_my_tasks_page", "artist_activity_feed", "artist_inbox"],
+            items: [
+                "artist_my_tasks_page",
+                "artist_activity_feed",
+                "artist_reviewables",
+                "artist_inbox",
+            ],
         },
     ],
     Admin: [
@@ -133,6 +139,7 @@ module.exports = {
                 "addon_houdini_admin",
                 "addon_keycloak_admin",
                 "addon_maya_admin",
+                "addon_motionbuilder_admin",
                 "addon_nuke_admin",
                 "addon_photoshop_admin",
                 "addon_site_sync_admin",
@@ -181,6 +188,15 @@ module.exports = {
             type: "category",
             label: "Integrations",
             items: ["addon_aquarium_developer"].sort(sorted),
+        },
+    ],
+    Server: [
+        "server_introduction",
+        {
+            type: "category",
+            label: "AYON Frontend",
+            collapsed: false,
+            items: ["server_api_architecture", "server_theme"],
         },
     ],
 };
