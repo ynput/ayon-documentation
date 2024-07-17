@@ -74,8 +74,12 @@ If you already have a running Kitsu service, you can simply Right-click, delete 
 ![](assets/kitsu/admin/kitsu_service.png)
 
 ### Server URL
-As soon as you set the `Server` url in Kitsu settings. And that's all!
 
+:::tip
+If you're operating your Kitsu instance with Docker and encounter a connection error, it's likely due to an incorrect IP address. Make sure to use the right one. For additional details, visit this community post: [Kitsu connection error (Could not login to Kitsu)](https://community.ynput.io/t/kitsu-connection-error-could-not-login-to-kitsu/1556/13).
+:::
+
+As soon as you set the `Server` url in Kitsu settings. And that's all!
 - `ayon+settings://kitsu/server`
   
 ![](assets/kitsu/admin/kitsu_server_url.png)
