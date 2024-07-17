@@ -27,7 +27,7 @@ Project settings > `Maya` > `Loaders` > `Ornatrix Rig Loader`
 
 ![Maya - Ornatrix Validator Setting](assets/maya/artist/ox_validator_maya_addon_setting.jpg)
 
-![Maya - Ornatrix Loader Setting](assets/maya/artist/ox_loaders_maya_addon_setting.jpg)
+![Maya - Ornatrix Loader Setting](assets/maya/artist/ox_loaders_maya_addon_setting.png)
 
 ## Workflow
 AYON has two creators for Ornatrix publishing: ```Ornatrix Rig``` and ```Ornatrix Cache```
