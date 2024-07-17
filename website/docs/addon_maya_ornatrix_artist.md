@@ -30,7 +30,7 @@ On the AYON Studio Settings or Project Settings enable the Ornatrix plug-ins for
 ![Maya - Ornatrix Loader Setting](assets/maya/artist/ox_loaders_maya_addon_setting.png)
 
 ## Workflow
-AYON has two creators for Ornatrix publishing: ```Ornatrix Rig``` and ```Ornatrix Cache```
+AYON has two creators for Ornatrix publishing: ```Ornatrix Rig``` and ```Ornatrix Cache```.
 
 ## Ornatrix Rig
 
