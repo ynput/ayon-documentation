@@ -16,11 +16,11 @@ AYON supports Ephere's **Ornatrix** with the workflow of publishing and loading 
 ## Maya Addon Setting before using AYON for Ornatrix Maya
 On the `AYON` server, navigate to the following settings section and enable the two creators and validators:
 
-Project settings > `Maya` > `Creators` > `Create Ornatrix Rig`
-Project settings > `Maya` > `Creators` > `Create Ornatrix Cache`
-Project settings > `Maya` > `Publishers` > `Validate Ornatrix Contents`
-Project settings > `Maya` > `Loaders` > `Ornatrix Cache Loader`
-Project settings > `Maya` > `Loaders` > `Ornatrix Rig Loader`
+- Project settings > `Maya` > `Creators` > `Create Ornatrix Rig`
+- Project settings > `Maya` > `Creators` > `Create Ornatrix Cache`
+- Project settings > `Maya` > `Publishers` > `Validate Ornatrix Contents`
+- Project settings > `Maya` > `Loaders` > `Ornatrix Cache Loader`
+- Project settings > `Maya` > `Loaders` > `Ornatrix Rig Loader`
 
 
 ![Maya - Ornatrix Creators Setting](assets/maya/artist/ox_creators_maya_addon_setting.jpg)
