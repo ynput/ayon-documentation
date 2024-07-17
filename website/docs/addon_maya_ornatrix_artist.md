@@ -14,7 +14,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 AYON supports Ephere's **Ornatrix** with the workflow of publishing and loading maya scene with Ornatrix data, Ornatrix groom presets and Ornatrix Alembic.It also supports to connect your target geometry with the loaded Ornatrix data(either from the maya scene or the groom preset)
 
 ## Maya Addon Setting before using AYON for Ornatrix Maya
-On the `AYON` server, navigate to the following settings section and enable the two creators and validators:
+On the AYON Studio Settings or Project Settings enable the Ornatrix plug-ins for Maya:
 
 - Project settings > `Maya` > `Creators` > `Create Ornatrix Rig`
 - Project settings > `Maya` > `Creators` > `Create Ornatrix Cache`
