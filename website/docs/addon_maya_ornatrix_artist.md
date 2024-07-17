@@ -68,7 +68,7 @@ You can turn off the auto-creation by going to `AYON` server -> Project settings
 
 Users can either create ```Ornatrix Cache``` instance by their own or load ornatrix rig which automatically creates the instance after launching the Publisher UI.
 
-The cache family would export Ornatrix Alembic(.abc) which includes the Ornatrix data into the publish folder.
+The cache family exports Ornatrix Alembic (.abc) which includes the Ornatrix data into the publish folder.
 
 ### Loading
 ```Ornatrix Rig```supports to load Ornatrix alembic (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
