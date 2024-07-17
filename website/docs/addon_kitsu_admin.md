@@ -139,6 +139,10 @@ And, `Integrate Kitsu Note` will do the hard work for them.
 
 ## Q&A
 ### Is it safe to rename an entity from Kitsu?
+:::caution
+While changing the names of entities is allowed, Be aware it doesn't change the existent file names or publishes.
+:::
+
 Absolutely! Entities are linked by their unique IDs between the two databases.  
 - If you rename an entity in the AYON project editor, this change won't show up in Kitsu. Instead, it will be replaced with the original name when the next sync happens.
 - When you rename an entity directly in Kitsu, the new name will be updated in AYON during the upcoming synchronization.
