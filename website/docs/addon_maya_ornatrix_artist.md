@@ -56,7 +56,7 @@ Both Maya Scene and groom preset allow for connecting ornatrix rig with the anim
 
 Users need to go to `AYON` -> `Manage...`and select the assets from oxrig and animation/pointcache product type. Then they need to right-click `Actions` -> `Connect Ornatrix Rig` and the Ornatrix geometry would be connected the animation rig with the transform and mesh attributes.
 
-Users can choose to load Hair Guide Node with Alembic by Ornatrix alembic to Hair Guide Node (.abc), which sets the alembic as file cache path inisde the node and they can select to connect the node with the node editor or edit it in the operator stack editor.
+Users can choose to load Hair Guide Node with Alembic by Ornatrix alembic to Hair Guide Node (.abc), which sets the alembic as file cache path inside the node and they can select to connect the node with the node editor or edit it in the operator stack editor.
 
 Once you finished on your Ornatrix rig, you can also go to `AYON` -> `Publish`. It will automatically create Ornatrix Cache instance and allow you to publish Ornatrix Alembic.
 You can turn off the auto-creation by going to `AYON` server -> Project settings > `Maya` > `Loaders` > `Ornatrix Rig Loader` -> `Create Ornatrix Cache on load`
