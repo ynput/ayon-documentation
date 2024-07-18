@@ -78,4 +78,4 @@ Users can either create ```Ornatrix Cache``` instance by their own or load ornat
 The cache family exports Ornatrix Alembic (.abc) which includes the Ornatrix data into the publish folder.
 
 ### Loading
-```Ornatrix Rig```supports to load Ornatrix alembic (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
+The **Ornatrix Cache** supports to load Ornatrix alembic (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
