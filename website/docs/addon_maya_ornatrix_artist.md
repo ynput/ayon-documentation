@@ -50,7 +50,7 @@ Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instan
 
 ![Maya - Ornatrix Loader Product Type](assets/maya/artist/ox_loader_product_type.png)
 
-```Ornatrix Rig```supports to load maya scene (.ma), groom preset (.oxg.zip), Ornatrix alembic (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
+**Ornatrix Rig** supports to load maya scene (.ma), groom preset (.oxg.zip), Ornatrix alembic (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
 
 ![Maya - Ornatrix Loaders](assets/maya/artist/ox_loader_product_type.png)
 
