@@ -40,7 +40,13 @@ The **Ornatrix Rig** (product type: *oxrig*) publishes the geometry with the Orn
 
 ![Maya - Ornatrix Rig Publishing](assets/maya/artist/ornatrix_rig_publishing.gif)
 
-Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instance.If the instance contains anything other than the mesh, the validator checks and raise error to make sure there are always mesh(s) inside the instance. When it is published, several files are exported to the publish folder:
+Select your mesh (that has Ornatrix fur) and create the Ornatrix Rig instance.
+
+:::tip
+If the instance contains anything other than the mesh, the publish validators will report the error to make sure there are always mesh(es) inside the instance.
+:::
+
+When it is published, several files are exported to the publish folder:
 
 - Maya Scene with the Ornatrix data (.ma)
 - Groom Preset (.oxg.zip)
