@@ -11,7 +11,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.Maya_Badge}
 </ReactMarkdown>
 
-AYON supports Ephere's **Ornatrix** with the workflow of publishing and loading maya scene with Ornatrix data, Ornatrix groom presets and Ornatrix Alembic.It also supports to connect your target geometry with the loaded Ornatrix data(either from the maya scene or the groom preset)
+AYON supports Ephere's **Ornatrix** with the workflow of publishing and loading maya scene with Ornatrix data, Ornatrix groom presets and Ornatrix Alembic. It also supports to connect your target geometry with the loaded Ornatrix data (either from the maya scene or the groom preset.)
 
 ## Maya Addon Setting before using AYON for Ornatrix Maya
 On the AYON Studio Settings or Project Settings enable the Ornatrix plug-ins for Maya:
