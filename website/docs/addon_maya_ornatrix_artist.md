@@ -60,8 +60,13 @@ Users need to go to `AYON` -> `Manage...`and select the assets from oxrig and an
 
 Users can choose to load Hair Guide Node with Alembic by Ornatrix alembic to Hair Guide Node (.abc), which sets the alembic as file cache path inside the node and they can select to connect the node with the node editor or edit it in the operator stack editor.
 
-Once you finished on your Ornatrix rig, you can also go to `AYON` -> `Publish`. It will automatically create Ornatrix Cache instance and allow you to publish Ornatrix Alembic.
+Once you are finished with the Ornatrix rig, you can go to `AYON` -> `Publish` to publish an Ornatrix Cache. 
+
+:::tip
+Loading the Ornatrix Rig will automatically create the Ornatrix Cache instance for it. That's why you can directly continue publishing data when you're ready.
+
 You can turn off the auto-creation by going to `AYON` server -> Project settings > `Maya` > `Loaders` > `Ornatrix Rig Loader` -> `Create Ornatrix Cache on load`
+:::
 
 
 ## Ornatrix Caches
