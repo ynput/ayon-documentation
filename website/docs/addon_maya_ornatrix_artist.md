@@ -41,7 +41,13 @@ The **Ornatrix Rig** (product type: *oxrig*) publishes the geometry with the Orn
 
 ![Maya - Ornatrix Rig Publishing](assets/maya/artist/ornatrix_rig_publishing.gif)
 
-Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instance.If the instance contains anything other than the mesh, the validator checks and raise error to make sure there are always mesh(s) inside the instance. When it is published, several files are exported to the publish folder:
+Select your mesh (that has Ornatrix fur) and create the Ornatrix Rig instance.
+
+:::tip
+If the instance contains anything other than the mesh, the publish validators will report the error to make sure there are always mesh(es) inside the instance.
+:::
+
+When it is published, several files are exported to the publish folder:
 
 - Maya Scene with the Ornatrix data (.ma)
 - Rig Setting data (.rigsettings)
@@ -69,6 +75,7 @@ The Ornatrix geometry will be connected the animation rig with the transform and
 
 :::tip
 The connecting will occur by node name - so if it fails, make sure the node name for the geometry is the same across your animation caches and the ornatrix exports.
+
 **Double geometry:** Be aware that both the ornatrix rig and your animated cache have the mesh geometry. After connecting the fur you will most likely want to hide one of the two to ensure you do not have two overlapping meshes during rendering.
 :::
 
