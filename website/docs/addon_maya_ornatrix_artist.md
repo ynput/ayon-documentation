@@ -36,7 +36,9 @@ AYON has two creators for Ornatrix publishing: ```Ornatrix Rig``` and ```Ornatri
 
 ### Creating and publishing
 
-```Ornatrix Rig```(product type: *oxrig*) being to publish the asset with the Ornatrix data. Users select your mesh with Ornatrix fur and create ```Ornatrix Rig``` instance. When it is published, several files are exported to the publish folder:
+The **Ornatrix Rig** (product type: *oxrig*) publishes the geometry with the Ornatrix data. 
+
+Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instance. When it is published, several files are exported to the publish folder:
 
 - Maya Scene with the Ornatrix data (.ma)
 - Groom Preset (.oxg.zip)
