@@ -1,7 +1,7 @@
 ---
 id: server_theme
 title: Server Theme
-sidebar_label: Server Theme
+sidebar_label: Theme
 ---
 
 The ayon theme is based on the material design philosophy: https://m2.material.io/.
