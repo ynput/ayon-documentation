@@ -54,13 +54,26 @@ Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instan
 
 **Ornatrix Rig** supports to load maya scene (.ma), groom preset (.oxg.zip), Ornatrix alembic (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
 
-![Maya - Ornatrix Loaders](assets/maya/artist/ox_loader_product_type.png)
+![Maya - Ornatrix Loaders](assets/maya/artist/ox_rig_loader.png)
 
 Both Maya Scene and groom preset allow for connecting ornatrix rig with the animation/pointcache rig.
 
 ![Maya - Ornatrix Rig Loading](assets/maya/artist/ornatrix_rig_loading.gif)
 
-Users need to go to `AYON` -> `Manage...`and select the assets from oxrig and animation/pointcache product type. Then they need to right-click `Actions` -> `Connect Ornatrix Rig` and the Ornatrix geometry would be connected the animation rig with the transform and mesh attributes.
+#### Connecting an Ornatrix rig with a pointcache or animation
+After loading the Ornatrix Rig and a pointcache to connect it to, you can use the AYON tools to connect it for you:
+
+1. Go to `AYON` -> `Manage...`
+2. In the inventory select the assets from oxrig and animation/pointcache product type.
+3. Right-click `Actions` -> `Connect Ornatrix Rig`
+The Ornatrix geometry will be connected the animation rig with the transform and mesh attributes.
+
+:::tip
+The connecting will occur by node name - so if it fails, make sure the node name for the geometry is the same across your animation caches and the ornatrix exports.
+**Double geometry:** Be aware that both the ornatrix rig and your animated cache have the mesh geometry. After connecting the fur you will most likely want to hide one of the two to ensure you do not have two overlapping meshes during rendering.
+:::
+
+#### Loading Ornatrix Hair Guide using the Ornatrix alembic
 
 Users can choose to load Hair Guide Node with Alembic by Ornatrix alembic to Hair Guide Node (.abc), which sets the alembic as file cache path inside the node and they can select to connect the node with the node editor or edit it in the operator stack editor.
 
