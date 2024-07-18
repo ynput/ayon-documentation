@@ -36,9 +36,11 @@ AYON has two creators for Ornatrix publishing: ```Ornatrix Rig``` and ```Ornatri
 
 ### Creating and publishing
 
-The **Ornatrix Rig** (product type: *oxrig*) publishes the geometry with the Ornatrix data. 
+The **Ornatrix Rig** (product type: *oxrig*) publishes the geometry with the Ornatrix data.
 
-Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instance. When it is published, several files are exported to the publish folder:
+![Maya - Ornatrix Rig Publishing](assets/maya/artist/ornatrix_rig_publishing.gif)
+
+Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instance.If the instance contains anything other than the mesh, the validator checks and raise error to make sure there are always mesh(s) inside the instance. When it is published, several files are exported to the publish folder:
 
 - Maya Scene with the Ornatrix data (.ma)
 - Groom Preset (.oxg.zip)
@@ -56,11 +58,13 @@ Select your mesh (that has with Ornatrix fur) and create the Ornatrix Rig instan
 
 Both Maya Scene and groom preset allow for connecting ornatrix rig with the animation/pointcache rig.
 
+![Maya - Ornatrix Rig Loading](assets/maya/artist/ornatrix_rig_loading.gif)
+
 Users need to go to `AYON` -> `Manage...`and select the assets from oxrig and animation/pointcache product type. Then they need to right-click `Actions` -> `Connect Ornatrix Rig` and the Ornatrix geometry would be connected the animation rig with the transform and mesh attributes.
 
 Users can choose to load Hair Guide Node with Alembic by Ornatrix alembic to Hair Guide Node (.abc), which sets the alembic as file cache path inside the node and they can select to connect the node with the node editor or edit it in the operator stack editor.
 
-Once you are finished with the Ornatrix rig, you can go to `AYON` -> `Publish` to publish an Ornatrix Cache. 
+Once you are finished with the Ornatrix rig, you can go to `AYON` -> `Publish` to publish an Ornatrix Cache.
 
 :::tip
 Loading the Ornatrix Rig will automatically create the Ornatrix Cache instance for it. That's why you can directly continue publishing data when you're ready.
@@ -75,7 +79,10 @@ You can turn off the auto-creation by going to `AYON` server -> Project settings
 
 Users can either create an ```Ornatrix Cache``` instance themselves or load ornatrix rig which automatically creates the instance ready for publishing.
 
+![Maya - Ornatrix Cache Publishing](assets/maya/artist/ornatrix_cache_publishing.gif)
+
 The cache family exports Ornatrix Alembic (.abc) which includes the Ornatrix data into the publish folder.
 
 ### Loading
-The **Ornatrix Cache** supports to load Ornatrix alembic (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
+
+The **Ornatrix Cache** supports to load Ornatrix alembic (.abc), Vray Proxy (.abc), Arnold Scene Source (.abc) and Ornatrix alembic to Hair Guide Node (.abc).
