@@ -76,6 +76,7 @@ The Ornatrix geometry will be connected the animation rig with the transform and
 
 :::tip
 The connecting will occur by node name - so if it fails, make sure the node name for the geometry is the same across your animation caches and the ornatrix exports.
+
 **Double geometry:** Be aware that both the ornatrix rig and your animated cache have the mesh geometry. After connecting the fur you will most likely want to hide one of the two to ensure you do not have two overlapping meshes during rendering.
 :::
 
