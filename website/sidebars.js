@@ -61,6 +61,7 @@ module.exports = {
                         "addon_maya_multiverse_artist",
                         "addon_maya_yeti_artist",
                         "addon_maya_xgen_artist",
+                        "addon_maya_ornatrix_artist",
                         "addon_maya_arnold_artist",
                         "addon_maya_vray_artist",
                         "addon_maya_redshift_artist",
