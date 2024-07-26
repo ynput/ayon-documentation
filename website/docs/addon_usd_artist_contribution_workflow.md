@@ -46,10 +46,10 @@ With AYON's USD Contribution each product publish adds up into the target USD as
 Examples in publisher UI:
 
 ####  Asset contribution to `usdAsset` for the Look department layer:
-![image|413x222](upload://c2j5LGeoLQZGqWzswoWL5NU7kPm.png)
+![AYON USD Contribution to Asset in Publisher UI](assets//usd/ayon_usd_contribution_to_asset.png)
 
 #### Shot contribution to `usdShot` for the FX department layer:
-![image|404x218](upload://ddeJD7J2ZRdZb8KPS0I63lBYARZ.png)
+![AYON USD Contribution to Shot in Publisher UI](assets//usd/ayon_usd_contribution_to_shot.png)
 
 **Note:**
 - Currently it's a manual process to target `usdShot` instead of `usdAsset` for shot contributions. It's on the planning to improve that workflow! This is notably a common mistake to forget changing that, so be aware!
