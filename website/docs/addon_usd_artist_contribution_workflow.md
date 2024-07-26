@@ -28,7 +28,7 @@ However, **USD can reference and layer non-destructively** which means we can sa
 
 This is where the USD Asset Contribution workflow automates this for you.
 
-With the **USD Contribution** enabled :white_check_mark: on the USD publish instances this means it will automatically add your product into the department layer for the Asset or Shot.
+With the **USD Contribution** enabled on the USD publish instances this means it will automatically add your product into the department layer for the Asset or Shot.
 
 - usdShot
     - usdShot_animation
@@ -37,7 +37,7 @@ With the **USD Contribution** enabled :white_check_mark: on the USD publish inst
     - usdShot_fx
         - pointcacheFX_building
 
-TL:DR :see_no_evil: 
+**TL;DR**
 
 With AYON's USD Contribution each product publish adds up into the target USD asset or USD shot. :tada: 
 
