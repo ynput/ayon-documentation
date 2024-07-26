@@ -67,6 +67,24 @@ module.exports = {
                         "addon_maya_redshift_artist",
                     ],
                 },
+                {
+                    type: "category",
+                    label: "USD",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON USD Book',
+                        description:
+                          "Welcome to AYON USD Book!",
+                        keywords: ['usd'],
+                      },
+                    items: [
+                        "addon_usd_artist_usd_intro",
+                        "addon_usd_artist_get_started",
+                        "addon_usd_artist_contribution_workflow",
+                        "addon_usd_artist_houdini_workflow",
+                        "addon_usd_artist_faq",
+                    ],
+                },
                 "addon_motionbuilder_artist",
                 "addon_nuke_artist",
                 "addon_photoshop_artist",
@@ -156,6 +174,8 @@ module.exports = {
                 "addon_syncsketch_admin",
                 "addon_flow_admin",
                 "addon_aquarium_admin",
+                "addon_usd_admin",
+               
             ].sort(sorted),
         },
         "admin_releases",
