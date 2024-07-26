@@ -4,7 +4,7 @@ title: Houdini USD Workflow
 sidebar_label: Houdini Workflow
 ---
 
-::: info
+:::info
 This page is still under construction 👷🚧🛠️🔜🏗️.
 :::
 

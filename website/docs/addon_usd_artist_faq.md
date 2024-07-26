@@ -4,7 +4,7 @@ title: FAQ
 sidebar_label: FAQ
 ---
 
-::: info
+:::info
 This page is still under construction 👷🚧🛠️🔜🏗️.
 :::
 
