@@ -89,3 +89,10 @@ _Houdini perspective_
 - Publish your USD render submission to Husk Standalone 
 
 You are now the USD champion - until they ask you about asset variants, LODs, purposes and a layered shot structure, and more. Easy, cowboy!
+
+
+# Additional context
+
+- [Ayon Core USD workflow PR contains some comments and explanations](https://github.com/ynput/ayon-core/pull/295)
+- [In the original OpenPype PR description it contained quite some 'test' videos](https://github.com/ynput/OpenPype/pull/5925#issue-1995346181)
+- [At FMX 2024 an OpenUSD presentation was given that showed usage of what is basically the functionality of this PR](https://www.youtube.com/watch?v=1KqrIRCi_EQ).
