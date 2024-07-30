@@ -52,16 +52,34 @@ You would usually *always* **reference** the asset. That is the `usdAsset` produ
 
 ##### Asset Build
 
-When working on the asset build, the asset name requires to remain constant and be in a root prim with the folder name. A trick is to set the Primitive Path to:
+When working on the asset build, the asset name requires to remain constant and be in a root prim with the folder name. A trick is to set the Primitive Path on the Load Asset LOP to:
 
 ```
-/`strsplit(chs("folder_path"), "/", -1)`
+/`chs("folder_name")`
 ```
-So that it's always the folder name of the loaded content (this works only with the Ayon Load Asset LOP)
+So that it's always the folder name of the loaded content.
+
+:::note
+The `chs("folder_name")` trick only applies to the Ayon Load Asset LOP.
+:::
+
+:::tip Easy primitive path presets on AYON Load Asset LOP
+Note that the Load Asset LOP provides some quick access to primitive path presets directly in the parameter view.
+
+![AYON Load Asset LOP Primitive Path Presets](assets//usd/ayon_usd_load_asset_lop_primpath_presets.png)
+:::
 
 ##### Shot Assembly
 
 For scene assembly, like doing bigger scene layouts or even just loading assets into a shot. Since these are also for "shot" workflows (you're building a shot layer) and these sublayer in the different apartments you don't need a single root primitive, you can layout your scene hierarchy any way you want.
+
+As such you usually want each loaded asset to be a unique prim path in your scene - which is the default primitive path for the Load Asset LOP.
+
+```
+`chs("folder_path")`/$OS
+```
+
+Which translates to the full folder's path and the node's name. However, here you are free to make the hierarchy work in a way that makes sense for your scene assembly structure.
 
 ##### Assembly Prop (asset scene assembly)
 
