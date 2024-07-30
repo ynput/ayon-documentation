@@ -45,6 +45,19 @@ You can manually update your watcher status using the bell icon in the toolbar a
 
 Watchers was introduced in `1.3.1`
 
+## Importance Table
+
+| When you...                  | Then you...                | Watchers receive... | Users with a relation receive... |
+| ---------------------------- | -------------------------- | ------------------- | -------------------------------- |
+| post a comment               | become a watcher           | Important           | Other                            |
+| are mentioned in a comment   | get important notification | Important           | Other                            |
+| post a reviewable            | become a watcher           | Important           | Other                            |
+| publish a version            | become a watcher           | Important           | Other                            |
+| get assigned to a task       | become a watcher           | Important           | Other                            |
+| change a status of an entity | -                          | Important           | Other                            |
+| assign someone to a task     | -                          | Other               | Other                            |
+| remove someone from a task   | -                          | Other               | Other                            |
+
 ## Realtime Notifications
 
 Enable browser push notifications to stay aware of new important inbox messages. You can activate these notifications from the inbox or your account profile page.
@@ -61,16 +74,3 @@ Desktop notifications and notification sounds work independently to one another.
 :::warning
 Desktop notifications will not work over HTTP connections due to strict browser security measures.
 :::
-
-## Importance Table
-
-| When you...                  | Then you...                | Watchers receive... | Users with a relation receive... |
-| ---------------------------- | -------------------------- | ------------------- | -------------------------------- |
-| post a comment               | become a watcher           | Important           | Other                            |
-| are mentioned in a comment   | get important notification | Important           | Other                            |
-| post a reviewable            | become a watcher           | Important           | Other                            |
-| publish a version            | become a watcher           | Important           | Other                            |
-| get assigned to a task       | become a watcher           | Important           | Other                            |
-| change a status of an entity | -                          | Important           | Other                            |
-| assign someone to a task     | -                          | Other               | Other                            |
-| remove someone from a task   | -                          | Other               | Other                            |
