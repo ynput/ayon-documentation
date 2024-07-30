@@ -20,18 +20,22 @@ Think of the inbox as a dynamic to-do list for tasks that require your attention
 The inbox has full keyboard support! Hover over any message and press `X` to mark it as read/unread or `C` to clear/unclear.
 :::
 
-**Important**
+**Important Messages Examples**
 
 -   You are directly mentioned in the comment. For example: `Looks great @Felix Peterson`.
 -   You are a watcher on a task.
+-   You are assigned to or removed from a task and therefore become a watcher.
+-   You make a comment and therefore become a watcher.
 
-**Other**
+**Other Messages Examples**
 
 -   You are removed from a task.
 -   New activity on entities you are assigned to or have authored, including:
     -   Comments
     -   Status changes
     -   Assignee changes
+
+[Read more about importance](./artist_inbox.md#importance-table)
 
 ## Watchers
 
