@@ -98,9 +98,13 @@ _TODO_
 
 ### Mute Layers
 
-Via **[Configure Stage LOP node -> Mute Layers](https://www.sidefx.com/docs/houdini/nodes/lop/configurestage.html)**
+Via **AYON Mute Layers LOP** or **[Configure Stage LOP node -> Mute Layers](https://www.sidefx.com/docs/houdini/nodes/lop/configurestage.html)**
 
 Muting layers allow you to mute for example your own department layer in a loaded USD asset or shot. This way you avoid that your Houdini Solaris graph after publishing and updating already has your generated data loaded back in at the start of the graph.
+
+:::tip
+It is usually (99% of the time) good practice to mute your current department's layer. Basically, always mute your own task/department layer to be sure.
+:::
 
 Imagine you load a USD Shot containing the layers:
 
@@ -116,11 +120,13 @@ The USD shot now has:
 
 As such, your USD scene is now already loading back in what you wrote out last time - which is if you were to remove e.g. a light from Solaris graph it would still be there, because it's already being loaded in. So, **layer muting** is what you need here. You basically ensure that you mute your OWN layer so that you don't include that while you're working.
 
-**Note:** The state of muting layers is never written into a USD file - it's a run-time effect only on your composed USD stage. As such, you can not e.g. write out the opinion from one layer that another layer must be muted from now on. So, [**you can't save layer muting into USD files**](https://www.sidefx.com/forum/topic/86607/#post-374289). You can however write new opinions onto the prims or hide/deactivate prims you don't want - which will be opinions that you can write out and then effect downstream departments.
+::: note Layer Muting is not written to USD files
+The state of muting layers is never written into a USD file - it's a run-time effect only on your composed USD stage. As such, you can not e.g. write out the opinion from one layer that another layer must be muted from now on. So, [**you can't save layer muting into USD files**](https://www.sidefx.com/forum/topic/86607/#post-374289). You can however write new opinions onto the prims or hide/deactivate prims you don't want - which will be opinions that you can write out and then effect downstream departments.
+:::
 
-*TODO*
-> - Layer Mute your current department, HOW and WHY?
- > - Add Mute Layers LOP example.
+The **AYON Mute Layers** lop allows you to easily mute the layers for a particular department by using the context menu to the side of the Mute Patterns parameter:
+
+![AYON Mute Layers LOP Mute Patterns Presets](assets//usd/ayon_usd_mute_layer_lop.png)
 
 
 ---
