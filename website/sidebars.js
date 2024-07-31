@@ -61,6 +61,7 @@ module.exports = {
                         "addon_maya_multiverse_artist",
                         "addon_maya_yeti_artist",
                         "addon_maya_xgen_artist",
+                        "addon_maya_ornatrix_artist",
                         "addon_maya_arnold_artist",
                         "addon_maya_vray_artist",
                         "addon_maya_redshift_artist",
@@ -88,6 +89,7 @@ module.exports = {
             items: [
                 "artist_my_tasks_page",
                 "artist_activity_feed",
+                "artist_reviewables",
                 "artist_inbox",
             ],
         },
@@ -172,6 +174,15 @@ module.exports = {
                 "dev_launcher_build_linux",
             ],
         },
+        {
+            type: "category",
+            label: "AYON server",
+            items: [
+                "server_introduction",
+                "server_api_architecture",
+                "server_theme",
+            ],
+        },
         "dev_dev_mode",
         "dev_testing",
         "dev_contribute",
@@ -187,15 +198,6 @@ module.exports = {
             type: "category",
             label: "Integrations",
             items: ["addon_aquarium_developer"].sort(sorted),
-        },
-    ],
-    Server: [
-        "server_introduction",
-        {
-            type: "category",
-            label: "AYON Frontend",
-            collapsed: false,
-            items: ["server_api_architecture", "server_theme"],
         },
     ],
 };

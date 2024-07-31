@@ -1,7 +1,7 @@
 ---
 id: server_introduction
 title: Server Introduction
-sidebar_label: Server Introduction
+sidebar_label: Introduction
 ---
 
 ## Getting Started
@@ -24,19 +24,19 @@ This is a general overview of the different parts of AYON. The server developmen
 
 ## AYON Backend
 
-- Python 3.12
-- FastAPI, Strawberry (GraphQL)
-- PostgreSQL (asyncpg), Redis (aioredis)
-- gunicorn/uvicorn server (option to use granian)
+-   Python 3.12
+-   FastAPI, Strawberry (GraphQL)
+-   PostgreSQL (asyncpg), Redis (aioredis)
+-   gunicorn/uvicorn server (option to use granian)
 
 ## AYON Frontend
 
-- Yarn, Nodejs 20+, Vite
-- ReactJs
-- Typescript (migration in progress)
-- Redux toolkit with RTK Query
-- AYON React Component Library (ARC)
-- Styled Components
+-   Yarn, Nodejs 20+, Vite
+-   ReactJs
+-   Typescript (migration in progress)
+-   Redux toolkit with RTK Query
+-   AYON React Component Library (ARC)
+-   Styled Components
 
 ### **Env variables**
 
@@ -45,11 +45,12 @@ Create a `env.local` file in the root directory.
 `SERVER_URL=http://localhost:5000` - URL of the backend server
 
 ### **Recommended VSCode Extensions**
-- CSS Variable Autocomplete
-- GitHub Pull Requests
-- vscode-styled-components
-- GraphQL: Language Feature Support
-- GraphQL: Syntax Highlighting
+
+-   CSS Variable Autocomplete
+-   GitHub Pull Requests
+-   vscode-styled-components
+-   GraphQL: Language Feature Support
+-   GraphQL: Syntax Highlighting
 
 ## AYON React Component Library (ARC)
 

@@ -58,10 +58,17 @@ time or updated if opening for next times.
 
 ### Launching of Wrap
 
-Regular artist opens Wrap ordinary via Launcher. Before Wrap is opened Scene Inventory tool will be shown to highlight which items
-were loaded when placeholders got resolved. Artist can see version, if loaded version is not the latest, it is highlighted by red color.
+Regular artist opens Wrap ordinary via Launcher. 
+
+If workflow needs multiple templates for single task, artist will be shown this dialog, where they need to select template
+they want to work on. They will be also offered to `Create New` workfile from selected template, or `Open` existing workfile.
 
 ![Wrap Scene Inventory](assets/artist_hosts_wrap_scene_inventory.png)
+
+Before Wrap is opened Scene Inventory tool will be shown to highlight which items
+were loaded when placeholders got resolved. Artist can see version, if loaded version is not the latest, it is highlighted by red color.
+
+![Wrap Scene Inventory](assets/artist_hosts_wrap_multi_templates.png)
 
 In case of error, it could be a missing representation of specified product, similar error dialog will be shown. Artist can change version
 of loaded item via dialog after Right Mouse Click is pressed above the item.

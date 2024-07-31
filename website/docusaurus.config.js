@@ -108,11 +108,6 @@ const config = {
                         position: "left",
                     },
                     {
-                        to: "docs/server_introduction",
-                        label: "Server Docs",
-                        position: "left",
-                    },
-                    {
                         to: "/api",
                         label: "REST API Docs",
                         position: "left",
