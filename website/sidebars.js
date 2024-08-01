@@ -81,6 +81,7 @@ module.exports = {
                         "addon_usd_artist_usd_intro",
                         "addon_usd_artist_get_started",
                         "addon_usd_artist_contribution_workflow",
+                        "addon_usd_artist_maya_workflow",
                         "addon_usd_artist_houdini_workflow",
                         "addon_usd_artist_faq",
                     ],
