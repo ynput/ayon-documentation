@@ -62,3 +62,28 @@ A USD Shot is a USD file structured to enhance shot exchange.
 It effectively combines distinct layers from various departments into one streamlined file.
 
 ![](assets/usd/usd_intro/usd_shot.png)
+
+
+## Further Reading
+
+### USD Introduction Guides
+- [**Book of USD** - Getting Started with Universal Scene Description (USD)](https://remedy-entertainment.github.io/USDBook/) by Remedy Entertainment
+> :point_up: Very good introduction to USD concepts in a slightly simplified and practical way
+
+- [**Usd Survival Guide**](https://lucascheller.github.io/VFX-UsdSurvivalGuide/index.html) by Luca Scheller
+> :point_up: More technical guide going over USD with the API as guideway. Also introduces a lot of "workflow optimizations" tips with a focus on Houdini Solaris and Python
+
+### USD Asset Structure Guidelines
+:::info
+Our USD workflow follows the following structure guidelines.
+:::
+
+* **[Principles of Scalable Asset Structure in OpenUSD](https://docs.omniverse.nvidia.com/usd/latest/learn-openusd/independent/asset-structure-principles.html#id5)**
+* **[Guidelines for Structuring USD Assets](https://wiki.aswf.io/display/WGUSD/Guidelines+for+Structuring+USD+Assets)**
+
+### Example USD Assets
+
+The ALab data set is the Animal Logic interpretation and implementation of real world production and pipeline concepts in USD.
+
+- **[ALab Download](https://dpel.aswf.io/alab/)**
+- **[ALab Documentation](https://usd-alab2.s3.amazonaws.com/README.html)**
