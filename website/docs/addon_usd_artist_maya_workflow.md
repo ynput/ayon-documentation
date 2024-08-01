@@ -60,16 +60,16 @@ So it generated:
 
 Generating the asset structure:
 ```
-usdAsset (target product)
-  - usdAsset_model (department layer)
-    - usdMain (product of the instance)
+usdAsset               (target product)
+  - usdAsset_model     (department layer)
+    - usdMain          (product of the instance)
 ```
 
 If you were to publish multiple products at once, say we would generate `usdModelMain` and `usdModelDamaged`. It would then generate:
 
 ```
-usdAsset (target product)
-  - usdAsset_model (department layer)
+usdAsset               (target product)
+  - usdAsset_model     (department layer)
     - usdModelMain
     - usdModelDamaged
 ```
@@ -79,29 +79,29 @@ usdAsset (target product)
 Over time, contributing to the asset adds more products to the `usdAsset`, across likely a variety of department layers.
 Say our current publish structure is:
 ```
-usdAsset (target product)
-  - usdAsset_model (department layer)
-    - usdModelMain (single contribution product)
+usdAsset              (target product)
+  - usdAsset_model    (department layer)
+    - usdModelMain    (single contribution product)
 ```
 
 Now publishing a `usdLookMain` to department layer `look` would make a new `usdAsset` version:
 ```
-usdAsset (target product)
-  - usdAsset_model (department layer)
-    - usdModelMain (single contribution product)
-  - usdAsset_look (department layer)
-    - usdLookMain (single contribution product)
+usdAsset              (target product)
+  - usdAsset_model    (department layer)
+    - usdModelMain    (single contribution product)
+  - usdAsset_look     (department layer)
+    - usdLookMain     (single contribution product)
 ```
 
 Then publishing another look variant `usdLookDamaged` would make a new `usdAsset` version:
 
 ```
-usdAsset (target product)
-  - usdAsset_model (department layer)
-    - usdModelMain (single contribution product)
-  - usdAsset_look (department layer)
-    - usdLookMain (single contribution product)
-    - usdLookDamaged (single contribution product)
+usdAsset              (target product)
+  - usdAsset_model    (department layer)
+    - usdModelMain    (single contribution product)
+  - usdAsset_look     (department layer)
+    - usdLookMain     (single contribution product)
+    - usdLookDamaged  (single contribution product)
 ```
 
 :::note Contribution workflow is 'additive' to the target product's department layers
