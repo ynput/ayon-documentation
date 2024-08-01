@@ -46,6 +46,7 @@ Then select your geometry, create and it will directly be conveniently parented 
 After publishing this asset contribution you will have generated three products:
 
 ![](assets/usd/ayon_usd_maya_products_after_publish.gif)
+
 ![](assets/usd/ayon_usd_maya_products_after_publish_web.gif)
 
 The AYON asset contribution workflow automates the generation of the layers for you.
