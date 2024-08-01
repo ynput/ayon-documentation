@@ -19,30 +19,29 @@ So, USD enhances team collaboration as people can work simultaneously on differe
 
 
 ## What is USD
-USD is an ecosystem that provides a powerful file format and Library API.
-- USD file format can represent/describe arbitrary 3D data e.g. scene hierarchy, geometry, instancing, material networks, lights, cameras, volumes, coordinate systems, shading nodes.
-- USD API defines a set tools that can be adopted by wide range of applications allowing them to interact with USD.
+USD, short for Universal Scene Description, is a robust ecosystem featuring a versatile file format and a comprehensive Library API. The USD file format is capable of representing a wide array of 3D data, including scene hierarchies, geometries, instances, material networks, lights, cameras, volumes, coordinate systems, and shading nodes.
 
-That's how USD earned its name Universal Scene Description as it can "describe" scenes universally regardless of the application that hosts USD, and regardless of the host operating system that hosts that application.
+The accompanying USD API offers a suite of tools designed for broad adoption, enabling a wide array of applications to effectively interact with USD content.
 
-In the following screenshot, I opened [ALab usd scene](https://animallogic.com/alab/) in different applications, Houdini, Omniverse and Usdview. 
+This versatility is why USD is aptly named Universal Scene Description—it has the unique ability to "describe" scenes across any application that implements USD, independent of the operating system on which it runs.
+
+In the screenshot provided, I've opened an [ALab usd scene](https://animallogic.com/alab/) across various applications: Houdini, Omniverse, and Usdview. 
 
 ![](assets/usd/usd_intro/usd_scene.png)
 
 
-## What is a USD Asset
-A USD content structured in a way that's favorable for asset exchange.
-It provides many features: 
-- Load/unload the asset
-- Have different layers to hold data from different departments
-    e.g. model. material, fx, lighting, animation
-- Allow each layer to have switchable variants
+## Understanding a USD Asset
+A USD Asset is content organized to facilitate efficient asset exchange. It boasts several key features:
+- The ability to load and unload the asset as needed.
+- Multiple layers to store data from various departments, such as modeling, materials, effects, lighting, and animation.
+- Flexibility for each layer to contain switchable variants, enhancing adaptability and collaboration.
 
 ### Load and Unload
-Unload the asset to make it appear like an empty folder, this can be very helpful to make the scene lighter. you'd typically get benefit from it when assembling scenes.
+
+Unloading an asset effectively makes it resemble an empty folder, which can significantly lighten the scene. This feature is particularly beneficial when assembling scenes, as it helps manage resource usage efficiently.
 ![](assets/usd/usd_intro/asset_load_unload.gif)
 
-### Different Layers
+### Multiple Layers
 This jar asset consists of three layers:
 - surfacing 
 - modeling
@@ -51,15 +50,15 @@ This jar asset consists of three layers:
 ![](assets/usd/usd_intro/asset_layers.png)
 
 ### Variants
-Assets can have multiple variant sets but only one variant for each variant set can be active at a time.
+Assets can contain multiple variant sets, yet only a single variant within each set can be active at any given moment.
 
 ![](assets/usd/usd_intro/asset_variant.png)
 
 ![](assets/usd/usd_intro/asset_variant.gif)
 
 
-## What is a USD Shot
-A USD file that structured in a way that's favorable for shot exchange.
-It combines different layers from different departments.
+## Understanding a USD Shot
+A USD Shot is a USD file structured to enhance shot exchange.
+It effectively combines distinct layers from various departments into one streamlined file.
 
 ![](assets/usd/usd_intro/usd_shot.png)
