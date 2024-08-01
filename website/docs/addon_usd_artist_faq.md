@@ -44,81 +44,175 @@ You are lacking the default primitive it expects.
 
 <details><summary>Some technical details explained by @MustafaJafar </summary>
 
-## USD Publish Settings explained
+**<font size="5">USD Publish Settings explained</font>**
 
-![image](upload://jabN8kbKHWDkxZFd8DP21jTEl60.png)
+## Initialize as asset vs shot
+As the explained in [Getting Started](addon_usd_artist_get_started)
+- `Asset` Layer supports:
+  - Load/unload the asset
+  - Have different layers to hold data from different departments
+  - Allow each layer to have switchable variants
+- `Shot` Layer only combines different layers from different departments.
 
-I'll just focus on 4 interesting settings.
+Here's an example of the generated asset and shot structure
+by AYON USD publish plugins.
+- USD Asset Structure
+  ```
+  # USD Asset
+  {target-product}.usda
+    └── Xform {folder[name]}
+          ├── inherits __class__/{folder[name]}
+          └── payload ./payload.usda  # Relative path
+
+  payload.usda
+    └── mata data
+          └── sublayers
+                └── {target-product_department-name}.usda:ARGS:{layer-id}, {order}
+  ```
+- USD Shot Structure
+  ```
+  # USD Shot
+  {target-product}.usda
+    └── mata data
+          └── sublayers
+                └── {target-product_department-name}.usda:ARGS:{layer-id}, {order}
+  ```
+
+## Available Department Layers
+Please, be aware that we currently do not provide validators to confirm if the content you intend to publish matches your selected layer. As it stands, layers function as labels with a predetermined order. For example, the model layer will consistently be evaluated before the material layer.
+
+
+<div class="row">
+<div class="col">
+
+**Layers order:**
+- **Asset layers**
+  - model: 100
+  - assembly: 150
+  - groom: 175
+  - look: 200
+  - rig: 300
+- **Shot layers**
+  - layout: 200
+  - animation: 300
+  - simulation: 400
+  - fx: 500
+  - lighting: 600
+  
+</div>
+<div class="col">
+
+![](assets/usd/artist_faq/available_layers.png)
+
+</div>
+</div>
+
+
+## USD Different publish options
+
+![](assets/usd/artist_faq/what_are_publish_options.png)
+
+Let's focus on 4 interesting settings + 1 computed value by the publisher.
 1. `target-product` which is a user editable text.
-2. `target-product_department-name` which is a selection from a drop down list. and users/admins can't change the items in the list.
+2. `target-product_department-name` which is a selection from a drop down list.
 3. `variant-set-name` which is by default is set to `{layer}` which evaluates to the selected item in the drop down list in Num2
-4.  `variant-name` which is by default is set to `{variant}` as the arrow in the screenshot points.
+4. `variant-name` which is by default is set to `{variant}` as the arrow in the screenshot points.
+5. `product-name` which what we have by default from the publisher for any publish instance.
 
-## Asset Structure
-The asset structure is based on:
-- [ASWF Guidelines for Structuring USD Assets](https://wiki.aswf.io/display/WGUSD/Guidelines+for+Structuring+USD+Assets)
-- Nvidia/Omniverse's [Principles of Scalable Asset Structure in OpenUSD](https://docs.omniverse.nvidia.com/usd/latest/learn-openusd/independent/asset-structure-principles.html)
+### Publish a separate layer
+By disabling `Enable` toggle.
+USD publish plugins will skip the USD contribution and publish a single layer.
+and, it doesn't affect the version in the latest published `target-product` or `target-product_department-name`. 
 
-But, let me summarize the results.
+![](assets/usd/artist_faq/separate_layer.png)
 
-#### When enabling Asset Contribution + Add as Variant
+Resultant Products:
+- Product: `product-name`
+  ```
+  {product-name}.usd
+  # It can be any usd hierarchy.
+  ```
 
-> [!NOTE]  
-> I love how the asset definition is readable!
-> Any data in the asset defintion are static. They are computed on publishing.
-> Paths can change when using AYON resolver. 
-> List of departments, layer-ids and order are hardcoded and not exposed yet to settings.
+### Publishing Asset contribution with Variant
 
- 
-Product: `target-product`
-```
-# USD Asset
-{target-product}.usda
-  └── Xform {folder[name]}
-        ├── inherits __class__/{folder[name]}
-        └── payload ./payload.usda  # Relative path
+![](assets/usd/artist_faq/publish_layer_in_usd_product_with_variant.png)
 
-payload.usda
-  └── mata data
-        └── sublayers
-              └── {target-product_department-name}.usda:ARGS:{layer-id}, {order}
-```
+:::tip
+When choosing shot instead of asset, the resultant Product: `target-product`
+will follow the same shot structure mentioned earlier.
+:::
 
-Product: `target-product_department-name`
-```
-# USD Asset Layer
-{target-product}.usda
-  └── Xform {folder[name]}
-        ├── Variant Sets -> ["{variant-set-name}"]
-        └── Variant Set "{variant-set-name}"
-              └── Variant {variant-name}
-                    ├── reference -> Published AYON usd product variant file path
-                    └── custom data
-                          ├── ayon_order
-                          └── ayon_uri -> AYON URI for the published AYON USD product variant
-```
+Resultant Products:
+- Product: `target-product` (2 layers)
+  ```
+  # USD Asset
+  {target-product}.usda
+    └── Xform {folder[name]}
+          ├── inherits __class__/{folder[name]}
+          └── payload ./payload.usda  # Relative path
 
-Product: `AYON-product-variant`
-```
-# USD product
-{AYON-product-variant}.usd
-# It can be any hierarchy.
-```
+  payload.usda
+    └── mata data
+          └── sublayers
+                └── {target-product_department-name}.usda:ARGS:{layer-id}, {order}
+  ```
+- Product: `target-product_department-name`
+  ```
+  # USD Asset Layer
+  {target-product_department-name}.usda
+    └── Xform {folder[name]}
+          ├── Variant Sets -> ["{variant-set-name}"]
+          └── Variant Set "{variant-set-name}"
+                └── Variant {variant-name}
+                      ├── reference -> {product-name}
+                      └── custom data
+                            ├── ayon_order
+                            └── ayon_uri -> AYON URI for the published AYON USD product variant
+  ```
+- Product: `{product-name}`
+  ```
+  # USD product
+  {product-name}.usd
+  # It can be any hierarchy.
+  ```
 
-#### When enabling Asset Contribution without Add as Variant
-It still add a variant! I think there might be a bug or I did something wrong...
-_Also, I'll update this section once it works on my side._
+### Publishing Asset contribution with no Variant
+![](assets/usd/artist_faq/publish_layer_in_usd_product.png)
 
-#### When disabling Asset Contribution
+:::tip
+When choosing shot instead of asset, the resultant Product: `target-product`
+will follow the same shot structure mentioned earlier.
+:::
 
-> [!NOTE]  
-> It doesn't affect the version in the latest published `target-product` or `target-product_department-name`. 
+Resultant Products:
+- Product: `target-product` (2 layers)
+  ```
+  # USD Asset
+  {target-product}.usda
+    └── Xform {folder[name]}
+          ├── inherits __class__/{folder[name]}
+          └── payload ./payload.usda  # Relative path
 
-Product: `AYON-product-variant`
-```
-{AYON-product-variant}.usd
-# It can be any usd hierarchy.
-```
+  payload.usda
+    └── mata data
+          └── sublayers
+                └── {target-product_department-name}.usda:ARGS:{layer-id}, {order}
+  ```
+- Product: `target-product_department-name`
+  ```
+  # USD Asset Layer
+  {target-product_department-name}.usda
+    └── mata data
+          └── sublayers
+                └── {product-name}.usda:ARGS:{layer-id}
+  ```
+- Product: `{product-name}`
+  ```
+  # USD product
+  {product-name}.usd
+  # It can be any hierarchy.
+  ```
+
 </details>
 
 #### We need to manually rename primitive paths the whole time?
