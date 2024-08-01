@@ -1,12 +1,22 @@
 ---
 id: addon_usd_artist_usd_intro
-title: What is USD and Why ?
+title: Why and What is USD ?
 sidebar_label: USD Intro
 ---
 
 :::info
 This page is still under construction 👷🚧🛠️🔜🏗️.
 :::
+
+## Why USD
+[USD Explainer Guide](https://www.foundry.com/insights/film-tv/usd-explainer-guide) article provides great insights about why USD is very useful
+
+Let me paraphrase it:
+
+Traditional pipeline production was like a waterfall. Each stage has a baking process and in order to change anything, you’d have to go back to the beginning.
+On the other hand, USD enables the continuity of decisions throughout the pipeline through live updating these descriptions without baking by allowing creating a higher order USD layer that overrides an attribute or a value without baking existent layers.
+So, USD enhances team collaboration as people can work simultaneously on different layers of the same assets or shots. People can override others work in a non destructive manner.
+
 
 ## What is USD
 USD is an ecosystem that provides a powerful file format and Library API.
@@ -53,12 +63,3 @@ A USD file that structured in a way that's favorable for shot exchange.
 It combines different layers from different departments.
 
 ![](assets/usd/usd_intro/usd_shot.png)
-
-## Why USD
-[USD Explainer Guide](https://www.foundry.com/insights/film-tv/usd-explainer-guide) article provides great insights about why USD is very useful
-
-Let me paraphrase it:
-
-Traditional pipeline production was like a waterfall. Each stage has a baking process and in order to change anything, you’d have to go back to the beginning.
-On the other hand, USD enables the continuity of decisions throughout the pipeline through live updating these descriptions without baking by allowing creating a higher order USD layer that overrides an attribute or a value without baking existent layers.
-So, USD enhances team collaboration as people can work simultaneously on different layers of the same assets or shots. People can override others work in a non destructive manner.
