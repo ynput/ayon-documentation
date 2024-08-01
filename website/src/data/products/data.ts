@@ -199,11 +199,11 @@ const products: { [type in ProductType]: Product } = {
         icon: "photo_library",
     },
     usd: {
-        title: "USD (experimental)",
+        title: "USD",
         icon: "home_repair_service",
     },
     usdRender: {
-        title: "USD Render (experimental)",
+        title: "USD Render",
         icon: "photo_library",
     },
     textureSet: {
