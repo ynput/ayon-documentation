@@ -13,13 +13,13 @@ This page is still under construction 👷🚧🛠️🔜🏗️.
 
 Let me paraphrase it:
 
-Traditional pipeline production was like a waterfall. Each stage has a baking process and in order to change anything, you’d have to go back to the beginning.
-On the other hand, USD enables the continuity of decisions throughout the pipeline through live updating these descriptions without baking by allowing creating a higher order USD layer that overrides an attribute or a value without baking existent layers.
-So, USD enhances team collaboration as people can work simultaneously on different layers of the same assets or shots. People can override others work in a non destructive manner.
+Traditional pipeline production followed a waterfall model, where each stage involved a "baking" process. To make any alterations, you would need to return to the start and re-bake at each step along the way.
+Conversely, USD enables the seamless continuation of decisions throughout the pipeline by allowing live updates to existing USD layers. This is achieved through the creation of higher-order layers that can override an attribute or a value, thereby eliminating the need for baking the existing layers.
+Thus, USD significantly enhances team collaboration by enabling multiple individuals to work on different layers of the same assets or shots simultaneously. Team members can override each other's work in a non-destructive manner, preserving the integrity of the overall project.
 
 
 ## What is USD
-USD, short for Universal Scene Description, is a robust ecosystem featuring a versatile file format and a comprehensive Library API. The USD file format is capable of representing a wide array of 3D data, including scene hierarchies, geometries, instances, material networks, lights, cameras, volumes, coordinate systems, and shading nodes.
+USD, short for Universal Scene Description, is a robust ecosystem featuring a versatile file format and a comprehensive Library API. The USD file format,which represents a USD layer, is capable of representing a wide array of 3D data, including scene hierarchies, geometries, instances, material networks, lights, cameras, volumes, coordinate systems, and shading nodes.
 
 The accompanying USD API offers a suite of tools designed for broad adoption, enabling a wide array of applications to effectively interact with USD content.
 
