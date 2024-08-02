@@ -140,7 +140,7 @@ This is Houdini-specific and not necessarily a USD feature. Houdini can generate
 
 When exporting your USD file (e.g. USD ROP) these implicit layers will be written out from your Houdini scene *in addition* to the USD file path your set on the USD ROP node.
 
-## Publishing with explicit anonymous layers
+### Publishing with explicit anonymous layers
 
 _What does the publisher do with these anomymous layers?_
 
