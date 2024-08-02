@@ -103,7 +103,8 @@ Via **AYON Mute Layers LOP** or **[Configure Stage LOP node -> Mute Layers](http
 Muting layers allow you to mute for example your own department layer in a loaded USD asset or shot. This way you avoid that your Houdini Solaris graph after publishing and updating already has your generated data loaded back in at the start of the graph.
 
 :::tip
-It is usually (99% of the time) good practice to mute your current department's layer. Basically, always mute your own task/department layer to be sure.
+It is usually (99% of the time) good practice to mute your current department's layer.  
+Basically, always mute your own task/department layer to be sure.
 :::
 
 Imagine you load a USD Shot containing the layers:
