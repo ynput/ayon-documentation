@@ -10,6 +10,8 @@ A quick start into AYON x USD
 This page is still under construction 👷🚧🛠️🔜🏗️.
 :::
 
+## Assets and Shots
+
 Within the USD workflow we usually make a big distinction between **Assets** and **Shots**.
 
 Assets usually follow [strict asset guidelines](addon_usd_artist_usd_intro#usd-asset-structure-guidelines) and fall under a **single root primitive** also referred to as its default primitive. 
