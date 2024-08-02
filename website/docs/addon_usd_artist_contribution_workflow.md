@@ -63,7 +63,7 @@ Enable the _Set as default variant selection_ to make that product become the de
 ![AYON USD Contribution to Shot in Publisher UI](assets//usd/ayon_usd_contribution_to_shot.png)  
 _This example publishes a shot contribution to the FX department layer_
 
-Shot contributions have usually have different target product, like `usdShot`. 
+Shot contributions usually have a different target product, like `usdShot`. 
 
 In the majority of cases when contributing to a shot you want to [**disable** Add As Variant](addon_usd_artist_contribution_workflow#add-as-variant-disabled) because for a shot, if multiple contributions are made to one department layer those should usually live alongside each other and are *not* variants of each other. 
 
