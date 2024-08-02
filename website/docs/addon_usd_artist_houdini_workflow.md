@@ -145,6 +145,7 @@ However, there may be many cases where you do essentially not want this extra la
 
 ---
 
-*TODO*
-> - Explain Implicit Layer Save Paths and the USD ROP settings for flattening
-> - Houdini USD Rop: Flatten All Layers
+:::info TODO
+- Explain Implicit Layer Save Paths and the USD ROP settings for flattening
+- Houdini USD Rop: Flatten All Layers
+:::
