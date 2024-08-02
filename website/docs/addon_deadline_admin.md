@@ -109,6 +109,19 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
     Check if AYON is installed on the Worker handling this job and ensure `AYON` Deadline Plug-in is properly [configured](#configuration)
 
 
+- **<font size="4"> Render jobs are failing with `Got invalid credentials. Invalid API key for...` error </font>**
+
+    If you are sure that you provided correct AYON API key in Deadline `Configure Plugin`, check if you have enabled Deadline Secrets Management. 
+    
+    You will need to grant access to secrets to user or machine.
+
+    You will need to run this command on Deadline Server machine:
+
+    `deadlinecommand secrets GrantKeyAccessToServer {SECRETS_USER} defaultKey {NODE_ID}`
+
+    See more details [Deadline Secrets Management - GrantKeyAccessToServer](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/secrets-management/deadline-secrets-management.html#deadline-secrets-management-command-grantkeyaccesstoserver)
+
+
 - **<font size="4"> Publishing job is failing with `ffmpeg not installed` error </font>**
 
     AYON executable has to have access to `ffmpeg` executable, check AYON `ayon+settings://ayon_third_party`
