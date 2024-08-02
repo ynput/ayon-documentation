@@ -85,3 +85,7 @@ The ALab data set is the Animal Logic interpretation and implementation of real 
 
 - **[ALab Download](https://dpel.aswf.io/alab/)**
 - **[ALab Documentation](https://usd-alab2.s3.amazonaws.com/README.html)**
+
+Activision provides a USD data set from their Call of Duty franchise with some good instructions in the readme:
+
+- **[Activision's Call of Duty®: Warzone™  Caldera USD dataset](https://github.com/Activision/caldera)**
