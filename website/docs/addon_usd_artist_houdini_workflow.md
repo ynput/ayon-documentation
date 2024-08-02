@@ -80,18 +80,21 @@ Which translates to the full folder's path and the node's name. However, here yo
 
 ##### Assembly Prop (asset scene assembly)
 
-_TODO_
-
-> Document how one could make an asset which is essentially an assembly of other assets. This would still require one root prim (a default primitive) and in large part behaves like Asset Build, but just containing child references of other assets.
+:::info TODO
+Document how one could make an asset which is essentially an assembly of other assets. This would still require one root prim (a default primitive) and in large part behaves like Asset Build, but just containing child references of other assets.
+:::
 
 ###  Layer Break
 
 Via **[Layer Break LOP node](https://www.sidefx.com/docs/houdini/nodes/lop/layerbreak.html)**
 
-_TODO_
+If you have Houdini Solaris experience you most definitely know the Layer Break node. It is not a USD fundamental concept but a Houdini Solaris specific fundamental.
 
-> Explain layer break
+The layer break, when found in your graph, makes it so that exporting USD files from downstream in that graph will exclude all data above the layer break as opinions. So that for example loading a USD file or writing certain preview opinions can be excluded from your exported scene.
 
+:::info TODO
+Explain layer break in more details
+:::
 
 ### Mute Layers
 
