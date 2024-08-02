@@ -12,7 +12,7 @@ This page is still under construction 👷🚧🛠️🔜🏗️.
 
 Within the USD workflow we usually make a big distinction between *Assets** and **Shots**.
 
-Assets usually follow [strict asset guidelines](http://localhost:3000/docs/addon_usd_artist_usd_intro#usd-asset-structure-guidelines) and fall under a **single root primitive** also referred to its default primitive. This is because Assets are usually *referenced* into a USD stage which means they overlay a single primitive (the root) into the scene you're referencing into.
+Assets usually follow [strict asset guidelines](addon_usd_artist_usd_intro#usd-asset-structure-guidelines) and fall under a **single root primitive** also referred to its default primitive. This is because Assets are usually *referenced* into a USD stage which means they overlay a single primitive (the root) into the scene you're referencing into.
 Shots usually contain multiple root prims, from referenced assets, to lights, to render settings and more.
 
 Regarding loading the assets, in almost all cases:
