@@ -90,3 +90,190 @@ You can for example:
 Both to the FX department layer - one isn't necessarily 'in front of' the other they are both just unordered contributions in that layer, present at the same time.
 
 So loading the shot with the FX layer will show both the shockwave and building destruction - you're not picking between the two.
+
+## Contributions are additive
+
+Over time, contributing to the asset adds more products to the `usdAsset`, across likely a variety of department layers.
+Say our current publish structure is:
+```
+usdAsset              (target product)
+  - usdAsset_model    (department layer)
+    - usdModelMain    (single contribution product)
+```
+
+Now publishing a `usdLookMain` to department layer `look` would make a new `usdAsset` version:
+```
+usdAsset              (target product)
+  - usdAsset_model    (department layer)
+    - usdModelMain    (single contribution product)
+  - usdAsset_look     (department layer)
+    - usdLookMain     (single contribution product)
+```
+
+Then publishing another look variant `usdLookDamaged` would make a new `usdAsset` version:
+
+```
+usdAsset              (target product)
+  - usdAsset_model    (department layer)
+    - usdModelMain    (single contribution product)
+  - usdAsset_look     (department layer)
+    - usdLookMain     (single contribution product)
+    - usdLookDamaged  (single contribution product)
+```
+
+:::note Contribution workflow is 'additive' to the target product's department layers
+
+Whenever publishing a product with contribution enabled it will add it to an existing target product's department layers (or _update_ if it's the exact same product).
+
+This workflow makes it possible for different departments to simultaneously work on an asset and contribute to it additively.
+
+:::
+
+## Removing contributions
+
+:::note Work in Progress - Removing contributions 
+
+There currently are no ready-to-go AYON tools that make it trivial to remove existing contributions from a product or department layer.
+
+Unfortunately this means if you currently accidentally make a wrong contribution you will have to go and edit the actual USDA files' contents to remove entries.
+
+Providing tools for [easy editing of these existing contributions is on our issue tracker](https://github.com/ynput/ayon-usd/issues/23).
+
+:::
+
+### Removing contributions manually
+
+_Warning: This is a technical process and may leave your USD files in a broken state if not handled with care._
+
+
+#### Removing a department layer from the target product
+
+Your published `usdAsset` may have department layers 'payloaded' in. In the `../publish/usd/usdAsset/v001/payload.usd` file you may see for example:
+
+```usda
+#usda 1.0
+(
+    defaultPrim = "char_hero"
+    metersPerUnit = 1
+    subLayers = [
+        @C:\projects\ayontest\asset\char_hero\publish\usd\usdAsset_look\v001\ynts_char_hero_usdAsset_look_v001.usd:SDF_FORMAT_ARGS:layer_id=look&order=300@,
+        @C:\projects\ayontest\asset\char_hero\publish\usd\usdAsset_model\v002\ynts_char_hero_usdAsset_model_v002.usd:SDF_FORMAT_ARGS:layer_id=model&order=100@
+    ]
+    upAxis = "Y"
+)
+```
+
+You can remove one of the `subLayers` entries to completely remove a department layer from that published file.
+For example, removing the look layer makes it.
+
+```usda
+#usda 1.0
+(
+    defaultPrim = "char_hero"
+    metersPerUnit = 1
+    subLayers = [
+        @C:\projects\ayontest\asset\char_hero\publish\usd\usdAsset_model\v002\ynts_char_hero_usdAsset_model_v002.usd:SDF_FORMAT_ARGS:layer_id=model&order=100@
+    ]
+    upAxis = "Y"
+)
+```
+
+#### Removing a single contribution in a department layer
+
+
+Your published `usdAsset_model` will have the individual contributions to that layer. In the `../publish/usd/usdAsset_model/v001/..._v001.usd` file you may see for example:
+
+```usda
+#usda 1.0
+(
+    defaultPrim = "char_hero"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "char_hero" (
+    variants = {
+        string model = "ModelMain"
+    }
+    prepend variantSets = "model"
+)
+{
+    variantSet "model" = {
+        "ModelMain" (
+            prepend references = [
+                @C:\projects\ayontest\asset\char_hero\publish\usd\usdModelMain\v001\ynts_char_hero_usdModelMain_v001.usd@ (
+                    customData = {
+                        int ayon_order = 100
+                        string ayon_uri = "ayon://ayontest//asset/char_hero?product=usdModelMain&version=1&representation=usd"
+                    }
+                )
+            ]
+        ) {
+
+        }
+        "ModelPhotoreal" (
+            prepend references = [
+                @C:\projects\ayontest\asset\char_hero\publish\usd\usdModelPhotoreal\v001\ynts_char_hero_usdModelPhotoreal_v001.usd@ (
+                    customData = {
+                        int ayon_order = 100
+                        string ayon_uri = "ayon://ayontest//asset/char_hero?product=usdModelPhotoreal&version=1&representation=usd"
+                    }
+                )
+            ]
+        ) {
+
+        }
+    }
+}
+```
+
+To remove a single variant, like `ModelMain` you can remove that block. In this case, make sure to also update the default variant set at the top of the file.
+```usda
+#usda 1.0
+(
+    defaultPrim = "char_hero"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "char_hero" (
+    variants = {
+        string model = "ModelPhotoreal"
+    }
+    prepend variantSets = "model"
+)
+{
+    variantSet "model" = {
+        "ModelPhotoreal" (
+            prepend references = [
+                @C:\projects\ayontest\asset\char_hero\publish\usd\usdModelPhotoreal\v001\ynts_char_hero_usdModelPhotoreal_v001.usd@ (
+                    customData = {
+                        int ayon_order = 100
+                        string ayon_uri = "ayon://ayontest//asset/char_hero?product=usdModelPhotoreal&version=1&representation=usd"
+                    }
+                )
+            ]
+        ) {
+
+        }
+    }
+}
+```
+
+Or remove the variant set completely:
+```usda
+#usda 1.0
+(
+    defaultPrim = "char_hero"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def Xform "char_hero" (
+)
+{
+
+}
+```
+
+Which in this case leaves the empty root prim `char_hero`.

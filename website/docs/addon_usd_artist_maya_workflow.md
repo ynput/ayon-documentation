@@ -74,55 +74,7 @@ usdAsset               (target product)
     - usdModelDamaged
 ```
 
-#### Contributions are additive
-
-Over time, contributing to the asset adds more products to the `usdAsset`, across likely a variety of department layers.
-Say our current publish structure is:
-```
-usdAsset              (target product)
-  - usdAsset_model    (department layer)
-    - usdModelMain    (single contribution product)
-```
-
-Now publishing a `usdLookMain` to department layer `look` would make a new `usdAsset` version:
-```
-usdAsset              (target product)
-  - usdAsset_model    (department layer)
-    - usdModelMain    (single contribution product)
-  - usdAsset_look     (department layer)
-    - usdLookMain     (single contribution product)
-```
-
-Then publishing another look variant `usdLookDamaged` would make a new `usdAsset` version:
-
-```
-usdAsset              (target product)
-  - usdAsset_model    (department layer)
-    - usdModelMain    (single contribution product)
-  - usdAsset_look     (department layer)
-    - usdLookMain     (single contribution product)
-    - usdLookDamaged  (single contribution product)
-```
-
-:::note Contribution workflow is 'additive' to the target product's department layers
-
-Whenever publishing a product with contribution enabled it will add it to an existing target product's department layers (or _update_ if it's the exact same product).
-
-This workflow makes it possible for different departments to simultaneously work on an asset and contribute to it additively.
-
-:::
-
-:::note Work in Progress - Removing contributions 
-
-There currently are no ready-to-go AYON tools that make it trivial to remove existing contributions from a product or department layer.
-
-Unfortunately this means if you currently accidentally make a wrong contribution you will have to go and edit the actual USDA files' contents to remove entries.
-
-_Warning: This can be a technical process!_
-
-Providing tools for [easy editing of these existing contributions is on our issue tracker](https://github.com/ynput/ayon-usd/issues/23).
-
-:::
+The [USD Contributions are additive](addon_usd_artist_contribution_workflow.md) and will on each contribution populate and update the target product, like the `usdAsset`.
 
 ### Loading USD products
 
