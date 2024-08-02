@@ -18,9 +18,11 @@ Traditionally each department or artist would generate multiple products that do
 
 So there would be some scattered products like:
 
+```
 - pointcacheMain
 - pointcacheFX_building
 - animationChar01
+```
 
 However, **USD can reference and layer non-destructively** which means we can safely merge these together at any point. Also making it easy for multiple departments to stack their own opinions and changes onto the departments before you.
 
@@ -28,12 +30,14 @@ This is where the USD Asset Contribution workflow automates this for you.
 
 With the **USD Contribution** enabled on the USD publish instances this means it will automatically add your product into the department layer for the Asset or Shot.
 
+```
 - usdShot
     - usdShot_animation
         - animationChar01
         - pointcacheMain
     - usdShot_fx
         - pointcacheFX_building
+```
 
 **TL;DR**
 
@@ -43,7 +47,7 @@ With AYON's USD Contribution each product publish adds up into the target USD as
 
 You can configure the USD contribution for an instance using the publisher UI on the _Publish_ tab selecting the USD instance. The right hand side will show a **USD Contribution** section.
 
-###  Asset contribution to `usdAsset`:
+###  Asset contribution to `usdAsset`
 
 ![AYON USD Contribution to Asset in Publisher UI](assets//usd/ayon_usd_contribution_to_asset.png)  
 _This example publishes an asset contribution to the look department layer_
@@ -54,7 +58,7 @@ Asset contributions usually have [Add as variant **enabled**](addon_usd_artist_c
 Enable the _Set as default variant selection_ to make that product become the default variant in target variant set.
 :::
 
-### Shot contribution to `usdShot`:
+### Shot contribution to `usdShot`
 
 ![AYON USD Contribution to Shot in Publisher UI](assets//usd/ayon_usd_contribution_to_shot.png)  
 _This example publishes a shot contribution to the FX department layer_
