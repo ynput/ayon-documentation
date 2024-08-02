@@ -220,10 +220,10 @@ Resultant Products:
 
 Using the AYON USD Contribution Workflow manual 're-assigning' all the time for assets should be redundant for the majority of the workflow. (Preferably this should never be needed, but some sections like animation from shot layers may still fall outside of that scope.)
 
-1. Use the AYON USD Contribution workflow where the asset build is built automatically from single product contributions into the root primitive.
-2. Load the `usdAsset` - avoid using the indidiviual layers, you should not need to load those individually since they are all in the main asset. 
+1. Use the [AYON USD Contribution workflow](addon_usd_artist_contribution_workflow) where the asset build is built automatically from single product contributions into the root primitive.
+2. Load the `usdAsset` - avoid using the individual layers. You should not need to load those individually since they are all in the main asset. 
 
-Now, in a shot based workflow you'd just load the asset and since e.g. Maya animation caches are not already overlaid over a USD asset structure that is one of the moments where you *will* need to define the path you're overlaying to.
+Now, in a shot based workflow you just load the asset and since e.g. Maya animation caches are not already overlaid over a USD asset structure that is one of the moments where you *will* need to define the path you're overlaying to.
 
 That's usually like:
 
@@ -234,18 +234,20 @@ That's usually like:
 Which may result in e.g. an asset with model and look:
 ```
 /asset/
-    char_hero/
+    char_hero/    <- the `usdAsset` reference is here
         geo/..
         mtl/..
 ```
-(The "char_hero" is the prim where you have the reference to the `usdAsset`)
+_(The "char_hero" is the prim where you have the reference to the `usdAsset`)_
 
-What you need to make sure to do is that anything you want to layer on top of your asset comes in with the same hierarchy, so an animation cache preferably also has the structure:
+You need to make sure that anything you want to layer on top of your asset comes in with the same hierarchy, so an animation cache preferably also has the structure:
 ```
 char_hero/
     geo/..
 ```
-With the animated geometry only. That you can then also reference on top of `/asset/char_her` in the shot structure which makes your referenced asset (that already has materials) move because just the geometries are being overridden.
+With the animated geometry only.
+
+That you can then also reference on top of `/asset/char_hero` in the shot structure which makes your referenced asset (that already has materials) move because just the geometries are being overridden.
 
 **<font size="4">Keep in mind the layer strength - referencing lower in the hierarchy means a stronger opinion!</font>**
 
