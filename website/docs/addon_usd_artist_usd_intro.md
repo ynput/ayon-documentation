@@ -1,6 +1,6 @@
 ---
 id: addon_usd_artist_usd_intro
-title: Why and What is USD ?
+title: Why and What is USD?
 sidebar_label: USD Intro
 ---
 
@@ -11,7 +11,7 @@ Introduction to USD and reasons to adopt it
 
 Let me paraphrase it:
 
-Traditional pipeline production followed a waterfall model, where each stage involved a "baking" process. To make any alterations, you would need to return to the start and re-bake at each step along the way.
+> Traditional pipeline production followed a waterfall model, where each stage involved a "baking" process. To make any alterations, you would need to return to the start and re-bake at each step along the way.
 Conversely, USD enables the seamless continuation of decisions throughout the pipeline by allowing live updates to existing USD layers. This is achieved through the creation of higher-order layers that can override an attribute or a value, thereby eliminating the need for baking the existing layers.
 Thus, USD significantly enhances team collaboration by enabling multiple individuals to work on different layers of the same assets or shots simultaneously. Team members can override each other's work in a non-destructive manner, preserving the integrity of the overall project.
 
