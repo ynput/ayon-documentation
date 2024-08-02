@@ -12,18 +12,34 @@ This page is still under construction 👷🚧🛠️🔜🏗️.
 
 # Getting started
 
+Within the USD workflow we usually make a big distinction between *Assets** and **Shots**.
+
+Assets usually follow [strict asset guidelines](http://localhost:3000/docs/addon_usd_artist_usd_intro#usd-asset-structure-guidelines) and fall under a **single root primitive** also referred to its default primitive. This is because Assets are usually *referenced* into a USD stage which means they overlay a single primitive (the root) into the scene you're referencing into.
+Shots usually contain multiple root prims, from referenced assets, to lights, to render settings and more.
+
+Regarding loading the assets, in almost all cases:
+
+- Assets are **referenced** into your scene (or payloaded in)
+- Shots are **sublayered** into your current scene (or opened as root layer)
+
 ## Creating an asset
 
-The producer has his 🔫 pointing at you and needs the **asset** _now!_
+When we are referring to the USD asset, we mean the full asset with the model's geometry, the look's materials and textures, potentially a groom and may even embed a rig (although USD is not a rig format, but it may encapsulate e.g. Maya Scene references) 
 
-When we are referring to the USD asset, we mean the asset with both the model's geometry and the look's materials and textures. The USD structure (simplified) then becomes:
+The USD structure (simplified) then becomes:
 
 ```
 asset.usd
   - look.usd
+  - groom.usd
   - model.usd
 ```
-Where the look is applied over the model inside the asset.
+Where the groom is applied over the model, and the look is applied over those.
+This means that the look's _opinions_ are stronger than the layers below it.
+
+:::note
+A layer being stronger than another means it can override in essence all of its opinions depending on USD strength ordering ([LIVRPS](https://remedy-entertainment.github.io/USDBook/terminology/LIVRPS.html)). In simple words, a look can potentially override UVs, point positions and so forth. But usually only adds materials, render geometry settings and material bindings.
+:::
 
 #### Creating the model
 
