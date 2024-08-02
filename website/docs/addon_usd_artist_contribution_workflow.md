@@ -62,11 +62,6 @@ It's on the planning to improve that workflow and provide better preset configur
 
 If you just disable the **USD Contribution > Enable** checkbox you will write out just the USD file using the host's export methods without any automated layering into another product - as such, disabling that means that all the settings underneath it do nothing at all. (They should appear greyed out, but unfortunately it's a limitation of the publisher UI that it can't currently)
 
----
-
-TODO (Add explanations):
-- How to define the layer strength 
-
 ### Add as variant - or not?
 
 In most cases:
@@ -286,6 +281,7 @@ Which in this case leaves the empty root prim `char_hero`.
 ---
 
 :::info TODO
+- How to define or customize the layer strength 
 - Explain publisher UI asset contribution attributes to avoid confusion.
 - Explain general shot workflow in Maya
 - Explain Rig -> Animation workflow to publish animations for shot workflows.
