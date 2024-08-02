@@ -40,9 +40,9 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 :::tip
 Currently, there's no need to install the [ayon-usd](https://github.com/ynput/ayon-usd) addon to utilize our USD workflow outlined in our [USD Artist Docs](category/usd).
 
-The base functionality is implementation in our [ayon-core](https://github.com/ynput/ayon-core) addon and each DCC specific workflow is implemented in its related DCC addon. e.g. Houdini USD workflow is implemented in [ayon-houdini](https://github.com/ynput/ayon-houdini)
+The base functionality is implemented in the [ayon-core](https://github.com/ynput/ayon-core) addon and each DCC specific workflow is implemented in its related DCC addon. e.g. Houdini USD workflow is implemented in [ayon-houdini](https://github.com/ynput/ayon-houdini).
 
-For Future, It's considered to move all the USD bits into [ayon-usd](https://github.com/ynput/ayon-usd) addon in a similar fashion to [ayon-deadline](https://github.com/ynput/ayon-deadline) addon.
+For the future, it is considered to move all the USD bits into [ayon-usd](https://github.com/ynput/ayon-usd) addon in a similar fashion to [ayon-deadline](https://github.com/ynput/ayon-deadline) addon.
 :::
 
 ## USD Addon Settings
