@@ -41,19 +41,39 @@ With AYON's USD Contribution each product publish adds up into the target USD as
 
 ## Configuring the USD Contribution
 
-Examples in publisher UI:
+You can configure the USD contribution for an instance using the publisher UI on the _Publish_ tab selecting the USD instance. The right hand side will show a **USD Contribution** section.
 
-###  Asset contribution to `usdAsset` for the Look department layer:
-![AYON USD Contribution to Asset in Publisher UI](assets//usd/ayon_usd_contribution_to_asset.png)
+###  Asset contribution to `usdAsset`:
 
-### Shot contribution to `usdShot` for the FX department layer:
-![AYON USD Contribution to Shot in Publisher UI](assets//usd/ayon_usd_contribution_to_shot.png)
+![AYON USD Contribution to Asset in Publisher UI](assets//usd/ayon_usd_contribution_to_asset.png)  
+_This example publishes an asset contribution to the look department layer_
 
-:::note
-Currently it's a manual process to target `usdShot` instead of `usdAsset` for shot contributions.  
-This is notably a **very common mistake to forget changing that**, so be aware!
+Asset contributions usually have [Add as variant **enabled**](addon_usd_artist_contribution_workflow#add-as-variant-enabled) so that multiple contributions to that department layer each become a variant. Publishing product `lookMain` and product `lookDamaged` with both set to add as variant will provide a variant set where you can switch between the two.
 
-It's on the planning to improve that workflow and provide better preset configurations.
+:::tip
+Enable the _Set as default variant selection_ to make that product become the default variant in target variant set.
+:::
+
+### Shot contribution to `usdShot`:
+
+![AYON USD Contribution to Shot in Publisher UI](assets//usd/ayon_usd_contribution_to_shot.png)  
+_This example publishes a shot contribution to the FX department layer_
+
+Shot contributions have usually have different target product, like `usdShot`. 
+
+In the majority of cases when contributing to a shot you want to [**disable** Add As Variant](addon_usd_artist_contribution_workflow#add-as-variant-disabled) because for a shot, if multiple contributions are made to one department layer those should usually live alongside each other and are *not* variants of each other. 
+
+:::warning
+Currently it is a manual process to target `usdShot` instead of `usdAsset` for shot contributions.  
+It is a **common mistake to forget changing the target product**, so be aware!
+
+Improvements to that workflow using better preset configurations are planned.
+:::
+
+:::note Defining the target product name.
+Technically the *Target Product* can be any name you like, you could make any number of target product assets in a single folder each with department layers of their own. 
+
+However, it is usually **good practice** to maintain a single `usdAsset` in an asset and a single `usdShot` in shots.
 :::
 
 ### Disabling USD contribution workflow
@@ -128,14 +148,12 @@ This workflow makes it possible for different departments to simultaneously work
 
 ## Removing contributions
 
-:::note Work in Progress - Removing contributions 
-
 There currently are no ready-to-go AYON tools that make it trivial to remove existing contributions from a product or department layer.
 
 Unfortunately this means if you currently accidentally make a wrong contribution you will have to go and edit the actual USDA files' contents to remove entries.
 
+:::note 
 Providing tools for [easy editing of these existing contributions is on our issue tracker](https://github.com/ynput/ayon-usd/issues/23).
-
 :::
 
 ### Removing contributions manually
@@ -144,7 +162,7 @@ Providing tools for [easy editing of these existing contributions is on our issu
 This is a technical process and may leave your USD files in a broken state if not handled with care.
 :::
 
-### Removing a department layer from the target product
+#### Removing a department layer from the target product
 
 Your published `usdAsset` may have department layers 'payloaded' in. In the `../publish/usd/usdAsset/v001/payload.usd` file you may see for example:
 
@@ -176,8 +194,7 @@ For example, removing the look layer makes it.
 )
 ```
 
-### Removing a single contribution in a department layer
-
+#### Removing a single contribution in a department layer
 
 Your published `usdAsset_model` will have the individual contributions to that layer. In the `../publish/usd/usdAsset_model/v001/..._v001.usd` file you may see for example:
 

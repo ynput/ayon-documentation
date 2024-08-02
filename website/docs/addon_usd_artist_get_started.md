@@ -108,7 +108,7 @@ Using AYON's contribution workflow targeting shots currently **requires extra
 attention** on the publish attributes for the instance to correctly target the
 `usdShot` and **disable variants** (_usually your shot contribution is not a variant_).
 
-For more information see the [AYON Contribution Workflow](addon_usd_artist_contribution_workflow.md).
+For more information see the [AYON Contribution Workflow](addon_usd_artist_contribution_workflow.md#shot-contribution-to-usdshot).
 :::
 
 _Houdini perspective_
