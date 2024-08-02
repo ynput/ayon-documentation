@@ -42,7 +42,7 @@ You are lacking the default primitive it expects.
 
 **<font size="5">Initialize as asset vs shot</font>**
 
-As the explained in [Getting Started](addon_usd_artist_get_started)
+As explained in [Getting Started](addon_usd_artist_get_started)
 - `Asset` Layer supports:
   - Load/unload the asset
   - Have different layers to hold data from different departments
