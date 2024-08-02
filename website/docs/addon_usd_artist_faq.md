@@ -6,11 +6,11 @@ sidebar_label: FAQ
 
 Frequently Asked Questions or Issues
 
-#### I do not see my model on loading the asset 
+### I do not see my model on loading the asset 
 
 <details><summary>On Load warning message "Unresolved Reference Path" shows</summary>
 
-![341136311-0b7c2504-8f88-4af9-aeb8-5f8014c5504c|690x438](upload://8sTsEqQCfyyaR36VGRhwZ3VU6xw.png)
+![](assets/usd/artist_faq/unresolved-reference-path.png)
 
 Since you're publishing into the asset structure make sure your data is inside the expected default primitive path for that asset, where the default primitive is always `{folder[name]}` so your data should be inside `/{folder[name]}/...` so that the data resides inside the default primitive path.
 
@@ -33,14 +33,15 @@ This is correct: :trophy:
 You are lacking the default primitive it expects.
 </details>
 
-#### What are all these publisher options, like Target Product?
+### What are all these publisher options, like Target Product?
 
 
 <details><summary>Some technical details explained by @MustafaJafar </summary>
 
-**<font size="5">USD Publish Settings explained</font>**
+**<font size="6">USD Publish Settings explained</font>**
 
-## Initialize as asset vs shot
+**<font size="5">Initialize as asset vs shot</font>**
+
 As the explained in [Getting Started](addon_usd_artist_get_started)
 - `Asset` Layer supports:
   - Load/unload the asset
@@ -72,7 +73,8 @@ by AYON USD publish plugins.
                 └── {target-product_department-name}.usda:ARGS:{layer-id}, {order}
   ```
 
-## Available Department Layers
+**<font size="5">Available Department Layers</font>**
+
 Please, be aware that we currently do not provide validators to confirm if the content you intend to publish matches your selected layer. As it stands, layers function as labels with a predetermined order. For example, the model layer will consistently be evaluated before the material layer.
 
 
@@ -102,7 +104,7 @@ Please, be aware that we currently do not provide validators to confirm if the c
 </div>
 
 
-## USD Different publish options
+**<font size="5">USD Different publish options</font>**
 
 ![](assets/usd/artist_faq/what_are_publish_options.png)
 
@@ -113,7 +115,8 @@ Let's focus on 4 interesting settings + 1 computed value by the publisher.
 4. `variant-name` which is by default is set to `{variant}` as the arrow in the screenshot points.
 5. `product-name` which what we have by default from the publisher for any publish instance.
 
-### Publish a separate layer
+**<font size="4">Publish a separate layer</font>**
+
 By disabling `Enable` toggle.
 USD publish plugins will skip the USD contribution and publish a single layer.
 and, it doesn't affect the version in the latest published `target-product` or `target-product_department-name`. 
@@ -126,8 +129,7 @@ Resultant Products:
   {product-name}.usd
   # It can be any usd hierarchy.
   ```
-
-### Publishing Asset contribution with Variant
+**<font size="4">Publishing Asset contribution with Variant</font>**
 
 ![](assets/usd/artist_faq/publish_layer_in_usd_product_with_variant.png)
 
@@ -170,7 +172,8 @@ Resultant Products:
   # It can be any hierarchy.
   ```
 
-### Publishing Asset contribution with no Variant
+**<font size="4">Publishing Asset contribution with no Variant</font>**
+
 ![](assets/usd/artist_faq/publish_layer_in_usd_product.png)
 
 :::tip
@@ -209,7 +212,7 @@ Resultant Products:
 
 </details>
 
-#### We need to manually rename primitive paths the whole time?
+### We need to manually rename primitive paths the whole time?
 
 > We use reference so we can manually enter the primitive path, but i don't think that should be the way to go, they should all be connected and work without renaming and further input.
 
@@ -244,7 +247,7 @@ char_hero/
 ```
 With the animated geometry only. That you can then also reference on top of `/asset/char_her` in the shot structure which makes your referenced asset (that already has materials) move because just the geometries are being overridden.
 
-#### Keep in mind the layer strength - referencing lower in the hierarchy means a stronger opinion!
+**<font size="4">Keep in mind the layer strength - referencing lower in the hierarchy means a stronger opinion!</font>**
 
 It's usually important to reference on the same root prim of the asset, because as soon as you e.g. reference over `asset/char_hero/geo` instead your reference is lower in hierarchy than any reference on a higher prim like `asset/char_hero` and hence will ALWAYS be the stronger opinion.
 </details>

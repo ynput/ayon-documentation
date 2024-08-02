@@ -30,7 +30,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
   </div>
 </div>
 
-### Publishing a model
+## Publishing a model
 
 Any contribution to an asset structure should be within the default root primitive. In AYON, that defaults to the asset's folder name. 
 
@@ -88,7 +88,7 @@ usdAsset               (target product)
 
 The [USD Contributions are additive](addon_usd_artist_contribution_workflow.md) and will on each contribution populate and update the target product, like the `usdAsset`.
 
-### Loading USD products
+## Loading USD products
 
 You can load USD products back to Maya into Maya USD Proxy Shapes.
 
