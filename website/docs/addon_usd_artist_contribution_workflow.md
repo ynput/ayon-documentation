@@ -80,6 +80,12 @@ Technically the *Target Product* can be any name you like, you could make any nu
 However, it is usually **good practice** to maintain a single `usdAsset` in an asset and a single `usdShot` in shots.
 :::
 
+:::note Initialize as asset or shot
+The _Initialize as_ setting is **only** relevant if the target product does not exist yet - so it is only used on first time generation of that file. It defines the asset structure, like USD payloads, asset info for the target product's USD file.
+
+For now, set asset targets to initialize as asset, set shot targets to initialize as shots. However, we're looking to streamline this with better preset configurations.
+:::
+
 ### Disabling USD contribution workflow
 
 If you just disable the **USD Contribution > Enable** checkbox you will write out just the USD file using the host's export methods without any automated layering into another product - as such, disabling that means that all the settings underneath it do nothing at all. (They should appear greyed out, but unfortunately it's a limitation of the publisher UI that it can't currently)
