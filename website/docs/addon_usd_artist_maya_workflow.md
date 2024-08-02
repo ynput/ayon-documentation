@@ -104,3 +104,10 @@ maya geometry or "referencing" directly into an existing Maya USD Proxy.
 See: https://github.com/ynput/ayon-maya/pull/61
 
 :::
+
+---
+
+**TODO**
+> - Explain LookdevX look workflow to publish a look layer with asset contribution
+> - Explain general shot workflow in Maya
+> - Explain Rig -> Animation workflow to publish animations for shot workflows.
