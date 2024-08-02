@@ -32,21 +32,22 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ### Loading an asset or shot
 
-Via **AYON Load Asset LOP node** and **Sublayer LOP node** and **Reference LOP node**.
+See the _[Getting Started | Assets and Shots](addon_usd_artist_get_started#assets-and-shots)_ for how they differ and how they are usually loaded (reference versus sublayer).
 
-_TODO_
-> - Explain that you usually:
->      - **Reference the `usdAsset`**
->      - **Sublayer the `usdShot`**
+In Houdini you'll most likely use the dedicated AYON nodes:
 
+- **AYON Load Asset LOP node**, superpowered Reference LOP node.
+- **AYON Load Shot LOP node**, superpowered Sublayer LOP node.
 
-##### Loading an asset
+## Assets
+
+### Loading an asset
 
 Whether you're loading the asset because you're working on the asset build itself, like look or grooms, OR you are assembling a scene defines what primitive path you load them as.
 
 You would usually *always* **reference** the asset. That is the `usdAsset` product - not the separate layers or contributions.
 
-##### Asset Build
+### Asset Build
 
 When working on the asset build, the asset name requires to remain constant and be in a root prim with the folder name. A trick is to set the Primitive Path on the Load Asset LOP to:
 
