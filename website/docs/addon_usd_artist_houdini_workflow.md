@@ -32,7 +32,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ### Loading an asset or shot
 
-See the _[Getting Started | Assets and Shots](addon_usd_artist_get_started#assets-and-shots)_ for how they differ and how they are usually loaded (reference versus sublayer).
+See the _[Getting Started | Assets and Shots](addon_usd_artist_get_started.md#assets-and-shots)_ for how they differ and how they are usually loaded (reference versus sublayer).
 
 In Houdini you'll most likely use the dedicated AYON nodes:
 

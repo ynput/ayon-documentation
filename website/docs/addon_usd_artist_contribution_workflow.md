@@ -6,7 +6,9 @@ sidebar_label: Contribution Workflow
 
 Automatically contribute products into USD assets or shots
 
-**AYON USD Contribution Workflow** was introduced in this PR [Implement USD workflow with global asset/shot contributions plug-in](https://github.com/ynput/ayon-core/pull/295) 
+:::info
+The **AYON USD Contribution Workflow** was introduced with PR [Implement USD workflow with global asset/shot contributions plug-in](https://github.com/ynput/ayon-core/pull/295) 
+:::
 
 ### What is it?
 
