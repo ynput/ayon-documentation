@@ -51,8 +51,12 @@ Examples in publisher UI:
 #### Shot contribution to `usdShot` for the FX department layer:
 ![AYON USD Contribution to Shot in Publisher UI](assets//usd/ayon_usd_contribution_to_shot.png)
 
-**Note:**
-- Currently it's a manual process to target `usdShot` instead of `usdAsset` for shot contributions. It's on the planning to improve that workflow! This is notably a common mistake to forget changing that, so be aware!
+:::note
+Currently it's a manual process to target `usdShot` instead of `usdAsset` for shot contributions.  
+This is notably a **very common mistake to forget changing that**, so be aware!
+
+It's on the planning to improve that workflow and provide better preset configurations.
+:::
 
 #### Disabling USD contribution workflow
 
@@ -278,3 +282,11 @@ def Xform "char_hero" (
 ```
 
 Which in this case leaves the empty root prim `char_hero`.
+
+---
+
+:::info TODO
+- Explain publisher UI asset contribution attributes to avoid confusion.
+- Explain general shot workflow in Maya
+- Explain Rig -> Animation workflow to publish animations for shot workflows.
+:::
