@@ -6,10 +6,6 @@ sidebar_label: Getting Started
 
 A quick start into AYON x USD
 
-:::info
-This page is still under construction 👷🚧🛠️🔜🏗️.
-:::
-
 ## Assets and Shots
 
 Within the USD workflow we usually make a big distinction between **Assets** and **Shots**.
@@ -53,8 +49,6 @@ A layer being stronger than another means it can override in essence all of its 
 #### Creating the model
 
 _From a Maya, Houdini or Blender perspective_
-
-**TODO:** Add visuals - maybe short video recording
 
 We will want to create our geometry's contribution to the asset.
 For the asset structure it's critical we work within the asset's hierarchy so that USD referencing works. (_consider that USD mumbo jumbo for now_)
@@ -106,8 +100,6 @@ char_hero/
 
 ## Creating a shot
 
-**TODO:** Add visuals - maybe short video recording
-
 _Houdini perspective_
 
 - Quickly, **reference** the asset.
@@ -123,3 +115,11 @@ You are now the USD champion - until they ask you about asset variants, LODs, pu
 - [Ayon Core USD workflow PR contains some comments and explanations](https://github.com/ynput/ayon-core/pull/295)
 - [In the original OpenPype PR description it contained quite some 'test' videos](https://github.com/ynput/OpenPype/pull/5925#issue-1995346181)
 - [At FMX 2024 an OpenUSD presentation was given that showed usage of what is basically the functionality of this PR](https://www.youtube.com/watch?v=1KqrIRCi_EQ).
+
+---
+
+:::info TODO
+- General improvements; with this guide it's still hard to get started
+- Add video recordings for the quick asset and shot workflow
+- Move software-specifics to their individual workflows (Houdini, Maya, Blender)
+::

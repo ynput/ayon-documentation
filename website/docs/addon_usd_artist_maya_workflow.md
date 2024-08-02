@@ -30,10 +30,6 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
   </div>
 </div>
 
-:::info
-This page is still under construction 👷🚧🛠️🔜🏗️.
-:::
-
 ### Publishing a model
 
 Any contribution to an asset structure should be within the default root primitive. In AYON, that defaults to the asset's folder name. 
