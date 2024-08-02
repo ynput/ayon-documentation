@@ -63,7 +63,7 @@ The `chs("folder_name")` trick only applies to the Ayon Load Asset LOP.
 :::tip Easy primitive path presets on AYON Load Asset LOP
 Note that the Load Asset LOP provides some quick access to primitive path presets directly in the parameter view.
 
-![AYON Load Asset LOP Primitive Path Presets](assets//usd/ayon_usd_load_asset_lop_primpath_presets.png)
+![AYON Load Asset LOP Primitive Path Presets](assets/usd/ayon_usd_load_asset_lop_primpath_presets.png)
 :::
 
 ## Shot Assembly
@@ -129,7 +129,7 @@ The state of muting layers is never written into a USD file - it's a run-time ef
 
 The **AYON Mute Layers** lop allows you to easily mute the layers for a particular department by using the context menu to the side of the Mute Patterns parameter:
 
-![AYON Mute Layers LOP Mute Patterns Presets](assets//usd/ayon_usd_mute_layer_lop.png)
+![AYON Mute Layers LOP Mute Patterns Presets](assets/usd/ayon_usd_mute_layer_lop.png)
 
 
 ---
@@ -142,7 +142,7 @@ When exporting your USD file (e.g. USD ROP) these implicit layers will be writte
 
 ### Publishing with explicit anonymous layers
 
-_What does the publisher do with these anomymous layers?_
+_What does the publisher do with these anonymous layers?_
 
 Any anonymous layers generated in your current USD layer being exported can directly be published along. The `ayon-houdini` USD publishing logic detects these anonymous layers that will additionally be saved out, generates publish instances for them dynamically. It suffixes the Explicit Save Path's filename to the product name generating additonal products, like `{product_name}_{explict_save_filename}`
 
