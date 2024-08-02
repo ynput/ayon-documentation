@@ -8,7 +8,7 @@ Automatically contribute products into USD assets or shots
 
 **AYON USD Contribution Workflow** was introduced in this PR [Implement USD workflow with global asset/shot contributions plug-in](https://github.com/ynput/ayon-core/pull/295) 
 
-### What is it?
+## What is it?
 
 The AYON USD Contribution Workflow allows to create small contribution publishes from DCCs with USD export support to directly add your publish into an asset's model or look variants or a shot's department layers. Automatically building up the USD structure for you.
 
@@ -37,14 +37,14 @@ With the **USD Contribution** enabled on the USD publish instances this means it
 
 With AYON's USD Contribution each product publish adds up into the target USD asset or USD shot. :tada: 
 
-### Configuring the USD Contribution
+## Configuring the USD Contribution
 
 Examples in publisher UI:
 
-####  Asset contribution to `usdAsset` for the Look department layer:
+###  Asset contribution to `usdAsset` for the Look department layer:
 ![AYON USD Contribution to Asset in Publisher UI](assets//usd/ayon_usd_contribution_to_asset.png)
 
-#### Shot contribution to `usdShot` for the FX department layer:
+### Shot contribution to `usdShot` for the FX department layer:
 ![AYON USD Contribution to Shot in Publisher UI](assets//usd/ayon_usd_contribution_to_shot.png)
 
 :::note
@@ -54,17 +54,17 @@ This is notably a **very common mistake to forget changing that**, so be aware!
 It's on the planning to improve that workflow and provide better preset configurations.
 :::
 
-#### Disabling USD contribution workflow
+### Disabling USD contribution workflow
 
 If you just disable the **USD Contribution > Enable** checkbox you will write out just the USD file using the host's export methods without any automated layering into another product - as such, disabling that means that all the settings underneath it do nothing at all. (They should appear greyed out, but unfortunately it's a limitation of the publisher UI that it can't currently)
 
-### Add as variant - or not?
+## Add as variant - or not?
 
 In most cases:
 - an **asset** contribution is a variant.
 - a **shot** contribution is **not** a variant.
 
-##### Add as variant ENABLED
+### Add as variant ENABLED
 
 When enabling _Add as variant_ it means your single contribution will be added as a variant in a variant set on the asset's root primitive (the default prim). As such, multiple variant contributions to the same department layer (and same variant set) are not active at the same time, but they are switchable variants. So you can for example:
 
@@ -73,7 +73,7 @@ When enabling _Add as variant_ it means your single contribution will be added a
 
 Now in the USD asset on the root primitive you may have a variant set _model_ that contains your _modelMain_ and _modelDamaged_ variants that downstream departments can switch between in your asset.
 
-##### Add as variant DISABLED
+### Add as variant DISABLED
 
 With _Add as variant_ **disabled** each contribution to a single department layer is just added as essentially another layer - meaning that the contributions inside a single department layer are all live at the same time.
 
@@ -142,7 +142,7 @@ Providing tools for [easy editing of these existing contributions is on our issu
 This is a technical process and may leave your USD files in a broken state if not handled with care.
 :::
 
-#### Removing a department layer from the target product
+### Removing a department layer from the target product
 
 Your published `usdAsset` may have department layers 'payloaded' in. In the `../publish/usd/usdAsset/v001/payload.usd` file you may see for example:
 
@@ -174,7 +174,7 @@ For example, removing the look layer makes it.
 )
 ```
 
-#### Removing a single contribution in a department layer
+### Removing a single contribution in a department layer
 
 
 Your published `usdAsset_model` will have the individual contributions to that layer. In the `../publish/usd/usdAsset_model/v001/..._v001.usd` file you may see for example:

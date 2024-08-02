@@ -46,7 +46,7 @@ This means that the look's _opinions_ are stronger than the layers below it.
 A layer being stronger than another means it can override in essence all of its opinions depending on USD strength ordering ([LIVRPS](https://remedy-entertainment.github.io/USDBook/terminology/LIVRPS.html)). In simple words, a look can potentially override UVs, point positions and so forth. But usually only adds materials, render geometry settings and material bindings.
 :::
 
-#### Creating the model
+### Creating the model
 
 _From a Maya, Houdini or Blender perspective_
 
@@ -75,7 +75,7 @@ asset.usd
 When loading that in, we'll have our hero wearing pants.
 But it needs some 🖌️🎨 paint.
 
-#### Creating the look
+### Creating the look
 
 _From a Houdini perspective_
 
@@ -110,7 +110,7 @@ _Houdini perspective_
 You are now the USD champion - until they ask you about asset variants, LODs, purposes and a layered shot structure, and more. Easy, cowboy!
 
 
-# Additional context
+## Additional context
 
 - [Ayon Core USD workflow PR contains some comments and explanations](https://github.com/ynput/ayon-core/pull/295)
 - [In the original OpenPype PR description it contained quite some 'test' videos](https://github.com/ynput/OpenPype/pull/5925#issue-1995346181)

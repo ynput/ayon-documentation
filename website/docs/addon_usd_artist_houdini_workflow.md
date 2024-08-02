@@ -30,7 +30,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
   </div>
 </div>
 
-### Loading an asset or shot
+## Loading an asset or shot
 
 See the _[Getting Started | Assets and Shots](addon_usd_artist_get_started#assets-and-shots)_ for how they differ and how they are usually loaded (reference versus sublayer).
 
@@ -66,7 +66,7 @@ Note that the Load Asset LOP provides some quick access to primitive path preset
 ![AYON Load Asset LOP Primitive Path Presets](assets//usd/ayon_usd_load_asset_lop_primpath_presets.png)
 :::
 
-##### Shot Assembly
+## Shot Assembly
 
 For scene assembly, like doing bigger scene layouts or even just loading assets into a shot. Since these are also for "shot" workflows (you're building a shot layer) and these sublayer in the different apartments you don't need a single root primitive, you can layout your scene hierarchy any way you want.
 
@@ -78,11 +78,13 @@ As such you usually want each loaded asset to be a unique prim path in your scen
 
 Which translates to the full folder's path and the node's name. However, here you are free to make the hierarchy work in a way that makes sense for your scene assembly structure.
 
-##### Assembly Prop (asset scene assembly)
+## Assembly Prop (asset scene assembly)
 
 :::info TODO
 Document how one could make an asset which is essentially an assembly of other assets. This would still require one root prim (a default primitive) and in large part behaves like Asset Build, but just containing child references of other assets.
 :::
+
+## Manage Layers
 
 ###  Layer Break
 
@@ -132,13 +134,13 @@ The **AYON Mute Layers** lop allows you to easily mute the layers for a particul
 
 ---
 
-### Implicit versus Explicit Layer Save Paths
+## Implicit versus Explicit Layer Save Paths
 
 This is Houdini-specific and not necessarily a USD feature. Houdini can generate in-memory sublayers or references to USD files that does not exist on disk yet - these are so called anonymous layers that Houdini gives an "implicit save path".
 
 When exporting your USD file (e.g. USD ROP) these implicit layers will be written out from your Houdini scene *in addition* to the USD file path your set on the USD ROP node.
 
-#### Publishing with explicit anonymous layers
+## Publishing with explicit anonymous layers
 
 _What does the publisher do with these anomymous layers?_
 
