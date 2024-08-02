@@ -24,7 +24,7 @@ This is wrong: :warning:
 This is correct: :trophy: 
 
 ```
-/char_hero
+/hero
     /geo/marble
     /materials/material1
 ```
@@ -229,27 +229,27 @@ That's usually like:
 
 1. Reference the `usdAsset` into your shot's structure, e.g.
 ```
-/asset/char_hero
+/asset/hero
 ```
 Which may result in e.g. an asset with model and look:
 ```
 /asset/
-    char_hero/    <- the `usdAsset` reference is here
+    hero/    <- the `usdAsset` reference is here
         geo/..
         mtl/..
 ```
-_(The "char_hero" is the prim where you have the reference to the `usdAsset`)_
+_(The "hero" is the prim where you have the reference to the `usdAsset`)_
 
 You need to make sure that anything you want to layer on top of your asset comes in with the same hierarchy, so an animation cache preferably also has the structure:
 ```
-char_hero/
+hero/
     geo/..
 ```
 With the animated geometry only.
 
-That you can then also reference on top of `/asset/char_hero` in the shot structure which makes your referenced asset (that already has materials) move because just the geometries are being overridden.
+That you can then also reference on top of `/asset/hero` in the shot structure which makes your referenced asset (that already has materials) move because just the geometries are being overridden.
 
 **<font size="4">Keep in mind the layer strength - referencing lower in the hierarchy means a stronger opinion!</font>**
 
-It's usually important to reference on the same root prim of the asset, because as soon as you e.g. reference over `asset/char_hero/geo` instead your reference is lower in hierarchy than any reference on a higher prim like `asset/char_hero` and hence will ALWAYS be the stronger opinion.
+It's usually important to reference on the same root prim of the asset, because as soon as you e.g. reference over `asset/hero/geo` instead your reference is lower in hierarchy than any reference on a higher prim like `asset/hero` and hence will ALWAYS be the stronger opinion.
 </details>

@@ -53,17 +53,17 @@ We will want to create our geometry's contribution to the asset.
 For the asset structure it's critical we work within the asset's hierarchy so that the asset referencing (explained above) works.
 
 As such, we'll always work within a root group with the current folder's name.  
-Say our character's folder path is `assets/char_hero` then the root group is `char_hero`
+Say our character's folder path is `assets/hero` then the root group is `hero`
 
 We can make a hierarchy like:
 ```
-char_hero/
+hero/
     geo/
         body
         pants
 ```
  
-When done. We publish that `char_hero` as USD contribution to the `model` layer.
+When done. We publish that `hero` as USD contribution to the `model` layer.
 The publishing logic will make the layering of the `model.usd` into the `asset.usd` for you automatically.
 
 So now we have:
@@ -88,12 +88,12 @@ Nor do you load the individual department or contribution layers.
 
 2. Make sure to add a _[Layer Break LOP](addon_usd_artist_houdini_workflow.md#layer-break)_. This special Houdini node breaks off the USD scene above it and from that moment on any changes on the existing hierarchy are just opinions that are overlaid on top of it. This means that when writing out a USD file now we're not re-exporting the geometry itself, but only any changes we make after the layer break.
 
-3. Apply your materials to the `char_hero/geo` meshes and make sure your materials are within `char_hero` group as well. So usually you end up with:
+3. Apply your materials to the `hero/geo` meshes and make sure your materials are within `hero` group as well. So usually you end up with:
 ```
-char_hero/
+hero/
     geo/
-       body   <- material 'char_hero/mtl/body_shader' applied
-       pants  <- material 'char_hero/mtl/pants_shader' applied
+       body   <- material 'hero/mtl/body_shader' applied
+       pants  <- material 'hero/mtl/pants_shader' applied
     mtl/
         body_shader
         pants_shader

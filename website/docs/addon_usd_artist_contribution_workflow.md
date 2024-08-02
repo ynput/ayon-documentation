@@ -173,11 +173,11 @@ Your published `usdAsset` may have department layers 'payloaded' in. In the `../
 ```usda
 #usda 1.0
 (
-    defaultPrim = "char_hero"
+    defaultPrim = "hero"
     metersPerUnit = 1
     subLayers = [
-        @C:\projects\ayontest\asset\char_hero\publish\usd\usdAsset_look\v001\ynts_char_hero_usdAsset_look_v001.usd:SDF_FORMAT_ARGS:layer_id=look&order=300@,
-        @C:\projects\ayontest\asset\char_hero\publish\usd\usdAsset_model\v002\ynts_char_hero_usdAsset_model_v002.usd:SDF_FORMAT_ARGS:layer_id=model&order=100@
+        @C:\projects\ayontest\asset\hero\publish\usd\usdAsset_look\v001\ynts_hero_usdAsset_look_v001.usd:SDF_FORMAT_ARGS:layer_id=look&order=300@,
+        @C:\projects\ayontest\asset\hero\publish\usd\usdAsset_model\v002\ynts_hero_usdAsset_model_v002.usd:SDF_FORMAT_ARGS:layer_id=model&order=100@
     ]
     upAxis = "Y"
 )
@@ -189,10 +189,10 @@ For example, removing the look layer makes it.
 ```usda
 #usda 1.0
 (
-    defaultPrim = "char_hero"
+    defaultPrim = "hero"
     metersPerUnit = 1
     subLayers = [
-        @C:\projects\ayontest\asset\char_hero\publish\usd\usdAsset_model\v002\ynts_char_hero_usdAsset_model_v002.usd:SDF_FORMAT_ARGS:layer_id=model&order=100@
+        @C:\projects\ayontest\asset\hero\publish\usd\usdAsset_model\v002\ynts_hero_usdAsset_model_v002.usd:SDF_FORMAT_ARGS:layer_id=model&order=100@
     ]
     upAxis = "Y"
 )
@@ -205,12 +205,12 @@ Your published `usdAsset_model` will have the individual contributions to that l
 ```usda
 #usda 1.0
 (
-    defaultPrim = "char_hero"
+    defaultPrim = "hero"
     metersPerUnit = 1
     upAxis = "Y"
 )
 
-def Xform "char_hero" (
+def Xform "hero" (
     variants = {
         string model = "ModelMain"
     }
@@ -220,10 +220,10 @@ def Xform "char_hero" (
     variantSet "model" = {
         "ModelMain" (
             prepend references = [
-                @C:\projects\ayontest\asset\char_hero\publish\usd\usdModelMain\v001\ynts_char_hero_usdModelMain_v001.usd@ (
+                @C:\projects\ayontest\asset\hero\publish\usd\usdModelMain\v001\ynts_hero_usdModelMain_v001.usd@ (
                     customData = {
                         int ayon_order = 100
-                        string ayon_uri = "ayon://ayontest//asset/char_hero?product=usdModelMain&version=1&representation=usd"
+                        string ayon_uri = "ayon://ayontest//asset/hero?product=usdModelMain&version=1&representation=usd"
                     }
                 )
             ]
@@ -232,10 +232,10 @@ def Xform "char_hero" (
         }
         "ModelPhotoreal" (
             prepend references = [
-                @C:\projects\ayontest\asset\char_hero\publish\usd\usdModelPhotoreal\v001\ynts_char_hero_usdModelPhotoreal_v001.usd@ (
+                @C:\projects\ayontest\asset\hero\publish\usd\usdModelPhotoreal\v001\ynts_hero_usdModelPhotoreal_v001.usd@ (
                     customData = {
                         int ayon_order = 100
-                        string ayon_uri = "ayon://ayontest//asset/char_hero?product=usdModelPhotoreal&version=1&representation=usd"
+                        string ayon_uri = "ayon://ayontest//asset/hero?product=usdModelPhotoreal&version=1&representation=usd"
                     }
                 )
             ]
@@ -250,12 +250,12 @@ To remove a single variant, like `ModelMain` you can remove that block. In this 
 ```usda
 #usda 1.0
 (
-    defaultPrim = "char_hero"
+    defaultPrim = "hero"
     metersPerUnit = 1
     upAxis = "Y"
 )
 
-def Xform "char_hero" (
+def Xform "hero" (
     variants = {
         string model = "ModelPhotoreal"
     }
@@ -265,10 +265,10 @@ def Xform "char_hero" (
     variantSet "model" = {
         "ModelPhotoreal" (
             prepend references = [
-                @C:\projects\ayontest\asset\char_hero\publish\usd\usdModelPhotoreal\v001\ynts_char_hero_usdModelPhotoreal_v001.usd@ (
+                @C:\projects\ayontest\asset\hero\publish\usd\usdModelPhotoreal\v001\ynts_hero_usdModelPhotoreal_v001.usd@ (
                     customData = {
                         int ayon_order = 100
-                        string ayon_uri = "ayon://ayontest//asset/char_hero?product=usdModelPhotoreal&version=1&representation=usd"
+                        string ayon_uri = "ayon://ayontest//asset/hero?product=usdModelPhotoreal&version=1&representation=usd"
                     }
                 )
             ]
@@ -283,19 +283,19 @@ Or remove the variant set completely:
 ```usda
 #usda 1.0
 (
-    defaultPrim = "char_hero"
+    defaultPrim = "hero"
     metersPerUnit = 1
     upAxis = "Y"
 )
 
-def Xform "char_hero" (
+def Xform "hero" (
 )
 {
 
 }
 ```
 
-Which in this case leaves the empty root prim `char_hero`.
+Which in this case leaves the empty root prim `hero`.
 
 ---
 
