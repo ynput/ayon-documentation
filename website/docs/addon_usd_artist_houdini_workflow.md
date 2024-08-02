@@ -144,9 +144,13 @@ When exporting your USD file (e.g. USD ROP) these implicit layers will be writte
 
 _What does the publisher do with these anonymous layers?_
 
-Any anonymous layers generated in your current USD layer being exported can directly be published along. The `ayon-houdini` USD publishing logic detects these anonymous layers that will additionally be saved out, generates publish instances for them dynamically. It suffixes the Explicit Save Path's filename to the product name generating additonal products, like `{product_name}_{explict_save_filename}`
+Any anonymous layers generated in your current USD layer being exported can directly be published along as a product of its own. 
 
-So it is totally fine to generate *more* layers at once and have them published - this will work *with* and *without* the [Contribution Workflow](https://community.ynput.io/t/ayon-usd-workflow-guide/1545/2).
+The `ayon-houdini` USD publishing logic detects these anonymous layers that will additionally be saved out, generates publish instances for them dynamically, and remaps the USD paths to the published representations.
+The Explicit Save Path's **filename** acts as suffix for the product name generating the additional products:
+- `{product_name}_{explict_save_filename}`
+
+It is totally fine to generate *more* layers at once and have them published, and this will work *with* and *without* the [AYON USD Contribution Workflow](addon_usd_artist_contribution_workflow).
 
 However, there may be many cases where you do essentially not want this extra layer. For example, a SOP import by default generates that additional sublayer, but you may *just* want to write out that SOP data completely into the resulting USD file - not in an extra sublayer USD file that is layered into a USD file.
 
