@@ -143,8 +143,9 @@ Providing tools for [easy editing of these existing contributions is on our issu
 
 ### Removing contributions manually
 
-_Warning: This is a technical process and may leave your USD files in a broken state if not handled with care._
-
+:::warning
+This is a technical process and may leave your USD files in a broken state if not handled with care.
+:::
 
 #### Removing a department layer from the target product
 
