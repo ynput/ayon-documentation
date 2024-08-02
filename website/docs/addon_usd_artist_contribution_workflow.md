@@ -10,7 +10,7 @@ This page is still under construction 👷🚧🛠️🔜🏗️.
 
 # Ayon USD Contribution Workflow
 
-[A recent PR](https://github.com/ynput/ayon-core/pull/295) implemented a special **AYON USD Contribution Workflow**.
+**AYON USD Contribution Workflow** was introduced in this PR [Implement USD workflow with global asset/shot contributions plug-in](https://github.com/ynput/ayon-core/pull/295) 
 
 ### What is it?
 
