@@ -58,3 +58,10 @@ The USD workflow settings are currently limited. You can customize only the name
 - `ayon+settings://core/publish/CollectUSDLayerContributions`
 
 ![](assets/usd/admin/usd_core_settings_1.png)
+
+:::tip
+Hover over the `Order` field for more details on the strength ordering:
+- Higher order means a higher strength and stacks the layer on top.
+- Opinions from a layer that is on top are stronger than those below it.
+- See the USD acronym [LIVRPS](https://remedy-entertainment.github.io/USDBook/terminology/LIVRPS.html) for more details on USD's strength ordering.
+:::
