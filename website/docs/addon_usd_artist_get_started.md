@@ -4,6 +4,8 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
+A quick start into AYON x USD
+
 :::info
 This page is still under construction 👷🚧🛠️🔜🏗️.
 :::

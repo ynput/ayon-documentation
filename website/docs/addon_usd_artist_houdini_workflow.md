@@ -4,6 +4,8 @@ title: Houdini USD Workflow
 sidebar_label: Houdini Workflow
 ---
 
+Getting started with AYON USD integration in SideFX Houdini
+
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
@@ -27,12 +29,6 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
     </div>
   </div>
 </div>
-
-:::info
-This page is still under construction 👷🚧🛠️🔜🏗️.
-:::
-
-# Houdini Workflow
 
 ### Loading an asset or shot
 

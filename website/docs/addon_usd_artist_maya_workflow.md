@@ -4,6 +4,8 @@ title: Maya USD Workflow
 sidebar_label: Maya Workflow
 ---
 
+Getting started with AYON USD integration in Autodesk Maya
+
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 

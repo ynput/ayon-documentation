@@ -4,6 +4,8 @@ title: Why and What is USD ?
 sidebar_label: USD Intro
 ---
 
+Introduction to USD and reasons to adopt it
+
 ## Why USD
 [USD Explainer Guide](https://www.foundry.com/insights/film-tv/usd-explainer-guide) article provides great insights about why USD is very useful
 

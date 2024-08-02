@@ -4,13 +4,11 @@ title: FAQ
 sidebar_label: FAQ
 ---
 
+Frequently Asked Questions or Issues
+
 :::info
 This page is still under construction 👷🚧🛠️🔜🏗️.
 :::
-
-# FAQ
-
-Frequently Asked Questions or Frequent Issues.
 
 #### I do not see my model on loading the asset 
 
