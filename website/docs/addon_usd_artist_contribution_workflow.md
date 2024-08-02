@@ -1,7 +1,7 @@
 ---
 id: addon_usd_artist_contribution_workflow
 title: AYON USD Contribution Workflow
-sidebar_label: AYON Contribution Workflow
+sidebar_label: Contribution Workflow
 ---
 
 Automatically contribute products into USD assets or shots
