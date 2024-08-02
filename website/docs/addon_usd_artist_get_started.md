@@ -12,13 +12,22 @@ This page is still under construction 👷🚧🛠️🔜🏗️.
 
 Within the USD workflow we usually make a big distinction between **Assets** and **Shots**.
 
-Assets usually follow [strict asset guidelines](addon_usd_artist_usd_intro#usd-asset-structure-guidelines) and fall under a **single root primitive** also referred to its default primitive. This is because Assets are usually *referenced* into a USD stage which means they overlay a single primitive (the root) into the scene you're referencing into.
+Assets usually follow [strict asset guidelines](addon_usd_artist_usd_intro#usd-asset-structure-guidelines) and fall under a **single root primitive** also referred to as its default primitive. 
+This is because Assets are usually *referenced* into a USD stage which means they overlay a single primitive (the root) into the scene you're referencing into.
+
 Shots usually contain multiple root prims, from referenced assets, to lights, to render settings and more.
 
 Regarding loading the assets, in almost all cases:
 
 - Assets are **referenced** into your scene (or payloaded in)
 - Shots are **sublayered** into your current scene (or opened as root layer)
+
+Which means that for assets you can position the single root on top of any prim path in your scene (USD referencing) and with shots you load in the full stage hierarchy without moving things around (USD sublayers).
+
+For more details on referencing versus sublayering:
+
+- [SideFX: USD Referencing explained](https://www.sidefx.com/docs/houdini/solaris/usd.html#referencing)
+- [SideFX: USD Sublayering explained](https://www.sidefx.com/docs/houdini/nodes/lop/sublayer.html#sublyrdetails)
 
 ## Creating an asset
 
