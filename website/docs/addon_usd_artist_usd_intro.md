@@ -21,9 +21,9 @@ USD, short for Universal Scene Description, is a robust ecosystem featuring a ve
 
 The accompanying USD API offers a suite of tools designed for broad adoption, enabling a wide array of applications to effectively interact with USD content.
 
-This versatility is why USD is aptly named Universal Scene Description—it has the unique ability to "describe" scenes across any application that implements USD, independent of the operating system on which it runs.
+This versatility is why USD has earned the name Universal Scene Description—it has the unique ability to "describe" scenes across any application that implements USD, independent of the operating system on which it runs.
 
-In the screenshot provided, I've opened an [ALab usd scene](https://animallogic.com/alab/) across various applications: Houdini, Omniverse, and Usdview. 
+In the screenshot provided, I've opened the [ALab usd scene](https://animallogic.com/alab/) across various applications: Houdini, Omniverse, and Usdview. 
 
 ![](assets/usd/usd_intro/usd_scene.png)
 
@@ -81,11 +81,21 @@ Our USD workflow follows the following structure guidelines.
 
 ### Example USD Assets
 
+#### Alab
 The ALab data set is the Animal Logic interpretation and implementation of real world production and pipeline concepts in USD.
 
 - **[ALab Download](https://dpel.aswf.io/alab/)**
 - **[ALab Documentation](https://usd-alab2.s3.amazonaws.com/README.html)**
 
+#### Activision
 Activision provides a USD data set from their Call of Duty franchise with some good instructions in the readme:
 
 - **[Activision's Call of Duty®: Warzone™  Caldera USD dataset](https://github.com/Activision/caldera)**
+
+#### J Cube
+
+3D Assets by J Cube Inc.
+
+The Esper Room by J Cube Inc. is an excellent and user-friendly starting point for experimentation.
+
+- **[3D Assets | JCube](https://j-cube.jp/solutions/multiverse/assets/)**
