@@ -28,7 +28,18 @@ import loaderVideoUE from './assets/video/unreal_launch.mp4'
 
 ### Prerequisites
 
-AYON supports Unreal Engine 5.0 and 5.1. To use it, you need to install the [AYON Integration plugin](https://temp.com) from the Unreal Marketplace.
+AYON supports the latest Unreal Engine versions. To use it, you need to install the [AYON Integration plugin](https://www.unrealengine.com/marketplace/en-US/product/ayon-pipeline-integration) from the Unreal Marketplace.
+
+:::note
+AYON data folders are color coded by unique color scheme for easier navigation. As seen on the picture above.
+:::
+
+:::info
+If you encounter following warning when you run Unreal, your installation is missing Qt bindings.
+[Here are the steps](addon_unreal_admin#manually-installing-qt-bindings) to fix it.
+
+![Unreal missing Qt Bindings](assets/unreal_qtbindings_warning.png)
+:::
 
 ## Unreal project and data structure
 
