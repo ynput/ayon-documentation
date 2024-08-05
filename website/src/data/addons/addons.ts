@@ -50,6 +50,7 @@ export const officialAddons = [
     "unreal",
     "wrap",
     "openrv",
+    "openusd",
     "syncsketch",
     "zbrush",
 ] as const;
