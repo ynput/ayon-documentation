@@ -62,7 +62,7 @@ AYON uses [Poetry](https://python-poetry.org/) to handle the dependencies, and y
 | Compatible  | Package                  | License(s)                                                           |
 | ----------- | ------------------------ | -------------------------------------------------------------------- |
 | ✔          | Deprecated               | MIT License                                                          |
-| ✖          | OpenTimelineIO           | Other/Proprietary License                                            |
+| ✖          | OpenTimelineIO           | Apache Software License                                              |
 | ✔          | SecretStorage            | BSD License                                                          |
 | ✖          | Unidecode                | GNU General Public License v2 or later (GPLv2+)                      |
 | ✔          | acre                     | GNU LESSER GENERAL PUBLIC LICENSE Version 3                          |
