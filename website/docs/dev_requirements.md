@@ -6,9 +6,9 @@ sidebar_label: Requirements
 
 AYON is a modular project, the AYON server lies at the core of it, so to develop for AYON  we need an instance of it either in the localhost or in a remote server, refer to the [Admin Server Deployment](admin_server_deployment.md) for more.
 
-AYON is written in [**Python 3 (3.9.x)**](#python) and addheres to the versions defined in the [VFX Reference Platform](https://vfxplatform.com/).
+AYON is written in [**Python 3 (3.9.x)**](#python) and adheres to the versions defined in the [VFX Reference Platform](https://vfxplatform.com/).
 
-Some parts are kept on Python 2.7.x for compatibility purposes with, until all supported third-party software are updated to a newer Python version, you can see the progress at the [VFX Python3 tracker](https://vfxpy.com/).
+Some parts are kept on Python 2.7.x for compatibility purposes until all supported third-party software are updated to a newer Python version, you can see the progress at the [VFX Python3 tracker](https://vfxpy.com/).
 
 The main requirements needed to run and build AYON are:
 
@@ -21,7 +21,7 @@ The main requirements needed to run and build AYON are:
 
 ## Supported Operating Systems
 
-AYON can be built and ran in any platform that supports the above requirements, the development team develops and thest it on the following list of Operating Systems:
+AYON can be built and ran in any platform that supports the above requirements, the development team develops and tests it on the following list of Operating Systems:
 - Windows 10
 - Ubuntu 20.04 LTS
 - CentOS 7
@@ -45,18 +45,18 @@ As a rule of thumb, if the computer can run a DCC or perform render workloads, i
 
 ## Dependencies
 
-AYON is an project built on top of the following projects:
+AYON is a project built on top of the following projects:
 - [**Pyblish**](https://github.com/pyblish)
 - [**OpenTimelineIO**](https://github.com/PixarAnimationStudios/OpenTimelineIO)
 - [**OpenImageIO**](https://github.com/OpenImageIO/oiio) [^centos7]
 - [**FFmpeg**](https://github.com/FFmpeg/FFmpeg)
 
-[^centos7]: On Centos 7 you need to install additional libraries to support OIIO there - mainly boost
+[^centos7]: On Centos 7 you'll need to install additional libraries to support OIIO there - mainly boost
 and libraw (`sudo yum install boost-1.53.0 LibRaw`)
 
-### Python Dependecies
+### Python Dependencies
 
-AYON uses [Poetry](https://python-poetry.org/) to handle the dependencies, and you can see the full list of dependencies in the [`pyproject.yoml`](https://github.com/ynput/OpenPype/blob/develop/pyproject.toml), here is a list of these with their corresponging licenses:
+AYON uses [Poetry](https://python-poetry.org/) to handle the dependencies, and you can see the full list of dependencies in the [`pyproject.toml`](https://github.com/ynput/OpenPype/blob/develop/pyproject.toml), here is a list of these with their corresponging licenses:
 
 
 | Compatible  | Package                  | License(s)                                                           |

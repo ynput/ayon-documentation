@@ -20,7 +20,7 @@ Blender integration requires to use **PySide2** module inside blender. Module is
 ### How to install
 
 :::info Permissions
-This step requires Admin persmission.
+This step requires Admin permission.
 :::
 
 <Tabs
