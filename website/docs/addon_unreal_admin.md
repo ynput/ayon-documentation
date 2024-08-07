@@ -37,3 +37,28 @@ To use a custom path for the compiled plugin, you need to set an environment var
 `AYON_BUILT_UNREAL_PLUGIN=C:/Ayon/CompiledPlugin`
 
 You can set this variable either in Ayon Studio Setting in `applications/unreal/environment`, or, from there, to a specific version of Unreal.
+
+## Manually installing Qt bindings
+
+It might happen that automatic installation of th Qt bindings into Unreal fails. It that case here are manual steps that can be taken to amend it:
+
+### Option A (preferred)
+
+Using Unreal's Python interpreter (located on a path like `Engine\Binaries\ThirdParty\Python3\Win64` depending on the platform):
+
+```sh
+python -m pip install pyside6
+```
+### Option B (unsupported)
+You can run following python code either directly from Unreal or using Unreal's Python interpreter:
+
+```python
+import pip
+pip.main(["install", "pyside6"])
+```
+
+Be aware that calling **pip** like so is deprecated by pip itself and might not work in newer versions.
+
+:::note
+For Unreal Engine versions `>= 5.4`, use `pyside6`. For earlier versions, use `pyside2`.
+:::
