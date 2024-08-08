@@ -12,19 +12,18 @@ Feel free to report any missing or wrong info.
 
 ## Preface
 
-AYON is an studio platform for Animation, VFX and games.
-AYON modular design make it easy to extend without digging into desktop and server components of AYON. 
-This guide aims to explain the capabilities of addons as well as how to implement them.
-
 :::tip History Lesson
 
-History can help us learn more about the system, as well as understand the decisions that were made over time.
+Understanding history can provide deeper insights into the system and the rationale behind decisions made over time. This knowledge is particularly valuable at the initial stages of developing `addons` documentation. As the documentation evolves to become self-sufficient, the reliance on historical context may diminish.
 
 - It's started with [pyblish](https://github.com/pyblish/pyblish/wiki) which introduced the capability to register and trigger publish plugins. 
 - Then, [avalon](https://getavalon.github.io/2.0/overview/) which was built on top of `pyblish` straight with adding UI tools (launcher, creator, loader, publisher, manager, workfiles), extended `pyblish` host integrations e.g. adding more publish plugins and it also used `mongoDB` to store publish data. 
 - Then, [OpenPype](https://openpype.io/) which was built on top of `avalon` and `pyblish` straight with much easier configuration/settings, extended `avalon` host integrations and more pipeline tools e.g. look assigner.  
-- Then, **[AYON](https://ayon.ynput.io/) which is like the Pokémon evolution of `OpenPype`.** it moved the settings to a dedicated webserver, made the system more modular by introducing addons, and introduced a tool kit for production management.
+- Then, **[AYON](https://ayon.ynput.io/) which is like the Pokémon evolution of `OpenPype`.** The system has been upgraded by relocating settings to a dedicated web server, enhancing modularity by segmenting it into smaller `addons`, and introducing a toolkit to facilitate efficient production management.
 :::
+
+AYON addons enable us to effectively extend AYON's server and pipeline capabilities.
+This guide is designed to clarify key concepts and outline the structure and features of addons, along with instructions for their implementation.
 
 ## AYON pipeline and pyblish adoption
 
