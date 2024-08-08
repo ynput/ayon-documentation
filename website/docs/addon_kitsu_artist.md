@@ -17,8 +17,24 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 1. Launch AYON, the `Kitsu Credentials` window will open automatically, if not, or if you want to log-in with another account, go to systray AYON icon and click on `Kitsu Connect`.
 2. Enter your credentials and press *Ok*:
 
-    ![kitsu-login](assets/kitsu/kitsu_credentials.png)
+    ![kitsu-login](assets/kitsu/artist/kitsu_credentials.png)
 
 :::tip
 In Kitsu, All the publish actions executed by `pyblish` will be attributed to the currently logged-in user.
 :::
+
+## Integrate Kitsu Note and Review
+
+If they are enabled in Kitsu addon settings. 
+- Your publish comment will be used as Kitsu note.
+- When publishing a Review or Render, publisher can upload them to kitsu.
+
+:::note Notes
+- Depending on the kitsu addon configuration, publisher also can update the task status.
+- Admins are able to configure `Custom Comment Template`, [learn More](addon_kitsu_admin#custom-comment-template-example).
+:::
+
+| Publish Comment | Kitsu Note and Review |
+|--|--|
+| ![kitsu Note 1](assets/kitsu/artist/kitsu_note_1.png) | ![kitsu Note 2](assets/kitsu/artist/kitsu_note_2.png) |
+
