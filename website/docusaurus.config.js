@@ -113,11 +113,6 @@ const config = {
                         position: "left",
                     },
                     {
-                        to: "/docs/server_testing",
-                        label: "Testing AYON Server",
-                        position: "left",
-                    },
-                    {
                         label: "Addons",
                         position: "right",
                         items: [
