@@ -43,7 +43,7 @@ Most tests will need parent entities to be created - i.e. a folder can't exist o
 Current configuration runs the tests in parallel, which might cause issues if specs are not properly written. In order to avoid any race issues, we recommend to follow a safe entity naming strategy, i.e. prefix entity names with unique identifiers (see existing tests for examples).
 
 ### Tests cleanup
-Testing entities that depend on other will require parent entities creation. Make sure that that they are properly destroyed after testing is done to avoid polution of future test runs. For example, when testing folders or tasks the easiest cleanup method would be to delete the parent project, which will in turn delete all the related records.
+Testing entities that depend on others will require the creation of parent entities. Make sure that they are properly destroyed after testing is done to avoid pollution of future test runs. For example, when testing folders or tasks, the easiest cleanup method would be to delete the parent project, which will, in turn, delete all the related records.
 
 ## Generate tests on the fly
 As mentioned previously We chose [Playwright](https://playwright.dev) for its versatility and ease of use.
