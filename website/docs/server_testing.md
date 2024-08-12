@@ -46,7 +46,7 @@ Current configuration runs the tests in parallel, which might cause issues if sp
 Testing entities that depend on others will require the creation of parent entities. Make sure that they are properly destroyed after testing is done to avoid pollution of future test runs. For example, when testing folders or tasks, the easiest cleanup method would be to delete the parent project, which will, in turn, delete all the related records.
 
 ## Generate tests on the fly
-As mentioned previously We chose [Playwright](https://playwright.dev) for its versatility and ease of use.
+As mentioned previously we chose [Playwright](https://playwright.dev) for its versatility and ease of use.
 
 One powerful tool that comes with it is code generation mode, which can translate a point and click interaction to actual spec statements, be it selecting specific UI elements, or making assertions.
 
