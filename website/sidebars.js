@@ -202,6 +202,7 @@ module.exports = {
                 "server_introduction",
                 "server_api_architecture",
                 "server_theme",
+                "server_testing",
             ],
         },
         "dev_dev_mode",
