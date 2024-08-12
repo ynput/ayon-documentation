@@ -36,7 +36,7 @@ In order to add new tests of update existing ones we recommend following the exi
 Tests are grouped by entity type, i.e. project level tests are written in the projects.spec.js, folders level tests in the folders.spec.js file and so on.
 
 ### Fixture files
-Most tests will need parent entities to be created - i.e. folder can't exist outside a project - in order ease tests creation we're using *fixtures* helpers. These allow you easily create/destroy required entities in one-line calls, so that you can focus on the task at hand
+Most tests will need parent entities to be created - i.e. a folder can't exist outside a project. To ease test creation, we're using *fixtures* helpers. These allow you to easily create and destroy required entities with one-line calls, so you can focus on the task at hand.
 
 
 ### Test Isolation
