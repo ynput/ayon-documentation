@@ -41,7 +41,7 @@ If set correctly on the AYON server or in Ftrack, Blender will automatically set
 You can force a specific resolution and frame range/fps at any time using **Set Frame Range** and **Set Resolution** actions sitting in the AYON menu.
 :::
 
-## Saving your workfile
+## Dealing with workfiles (scene save/scene open)
 
 When wanting to save your Blender scene aka `Workfile`, instead of using regular actions `File` > `Save As`
 
