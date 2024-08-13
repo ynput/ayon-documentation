@@ -255,6 +255,6 @@ You can load a Layout using [Loader](artist_tools_loader)
 select **Link Layout (blend)**. This will populate your scene with all those
 models you've put into layout.
 
-:::note
+:::note This Docs Section is Incomplete
 This user docs section is still work in progress
 :::
