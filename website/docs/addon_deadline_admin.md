@@ -25,13 +25,21 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you ne
 
 3. Set up *Deadline Web API service*. For more details on how to do it, see [here](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/web-service.html).
 
-4. Point AYON to your deadline webservice URL in the Deadline settings `ayon+settings://deadline/deadline_urls/0/value`.
+4. Provide values for all Deadline servers you want to use in `ayon+settings://deadline`
 
 ![Webservice url](assets/deadline_webserver_config.png)
 
-5. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
+    Where field on the left is label (descriptive name) of Deadline server
+    `Url` - is IP or host name including port (example of locally running DL `http://127.0.0.1:8081`)
+    `Require authentication` - DL webservice could be protected by username/password (set in Deadline Monitor in `Tools > Configure Repository Options > Web Service Settings > Require Authentication`)
+    `Don't verify SSL` - if your Dl webservice is using SSL (eg. on https://) self-signed certificates might trigger an error. Disable verification of certificate here.
+    `Default user name` - if `Require authentication` is enabled, this and next field provides possibility to fill single credentials for all artists publishing to Deadline.
+        (If every artist should have separate credentials, they need to provide them in `Site Settings` (on `Studio Settings` page
 
-6. Create service account on Ayon server http://YOUR_AYON/settings/users , `Generate new key` and store it, you would need it in Deadline plugin configuration.
+5. Select which Deadline server should be used for project in `ayon+settings://deadline/deadline_server?project=YOUR_PROJECT`
+6. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository/custom` to `path/to/your/deadline/repository/custom`.
+
+7. Create service account on Ayon server http://YOUR_AYON/settings/users , `Generate new key` and store it, you would need it in Deadline plugin configuration.
 
 :::note guide
 You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
@@ -99,6 +107,19 @@ Each publishing from AYON consists of 2 jobs, first one is rendering, second one
 - **<font size="4"> Jobs are failing with `AYON executable was not found` error </font>**
 
     Check if AYON is installed on the Worker handling this job and ensure `AYON` Deadline Plug-in is properly [configured](#configuration)
+
+
+- **<font size="4"> Render jobs are failing with `Got invalid credentials. Invalid API key for...` error </font>**
+
+    If you are sure that you provided correct AYON API key in Deadline `Configure Plugin`, check if you have enabled Deadline Secrets Management. 
+    
+    You will need to grant access to secrets to user or machine.
+
+    You will need to run this command on Deadline Server machine:
+
+    `deadlinecommand secrets GrantKeyAccessToServer {SECRETS_USER} defaultKey {NODE_ID}`
+
+    See more details [Deadline Secrets Management - GrantKeyAccessToServer](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/secrets-management/deadline-secrets-management.html#deadline-secrets-management-command-grantkeyaccesstoserver)
 
 
 - **<font size="4"> Publishing job is failing with `ffmpeg not installed` error </font>**

@@ -39,6 +39,7 @@ export const officialAddons = [
     "hiero",
     "houdini",
     "maya",
+    "motionbuilder",
     "nuke",
     "photoshop",
     "royalRender",
@@ -49,6 +50,7 @@ export const officialAddons = [
     "unreal",
     "wrap",
     "openrv",
+    "openusd",
     "syncsketch",
     "zbrush",
 ] as const;

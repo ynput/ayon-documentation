@@ -45,7 +45,7 @@ Upload command has more options, use `--help` to investigate them. For example, 
 ### Running AYON Desktop application
 
 AYON can be executed either from live sources (this repository) or from
-*"frozen code"* - executables that can be build using steps described above.
+*"frozen code"* - executables that can be built using steps described above.
 
 ### From sources
 AYON can be run directly from sources by activating virtual environment:
@@ -64,19 +64,19 @@ Executable `ayon_console.exe` creates console with output - useful for debugging
 
 Startup
 -------------
-Once AYON launcher is installed and launched there are few ways how to affect what will happen. Default behavior will ask for login to server, if user did not log in yet, then starts distribution of updates, and last step is to start the main logic.
+Once AYON launcher is installed and launched there are few ways to affect what will happen next. Default behavior will ask for login to server (if user did not log in yet), then starts the distribution of updates, and eventually the main logic.
 
-Main logic is now using command line handling from `openpype` addon. If path to python script is passed it will start the python script as main logic instead.
+Main logic is now using command line handling from `openpype` addon. If a path to a python script is passed, it will start the python script as main logic instead.
 
 ### Arguments
-There are reserver global arguments that cannot be used in any cli handling:
+There are reserved global arguments that cannot be used in any cli handling:
 - `--bundle <BUNDLE NAME>` - Force AYON to use specific bundle instead of the one that is set in the config file. This is useful for testing new bundles before they are released.
 - `--verbose <LOG LEVEL>` - Change logging level to one of the following: DEBUG, INFO, WARNING, ERROR, CRITICAL.
 - `--debug` - Simplified way how to change verbose to DEBUG. Also sets `AYON_DEBUG` environment variable to `1`.
 - `--skip-headers` - Skip headers in the console output.
 - `--use-dev` - Use dev bundle and settings, if bundle is not explicitly defined.
 - `--use-staging` - Use staging settings, and use staging bundle, if bundle is not explicitly defined. Cannot be combined with staging.
-- `--headless` - Tell AYON to run in headless mode. No UIs are shown during bootstrap. Affects `AYON_HEADLESS_MODE` environment variable. Custom logic must handle headless mode on own.
+- `--headless` - Tell AYON to run in headless mode. No UIs are shown during bootstrap. Affects `AYON_HEADLESS_MODE` environment variable. Custom logic must handle headless mode on its own.
 - `--skip-bootstrap` - Skip bootstrap process. Used for inner logic of distribution.
 
 ### Environment variables
@@ -109,12 +109,12 @@ Environment variables that are set for backwards compatibility with openpype add
 
 
 ## Developer mode
-[Developer mode](dev_dev_mode) enables to skip standard distribution process of addons, and use local sources of addon code. This is useful for development of addon. Developer mode must be enabled and configured on AYON server.
+[Developer mode](dev_dev_mode) enables to skip the standard distribution process of addons to use local sources of addon code instead. This is useful for development of addon. Developer mode must be enabled and configured on AYON server.
 
-There are 2 ways how to start in developer mode using command line arguments:
+There are 2 ways to start in developer mode using command line arguments:
 1. Start AYON launcher with `--bundle <dev bundle name>`. Dev bundle cannot be set as production or staging.
 2. Using argument flag `--use-dev`. With this argument a dev bundle is found for logged user.
 
 Both options can be defined with environment variables `AYON_BUNDLE_NAME` and `AYON_USE_DEV` (value `1` to enable).
 
-Developer mode automatically disregard any production or staging information.
+Developer mode automatically disregards any production or staging information.
