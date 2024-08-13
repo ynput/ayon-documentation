@@ -38,7 +38,7 @@ Blender settings concerning **frame rate**, **resolution** and **frame range** a
 If set correctly on the AYON server or in Ftrack, Blender will automatically set the values for you.
 
 :::tip
-If for some reason those aren't set correctly, force resolution and frame range/fps any time using **Set Frame Range** and **Set Resolution** actions sitting in the AYON menu.
+You can force a specific resolution and frame range/fps at any time using **Set Frame Range** and **Set Resolution** actions sitting in the AYON menu.
 :::
 
 ## Saving your workfile
