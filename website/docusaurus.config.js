@@ -113,7 +113,7 @@ const config = {
                         position: "left",
                     },
                     {
-                        href: "https://ynput.github.io/ayon-python-api/build/html/ayon_api.html",
+                        href: "https://ynput.github.io/ayon-python-api/",
                         label: "Python API Docs",
                         position: "left",
                     },
