@@ -51,8 +51,10 @@ Essential preparation for Kitsu addon to work.
 ### Create Bundle and Set Addon Version
 Create new production bundle, Set Kitsu Addon version to your installed version, and finally restart server.
 
-:::note
-As soon as you restart your server, you'll start seeing Empty Kitsu tab.
+:::info NOTE
+The Kitsu tab will only become visible once you set the bundle that includes the Kitsu addon to production mode.
+
+Once you restart your server, the Kitsu tab will appear, but it will be empty initially.
 :::
 
 ### Set Kitsu Admin Account
