@@ -148,3 +148,12 @@ While changing the names of entities is allowed, Be aware it doesn't change the 
 Absolutely! Entities are linked by their unique IDs between the two databases.  
 - If you rename an entity in the AYON project editor, this change won't show up in Kitsu. Instead, it will be replaced with the original name when the next sync happens.
 - When you rename an entity directly in Kitsu, the new name will be updated in AYON during the upcoming synchronization.
+
+### Managing Multiple Production Tracker for Various Projects
+
+To effectively manage multiple projects with different production tracker addons such as ShotGrid and Kitsu, you'll need to include both addons in your production bundle. It will allow their respective tabs to appear within the Ayon server interface.
+
+Then, you should activate or deactivate each addon based on the specific needs of the project at hand.
+You can usually do this within the project settings.
+
+![](assets/kitsu/admin/deactivate_addon_per_project.png)
