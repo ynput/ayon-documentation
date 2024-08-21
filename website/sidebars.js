@@ -169,6 +169,7 @@ module.exports = {
                 "addon_tvpaint_admin",
                 "addon_unreal_admin",
                 "addon_kitsu_admin",
+                "addon_jira_admin",
                 "addon_clockify_admin",
                 "addon_traypublisher_admin",
                 "addon_wrap_admin",
