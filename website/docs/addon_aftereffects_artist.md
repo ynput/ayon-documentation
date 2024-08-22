@@ -6,6 +6,8 @@ sidebar_label: After Effects
 
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 <ReactMarkdown>
 {versions.Aftereffects_Badge}
@@ -20,17 +22,44 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 -   [Publish](artist_tools_publisher)
 -   [Manage](artist_tools_inventory)
 
-## Setup
+## AE Extension installation
 
-To install the extension, download, install [Anastasyi's Extension Manager](https://install.anastasiy.com/). Open Anastasyi's Extension Manager and select AfterEffects in menu. 
+:::tip
+Once your admin has activated `After Effects` in the production bundle, you need to run the AYON launcher at least once. This allows the launcher to download the addon to the correct location on your computer. 
+After that, you can continue with the installation instructions for the After Effects extension.
+:::
 
-Use extension.zxp downloaded with AfterEffects addon.
-Current location will be in artist `AppData`, on Windows it would be something like `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\aftereffects_X.X.X\ayon_aftereffects\api`.
-On Linux look in `~/.local/share/Ynput/AYON/addons/aftereffects_X.X.X/ayon_aftereffects/api`, on Mac `~/Library/Application Support/Ynput/AYON/addons/aftereffects_X.X.X/ayon_aftereffects/api`.
-Artist must start Tray at least once for Ayon server to populate this location. Extension should be installed before AE is opened through Launcher!
+<Tabs
+groupId="platforms"
+defaultValue="win"
+values={[
+{label: 'Windows', value: 'win'},
+{label: 'Linux', value: 'linux'},
+{label: 'Mac', value: 'mac'},
+]}>
 
+<TabItem value="win">
 
-Drag extension.zxp and drop it to Anastasyi's Extension Manager. The extension will install itself. 
+1. Use your favorite app to install extensions. we recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
+2. Locate and install the `extension.zxp` file. You can find it in the `AppData` folder, typically at `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\aftereffects_X.X.X\ayon_aftereffects\api`. Alternatively, you can quickly navigate there using the environment variable shortcut: `%LOCALAPPDATA%\Ynput\AYON\addons\aftereffects_X.X.X\ayon_aftereffects\api`.
+
+</TabItem>
+
+<TabItem value="linux">
+
+1. Use your favorite app to install extensions.
+2. Locate and install the `extension.zxp` file. You can find it in the user data folder, typically at `~/.local/share/Ynput/AYON/addons/aftereffects_X.X.X/ayon_aftereffects/api`.
+
+</TabItem>
+
+<TabItem value="mac">
+
+1. Use your favorite app to install extensions. we recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
+2. Locate and install the `extension.zxp` file. You can find it in the `Application Support` folder, typically at`~/Library/Application Support/Ynput/AYON/addons/aftereffects_X.X.X/ayon_aftereffects/api`.
+
+</TabItem>
+
+</Tabs>
 
 ## Implemented functionality
 
