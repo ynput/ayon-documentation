@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 
 ## AE Extension installation
 
-:::tip
+:::info
 Once your admin has activated `After Effects` in the production bundle, you need to run the AYON launcher at least once. This allows the launcher to download the addon to the correct location on your computer. 
 After that, you can continue with the installation instructions for the After Effects extension.
 :::
@@ -41,7 +41,11 @@ values={[
 <TabItem value="win">
 
 1. Use your favorite app to install extensions. we recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
-2. Locate and install the `extension.zxp` file. You can find it in the `AppData` folder, typically at `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\aftereffects_X.X.X\ayon_aftereffects\api`. Alternatively, you can quickly navigate there using the environment variable shortcut: `%LOCALAPPDATA%\Ynput\AYON\addons\aftereffects_X.X.X\ayon_aftereffects\api`.
+2. Locate and install the `extension.zxp` file. You can find it in the `AppData` folder, typically at `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\aftereffects_X.X.X\ayon_aftereffects\api`.
+
+:::tip
+You can quickly navigate to the local app data using the environment variable shortcut: `%LOCALAPPDATA%`. For example, using `%LOCALAPPDATA%\Ynput\AYON\addons` as path to see your installed addons.
+:::
 
 </TabItem>
 
@@ -55,7 +59,7 @@ values={[
 <TabItem value="mac">
 
 1. Use your favorite app to install extensions. we recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
-2. Locate and install the `extension.zxp` file. You can find it in the `Application Support` folder, typically at`~/Library/Application Support/Ynput/AYON/addons/aftereffects_X.X.X/ayon_aftereffects/api`.
+2. Locate and install the `extension.zxp` file. You can find it in the `Application Support` folder, typically at `~/Library/Application Support/Ynput/AYON/addons/aftereffects_X.X.X/ayon_aftereffects/api`.
 
 </TabItem>
 
