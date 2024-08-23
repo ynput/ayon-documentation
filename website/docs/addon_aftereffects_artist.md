@@ -40,7 +40,7 @@ values={[
 
 <TabItem value="win">
 
-1. Use your favorite app to install extensions. we recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
+1. Use your favorite app to install extensions. We recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
 2. Locate and install the `extension.zxp` file. You can find it in the `AppData` folder, typically at `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\aftereffects_X.X.X\ayon_aftereffects\api`.
 
 :::tip
