@@ -58,7 +58,7 @@ You can quickly navigate to the local app data using the environment variable sh
 
 <TabItem value="mac">
 
-1. Use your favorite app to install extensions. we recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
+1. Use your favorite app to install extensions. We recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
 2. Locate and install the `extension.zxp` file. You can find it in the `Application Support` folder, typically at `~/Library/Application Support/Ynput/AYON/addons/aftereffects_X.X.X/ayon_aftereffects/api`.
 
 </TabItem>
