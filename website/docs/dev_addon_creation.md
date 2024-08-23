@@ -544,8 +544,9 @@ For more info about how to implement a host integration please fgo to [Host impl
 - `private` can be accessed only if you're logged into the server.
 - `public` can be access without being logged into the server.
 
-:::info
-`private` is used to distribute the client code to users (check any addon zip file contents😉). 
+:::tip
+Utilizing the `private` folder is a key strategy we employ to seamlessly distribute addon client code to user machines.
+Feel free to explore the contents of any addon zip file to witness our approach in action! 😉
 :::
 
 :::caution
