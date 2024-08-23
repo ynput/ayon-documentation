@@ -560,18 +560,26 @@ Anyone can download that data if they can visit/reach your `AYON_SERVER_URL` wit
 You only need to put your content in the folder named `private` or `public` based on your needs.
 
 ### How to access static content
-We can access any static content via ayon's api.
+
+Currently, We can access the static content via ayon's api, either from the browser directly or using tools like [postman](https://www.postman.com/) or programmatically using python for example.
+
+:::tip
+As a developer, you have the ability to create a frontend for your addon that utilizes Ayon's API. This will enable users to download static content, whether it's private or public.
+:::
 
 - To access `public` content: 
   since you don't need an auth token, you can use any web browser like if you are visiting any website.
   ```xml
   http://<AYON_SERVER_URL>/addons/<addon-name>/<addon-version>/public/<path-inside-public-folder> 
   ```
-  Here's an example from `ftrack` addon.
+  <details><summary>Here's an example from <code>ftrack</code> addon.</summary>
+
   ```xml
   http://<AYON_SERVER_URL>/addons/ftrack/1.1.2/public/icons/BatchTasks.svg
   ```
   ![](assets/addon_dev/public_content_example.png)
+
+  </details>
 
 - To access `private` content.
   - If you are logged into you ayon server, you can use the same web browser you've used to log into AYON Server.
@@ -579,8 +587,8 @@ We can access any static content via ayon's api.
     ```xml
     http://<AYON_SERVER_URL>/addons/houdini/0.3.1/private/client.zip
     ```
-  - you'd need to provide an `auth token`, when using clients like [postman](https://www.postman.com/).
-  - you can use also `ayon-python-api`.
+  - When using clients like [postman](https://www.postman.com/), you'd need to provide an `auth token`.
+  - you can also use `ayon-python-api`.
     <details><summary>Download <code>private</code> content <code>via ayon-python-api</code></summary>
     
     ```python
