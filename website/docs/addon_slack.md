@@ -96,9 +96,12 @@ For the Slack addon to function properly, it's essential to enter the authentica
 - For a specific project, replace {PROJECT_NAME} with your project's name:
   - `ayon+settings://slack/token?project={PROJECT_NAME}`
 
+<details><summary>Get Slack Token</summary>
 You'll find this token in the Slack dashboard once the app is installed. Remember, you can create separate tokens for use with different projects.
 
 ![Get token](assets/slack/slack_token.png)
+
+</details>
 
 ### Profiles
 
