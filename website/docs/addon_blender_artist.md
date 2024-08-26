@@ -11,7 +11,15 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.Blender_Badge}
 </ReactMarkdown>
 
-## AYON global tools
+Once you **launch Blender** via AYON toolset (e.g. **using Launcher**) you will be introduced to **AYON Menu** present in the menu header which is also a clear indication of running Blender using AYON.
+
+![Blender AYON Menu](assets/blender_ayon.png)
+
+:::tip
+Before starting to use the Blender AYON integration, please check the following user documentation sections to fully understand the core concepts of the AYON toolset and what it offers you as a user, as you will use those tools very frequently.
+:::
+
+## AYON Tools
 
 -   [Work Files](artist_tools_workfiles)
 -   [Create](artist_tools_creator)
@@ -22,90 +30,121 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Working with AYON in Blender
 
-AYON is here to ease you the burden of working on project with lots of
-collaborators, worrying about naming, setting stuff, browsing through endless
-directories, loading and exporting and so on. To achieve that, AYON is using
-concept of being _"data driven"_. This means that what happens when publishing
-is influenced by data in scene. This can by slightly confusing so let's get to
-it with few examples.
-
+AYON streamlines collaborative projects, simplifying tasks like naming conventions, configurations, and file navigation. It employs a "data-driven" approach, meaning the data within a scene dictates the publishing process. To clarify, let's explore some examples.
 
 ## Setting scene data
 
-Blender settings concerning framerate, resolution and frame range are handled
-by AYON. If set correctly in Ftrack, Blender will automatically set the
-values for you.
+Blender settings concerning **frame rate**, **resolution** and **frame range** are fully **handled by AYON**.
+If set correctly on the AYON server or in Ftrack, Blender will automatically set the values for you.
+
+:::tip
+You can force a specific resolution and frame range/fps at any time using **Set Frame Range** and **Set Resolution** actions sitting in the AYON menu.
+:::
+
+## Dealing with workfiles (scene save/scene open)
+
+When wanting to save your Blender scene aka `Workfile`, instead of using regular actions `File` > `Save As`
+
+...use `AYON` > `Workfiles` instead.
+
+It will make saving, naming and versioning your file a breeze... 
+
+![Blender AYON Workfiles](assets/blender_save.gif)
+
+You will use `Workfiles` tool not just for saving your work but for all `.blend` file operations like `File` > `Open` too.
+
+Just navigate to `AYON` > `Workfiles` > `Open` instead.
+
+For more details and what options it offers navigate to [Work Files](artist_tools_workfiles) user's docs section.
 
 
-## Publishing models
+## Publishing
+
+Publishing is a process of producing data which can be shared across your project and with your team members. It consists of several steps:
+
+- creating of your data (model, rig etc.)
+- creating of AYON publish instance (defines product type / data to be published from your workfile)
+- publishing of a product (process of making such data publicly available)
 
 ### Intro
+Let's begin with `model` product and how to approach publishing process.
 
-Publishing models in Blender is pretty straightforward. Create your model as you
-need. You might need to adhere to specifications of your studio that can be different
-between studios and projects but by default your geometry does not need any
-other convention.
+Publishing a `model` product in Blender is quite simple. Begin by preparing your model, either from scratch or by importing it into Blender. While studio specifications may vary depending on the project, generally, no additional conventions are needed for your geometry.
 
 ![Model example](assets/blender-model_example.jpg)
 
-### Creating instance
+### Creating Publish Instance
 
-Now create **Model instance** from it to let AYON know what in the scene you want to
-publish. Go **AYON → Create... → Model**.
+Once your model geometry been ready, select it (select multiple objects if needed) and navigate to
+
+`AYON` > `Create...`
+
+**Publisher** window will be introduced to you...
 
 ![Model create instance](assets/blender-model_create_instance.png)
 
+Choose `Model` Publish type and keep the `Variant` and `Use Selection` as is.
+:::tip
 See [Variant](artist_concepts.md#variant) and [Product](artist_concepts.md#product)
 for more detail on what they are and how they are used in AYON.
+:::
 
-`Use selection` toggle will use whatever you have selected in Outliner to be
-wrapped in Model instance. This is usually what you want. Click on **Create** button.
+`Use selection` toggle will use whatever you have selected in the Blender Outliner before triggering `Create...` 
+This is usually what you want.
 
-You'll notice then after you've created new Model instance, there is a new
-collection in Outliner called after your product and variant, in our case it is
-`/assets/props/suzanne_modelMain`. The assets selected when creating the Model instance
-are linked in the new collection.
+Now click on **Create >>** button.
 
-And that's it, you have your first model ready to publish.
+You'll notice then after you've created new **Model** instance, there is a new
+collection in the Outliner called after your product and variant, in our case it is
+`/assets/props/suzanne_modelMain`. The objects selected when creating the `Model` publish instance got parented under a locator
+representing the newly created product.
 
-Now save your scene (if you didn't do it already). You will notice that path
-in Save dialog is already set to place where scenes related to modeling task on
-your asset should reside. As in our case we are working on product called
-**suzanne** and on task **modeling**, path relative to your project directory will be
-`project_XY/assets/props/suzanne/work/modeling`. The default name for the file will
-be `project_XY_product_task_version`, so in our case
-`test_suzanne_modeling_v001.blend`. Let's save it.
+And that's it, you have your first model ready to be published as `model` product.
+
+Now save your scene if you didn't already!
+
+...again using `AYON` > `Workfiles` > `Save As`
+
+:::tip
+You are **free to perform** an ordinary `File > Save` aka `CTRL`+`S` at **any time** besides using the Workfiles, which are more suited for `Save As`, aka creating new versions.
+:::
+
 
 ![Model create instance](assets/blender-save_modelling_file.png)
 
-### Publishing models
+### Publishing Model
 
-Now let's publish it. Go **AYON → Publish...**. You will be presented with following window:
+Finally, let's publish our model! Go to **AYON → Publish...**. You will be presented with following window:
 
 ![Model publish](assets/blender-model_pre_publish.png)
 
-Note that content of this window can differs by your pipeline configuration.
-For more detail see [Publisher](artist_tools_publisher).
+:::note
+Content of this window can differ depending on your studio's AYON configuration.
+For more details see [Publisher](artist_tools_publisher) user's docs section.
+:::
 
 Items in left column are instances you will be publishing. You can disable them
 by clicking on the toggle next to them.
 
 See that in this case we are publishing the Blender model named
 `modelMain` and the workfile `workfileModeling` (its instance is generated
-automatically for any workfile).
+automatically for any workfile). Also `Context` being implicit widget and just resolves the
+product location within a project aka so called **Context**. You can't disable this one.
 
 On the right side, you can enable or disable optional validators or extractors
 for the selected instance.
 
-Lets do dry-run on publishing to see if we pass all validators. Click on the filter
-icon at the bottom next to the "Publish" button. Validators are run.
+Lets do dry-run on publishing to see if we pass all validators.
+Click on the funnel icon at the bottom next to the `Publish` button.
 
-### Fixing problems
+...validators are run.
 
-For the sake of demonstration, I intentionally kept the model in Edit Mode, to
-trigger the validator designed to check just this.
+### Fixing Validation Issues
 
-![Failed Model Validator](assets/blender-model_publish_error.png)
+For the sake of demonstration, we intentionally kept the model in `Edit Mode`, to
+trigger the validator designed to check if model not being in such a state.
+
+![Model Model Edit Mode](assets/blender_model_validate.png)
 
 The report tab in the publisher window shows us that we have problem with
 validator `Validate Object Mode`.
@@ -117,40 +156,51 @@ select objects that cause trouble. This is the case with our failed validator.
 On top you can see a button `Select Invalid`. This
 will select offending object in Blender.
 
-Fix is easy. Without closing Publisher window we just turn back the Object Mode.
-Then we need to reset it to make it notice changes we've made. Click on arrow
-circle button at the bottom and it will reset the Publisher to initial state. Run
-validators again (filter icon) to see if everything is ok.
+![Failed Model Validator](assets/blender-model_publish_error.png)
 
-It should OK be now. Click the Publish button when ready.
+Fix is easy. Without closing the Publisher window we just turn back to `Object Mode`.
+Then we need to reset the **Publisher** to make it notice changes we've made. Click on arrow
+circle button at the bottom and it will reset the Publisher to initial state.
+
+Run validators again (by funnel icon) to see if everything is ok now.
+
+The validation should pass properly without any errors now.
+
+Click the `Publish` button when ready.
 
 Publish process will now take its course. Depending on data you are publishing
 it can take a while. You should end up in the report tab of the publisher window,
-with a success message and information about published data.
+with a success message and information about published data as seen on the picture below.
 
 ![Success Publish](assets/blender-model_publish_success.png)
 
-You can now close publisher window.
-To check for yourself that model is published, open
-[Asset Loader](artist_tools_loader) - **AYON → Load...**.
-There you should see your model, named `modelDefault`.
+You can dismiss the publisher window now.
 
 ### Loading models
+Once you have some published product available you can use **AYON** and its **Loader** tool to bring such
+product(s) into your active Blender workfile.
 
-You can load model with [Loader](artist_tools_loader). Go **AYON → Load...**,
-select your rig, right click on it and click **Link model (blend)**.
+Navigate to **AYON → Load...**
+
+By selecting your Suzanne's `modelMain` and performing right click on it and choosing **Append Blend (Blend)** action.
+
+:::note
+**AYON Loader** offers you the ability to load available published products using different methods, which will vary depending on the occasion. Check
+[Asset Loader](artist_tools_loader) for more details.
+:::
 
 ## Creating Rigs
 
 Creating and publishing rigs with AYON follows similar workflow as with
-other data types. Create your rig and mark parts of your hierarchy in sets to
-help AYON validators and extractors to check it and publish it.
+other publish types. Simply by first creating your rig and selecting its parts before populating the scene with `rig` publish instance type in the Publisher window and finally performing publish action resulting into `rigMain` product.
 
-### Preparing rig for publish
+### Preparing the rig
 
 When creating rigs in Blender, it is important to keep a specific structure for
-the bones and the geometry. Let's first create a model and its rig. For
-demonstration, I'll create a simple model for a robotic arm made of simple boxes.
+the bones and the geometry.
+
+Let's first create a model and its control rig. For demonstration, We will create a simple model
+for a robotic arm made of simple boxes.
 
 ![Blender - Simple model for rigging](assets/blender-rig_model_setup.jpg)
 
@@ -184,8 +234,8 @@ select your rig, right click on it and click **Link rig (blend)**.
 
 ## Layouts in Blender
 
-A layout is a set of elements that populate a scene. AYON allows to version
-and manage those sets.
+A **Layout** is a set of loaded products that are loaded in your scene. You can produce
+layout from selected products and version manage such set via AYON toolset.
 
 ### Publishing a layout
 
@@ -204,3 +254,7 @@ You can load a Layout using [Loader](artist_tools_loader)
 (**AYON → Load...**). Select your layout, right click on it and
 select **Link Layout (blend)**. This will populate your scene with all those
 models you've put into layout.
+
+:::note This Docs Section is Incomplete
+This user docs section is still work in progress
+:::
