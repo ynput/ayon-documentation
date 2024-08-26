@@ -106,6 +106,16 @@ For example, to receive notifications when a render is published from Maya, the 
 - Product type: 'render'
 - Host: 'Maya'
 
+### Upload review maximum file size
+
+This setting controls the maximum file size for the `Upload Review` feature within the `Message to Channels` section. It sets a cap on the size of review files you can upload. If a file exceeds this limit, a link to the file's location in the studio will be shared instead.
+Additionally, if `Extract Burnin` plugin is enabled, AYON will default to using the burnin version of the review.
+
+:::info Slack storage limit
+Uploading large files to Slack can slow down the publishing process since publish plugins run one after another, causing a pause until the upload completes.
+Also, keep in mind that you can easily hit Slack's storage ceiling—5GB for the free version, and a max of 1GB for any single file.
+:::
+
 ### Messages to channels
 
 ![Configure module](assets/slack/messages_to_channels.png)
@@ -114,57 +124,39 @@ For example, to receive notifications when a render is published from Maya, the 
 Specify one or more channels where you'd like the plugin to send messages.
 :::info
 Please note that the Slack bot can access public channels by default, so there's no need for it to join them first.
+However, your Slack bot must be manually invited to each target channel by a Slack admin if they are private channels.
+To add your bot to a target channel, simply mention it in the message field with the command: `/invite @ayonNotifier`.
 :::
 - **Upload thumbnail** & **Upload review:**
-The plugin is capable of uploading a 'thumbnail' or 'review' from an instance (if they are present in an instance). However, your Slack bot must be manually invited to each target channel by a Slack admin.
-:::tip
-To add your bot to a target channel, simply mention it in the message field with the command: `/invite @ayonNotifier`.
+The plugin is capable of uploading a 'thumbnail' or 'review' from an instance (if they are present in an instance).
+:::info
+We have one additional implemented key `{review_filepath}`.
+to message content instead of using `Upload review`. This link might help users to find review easier on their machines.
+(It won't show a playable preview though!).
 :::
 - **Message:**
 Message content can use template keys (see [Available template keys](admin_settings_project_anatomy.md#available-template-keys)).
 Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly. e.g. `{Folder[name]}` ➜ "Gun", `{PRODUCT}` ➜ "RENDER".
-:::tip
-We have one additional implemented key `{review_filepath}`
+:::tip Message Example
+  ```
+  {Product} was published for {FOLDER[NAME]} in {task[name]} task.
+  Here you can find review {review_filepath}.
+  ```
 :::
 
-<!-- TODO: Continue editing the following sections/parts. -->
+<!-- TODO: Enhance the following section. You may convert it to an FAQ or add them to the message example above.  -->
 
-:::info Upload review
-This option is limited by `Upload review maximum file size` value in `Profiles` section. It might make sense to limit uploading
-of reviews only up to certain size. If the review file hits that limit, only link to studio accessible location will be inserted instead.<br />
-Burnin version of the review (usually .mp4) is preferred if present.<br />
-Please be sure that this configuration is viable for your use case. In case of uploading large reviews to Slack, 
-all publishes will be slowed down and you might hit a file limit on Slack pretty soon (it is 5GB for Free version of Slack, any file cannot be bigger than 1GB).<br />
-You might try to add `{review_filepath}` to message content instead of using `Upload review`. This link might help users to find review easier on their machines.
-(It won't show a playable preview though!)
-:::
-
-
-#### Message
-Message content can use Templating (see [Available template keys](admin_settings_project_anatomy#available-template-keys)).
-
-Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly ({Folder[name]} >> "Folder", {FAMILY} >> "RENDER").
-
-**Additional implemented keys:**
-- review_filepath
-
-##### Message example
-```
-{Product} was published for {FOLDER[NAME]} in {task[name]} task.
-
-Here you can find review {review_filepath}
-```
-
-##### Dynamic message for artists
+#### Further info about messages
+- **Dynamic message for artists:**
 If artists uses host with implemented Publisher (new UI for publishing, implemented in Tray Publisher, Adobe products etc), it is possible for
 them to add additional message (notification for specific users for example, artists must provide proper user id with '@').
 Additional message will be sent only if at least one profile, eg. one target channel is configured.
 All available template keys (see higher) could be used here as a placeholder too.
 
-#### User or group notifications
+- **User or group notifications:**
 Message template or dynamic data could contain user or group notification, it must be in format @artist.name, '@John Doe' or "@admin group" for display name containing space.
 If value prefixed with @ is not resolved and Slack user is not found, message will contain same value (not translated by Slack into link and proper mention.)
 
-#### Message retention
+- **Message retention:**
 Currently no purging of old messages is implemented in AYON. Admins of Slack should set their own retention of messages and files per channel.
 (see https://slack.com/help/articles/203457187-Customize-message-and-file-retention-policies)
