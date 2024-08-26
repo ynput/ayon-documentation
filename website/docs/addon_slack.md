@@ -59,9 +59,14 @@ You can quickly navigate to the local app data using the environment variable sh
 
 </Tabs>
 
-### App icon
+### Custom app icon
 
-To give the bot a custom icon, the Slack admin needs to upload it following the app installation.
+Customize your Slack bot by adding a custom icon.
+After the app is installed, the Slack admin can easily upload an image to serve as the app's icon.
+
+:::info
+Please note that this setting is found within the Slack app settings, not in AYON settings.
+:::
 
 Here's how to do it:
 
