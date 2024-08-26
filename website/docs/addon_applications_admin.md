@@ -7,12 +7,19 @@ sidebar_label: Applications addon settings
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# Applications addon
 
-## Applications
+Addon is responsible for setting up applications their executable paths and startup environments. Allowing custom launch handling for other addons.
+
+Addon has 2 layers of settings. First layer, available only in studio settings, allows to define all possible applications and tools that can be used across all projects. Second layer is to tell the system when certain applications and tools are used on project level.
+
+![settings_applications](assets/applications/admin_applications_layers.png)
+
+## Applications definitions
 
 In this section you can manage what Applications are available to your studio, locations of their executables, and their additional environments. In AYON context, each application that is integrated is also called a `Host` and these two terms will be used interchangeably in the documentation.
 
-Each Host is made of two levels.
+Each Application is made of two levels.
 1. **Application group** - This is the main name of the application and you can define extra environments that are applicable to all versions of the given application. For example any extra Maya scripts that are not
 version dependent, can be added to `Maya` environment here.
 2. **Application versions** - Here you can define executables (per platform) for each supported version of
@@ -46,7 +53,7 @@ It is possible to add new version for any supported application. There are two w
 2. **Add version** in case you want this version to be selectable individually. This is typically used for bigger releases that might not be fully compatible with previous versions. Keep in mind that if you add the latest version of an Application that is not yet part of the official AYON release, you might run into problems with integration. We test all the new software versions for compatibility and most often, smaller or bigger updates to AYON code are necessary to keep everything running.
 ![settings_applications](assets/settings/settings_addappversion.gif)
 
-## Tools
+## Tools definitions
 
 A tool in AYON is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
 
@@ -61,3 +68,27 @@ In this example MTOA will automatically set the `MAYA_VERSION`(which is set by M
 ![tools](assets/settings/tools_01.png)
 
 All the tools defined in here can then be assigned to projects. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So it is possible to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project.
+
+## Applications filters
+Applications that will be shown in launcher tool based on values in this setting. It is profile based filtering that allows to filter applications for specific task types.
+
+Using default settings will show all applications for all tasks. That can be easily changed.
+
+Simple example:
+![settings_applications](assets/applications/admin_applications_profiles.png)
+
+In this case all tasks with `Modeling` type will show only `Maya 2025`. Any other task type will show `After Effects 2024`, `Maya 2025`, `Nuke 15.0` and `Photoshop 2024`.
+
+Note: It is recommended to have one profile without task types filter with standard set of applications used in studio.
+
+## Tools filters
+Tools that will be used on application launch. It is profile based filtering that allows to filter tools for a context. Tools can have more specific filtering than applications.
+
+## Applications and Tools attributes
+Settings based filtering was introduced in applications addon release 1.0.0 . Before that applications were set with `applications` attribute on project (located under project anatomy) and tools were set using `tools` attribute on Project, Folder and Task entities.
+
+We still keep this the attributes in the system. Newly introduced settings do allow to switch between new settings and attributes, so we don't break existing productions without option to change it back.
+
+By default, are used settings based filters, but that is automatically changed to use attributes when settings from older version of applications addon are converted, so it is not needed to change it manually.
+
+Please keep in mind that `applications` and `tools` attributes are deprecated, and they will be removed in future versions of applications addon.
