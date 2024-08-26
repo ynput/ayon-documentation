@@ -21,7 +21,7 @@ It also supports customizable message templates that use placeholders (denoted b
 
 ## App installation
 
-Please ensure that the Slack application is installed on the company's Slack before proceeding.
+Please ensure that the AYON Slack application is installed on the company's Slack using the `manifest.yml` before proceeding to AYON settings.
 
 <Tabs
 groupId="platforms"
@@ -67,7 +67,7 @@ Here's how to do it:
 
 1. Navigate to your Slack app settings at a URL similar to `https://api.slack.com/apps/XXXXXXXX/general`.
 2. Click on 'Basic Information' and then find 'Display Information'.
-3. Here, you can upload any image of your choice. For ease, you can use the pre-made AYON icon available at [this link](https://github.com/ynput/ayon-launcher/blob/develop/common/ayon_common/resources/AYON.png).
+3. Here, you can upload any image of your choice. For ease, you can use the [pre-made AYON icon](https://github.com/ynput/ayon-launcher/blob/develop/common/ayon_common/resources/AYON.png).
 
 ## Settings
 
@@ -121,8 +121,8 @@ The plugin is capable of uploading a 'thumbnail' or 'review' from an instance (i
 To add your bot to a target channel, simply mention it in the message field with the command: `/invite @ayonNotifier`.
 :::
 - **Message:**
-Message content can use template keys (see [Available template keys](admin_settings_project_anatomy#available-template-keys)).
-Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly. e.g. `{folder[name]}` ➜ "Gun", `{product}` ➜ "RENDER".
+Message content can use template keys (see [Available template keys](admin_settings_project_anatomy.md#available-template-keys)).
+Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly. e.g. `{Folder[name]}` ➜ "Gun", `{PRODUCT}` ➜ "RENDER".
 :::tip
 We have one additional implemented key `{review_filepath}`
 :::
