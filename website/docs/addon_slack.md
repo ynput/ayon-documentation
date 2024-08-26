@@ -88,14 +88,14 @@ You might try to add `{review_filepath}` to message content instead of using `Up
 #### Message
 Message content can use Templating (see [Available template keys](admin_settings_project_anatomy#available-template-keys)).
 
-Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly ({Asset} >> "Asset", {FAMILY} >> "RENDER").
+Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly ({Folder[name]} >> "Folder", {FAMILY} >> "RENDER").
 
 **Additional implemented keys:**
 - review_filepath
 
 ##### Message example
 ```
-{Product} was published for {ASSET} in {task[name]} task.
+{Product} was published for {FOLDER[NAME]} in {task[name]} task.
 
 Here you can find review {review_filepath}
 ```
