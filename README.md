@@ -21,8 +21,8 @@ If you spot something incorrect or just think a page could do with some improvem
 
 - Install Node.js https://nodejs.org/en/download
 - `npm install -g yarn`
-- `yarn add docusaurus --dev`
 - `cd {ayon-doc-repo}/website`
+- `yarn install`
 - `yarn start`
 
 ## Addons
