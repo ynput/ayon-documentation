@@ -10,24 +10,27 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.MotionBuilder_Badge}
 </ReactMarkdown>
 
-## Setting your Motion Builder launching version in Application
+:::caution Motion Builder Compatibility
 
-Users can set up your own Motion Builder version in Application Addon
-You can click **+** button to add new different version.
-
-![AYON Application Motion Builder](assets/motionbuilder_setting_version_application.png)
-
-:::warning Important
-As the integration developed with Motion Builder 2024/2025, some functions may not be working in the version elder than 2024.
+The addon was developed with Motion Builder 2024/2025.
+Be aware that some features may not work with versions older than 2024.
 :::
 
-## Publishing Plugins
-There are some validators from Core Addon can be optionally added for Motion Builder.
+## Supported Workflows
 
-# Validate Version
-Users can access the validator via `ayon+settings://core/publish/ValidateVersion`
-You can add `motionbuilder` as host names if you want to validate workfile version to make sure the workfile version is in the latest version in AYON.
+The MotionBuilder addon currently enables you to import models, rigs, animations, and cameras. It also supports exporting animations and managing workfiles through saving, opening, and publishing.
 
-# Validate Outdated Cotnainer
-Users can access the validator via `ayon+settings://core/publish/ValidateOutdatedContainers`
-You can add `motionbuilder` as host names if you want to validate outdated container to make sure the loaded content is always at the latest version.
+:::info Motion Builder Addon Settings
+The Motion Builder addon does not include individual settings, so it won't be listed in your studio's addon settings. However, this does not affect the addon's ability to utilize the core settings.
+:::
+
+## Publish Plugins
+
+The Motion Builder addon leverages the plugins from the core addon. Many of these plugins offer filters where you can specify motionbuilder as the host. For example:
+
+- **Validate Version:** Ensures that the workfile version is up to date with the latest in AYON. Access this validator at `ayon+settings://core/publish/ValidateVersion` and include Motion Builder's host name, which by default is `motionbuilder`.
+![](assets/motionbuilder/valid_version_plugin.png)
+
+
+- **Validate Outdated Container:** Checks that any loaded content is the most recent version. This validator is accessible at `ayon+settings://core/publish/ValidateOutdatedContainers`. Add Motion Builder's host name, which by default is `motionbuilder`.
+![](assets/motionbuilder/validate_outdated_containers.png)
