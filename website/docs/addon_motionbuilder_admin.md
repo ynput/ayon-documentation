@@ -22,6 +22,9 @@ The MotionBuilder addon currently enables you to import models, rigs, animations
 
 :::info MotionBuilder Addon Settings
 The MotionBuilder addon does not include individual settings, so it won't be listed in your studio's addon settings. However, this does not affect the addon's ability to utilize the core settings.
+
+To detect whether `motionbuilder` addon is in your bundle, check the Bundles page (shortcut `B+B`).
+![](assets/motionbuilder/motion_builder_in_bundle_settings.png)
 :::
 
 ## Publish Plugins
