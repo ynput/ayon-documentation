@@ -97,3 +97,10 @@ For backwards compatibility the settings do allow to switch between new settings
 
 :::note Legacy behavior
 The legacy behavior is enabled by **disabling** the filters in settings:
+:::
+
+By default, the settings based filters are used, but that is automatically changed to use attributes when settings from older version of applications addon are converted, so it is not needed to change it manually for backwards compatibility from older addons.
+
+:::warning Deprecated
+Please keep in mind that `applications` and `tools` attributes are deprecated, and they will be removed in future versions of applications addon. It is recommended to use the 1.0.0+ application and tool filtering instead.
+:::
