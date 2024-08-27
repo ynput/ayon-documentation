@@ -10,10 +10,10 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.MotionBuilder_Badge}
 </ReactMarkdown>
 
-:::caution Motion Builder Compatibility
+:::caution Unknown support for Motion Builder 2023 and below
 
-The addon was developed with Motion Builder 2024/2025.
-Be aware that some features may not work with versions older than 2024.
+The AYON Motion Builder addon was initially developed with Motion Builder 2024 and 2025.
+Hence functionality was not tested in older versions than 2024 and may not work.
 :::
 
 ## Supported Workflows
