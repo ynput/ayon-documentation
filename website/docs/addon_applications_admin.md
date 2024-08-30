@@ -181,7 +181,7 @@ There are two ways of doing it.
 
 <details><summary>What is host name used for ?</summary>
 
-AYON uses host name to match applications to their host integration addons.
+Applications addon uses host name to match applications to their host integration addons.
 different applications can have the same host name as long as they are related to the same addon.
 And, host name is defined in the addon's client code. e.g. [nuke's addon host name](https://github.com/ynput/ayon-nuke/blob/7a08f570512d5bd92caf014ba159889cfd912d38/client/ayon_nuke/addon.py#L13).
 
