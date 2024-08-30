@@ -85,12 +85,8 @@ However it exposes few more attributes:
 - **Application Label:** The label of the application and the application group (the name next to the toggle).
 - **Application Icon:** The icon that would be displayed by the AYON launcher.
 
-:::tip Example Additional Application
-<details><summary>Example Additional Application</summary>
-
-![](assets/applications/additional_applications_3.png)
-
-</details>
+:::tip Application Icon
+<!-- TODO: Add more info about what ayon expects regards the application icon. -->
 :::
 
 ### Applications filters
