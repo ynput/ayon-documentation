@@ -1,36 +1,225 @@
 ---
 id: addon_applications_admin
 title: Applications and Tools
-sidebar_label: Applications addon settings
+sidebar_label: Applications
+description: Applications Addon Documentation
+toc_max_heading_level: 5
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
-# Applications addon
+<ReactMarkdown>
+{versions.Applications_Badge}
+</ReactMarkdown>
 
-The Applications addon is responsible for setting up applications, their executable paths and their startup environments. It also allows custom launch handling for other addons.
+## Introduction
 
-The Addon has two layers of settings: **definitions** and **filters**:
+The Applications addon is designed to configure applications, set their executable paths, and set up their startup environments.
 
-1. **Definitions:** available only in studio settings, allows to define all possible applications and tools that can be used across all projects.
-2. **Filters**: defines when certain applications and tools are used on project level. This filters whether a certain application or tool should be enabled in a certain launch context, like a specific task type or project-wide.
+<!-- :::info
+The addon introduces a debug launcher action for users. For more details, please refer to [Application addon artist docs] (addon_applications_artist.md)
+Also, The addon's client code features hook definitions that developers can leverage to implement launch hooks that tailor launch processes for other addons. For more details, please see [Application addon Dev docs] (addon_applications_dev.md).
+::: -->
 
 ![settings_applications](assets/applications/admin_applications_layers.png)
 
-## Applications definitions
+The Addon features two primary settings categories: Definitions and Filters:
 
-In this section you can manage what Applications are available to your studio, locations of their executables, and their additional environments. In AYON context, each application that is integrated is also called a `Host` and these two terms will be used interchangeably in the documentation.
+1. **Definitions:** available only in studio settings, allows to define all possible applications and tools that can be used across all projects.
+2. **Filters:** defines when certain applications and tools are used on project level. This filters whether a certain application or tool should be enabled in a certain launch context, like a specific task type or project-wide.
+
+## Applications Addon Settings
+### Show only available applications
+![](assets/applications/show_only_available_apps.png)
+
+When enabled, AYON Launcher will display only those applications for which executable paths exist on the current machine.
+This acts as a extra filter to the Applications filters, ensuring that inaccessible applications are excluded from view.
+
+### Applications Definitions
+
+In this section you can manage what Applications are available to your studio, locations of their executables, and their additional environments. 
+In AYON context, each application that is integrated is also called a `Host` and these two terms will be used interchangeably in the documentation.
+
+#### Built-in Applications
+Each integrated application (`Host`) has an application group e.g. Maya, Houdini, Nuke and etc.
+
+![settings_applications](assets/applications/application_grorup.png)
 
 Each Application is made of two levels.
-1. **Application group** - This is the main name of the application and you can define extra environments that are applicable to all versions of the given application. For example any extra Maya scripts that are not
-version dependent, can be added to `Maya` environment here.
-2. **Application versions** - Here you can define executables (per platform) for each supported version of
-the DCC and any default arguments (`--nukex` for instance). You can also further extend its environment.
+1. **Application group:**
+   1. **Host name:** AYON uses this name to match applications and addons.
+   2. **Environment:** Define extra environments that are applicable to all versions of the given application version dependent.
+2. **Application variant:** For each application variant we have
+   1. **Name:** application variant name
+   2. **Label:** application variant label
+   3. **Executables:** Define executables (per platform).
+   ![](assets/applications/mutliplatform_executables.png)
+   4. **Arguments:** Define default arguments (`--nukex` for instance)
+   ![](assets/applications/mutliplatform_args.png)
+   5. **Environment:** Extend application's main environment.
+   6. **+ button:** To add more variants.
 
-![settings_applications](assets/settings/applications_01.png)
+:::info Allowed characters in names and labels
+<!-- TODO: Note about allowed characters in host and variant names and label.
+We may mention if these name are used in other places and mostly, they are hardcoded across the pipeline because it's not expected to change them. which may bring another question about why is it an editable field.
+Also, Mention if the allowed characters may/might change in the future or not. -->
+:::
 
-### Environments
+#### Additional Applications
+
+It's possible to use AYON launcher to launch any applications that are not integrated into AYON. 
+However, they you won't find any AYON menus as that requires an AYON addon for that application.
+
+![](assets/applications/additional_applications_1.png)
+- **+ button:** To add more applications.
+
+Each added applications has the same application group explained earlier. 
+However it exposes few more attributes:
+- **Application Name:** The name of the application.
+- **Application Label:** The label of the application and the application group (the name next to the toggle).
+- **Application Icon:** The icon that would be displayed by the AYON launcher.
+![](assets/applications/additional_applications_2.png)
+
+### Applications filters
+These filters define the applications that will be shown in the launcher tool. It is profile based filtering that allows to filter applications for specific task types.
+
+![](assets/applications/applications_filters.png)
+
+1. **Task Types:** Choose from a list of task types to determine which ones the filter profile will affect. If you want the profile to apply to all tasks, leave it blank.
+2. **Allow:** Determines the mode of the filter, there are two options:
+   1. **All applications**
+   2. **Selected:** when chosen, the Applications list will show up.
+3. **Applications:** Applications list to determine which ones the filter profile will affect.
+4. **+ button:** To add more applications filters profiles.
+
+:::tip Default studio profile
+![](assets/applications/default_application_filters.png)
+Using default settings will show all applications for all task types.
+It is recommended to keep that one default profile without task types filter, which then acts as the standard set of applications used in the studio.
+:::
+
+### Tools Definitions
+
+A tool in AYON is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
+
+![](assets/applications/tools_defimitions.png)
+> Tools Definitions settings are much similar to Applications Definitions settings.
+
+1. **Tool Group:**
+   1. **Name:** Tool name.
+   2. **Label:** Tool label. This name will also be used as the tool group setting name.
+   3. **Environments:** Define environments that are applicable to all tool variants.
+2. **Tool Variants:**
+   1. **Name:** Tool variant name.
+   2. **Label:** Tool variant label. This name will also be used as the tool variant setting name.
+   3. **Hosts:** create a list of host names you want the tool variant to work with.
+   4. **Applications:** select which applications you want the tool variant to work with.
+   5. **Environments:** tool variant environments
+   6. **+ button:** To add more tool variants.
+3. **+ button:** To add more tool groups.
+
+:::tip Tool Examples
+
+AYON comes with some major CG renderers pre-configured as an example, but these and any others will need to be changed to match your particular environment.
+
+![](assets/applications/examples_tools.png)
+
+<details><summary>Pre-configured Example - Autodesk Arnold</summary>
+
+![tools](assets/applications/arnold_tool_example.png)
+
+In this example you can see that we set most of the environment variables in the general MTOA level, and only specify the version variable in the individual versions below. Because all environments within AYON setting will resolve any cross references, this is enough to get a fully dynamic plugin loading as far as your folder structure where you store the plugins is nicely organized.
+
+MTOA will automatically set the `MAYA_VERSION`(which is set by Maya Application environment) and `MTOA_VERSION` into the `MTOA` variable. We then use the `MTOA` to set all the other variables needed for it to function within Maya.
+</details>
+:::
+
+### Tools filters
+Tools that will be used on application launch. It is profile based filtering that allows to filter tools for a context. Tools can have more specific filtering than applications.
+
+All the tools defined in Tools Definitions can then be assigned to projects. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So it is possible to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project.
+
+
+![](assets/applications/tools_filters_profiles.png)
+
+1. **Folder Paths:** Create a list of folder paths to determine which ones the filter profile will affect. *It supports regex patterns.*
+2. **Task Types:** Choose from a list of task types to determine which ones the filter profile will affect.
+3. **Task Names:** Create a list of task names to determine which ones the filter profile will affect.
+4. **Tools:** Tools list to determine which ones the filter profile will affect.
+5. **+ button:** To add more applications filters profiles.
+
+:::tip Example Filter profile
+Find example of Tool defintion and a Filter profile in the FAQ section below:
+[How to make a tool available for all folder paths in a project for a specific application variant ?](addon_applications_admin#how-to-make-a-tool-available-for-all-folder-paths-in-a-project-for-a-specific-application-variant-)
+:::
+
+## FAQ
+### How to use application variant group settings ?
+
+<details><summary>How to use application variant group settings ?</summary>
+
+Variant group settings is used to add more versions of an application.
+There are two ways of doing it.
+
+1. **Add new executable** to an existing application version. This is a good way if you have multiple fully compatible versions of your DCC across the studio. Nuke is a typical example where multiple artists might have different `v#` releases of the same minor Nuke release. For example `12.2v3` and `12.3v6`. When you add both to `12.2` Nuke executables they will be treated the same in AYON and the system will automatically pick the first that it finds on an artist machine when launching. Their order is also the order of their priority when choosing which version to run if multiple are present.
+![settings_applications](assets/applications/settings_addapplication.gif)
+
+2. **Add version** in case you want this version to be selectable individually. This is typically used for bigger releases that might not be fully compatible with previous versions. Keep in mind that if you add the latest version of an Application that is not yet part of the official AYON release, you might run into problems with integration. We test all the new software versions for compatibility and most often, smaller or bigger updates to AYON code are necessary to keep everything running.
+![settings_applications](assets/applications/settings_addappversion.gif)
+
+</details>
+
+### What is host name used for ?
+
+<details><summary>What is host name used for ?</summary>
+
+AYON uses host name to match applications to their host integration addons.
+different applications can have the same host name as long as they are related to the same addon.
+And, host name is defined in the addon's client code. e.g. [nuke's addon host name](https://github.com/ynput/ayon-nuke/blob/7a08f570512d5bd92caf014ba159889cfd912d38/client/ayon_nuke/addon.py#L13).
+
+![](assets/applications/different_apps_same_host.png)
+
+:::tip
+Host name of the additional application can add application we don't have integrated yet (e.g. GIMP) and add gimp addon integration.
+So, you'd add gimp as additional app and AYON will be able to match it with your addon with gimp host name.
+:::
+
+Also note that, Host name is used in different places in AYON settings for profile filtering. 
+e.g. `Hosts` list in [Tools Definitions](addon_applications_admin#tools-definitions) settings expects host names.
+
+</details>
+
+### What does AYON offer to customize the application environments ?
+
+<details><summary>What does AYON offer to customize the application environments ?</summary>
+
+> Originally answered by Roy Nieterau on ynput's forums [Maya - User prefs and studio prefs](https://community.ynput.io/t/maya-user-prefs-and-studio-prefs/1683/3)
+
+1. Global Environment Variables: `ayon+settings://core/environments`
+2. Per application group environment variables. e.g. maya: `ayon+settings://applications/applications/maya/environment`
+3. Per application version environment variables, e.g. maya 2025: `ayon+settings://applications/applications/maya/variants/0/environment`
+4. Tools environment variables.
+
+Tools are special in that you can set tools to apply to only to certain contexts, e.g. only certain assets or shots instead of project-wide.
+
+</details>
+
+### What is the syntax AYON uses for defining environments in settings ?
+
+<details><summary>What is the syntax AYON uses for defining environments in settings ?</summary>
+
+Environment variables should be strings for both keys and values. It should be
+
+```json
+{
+    "MY_VARIABLE": "1"
+}
+```
+
+:::tip Environments
 
 Please keep in mind that the environments are not additive by default, so if you are extending variables like
 `PYTHONPATH`, or `PATH` make sure that you add themselves to the end of the list.
@@ -45,49 +234,33 @@ For instance:
     ]
 }
 ```
-
-### Adding versions
-
-It is possible to add new version for any supported application. There are two ways of doing it.
-
-1. **Add new executable** to an existing application version. This is a good way if you have multiple fully compatible versions of your DCC across the studio. Nuke is a typical example where multiple artists might have different `v#` releases of the same minor Nuke release. For example `12.2v3` and `12.3v6`. When you add both to `12.2` Nuke executables they will be treated the same in AYON and the system will automatically pick the first that it finds on an artist machine when launching. Their order is also the order of their priority when choosing which version to run if multiple are present.
-![settings_applications](assets/settings/settings_addapplication.gif)
-
-2. **Add version** in case you want this version to be selectable individually. This is typically used for bigger releases that might not be fully compatible with previous versions. Keep in mind that if you add the latest version of an Application that is not yet part of the official AYON release, you might run into problems with integration. We test all the new software versions for compatibility and most often, smaller or bigger updates to AYON code are necessary to keep everything running.
-![settings_applications](assets/settings/settings_addappversion.gif)
-
-## Tools definitions
-
-A tool in AYON is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
-
-AYON comes with some major CG renderers pre-configured as an example, but these and any others will need to be changed to match your particular environment.
-
-Their environment settings are split to two levels just like applications to allow more flexibility when setting them up.
-
-In the image before you can see that we set most of the environment variables in the general MTOA level, and only specify the version variable in the individual versions below. Because all environments within AYON setting will resolve any cross references, this is enough to get a fully dynamic plugin loading as far as your folder structure where you store the plugins is nicely organized.
-
-
-In this example MTOA will automatically set the `MAYA_VERSION`(which is set by Maya Application environment) and `MTOA_VERSION` into the `MTOA` variable. We then use the `MTOA` to set all the other variables needed for it to function within Maya.
-![tools](assets/settings/tools_01.png)
-
-All the tools defined in here can then be assigned to projects. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So it is possible to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project.
-
-## Applications filters
-These filters define the applications that will be shown in the launcher tool. It is profile based filtering that allows to filter applications for specific task types.
-
-Using default settings will show all applications for all tasks. That can be easily changed.
-
-Simple example:
-![settings_applications](assets/applications/admin_applications_profiles.png)
-
-In this case all tasks with `Modeling` type will show only `Maya 2025`. Any other task type will show `After Effects 2024`, `Maya 2025`, `Nuke 15.0` and `Photoshop 2024`.
-
-:::note Default studio profile
-It is recommended to have one profile without task types filter, which then acts as the standard set of applications used in the studio.
 :::
 
-## Tools filters
-Tools that will be used on application launch. It is profile based filtering that allows to filter tools for a context. Tools can have more specific filtering than applications.
+</details>
+
+### How to update the task types list in the filter settings ?
+
+<details><summary>How to update the task types list in the filter settings ?</summary>
+
+Task types list in Studio settings is generated from the default anatomy preset. 
+
+Task types list in Project settings is generated from the project's anatomy. 
+To navigate quickly, click `a+a`.
+
+</details>
+
+### How to make a tool available for all folder paths in a project for a specific application variant ?
+
+<details><summary>How to make a tool available for all folder paths in a project for a specific application variant ?</summary>
+
+To achieve this result, you'd need to adjust two settings:
+
+1. In Tools Definitions: Set Hosts and Applications. This effectively makes your tool work only for the specified hosts and apps.
+![](assets/applications/faq_tool_available_for_host_in_project_1.png)
+2. In Tools Filtering: Don't set Folder Path. This effectively makes your tool available for all folder paths in the whole project.
+![](assets/applications/faq_tool_available_for_host_in_project_2.png)
+
+</details>
 
 ## Legacy: Applications and Tools attributes
 
