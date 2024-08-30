@@ -81,7 +81,13 @@ However it exposes few more attributes:
 - **Application Name:** The name of the application.
 - **Application Label:** The label of the application and the application group (the name next to the toggle).
 - **Application Icon:** The icon that would be displayed by the AYON launcher.
+
+:::tip Example Additional Application
+<details><summary>Example Additional Application</summary>
+
 ![](assets/applications/additional_applications_2.png)
+</details>
+:::
 
 ### Applications filters
 These filters define the applications that will be shown in the launcher tool. It is profile based filtering that allows to filter applications for specific task types.
