@@ -78,6 +78,9 @@ However, they you won't find any AYON menus as that requires an AYON addon for t
 
 Each added applications has the same application group explained earlier. 
 However it exposes few more attributes:
+
+![](assets/applications/additional_applications_2.png)
+
 - **Application Name:** The name of the application.
 - **Application Label:** The label of the application and the application group (the name next to the toggle).
 - **Application Icon:** The icon that would be displayed by the AYON launcher.
@@ -85,7 +88,8 @@ However it exposes few more attributes:
 :::tip Example Additional Application
 <details><summary>Example Additional Application</summary>
 
-![](assets/applications/additional_applications_2.png)
+![](assets/applications/additional_applications_3.png)
+
 </details>
 :::
 
