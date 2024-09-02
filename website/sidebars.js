@@ -176,6 +176,22 @@ module.exports = {
                 "addon_flow_admin",
                 "addon_aquarium_admin",
                 "addon_usd_admin",
+                {
+                    type: "category",
+                    label: "Version Control",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Version Control',
+                        description:
+                          "Welcome to AYON Version Control Docs!",
+                        keywords: ['version-control'],
+                      },
+                    items: [
+                        "addon_version_control_admin_intro",
+                        "addon_version_control_admin_get_started",
+                        "addon_version_control_admin_settings"
+                    ]
+                },
                
             ].sort(sorted),
         },

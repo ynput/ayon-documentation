@@ -38,6 +38,7 @@
     "USD_Badge" : "[![USD Addon - 0.1.2](https://img.shields.io/badge/USD_Addon-1.0.3-1c91d4)](https://github.com/ynput/ayon-usd)",
     "Wrap_Badge" : "![wrap - 0.0.1](https://img.shields.io/badge/wrap-0.0.1-2f4249)",
     "Zbrush_Badge" : "![zbrush - 0.1.0](https://img.shields.io/badge/zbrush-0.1.0-2f4249)",
+    "VersionControl_Badge" : "[![Version Control - 0.0.2](https://img.shields.io/badge/Version_Control-0.0.2-404040?logo=git)](https://github.com/ynput/ayon-version-control)",
 
     "Teamplate_Badge" : "[![Template Badge - #.#.#](https://img.shields.io/badge/Template_Badge-%23.%23.%23-00d6a1)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/example_addons)"
 }
