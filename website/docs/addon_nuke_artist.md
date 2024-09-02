@@ -395,3 +395,14 @@ If your Pyblish dialog fails on Validate Version, you might be trying to publish
 Or maybe you accidentally copied write node from different shot to your current one. Check the write publishes on the left side of the Pyblish dialog. Typically you publish only one write. Locate and delete the stray write from other shot.
 
 <iframe width="512px" height="288px" src="https://www.youtube.com/embed/Ic9z4gKnHAA" frameborder="0" modestbranding="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"></iframe>
+
+### Inconsistent FBX Camera loading
+
+If you load a FBX camera from Nuke, you might get some error with incomplete loading especially if your workfile already contains ABC data. Nuke does support [Importing Camera from FBX files](https://learn.foundry.com/nuke/content/comp_environment/3d_compositing/importing_fbx_cameras.html), but the Camera node sometimes fail to load the FBX file.
+
+This is because ABC and FBX seems to share a common loading context and having both in the same workfile conflicts.
+
+Fix this by reloading the FBX file manually then ensure the "node name" is set to the Camera.
+("Producer Perspective", "Producer Top", "Producer Bottom"... are default FBX view and automatically added by Nuke).
+
+![Reload FBX Camera](assets/nuke/reload_fbx_camera.jpg)
