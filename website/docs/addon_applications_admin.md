@@ -222,29 +222,54 @@ Tools are special in that you can set tools to apply to only to certain contexts
 
 <details><summary>What is the syntax AYON uses for defining environments in settings?</summary>
 
-Environment variables should be strings for both keys and values. It should be
+The syntax closely resembles JSON syntax rules:
 
-```json
-{
-    "MY_VARIABLE": "1"
-}
-```
+- Each variable consists of a name/value pair, with both keys and values should be strings.
+  ```json
+   {
+      "MY_VARIABLE": "1"
+   }
+   ```
+- Variables are separated by commas.
+    ```json
+   {
+      "VARIABLE_1": "A",
+      "VARIABLE_2": "B",
+      "VARIABLE_3": "C"
+   }
+   ```
+- Square brackets enclose lists of values.
+   ```json
+   {
+      "MY_VARIABLE": ["A", "B", "C"]
+   }
+   ```
+- Curly braces contain groups of variables.
+  ```json
+   {
+      "STUDIO_CONFIGS": {
+        "windows": "win-path",
+        "darwin": "mac-path",
+        "linux": "linux-path"
+    }
+   }
+   ```
+- Note that environment variables are not cumulative by default. If you're appending to variables like `PYTHONPATH` or `PATH`, ensure you include the original variable at the end of the list.
+   ```json
+   {
+      "PYTHONPATH": [
+         "my/path/to/python/scripts",
+         "{PYTHONPATH}"
+      ]
+   }
+   ```
 
-:::tip Environments
+:::tip cross-platform environments
+It's important to note that we **recommend** using list assignments for variables.
+For instance, setting `"MY_VARIABLE": "A;B;C"` works on Windows but not on UNIX, where the path separator is `:`. Therefore, it should be `A:B:C` on UNIX systems.
+Defining `"MY_VARIABLE": ["A", "B", "C"]` ensures the correct separator is used automatically based on the platform.
 
-Please keep in mind that the environments are not additive by default, so if you are extending variables like
-`PYTHONPATH`, or `PATH` make sure that you add themselves to the end of the list.
-
-For instance:
-
-```json
-{
-    "PYTHONPATH": [
-        "my/path/to/python/scripts",
-        "{PYTHONPATH}"
-    ]
-}
-```
+This functionality is handled by [`acre`](https://github.com/ynput/acre), which AYON utilizes to construct environment variables. Acre includes support for [platform-specific assignments](https://github.com/ynput/acre?tab=readme-ov-file#platform-specific-paths-acreparse), guaranteeing the use of the right separator based on the platform.
 :::
 
 </details>
