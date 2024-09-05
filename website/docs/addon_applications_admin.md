@@ -183,26 +183,6 @@ There are two ways of doing it.
 
 </details>
 
-### What is host name used for?
-
-<details><summary>What is host name used for?</summary>
-
-Applications addon uses host name to match applications to their host integration addons.
-different applications can have the same host name as long as they are related to the same addon.
-And, host name is defined in the addon's client code. e.g. [nuke's addon host name](https://github.com/ynput/ayon-nuke/blob/7a08f570512d5bd92caf014ba159889cfd912d38/client/ayon_nuke/addon.py#L13).
-
-![](assets/applications/different_apps_same_host.png)
-
-:::tip
-Host name of the additional application can add application we don't have integrated yet (e.g. GIMP) and add gimp addon integration.
-So, you'd add gimp as additional app and AYON will be able to match it with your addon with gimp host name.
-:::
-
-Also note that, Host name is used in different places in AYON settings for profile filtering. 
-e.g. `Hosts` list in [Tools Definitions](addon_applications_admin#tools-definitions) settings expects host names.
-
-</details>
-
 ### What does AYON offer to customize the application environments?
 
 <details><summary>What does AYON offer to customize the application environments?</summary>
