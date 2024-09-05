@@ -50,7 +50,7 @@ Each application definition has an application group e.g. Maya, Houdini, Nuke an
 
 Each Application is made of two levels.
 1. **Application group:**
-   1. **Host name:** Pipeline integration name supplied by an AYON addon.
+   1. **Host name:** Pipeline integration name supplied by an AYON addon, these are usually constants related to a host integration like "maya", "houdini", "nuke" and so forth. For now they are best left at the default values.
    2. **Environment:** Define extra environments that are applicable to all versions of the given application version dependent.
 2. **Application variant:** For each application variant we have
    1. **Name:** application variant name
