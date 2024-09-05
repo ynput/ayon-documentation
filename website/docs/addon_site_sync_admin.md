@@ -200,7 +200,7 @@ As current implementation relies heavily on Settings and Site Settings, backgrou
 
 To do this:
 
-- run AYON `Tray` with environment variable AYON_LOCAL_ID set to name of active (source) site. In most use cases it would be studio (for cases of backups of everything published to studio site to different cloud site etc.)
+- run AYON `Tray` with environment variable AYON_SITE_ID set to name of active (source) site. In most use cases it would be studio (for cases of backups of everything published to studio site to different cloud site etc.)
 - start `Tray`
 - check `Local ID` in information dialog after clicking on version number in the Tray
 - open `Site Settings` in the `Ayon Server` (`ayon+settings://sitesync?project=ayon_test&site=studio`)
