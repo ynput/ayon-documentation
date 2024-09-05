@@ -142,16 +142,16 @@ AYON comes with some major CG renderers pre-configured as an example, but these 
 
 ![tools](assets/applications/arnold_tool_example.png)
 
-In this example you can see that we set most of the environment variables in the general MTOA level, and only specify the version variable in the individual versions below. Because all environments within AYON setting will resolve any cross references, this is enough to get a fully dynamic plugin loading as far as your folder structure where you store the plugins is nicely organized.
+In this example you can see that we set most of the environment variables in the general MTOA level, and only specify the version variable in the individual versions below. Because all environments within AYON setting will resolve any cross references, this is enough to get fully dynamic plugin loading as far as your folder structure where you store the plugins is nicely organized.
 
-MTOA will automatically set the `MAYA_VERSION`(which is set by Maya Application environment) and `MTOA_VERSION` into the `MTOA` variable. We then use the `MTOA` to set all the other variables needed for it to function within Maya.
+MTOA will automatically set the `MAYA_VERSION` (which is set by Maya Application environment) and `MTOA_VERSION` into the `MTOA` variable. We then use the `MTOA` to set all the other variables needed for it to function within Maya.
 </details>
 :::
 
 ### Tools filters
 Tools that will be used on application launch. It is profile based filtering that allows to filter tools for a context. Tools can have more specific filtering than applications.
 
-All the tools defined in Tools Definitions can then be assigned to projects. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So it is possible to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project.
+All the tools defined in Tools Definitions can then be assigned to projects, certain task types or even selectively for only certain folders. You can also change the tools versions on any project level all the way down to individual asset or shot overrides. So it is possible to upgrade you render plugin for a single shot, while not risking the incompatibilities on the rest of the project.
 
 
 ![](assets/applications/tools_filters_profiles.png)
@@ -163,7 +163,7 @@ All the tools defined in Tools Definitions can then be assigned to projects. You
 5. **+ button:** Add application group filters profiles.
 
 :::tip Example Filter profile
-Find example of Tool defintion and a profile Filter in the FAQ section below:
+Find example of Tool definition and a profile Filter in the FAQ section below:
 [How to make a tool available for all folder paths in a project for a specific application variant?](addon_applications_admin#how-to-make-a-tool-available-for-all-folder-paths-in-a-project-for-a-specific-application-variant-)
 :::
 
