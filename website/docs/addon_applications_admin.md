@@ -278,9 +278,8 @@ This functionality is handled by [`acre`](https://github.com/ynput/acre), which 
 
 <details><summary>How to update the task types list in the filter settings?</summary>
 
-Task types list in Studio settings is generated from the default anatomy preset. 
-
-Task types list in Project settings is generated from the project's anatomy. 
+- in **Studio settings:** Task types list  is generated from the default anatomy preset. 
+-  in **Project settings:** Task types list is generated from the project's anatomy. 
 To navigate quickly, click `a+a`.
 
 </details>
