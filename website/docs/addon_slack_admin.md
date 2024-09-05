@@ -2,6 +2,8 @@
 id: addon_slack_admin
 title: Slack Admin Docs
 sidebar_label: Slack
+description: AYON Slack Addon's documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
