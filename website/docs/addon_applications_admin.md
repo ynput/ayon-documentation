@@ -158,13 +158,13 @@ All the tools defined in Tools Definitions can then be assigned to projects. You
 
 :::tip Example Filter profile
 Find example of Tool defintion and a profile Filter in the FAQ section below:
-[How to make a tool available for all folder paths in a project for a specific application variant ?](addon_applications_admin#how-to-make-a-tool-available-for-all-folder-paths-in-a-project-for-a-specific-application-variant-)
+[How to make a tool available for all folder paths in a project for a specific application variant?](addon_applications_admin#how-to-make-a-tool-available-for-all-folder-paths-in-a-project-for-a-specific-application-variant-)
 :::
 
 ## FAQ
-### How to use application variant settings ?
+### How to use application variant settings?
 
-<details><summary>How to use application variant settings ?</summary>
+<details><summary>How to use application variant settings?</summary>
 
 Variant group settings is used to add more versions of an application.
 There are two ways of doing it.
@@ -177,9 +177,9 @@ There are two ways of doing it.
 
 </details>
 
-### What is host name used for ?
+### What is host name used for?
 
-<details><summary>What is host name used for ?</summary>
+<details><summary>What is host name used for?</summary>
 
 Applications addon uses host name to match applications to their host integration addons.
 different applications can have the same host name as long as they are related to the same addon.
@@ -197,9 +197,9 @@ e.g. `Hosts` list in [Tools Definitions](addon_applications_admin#tools-definiti
 
 </details>
 
-### What does AYON offer to customize the application environments ?
+### What does AYON offer to customize the application environments?
 
-<details><summary>What does AYON offer to customize the application environments ?</summary>
+<details><summary>What does AYON offer to customize the application environments?</summary>
 
 > Originally answered by Roy Nieterau on ynput's forums [Maya - User prefs and studio prefs](https://community.ynput.io/t/maya-user-prefs-and-studio-prefs/1683/3)
 
@@ -212,9 +212,9 @@ Tools are special in that you can set tools to apply to only to certain contexts
 
 </details>
 
-### What is the syntax AYON uses for defining environments in settings ?
+### What is the syntax AYON uses for defining environments in settings?
 
-<details><summary>What is the syntax AYON uses for defining environments in settings ?</summary>
+<details><summary>What is the syntax AYON uses for defining environments in settings?</summary>
 
 Environment variables should be strings for both keys and values. It should be
 
@@ -243,9 +243,9 @@ For instance:
 
 </details>
 
-### How to update the task types list in the filter settings ?
+### How to update the task types list in the filter settings?
 
-<details><summary>How to update the task types list in the filter settings ?</summary>
+<details><summary>How to update the task types list in the filter settings?</summary>
 
 Task types list in Studio settings is generated from the default anatomy preset. 
 
@@ -254,9 +254,9 @@ To navigate quickly, click `a+a`.
 
 </details>
 
-### How to make a tool available for all folder paths in a project for a specific application variant ?
+### How to make a tool available for all folder paths in a project for a specific application variant?
 
-<details><summary>How to make a tool available for all folder paths in a project for a specific application variant ?</summary>
+<details><summary>How to make a tool available for all folder paths in a project for a specific application variant?</summary>
 
 To achieve this result, you'd need to adjust two settings:
 
