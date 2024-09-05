@@ -1,8 +1,8 @@
 ---
 id: addon_applications_admin
 title: Applications and Tools
-sidebar_label: Applications
-description: Applications Addon Documentation
+sidebar_label: Applications and Tools
+description: Applications Addon Admin Documentation
 toc_max_heading_level: 5
 ---
 
