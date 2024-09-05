@@ -114,7 +114,7 @@ It is recommended to have one default profile without task types filter, with st
 A tool in AYON is anything that needs to be selectively added to your DCC applications. Most often these are plugins, modules, extensions or similar depending on what your package happens to call it.
 
 ![](assets/applications/tools_defimitions.png)
-> Tools Definitions settings are much similar to Applications Definitions settings.
+> Tools Definitions settings are very similar to Applications Definitions settings.
 
 1. **Tool Group:**
    1. **Name:** Tool name.
