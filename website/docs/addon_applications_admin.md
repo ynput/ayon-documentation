@@ -62,10 +62,13 @@ Each Application is made of two levels.
    5. **Environment:** Extend application's main environment.
    6. **+ button:** To add more variants.
 
-:::info Allowed characters in names and labels
-<!-- TODO: Note about allowed characters in host and variant names and label.
-We may mention if these name are used in other places and mostly, they are hardcoded across the pipeline because it's not expected to change them. which may bring another question about why is it an editable field.
-Also, Mention if the allowed characters may/might change in the future or not. -->
+:::info Naming Conventions for Names and Labels
+
+We currently allow the use of any characters. 
+However, we adhere to a specific naming convention alongside the default settings. 
+For names, we typically use lowercase letters, numbers, and hyphens (`-`).
+For labels, both uppercase and lowercase letters, as well as periods (`.`), are used.
+
 :::
 
 #### Additional Applications
