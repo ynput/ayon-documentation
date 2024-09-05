@@ -70,8 +70,11 @@ Also, Mention if the allowed characters may/might change in the future or not. -
 
 #### Additional Applications
 
-It's possible to use applications addon to launch any applications that are not in built-in applications.
-However, they you won't find any AYON menus as that requires an AYON addon for that application.
+It's possible to use applications addon to launch any applications that are not in built-in integrations that come with AYON.
+
+:::note
+Additional applications will only _launch_ but offer no further AYON integration (e.g. menus, creators, publishers) as that requires an AYON addon for that application, at which point it should not be under _additional applications_ anymore.
+:::
 
 ![](assets/applications/additional_applications_1.png)
 - **+ button:** Add application group.
