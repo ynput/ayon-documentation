@@ -121,7 +121,7 @@ It is required to set the environment variables before AYON launcher is started 
 :::
 
 :::tip
-Environment variables **AYON_ADDONS_DIR** and **AYON_DEPENDENCIES_DIR** by default lead relative to **AYON_LAUNCHER_STORAGE_DIR**.
+Environment variables **AYON_ADDONS_DIR** and **AYON_DEPENDENCIES_DIR** by default are relative to **AYON_LAUNCHER_STORAGE_DIR**.
 
 - **AYON_ADDONS_DIR** -> `{AYON_LAUNCHER_STORAGE_DIR}/addons`
 - **AYON_DEPENDENCIES_DIR** -> `{AYON_LAUNCHER_STORAGE_DIR}/dependency_packages`
