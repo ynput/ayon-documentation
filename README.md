@@ -18,12 +18,24 @@ If you spot something incorrect or just think a page could do with some improvem
 2. Make a PR documenting the changes.
 
 ## Build
+### Configure Environment
+To get started, ensure you have the following:
 
-- Install Node.js https://nodejs.org/en/download
-- `npm install -g yarn`
-- `yarn add docusaurus --dev`
-- `cd {ayon-doc-repo}/website`
-- `yarn start`
+- Download and install Node.js from [nodejs.org](https://nodejs.org/en/download).
+- Open your terminal and run `npm install -g yarn`.
+
+### AYON Documentation Configuration
+For the initial setup after cloning the AYON documentation repository, execute these steps:
+
+- In your terminal, navigate to the website directory: `cd {ayon-doc-repo}/website`.
+- Add Docusaurus as a development dependency: `yarn add docusaurus --dev`.
+
+### Run Docs Live
+Before launching the live documentation, it's a good practice to clear the cache:
+
+- Delete the cache directory found at `{ayon-doc-repo}/website/.docusaurus`.
+- In your terminal, navigate to the website directory: `cd {ayon-doc-repo}/website`.
+- Start the live server with `yarn start`.
 
 ## Addons
 
