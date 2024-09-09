@@ -74,11 +74,13 @@ It tells AYON important info about your addon.
 
 :::tip
 Following along this page, please note that on my side 
-I've cloned [ayon-addon-template](https://github.com/ynput/ayon-addon-template) and changed addon name and title in `pacakge.py` to
+I've cloned [ayon-addon-template](https://github.com/ynput/ayon-addon-template) and changed addon name and title in `package.py`.
+Also, let's set the version to `0.0.1`.
 
-```python
+```python title="my_addon/package.py"
 name = "my_addon"
 title = "My Addon"
+version = "0.0.1"
 ```
 :::
 
@@ -89,7 +91,7 @@ Addon server-side part contains an implementation of [`BaseServerAddon`](https:
 <details><summary>Minimalist addon definition</summary>
 Minimum definition with empty settings. your addon will be recognized by AYON but nothing to show.
 
-```python
+```python title="my_addon/server/__init__.py"
 from typing import Type
 from ayon_server.addons import BaseServerAddon
 from ayon_server.settings import BaseSettingsModel
@@ -145,7 +147,7 @@ Settings are data schemas based on `pydantic`
 
 Code snippet:
 
-```python
+```python title="my_addon/server/__init__.py"
 from typing import Type
 from ayon_server.addons import BaseServerAddon
 from ayon_server.settings import (
@@ -217,7 +219,7 @@ End points allow you to extends AYON API.
 
 <details><summary>Add endpoint example</summary>
 
-```python
+```python title="my_addon/server/__init__.py"
 from typing import Type
 from ayon_server.api.dependencies import CurrentUser
 from ayon_server.addons import BaseServerAddon
@@ -286,7 +288,7 @@ The far first step:
 - you should update `package.py` to specify the `{client-code-dir}`
 For the following examples, I added the following line to my `package.py`
 
-```python
+```python title="my_addon/package.py"
 client_dir = "my_addon"
 ```
 
@@ -297,9 +299,9 @@ You can use your addon in AYON dev mode by specifying client directory.
 
 <details><summary>Add some client code</summary>
 
-I've created a file in `{my-addon}/client/my_addon/some_code`
+I've created a file in `my_addon/client/my_addon/`
 
-```python
+```python title="my_addon/client/my_addon/some_code.py"
 # some_code.py
 def hello_ayon():
     print("Hello AYON!")
@@ -315,9 +317,7 @@ At this point, AYON will complain, *check ayon launcher log,* that addon has no 
 ```
 <details><summary>Minimalist addon client definition</summary>
 
-This code should exist in `{my-addon}/client/my_addon/__init__.py` 
-
-```python
+```python title="my_addon/client/my_addon/__init__.py"
 from ayon_core.addon import AYONAddon
 # `version.py` should be created by `create_package.py` by default.
 # if it's not created, please, create an empty file 
@@ -370,9 +370,7 @@ For more info please refer to the doc string of [ayon_core.addon.click_wrap](htt
 
 <details><summary>Minimalist addon client definition</summary>
 
-This code should exist in `{my-addon}/client/my_addon/__init__.py` 
-
-```python
+```python title="my_addon/client/my_addon/__init__.py"
 from ayon_core.addon import AYONAddon, click_wrap
 # `version.py` should be created by `create_package.py` by default.    
 from .version import __version__
@@ -443,9 +441,7 @@ The following example is done by implementing `ITrayAddon` interface.
 
 <details><summary>Custom tray widget example</summary>
 
-This code should exist in `{my-addon}/client/my_addon/__init__.py` 
-
-```python
+```python title="my_addon/client/my_addon/__init__.py"
 from qtpy import QtWidgets
 from ayon_core.addon import AYONAddon, ITrayAddon
 # `version.py` should be created by `create_package.py` by default.    
@@ -616,7 +612,7 @@ As a developer, you have the ability to create a frontend for your addon that ut
 
 The only configuration needed to add a frontend is by adding `frontend_scopes` attribute in your addon server.
 
-```python
+```python title="my_addon/server/__init__.py"
 from typing import Any
 
 from ayon_server.addons import BaseServerAddon
