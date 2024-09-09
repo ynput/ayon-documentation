@@ -25,7 +25,7 @@ At the moment site sync is only able to deal with published files (eg. in `publi
 
 ## Studio Settings
 
-First of all, you need to include Site Sync Addon to your bundle, and to use synchronization, *Site Sync* needs to be enabled globally in **ayon+settings://sitesync**.
+First of all, you need to include `Site Sync Addon` to your bundle, and to use synchronization, *Site Sync* needs to be enabled globally in **ayon+settings://sitesync**.
 
 ![Configure module](assets/site_sync_system.png)
 
@@ -200,20 +200,20 @@ As current implementation relies heavily on Settings and Site Settings, backgrou
 
 To do this:
 
-- run OP `Tray` with environment variable AYON_LOCAL_ID set to name of active (source) site. In most use cases it would be studio (for cases of backups of everything published to studio site to different cloud site etc.)
+- run AYON `Tray` with environment variable AYON_SITE_ID set to name of active (source) site. In most use cases it would be studio (for cases of backups of everything published to studio site to different cloud site etc.)
 - start `Tray`
 - check `Local ID` in information dialog after clicking on version number in the Tray
-- open `Site Settings` in the `Ayon Server`
+- open `Site Settings` in the `Ayon Server` (`ayon+settings://sitesync?project=ayon_test&site=studio`)
 - configure for each project necessary active site and remote site
 - close `Tray`
-- run Ayon launcher from a command line with `syncserver` and `--active_site` arguments
+- run AYON launcher from a command line with `syncservice` and `--active_site` arguments
 
 
 This is an example how to trigger background syncing process where active (source) site is `studio`. 
-(It is expected that OP is installed on a machine, `ayon_console` is on PATH. If not, add full path to executable.
+(It is expected that AYON is installed on a machine, `ayon_console` is on PATH. If not, add full path to executable.
 )
 ```shell
-ayon_console syncserver --active_site studio
+ayon_console addon sitesync syncservice --active_site studio
 ```
 
 
