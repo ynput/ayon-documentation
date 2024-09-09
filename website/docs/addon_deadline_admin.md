@@ -2,6 +2,8 @@
 id: addon_deadline_admin
 title: Deadline Admin Docs
 sidebar_label: Deadline
+description: Deadline Addon Admin Documentation
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
