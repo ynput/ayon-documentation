@@ -110,6 +110,7 @@ module.exports = {
                 "artist_activity_feed",
                 "artist_reviewables",
                 "artist_inbox",
+                "artist_task_progress_page"
             ],
         },
     ],
