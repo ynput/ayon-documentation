@@ -28,7 +28,14 @@ import loaderVideoUE from './assets/video/unreal_launch.mp4'
 
 ### Prerequisites
 
-AYON supports Unreal Engine 5.0 and 5.1. To use it, you need to install the [AYON Integration plugin](https://temp.com) from the Unreal Marketplace.
+AYON supports the latest Unreal Engine versions. To use it, you need to install the [AYON Integration plugin](https://www.unrealengine.com/marketplace/en-US/product/ayon-pipeline-integration) from the Unreal Marketplace.
+
+:::info
+If you encounter following warning when you run Unreal, your installation is missing Qt bindings.
+[Here are the steps](addon_unreal_admin#manually-installing-qt-bindings) to fix it.
+
+![Unreal missing Qt Bindings](assets/unreal_qtbindings_warning.png)
+:::
 
 ## Unreal project and data structure
 
@@ -592,3 +599,41 @@ Once the render is finished, you can publish the render. Click on the AYON icon 
 - Select the ones that you want to publish, and click on **Publish**.
 
 ![Unreal AYON Tools Publish](assets/unreal_ayon_menu_publisher.png)
+
+### Farm rendering
+
+Unreal integration also supports rendering on Deadline. Process of creation of render instance is same as higher, difference is in
+selection of `Farm rendering` in `Render target`.
+
+Deadline rendering process expects physically existing Render Queue and Render Settings uassets in the Unreal project.
+
+By default they are expected at these paths:
+- `/Game/Ayon/renderQueue`
+- `/Game/Ayon/DefaultMovieRenderQueueConfig.DefaultMovieRenderQueueConfig`
+
+These could be modified by AYON admin in `ayon+settings://unreal/render_queue_path`
+
+![Unreal AYON Render Queue and Settings](assets/unreal_render_queue_and_settings.png)
+
+### Perforce integration
+
+If Perforce integration is enabled by configured `ayon-version-control` addon in the bundle, artists could sync to any previous
+changelist via small dialog that will open before opening Unreal editor.
+
+Artist need to have its Perforce username, password and path to existing configured Perforce workspace configure in `ayon+settings://version_control/local_setting?project=ayon_test&site=XXX-YYY-ZZZ`
+
+![Unreal AYON Local Settings](assets/unreal_perforce_local_settings.png)
+
+Any line with changelist could be selected and synched by `Sync to` button. When synching process finishes, it will be highlighted under the list of changes.
+
+It is expected that commits in Unreal projects will be done inside in Unreal editor official Perforce tool or via `P4V`
+
+![Unreal AYON Changes Viewer](assets/unreal_changes_viewer.png)
+
+Additional automatic instance will be created in Publisher to highlight last existing changelist id. This information will be
+published to AYON server, will be used to Perforce on Deadline to synchronize to that changelist before rendering and might be used in future enhancement of integration.
+
+Name of the instance will start with `changelist_metadata` prefix and instance must be enabled to trigger usage of Perforce on the Deadline.
+(Without it Deadline could render just from current state of Unreal project file.)
+
+![Unreal AYON Changelist Metadata](assets/unreal_perforce_changelist_metadata.png)
