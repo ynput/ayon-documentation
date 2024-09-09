@@ -398,11 +398,16 @@ Or maybe you accidentally copied write node from different shot to your current 
 
 ### Inconsistent FBX Camera loading
 
-If you load a FBX camera from Nuke, you might get some error with incomplete loading especially if your workfile already contains ABC data. Nuke does support [Importing Camera from FBX files](https://learn.foundry.com/nuke/content/comp_environment/3d_compositing/importing_fbx_cameras.html), but the Camera node sometimes fail to load the FBX file.
+When loading an FBX camera, you may encounter incomplete loading error, particularly if your wokfile already contains Alembic (ABC) data. Although Nuke supports [FBX camera imports](https://learn.foundry.com/nuke/content/comp_environment/3d_compositing/importing_fbx_cameras.html), the Camera node can sometimes fail to load the FBX file properly.
 
-This is because ABC and FBX seems to share a common loading context and having both in the same workfile conflicts.
+This issue often arises because ABC and FBX formats seem to share a common loading context, which can lead to conflicts when both are present in the same workfile.
 
-Fix this by reloading the FBX file manually then ensure the "node name" is set to the Camera.
-("Producer Perspective", "Producer Top", "Producer Bottom"... are default FBX view and automatically added by Nuke).
+**To resolve this:**
+1. Try manually reloading the FBX file. 
+2. Make sure the `node name` is set to the Camera. 
+
+:::info Default FBX Views
+views like "Producer Perspective," "Producer Top," and "Producer Bottom" are default FBX views that Nuke adds automatically.
+:::
 
 ![Reload FBX Camera](assets/nuke/reload_fbx_camera.jpg)
