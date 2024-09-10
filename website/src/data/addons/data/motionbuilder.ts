@@ -2,9 +2,9 @@ import { type Addon } from "../types";
 import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
-    title: "Motion Builder",
+    title: "Motionbuilder",
     description:
-        "MotionBuilder is a 3D character animation software which users can do virtual cinematography, motion capture and traditional keyframe animation.",
+        "Motionbuilder is a 3D character animation software which users can do virtual cinematography, motion capture and traditional keyframe animation.",
     icon: "motionbuilder-icon.png",
     badge: versions.MotionBuilder_Badge,
     features: [

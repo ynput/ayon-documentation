@@ -2,6 +2,8 @@
 id: addon_motionbuilder_admin
 title: Motionbuilder Admin Docs
 sidebar_label: Motionbuilder
+description: Motion Builder Addon's Admins documentation.
+toc_max_heading_level: 5
 ---
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
