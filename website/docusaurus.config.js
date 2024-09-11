@@ -108,7 +108,7 @@ const config = {
                         position: "left",
                     },
                     {
-                        label: "APIs & Components",
+                        label: "Dev resources",
                         position: "left",
                         items: [
                             {
