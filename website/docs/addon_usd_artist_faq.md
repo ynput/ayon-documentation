@@ -2,9 +2,9 @@
 id: addon_usd_artist_faq
 title: FAQ
 sidebar_label: FAQ
+description: Frequently Asked Questions or Issues
+toc_max_heading_level: 5
 ---
-
-Frequently Asked Questions or Issues
 
 ### I do not see my model on loading the asset 
 

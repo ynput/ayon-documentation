@@ -2,9 +2,9 @@
 id: addon_usd_artist_usd_intro
 title: Why and What is USD?
 sidebar_label: USD Intro
+description: Introduction to USD and reasons to adopt it
+toc_max_heading_level: 5
 ---
-
-Introduction to USD and reasons to adopt it
 
 ## Why USD
 [USD Explainer Guide](https://www.foundry.com/insights/film-tv/usd-explainer-guide) article provides great insights about why USD is very useful.
