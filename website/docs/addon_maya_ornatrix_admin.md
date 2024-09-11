@@ -41,7 +41,7 @@ Access the settings for the Ornatrix Rig Loader at:
 
 1. Toggle the loader on or off.
 2. **Create Ornatrix Cache instance on load:**
-    Automatically create an Ornatrix Cache instance upon loading, akin to how an animation rig automatically generates an animation instance for publishing loaded character rigs—applied specifically for Ornatrix rigs.
+    When enabled, an Ornatrix Cache instance is automatically created each time an Ornatrix rig is loaded into the scene, similar to how loading a character rig automatically creates the animation instance for publishing.
 
 
 :::tip Customize Outliner Colors for Loaded Products
