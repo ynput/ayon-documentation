@@ -70,7 +70,7 @@ The cache family exports Ornatrix Alembic (.abc) which includes the Ornatrix dat
 The **Ornatrix Cache** supports to load Ornatrix alembic (.abc), Vray Proxy (.abc) and Arnold Scene Source (.abc).
 
 ## FAQ
-### How to connect an Ornatrix rig with a pointcache or animation?
+### How to connect an Ornatrix rig to a pointcache or animation?
 After loading the Ornatrix Rig and a pointcache to connect it to, you can use the AYON tools to connect it for you:
 
 1. Go to `AYON` -> `Manage...`
