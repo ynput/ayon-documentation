@@ -203,7 +203,7 @@ module.exports = {
                 type: 'generated-index',
                 title: 'AYON APIs and Components Catalogue',
                 description:
-                  "Welcome to AYON APIs and Components Catalogue!",
+                  "Welcome to AYON APIs and development resources catalogue!",
                 keywords: ['api', 'components'],
               },
             items: [
