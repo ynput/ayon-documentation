@@ -201,7 +201,7 @@ module.exports = {
             label: "APIs & Resources",
             link: {
                 type: 'generated-index',
-                title: 'AYON APIs and Components Catalogue',
+                title: 'AYON APIs an develoment resources',
                 description:
                   "Welcome to AYON APIs and development resources catalogue!",
                 keywords: ['api', 'components'],
