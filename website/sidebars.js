@@ -159,7 +159,14 @@ module.exports = {
                 "addon_hiero_admin",
                 "addon_houdini_admin",
                 "addon_keycloak_admin",
-                "addon_maya_admin",
+                {
+                    type: "category",
+                    label: "Maya",
+                    items: [
+                        "addon_maya_admin",
+                        "addon_maya_ornatrix_admin",
+                    ],
+                },
                 "addon_motionbuilder_admin",
                 "addon_nuke_admin",
                 "addon_photoshop_admin",
