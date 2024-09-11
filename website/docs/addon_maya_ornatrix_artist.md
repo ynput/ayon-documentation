@@ -15,13 +15,13 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 AYON supports Ephere's **Ornatrix** with the workflow of publishing and loading maya scene with Ornatrix data, Ornatrix groom presets and Ornatrix Alembic. It also supports to connect your target geometry with the loaded Ornatrix data (either from the maya scene or the groom preset.)
 
 ## Workflow
-AYON has two creators for Ornatrix publishing: ```Ornatrix Rig``` and ```Ornatrix Cache```.
+AYON has two creators for Ornatrix publishing: `Ornatrix Rig` and `Ornatrix Cache`.
 
 ## Ornatrix Rig
 
 ### Creating and publishing
 
-The **Ornatrix Rig** (product type: *oxrig*) publishes the geometry with the Ornatrix data.
+The **Ornatrix Rig** (product type: `oxrig`) publishes the geometry with the Ornatrix data.
 
 ![Maya - Ornatrix Rig Publishing](assets/maya/artist/ornatrix_rig_publishing.gif)
 
@@ -56,9 +56,9 @@ Both Maya Scene and groom preset allow for connecting ornatrix rig with the anim
 
 ### Creating and publishing
 
-There are two options to allow users to publish with ```Ornatrix Cache``` product type:
+There are two options to allow users to publish with `Ornatrix Cache` product type:
 
-1. Create an ```Ornatrix Cache``` instance themselves by selecting the mesh with the Ornatrix data.
+1. Create an `Ornatrix Cache` instance themselves by selecting the mesh with the Ornatrix data.
 2. Load ornatrix rig which automatically creates the instance ready for publishing.
 
 ![Maya - Ornatrix Cache Publishing](assets/maya/artist/ornatrix_cache_publishing.gif)
