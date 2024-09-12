@@ -2,6 +2,8 @@
 id: addon_motionbuilder_artist
 title: Motionbuilder Docs
 sidebar_label: Motionbuilder
+description: Motion Builder Addon's Artists documentation.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -11,9 +13,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.MotionBuilder_Badge}
 </ReactMarkdown>
 
-:::note Work in progress
-This part of documentation is still work in progress.
-:::
+
 ## First Steps With AYON
 With AYON plugins in Motionbuilder, you can save/load project in workfile tools, load your rig/character/animation into the scene, and publish your scene and animation.
 
