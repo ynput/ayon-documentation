@@ -72,7 +72,7 @@ The **Ornatrix Cache** supports to load Ornatrix alembic (.abc), Vray Proxy (.ab
 ## FAQ
 ### How to connect an Ornatrix rig to a pointcache or animation?
 
-To guide Ornatrix rig to its proper location. you'll need to connect it to the animation, aligning both transform and mesh attributes.
+To position the Ornatrix rig correctly, you need to connect it to the animation, aligning both transform and mesh attributes.
 After loading your animation or pointcache with the corresponding Ornatrix Rig, here's how to link them using AYON Inventory Actions:
 
 1. Click on `AYON` and then select `Manage...`.

@@ -27,7 +27,8 @@ At present, we support two Orantrix product types. You can let artists create th
 
 ### Validators
 
-Currently, we provide content validation for the two Orantrix product types.
+Currently, we provide content validation for the two Ornatrix product types.
+Both validators ensure only Ornatrix-related nodes are included.
 You can enable these validations, set them as optional to let artists skip them when publishing, or deactivate them if needed.
 
 - `ayon+settings://maya/publish/ValidateOrnatrixRigContent`
