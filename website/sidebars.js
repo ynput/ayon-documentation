@@ -159,7 +159,14 @@ module.exports = {
                 "addon_hiero_admin",
                 "addon_houdini_admin",
                 "addon_keycloak_admin",
-                "addon_maya_admin",
+                {
+                    type: "category",
+                    label: "Maya",
+                    items: [
+                        "addon_maya_admin",
+                        "addon_maya_ornatrix_admin",
+                    ],
+                },
                 "addon_motionbuilder_admin",
                 "addon_nuke_admin",
                 "addon_photoshop_admin",
@@ -211,8 +218,20 @@ module.exports = {
         "dev_contribute",
         {
             type: "category",
-            label: "Hosts integrations",
-            items: ["dev_host_implementation", "dev_publishing"],
+            label: "Addon Development",
+            link: {
+                type: 'generated-index',
+                title: 'AYON Addon Development',
+                description:
+                  "Welcome to AYON Addon Development Documentation!",
+                keywords: ['addon', 'dev'],
+              },
+            items: [
+                "dev_addon_intro",
+                "dev_addon_creation",
+                "dev_host_implementation",
+                "dev_publishing"
+            ],
         },
         "dev_deadline",
         "dev_colorspace",
