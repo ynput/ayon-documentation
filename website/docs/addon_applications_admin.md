@@ -17,7 +17,11 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Introduction
 
-The Applications addon is designed to configure applications, set their executable paths, and set up their startup environments.
+The Applications addon streamlines the setup of applications and tools across your studio. It empowers you to set executable paths and startup environments, with support for various operating systems including Windows, Linux, and macOS.
+
+:::info
+Please note that the addon does not differentiate between different Linux distributions.
+:::
 
 ![settings_applications](assets/applications/admin_applications_layers.png)
 
