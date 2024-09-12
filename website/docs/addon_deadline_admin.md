@@ -112,7 +112,7 @@ It submits a dependent AYON Job to publish the rendered images.
    1. **AOV Filter**
        1. **host_name:** Pipeline integration name supplied by an AYON addon.
        2. **AOV Regex:** AOV regex patterns for AOV filters.
-       3. **+ icon:** Add more regexes 
+       3. **+ icon:** Add more AOV regexes 
    2. **+ icon:** Add more filters
 
 
