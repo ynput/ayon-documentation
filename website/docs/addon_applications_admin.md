@@ -19,11 +19,6 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 The Applications addon is designed to configure applications, set their executable paths, and set up their startup environments.
 
-<!-- :::info
-The addon introduces a debug launcher action for users. For more details, please refer to [Application addon artist docs] (addon_applications_artist.md)
-Also, The addon's client code features hook definitions that developers can leverage to implement launch hooks that tailor launch processes for other addons. For more details, please see [Application addon Dev docs] (addon_applications_dev.md).
-::: -->
-
 ![settings_applications](assets/applications/admin_applications_layers.png)
 
 The Addon features two primary settings categories: Definitions and Filters:
