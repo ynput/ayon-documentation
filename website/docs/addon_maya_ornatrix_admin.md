@@ -17,12 +17,18 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 ## Maya Addon Setting for Ornatrix Maya
 
 ### Creators
+
+At present, we support two Orantrix product types. You can let artists create these products by enabling them in the Maya create settings.
+
 - `ayon+settings://maya/create/CreateOxRig`
 - `ayon+settings://maya/create/CreateOxCache`
 
 ![](assets/maya/admin/ornatrix_creators.png)
 
 ### Validators
+
+Currently, we provide content validation for the two Orantrix product types.
+You can enable these validations, set them as optional to let artists skip them when publishing, or deactivate them if needed.
 
 - `ayon+settings://maya/publish/ValidateOrnatrixRigContent`
 - `ayon+settings://maya/publish/ValidateOrnatrixCacheContent`
