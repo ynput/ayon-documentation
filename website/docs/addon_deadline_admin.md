@@ -101,19 +101,17 @@ It submits a dependent AYON Job to publish the rendered images.
 
 ![](assets/deadline/process_submitted_job_on_farm.png)
 
-1. **Department:**
-2. **Pool:**
-3. **Group:**
-4. **Chunk Size:**
-5. **Priority:**
-6. **Publishing script path:**
-7. **Skip integration of representation with ext:**
-8. **List of family names to transfer to generated instances (AOVs for example):** Ensure the AOV instances have these families if present.
-9. **Reviewable products filter:**
+1. **Department**
+2. **Pool**
+3. **Group**
+4. **Priority**
+5. **Skip integration of representation with ext:** list of extensions that shouldn't be published.
+6. **List of family names to transfer to generated instances (AOVs for example):** Ensure the AOV instances have these families if present.
+7. **Reviewable products filter:** Add review for specific aov names.
 ![](assets/deadline/reviewable_products_filter.png)
    1. **AOV Filter**
-       1. **host_name:**
-       2. **AOV Regex:**
+       1. **host_name** Pipeline integration name supplied by an AYON addon.
+       2. **AOV Regex:** AOV regex patterns for AOV filters.
        3. **+ icon:** Add more regexes 
    2. **+ icon:** Add more filters
 
