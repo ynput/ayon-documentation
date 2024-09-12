@@ -2,6 +2,8 @@
 id: addon_motionbuilder_artist
 title: Motionbuilder Docs
 sidebar_label: Motionbuilder
+description: Motion Builder Addon's Artists documentation.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
