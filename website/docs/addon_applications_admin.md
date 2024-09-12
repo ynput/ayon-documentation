@@ -91,7 +91,7 @@ Application group in additional applications exposes few more attributes:
 - **Application Icon:** The icon that would be displayed by the AYON launcher.
 
 :::tip Application Icon
-<!-- TODO: Add more info about what ayon expects regards the application icon. -->
+Icon filename: At this moment the icon must live in applications addon codebase. More options will come in future releases.
 :::
 
 ### Applications filters
