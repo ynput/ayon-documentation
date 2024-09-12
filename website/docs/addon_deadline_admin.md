@@ -110,7 +110,7 @@ It submits a dependent AYON Job to publish the rendered images.
 7. **Reviewable products filter:** Add review for specific aov names.
 ![](assets/deadline/reviewable_products_filter.png)
    1. **AOV Filter**
-       1. **host_name** Pipeline integration name supplied by an AYON addon.
+       1. **host_name:** Pipeline integration name supplied by an AYON addon.
        2. **AOV Regex:** AOV regex patterns for AOV filters.
        3. **+ icon:** Add more regexes 
    2. **+ icon:** Add more filters
