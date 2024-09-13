@@ -146,7 +146,7 @@ to message content instead of using `Upload review`. This link might help users 
 :::
 - **Message:**
 Message content can use template keys (see [Available template keys](admin_settings_project_anatomy.md#available-template-keys)).
-Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly. e.g. `{Folder[name]}` ➜ "Gun", `{PRODUCT}` ➜ "RENDER".
+Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly. e.g. `{Folder[name]}` ➜ "Gun", `{PRODUCT[name]}` ➜ "RENDER".
 :::tip Message Example
   ```
   {Product[name]} was published for {FOLDER[NAME]} in {task[name]} task.
