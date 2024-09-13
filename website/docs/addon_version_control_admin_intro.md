@@ -11,52 +11,66 @@ import TabItem from '@theme/TabItem';
 
 ## What is version control ?
 
-As Git defines it, Version control is a system that records changes to a file or set of files over time so that you can recall specific versions later. 
+Version control, as defined by [Git](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control), is a system that records changes to a file or set of files over time. This allows you to revisit and restore earlier versions if needed.
+
+Now, you might wonder, doesn't AYON do something similar? We'll dive deeper into this in the following section.
 
 ## Nature of Version Control
-How using Version Control System is different from traditional up versioning strategy ?
-From overview it's similar to hero versioning.
-Let's make an easy comparison:
+:::tip
+Version control, conceptually, is similar to hero versioning where you have a master version that points to one preferred version among other saved versions.
+:::
+
+AYON at its core adopts the traditional up-versioning strategy, which stands apart from using a Version Control System. But what sets them apart? Let's compare the two to highlight key differences:
 
 <Tabs
 groupId="vc_vs_up_versioning"
-defaultValue="upversining"
+defaultValue="upversioning"
 values={[
-{label: 'Up-Versining', value: 'upversining'},
+{label: 'Up-Versioning', value: 'upversioning'},
 {label: 'Version-Control', value: 'versioncontrol'},
 ]}>
 
-<TabItem value="upversining">
+<TabItem value="upversioning">
 
-- Follows a Folder Structure
-- Create new folder with version up and save new files inside it.
-- To pick a version, navigate to its folder.
-- Can pick different versions at the same time. e.g. pick v005 and v008 and v009 at the same time.
-- To check the history, navigate to your folder structure.
+- Uses a folder-based structure.
+- Updates are made by creating a new folder labeled with the next version number and saving the updated files there.
+- To access a specific version, you simply navigate to the folder labeled with that version number.
+- Allows simultaneous access to multiple versions, like loading v005, v008, and v009 simultaneously.
+- Reviewing the history requires going through the folder structure.
 
 </TabItem>
 
 <TabItem value="versioncontrol">
 
-- A repository
-- Push commit to the repository
-- To pick a version, you'd need to use a dedicated command.
-- Can pick different versions at the same time ? or it's only one at the same time ?
-- To check the history, use a dedicated viewer.
-
+- Uses a repository, Think of a repository as a database that keeps track of all version histories.
+- Updates are made by committing changes, which are essentially snapshots of your files at a specific point in time.
+- Accessing a specific version involves using commands to revert your files to that particular snapshot.
+- Although it requires extra effort, it's possible to access multiple versions at once, like loading v005, v008, and v009 simultaneously.
+- Reviewing the history requires using a dedicated tool designed for tracking and visualizing version histories.
+  
 </TabItem>
 
 </Tabs>
 
 :::tip
-From a pipeline perspective, users shouldn't be concerned about how these things are handled in the backend as this should be totally managed by the pipeline.
+From a pipeline perspective, users can remain focused on their tasks without worrying about the inner workings of various systems in the backend, as these are fully managed by the pipeline.
 
-And, it should be up to the pipeline admin to select the version control system that provide easy maintenance and better performance.
+Additionally, it is up to the pipeline admin to choose the most suitable version control system.
 :::
 
+## Version Control & Creative Industries
 
-## Further Reading 
+Version control is widely recognized in the gaming industry and virtual production, more so than in other creative sectors such as VFX, animation and advertising.
+This is reflected in the extensive discussions on forums and official sites for Unreal Engine or Unity.
 
-### Perforce vs Git: Comparing the Differences 
+For instance, Epic Games offers an insightful article [Versioning and Source Control](https://dev.epicgames.com/community/learning/tutorials/jO2m/unreal-engine-versioning-and-source-control), which delves into: 
+- Comprehensive tutorials on version control basics.
+- Workflow practices for version control in virtual production.
+- Building an Asset Library in Perforce, catering to various projects, sequences, seasons, episodes, and more.
 
-https://get.assembla.com/blog/perforce-vs-git/
+## Learn More
+
+- [What is Git?](https://git-scm.com/book/en/v2/Getting-Started-What-is-Git%3F)
+- [Perforce Helix Core vs Git](https://get.assembla.com/blog/perforce-vs-git/)
+- [Perforce Helix Core Beginner’s Guide](https://www.youtube.com/playlist?list=PLH3pq2J85xsPYn71_yzzsZQKvalTW-duE)
+- [Perforce Helix Core Admin’s Guide](https://www.youtube.com/playlist?list=PLH3pq2J85xsMDY2AAkzUhTmHIg1S7WN1f)
