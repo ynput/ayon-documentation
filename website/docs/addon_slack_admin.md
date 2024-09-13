@@ -149,7 +149,7 @@ Message content can use template keys (see [Available template keys](admin_setti
 Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly. e.g. `{Folder[name]}` ➜ "Gun", `{PRODUCT}` ➜ "RENDER".
 :::tip Message Example
   ```
-  {Product} was published for {FOLDER[NAME]} in {task[name]} task.
+  {Product[name]} was published for {FOLDER[NAME]} in {task[name]} task.
   Here you can find review {review_filepath}.
   ```
 :::
