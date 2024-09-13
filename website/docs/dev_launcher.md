@@ -90,6 +90,10 @@ Environment variables that are set during startup:
 - **AYON_HEADLESS_MODE** - Headless mode flag enabled when set to '1'.
 - **AYON_EXECUTABLE** - Path to executable that is used to run AYON.
 - **AYON_ROOT** - Root to AYON launcher content.
+- **AYON_LAUNCHER_STORAGE_DIR** - Directory where are stored dependency packages, addons and files related to addons.
+- **AYON_LAUNCHER_LOCAL_DIR** - Directory where are stored user/machine specific files. This MUST NOT be shared.
+- **AYON_ADDONS_DIR** - Path to AYON addons directory - still used but considered as deprecated. Please rather use `AYON_LAUNCHER_STORAGE_DIR` to change location.
+- **AYON_DEPENDENCIES_DIR** - Path to AYON dependencies directory - still used but considered as deprecated. Please rather use `AYON_LAUNCHER_STORAGE_DIR` to change location.
 
 - **AYON_MENU_LABEL** - Label for AYON menu -> TODO move to openpype addon.
 - **PYBLISH_GUI** - Default pyblish UI that should be used in pyblish -> TODO move to openpype addon.
@@ -107,6 +111,23 @@ Environment variables that are set for backwards compatibility with openpype add
 - **OPENPYPE_REPOS_ROOT** - Alias to **AYON_ROOT**.
 - **AVALON_LABEL** - Alias to **AYON_MENU_LABEL**.
 
+:::note
+Environment variables **AYON_LAUNCHER_STORAGE_DIR** and **AYON_LAUNCHER_LOCAL_DIR** are by default set to the same folder. Path is based on OS.
+- Windows: `%LOCALAPPDATA%\Ynput\AYON`
+- Linux: `~/.local/share/AYON`
+- macOS: `~/Library/Application Support/AYON`
+
+It is required to set the environment variables before AYON launcher is started as it is required for bootstrap.
+:::
+
+:::tip
+Environment variables **AYON_ADDONS_DIR** and **AYON_DEPENDENCIES_DIR** by default are relative to **AYON_LAUNCHER_STORAGE_DIR**.
+
+- **AYON_ADDONS_DIR** -> `{AYON_LAUNCHER_STORAGE_DIR}/addons`
+- **AYON_DEPENDENCIES_DIR** -> `{AYON_LAUNCHER_STORAGE_DIR}/dependency_packages`
+
+Changing their values will change where addons and dependency packages are stored even if you change **AYON_LAUNCHER_STORAGE_DIR**!
+:::
 
 ## Developer mode
 [Developer mode](dev_dev_mode) enables to skip the standard distribution process of addons to use local sources of addon code instead. This is useful for development of addon. Developer mode must be enabled and configured on AYON server.
