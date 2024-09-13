@@ -1,7 +1,7 @@
 ---
 id: addon_version_control_admin_settings
 title: Version Control Addon Settings
-sidebar_label: Settings
+sidebar_label: Version Control Settings
 description: Version Control Addon Settings.
 toc_max_heading_level: 5
 ---
@@ -13,7 +13,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
     {versions.VersionControl_Badge}
 </ReactMarkdown>
 
-## Settings
+## Addon Settings
 ![](assets/version_control/connection_settings.png)
 
 - **Backend name:** List of active version control systems. 
@@ -29,7 +29,8 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 ### Collect Version Control
 
 ![](assets/version_control/collect_version_control.png)
-Profiles: 
+
+**Profiles:**
 - Host names
 - Families
 - Task Types
