@@ -13,7 +13,31 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
   {versions.USD_Badge}
 </ReactMarkdown>
 
+## What is the AYON USD Resolver?
 
-:::info
-This page is still under construction 👷🚧🛠️🔜🏗️.
+The AYON USD Resolver allows to load files in USD using an AYON Entity URI like `ayon+entity://demo_Big_Feature/assets/environments/01_pfueghtiaoft?product=layoutMain&version=v004&representation=ma` by resolving it at runtime to the correct filepath on your machine.
+
+## Pinning
+
+The AYON USD Resolver supports **pinning**. Pinning allows to retarget an entity URI or path to a 'pinned' output filepath.
+
+This is heavily used on the farm, because loading a single USD file may itself require resolving many other files resulting in potentially 1000s of resolves, requiring 1000s of AYON server queries - for each worker in your farm. Pinning avoids this completely by predefining the mapping of an AYON Entity URI to a filepath, resulting in no AYON server connection even being required at all.
+
+:::tip Pinning files are heavily recommend for the farm
+
+The amount of resolves a USD resolver may do can be detrimental to the performance of your server. The AYON USD Resolver does have a good local caching system, but if 100s of machines start resolving 1000s of unique URIs simultaneously there's little optimization that can be done because USD will resolve URIs one by one.
+
 :::
+
+:::note What are the `.json` files next to my USD file?
+
+If you see a `.json` file next to a USD file, especially when the USD file is to be rendered on the farm, there's a good chance that it is a AYON USD Resolver pinning file.
+
+This can easily be confirmed by checking whether it contains a big list of files and text like `ayon_resolver_pinning_data` inside of it.
+
+:::
+
+## Caching
+
+The AYON USD Resolver has a local caching mechanism to optimize its performance in
+daily use. Entity URIs traditionally resolve to static paths, so caching them in your local sessions is the best way to improve performance.
