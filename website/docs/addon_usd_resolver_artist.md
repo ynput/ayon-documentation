@@ -19,7 +19,7 @@ The AYON USD Resolver allows to load files in USD using an AYON Entity URI by re
 
 An AYON Entity URI may look like:
 - `ayon+entity://demo_Big_Feature/assets/environments/01_pfueghtiaoft?product=layoutMain&version=v004&representation=usd`
-- `ayon+entity://project_name/assets/char/hero?product=modelMain&version=v003&representation=usd`
+- `ayon://project_name/assets/char/hero?product=modelMain&version=v003&representation=usd`
 
 ## Pinning
 
