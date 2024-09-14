@@ -29,9 +29,9 @@ The amount of resolves a USD resolver may do can be detrimental to the performan
 
 :::
 
-:::note What are the `.json` files next to my USD file?
+:::note What is the `.json` file next to my USD file?
 
-If you see a `.json` file next to a USD file, especially when the USD file is to be rendered on the farm, there's a good chance that it is a AYON USD Resolver pinning file.
+If you see a `.json` file next to a USD file, especially when the USD file is to be rendered on the farm, there's a good chance that it is an AYON USD Resolver pinning file.
 
 This can easily be confirmed by checking whether it contains a big list of files and text like `ayon_resolver_pinning_data` inside of it.
 
