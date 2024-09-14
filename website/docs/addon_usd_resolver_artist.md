@@ -15,7 +15,11 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## What is the AYON USD Resolver?
 
-The AYON USD Resolver allows to load files in USD using an AYON Entity URI like `ayon+entity://demo_Big_Feature/assets/environments/01_pfueghtiaoft?product=layoutMain&version=v004&representation=ma` by resolving it at runtime to the correct filepath on your machine.
+The AYON USD Resolver allows to load files in USD using an AYON Entity URI by resolving it at runtime to the correct filepath on your machine.
+
+An AYON Entity URI may look like:
+- `ayon+entity://demo_Big_Feature/assets/environments/01_pfueghtiaoft?product=layoutMain&version=v004&representation=usd`
+- `ayon+entity://project_name/assets/char/hero?product=modelMain&version=v003&representation=usd`
 
 ## Pinning
 
