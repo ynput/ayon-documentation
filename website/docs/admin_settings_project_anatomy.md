@@ -62,7 +62,7 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `project[name]` | Project's full name |
 | `project[code]` | Project's code |
 | `folder[name]` | Name of asset or shot |
-| `folder[label]` | Label of asset or shot |
+| `folder[type]` | Folder type |
 | `folder[path]` | Full folder path of asset or shot within a project |
 | `hierarchy` | The folder path excluding the folder name |
 | `parent` | Name of hierarchical parent of the folder name |
