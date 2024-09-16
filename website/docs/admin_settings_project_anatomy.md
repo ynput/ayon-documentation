@@ -71,7 +71,7 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `task[short]` | Short name of task type (eg. `Modeling` ➜ `mdl`) |
 | `version` | Version number |
 | `product[name]` | Product name |
-| `product[type]` | Main product type |
+| `product[type]` | Product type |
 | `ext` | File extension |
 | `representation` | Representation name |
 | `frame` | Frame number for sequence files. |
