@@ -1,5 +1,5 @@
 ---
-id: dev_api_grpahql
+id: dev_api_graphql
 title: AYON GraphQL API
 sidebar_label: GraphQL API
 description: Information about AYON GraphQL API

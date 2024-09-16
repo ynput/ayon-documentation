@@ -215,7 +215,7 @@ module.exports = {
               },
             items: [
                 "dev_api_rest",
-                "dev_api_grpahql",
+                "dev_api_graphql",
                 "dev_api_python",
                 "dev_api_cpp",
                 "dev_api_usd_resolver",
