@@ -65,7 +65,7 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | `folder[type]` | Folder type |
 | `folder[path]` | Full folder path of asset or shot within a project |
 | `hierarchy` | The folder path excluding the folder name |
-| `parent` | Name of hierarchical parent of the folder name |
+| `parent` | Name of hierarchical parent of the folder|
 | `task[name]` | Name of task |
 | `task[type]` | Type of task |
 | `task[short]` | Short name of task type (eg. `Modeling` ➜ `mdl`) |
