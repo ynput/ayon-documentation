@@ -57,24 +57,28 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | Context key | Description |
 | --- | --- |
 | `root[name]` | Path to root folder |
+| `studio[name]` | Studio's full name |
+| `studio[code]` | Studio's code |
 | `project[name]` | Project's full name |
 | `project[code]` | Project's code |
-| `hierarchy` | All folder between the asset and a project connected with `/` |
-| `asset` | Name of asset or shot |
+| `folder[name]` | Name of asset or shot |
+| `folder[type]` | Folder type |
+| `folder[path]` | Full folder path of asset or shot within a project |
+| `hierarchy` | The folder path excluding the folder name |
+| `parent` | Name of hierarchical parent of the folder |
 | `task[name]` | Name of task |
 | `task[type]` | Type of task |
-| `task[short]` | Short name of task type (eg. 'Modeling' > 'mdl') |
-| `parent` | Name of hierarchical parent |
+| `task[short]` | Short name of task type (eg. `Modeling` ➜ `mdl`) |
 | `version` | Version number |
-| `product` | Product name |
-| `family` | Main family name |
+| `product[name]` | Product name |
+| `product[type]` | Product type |
 | `ext` | File extension |
 | `representation` | Representation name |
 | `frame` | Frame number for sequence files. |
 | `app` | Application Name |
 | `user` | User's login name (can be overridden in local settings) |
 | `output` | Extract review output profile name |
-| `comment` | Subversion string from workfiles tool (only relevant for workfiles template right now.)|
+| `comment` | Subversion string from workfiles tool (only relevant for workfiles template right now.) |
 | `colorspace` | Colorspace profile name |
 | `originalDirname` | Original directory of published file  |
 | `originalBasename` | Original file name without extension |
