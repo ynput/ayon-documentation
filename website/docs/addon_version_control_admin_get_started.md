@@ -39,16 +39,16 @@ Studio(single credentials), Project (credentials different per project)  or Site
 
 ## Perforce workspace
 
-It is expected that P4 workspaces would be setup and existing on artists machines. Each artist then only 
+It is expected that P4 workspaces would be setup and existed on artists machines. Each artist then only 
 provides path to their locally accessible P4 workspace folder in Site Settings.
 
 ## Main functionalities for Perforce
 
-This addons contains two main  functionality for slightly different use cases:
+This addons contains two main  functionalities for slightly different use cases:
 - create separate version controlled streams from AYON of published products in Perforce
 - help with Deadline rendering of Unreal projects with Perforce
 
-It is expected that majority work for Perforce with Unreal project files are done with official Perforce
+It is expected that majority working for Perforce with Unreal project files are done with official Perforce
 tools like `P4V` or command line utility. Neither of those are distributed by addon and it is required
 for IT department to install/configure them.
 
@@ -58,7 +58,7 @@ for IT department to install/configure them.
 This approach allows to copy version control not only in AYON, where each publish results in new version
 of published product, but committing this version directly to Perforce. 
 
-That way versions of particular product are separately kept in Perforce, from which ordinary Perforce tools
+The products with versions are separately kept in Perforce, from which ordinary Perforce tools
 could be used (P4V) to pull latest version of published product.
 
 Profiles could be used to limit which published products should be committed to Perforce.
