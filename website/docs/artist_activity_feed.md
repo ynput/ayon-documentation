@@ -104,8 +104,7 @@ There is currently no file size limit but we intend to introduce a default that 
 
 ### Reactions
 
-The platform now supports a new way of communicating: Reactions! Any user can now react to comments on the plaform by adding emoji reactions.
-Available reactions set is limited at the moment, but may be adjusted in the future.
+Users can react to comments in the feed to express a general sentiment or acknowledge a comment. This feature helps communicate recognition, such as appreciating great work or indicating that a comment was seen. Reactions are intentionally open to interpretation, allowing users to decide how they are used. The current set of reactions includes five options, offering useful ways to respond, though this may change in the future.
 
 ![Activity feed attachments](assets/activity_feed/activity-feed-reactions.png)
 
