@@ -101,3 +101,18 @@ Attachment files are stored in the docker storage space `/storage/server/uploads
 
 There is currently no file size limit but we intend to introduce a default that can be configurable.
 :::
+
+### Reactions
+
+The platform now supports a new way of communicating: Reactions! Any user can now react to comments on the plaform by adding emoji reactions.
+Available reactions set is limited at the moment, but may be adjusted in the future.
+
+![Activity feed attachments](assets/activity_feed/activity-feed-reactions.png)
+
+:::note
+Reactions will not send notifications of affect watchers in any way.
+:::
+
+:::tip
+The UI limits the reactions users can choose from, but the API allows for any reaction type without restrictions.
+:::
