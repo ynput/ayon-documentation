@@ -109,9 +109,9 @@ Users can react to comments in the feed to express a general sentiment or acknow
 ![Activity feed attachments](assets/activity_feed/activity-feed-reactions.png)
 
 :::note
-Reactions will not send notifications of affect watchers in any way.
+Reactions will not send notifications or affect watchers in any way.
 :::
 
 :::tip
-The UI limits the reactions users can choose from, but the API allows for any reaction type without restrictions.
+The user interface limits the reactions users can choose from, but the API allows for any reaction type without restrictions.
 :::
