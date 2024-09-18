@@ -2,9 +2,9 @@
 id: addon_usd_artist_contribution_workflow
 title: AYON USD Contribution Workflow
 sidebar_label: Contribution Workflow
+description: Automatically contribute products into USD assets or shots
+toc_max_heading_level: 5
 ---
-
-Automatically contribute products into USD assets or shots
 
 :::info
 The **AYON USD Contribution Workflow** was introduced with PR [Implement USD workflow with global asset/shot contributions plug-in](https://github.com/ynput/ayon-core/pull/295) 
