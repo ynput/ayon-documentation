@@ -44,7 +44,7 @@ provides path to their locally accessible P4 workspace folder in Site Settings.
 
 ## Main functionalities for Perforce
 
-This addons contains two main  functionalities for slightly different use cases:
+This addons contains two main functionalities for slightly different use cases:
 - create separate version controlled streams from AYON of published products in Perforce
 - help with Deadline rendering of Unreal projects with Perforce
 
