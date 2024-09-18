@@ -101,3 +101,17 @@ Attachment files are stored in the docker storage space `/storage/server/uploads
 
 There is currently no file size limit but we intend to introduce a default that can be configurable.
 :::
+
+### Reactions
+
+Users can react to comments in the feed to express a general sentiment or acknowledge a comment. This feature helps communicate recognition, such as appreciating great work or indicating that a comment was seen. Reactions are intentionally open to interpretation, allowing users to decide how they are used. The current set of reactions includes five options, offering useful ways to respond, though this may change in the future.
+
+![Activity feed attachments](assets/activity_feed/activity-feed-reactions.png)
+
+:::note
+Reactions will not send notifications of affect watchers in any way.
+:::
+
+:::tip
+The UI limits the reactions users can choose from, but the API allows for any reaction type without restrictions.
+:::
