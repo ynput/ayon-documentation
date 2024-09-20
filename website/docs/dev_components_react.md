@@ -7,5 +7,6 @@ toc_max_heading_level: 5
 ---
 
 
-AYON React Components
-https://components.ayon.dev/?path=/docs/button--docs
+
+## Learn More
+You can find the full list of components and their documentation at [AYON React Components](https://components.ayon.dev/?path=/docs/button--docs)
