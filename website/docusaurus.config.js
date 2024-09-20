@@ -116,7 +116,7 @@ const config = {
                                 to: "/api",
                             },
                             {
-                                label: "GraphQL API Docs",
+                                label: "GraphQL API Explorer",
                                 href: "https://playground.ayon.app/explorer",
                                 target: "_blank",
                                 rel: null,
@@ -134,7 +134,7 @@ const config = {
                                 rel: null,
                             },
                             {
-                                label: "USD Resolver API Docs",
+                                label: "USD Resolver Docs",
                                 href: "https://ynput.github.io/ayon-usd-resolver/",
                                 target: "_blank",
                                 rel: null,
