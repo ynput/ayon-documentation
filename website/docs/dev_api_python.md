@@ -8,7 +8,7 @@ toc_max_heading_level: 5
 
 ## About AYON Python API
 
-A Python client for connecting to AYON server. The client is using REST and GraphQl to communicate with server with `requests` module.
+A Python client for connecting to AYON server using `requests` module. Wraps REST API endpoints including GraphQl to communicate with server.
 
 The module supports singleton connection which is using `AYON_SERVER_URL` and `AYON_API_KEY` environment variables as source for connection. But you can create multiple connection to different servers using `ServerAPI` class.
 
