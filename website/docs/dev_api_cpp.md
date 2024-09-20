@@ -6,24 +6,21 @@ description: Information about AYON C++ API
 toc_max_heading_level: 5
 ---
 
-What is the C++ Language standard? it's ISO C++17 Standard
-
 ## About AYON C++ API
 
 The AYON CPP API allows communication with the AYON server.
-Its focus is on communication with the server Resolve endpoint.
-and it's meant to be used mainly by [AYON USD Resolver](dev_api_usd_resolver.md).
+Implementation is mainly focused on [AYON USD Resolver](dev_api_usd_resolver.md) to communicate with the server resolve endpoint.
 
 ## Get Started
 
 :::tip Development Environment
-We assume you already had your c++ dev environment setup as well as cmake.
+We assume you already have setup your c++ dev environment as well as cmake.
 :::
 
 ### Fetch and Build The library
-AYON CPP API is a static lib so you'd need to build it first.
+AYON CPP API is a static lib.
 
-You can use the provided python script to do the hard lifting for you.
+You need to build it first. We've prepared python script to do the hard lifting for you.
 
 ```shell
 git clone https://github.com/ynput/ayon-cpp-api.git
