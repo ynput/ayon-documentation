@@ -63,7 +63,7 @@ could be used (P4V) to pull latest version of published product.
 
 Profiles could be used to limit which published products should be committed to Perforce.
 
-As Perforce controlled product doesn't contain version name directly in its name nor path, additional
+As Perforce controls the product which doesn't contain version name directly in its name nor path, additional
 AYON template must be configured in Project's Anatomy > Templates.
 
 New template must follow [Hero template](artist_concepts.md#hero-version) approach,
