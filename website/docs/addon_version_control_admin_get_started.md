@@ -21,7 +21,7 @@ Currently contains WIP implementation of Perforce, but there might be more in th
 same API methods.
 
 The implementation aims to rely solely on a single dependency, `p4python`, which is binary-dependent on the Python version in use.
-Which might be different in different DCCs, different versions of Unreal etc.
+This means it might be different in different DCCs, different versions of Unreal etc.
 
 To mitigate need of having binary compatible `p4python` libraries addon currently implements REST api to run p4 commands 
 only on separate webserver started by AYON Tray which contains `p4python` library installed via dependency package and 
