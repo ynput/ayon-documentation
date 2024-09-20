@@ -184,7 +184,8 @@ module.exports = {
                 "addon_flow_admin",
                 "addon_aquarium_admin",
                 "addon_usd_admin",
-               
+                "addon_flame_admin",
+
             ].sort(sorted),
         },
         "admin_releases",
