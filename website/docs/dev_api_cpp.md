@@ -23,9 +23,8 @@ AYON CPP API is a static lib.
 You need to build it first. We've prepared python script to do the hard lifting for you.
 
 ```shell
-git clone https://github.com/ynput/ayon-cpp-api.git
+git clone --recurse-submodules https://github.com/ynput/ayon-cpp-api.git
 cd ayon-cpp-api
-git submodule update --init --recursive
 python AyonBuild.py setup 
 python AyonBuild.py runStageGRP CleanBuild
 ```
