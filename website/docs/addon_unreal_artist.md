@@ -505,6 +505,7 @@ To load a camera, follow these steps:
 ![Unreal Layout Load](assets/unreal_load_camera.png)
 
 In `/Content/AYON` you will find a folder with the name of the camera that contains the camera level sequence. The camera will be loaded in the current level open, so you will need to save it, if you haven’t already.
+The imported level sequence and map are named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_fbx`)
 
 ### Updating
 
@@ -517,9 +518,11 @@ The version number will be in red if it isn’t the latest version.
 
 To update the camera:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** and **Set version**.
 
-## Connect Camera to the sequence loaded from layout
+:::note
+Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
+:::
 
 ## Animations
 
@@ -546,7 +549,8 @@ To manage the loaded layout, click on the AYON icon in Unreal’s main taskbar, 
 
 - Right click on the layout you want to remove
 - Click **Remove items**
-The sequence, level and container associated with the selected layout would be removed. Unreal would dive into the default level map after the deletion.
+
+The sequence, map and container associated with the selected layout would be removed. Unreal would dive into the default level map after the deletion.
 
 ### Loading the animation
 
@@ -560,8 +564,14 @@ To load an animation, follow these steps:
 
 The animation itself will be imported in `/Content/AYON/Animations`..
 
-### Connecting animation to the sequence loaded from layout
+### Connecting animation(and camera) to the sequence loaded from layout
 You can connect your loaded animation sequence and camera to the level sequence loaded via layout loader.
+
+- To connect your loaded animation sequence, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+- Select the element(s) respectively from the animation and layout product type.
+- Right click **Actions** and **Connect Fbx Animation to Level Sequence** or
+  **Connect Alembic Animation to Level Sequence**
+- It would add the loaded camera and animation sequence into the level sequence which stores the meshes loaded from the layout.
 
 ### Updating
 
