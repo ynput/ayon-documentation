@@ -1,7 +1,9 @@
 ---
 id: addon_flame_admin_get_started
-title: Flame Admin Get Started
+title: Autodesk Flame Admin Get Started
 sidebar_label: Get Started
+description: Autodesk Flame Admin Get Started.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";

@@ -1,7 +1,9 @@
 ---
 id: addon_flame_admin_settings
-title: Flame Admin Settings
+title: Autodesk Flame Admin Settings
 sidebar_label: Settings
+description: Autodesk Flame Admin Settings.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
