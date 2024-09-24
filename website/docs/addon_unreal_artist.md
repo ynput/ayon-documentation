@@ -114,7 +114,10 @@ To load a Mesh, follow these steps:
 
 The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
 
-### Updating
+The mesh is named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_abc`)
+![Unreal AYON Load Naming Convention](assets/unreal_product_load_naming_convention.png)
+
+### Updating/Setting Version
 
 To manage loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
@@ -125,7 +128,20 @@ The version number will be in red if it isn’t the latest version.
 
 To update the asset:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** or **Set version**.
+
+:::note
+Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
+:::
+
+### Removing
+To remove loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal AYON Tools Manage](assets/unreal_scene_inventory_remove_item.png)
+
+- Right click on the element you want to remove
+- Click **Remove items**
+- It would remove the selected element
 
 ### Publishing
 
@@ -162,6 +178,8 @@ First, you will need a model as Static Mesh. To load it:
 ![Unreal AYON Load Model](assets/unreal_load_model.png)
 
 You will find the loaded Static Mesh in `/Content/AYON/Assets`.
+Similar to the mesh loaded from the skeletal mesh loader, it is named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_abc`)
+
 
 ### Creating look
 
@@ -202,6 +220,8 @@ To load a UAsset, follow these steps:
 ![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
 
 The UAssets will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene.
+The UAssets is named accordingly to their allocated folder name and unique version number(i.e. `testUAsset_01`)
+
 
 ### Updating
 
@@ -214,12 +234,31 @@ The version number will be in red if it isn’t the latest version.
 
 To update the asset:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** and **Set version**.
+
+:::note
+Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
+:::
+
+### Removing
+To remove loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal AYON Tools Manage](assets/unreal_scene_inventory_remove_item.png)
+
+- Right click on the element you want to remove
+- Click **Remove items**
+- It would remove the selected element
 
 ### Publishing
 
 :::note
 Publishing UAssets has some limitations currently. You can only publish a single UAssets, and it must not have any dependencies.
+:::
+
+:::warning
+
+Before publishing, you need to make sure the template, which is used for publishing UAssets, has been set up.
+
 :::
 
 To publish a UAsset, you need to create a publish instance.
@@ -499,6 +538,9 @@ To load a layout, follow these steps:
 ![Unreal Layout Load](assets/unreal_load_layout.png)
 
 The layout will be imported in the directory `/Content/AYON`. For more information, we recommend reading the section dedicated to the [layout for linear animation](#layouts-for-linear-animation).
+
+### Connecting animation and camera to the sequence loaded from layout
+
 
 ### Loading the animation
 
