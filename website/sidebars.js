@@ -51,6 +51,7 @@ module.exports = {
                 },
                 "addon_harmony_artist",
                 "addon_hiero_artist",
+                "addon_flame_artist",
                 "addon_houdini_artist",
                 "addon_kitsu_artist",
                 {
