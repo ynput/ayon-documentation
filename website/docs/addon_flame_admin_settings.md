@@ -20,6 +20,46 @@ import TabItem from '@theme/TabItem';
 This addon integration is still at the **beta** stage. If you have any questions or need help, please contact us.
 :::
 
+## Hooks
+
+### Install OpenTimelineIO to Flame
+
+This hook installs the OpenTimelineIO library in the Flame environment, which is necessary for the integration to work correctly. The plugin is installed using the **pip** package manager, and the hook handles the installation process. You can also disable this hook if OpenTimelineIO is already installed manually in the Flame environment.
+
+## Create plugins
+
+### Create Shot Clip
+Set default values for all Creator attributes in the Creator UI from this settings category. This helps predefine the values for Creator attributes.
+
+#### Shot hierarchy and rename settings
+- **Shot parent hierarchy** - template for defining the parent hierarchy of the Shot folder.
+- **Use shot name** - if enabled, Flames Timeline segment Shot name will be used for the Shot folder name.
+- **Rename clips** - if enabled, the plugin will use renaming rules to rename the clips sequentially.
+- **Clip name template** - template for defining the shot clip name.
+- **Accept segment order** - if enabled, the plugin will use the segment's defined order for renaming the clips.
+- **Count sequence from** - numeric value for defining the starting number for the shot name.
+- **Stepping number** - numeric value for defining the incrementing number for the shot name.
+
+#### Shot template keywords
+Following is a list of available keywords that can be used in *Shot parent hierarchy* or *Clip name template* of the *Shot hierarchy and rename settings* section above:
+- **{folder}** - Literal value for the Folder token. Text and numbers can be used.
+- **{episode}** - Literal value for the Episode token. Text and numbers can be used.
+- **{sequence}** - Literal value for the Sequence token. Text and numbers can be used.
+- **{track}** - Literal value for the Track token. Text and numbers can be used. Flames original track name could be accessed via the **{\_track\_}** token.
+- **{shot}** - Literal value for the Shot token. Text and numbers can be used. Hashes are used to define the number of digits in the sequence number. Original flame segment name could be accessed via the **{\_shot\_}** token.
+
+#### Vertical synchronization of attributes
+- **Enable vertical sync** - If enabled, clips on the timeline in multiple tracks will be synchronized vertically with the same attributes. Shot names will also be synchronized. The workflow assumes that the clips above the main hero track are vertically aligned without overlaps. Clips can be shorter than the main hero track clip, but not longer. The plugin will use the main hero track clip as a reference for vertical synchronization.
+
+#### Shot attributes
+- **Workfile start frame** - Numeric value for defining the starting frame of the workfile. This value is set to Shot folder attributes as Frame start value.
+- **Handle start (head)** - Numeric value for defining the maximum trimming value to be applied to the head of the clip. If the available media is shorter than the handle value, the clip will be trimmed to the available media length. The resulting value is then set to the Shot folder attributes as Handle start value.
+- **Handle end (tail)** - Numeric value for defining the maximum trimming value to be applied to the tail of the clip. If the available media is shorter than the handle value, the clip will be trimmed to the available media length. The resulting value is then set to the Shot folder attributes as Handle end value.
+- **Enable handles including** - If enabled, handles will be included in the workfile start frame value. Since AYON excludes handles by default, this option will recalculate the workfile start frame value to include them. Here is an example of the resulting calculation: `'workfile start frame' = 'workfile start frame' - 'handle start' + 1`
+- **Enable retimed handles** - If enabled, shot attributes for handles will be recalculated based on the speed of the retimed clip. This option is useful when production wants to avoid including handles that result in a high number of frames due to high retime speeds. The handle values will be recalculated based on the retime value. For example: `'handle start' = 'handle start' * 'retime speed'` and `'handle end' = 'handle end' * 'retime speed'`
+- **Enable retimed shot framerange** - If enabled, the shot attributes for the frame range will be recalculated based on retimed timeline segment. This option is useful disabled when production wants to keep unretimed working framerange. The frame range values will be recalculated based on the retime value. For example: `'workfile start frame' = 'workfile start frame' * 'retime speed'` and `'workfile end frame' = 'timeline segment duration' * 'retime speed'`
+
+
 ## Publish plugins
 
 ### Collect Timeline Instances
