@@ -519,6 +519,8 @@ To update the camera:
 - Right click on the element that has available updates.
 - Click **Update**.
 
+## Connect Camera to the sequence loaded from layout
+
 ## Animations
 
 :::note
@@ -539,8 +541,12 @@ To load a layout, follow these steps:
 
 The layout will be imported in the directory `/Content/AYON`. For more information, we recommend reading the section dedicated to the [layout for linear animation](#layouts-for-linear-animation).
 
-### Connecting animation and camera to the sequence loaded from layout
+## Removing the layout
+To manage the loaded layout, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
+- Right click on the layout you want to remove
+- Click **Remove items**
+The sequence, level and container associated with the selected layout would be removed. Unreal would dive into the default level map after the deletion.
 
 ### Loading the animation
 
@@ -552,8 +558,10 @@ To load an animation, follow these steps:
 ![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
 ![Unreal Layout Load](assets/unreal_load_animation.png)
 
-The animation itself will be imported in `/Content/AYON/Animations`.
-The animation will be added to the level sequence generated for the layout.
+The animation itself will be imported in `/Content/AYON/Animations`..
+
+### Connecting animation to the sequence loaded from layout
+You can connect your loaded animation sequence and camera to the level sequence loaded via layout loader.
 
 ### Updating
 
@@ -566,7 +574,7 @@ The version number will be in red if it isn’t the latest version.
 
 To update the animation:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** or **Set version**.
 
 ## Rendering
 
