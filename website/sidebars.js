@@ -183,10 +183,24 @@ module.exports = {
                 "addon_wrap_admin",
                 "addon_syncsketch_admin",
                 "addon_flow_admin",
+                {
+                    type: "category",
+                    label: "Flame",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Flame Addon',
+                        description:
+                            "Welcome to Flame Integration Documentation!",
+                        keywords: ['flame'],
+                    },
+                    items: [
+                        "addon_flame_admin_intro",
+                        "addon_flame_admin_get_started",
+                        "addon_flame_admin_settings"
+                    ]
+                },
                 "addon_aquarium_admin",
                 "addon_usd_admin",
-                "addon_flame_admin",
-
             ].sort(sorted),
         },
         "admin_releases",
