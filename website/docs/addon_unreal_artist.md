@@ -562,7 +562,8 @@ To load an animation, follow these steps:
 ![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
 ![Unreal Layout Load](assets/unreal_load_animation.png)
 
-The animation itself will be imported in `/Content/AYON/Animations`..
+The animation would be imported in `/Content/AYON/Animations` and it is named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_abc`)
+
 
 ### Connecting animation(and camera) to the sequence loaded from layout
 You can connect your loaded animation sequence and camera to the level sequence loaded via layout loader.
