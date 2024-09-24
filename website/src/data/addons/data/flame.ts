@@ -5,7 +5,6 @@ const addon: Addon = {
     title: "Flame",
     description:
         "Flame Autodesk is a high-end visual effects and finishing software used by professional studios for film, television, and commercials.",
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/flame",
     icon: "flame-icon.png",
     badge: versions.Flame_Badge,
     features: [
@@ -29,6 +28,11 @@ const addon: Addon = {
         "workfile",
         "audio",
     ],
+    docs: {
+        user:"addon_flame_artist",
+        admin: "addon_flame_admin",
+    },
+    github: "https://github.com/ynput/ayon-flame",
 };
 
 export default addon;
