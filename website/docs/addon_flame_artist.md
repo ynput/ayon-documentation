@@ -2,6 +2,8 @@
 id: addon_flame_artist
 title: Autodesk Flame
 sidebar_label: Flame
+description: AYON Flame Addon's documentations for artists.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
