@@ -51,6 +51,8 @@ This way user selects the dedicated task for Unreal Project in AYON Launcher and
 For linear animation projects, and in particular for episodic formats, we still recommend keeping only one Unreal project. Having a project for each episode would result in duplicated data between the episodes, and it would be hard to manage.
 :::
 
+## General Update on Unreal 5.4
+AYON has implemented some new features in regards to Unreal 5.4 such as Sequence Hierarchy in AYON menu for building shot structure accordingly to the folder hierarchies. Moreover, it introduces maya preset options for the alembic loaders to ensure the assets loaded in current transform. It also adds the inventory action to connect animation/camera to the level sequence loaded from the layout product type.
 
 ### AYON Menu and Tools
 
@@ -66,6 +68,7 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 -   [Publisher](artist_tools_publisher) is the tool to create and publish assets from Unreal to AYON.
 -   [Manage (Inventory)](artist_tools_inventory) is the tool to manage loaded assets.
 -   *Render* starts the render for a selected `AyonPublishInstance`.
+-   *Build Sequence Hierarchy* builds the shot structure in regards to the folder hierarchy.
 -   *Experimental tools* contains tools under developement.
 
 
@@ -96,6 +99,7 @@ and `AyonPublishInstance`.
 ![Unreal AYON Asset Publish](assets/unreal_asset_publish.png)
 
 These assets are **used only to manage Ayon metadata** in Unreal, and they are not meant to be used directly in the scene. The first ones, with `_CON` suffix in the name, are used to store metadata of loaded assets, while the second ones, with `_INS` suffix in the name, for metadata of assets that are going to be published.
+
 
 ## Static and Skeletal Meshes
 
@@ -715,3 +719,5 @@ Name of the instance will start with `changelist_metadata` prefix and instance m
 (Without it Deadline could render just from current state of Unreal project file.)
 
 ![Unreal AYON Changelist Metadata](assets/unreal_perforce_changelist_metadata.png)
+
+## Build Sequence Hierarchy
