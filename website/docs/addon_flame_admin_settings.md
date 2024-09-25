@@ -92,15 +92,51 @@ Thumbnail preset is hardcoded into plugin and is always added to the set of expo
 :::
 
 *   **Name** - Used to identify the preset. It can also be part of the output file name via the `outputName` anatomy template token. It serves as a unique representation name.
+
+#### Filtering properties
 *   **Is active** - If the preset is active, it will be used during the export process.
 *   **Activate by search pattern** - If the clip's media resource path matches the input regex pattern, the preset will be used.
+
+#### Output file properties
 *   **Output extension** - The output file extension for the published representation.
 *   **Output color (imageio)** - Specifies the colorspace data to be stored in the representation. This is used downstream in the publishing process or by loading plugins.
+
+#### XML preset properties
 *   **Export clip type** - The type of XML preset to be used for export.
 *   **XML preset directory** - The absolute directory path where the XML preset is stored. If left empty, built-in directories are used, either shared or installed presets folder.
 *   **XML preset file (with ext)** - The name of the XML preset file with its extension.
 *   **Distribute parsed comment attributes to XML preset** - If enabled, previously collected clip comment attributes will be distributed to the XML preset. This can affect the resulting resolution of the exported media.
+
+#### Representation properties
 *   **Add range to representation name** - Adds frame range-related attributes to the publishing representation data for downstream use in the publishing process.
 *   **Representation tags** - Adds tags to the representation data for downstream use in the publishing process. For example, marking the representation as reviewable.
+
+#### Batch group properties
 *   **Load to batch group reel** - If enabled, the representation will be loaded to the batch group reel after publishing (connected to IntegrateBatchGroup).
 *   **Use loader name** - Defines which loader plugin should be used for loading the representation after publishing (connected to IntegrateBatchGroup).
+
+
+### Integrate Batch Group
+
+:::warning Plugin state
+
+The plugin is currently in the experimental state and not production-ready. Settings will be updated in the future.
+
+:::
+
+## Loading plugins
+
+### Load Clip
+* **Product types** - filtering inputs for what product types this plugin should be used.
+* **Reel group name** - name of the reel group where the clips should be loaded. If the reel group does not exist, it will be created.
+* **Reel name** - name of the reel where the clips should be loaded. If the reel does not exist, it will be created.
+* **Clip name template** - template for defining the loaded clip name.
+* **Layer name template** - template for defining the loaded clip OpenClip layer.
+* **Layer rename patterns** - list of patterns for renaming the OpenClip layers.
+
+### Load as clip to current batch
+* **Product types** - filtering inputs for what product types this plugin should be used.
+* **Reel name** - name of the reel where the clips should be loaded. If the reel does not exist, it will be created.
+* **Clip name template** - template for defining the loaded clip name.
+* **Layer name template** - template for defining the loaded clip OpenClip layer.
+* **Layer rename patterns** - list of patterns for renaming the OpenClip layers.
