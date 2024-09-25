@@ -118,6 +118,12 @@ To load a Mesh, follow these steps:
 
 The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
 
+::: note
+New Feature for 5.4: If you are using the Alembic loaders(e.g **Import Alembic Point Cache**, **Import Alembic Static Mesh**), you can choose which presets you want to load by clicking the small memo icon, and it will pop up the dialog to allow you to choose which preset you would like to use.(By default is Maya)
+
+![Unreal AYON Alembic Loader Maya Preset](assets/unreal_alembic_maya_preset.png)
+:::
+
 The mesh is named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_abc`)
 ![Unreal AYON Load Naming Convention](assets/unreal_product_load_naming_convention.png)
 
@@ -170,20 +176,6 @@ To publish a mesh from Unreal, you need to create a publish instance.
 ## Look development
 
 AYON supports look development in Unreal Engine.
-
-### Loading model
-
-First, you will need a model as Static Mesh. To load it: 
-- Click on **AYON → Load ...**.
-- Right-click your mesh.
-- Select **Import Static Mesh**.
-
-![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
-![Unreal AYON Load Model](assets/unreal_load_model.png)
-
-You will find the loaded Static Mesh in `/Content/AYON/Assets`.
-Similar to the mesh loaded from the skeletal mesh loader, it is named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_abc`)
-
 
 ### Creating look
 
