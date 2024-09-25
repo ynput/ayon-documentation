@@ -494,6 +494,16 @@ To set this mode, you should turn **off** the setting *Generate level sequences 
 
 ![Unreal AYON Settings Level Sequence](assets/unreal_setting_level_sequence_off.png)
 
+
+## Removing Cameras
+To remove the loaded layout, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+- Right click on the Cameras you want to remove
+- Click **Remove items**
+
+The sequence, map and container associated with the selected layout would be removed. Unreal would dive into the default level map after the deletion.
+
+
 ### Loading
 
 To load a camera, follow these steps:
@@ -572,6 +582,9 @@ You can connect your loaded animation sequence and camera to the level sequence 
 - Select the element(s) respectively from the animation and layout product type.
 - Right click **Actions** and **Connect Fbx Animation to Level Sequence** or
   **Connect Alembic Animation to Level Sequence**
+
+![Unreal Connect Animation to Level Sequence](assets/unreal_scene_inventory_connect_animation.png)
+
 - It would add the loaded camera and animation sequence into the level sequence which stores the meshes loaded from the layout.
 
 ### Updating
@@ -586,6 +599,10 @@ The version number will be in red if it isn’t the latest version.
 To update the animation:
 - Right click on the element that has available updates.
 - Click **Update to latest** or **Set version**.
+
+:::note
+Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
+:::
 
 ## Rendering
 
