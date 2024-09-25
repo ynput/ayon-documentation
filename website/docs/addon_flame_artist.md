@@ -45,7 +45,7 @@ AYON Integration adds AYON menus in multiple locations within the Flame UI.
 
 The current publishing process is
 1. Create a publish instance using `Create` menu.
-2. Click publish ▶️ button in the [Publisher](artist_tools_publisher.md) Tool! 
+2. Click publish ▶️ button in the [Publisher](artist_tools_publisher.md) Tool!
 
 :::info
 Flame addon is currently using the old creator.
@@ -74,6 +74,16 @@ e.g. You can rename the clips, specify frame padding and etc.
 ![](assets/flame/artist/ayon_attribute_publish_creator.png)
 :::
 
+#### Vertical workflow
+* For a vertical workflow you need to first rename sequence tracks, so they can be used as product variant names. Just simply RMB click on the track and select _Rename Track_.
+![ayon_sequence_tracks_rename](assets/flame/artist/ayon_sequence_tracks_rename.png)
+![ayon_vertical_alignment](assets/flame/artist/ayon_vertical_alignment.png)
+
+* In the **AYON Publish Attributes creator** window, enable _Enable Vertical Sync_ and select the _Hero track_ for Shot parenting. These hold the Shot metadata that needs to be distributed to other child clips, which are vertically aligned. Then in the _Product name_ set the option to `[track name]`
+![ayon_vertical_alignment_creator](assets/flame/artist/ayon_vertical_alignment_creator.png)
+* Confirm the changes by Create button and see that those clips were marked with the AYON marks.
+
+
 <!-- TODO: Add a note about publish plugins so that artists are aware of the changes that happens on publishing? -->
 
 ## Loading Products
@@ -87,7 +97,7 @@ Currently, we place the loaded media in the Media Panel as Reels or Batch clips 
 
 ## Manage versions of loaded clips
 
-Flame addon, *unlike other addons,* doesn't include **Inventory manager**. 
+Flame addon, *unlike other addons,* doesn't include **Inventory manager**.
 Alternatively, you should be able to set versions of your loaded media via Reels and Media panel menus using `Source Versions` action.
 
 ![](assets/flame/artist/source_versions_action.png)
