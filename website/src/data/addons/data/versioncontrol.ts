@@ -10,9 +10,9 @@ const addon: Addon = {
     features: [
     ],
     products: [
-
     ],
     docs: {
+        user: "addon_version_control_artist",
         admin: "category/version-control",
     },
     github: "https://github.com/ynput/ayon-version-control",
