@@ -124,7 +124,11 @@ These custom id identifiers must be unique in `Jira_Template` file.
 
 ### Triggering of creation
 
+![](assets/jira/jira_frontend.png)
+
+:::tip
 Front end form is provided by this addon (addon must be added to `production` bundle!).
+:::
 
 It contains fields:
 - `Folder path` - should contain path of asset for which task(s) defined in the templates should be created
