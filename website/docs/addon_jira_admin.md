@@ -83,7 +83,7 @@ Values here are stand-ins to be replaced with appropriate ticket key.)
             "Original Estimate": "0.5",
             "Int vs Ext": "Internal"
         }
-    }
+    ]
 }
 ```
 
