@@ -93,6 +93,7 @@ module.exports = {
                 "addon_substancepainter_artist",
                 "addon_tvpaint_artist",
                 "addon_unreal_artist",
+                "addon_version_control_artist",
                 "addon_wrap_artist",
                 "addon_openrv_artist",
                 {
@@ -201,6 +202,22 @@ module.exports = {
                 },
                 "addon_aquarium_admin",
                 "addon_usd_admin",
+                {
+                    type: "category",
+                    label: "Version Control",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Version Control',
+                        description:
+                          "Welcome to AYON Version Control Docs!",
+                        keywords: ['version-control'],
+                      },
+                    items: [
+                        "addon_version_control_admin_intro",
+                        "addon_version_control_admin_get_started",
+                        "addon_version_control_admin_settings"
+                    ]
+                },
             ].sort(sorted),
         },
         "admin_releases",
