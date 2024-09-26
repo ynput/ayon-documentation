@@ -718,3 +718,19 @@ Name of the instance will start with `changelist_metadata` prefix and instance m
 ![Unreal AYON Changelist Metadata](assets/unreal_perforce_changelist_metadata.png)
 
 ## Build Sequence Hierarchy
+Ayon supports to build the shot structure accordingly to the folder hierarchies.
+Users can click on Ayon menu -> **Build sequence hierarchy**
+
+![Unreal Ayon Menu Build Sequence Hierarchy](assets/unreal_sequence_hierarchy_menu.png)
+
+There would be the folder selector dialog popping up for users to choose the folders to build shot structure.
+
+![Unreal Build Sequence Folder Selector](assets/unreal_ayon_build_sequence_selector.png)
+
+Once the users select the preferred folder(s) to build the sequence, AYON would create map(s) and level sequence(s) inside it.
+
+![Unreal Build Sequence Hierarchy Folder Structure](assets/unreal_ayon_sequence_folder_structure.png)
+
+It also builds the level sequence(s) in its parent folder, which stores level visibility of the map(s) and subsequences storing with the level sequence(s) of the preferred folder.
+
+![Unreal Build Sequence Level Sequence Structure](assets/unreal_level_sequence_structure.png)
