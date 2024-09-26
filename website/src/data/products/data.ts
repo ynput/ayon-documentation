@@ -214,6 +214,10 @@ const products: { [type in ProductType]: Product } = {
         title: "Wrap",
         icon: "language",
     },
+    lut: {
+        title: "Lut",
+        icon: "imagesmode",
+    },
 };
 
 export default products;
