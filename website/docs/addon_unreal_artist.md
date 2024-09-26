@@ -53,6 +53,7 @@ For linear animation projects, and in particular for episodic formats, we still 
 
 ## General Update on Unreal 5.4
 AYON has implemented some new features in regards to Unreal 5.4 such as Sequence Hierarchy in AYON menu for building shot structure accordingly to the folder hierarchies. Moreover, it introduces maya preset options for the alembic loaders to ensure the assets loaded in current transform. It also adds the inventory action to connect animation/camera to the level sequence loaded from the layout product type.
+In addition, AYON allows users to customize their asset directories(except camera and layout) before loading in the setting.
 
 ### AYON Menu and Tools
 
@@ -77,6 +78,10 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 ### Default structure
 
 The structure of the project data is handled by AYON. The first time you create an instance or load an asset, AYON will create a folder called `AYON` in the Content Browser. This folder will contain all the data handled by AYON, and it is organised as follows:
+- `/Content/AYON/` is the default AYON root directory.
+- `/Content/AYON/{your_folder_path}/{your_product_name}` is the default directory which contains all the single assets that are loaded from AYON. Users can customize their asset directories through `ayon+settings://unreal/loaded_asset_dir`
+
+![Unreal AYON Asset Directories Setting](assets/unreal_ayon_asset_directory_setting.png)
 
 - `/Content/AYON/Assets` contains all the single assets that are loaded from AYON.
 - `/Content/AYON/PublishInstances` contains all the instances that are created in Unreal.
