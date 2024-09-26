@@ -2,6 +2,8 @@
 id: addon_flow_admin
 title: Flow (ShotGrid)
 sidebar_label: Flow (ShotGrid)
+description: AYON Flame Addon's documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";

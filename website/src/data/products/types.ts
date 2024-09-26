@@ -57,4 +57,5 @@ export type ProductType =
     | "usd"
     | "usdRender"
     | "textureSet"
-    | "wrap";
+    | "wrap"
+    | "lut";
