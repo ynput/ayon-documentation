@@ -52,7 +52,7 @@ value provided by whoever is triggering ticket creation via front end part of th
 links between Jira tickets. (Key of Jira ticket would be required for that, which is unknown until creation.
 Values here are stand-ins to be replaced with appropriate ticket key.)
 
-```
+```json title="ayon-jira\server\templates\Tier_1_Outfit_Jira_Template.json"
 {
     "jira_template": [
         {
@@ -96,7 +96,7 @@ These custom id identifiers must be unique in `Jira_Template` file.
 
 `"concept_jira_ticket": ""` will be filled by Jira ticket key (`KAN-201`) when ticket is created
 
-```
+```json title="ayon-jira\server\templates\Tier_1_Outfit_Ayon_Template.json"
 {    
     "ayon_template": {
         "tasks": {
