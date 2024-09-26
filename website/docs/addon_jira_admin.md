@@ -1,14 +1,16 @@
 ---
 id: addon_jira_admin
-title: Jira
+title: Jira Admin Docs
 sidebar_label: Jira
+description: AYON Jira Addon's documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 <ReactMarkdown>
-{versions.Flow_Badge}
+{versions.Jira_Badge}
 </ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
