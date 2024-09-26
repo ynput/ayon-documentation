@@ -69,10 +69,10 @@ Current Deadline implementation requires P4 depots to be of type 'stream' and wo
 
 When having any workfile changes while workfile instance is enabled, AYON will commit them automatically before sending the deadline job.
 
-
+<!-- TODO: Answer the following questions
 ## FAQ
 
 ### Do the addon support submitting a deadline job with a specific change list number?
 
 
-### What happens when I submit a render, pause it, do some commits in perforce and requeue the render job?
+### What happens when I submit a render, pause it, do some commits in perforce and requeue the render job? -->
