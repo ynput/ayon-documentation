@@ -18,39 +18,29 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-This addon provide initial attempt at integration with ticketing system Jira. This should allow to setup matching Jira
-tickets to AYON tasks and update its status.
+Jira Addon provides an initial attempt at integrating with the ticketing system Jira. This should allow setting up matching Jira tickets to AYON tasks and updating their status.
 
-Addon's two main functionalities:
+The addon's two main functionalities are:
 - "Preparation of AYON and Jira tickets"
-- "Sending notifications to Jira",
+- "Sending notifications to Jira"
 
-These allow to create multiple AYON tasks and matching Jira tickets on any folder path (`characters/Alice`, `sequences/seq01/shots/shot01/`).
+These functionalities allow the creation of multiple AYON tasks and matching Jira tickets on any folder path (e.g., `characters/Alice`, `sequences/seq01/shots/shot01/`).
 
-It also allows to update state of Jira ticket by sending comments to the ticket during publishing of matching task
-(and possibly uploading thumbnails or reviews).
+It also allows updating the state of a Jira ticket by sending comments to the ticket during the publishing of the matching task (and possibly uploading thumbnails or reviews).
 
 
 ## Preparation of AYON and Jira tickets
 
-Addon exposes creation of set of AYON and matching Jira tickets based on a prepared templates. 
+The addon allows the creation of a set of AYON and matching Jira tickets based on prepared templates.
 
-These templates are currently located in `server/templates`, they come in pairs, ending with `_Ayon_Template.json` and `_Jira_Template.json`.
-Workflow for allowing multiple Jira tickets connected to single AYON task was implemented based on requirements.
+These templates are currently located in `server/templates`. They come in pairs, ending with `_Ayon_Template.json` and `_Jira_Template.json`. 
+It's possible to have multiple Jira tickets connected to a single AYON task.
+
+:::info
+To add a new template, modify the source code of the addon by adding new templates to the `server/templates` folder. Then, run `create_package.py` and upload it to AYON.
+:::
 
 ### Jira template
-
-Example shows that 2 Jira tickets should be created, each value enclosed in `%` will be replaced by appropriate
-value provided by whoever is triggering ticket creation via front end part of this addon.
-(`%Tier1CharacterNameOutfitName%` in this example would be replaced by name of character, eg. `Robot` etc.)
-
-`Epic Link` would be used as a name of Epic, all tickets with same value would be joined to the Epic
-`AYON Task` will contain unique id to AYON task after its creation
-`Summary` is used as name of ticket
-`Description` is description of the ticket
-`Custom ID` is unique number in this field for all tickets in the template, it creates `Depends_On` and `Unblocks`
-links between Jira tickets. (Key of Jira ticket would be required for that, which is unknown until creation.
-Values here are stand-ins to be replaced with appropriate ticket key.)
 
 ```json title="ayon-jira\server\templates\Tier_1_Outfit_Jira_Template.json"
 {
@@ -70,31 +60,45 @@ Values here are stand-ins to be replaced with appropriate ticket key.)
             "Int vs Ext": "Internal"
         },
         {
-            "Epic Link": "%Tier1CharacterNameOutfitName% - Concept",
-            "Component": "Narrative",
-            "AYON Task": "",
-            "Summary": "Create narrative description for %Tier1CharacterNameOutfitName%'s secondary outfit",
-            "Description": "What does this secondary  outfit need to accomplish narratively?",
-            "Custom ID": "3",
-            "Depends_On": "",
-            "Unblocks": "4",
+            "Epic Link": "%Tier1CharacterNameOutfitName% - Stood Up",
+            "Component": "Character Art",
+            "AYON Task": "Model",
+            "Summary": "Create proxy mesh for %Tier1CharacterNameOutfitName% secondary outfit",
+            "Description": "Matching concept and base body mesh proportions and joint locations, model/sculpt the proxy secondary  outfit for  %Tier1CharacterNameOutfitName%.  This mesh is a  clean animatable decimation fully representing the silhouette and overall proportions of the model including all of its secondary pieces and character customization requirements (ie - Jacket on/off if applicable).  This version must be delivered to and approved by Tech-Anim for proper deforming/animating, before continuing with the next stages.  The proxy does not have to be fully optimized but please stay within reasonable poly count (150k tris) for delivery.  Do not texture and UV this character but do assign material ID's and auto-unwrap so that we can place tinted tiling materials over the appropriate locations of the character for more accurate presentation and review in engine.  Review by Art Director, Lead, Tech Anim.  Initial delivery for review as DCC files.",
+            "Custom ID": "8",
+            "Depends_On": "7",
+            "Unblocks": "9, 11",
             "IssueType": "Task",
             "Priority": "Medium",
-            "Original Estimate": "0.5",
-            "Int vs Ext": "Internal"
-        }
+            "Original Estimate": "4",
+            "Int vs Ext": ""
+        },
+        
     ]
 }
 ```
 
+Example shows that 2 Jira tickets should be created, each value enclosed in `%` will be replaced by appropriate
+value provided by whoever is triggering ticket creation via front end part of this addon.
+(`%Tier1CharacterNameOutfitName%` in this example would be replaced by name of character, eg. `Robot` etc.)
+
+- **Epic Link**: Name of the Epic. All tickets with the same value will be linked to the same Epic.
+- **Component**: Group or department name associated with the ticket.
+- **AYON Task**: AYON Task name.
+- **Summary**: Name of the ticket.
+- **Description**: Description of the ticket.
+- **Custom ID**: A unique number used to identify the ticket within the template.
+- **Depends_On** and **Unblocks**: Define links between Jira tickets based on the Custom ID.
+- **IssueType**: Type of issue for the ticket.
+- **Priority**: Priority level of the ticket.
+- **Original Estimate**: Initial prediction of how long the task will take, following your default time unit.
+- **Int vs Ext**: Specify whether the ticket is Internal or External.
+  
+:::tip
+On Jira ticket creation, **Custom ID** and **AYON Task** will be replaced with the actual ticket key and task ID, which are only known upon creation.
+:::
+
 ### AYON template
-
-Example AYON templates shows that 2 tasks should be created, `Concept` and `Model`.
-
-`"concept_jira_id": "5"` points to identifier '5' from `Jira_Template.Custom ID` field and creates link between AYON task and Jira ticket.
-These custom id identifiers must be unique in `Jira_Template` file.
-
-`"concept_jira_ticket": ""` will be filled by Jira ticket key (`KAN-201`) when ticket is created
 
 ```json title="ayon-jira\server\templates\Tier_1_Outfit_Ayon_Template.json"
 {    
@@ -109,40 +113,36 @@ These custom id identifiers must be unique in `Jira_Template` file.
                 "current_phase": "",
                 "stood up_jira_id": "8",
                 "stood up_jira_ticket": "",
-                "presentable_jira_id": "15",
-                "presentable_jira_ticket": "",
-                "shippable_jira_id": "17",
-                "shippable_jira_ticket": "",
-                "polished_jira_id": "19",
-                "polished_jira_ticket": ""
             }
         }
     }
 }
 ```
 
+Example AYON templates show that two tasks should be created: `Concept` and `Model`.
+
+- **current_phase**: Jira Current Phase
+- **{epic}_jira_id**: Links tickets by `Custom ID`. For example, `"concept_jira_id": "5"` points to a ticket with `"Custom ID": "5"` from the `Jira_Template` and creates a link between the AYON task and the Jira ticket.
+- **{epic}_jira_ticket**: Will be filled by the Jira ticket key, e.g., `KAN-201`, when the ticket is created.
 
 ### Triggering of creation
 
-![](assets/jira/jira_frontend.png)
+![](assets/jira/jira_frontend.gif)
 
 :::tip
 Front end form is provided by this addon (addon must be added to `production` bundle!).
+The frontend is added within each project.
 :::
 
 It contains fields:
-- `Folder path` - should contain path of asset for which task(s) defined in the templates should be created
-  - value could be easily copied from:
-    - copy box in the top middle in `Browser` page in the Project on AYON server
-    - from right column with details for folder in the same page
-    - project name prefix is not required, but doesn't cause an issue
-- `Jira project key` - identifier of Jira project
+- `Folder path` - should contain path of folder path for which task(s) defined in the templates should be create.
+    you can fill in the value manually or you can use the eye drop icon to select your folder path.
 - `Templates` - dropdown to select implemented templates
 
 After providing values for these fields, `Create` button could be triggered.
 
 
-### Installation and configuration
+## Installation and configuration
 
 Addon is expected to be built by cloning it first from Github, then running `create_package.py` which will result
 in zip file in `package` folder. This file should be used to be installed on AYON server.
@@ -154,30 +154,68 @@ Before running `create_packages`:
 
 These parts of workflow are a bit manual process right now, but it is expected to be enhanced in the future.
 
-##### AYON Settings
+## AYON Settings
 
-Settings could be set in `Studio Settings` or override per project in `Project Settings`.
+### Jira Credentials
 
-Jira server url, username, password and jira project code needs to be provided for creation of tickets and notifications.
+> Settings Location: `ayon+settings://jira` or override per project `ayon+settings://jira?project={project_name}`
 
 ![Jira Credentials](assets/jira/jira_studio_settings.png)
 
-`ayon+settings://jira/phases` contains list of phases, where phase selects appropriate Jira ticket for single AYON task.
-This phase must be set in right column of `Editor` page on the AYON server (on folder, eg. asset) before work starts
-on this AYON task.
+Jira credentials are used for creating tickets and notifications.
+You need to specify:
 
-Prefix value is used in task metadata as a part of key containing Jira ticket key.
+- **Jira server url**
+- **Jira username**
+- **Jira Password**
+- **Jira project code**: Identifier of Jira project
 
-`ayon+settings://jira/publish/CollectJiraNotifications` controls for which hosts/tasks/products comment to the
-Jira ticket should be sent.
+### List of process phases
 
+> Setting Location: `ayon+settings://jira/phases` or override per project `ayon+settings://jira/phases?project={project_name}`
+
+![](assets/jira/list_of_process_phases.png)
+
+It contains list of phases, where phase selects appropriate Jira ticket for single AYON task.
+
+1. **Phase Name**: Phase Name
+2. **Prefix Value**: is used in task metadata as a part of key containing Jira ticket key.
+3. **+**: Add more phases
+
+:::tip Set Phase to Folders and Tasks
+
+The phase must be set in the folder/task attributes, found in the right column of the Editor page on the AYON server (e.g., asset), before work starts on this AYON task.
+
+![](assets/jira/jira_current_phase.png)
+:::
+
+### Notification to Jira
+
+> Setting Location `ayon+settings://jira/publish/CollectJiraNotifications` 
+
+![](assets/jira/jira_notification_settings.png)
+
+It controls for which hosts/tasks/products comment to the Jira ticket should be sent.
+
+1. **Main Toggle**: Enable `Notification to Jira` feature.
+2. **Optional Toggle**: Allow users to disable this feature locally.
+3. **+**: Add Notification profiles.
+
+#### Notification profiles
 ![Jira Notification Profiles](assets/jira/jira_notification_profiles.png)
 
-Content of the comment is configurable with a use of Anatomy template keys, see https://ayon.ynput.io/docs/admin_settings_project_anatomy/#available-template-keys
-
+- **Hosts:** List of host names you want the plugin to work with.
+- **Task Types:** Choose from a list of task types to determine which ones the profile will affect.
+- **Task Names:** List of task names to determine which ones the profile will affect.
+- **Product names:** List of product names to determine which ones the profile will affect.
+- **Product types:** List of product types to determine which ones the profile will affect.
+- **Comment to ticket**: 
+Comment content can use template keys (see [Available template keys](admin_settings_project_anatomy.md#available-template-keys)).
+Few keys also have Capitalized and UPPERCASE format. Values will be modified accordingly. e.g. `{Folder[name]}` ➜ "Gun", `{PRODUCT[NAME]}` ➜ "RENDER".
 Please be careful about which placeholder you put into the message, as some of them are not applicable for all products (`frame` etc.)
-
-There is also possibility to upload `thumbnail` or `review` directly to the Jira ticket.
-
-Review might be too big to upload to occupy additional space on Jira, `Review file size limit` allows to replace upload
+:::tip Comment Example
+    {Product[name]} was published for {FOLDER[NAME]} in {task[name]} task.
+:::
+- **Upload thumbnail** and **Upload review**: Upload `thumbnail` and `review`, *if they are present in the publish*, to the Jira ticket.
+- **Review file size limit (MB)**: Review might be too big to upload to occupy additional space on Jira, `Review file size limit` allows to replace upload
 with link in the comment for too large review files.
