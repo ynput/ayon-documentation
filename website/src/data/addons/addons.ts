@@ -49,6 +49,7 @@ export const officialAddons = [
     "slack",
     "tvpaint",
     "unreal",
+    "versioncontrol",
     "wrap",
     "openrv",
     "openusd",
