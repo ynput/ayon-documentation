@@ -51,6 +51,7 @@ module.exports = {
                 },
                 "addon_harmony_artist",
                 "addon_hiero_artist",
+                "addon_flame_artist",
                 "addon_houdini_artist",
                 "addon_kitsu_artist",
                 {
@@ -92,6 +93,7 @@ module.exports = {
                 "addon_substancepainter_artist",
                 "addon_tvpaint_artist",
                 "addon_unreal_artist",
+                "addon_version_control_artist",
                 "addon_wrap_artist",
                 "addon_openrv_artist",
                 {
@@ -182,9 +184,40 @@ module.exports = {
                 "addon_wrap_admin",
                 "addon_syncsketch_admin",
                 "addon_flow_admin",
+                {
+                    type: "category",
+                    label: "Flame",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Flame Addon',
+                        description:
+                            "Welcome to Flame Integration Documentation!",
+                        keywords: ['flame'],
+                    },
+                    items: [
+                        "addon_flame_admin_intro",
+                        "addon_flame_admin_get_started",
+                        "addon_flame_admin_settings"
+                    ]
+                },
                 "addon_aquarium_admin",
                 "addon_usd_admin",
-               
+                {
+                    type: "category",
+                    label: "Version Control",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Version Control',
+                        description:
+                          "Welcome to AYON Version Control Docs!",
+                        keywords: ['version-control'],
+                      },
+                    items: [
+                        "addon_version_control_admin_intro",
+                        "addon_version_control_admin_get_started",
+                        "addon_version_control_admin_settings"
+                    ]
+                },
             ].sort(sorted),
         },
         "admin_releases",
