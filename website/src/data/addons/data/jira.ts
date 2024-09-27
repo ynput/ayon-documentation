@@ -12,6 +12,7 @@ const addon: Addon = {
     products: [
     ],
     docs: {
+        user: "addon_jira_artist",
         admin: "addon_jira_admin",
     },
     github: "https://github.com/ynput/ayon-jira",

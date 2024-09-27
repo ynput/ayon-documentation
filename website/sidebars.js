@@ -53,6 +53,7 @@ module.exports = {
                 "addon_hiero_artist",
                 "addon_flame_artist",
                 "addon_houdini_artist",
+                "addon_jira_artist",
                 "addon_kitsu_artist",
                 {
                     type: "category",
