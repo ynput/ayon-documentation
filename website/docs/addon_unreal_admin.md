@@ -116,29 +116,34 @@ Be aware that calling **pip** like so is deprecated by pip itself and might not 
 For Unreal Engine versions `>= 5.4`, use `pyside6`. For earlier versions, use `pyside2`.
 :::
 
-## Template Setting for UAsset Publish
-### Set up the UAsset publish template in project
-You need to set up the template for UAsset product type to ensure they are published without corruption of the file(s).
-To set up the template for UAsset publish, you need to go to **Project Settings**(framed by the red square) and **Anatomy**. Then you need to select your project and create custom publish template for UAsset(frame by the light blue-green square).
+## Setup Publish template for UAsset Product
+### Add UAsset publish template in project anatomy
+You need to set up the publish template for UAsset product type to ensure they are published without corruption of the file(s).
+**Steps:**
+- go to **Project Settings** shortcut `P+P` and select **Anatomy**.
+- Select your project.
+- Find publish template settings, setting location `ayon+anatomy://{project_name}/templates/publish`.
+- Add a publish template by clicking **+** icon. 
+- Fill in the publish template with `unrealuasset`.
+    ```json  title="unrealuasset publish template"
+    {
+        "name": "unrealuasset",
+        "directory": "{root[work]}/{project[name]}/{hierarchy}/{folder[name]}/publish/{product[type]}/{product[name]}/{@version}",
+        "file": "{originalBasename}.{ext}"
+    }
+    ```
+- Once you finished to add the template, Click **Save Changes**.
+  
+![Unreal AYON UAsset Template Project Setting](assets/unreal/admin/uasset_template_project_anatomy.png)
 
-![Unreal AYON UAsset Template Project Setting](assets/unreal_uasset_template_settings_project_setting.png)
+### Add template name profile in core settings
+The next step is to link the `unrealuasset` publish template to the `uasset` product type.
+This is done via template name profiles in core addon settings `ayon+settings://core/tools/publish/template_name_profiles`
+**Steps:**
+- Locate the template name profiles settings, Setting location `ayon+settings://core/tools/publish/template_name_profiles`.
+- Add new template name profile using the **+** icon
+- Add `uasset` to **Product types**.
+- Add `unreal` to the **Hosts**.
+- Set **Template name** to `unrealuasset`
 
-:::note
-You need to add the template as shown below to avoid the possible corruption of the uasset-format files.
-```
-{
-    "name": "unrealuasset",
-    "directory": "{root[work]}/{project[name]}/{hierarchy}/{folder[name]}/publish/{product[type]}/{product[name]}/{@version}",
-    "file": "{originalBasename}.{ext}"
-}
-```
-:::
-
-Once you finished to add the template, you need to click **Save Changes**.
-
-## Activate the publish template in AYON
-After setting up the template, you need to access **Studio Settings** and go to `ayon+settings://core/tools/publish/template_name_profiles`.
-
-By adding the UAsset custom publish template name(i.e `unrealuasset`) with UAsset as product type and Unreal as host, the template would be used as the file structure for the published assets.(Framed by the light blue-green square)
-
-![Unreal AYON UAsset Template Profiles](assets/unreal_uasset_template_settings_ayon_core.png)
+![Unreal AYON UAsset Template Profiles](assets/unreal/admin/uasset_template_profile_ayon_core.png)
