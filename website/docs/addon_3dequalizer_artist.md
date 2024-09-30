@@ -13,61 +13,59 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.Equalizer_Badge}
 </ReactMarkdown>
 
-## AYON global tools
-
-- [Work Files](artist_tools_workfiles)
-- [Create](artist_tools_creator)
-- [Load](artist_tools_loader)
-- [Manage (Inventory)](artist_tools_inventory)
-- [Publish](artist_tools_publisher)
-- [Library Loader](artist_tools_library_loader)
-
-
 ## Overview
 
-3DEqualizer (3DE) Addon allows you to manage your 3DE projects, load plates as cameras and publishing of scripts for Nuke and Maya with Lens Distortion node for Nuke.
+The 3DEqualizer (3DE) Addon lets you manage your 3DE projects, load plates as cameras, and publish scripts for Nuke and Maya with a Lens Distortion node for Nuke.
 
-### Loading plates
+## AYON global tools
 
-You can load image data into 3DE by using [Loader]((artist_tools_loader)) tool. Go to ```AYON``` menu in 3DE, select ```Load``` and pick your image sequence you want yo use. This will create new sequence camera, set the path for the image sequence and set correct frame range. From that moment loaded sequence is version tracked, you can follow used versions in [Manage tool](artist_tools_inventory).
+- [Work Files](artist_tools_workfiles.md)
+- [Create](artist_tools_creator.md)
+- [Load](artist_tools_loader.md)
+- [Manage (Inventory)](artist_tools_inventory.md)
+- [Publish](artist_tools_publisher.md)
+- [Library Loader](artist_tools_library_loader.md)
+
+## Addon Features
+
+### Loading Plates
+
+You can load image data into 3DE by using the [Loader](artist_tools_loaderزةي) tool. Go to the `AYON` menu in 3DE, select `Load`, and pick the image sequence you want to use. This will create a new sequence camera, set the path for the image sequence, and set the correct frame range. From that moment, the loaded sequence is version tracked. You can follow the used versions in the [Manage tool](artist_tools_inventory.md).
 
 :::note
-AYON is using **Project Notes** to store some of its infomations for version tracking. If you want to use them, please, do not modify content of ```AYON_CONTEXT:: ... ::AYON_CONTEXT``` block as it will probably break version management of loaded image sequences.
+AYON uses **Project Notes** to store some of its information for version tracking. If you want to use them, please do not modify the content of the `AYON_CONTEXT:: ... ::AYON_CONTEXT` block, as it will probably break the version management of loaded image sequences.
 :::
 
-### Publishing Matchmove scripts
- 
-Once you track your camera in 3DE, you can export it and publish it as version for Maya and/or Nuke. Just go to ```AYON``` menu in 3DE, click on [Publish](artist_tools_publisher). You can create ```Match Move``` publishing instance. There, you can set bunch of settings:
+### Publishing Matchmove Scripts
 
-- Select which camera mode to publish with the setting (**Camera(s) to publish**). You can select either *All Cameras*, *Current Camera* (active), *Reference Cameras* (for all reference cameras) and *Sequence Cameras*.
+Once you track your camera in 3DE, you can export and publish it as a version for Maya and/or Nuke. Go to the `AYON` menu in 3DE and click on [Publish](artist_tools_publisher). You can create a `Match Move` publishing instance and set various settings:
 
-There is also selection for model export - you can either select *All 3D Models* or no models.
+- **Camera(s) to Publish**: Select which camera mode to publish. Options include *All Cameras*, *Current Camera* (active), *Reference Cameras* (for all reference cameras), and *Sequence Cameras*.
+- **Model Export**: Choose to export *All 3D Models* or no models.
+- **Script Type**: Decide if you want to publish the script for Maya, Nuke, or both.
 
-You can also decide if you want to publish script for Maya, or Nuke or both.
-
-You can also set some following options (not all might be available in your 3DE version):
+Additional options (availability may vary depending on your 3DE version):
 
 - **Hide Reference Frame**
 - **Export UV Textures**
-- **Overscan Width percent**
-- **Overscan Height percent**
-- **Units** ("mm", "cm", "m", "in", "ft", "yd")
+- **Overscan Width Percent**
+- **Overscan Height Percent**
+- **Units** (options: "mm", "cm", "m", "in", "ft", "yd")
 - **Export Point Sets**
 - **Export 2.5D Points**
 
-For more reference see options on 3DE export scripts.
+For more details, refer to the options in the 3DE export scripts.
 
-
-:::note
-AYON is using in-built export scripts in 3DE to do export but it is using mostly default options. In 3DE v7 the scripts for Maya will be exported as **MEL** and in v8 as **Python**.
+:::info
+AYON uses built-in export scripts in 3DE for exporting, mostly with default options. In 3DE v7, scripts for Maya will be exported as **MEL**, and in v8 as **Python**.
 :::
 
 ### Publishing Lens Distortion for Nuke
 
-In similar fashion as with Matchmove scripts you can export and publish Lens Distortion node for Nuke. This is using [LDPK](https://www.3dequalizer.com/?site=tech_docs&id=110216_01) in Nuke.
+Similar to Matchmove scripts, you can export and publish a Lens Distortion node for Nuke using [LDPK](https://www.3dequalizer.com/?site=tech_docs&id=110216_01).
 
-:::note
-Lens Distortion data will be published for current (active) camera.
+:::info
+Lens Distortion data will be published for the current (active) camera.
 :::
 
-You can select FOV mode (there is new one in 3DE v8).
+You can also select the FOV mode, including the new one available in 3DE v8.
