@@ -157,7 +157,14 @@ module.exports = {
         "system_introduction",
         {
             type: "category",
-            label: "AYON server",
+            label: "Hosting AYON Server",
+            link: {
+                type: 'generated-index',
+                title: 'Hosting AYON Server',
+                description:
+                  "Documentation dedicated for self hosting AYON and running your own AYON instance.",
+                keywords: ['server', 'admin'],
+              },
             items: [
                 "admin_server_deployment",
                 "admin_server_configuration",
@@ -169,97 +176,139 @@ module.exports = {
         },
         {
             type: "category",
-            label: "AYON Launcher",
-            items: ["admin_launcher_distribute", "admin_launcher_run"],
+            label: "AYON Server",
+            link: {
+                type: 'generated-index',
+                title: 'AYON Server',
+                description:
+                  "Welcome to AYON Server Admin Docs!",
+                keywords: ['server', 'admin'],
+              },
+            items: [
+                "server_project_management",
+                "server_user_management"
+              ],
         },
         {
             type: "category",
-            label: "Configuration",
-            items: [
-                "admin_environment",
-                "admin_settings",
-                "admin_colorspace",
-                "admin_settings_project_anatomy",
-                "addon_core_settings",
-                "addon_applications_admin",
+            label: "AYON Pipeline",
+            link: {
+                type: 'generated-index',
+                title: 'AYON Pipeline',
+                description:
+                  "Welcome to AYON Pipeline Admin Docs!",
+                keywords: ['server', 'admin'],
+              },
+            items: [              
+            {
+                type: "category",
+                label: "AYON Launcher",
+                items: ["admin_launcher_distribute", "admin_launcher_run"],
+            },
+            {
+                type: "category",
+                label: "Configuration",
+                items: [
+                    "admin_environment",
+                    "admin_settings",
+                    "admin_colorspace",
+                    "admin_settings_project_anatomy",
+                    "addon_core_settings",
+                    "addon_applications_admin",
+                ],
+            },
+            {
+                type: "category",
+                label: "Integrations",
+                items: [
+                    "addon_3dsmax_admin",
+                    "addon_3dequalizer_admin",
+                    "addon_aftereffects_admin",
+                    "addon_blender_admin",
+                    "addon_resolve_admin",
+                    "addon_deadline_admin",
+                    "addon_ftrack_admin",
+                    "addon_harmony_admin",
+                    "addon_hiero_admin",
+                    "addon_houdini_admin",
+                    "addon_keycloak_admin",
+                    {
+                        type: "category",
+                        label: "Maya",
+                        items: [
+                            "addon_maya_admin",
+                            "addon_maya_ornatrix_admin",
+                        ],
+                    },
+                    "addon_motionbuilder_admin",
+                    "addon_nuke_admin",
+                    "addon_photoshop_admin",
+                    "addon_site_sync_admin",
+                    "addon_slack_admin",
+                    "addon_sso_admin",
+                    "addon_substancepainter_admin",
+                    "addon_tvpaint_admin",
+                    "addon_unreal_admin",
+                    "addon_kitsu_admin",
+                    "addon_jira_admin",
+                    "addon_clockify_admin",
+                    "addon_traypublisher_admin",
+                    "addon_wrap_admin",
+                    "addon_syncsketch_admin",
+                    "addon_flow_admin",
+                    {
+                        type: "category",
+                        label: "Flame",
+                        link: {
+                            type: 'generated-index',
+                            title: 'AYON Flame Addon',
+                            description:
+                                "Welcome to Flame Integration Documentation!",
+                            keywords: ['flame'],
+                        },
+                        items: [
+                            "addon_flame_admin_intro",
+                            "addon_flame_admin_get_started",
+                            "addon_flame_admin_settings"
+                        ]
+                    },
+                    "addon_aquarium_admin",
+                    "addon_usd_admin",
+                    {
+                        type: "category",
+                        label: "Version Control",
+                        link: {
+                            type: 'generated-index',
+                            title: 'AYON Version Control',
+                            description:
+                            "Welcome to AYON Version Control Docs!",
+                            keywords: ['version-control'],
+                        },
+                        items: [
+                            "addon_version_control_admin_intro",
+                            "addon_version_control_admin_get_started",
+                            "addon_version_control_admin_settings"
+                        ]
+                    },
+                ].sort(sorted),
+            },
+            "admin_import_openpype_project",
             ],
         },
         {
             type: "category",
-            label: "Integrations",
+            label: "Production Tracking",
+            link: {
+                type: 'generated-index',
+                title: 'Production Tracking',
+                description:
+                  "Welcome to AYON Production Tracking Docs!",
+                keywords: ['production tracking', 'admin'],
+              },
             items: [
-                "addon_3dsmax_admin",
-                "addon_3dequalizer_admin",
-                "addon_aftereffects_admin",
-                "addon_blender_admin",
-                "addon_resolve_admin",
-                "addon_deadline_admin",
-                "addon_ftrack_admin",
-                "addon_harmony_admin",
-                "addon_hiero_admin",
-                "addon_houdini_admin",
-                "addon_keycloak_admin",
-                {
-                    type: "category",
-                    label: "Maya",
-                    items: [
-                        "addon_maya_admin",
-                        "addon_maya_ornatrix_admin",
-                    ],
-                },
-                "addon_motionbuilder_admin",
-                "addon_nuke_admin",
-                "addon_photoshop_admin",
-                "addon_site_sync_admin",
-                "addon_slack_admin",
-                "addon_sso_admin",
-                "addon_substancepainter_admin",
-                "addon_tvpaint_admin",
-                "addon_unreal_admin",
-                "addon_kitsu_admin",
-                "addon_jira_admin",
-                "addon_clockify_admin",
-                "addon_traypublisher_admin",
-                "addon_wrap_admin",
-                "addon_syncsketch_admin",
-                "addon_flow_admin",
-                {
-                    type: "category",
-                    label: "Flame",
-                    link: {
-                        type: 'generated-index',
-                        title: 'AYON Flame Addon',
-                        description:
-                            "Welcome to Flame Integration Documentation!",
-                        keywords: ['flame'],
-                    },
-                    items: [
-                        "addon_flame_admin_intro",
-                        "addon_flame_admin_get_started",
-                        "addon_flame_admin_settings"
-                    ]
-                },
-                "addon_aquarium_admin",
-                "addon_usd_admin",
-                {
-                    type: "category",
-                    label: "Version Control",
-                    link: {
-                        type: 'generated-index',
-                        title: 'AYON Version Control',
-                        description:
-                          "Welcome to AYON Version Control Docs!",
-                        keywords: ['version-control'],
-                      },
-                    items: [
-                        "addon_version_control_admin_intro",
-                        "addon_version_control_admin_get_started",
-                        "addon_version_control_admin_settings"
-                    ]
-                },
-            ].sort(sorted),
+                "server_admin_dashboard"
+            ],
         },
-        "admin_import_openpype_project",
     ],
     Dev: [
         "dev_introduction",
