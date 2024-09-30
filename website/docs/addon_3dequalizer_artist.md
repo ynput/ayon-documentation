@@ -37,9 +37,9 @@ AYON is using **Project Notes** to store some of its infomations for version tra
 
 ### Publishing Matchmove scripts
  
-Once you track your camera in 3DE, you can export it and publish it as version for Maya and/or Nuke. Just go yo ```AYON``` menu in 3DE, click on [Publish](artist_tools_publisher). You can create ```Match Move``` publishing instance. There, you can set bunch of settings:
+Once you track your camera in 3DE, you can export it and publish it as version for Maya and/or Nuke. Just go to ```AYON``` menu in 3DE, click on [Publish](artist_tools_publisher). You can create ```Match Move``` publishing instance. There, you can set bunch of settings:
 
-What cameras to publish (**Camera(s) to publish**). You can select eirther *All Cameras*, *Current Camera* (active), *Reference Cameras* (for all reference cameras) and *Sequence Cameras*.
+- Select which camera mode to publish with the setting (**Camera(s) to publish**). You can select either *All Cameras*, *Current Camera* (active), *Reference Cameras* (for all reference cameras) and *Sequence Cameras*.
 
 There is also selection for model export - you can either select *All 3D Models* or no models.
 
@@ -59,7 +59,7 @@ For more reference see options on 3DE export scripts.
 
 
 :::note
-AYON is using in-built export scripts in 3DE to do export but it is using mostly default options. In 3DE v7 the scripts for Maya will be exported as **MEL** and in v8 as **Python*.
+AYON is using in-built export scripts in 3DE to do export but it is using mostly default options. In 3DE v7 the scripts for Maya will be exported as **MEL** and in v8 as **Python**.
 :::
 
 ### Publishing Lens Distortion for Nuke
