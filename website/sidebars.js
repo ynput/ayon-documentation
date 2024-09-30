@@ -259,7 +259,6 @@ module.exports = {
                 },
             ].sort(sorted),
         },
-        "admin_releases",
         "admin_import_openpype_project",
     ],
     Dev: [
