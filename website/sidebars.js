@@ -37,6 +37,7 @@ module.exports = {
             label: "Integrations",
             items: [
                 "addon_3dsmax_artist",
+                "addon_3dequalizer_artist",
                 "addon_aftereffects_artist",
                 "addon_blender_artist",
                 "addon_resolve_artist",
@@ -153,6 +154,7 @@ module.exports = {
             label: "Integrations",
             items: [
                 "addon_3dsmax_admin",
+                "addon_3dequalizer_admin",
                 "addon_aftereffects_admin",
                 "addon_blender_admin",
                 "addon_resolve_admin",

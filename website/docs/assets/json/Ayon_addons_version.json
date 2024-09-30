@@ -8,6 +8,7 @@
     "Clockify_Badge" : "[![Clockify Addon - 0.1.1](https://img.shields.io/badge/Clockify_Addon-0.1.1-0ca5eb)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/clockify)",
     "Core_Badge" : "[![Core Addon - 0.1.3](https://img.shields.io/badge/Core_Addon-0.1.3-00d5a1)](https://github.com/ynput/OpenPype)",
     "Deadline_Badge" : "[![Deadline Addon - 0.1.4](https://img.shields.io/badge/Deadline_Addon-0.1.4-f7981d)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/deadline)",
+    "Equalizer_Badge": "[![3DEqualizer Addon](https://img.shields.io/badge/3DEqualizer_Addon-0.1.0-black)](https://github.com/ynput/ayon-equalizer)",
     "Flame_Badge" : "[![Flame Addon - 0.2.4](https://img.shields.io/badge/Flame_Addon-0.2.4-3190b2)](https://github.com/ynput/ayon-flame)",
     "Ftrack_Badge" : "[![Ftrack Addon - 0.2.4](https://img.shields.io/badge/Ftrack_Addon-0.2.4-bf9ac9)](https://github.com/ynput/ayon-ftrack/tree/develop)",
     "SyncSketch_Badge" : "[![SyncSketch Addon - 0.1.1](https://img.shields.io/badge/SyncSketch_Addon-0.1.1-bf9ac9)](https://github.com/ynput/ayon-syncsketch/tree/develop)",

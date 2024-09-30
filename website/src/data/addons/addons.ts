@@ -26,6 +26,7 @@ import { AddonType } from ".";
 export const officialAddons = [
     "core",
     "3dsmax",
+    "3dequalizer",
     "afterEffects",
     "blender",
     "celaction",
