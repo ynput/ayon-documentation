@@ -15,7 +15,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Overview
 
-To get the 3DEqualizer (3DE) addon running, we need to install Qt Python bindings. We use a pre-launch hook that automatically installs `PySide2/6` into 3DE Python. You can set the location using the `TDE4_HOME` environment variable, or it will be deduced from the 3DE executable path in AYON applications settings.
+To get the 3DEqualizer (3DE) addon running, we need to install Qt Python bindings. We use a pre-launch hook that automatically installs `PySide2/6` into 3DE Python. You can set the location using the `TDE4_ROOT` environment variable, or it will be deduced from the 3DE executable path in AYON applications settings.
 
 :::caution Python Bindings and Protected Locations
 This automatic **PySide2/6** installation might fail if 3DE is used from a protected location (either a network drive or a user write-restricted location). If this happens, you need to install PySide there manually.
