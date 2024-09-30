@@ -65,31 +65,12 @@ Default value could be there as:
 Please notice platform suport with `windows` key (could be also `linux` value).
 
 
-### Perforce support
+## AYON Perforce Support
 
-There is also a Perforce support for rendering on a Deadline. `ayon-version-control` addon needs to be installed and configured for that.
-(Install addon from AYON Marketplace or from https://github.com/ynput/ayon-version-control).
-
-This addon requires configuration in `Studio Settings` where `Perforce` should be selected as `Backend name`, `Host name` and `Port` filled.
-
-Each artist using this integration need to configure their `Local Setting` in `ayon+settings://version_control/local_setting?project=ayon_test&site=XXX-YYY-ZZZ`
-
-![Unreal AYON Local Settings](assets/unreal_perforce_local_settings.png)
-
-It is expected that value in `My Workspace Directory` would be pointing to existing and configured Perforce workspace on artist machine.
-Initial checkout from Perforce should be done by P4V tool. 
-
-AYON Perforce integration handles currently only rendering from P4 on Deadline, commits to Unreal project should be done in P4V or with 
-official Unreal Perforce plugin inside of Unreal editor.
-
-Each Deadline worker for this integration need to have set env vars:
-- P4PORT (`perforce_host:1666`)
-- P4USER
-- P4PASSWD
-
-Again these variables could be set locally on the worker or be controlled by AYON in `ayon+settings://applications/applications/unreal/variants/3/environment`.
-Please make sure you are modifying appropriate `Variant` of Unreal application as this configuration is separate.
-
+:::tip
+AYON has a dedicated addon for Perforce support.
+Please refer to [Version Control Admin Docs](category/version-control) to learn more.
+:::
 
 ## Manually installing Qt bindings
 
