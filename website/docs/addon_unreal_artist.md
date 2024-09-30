@@ -123,7 +123,7 @@ To load a Mesh, follow these steps:
 
 The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
 
-::: note
+:::note
 New Feature for 5.4: If you are using the Alembic loaders(e.g **Import Alembic Point Cache**, **Import Alembic Static Mesh**), you can choose which presets you want to load by clicking the small memo icon, and it will pop up the dialog to allow you to choose which preset you would like to use.(By default is Maya)
 
 ![Unreal AYON Alembic Loader Maya Preset](assets/unreal_alembic_maya_preset.png)
@@ -146,7 +146,7 @@ To update the asset:
 - Click **Update to latest** or **Set version**.
 
 :::note
-Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
 :::
 
 ### Removing
@@ -238,7 +238,7 @@ To update the asset:
 - Click **Update to latest** and **Set version**.
 
 :::note
-Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
 :::
 
 ### Removing
@@ -256,7 +256,7 @@ To remove loaded assets, click on the AYON icon in Unreal’s main taskbar, and 
 Publishing UAssets has some limitations currently. You can only publish a single UAssets, and it must not have any dependencies.
 :::
 
-:::warning
+:::caution
 
 Before publishing, you need to make sure the template, which is used for publishing UAssets, has been set up.
 
@@ -532,7 +532,7 @@ To update the camera:
 - Click **Update to latest** and **Set version**.
 
 :::note
-Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
 :::
 
 ## Animations
@@ -607,7 +607,7 @@ To update the animation:
 - Click **Update to latest** or **Set version**.
 
 :::note
-Everytime you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
 :::
 
 ## Rendering
