@@ -178,35 +178,6 @@ To publish a mesh from Unreal, you need to create a publish instance.
   - On the left, you will see all the publish instances that you have created. 
   - Select the ones that you want to publish, and click on **Publish**.
 
-## Look development
-
-AYON supports look development in Unreal Engine.
-
-### Creating look
-
-To create the look, you will need to create the [Materials](https://docs.unrealengine.com/5.1/en-US/Engine/Rendering/Materials/) for the model you loaded, and assign them to the model. You can create the materials in Unreal, or you can import them from AYON as UAsset.
-
-### Publishing look
-
-To publish a look from Unreal, you need to create a publish instance.
-
-- Select the model with the materials in the Content Browser.
-- Click on **AYON → Publisher ...** to open the Publisher screen.
-  - On the top bar, switch to the **Create** tab.
-  - In the Creator screen, select *Look*.
-  - Set the name of the product.
-  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-
-![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
-![Unreal AYON Create Look](assets/unreal_create_look.png)
-
-- Click on **AYON → Publisher ...** to open the Publisher screen.
-  - On the top bar, switch to the **Publish** tab.
-  - On the left, you will see all the publish instances that you have created. 
-  - Select the ones that you want to publish, and click on **Publish**.
-
-To get the look ready to be publishable, AYON will create a new folder `/Content/AYON/Looks`. In here, it will be created a folder that will contain a simple model with the materials you created assigned, that will be used to publish the look. This folder will be named after product name you chose when creating the instance. You don't need to do anything with this folder, it is just for the publishing process.
-
 ## UAssets
 
 Unreal Engine uses [UAssets](https://docs.unrealengine.com/5.1/en-US/working-with-assets-in-unreal-engine/) to store assets. AYON supports publishing and loading of this kind of assets.
