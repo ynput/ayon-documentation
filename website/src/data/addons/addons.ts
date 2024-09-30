@@ -39,6 +39,7 @@ export const officialAddons = [
     "harmony",
     "hiero",
     "houdini",
+    "jira",
     "maya",
     "motionbuilder",
     "nuke",
