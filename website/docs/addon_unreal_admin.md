@@ -117,9 +117,22 @@ For Unreal Engine versions `>= 5.4`, use `pyside6`. For earlier versions, use `p
 :::
 
 ## Setup Publish template for UAsset Product
-### Add UAsset publish template in project anatomy
-You need to set up the publish template for UAsset product type to ensure they are published without corruption of the file(s).
-**Steps:**
+
+This requires two configurations:
+- Include the `unrealuasset` publish template in the project anatomy.
+- Link `uasset` product to its publish template, `unrealuasset`.
+
+### UAsset publish template in project anatomy
+
+![Unreal AYON UAsset Template Project Setting](assets/unreal/admin/uasset_template_project_anatomy.png)
+
+The `unrealuasset` publish template is added to the default templates in recent AYON server versions.
+
+:::tip
+If you don't have it, you can always create it manually. Follow these steps to create it manually.
+
+<details><summary>Steps to create <code>unrealuasset</code> manually</summary>
+
 - go to **Project Settings** shortcut `P+P` and select **Anatomy**.
 - Select your project.
 - Find publish template settings, setting location `ayon+anatomy://{project_name}/templates/publish`.
@@ -134,7 +147,9 @@ You need to set up the publish template for UAsset product type to ensure they a
     ```
 - Once you finished to add the template, Click **Save Changes**.
   
-![Unreal AYON UAsset Template Project Setting](assets/unreal/admin/uasset_template_project_anatomy.png)
+</details>
+
+:::
 
 ### Add template name profile in core settings
 The next step is to link the `unrealuasset` publish template to the `uasset` product type.
