@@ -588,6 +588,11 @@ You can connect your loaded animation sequence and camera to the level sequence 
 
 - It would add the loaded camera and animation sequence into the level sequence which stores the meshes loaded from the layout.
 
+:::note
+The current connect action is not applicable for the level sequence which has an existing camera cut track. If users want to connect camera and animation, they need to remove the camera cut track first and perform the action.
+
+:::
+
 ### Updating
 
 To manage loaded animations, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
