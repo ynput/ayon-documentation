@@ -615,25 +615,9 @@ These could be modified by AYON admin in `ayon+settings://unreal/render_queue_pa
 
 ![Unreal AYON Render Queue and Settings](assets/unreal_render_queue_and_settings.png)
 
-### Perforce integration
+## AYON Perforce Support
 
-If Perforce integration is enabled by configured `ayon-version-control` addon in the bundle, artists could sync to any previous
-changelist via small dialog that will open before opening Unreal editor.
-
-Artist need to have its Perforce username, password and path to existing configured Perforce workspace configure in `ayon+settings://version_control/local_setting?project=ayon_test&site=XXX-YYY-ZZZ`
-
-![Unreal AYON Local Settings](assets/unreal_perforce_local_settings.png)
-
-Any line with changelist could be selected and synched by `Sync to` button. When synching process finishes, it will be highlighted under the list of changes.
-
-It is expected that commits in Unreal projects will be done inside in Unreal editor official Perforce tool or via `P4V`
-
-![Unreal AYON Changes Viewer](assets/unreal_changes_viewer.png)
-
-Additional automatic instance will be created in Publisher to highlight last existing changelist id. This information will be
-published to AYON server, will be used to Perforce on Deadline to synchronize to that changelist before rendering and might be used in future enhancement of integration.
-
-Name of the instance will start with `changelist_metadata` prefix and instance must be enabled to trigger usage of Perforce on the Deadline.
-(Without it Deadline could render just from current state of Unreal project file.)
-
-![Unreal AYON Changelist Metadata](assets/unreal_perforce_changelist_metadata.png)
+:::tip
+AYON has a dedicated addon for Perforce support.
+Please refer to [Version Control Artist Docs](addon_version_control_artist.md) to learn more.
+:::
