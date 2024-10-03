@@ -37,6 +37,7 @@ module.exports = {
             label: "Integrations",
             items: [
                 "addon_3dsmax_artist",
+                "addon_3dequalizer_artist",
                 "addon_aftereffects_artist",
                 "addon_blender_artist",
                 "addon_resolve_artist",
@@ -51,7 +52,9 @@ module.exports = {
                 },
                 "addon_harmony_artist",
                 "addon_hiero_artist",
+                "addon_flame_artist",
                 "addon_houdini_artist",
+                "addon_jira_artist",
                 "addon_kitsu_artist",
                 {
                     type: "category",
@@ -92,6 +95,7 @@ module.exports = {
                 "addon_substancepainter_artist",
                 "addon_tvpaint_artist",
                 "addon_unreal_artist",
+                "addon_version_control_artist",
                 "addon_wrap_artist",
                 "addon_openrv_artist",
                 {
@@ -110,6 +114,7 @@ module.exports = {
                 "artist_activity_feed",
                 "artist_reviewables",
                 "artist_inbox",
+                "artist_task_progress_page"
             ],
         },
     ],
@@ -149,6 +154,7 @@ module.exports = {
             label: "Integrations",
             items: [
                 "addon_3dsmax_admin",
+                "addon_3dequalizer_admin",
                 "addon_aftereffects_admin",
                 "addon_blender_admin",
                 "addon_resolve_admin",
@@ -158,7 +164,14 @@ module.exports = {
                 "addon_hiero_admin",
                 "addon_houdini_admin",
                 "addon_keycloak_admin",
-                "addon_maya_admin",
+                {
+                    type: "category",
+                    label: "Maya",
+                    items: [
+                        "addon_maya_admin",
+                        "addon_maya_ornatrix_admin",
+                    ],
+                },
                 "addon_motionbuilder_admin",
                 "addon_nuke_admin",
                 "addon_photoshop_admin",
@@ -169,14 +182,46 @@ module.exports = {
                 "addon_tvpaint_admin",
                 "addon_unreal_admin",
                 "addon_kitsu_admin",
+                "addon_jira_admin",
                 "addon_clockify_admin",
                 "addon_traypublisher_admin",
                 "addon_wrap_admin",
                 "addon_syncsketch_admin",
                 "addon_flow_admin",
+                {
+                    type: "category",
+                    label: "Flame",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Flame Addon',
+                        description:
+                            "Welcome to Flame Integration Documentation!",
+                        keywords: ['flame'],
+                    },
+                    items: [
+                        "addon_flame_admin_intro",
+                        "addon_flame_admin_get_started",
+                        "addon_flame_admin_settings"
+                    ]
+                },
                 "addon_aquarium_admin",
                 "addon_usd_admin",
-               
+                {
+                    type: "category",
+                    label: "Version Control",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Version Control',
+                        description:
+                          "Welcome to AYON Version Control Docs!",
+                        keywords: ['version-control'],
+                      },
+                    items: [
+                        "addon_version_control_admin_intro",
+                        "addon_version_control_admin_get_started",
+                        "addon_version_control_admin_settings"
+                    ]
+                },
             ].sort(sorted),
         },
         "admin_releases",
@@ -197,6 +242,25 @@ module.exports = {
         },
         {
             type: "category",
+            label: "APIs & Resources",
+            link: {
+                type: 'generated-index',
+                title: 'AYON APIs an develoment resources',
+                description:
+                  "Welcome to AYON APIs and development resources catalogue!",
+                keywords: ['api', 'components'],
+              },
+            items: [
+                "dev_api_rest",
+                "dev_api_graphql",
+                "dev_api_python",
+                "dev_api_cpp",
+                "dev_api_usd_resolver",
+                "dev_components_react"
+            ],
+        },
+        {
+            type: "category",
             label: "AYON server",
             items: [
                 "server_introduction",
@@ -210,8 +274,20 @@ module.exports = {
         "dev_contribute",
         {
             type: "category",
-            label: "Hosts integrations",
-            items: ["dev_host_implementation", "dev_publishing"],
+            label: "Addon Development",
+            link: {
+                type: 'generated-index',
+                title: 'AYON Addon Development',
+                description:
+                  "Welcome to AYON Addon Development Documentation!",
+                keywords: ['addon', 'dev'],
+              },
+            items: [
+                "dev_addon_intro",
+                "dev_addon_creation",
+                "dev_host_implementation",
+                "dev_publishing"
+            ],
         },
         "dev_deadline",
         "dev_colorspace",

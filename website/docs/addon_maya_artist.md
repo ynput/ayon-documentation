@@ -58,13 +58,8 @@ can edit that field to change it to different asset (but that one must already e
 have in the model. For example, you can name it `Proxy` to indicate that this is
 low resolution stuff. See [Product](artist_concepts.md#product).
 
-:::note LOD support
-By changing product name you can take advantage of _LOD support_ in AYON. Your
-asset can contain various resolution defined by different products. You can then
-switch between them very easy using [Inventory (Manage)](artist_tools_inventory).
-There LODs are conveniently grouped so they don't clutter Inventory view.
-
-Name your product like `main_LOD1`. Important part is that `_LOD1`. You can have as many LODs as you need.
+:::tip USD Support
+You can publish Models as USD, Check [Maya USD Contribution workflow](addon_usd_artist_maya_workflow.md#publishing-a-model) for more info.
 :::
 
 Read-only field just under it show final product name, adding product field to

@@ -183,6 +183,7 @@ A couple of settings make use of tags to customize the output.
 | ----------- | ----------- | ----------- |
 | burnin | `Add burnins` | Adds burnins with the `ExtractBurnin` plugin. |
 | review | `Create review` | Creates a review from the output with the [`ExtractReview`](#extract-review) plugin. |
+| webreview | `Add review to AYON` | Uploads the review to AYON. |
 | ftrackreview | `Add review to Ftrack` | Uploads the review to Ftrack. |
 | shotgridreview | `Add review to Shotgrid` | Uploads the review to Shotgrid. |
 | kitsureview | `Add review to Kitsu` | Uploads the review to Kitsu. |

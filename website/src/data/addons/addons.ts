@@ -26,6 +26,7 @@ import { AddonType } from ".";
 export const officialAddons = [
     "core",
     "3dsmax",
+    "3dequalizer",
     "afterEffects",
     "blender",
     "celaction",
@@ -38,6 +39,7 @@ export const officialAddons = [
     "harmony",
     "hiero",
     "houdini",
+    "jira",
     "maya",
     "motionbuilder",
     "nuke",
@@ -48,6 +50,7 @@ export const officialAddons = [
     "slack",
     "tvpaint",
     "unreal",
+    "versioncontrol",
     "wrap",
     "openrv",
     "openusd",

@@ -51,6 +51,9 @@ This way user selects the dedicated task for Unreal Project in AYON Launcher and
 For linear animation projects, and in particular for episodic formats, we still recommend keeping only one Unreal project. Having a project for each episode would result in duplicated data between the episodes, and it would be hard to manage.
 :::
 
+## General Update on Unreal 5.4
+AYON has implemented some new features in regards to Unreal 5.4 such as Sequence Hierarchy in AYON menu for building shot structure accordingly to the folder hierarchies. Moreover, it introduces maya preset options for the alembic loaders to ensure the assets loaded in current transform. It also adds the inventory action to connect animation/camera to the level sequence loaded from the layout product type.
+In addition, AYON allows users to customize their asset directories(except camera and layout) before loading in the setting.
 
 ### AYON Menu and Tools
 
@@ -66,6 +69,7 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 -   [Publisher](artist_tools_publisher) is the tool to create and publish assets from Unreal to AYON.
 -   [Manage (Inventory)](artist_tools_inventory) is the tool to manage loaded assets.
 -   *Render* starts the render for a selected `AyonPublishInstance`.
+-   *Build Sequence Hierarchy* builds the shot structure in regards to the folder hierarchy.
 -   *Experimental tools* contains tools under developement.
 
 
@@ -74,6 +78,10 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 ### Default structure
 
 The structure of the project data is handled by AYON. The first time you create an instance or load an asset, AYON will create a folder called `AYON` in the Content Browser. This folder will contain all the data handled by AYON, and it is organised as follows:
+- `/Content/AYON/` is the default AYON root directory.
+- `/Content/AYON/{your_folder_path}/{your_product_name}` is the default directory which contains all the single assets that are loaded from AYON. Users can customize their asset directories through `ayon+settings://unreal/loaded_asset_dir`
+
+![Unreal AYON Asset Directories Setting](assets/unreal_ayon_asset_directory_setting.png)
 
 - `/Content/AYON/Assets` contains all the single assets that are loaded from AYON.
 - `/Content/AYON/PublishInstances` contains all the instances that are created in Unreal.
@@ -97,6 +105,7 @@ and `AyonPublishInstance`.
 
 These assets are **used only to manage Ayon metadata** in Unreal, and they are not meant to be used directly in the scene. The first ones, with `_CON` suffix in the name, are used to store metadata of loaded assets, while the second ones, with `_INS` suffix in the name, for metadata of assets that are going to be published.
 
+
 ## Static and Skeletal Meshes
 
 Unreal handles models and rigs as [Static](https://docs.unrealengine.com/en-US/Engine/Content/Importing/FBX/StaticMeshes/index.html) and [Skeletal](https://docs.unrealengine.com/en-US/Engine/Content/Importing/FBX/SkeletalMeshes/index.html) Meshes.
@@ -114,7 +123,16 @@ To load a Mesh, follow these steps:
 
 The meshes will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene. Instead, in the same folder you will find the imported mesh, which can be added to the scene [as usual](https://docs.unrealengine.com/5.1/en-US/assets-and-content-packs-in-unreal-engine/).
 
-### Updating
+:::note
+New Feature for 5.4: If you are using the Alembic loaders(e.g **Import Alembic Point Cache**, **Import Alembic Static Mesh**), you can choose which presets you want to load by clicking the small memo icon, and it will pop up the dialog to allow you to choose which preset you would like to use.(By default is Maya)
+
+![Unreal AYON Alembic Loader Maya Preset](assets/unreal_alembic_maya_preset.png)
+:::
+
+The mesh is named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_abc`)
+![Unreal AYON Load Naming Convention](assets/unreal_product_load_naming_convention.png)
+
+### Updating/Setting Version
 
 To manage loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
 
@@ -125,7 +143,20 @@ The version number will be in red if it isn’t the latest version.
 
 To update the asset:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** or **Set version**.
+
+:::note
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
+:::
+
+### Removing
+To remove loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal AYON Tools Manage](assets/unreal_scene_inventory_remove_item.png)
+
+- Right click on the element you want to remove
+- Click **Remove items**
+- It would remove the selected element
 
 ### Publishing
 
@@ -147,47 +178,6 @@ To publish a mesh from Unreal, you need to create a publish instance.
   - On the left, you will see all the publish instances that you have created. 
   - Select the ones that you want to publish, and click on **Publish**.
 
-## Look development
-
-AYON supports look development in Unreal Engine.
-
-### Loading model
-
-First, you will need a model as Static Mesh. To load it: 
-- Click on **AYON → Load ...**.
-- Right-click your mesh.
-- Select **Import Static Mesh**.
-
-![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
-![Unreal AYON Load Model](assets/unreal_load_model.png)
-
-You will find the loaded Static Mesh in `/Content/AYON/Assets`.
-
-### Creating look
-
-To create the look, you will need to create the [Materials](https://docs.unrealengine.com/5.1/en-US/Engine/Rendering/Materials/) for the model you loaded, and assign them to the model. You can create the materials in Unreal, or you can import them from AYON as UAsset.
-
-### Publishing look
-
-To publish a look from Unreal, you need to create a publish instance.
-
-- Select the model with the materials in the Content Browser.
-- Click on **AYON → Publisher ...** to open the Publisher screen.
-  - On the top bar, switch to the **Create** tab.
-  - In the Creator screen, select *Look*.
-  - Set the name of the product.
-  - Click on **Create**. This will create a `AyonPublishInstance` file in `/Content/AYON/PublishInstances`, with the metadata necessary to publish the asset.
-
-![Unreal AYON Tools Publisher](assets/unreal_ayon_menu_publisher.png)
-![Unreal AYON Create Look](assets/unreal_create_look.png)
-
-- Click on **AYON → Publisher ...** to open the Publisher screen.
-  - On the top bar, switch to the **Publish** tab.
-  - On the left, you will see all the publish instances that you have created. 
-  - Select the ones that you want to publish, and click on **Publish**.
-
-To get the look ready to be publishable, AYON will create a new folder `/Content/AYON/Looks`. In here, it will be created a folder that will contain a simple model with the materials you created assigned, that will be used to publish the look. This folder will be named after product name you chose when creating the instance. You don't need to do anything with this folder, it is just for the publishing process.
-
 ## UAssets
 
 Unreal Engine uses [UAssets](https://docs.unrealengine.com/5.1/en-US/working-with-assets-in-unreal-engine/) to store assets. AYON supports publishing and loading of this kind of assets.
@@ -202,6 +192,8 @@ To load a UAsset, follow these steps:
 ![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
 
 The UAssets will be loaded in the `/Content/AYON/Assets` folder, and they will be automatically added to the `AyonAssetContainer` asset that is created in the same folder. The Container will only contain the metadata of the asset, and it will not be used in the scene.
+The UAssets is named accordingly to their allocated folder name and unique version number(i.e. `testUAsset_01`)
+
 
 ### Updating
 
@@ -214,12 +206,31 @@ The version number will be in red if it isn’t the latest version.
 
 To update the asset:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** and **Set version**.
+
+:::note
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the meshes in the updated version if it never loaded.
+:::
+
+### Removing
+To remove loaded assets, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+![Unreal AYON Tools Manage](assets/unreal_scene_inventory_remove_item.png)
+
+- Right click on the element you want to remove
+- Click **Remove items**
+- It would remove the selected element
 
 ### Publishing
 
 :::note
 Publishing UAssets has some limitations currently. You can only publish a single UAssets, and it must not have any dependencies.
+:::
+
+:::caution
+
+Before publishing, you need to make sure the template, which is used for publishing UAssets, has been set up.
+
 :::
 
 To publish a UAsset, you need to create a publish instance.
@@ -455,6 +466,16 @@ To set this mode, you should turn **off** the setting *Generate level sequences 
 
 ![Unreal AYON Settings Level Sequence](assets/unreal_setting_level_sequence_off.png)
 
+
+## Removing Cameras
+To remove the loaded layout, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+- Right click on the Cameras you want to remove
+- Click **Remove items**
+
+The sequence, map and container associated with the selected layout would be removed. Unreal would dive into the default level map after the deletion.
+
+
 ### Loading
 
 To load a camera, follow these steps:
@@ -466,6 +487,7 @@ To load a camera, follow these steps:
 ![Unreal Layout Load](assets/unreal_load_camera.png)
 
 In `/Content/AYON` you will find a folder with the name of the camera that contains the camera level sequence. The camera will be loaded in the current level open, so you will need to save it, if you haven’t already.
+The imported level sequence and map are named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_fbx`)
 
 ### Updating
 
@@ -478,7 +500,11 @@ The version number will be in red if it isn’t the latest version.
 
 To update the camera:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** and **Set version**.
+
+:::note
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
+:::
 
 ## Animations
 
@@ -500,6 +526,14 @@ To load a layout, follow these steps:
 
 The layout will be imported in the directory `/Content/AYON`. For more information, we recommend reading the section dedicated to the [layout for linear animation](#layouts-for-linear-animation).
 
+## Removing the layout
+To manage the loaded layout, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+
+- Right click on the layout you want to remove
+- Click **Remove items**
+
+The sequence, map and container associated with the selected layout would be removed. Unreal would dive into the default level map after the deletion.
+
 ### Loading the animation
 
 To load an animation, follow these steps:
@@ -510,8 +544,25 @@ To load an animation, follow these steps:
 ![Unreal AYON Tools Load](assets/unreal_ayon_menu_load.png)
 ![Unreal Layout Load](assets/unreal_load_animation.png)
 
-The animation itself will be imported in `/Content/AYON/Animations`.
-The animation will be added to the level sequence generated for the layout.
+The animation would be imported in `/Content/AYON/Animations` and it is named accordingly to their allocated folder name, version number and file extension(i.e. `testProject_v001_abc`)
+
+
+### Connecting animation(and camera) to the sequence loaded from layout
+You can connect your loaded animation sequence and camera to the level sequence loaded via layout loader.
+
+- To connect your loaded animation sequence, click on the AYON icon in Unreal’s main taskbar, and select **Manage**.
+- Select the element(s) respectively from the animation and layout product type.
+- Right click **Actions** and **Connect Fbx Animation to Level Sequence** or
+  **Connect Alembic Animation to Level Sequence**
+
+![Unreal Connect Animation to Level Sequence](assets/unreal_scene_inventory_connect_animation.png)
+
+- It would add the loaded camera and animation sequence into the level sequence which stores the meshes loaded from the layout.
+
+:::note
+The current connect action is not applicable for the level sequence which has an existing camera cut track. If users want to connect camera and animation, they need to remove the camera cut track first and perform the action.
+
+:::
 
 ### Updating
 
@@ -524,7 +575,11 @@ The version number will be in red if it isn’t the latest version.
 
 To update the animation:
 - Right click on the element that has available updates.
-- Click **Update**.
+- Click **Update to latest** or **Set version**.
+
+:::note
+Every time you update/set the version, Ayon would create a new exclusive version folder which stores the related assets(level sequence and map) in the updated version if they never loaded.
+:::
 
 ## Rendering
 
@@ -615,25 +670,27 @@ These could be modified by AYON admin in `ayon+settings://unreal/render_queue_pa
 
 ![Unreal AYON Render Queue and Settings](assets/unreal_render_queue_and_settings.png)
 
-### Perforce integration
+## AYON Perforce Support
 
-If Perforce integration is enabled by configured `ayon-version-control` addon in the bundle, artists could sync to any previous
-changelist via small dialog that will open before opening Unreal editor.
+:::tip
+AYON has a dedicated addon for Perforce support.
+Please refer to [Version Control Artist Docs](addon_version_control_artist.md) to learn more.
+:::
 
-Artist need to have its Perforce username, password and path to existing configured Perforce workspace configure in `ayon+settings://version_control/local_setting?project=ayon_test&site=XXX-YYY-ZZZ`
+## Build Sequence Hierarchy
+Ayon supports to build the shot structure accordingly to the folder hierarchies.
+Users can click on Ayon menu -> **Build sequence hierarchy**
 
-![Unreal AYON Local Settings](assets/unreal_perforce_local_settings.png)
+![Unreal Ayon Menu Build Sequence Hierarchy](assets/unreal_sequence_hierarchy_menu.png)
 
-Any line with changelist could be selected and synched by `Sync to` button. When synching process finishes, it will be highlighted under the list of changes.
+There would be the folder selector dialog popping up for users to choose the folders to build shot structure.
 
-It is expected that commits in Unreal projects will be done inside in Unreal editor official Perforce tool or via `P4V`
+![Unreal Build Sequence Folder Selector](assets/unreal_ayon_build_sequence_selector.png)
 
-![Unreal AYON Changes Viewer](assets/unreal_changes_viewer.png)
+Once the users select the preferred folder(s) to build the sequence, AYON would create map(s) and level sequence(s) inside it.
 
-Additional automatic instance will be created in Publisher to highlight last existing changelist id. This information will be
-published to AYON server, will be used to Perforce on Deadline to synchronize to that changelist before rendering and might be used in future enhancement of integration.
+![Unreal Build Sequence Hierarchy Folder Structure](assets/unreal_ayon_sequence_folder_structure.png)
 
-Name of the instance will start with `changelist_metadata` prefix and instance must be enabled to trigger usage of Perforce on the Deadline.
-(Without it Deadline could render just from current state of Unreal project file.)
+It also builds the level sequence(s) in its parent folder, which stores level visibility of the map(s) and subsequences storing with the level sequence(s) of the preferred folder.
 
-![Unreal AYON Changelist Metadata](assets/unreal_perforce_changelist_metadata.png)
+![Unreal Build Sequence Level Sequence Structure](assets/unreal_level_sequence_structure.png)

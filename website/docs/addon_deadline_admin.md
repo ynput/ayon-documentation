@@ -2,6 +2,8 @@
 id: addon_deadline_admin
 title: Deadline Admin Docs
 sidebar_label: Deadline
+description: Deadline Addon Admin Documentation
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -89,6 +91,30 @@ Deadline supports username and passwords authentication to protect webservice fr
 For this admin needs to enable authentication requirement for DL in `ayon+settings://deadline/require_authentication`.
 
 Artists then need to provide their credentials in `Site Settings`.
+
+## Publish Plugins
+
+### Process submitted job on farm
+
+It submits a dependent AYON Job to publish the rendered images.
+- Find the setting at: `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`
+
+![](assets/deadline/process_submitted_job_on_farm.png)
+
+1. **Department**
+2. **Pool**
+3. **Group**
+4. **Priority**
+5. **Skip integration of representation with ext:** list of extensions that shouldn't be published.
+6. **List of family names to transfer to generated instances (AOVs for example):** Ensure the AOV instances have these families if present.
+7. **Reviewable products filter:** Add review for specific aov names.
+![](assets/deadline/reviewable_products_filter.png)
+   1. **AOV Filter**
+       1. **host_name:** Pipeline integration name supplied by an AYON addon.
+       2. **AOV Regex:** AOV regex patterns for AOV filters.
+       3. **+ icon:** Add more AOV regexes 
+   2. **+ icon:** Add more filters
+
 
 ## Troubleshooting
 
