@@ -1,8 +1,8 @@
 ---
 id: admin_server_updating_pipeline
-title: Updating Server Pipeline to latest Release
-sidebar_label: Updating Server Pipeline
-description: Information for admins about updating the server pipeline release.
+title: Updating Pipeline to latest Release
+sidebar_label: Updating Pipeline
+description: Information for admins about updating the pipeline release.
 toc_max_heading_level: 5
 ---
 
