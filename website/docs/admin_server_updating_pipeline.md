@@ -10,21 +10,10 @@ toc_max_heading_level: 5
 Pipeline releases are official bundles with the latest tested and stable addons, launchers and their dependencies for your pipeline.
 :::
 
-<div class="row markdown">
-<div class="col col--6 markdown">
-
 The `Update Pipeline` option is designed to be user-friendly, transparent, and fast. it automatically detects which addons need updates and identifies the platforms you’re already using (whether it’s MacOS, Windows, or Linux). The update process only requires two simple clicks, select the menu option, and hit the install button.
 
-</div>
-<div class="col col--6 markdown">
-
-![](assets/server/admin/update_pipeline.png)
-
-</div>
-</div>
+![](assets/server/admin/update_pipeline.gif)
 
 :::info
 Once the update starts, you can't stop it, but it shouldn't take long.
 :::
-
-![](assets/server/admin/update_pipeline_options.gif)
