@@ -13,7 +13,7 @@ Pipeline releases are official bundles with the latest tested and stable addons,
 The `Update Pipeline` tool is designed to be user-friendly, transparent, and fast. It automatically detects which addons need updates and identifies the platforms you’re already using (whether it’s MacOS, Windows, or Linux). The update process only requires two simple clicks, select the menu option, and hit the `Update Pipeline` button.
 
 :::info
-Keep in mind This will not affect your existing setup, a new bundle will be created for the new release.
+Keep in mind this will not affect your current production configuration, a new bundle will be created for the new release.
 :::
 
 ![](assets/server/admin/update_pipeline.png)
@@ -27,7 +27,7 @@ Once the update begins, it should not be interrupted. In the rare event the upda
 :::
 
 :::tip Next Steps
-Once the update is complete, you can begin testing it by setting it to staging. A pop-up window will appear to help you copy settings from existing bundles. The same process applies when setting it to production, but be aware that this may affect your current setup.
+After the update is complete, you can start testing by setting the bundle to staging. A dialog will appear, allowing you to copy settings from existing bundles. Once you’re satisfied with the changes, set the bundle to production using the same process.
 
 ![](assets/server/admin/copy_settings_popup.png)
 :::
