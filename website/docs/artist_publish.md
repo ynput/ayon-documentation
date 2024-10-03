@@ -77,10 +77,8 @@ Here's a list of supported product types
 
 Clean geometry without any material assignments. Published model can be as small as a single mesh, or as complex as a full building. That is purely up to the artist or the supervisor. Models can contain hierarchy defined by groups or nulls for better organisation.
 
-Apart from model products, we also support LODs as extra level on top of product. To publish LODs, you just need to prepare products for publishing names `modelMyproductName_LOD##`, if AYON finds `_LOD##` (hashes replaced with LOD level), it will automatically be considered a LOD of the given product.
-
 Example products:
-`modelMain`, `modelProxy`, `modelSculpt`, `modelBroken`, `modelMain_LOD01`, `modelMain_LOD02`
+`modelMain`, `modelProxy`, `modelSculpt`, `modelBroken`
 
 Example representations:
 `.ABC`, `.MA`, `.MB`, `.BLEND`, `.OBJ`, `.FBX`
