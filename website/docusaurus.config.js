@@ -108,9 +108,45 @@ const config = {
                         position: "left",
                     },
                     {
-                        to: "/api",
-                        label: "REST API Docs",
+                        label: "Dev resources",
                         position: "left",
+                        items: [
+                            {
+                                label: "REST API Docs",
+                                to: "/api",
+                            },
+                            {
+                                label: "GraphQL API Explorer",
+                                href: "https://playground.ayon.app/explorer",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "Python API Docs",
+                                href: "https://ynput.github.io/ayon-python-api/",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "C++ API Docs",
+                                href: "https://ynput.github.io/ayon-cpp-api/",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "USD Resolver Docs",
+                                href: "https://ynput.github.io/ayon-usd-resolver/",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "Frontend React Components",
+                                href: "https://components.ayon.dev/?path=/docs/button--docs",
+                                target: "_blank",
+                                rel: null,
+                            },
+                        ],
+                        className: "navbar__link--community",
                     },
                     {
                         label: "Addons",

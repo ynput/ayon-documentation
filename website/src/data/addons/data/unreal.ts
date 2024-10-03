@@ -8,9 +8,9 @@ const addon: Addon = {
     descriptionLong: `
 Unreal Engine is a powerful real-time 3D creation tool used by game developers, architects, filmmakers, and others.
 
-**Versions**: \`5.0\`, \`5.1\`
+**Supported Versions**: \`Unreal Engine 5.0\` and above.
     `,
-    preview: "unreal.png",
+    icon: "unreal-icon.png",
     badge: versions.Unreal_Badge,
     features: ["loader", "publisher", "sceneManager"],
     products: [
@@ -26,7 +26,7 @@ Unreal Engine is a powerful real-time 3D creation tool used by game developers, 
         user: "addon_unreal_artist",
         admin: "addon_unreal_admin",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/unreal",
+    github: "https://github.com/ynput/ayon-unreal",
 };
 
 export default addon;
