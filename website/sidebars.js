@@ -150,6 +150,7 @@ module.exports = {
                         "admin_server_email",
                     ],
                 },
+                "admin_server_updating_pipeline",
             ],
         },
         {
