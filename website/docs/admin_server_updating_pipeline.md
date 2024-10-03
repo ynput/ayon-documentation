@@ -23,5 +23,8 @@ The `Update Pipeline` option is designed to be user-friendly, transparent, and f
 </div>
 </div>
 
+:::info
+Once the update starts, you can't stop it, but it shouldn't take long.
+:::
 
 ![](assets/server/admin/update_pipeline_options.gif)
