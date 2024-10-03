@@ -325,6 +325,25 @@ module.exports = {
         },
         {
             type: "category",
+            label: "APIs & Resources",
+            link: {
+                type: 'generated-index',
+                title: 'AYON APIs an develoment resources',
+                description:
+                  "Welcome to AYON APIs and development resources catalogue!",
+                keywords: ['api', 'components'],
+              },
+            items: [
+                "dev_api_rest",
+                "dev_api_graphql",
+                "dev_api_python",
+                "dev_api_cpp",
+                "dev_api_usd_resolver",
+                "dev_components_react"
+            ],
+        },
+        {
+            type: "category",
             label: "AYON server",
             items: [
                 "server_introduction",
