@@ -122,14 +122,35 @@ module.exports = {
         "system_introduction",
         {
             type: "category",
-            label: "AYON server",
+            label: "AYON Server",
+            link: {
+                type: 'generated-index',
+                title: 'AYON Server',
+                description:
+                  "Welcome to AYON Server Admin Docs!",
+                keywords: ['server', 'admin'],
+              },
             items: [
-                "admin_server_deployment",
-                "admin_server_configuration",
-                "admin_server_installing_addons",
-                "admin_server_provisioning",
-                "admin_server_services",
-                "admin_server_email",
+                {
+                    type: "category",
+                    label: "Self-hosting",
+                    link: {
+                        type: 'generated-index',
+                        title: 'Hosting AYON Server',
+                        description:
+                          "Documentation dedicated for self hosting AYON and running your own AYON instance.",
+                        keywords: ['server', 'admin'],
+                      },
+                    items: [
+                        "admin_server_deployment",
+                        "admin_server_configuration",
+                        "admin_server_installing_addons",
+                        "admin_server_provisioning",
+                        "admin_server_services",
+                        "admin_server_email",
+                    ],
+                },
+                "admin_server_updating_pipeline",
             ],
         },
         {
