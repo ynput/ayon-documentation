@@ -128,7 +128,11 @@ Template `{project[code]}_{asset}_{product}<_{output}><.{@frame}>.{ext}` can han
 
 ## Attributes
 
-Project attributes are used as default values for new *folders* created under a project, except `Applications` which is project specific. Values of attributes that are **not** project specific are always used from *folders*. So if `tools` are not loading as expected it is because the *folders* have different values.
+:::info
+New attributes can be added or modified for all projects in the studio settings `/settings/attributes`
+:::
+
+Project attributes are used as default values for new _folders_ created under a project, except `Applications` which is project specific. Values of attributes that are **not** project specific are always used from _folders_. So if `tools` are not loading as expected it is because the _folders_ have different values.
 
 ![anatomy_attributes](assets/settings/anatomy_attributes.png)
 
@@ -143,11 +147,13 @@ Project attributes are used as default values for new *folders* created under a 
 Templates are not supporting use of `{folder[type]}` yet.
 :::
 
-Read more about folders in User docs: [Folders](artist_concepts#folder)
+Read more about [Folders](artist_concepts#folder)
 
 ![folders](assets/settings/anatomy_folder_types.png)
 
 ## Task Types
+
+Read more about [Tasks](artist_concepts#task)
 
 Available task types on a project. Each task on an asset is referencing a task type on the project which allows access to additional task type attributes. At this moment only `short_name` is available (can be used in templates as `{task[short_name]}`).
 
@@ -155,12 +161,12 @@ Available task types on a project. Each task on an asset is referencing a task t
 
 ## Statuses
 
-Place to manage all your task statuses.
+Statuses provide a way to indicate the current state of an entity. Any entity type, such as Folder, Product, Version, Representation, Task, or Workfile, can have a status, defined within its scope. This means Folders and Tasks can share the same set of statuses, while a Version may have a completely different set. Each entity can only have one status assigned at a time.
 
 ![statuses](assets/settings/anatomy_statuses.png)
 
 ## Tags
 
-Place to manage all project tags.
+Tags can be anything and are supported on all entity types, including Folder, Product, Version, Representation, Task, and Workfile. An entity can have multiple tags or none at all.
 
 ![statuses](assets/settings/anatomy_tags.png)
