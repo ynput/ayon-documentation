@@ -103,6 +103,7 @@ module.exports = {
                     label: "Aquarium",
                     items: ["addon_aquarium_artist", "addon_aquarium_manager"],
                 },
+                "addon_cinema4d_artist",
             ].sort(sorted),
         },
         {
@@ -243,6 +244,7 @@ module.exports = {
                         "addon_version_control_admin_settings"
                     ]
                 },
+                "addon_cinema4d_admin",
             ].sort(sorted),
         },
         "admin_releases",

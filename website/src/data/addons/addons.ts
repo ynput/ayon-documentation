@@ -30,6 +30,7 @@ export const officialAddons = [
     "afterEffects",
     "blender",
     "celaction",
+    "cinema4d",
     "clockify",
     "resolve",
     "deadline",
