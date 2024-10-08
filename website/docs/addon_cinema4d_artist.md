@@ -22,7 +22,7 @@ The AYON Cinema4D integration addon allows you to manage your Cinema4D workfiles
 
 ### AYON Menu
 
-Once you launch **Cinema4D** via AYON Launcher, you will be introduced to AYON Menu present in the menu header which is also a clear indication of running **Cinema4D** in AYON context.
+Once you launch **Cinema4D** via AYON Launcher, an AYON Menu will be present in the menu header which is a clear indication of running **Cinema4D** in AYON context.
 
 AYON Menu provides access to AYON global tools as well as some workfile actions and pipeline tools.
 
