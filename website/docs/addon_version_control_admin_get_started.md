@@ -42,6 +42,10 @@ Studio(single credentials), Project (credentials different per project)  or Site
 It is expected that P4 workspaces would be setup and existed on artists machines. Each artist then only 
 provides path to their locally accessible P4 workspace folder in Site Settings.
 
+It is expected that folder name of the workspace matches worskpace name. (`unreal` in this example)
+
+![](assets/version_control/perforce_workspace.png)
+
 ## Main functionalities for Perforce
 
 This addons contains two main functionalities for slightly different use cases:
