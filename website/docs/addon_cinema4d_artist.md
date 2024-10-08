@@ -59,7 +59,9 @@ These are the standard AYON core tools in tandem with the Integrations.
 
 They are used to set scene data.
 
-TODO: Add more info about the available workfile actions.
+- Reset Frame Range: Set the Cinema4D timeline frame range and FPS as defined on the current task in AYON.
+- Reset Scene Resolution: Set the render resolution as defined on the current task in AYON.
+- Reset Colorspace: Set the OCIO conifg as defined on the current task in AYON.
 
 ### Pipeline Tools
 
