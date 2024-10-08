@@ -27,8 +27,6 @@ Alternatively, you can use the Tray launcher to trigger the `Terminal` tool to o
 c4dpy.exe -m pip install --ignore-installed PySide6
 ```
 
-TODO: Add info about prelaunch hook `InstallPySideToCinema4D`.
-
 ## Addon Settings
 
 ### Color Management (ImageIO)
