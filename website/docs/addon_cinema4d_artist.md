@@ -72,10 +72,10 @@ It can contain AYON tools built specifically for cinema4D or generic AYON experi
 ### Publish workflow
 
 Using the Creator you can define reusable _instances_ in the scene that define
-what to export and they store the attributes and settings used to export. This 
-way you don't need to define each time what to publish, but once set up you can
-consistently generate published products from your workfile for all outputs at
-once.
+what to export. They also store the attributes and settings used to export. 
+This way you don't need to define each time what to publish, but once set up 
+you can consistently generate published products from your workfile for all 
+outputs at once.
 
 ### Available Products to publish
 
