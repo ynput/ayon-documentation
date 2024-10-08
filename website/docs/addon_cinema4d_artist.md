@@ -71,21 +71,37 @@ It can contain AYON tools built specifically for cinema4D or generic AYON experi
 ## Publishing Products
 ### Publish workflow
 
-TODO: Add info about using the creator and how it affects the scene.
+Using the Creator you can define reusable _instances_ in the scene that define
+what to export and they store the attributes and settings used to export. This 
+way you don't need to define each time what to publish, but once set up you can
+consistently generate published products from your workfile for all outputs at
+once.
 
 ### Available Products to publish
 
-TODO: Add a list of available products.
+- Camera: Camera cached to alembic.
+- Pointcache: Alembic export.
+- Workfile: A publish of your workfile.
 
 ## Loading Products
 ### Loading workflow
 
-TODO: Explain how the loaders add products to the scene.
+Using the loader you can load available publishes in AYON into Cinema4D. The
+loaded containers will be _managed_. This means that AYON will remain aware
+of the loaded content and allows you to update their versions easily.
+
+For example, you can load an Alembic pointcache product, continue your work
+on it - including making them editable (_Cinema4D shortcut 'C'_) - and update the
+loaded versions via the inventory.
 
 ### Available Loaders
 
-TODO: Add a list of available loaders.
+You can current load:
+- Cameras
+- Pointcaches (Alembic)
+- XRef
 
 ## FAQ
 
-TODO: Add an questions, other wise feel free to remove the FAQ section.
+- Unable to see the AYON menu when launching Cinema4D? See [Cinema4D admin section](addon_cinema4d_admin.md).
+- Having issues with the Redshift Render View having odd scaling?  See [Cinema4D admin section](addon_cinema4d_admin.md).
