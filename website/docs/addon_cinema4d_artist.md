@@ -37,7 +37,6 @@ This AYON Menu provides access to AYON's tools for workfiles, loading and managi
   - [Publish](artist_tools_publisher.md)
   - [Library Loader](artist_tools_library_loader.md)
 - **Workfile actions**
-  - Build Workfile
   - Reset Frame Range
   - Reset Scene Resolution
   - Reset Colorspace
