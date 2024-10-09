@@ -17,13 +17,17 @@ If you spot something incorrect or just think a page could do with some improvem
 1. Make the changes to the relevant markdown file.
 2. Make a PR documenting the changes.
 
+## Run Development Server - [docusaurus](https://docusaurus.io/docs/installation#running-the-development-server)
+
+Install Node.js https://nodejs.org/en/download
+
+`cd website`
+`npm start`
+
 ## Build
 
-- Install Node.js https://nodejs.org/en/download
-- `npm install -g yarn`
-- `yarn add docusaurus --dev`
-- `cd {ayon-doc-repo}/website`
-- `yarn start`
+`cd website`
+`npm build`
 
 ## Addons
 
