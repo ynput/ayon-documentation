@@ -115,6 +115,20 @@ It submits a dependent AYON Job to publish the rendered images.
        3. **+ icon:** Add more AOV regexes 
    2. **+ icon:** Add more filters
 
+### Submit AYON server URL to farm job
+
+This plugins allows to control Deadline workers connecting to specific AYON url (with specific API key if necessary).
+By default deadline rendering jobs need to connect to AYON to pull information about environment variables that should be used.
+This requires configuration of AYON server url and API key, this is done directly in Deadline AYON plugin configuration.
+(`Deadline monitor > Tools > Configure Plugins > AYON`).
+
+There might be a use case when your Deadline farm should communicate with multiple AYON servers. It might be production vs development servers etc.
+Admin could enable this plugin to pass current AYON server url during publishing. If there would be a need to use different
+API key, it should be achieved by setting `AYON_API_KEY` in `ayon+settings://core/environments`.
+
+These job environments (if filled, you don't need to have `AYON_API_KEY` set explicitly if you want to rely on Deadline plugin configuration)
+will override values from Deadline plugin.
+
 
 ## Troubleshooting
 
