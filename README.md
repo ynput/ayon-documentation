@@ -22,6 +22,7 @@ If you spot something incorrect or just think a page could do with some improvem
 Install Node.js https://nodejs.org/en/download
 
 `cd website`
+`npm install`
 `npm start`
 
 ## Build
