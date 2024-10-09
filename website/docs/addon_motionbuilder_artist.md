@@ -30,7 +30,7 @@ Choose ```AYON Menu > Launcher``` to open the ```Launcher``` window.
 When opened you can **choose** the **project** to work in from the list. Then choose the particular **asset** you want to work on then choose **task**
 and finally **run Motionbuilder by its icon** in the tools.
 
-![AYON Launcher](assets/motionbuilder_ayon_launcher.png)
+![AYON Launcher](assets/motionbuilder/motionbuilder_ayon_launcher.png)
 
 :::note Launcher Content
 The list of available projects, assets, tasks and tools will differ according to your Studio and need to be set in advance by supervisor/admin.
