@@ -15,6 +15,14 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.Applications_Badge}
 </ReactMarkdown>
 
+:::tip Applications Web Actions
+The application addon is mainly used to set application executables and define tools. It also manages the logic for web actions. Currently, there are no settings for web actions.
+
+Keep in mind that web actions are generated from your application's definitions in your production or development bundles, depending on the developer mode setting. They also adhere to your application's filter settings.
+
+Additionally, the web actions feature requires AYON Server version `1.3.0` or higher, core addon version `0.4.4` or higher, and Launcher version `1.1.0` or higher.
+:::
+
 ## Introduction
 
 The Applications addon streamlines the setup of applications and tools across your studio. It empowers you to set executable paths and startup environments, with support for various operating systems including Windows, Linux, and macOS.
