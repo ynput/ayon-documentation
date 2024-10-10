@@ -112,6 +112,7 @@ module.exports = {
             label: "Production Tracking",
             items: [
                 "artist_my_tasks_page",
+                "artist_details_panel",
                 "artist_activity_feed",
                 "artist_reviewables",
                 "artist_inbox",
