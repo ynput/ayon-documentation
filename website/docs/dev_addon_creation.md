@@ -428,6 +428,11 @@ icon = {
 }
 
 ```
+
+:::tip entity_type
+For `SimpleActionManifest`, you can use different entity types.
+- `"folder"`: Any folder path that is not a task.
+- `"task"`: Tasks.
 :::
 
 </details>
