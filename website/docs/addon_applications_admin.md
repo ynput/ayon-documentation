@@ -15,15 +15,10 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.Applications_Badge}
 </ReactMarkdown>
 
-:::tip Applications Web Actions
-The application addon is mainly used to set application executables and define tools. It also manages the logic for web actions. Currently, there are no settings for web actions.
 
-Keep in mind that web actions are generated from your application's definitions in your production or development bundles, depending on the developer mode setting. They also adhere to your application's filter settings.
+## Applications Addon Features
 
-Additionally, the web actions feature requires AYON Server version `1.3.0` or higher, core addon version `0.4.4` or higher, and Launcher version `1.1.0` or higher.
-:::
-
-## Introduction
+### Applications, Tools and Filters
 
 The Applications addon streamlines the setup of applications and tools across your studio. It empowers you to set executable paths and startup environments, with support for various operating systems including Windows, Linux, and macOS.
 
@@ -37,6 +32,20 @@ The Addon features two primary settings categories: Definitions and Filters:
 
 1. **Definitions:** available only in studio settings, allows to define all possible applications and tools that can be used across all projects.
 2. **Filters:** defines when certain applications and tools are used on project level. This filters whether a certain application or tool should be enabled in a certain launch context, like a specific task type or project-wide.
+
+
+### Applications Web Actions
+
+:::info
+The web actions feature requires AYON Server version `1.3.0` or higher, core addon version `0.4.4` or higher, and Launcher version `1.1.0` or higher.
+:::
+
+Web actions let you launch applications directly through the AYON web server. You can find these actions in the [details panel](artist_details_panel.md).
+
+The application addon handles the logic for web actions.Currently, there are no specific settings for web actions.
+
+Remember, web actions are generated from your application's definitions in your production or development bundles, based on the developer mode setting. They also follow your application's filter settings.
+
 
 ## Applications Addon Settings
 ### Show only available applications
