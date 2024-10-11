@@ -38,6 +38,8 @@ The Addon features two primary settings categories: Definitions and Filters:
 
 :::info
 The web actions feature requires AYON Server version `1.3.0` or higher, core addon version `0.4.4` or higher, and Launcher version `1.1.0` or higher.
+
+Web actions run through **shims**, which are automatically set up when users install the AYON launcher version `1.1.0` or higher.
 :::
 
 Web actions let you launch applications directly through the AYON web server. You can find these actions in the [details panel](artist_details_panel.md).
