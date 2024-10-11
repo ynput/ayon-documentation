@@ -20,7 +20,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ### Applications, Tools and Filters
 
-The Applications addon streamlines the setup of applications and tools across your studio. It empowers you to set executable paths and startup environments, with support for various operating systems including Windows, Linux, and macOS.
+The Applications addon streamlines the setup of applications and tools across your studio. It allows you to set executable paths and startup environments, with support for various operating systems including Windows, Linux, and macOS.
 
 :::info
 Please note that the addon does not differentiate between different Linux distributions.
@@ -46,7 +46,7 @@ Web actions let you launch applications directly through the AYON web server. Yo
 
 The application addon handles the logic for web actions.Currently, there are no specific settings for web actions.
 
-Remember, web actions are generated from your application's definitions in your production or development bundles, based on the developer mode setting. They also follow your application's filter settings.
+Web actions are generated from your application's definitions in your production or development bundles, depending on the developer mode setting, and they adhere to your application’s filter settings.
 
 
 ## Applications Addon Settings
