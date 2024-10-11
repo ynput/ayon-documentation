@@ -275,9 +275,162 @@ If you are curious, here's what happens when you access the api without logging 
 
 
 ### Web Action
-:::note TODO
-Write about it and add an example.
+
+Web actions let users trigger AYON Addons CLI actions directly from the AYON server to perform actions on their machines. They run through **shims**, which are automatically set up when users install the AYON launcher version `1.1.0` or higher.
+
+Web actions are added in two steps:
+
+1. **Client-Side CLI Actions**: Develop the addon CLI actions in the client-side code of the addon. More about them in the next section [CLI Interface](dev_addon_creation.md#cli-interface).
+2. **Server-Side Web Actions**: Implement web actions in the server-side code of the addon and link them to their corresponding addon CLI actions.
+
+<!-- TODO: We may expand later on `SimpleActionManifest` and `ActionExecutor`. -->
+
+<details><summary>Simple Web Action Example</summary>
+
+This simple example triggers a QT dialog on the user's machine, showing the folder path from which the action was triggered.
+
+![](assets/addon_dev/web_action_example.png)
+
+```python title="my_addon/client/my_addon/__init__.py"
+from qtpy import QtWidgets
+import ayon_api
+
+from ayon_core.addon import AYONAddon, click_wrap
+from .version import __version__
+
+
+class MyAddonCode(AYONAddon):
+    """My addon class."""
+
+    label = "My Addon"
+    name = "my_addon"
+    version = __version__
+
+    # Add CLI
+    def cli(self, click_group):
+        # Convert `cli_main` command to click object and add it to parent group
+        click_group.add_command(cli_main.to_click_obj())
+
+
+@click_wrap.group(
+    MyAddonCode.name,
+    help="My Addon cli commands.")
+def cli_main():
+    pass
+
+@cli_main.command()  # Add child command
+@click_wrap.option(
+    "--project",
+    help="project name",
+    type=str,
+    required=False
+)
+@click_wrap.option(
+    "--entity-id",
+    help="entity id",
+    type=str,
+    required=False
+)
+def show_selected_path(project, entity_id):
+    """Display a dialog showing the folder path from which the action was triggered."""
+    
+    # Process the input arguments
+    con = ayon_api.get_server_api_connection()
+    entity = con.get_folder_by_id(project, entity_id)
+
+    folder_path = f"{project}{entity['path']}"
+    
+    # Show Dialog
+    app = QtWidgets.QApplication()
+    QtWidgets.QMessageBox.information(
+        None,
+        "Triggered from AYON Server", 
+        f"The action was triggered from folder: '{folder_path}'", 
+    )
+```
+
+```python title="my_addon/server/__init__.py"
+from ayon_server.actions import (
+    ActionExecutor,
+    ExecuteResponseModel,
+    SimpleActionManifest,
+)
+
+from ayon_server.addons import BaseServerAddon
+
+
+IDENTIFIER_PREFIX = "myaddon.launch"
+
+
+class MyAddonSettings(BaseServerAddon):
+    # Set settings
+    async def get_simple_actions(
+        self,
+        project_name: str | None = None,
+        variant: str = "production",
+    ) -> list[SimpleActionManifest]:
+        """Return a list of simple actions provided by the addon"""
+        output = []
+        
+        # Add a web actions to folders.
+        label = "Trigger Simple Action"
+        icon = {
+            "type": "material-symbols",
+            "name": "switch_access_2",
+        }
+        output.append(
+            SimpleActionManifest(
+                identifier=f"{IDENTIFIER_PREFIX}.show_dialog",
+                label=label,
+                icon=icon,
+                order=100,
+                entity_type="folder",
+                entity_subtypes=None,
+                allow_multiselection=False,
+            )
+        )
+
+        return output
+            
+    async def execute_action(
+        self,
+        executor: "ActionExecutor",
+    ) -> "ExecuteResponseModel":
+        """Execute an action provided by the addon.
+        
+        Note:
+            Executes CLI actions defined in the addon's client code or other addons.
+            
+        """
+
+        project_name = executor.context.project_name
+        entity_id = executor.context.entity_ids[0]
+
+        if executor.identifier == f"{IDENTIFIER_PREFIX}.show_dialog":
+            return await executor.get_launcher_action_response(
+                args=[
+                    "addon", "my_addon", "show-selected-path",
+                    "--project", project_name,
+                    "--entity-id", entity_id,
+                ]
+            )
+        
+        raise ValueError(f"Unknown action: {executor.identifier}")
+
+```
+
+:::tip icons
+Icons support [material-symbols](https://fonts.google.com/icons) as well as addon static icons, more info check [Private and Public Dirs](dev_addon_creation.md#private-and-public-dirs).
+```python
+icon = {
+  "type": "url",
+  "url": "{addon_url}/public/icons/" + icon_name
+}
+
+```
 :::
+
+</details>
 
 ## Addon Client Code
 Also, we can refer to this section as Unlock Pipeline Powers since client code is used to direct the pipeline! 
