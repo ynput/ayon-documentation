@@ -10,8 +10,8 @@ The backend exposes two APIs and redux is setup to handle both under a single ap
 There are still a lot of legacy queries that inject instead of enhance. Over time we hope to convert these legacy queries to the new methodology.
 :::
 
--   REST - https://ayon.dev/doc/api
--   GraphQL - https://ayon.dev/explorer
+-   [REST API](dev_api_rest.md)
+-   [GraphQL](dev_api_graphql.md)
 
 ## Code Generation
 
@@ -19,7 +19,7 @@ We use code generation tools to automatically generate types and queries based o
 
 Here is an overview of what is generated (green) and how it is consumed in the app.
 
-![RTK Query oveview](./assets/server/api_querying_overview_diagram.png)
+![RTK Query oveview](assets/server/api_querying_overview_diagram.png)
 
 **RTK Query docs**
 
@@ -67,7 +67,7 @@ In this tutorial, we will use the **List Bundles** endpoint as an example.
 
     - Navigate to `http://localhost:3000/doc/api` to find the endpoint name. Look for `List Bundles -> listBundles`.
 
-    ![Get Project Stats](./assets/server/rest_api_endpoint_example.png)
+    ![Get Project Stats](assets/server/rest_api_endpoint_example.png)
 
     :::note
     The query might already be in use. Perform a global search for `listBundles` to check if it's already set up and can be reused.
@@ -86,7 +86,7 @@ In this tutorial, we will use the **List Bundles** endpoint as an example.
 
     - The generated queries are split into different files. Ensure you import the correct API reference when enhancing these queries. For this example, import the API from `src/api/rest/bundles.ts` as it contains the query.
 
-    ![Import API](./assets/server/rest_api_import_and_enhance.png)
+    ![Import API](assets/server/rest_api_import_and_enhance.png)
 
     :::note
     Although the queries have already been "injected" into the api we now "enhance" these queries and then export the enhanced queries as React hooks.
@@ -96,7 +96,7 @@ In this tutorial, we will use the **List Bundles** endpoint as an example.
 
     - Perform any necessary enhancements to the query.
 
-    ![Provide tags to endpoints](./assets/server/enhance_with_provide_tags.png)
+    ![Provide tags to endpoints](assets/server/enhance_with_provide_tags.png)
 
 6. **Export the Enhanced Query:**
     - Export the enhanced query as a hook to be consumed in a React component.
@@ -109,17 +109,17 @@ Writing graphql queries are similar but involve one extra step at the start to d
 
 _We use PascalCase so that it's easier to distinguish between rest and graphql queries._
 
-![Writing gql query](./assets/server/writing_gql_query.png)
+![Writing gql query](assets/server/writing_gql_query.png)
 
 2. Create a new file called {GetQueryName}.graphql and write your query. Intellisense should provide suggestions and eslint should highlight when a field has an error.
-   ![Writing gql query](./assets/server/writing_gql_query_2.png)
+   ![Writing gql query](assets/server/writing_gql_query_2.png)
 
 3. Once finished `run yarn generate-gql`. This will take your new .graphql file and generate a RTK Query from it whilst also generating the matching types.
 
 _You can check this at the bottom of /src/api/graphql.ts _
 
 4. Enhance the query similar to how the rest queries are enhanced; except in this case we use API.graphql.enhanceEndpoints .
-   ![Enhancing gql query](./assets/server/enhance_gql.png)
+   ![Enhancing gql query](assets/server/enhance_gql.png)
 
 5. Follow the same steps from step 3 of creating rest queries.
 
@@ -129,8 +129,8 @@ Often you will want to transform the data inside the query to better structure i
 
 We do this by overriding the result type for the query to match the actual response type. As you can see the the query responds with a boolean and we need to tell typescript this.
 
-![Overriding types](./assets/server/overwriting_types.png)
+![Overriding types](assets/server/overwriting_types.png)
 
 Now when we use the query hook we should see the new type we defined as the data. If we hadn't done this then the type would have been the generated query from step 3.
 
-![Using types](./assets/server/query_hook_types.png)
+![Using types](assets/server/query_hook_types.png)

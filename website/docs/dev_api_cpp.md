@@ -45,7 +45,7 @@ Here's an example cpp project structure
 
 #### Fetch Dependencies
 
-Please refer to [Fetch and Build The library](dev_api_cpp#fetch-and-build-the-library) section above for the instructions
+Please refer to [Fetch and Build The library](#fetch-and-build-the-library) section above for the instructions
 and repeat them inside `ext` folder in your project folder.
 
 #### CPP Project Files

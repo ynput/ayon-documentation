@@ -17,12 +17,12 @@ This part of documentation is still work in progress.
 
 <!-- ## AYON Global Tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
--   [Library Loader](artist_tools_library_loader)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Library Loader](artist_tools_library_loader.md)
 -->
 
 

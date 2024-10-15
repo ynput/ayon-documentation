@@ -14,11 +14,11 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Available Tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Publish](artist_tools_publisher)
--   [Manage](artist_tools_inventory)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Manage](artist_tools_inventory.md)
 
 :::note
 Only one tool can be open at a time. If you open a tool while another tool is open, it will wait in queue for the existing tool to be closed. Once the existing tool is closed, the new tool will open.

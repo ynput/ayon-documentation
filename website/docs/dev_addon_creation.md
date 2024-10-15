@@ -18,8 +18,8 @@ Below is a list of purposes that were developed over time.
 - **DCC Host Addon:** Host addon integrates AYON into your favorite DCC. It unlocks AYON pipeline powers straight with pyblish adoption.
 - **Connector Addon:** Connector addons connects AYON to external services.
     e.g.
-  - **Farm Manager Connector:** connects AYON to farm managers like [Deadline](https://ayon.ynput.io/features?addons=deadline).
-  - **Production Tracker Connector:** connects AYON to external production tracker like [Flow(Shotgrid)](https://ayon.ynput.io/features?addons=shotgrid) or [ftrack](https://ayon.ynput.io/features?addons=ftrack).
+  - **Farm Manager Connector:** connects AYON to farm managers like [Deadline](/features?addons=deadline).
+  - **Production Tracker Connector:** connects AYON to external production tracker like [Flow(Shotgrid)](/features?addons=shotgrid) or [ftrack](/features?addons=ftrack).
 - **Binaries Distribution Addon**: which downloads and distributes binaries to users like 3<sup>rd</sup> party addon which downloads ocio configs.
 
 ## Typical Addon Repo Structure
@@ -530,7 +530,7 @@ Oversimplified, we have 3 categories of Host implementations:
 - We use socket based communication with DCC to show UIs in our process (PS, AE, Harmony, TVPaint, ...).
 - We don't directly integrate the DCC, but we're able to achieve some degree of integration (Wrap, Celaction, ...).
 
-For more info about how to implement a host integration please fgo to [Host implementation](docs/dev_host_implementation) 
+For more info about how to implement a host integration please fgo to [Host implementation](dev_host_implementation.md) 
 
 ## Private and Public Dirs
 `private` and `public`, as description in the [Readme](https://github.com/ynput/ayon-example-addon?tab=readme-ov-file#private) says, They contains static content available for download.

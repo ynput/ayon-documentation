@@ -20,7 +20,7 @@ Running the docker container is also a great way to start developing on the fron
 
 This is a general overview of the different parts of AYON. The server development is written in different parts and then deployed as one docker container that interacts with the AYON Launcher (client).
 
-![Ayon server overview diagram](./assets/server/ayon_server_diagram.png)
+![Ayon server overview diagram](assets/server/ayon_server_diagram.png)
 
 ## AYON Backend
 

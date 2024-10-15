@@ -25,18 +25,18 @@ Resolve Studio is the only version that works with the Ayon toolkit because of e
 
 ## AYON global tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Publish](artist_tools_publisher.md)
 
 
 <div class="row markdown">
 
 ## Creating Shots from timeline items
 
-Before a clip can be published with [Publisher](artist_tools_publisher) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable product.
+Before a clip can be published with [Publisher](artist_tools_publisher.md) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable product.
 
 Lets do it step by step.
 

@@ -89,7 +89,7 @@ New additional mini tool is provided for artists before they open Unreal via AYO
 This marker, or tag, points to commit/changelist and could be pushed to Deadline integration where Deadline
 syncs to this particular commit before rendering. 
 
-This requires to have AYON integration to Deadline installed. Please check https://ayon.ynput.io/docs/addon_deadline_admin for more details.
+This requires to have AYON integration to Deadline installed. Please check [Deadline Admin Docs](addon_deadline_admin.md) for more details.
 
 Usage of Perforce in Deadline submissions could be controlled by toggling on/off of automatically created instance of 
 `changelist_metadata` product type in AYON Publisher.
