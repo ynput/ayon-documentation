@@ -44,9 +44,9 @@ Web actions run through **shims**, which are automatically set up when users ins
 
 Web actions let you launch applications directly through the AYON web server. You can find these actions in the [details panel](artist_details_panel.md).
 
-The application addon handles the logic for web actions.Currently, there are no specific settings for web actions.
+The application addon handles the logic for web actions. Currently, there are no specific settings for web actions.
 
-Web actions are generated from your application's definitions in your production or development bundles, depending on the developer mode setting, and they adhere to your application’s filter settings.
+The application web actions are generated from your application's definitions in your production or development bundles, depending on the developer mode setting, and they adhere to your application’s filter settings.
 
 
 ## Applications Addon Settings
