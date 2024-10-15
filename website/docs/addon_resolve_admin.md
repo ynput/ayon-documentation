@@ -17,8 +17,9 @@ import TabItem from '@theme/TabItem';
 ## Resolve requirements
 Resolve uses a separate Python interpreter (it does not come with Python itself). The interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Bellow you can find instructions on how to install them into an installed Python of your choice.
 
-- Resolve 17 - our recommended version `Python 3.6.2`
+- Resolve 19 - our recommended version range `Python 3.10.x` (in complience with Ayon)
 - Resolve 18 - our recommended version range `Python 3.10.x` (in complience with Ayon)
+- Resolve 17 - our recommended version `Python 3.6.2`
 
 :::warning
 Resolve Studio is the only version that works with the Ayon toolkit because of external scripting requirements which the free edition of Resolve is lacking.
@@ -78,11 +79,16 @@ python3 -m pip install PySide6
 
 ### OpenTimelineIO
 
-:::warning Permissions
-Installation guide for OpenTimelineIO in Python 3.6 can be found [here](https://github.com/ynput/OpenPype/blob/develop/openpype/hosts/resolve/README.markdown#basic-setup).
-:::
 
-AYON is using OpenTimelineIO for editorial publishing. OpenTimelineIO has to be installed into the python.
+AYON is using OpenTimelineIO for editorial publishing. OpenTimelineIO has to be installed into the Resolve Python environment.
+Tested versions:
+- Resolve 19 - `OpenColorIO 0.17.0` with `Python 3.10.x`
+- Resolve 18 - `OpenColorIO 0.17.0` with `Python 3.10.x`
+- Resolve 17 - `OpenColorIO 0.13.0` with `Python 3.6.2` (see special build instruction below)
+
+:::warning Permissions
+Installation guide for OpenTimelineIO 0.13.0 in Python 3.6 can be found [here](https://github.com/ynput/ayon-resolve/blob/develop/client/ayon_resolve/README.markdown).
+:::
 
 <Tabs
   groupId="platforms"
