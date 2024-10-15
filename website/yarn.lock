@@ -1540,7 +1540,7 @@
     "@docusaurus/theme-search-algolia" "2.4.0"
     "@docusaurus/types" "2.4.0"
 
-"@docusaurus/react-loadable@5.5.2":
+"@docusaurus/react-loadable@5.5.2", "react-loadable@npm:@docusaurus/react-loadable@5.5.2":
   version "5.5.2"
   resolved "https://registry.npmjs.org/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz"
   integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
@@ -4829,7 +4829,7 @@ docusaurus-theme-redoc@1.6.2:
 
 docusaurus@^1.14.7:
   version "1.14.7"
-  resolved "https://registry.yarnpkg.com/docusaurus/-/docusaurus-1.14.7.tgz#f51858ab643b29ec52264d6dd85e0d629e5b3a4a"
+  resolved "https://registry.npmjs.org/docusaurus/-/docusaurus-1.14.7.tgz"
   integrity sha512-UWqar4ZX0lEcpLc5Tg+MwZ2jhF/1n1toCQRSeoxDON/D+E9ToLr+vTRFVMP/Tk84NXSVjZFRlrjWwM2pXzvLsQ==
   dependencies:
     "@babel/core" "^7.12.3"
@@ -10659,14 +10659,6 @@ react-loadable-ssr-addon-v5-slorber@^1.0.1:
   integrity sha512-lq3Lyw1lGku8zUEJPDxsNm1AfYHBrO9Y1+olAYwpUJ2IGFBskM0DMKok97A6LWUpHm+o7IvQBOWu9MLenp9Z+A==
   dependencies:
     "@babel/runtime" "^7.10.3"
-
-"react-loadable@npm:@docusaurus/react-loadable@5.5.2":
-  version "5.5.2"
-  resolved "https://registry.npmjs.org/@docusaurus/react-loadable/-/react-loadable-5.5.2.tgz"
-  integrity sha512-A3dYjdBGuy0IGT+wyLIGIKLRE+sAk1iNk0f1HjNDysO7u8lhL4N3VEm+FAubmJbAztn94F7MxBTPmnixbiyFdQ==
-  dependencies:
-    "@types/react" "*"
-    prop-types "^15.6.2"
 
 react-markdown@^8.0.7:
   version "8.0.7"
