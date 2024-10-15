@@ -99,7 +99,7 @@ You can load USD products back to Maya into Maya USD Proxy Shapes.
 Different Loaders are being implemented, like referencing the data as regular
 maya geometry or "referencing" directly into an existing Maya USD Proxy.
 
-See: https://github.com/ynput/ayon-maya/pull/61
+See: [Implement loading directly into a Maya USD Proxy Shape #61](https://github.com/ynput/ayon-maya/pull/61) 
 
 :::
 

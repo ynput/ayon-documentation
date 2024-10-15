@@ -13,12 +13,12 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## AYON global tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
--   [Library Loader](artist_tools_library_loader)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Library Loader](artist_tools_library_loader.md)
 
 ## Working with AYON in Maya
 
@@ -97,7 +97,7 @@ Now let's publish it. Go **AYON → Publish...**. You will be presented with fol
 ![Model publish](assets/maya/artist/model_pre_publish.jpg)
 
 Note that content of this window can differs by your pipeline configuration.
-For more detail see [Publisher](artist_tools_publisher).
+For more detail see [Publisher](artist_tools_publisher.md).
 
 Items in left column are instances you will be publishing. You can disable them
 by clicking on square next to them. Green square indicate they are ready for
@@ -162,7 +162,7 @@ OBJ publisher needs to be enabled in the Settings. `ayon+settings://maya/publish
 ![OBJ Extractor in Setting](assets/maya/artist/obj_extractor_settings.png)
 
 To check for yourself that model is published, open
-[Asset Loader](artist_tools_loader) - **AYON → Load...**.
+[Asset Loader](artist_tools_loader.md) - **AYON → Load...**.
 There you should see your model, named `modelMain`.
 
 You can load your model by either referencing or importing.
@@ -233,8 +233,8 @@ there are few yellow icons in left shelf:
 
 ![Maya - shortcut icons](assets/maya/artist/shortcut_buttons.jpg)
 
-Those are shortcuts for **Look Manager**, [Work Files](artist_tools_workfiles),
-[Load](artist_tools_loader), and [Manage (Inventory)](artist_tools_inventory).
+Those are shortcuts for **Look Manager**, [Work Files](artist_tools_workfiles.md),
+[Load](artist_tools_loader.md), and [Manage (Inventory)](artist_tools_inventory.md).
 
 Those can be found even in top menu, but that depends on your studio setup.
 
@@ -327,7 +327,7 @@ have any missing dependencies.
 
 ### Loading rigs
 
-You can load rig with [Loader](artist_tools_loader). Go **AYON → Load...**,
+You can load rig with [Loader](artist_tools_loader.md). Go **AYON → Load...**,
 select your rig, right click on it and **Reference** it.
 
 ## Point caches
@@ -417,7 +417,7 @@ AYON allows to version and manage those sets.
 ### Publishing Set dress / Layout
 
 Working with Set dresses is very easy. Just load your assets into scene with
-[Loader](artist_tools_loader) (**AYON → Load...**). Populate your scene as
+[Loader](artist_tools_loader.md) (**AYON → Load...**). Populate your scene as
 you wish, translate each piece to fit your need. When ready, select all imported
 stuff and go **AYON → Create...** and select **Set Dress** or **Layout**.
 This will create set containing your selection and marking it for publishing.
@@ -430,7 +430,7 @@ Now you can publish is with **AYON → Publish**.
 
 ### Loading Set dress / Layout
 
-You can load Set dress / Layout using [Loader](artist_tools_loader)
+You can load Set dress / Layout using [Loader](artist_tools_loader.md)
 (**AYON → Load...**). Select you layout or set dress, right click on it and
 select **Reference Maya Ascii (ma)**. This will populate your scene with all those
 models you've put into layout.
@@ -597,7 +597,7 @@ after it is rendered, it will be attached to your model product.
 
 ### Tile Rendering
 :::note Deadline
-This feature is only supported when using Deadline. See [here](addon_deadline_admin#ayontileassembler-plugin) for setup.
+This feature is only supported when using Deadline. See [here](addon_deadline_admin.md#ayontileassembler-plugin) for setup.
 :::
 On the render instance objectset you'll find:
 
@@ -704,7 +704,7 @@ That will create video file, pass it to another extractor creating burnins in it
 and finally uploading this video to ftrack with your model (or other type) published
 version. All parts of this process - like what burnins, what type of video file,
 settings for Maya playblast - can be customized by your TDs. For more information
-about customizing review process refer to [admin section](addon_core_settings#publish-plugins).
+about customizing review process refer to [admin section](addon_core_settings.md#publish-plugins).
 
 If you don't move `modelMain` into `reviewMain`, review will be generated but it will
 be published as separate entity.

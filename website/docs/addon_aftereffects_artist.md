@@ -16,11 +16,11 @@ import TabItem from '@theme/TabItem';
 <!-- based on PS implementation, same principle and menu -->
 ## Available Tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Publish](artist_tools_publisher)
--   [Manage](artist_tools_inventory)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Manage](artist_tools_inventory.md)
 
 ## AE Extension installation
 

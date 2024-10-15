@@ -32,14 +32,14 @@ How to use it ?
 
 :::info Tray CLI Interface
 Tray Publisher also provides a CLI Interface.
-For more info: [Tray Publisher Admin Docs](addon_traypublisher_admin#cli-interface).
+For more info: [Tray Publisher Admin Docs](addon_traypublisher_admin.md#cli-interface).
 :::
 
 ## Default Product Types
 ### Simple Create Plugins
 
 :::tip Simple Create Plugins
-Admins are able to change (remove/add/modify) simple create plugins via [Tray publisher addon settings](https://ayon.ynput.io/docs/addon_traypublisher_admin#creator-plugins).
+Admins are able to change (remove/add/modify) simple create plugins via [Tray publisher addon settings](addon_traypublisher_admin.md#creator-plugins).
 :::
 
 - `workfiles`: Workfiles are full scenes from any application that are directly edited by artists. They represent a state of work on a task at a given point and are usually not directly referenced into other scenes.

@@ -13,11 +13,11 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Available Tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Publish](artist_tools_publisher)
--   [Manage](artist_tools_inventory)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Manage](artist_tools_inventory.md)
 
 ## Working With AYON in Photoshop
 

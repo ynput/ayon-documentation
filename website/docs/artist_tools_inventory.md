@@ -7,7 +7,7 @@ description: Manage already loaded products.
 
 # Inventory
 
-With Scene Inventory, you can browse, update and change assets already loaded via [Loader](artist_tools_loader) in your current workfile scene / script.
+With Scene Inventory, you can browse, update and change assets already loaded via [Loader](artist_tools_loader.md) in your current workfile scene / script.
 You can think of it as sort of a manager with list of assets in your scene with acompanying information and data.
 
 To use it go to **AYON** Menu > **Manage**  which opens **Inventory** for use.

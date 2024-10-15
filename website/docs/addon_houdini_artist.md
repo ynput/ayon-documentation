@@ -13,12 +13,12 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## AYON global tools
 
-- [Work Files](artist_tools_workfiles)
-- [Create](artist_tools_creator)
-- [Load](artist_tools_loader)
-- [Manage (Inventory)](artist_tools_inventory)
-- [Publish](artist_tools_publisher)
-- [Library Loader](artist_tools_library_loader)
+- [Work Files](artist_tools_workfiles.md)
+- [Create](artist_tools_creator.md)
+- [Load](artist_tools_loader.md)
+- [Manage (Inventory)](artist_tools_inventory.md)
+- [Publish](artist_tools_publisher.md)
+- [Library Loader](artist_tools_library_loader.md)
 
 ## Ayon Menu
 
@@ -423,7 +423,7 @@ Loading is done by
 ![menu_load_load_library](assets/houdini/artist/menu_load_load_library.png)
 
 Loaded stuff is by default wrapped in subnetwork node called `AVALON_CONTAINERS`.
-Artist can move nodes inside `AVALON_CONTAINERS` out without losing management ability. For more info, Go to [Load](artist_tools_loader) and [Library Loader](artist_tools_library_loader)
+Artist can move nodes inside `AVALON_CONTAINERS` out without losing management ability. For more info, Go to [Load](artist_tools_loader.md) and [Library Loader](artist_tools_library_loader.md)
 
 import loader_tool_demo from './assets/houdini/artist/loader_tool_demo.mp4'
 
@@ -449,7 +449,7 @@ Key features:
 2. Switch Asset
 3. Inventory Actions
 
-For more info, Go to [Manage (Inventory)](artist_tools_inventory)
+For more info, Go to [Manage (Inventory)](artist_tools_inventory.md)
 
 ![Inventory_manage_products](assets/houdini/artist/Inventory_manage_products.png)
 

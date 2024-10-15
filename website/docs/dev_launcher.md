@@ -23,9 +23,9 @@ AYON is written in Python 3 with specific elements still running in Python2 unti
 [CX_Freeze](https://cx-freeze.readthedocs.io/en/latest) is used to freeze the Python code and all of its dependencies, and [Poetry](https://python-poetry.org/) for virtual environment management.
 
 We provide comprehensive build steps:
-* [Windows](dev_launcher_build_windows)
-* [macOS](dev_launcher_build_macos)
-* [Linux](dev_launcher_build_linux)
+* [Windows](dev_launcher_build_windows.md)
+* [macOS](dev_launcher_build_macos.md)
+* [Linux](dev_launcher_build_linux.md)
 
 Output of the build process is installer with metadata file that can be distributed to workstations.
 
@@ -130,7 +130,7 @@ Changing their values will change where addons and dependency packages are store
 :::
 
 ## Developer mode
-[Developer mode](dev_dev_mode) enables to skip the standard distribution process of addons to use local sources of addon code instead. This is useful for development of addon. Developer mode must be enabled and configured on AYON server.
+[Developer mode](dev_dev_mode.md) enables to skip the standard distribution process of addons to use local sources of addon code instead. This is useful for development of addon. Developer mode must be enabled and configured on AYON server.
 
 There are 2 ways to start in developer mode using command line arguments:
 1. Start AYON launcher with `--bundle <dev bundle name>`. Dev bundle cannot be set as production or staging.

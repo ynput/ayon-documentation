@@ -52,7 +52,7 @@ You can configure the USD contribution for an instance using the publisher UI on
 ![AYON USD Contribution to Asset in Publisher UI](assets/usd/ayon_usd_contribution_to_asset.png)  
 _This example publishes an asset contribution to the look department layer_
 
-Asset contributions usually have [Add as variant **enabled**](addon_usd_artist_contribution_workflow#add-as-variant-enabled) so that multiple contributions to that department layer each become a variant. Publishing product `lookMain` and product `lookDamaged` with both set to add as variant will provide a variant set where you can switch between the two.
+Asset contributions usually have [Add as variant **enabled**](#add-as-variant-enabled) so that multiple contributions to that department layer each become a variant. Publishing product `lookMain` and product `lookDamaged` with both set to add as variant will provide a variant set where you can switch between the two.
 
 :::tip
 Enable the _Set as default variant selection_ to make that product become the default variant in target variant set.
@@ -65,7 +65,7 @@ _This example publishes a shot contribution to the FX department layer_
 
 Shot contributions usually have a different target product, like `usdShot`. 
 
-In the majority of cases when contributing to a shot you want to [**disable** Add As Variant](addon_usd_artist_contribution_workflow#add-as-variant-disabled) because for a shot, if multiple contributions are made to one department layer those should usually live alongside each other and are *not* variants of each other. 
+In the majority of cases when contributing to a shot you want to [**disable** Add As Variant](#add-as-variant-disabled) because for a shot, if multiple contributions are made to one department layer those should usually live alongside each other and are *not* variants of each other. 
 
 :::warning
 Currently it is a manual process to target `usdShot` instead of `usdAsset` for shot contributions.  
