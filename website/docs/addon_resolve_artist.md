@@ -114,7 +114,7 @@ After all clips which are intended to be converted to publishable instances are 
 
 After the menu widget is opened (it can take while so be patient please :).
 
-Hit `Create ...` and then select the family to **Create Publishable Clip**.
+Hit `Create ...` and then select the product type to **Create Publishable Clip**.
 
 You can leave `Use only clips with Chocolate clip colors` enabled to publish only the selection.
 

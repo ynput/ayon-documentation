@@ -17,8 +17,8 @@ import TabItem from '@theme/TabItem';
 ## Resolve requirements
 Resolve uses a separate Python interpreter (it does not come with Python itself). The interpreter needs to have installed PySide2 (or PySide6 if on MacOS) and OpenTimelineIO dependencies for Ayon to work correctly. Bellow you can find instructions on how to install them into an installed Python of your choice.
 
-- Resolve 19 - our recommended version range `Python 3.10.x` (in complience with Ayon)
-- Resolve 18 - our recommended version range `Python 3.10.x` (in complience with Ayon)
+- Resolve 19 - our recommended version range `Python 3.9.x` (in complience with Ayon), also been tested with `Python 3.10.x`
+- Resolve 18 - our recommended version range `Python 3.9.x` (in complience with Ayon)
 - Resolve 17 - our recommended version `Python 3.6.2`
 
 :::warning
@@ -82,8 +82,8 @@ python3 -m pip install PySide6
 
 AYON is using OpenTimelineIO for editorial publishing. OpenTimelineIO has to be installed into the Resolve Python environment.
 Tested versions:
-- Resolve 19 - `OpenColorIO 0.17.0` with `Python 3.10.x`
-- Resolve 18 - `OpenColorIO 0.17.0` with `Python 3.10.x`
+- Resolve 19 - `OpenColorIO 0.17.0` with `Python 3.9.x` or `Python 3.10.x`
+- Resolve 18 - `OpenColorIO 0.17.0` with `Python 3.9.x`
 - Resolve 17 - `OpenColorIO 0.13.0` with `Python 3.6.2` (see special build instruction below)
 
 :::tip OpenColorIO 0.13.0
