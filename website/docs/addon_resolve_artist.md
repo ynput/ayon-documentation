@@ -116,7 +116,7 @@ After the menu widget is opened (it can take while so be patient please :).
 
 Hit `Create ...` and then select the family to **Create Publishable Clip**.
 
-You can leave `Use only clips with Chocolate clip colors` to publish only the selection.
+You can leave `Use only clips with Chocolate clip colors` enabled to publish only the selection.
 
 The Product name can stay as it is, it is not going to be used because each clip will generate it's own name.
 
@@ -235,7 +235,7 @@ There are two ways to create a publishable editorial package: by creating a new 
 
 ### Create/Convert a Timeline from Media Pool into an Editorial Package
 
-To create an editorial package, select a timeline in the media pool (1) and use the Create tool (2).
+To create an editorial package, select a timeline in the media pool (1) and use the AYON Create tool (2).
 Then set the target folder (3) context and task (4). 
 
 Choose _`Editorial Package`_ (5) as the product type. You can also use a Variant (6) to differentiate between different versions of timelines within the same target context. Hit Create (7).

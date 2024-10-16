@@ -86,7 +86,7 @@ Tested versions:
 - Resolve 18 - `OpenColorIO 0.17.0` with `Python 3.10.x`
 - Resolve 17 - `OpenColorIO 0.13.0` with `Python 3.6.2` (see special build instruction below)
 
-:::warning Permissions
+:::tip OpenColorIO 0.13.0
 Installation guide for OpenTimelineIO 0.13.0 in Python 3.6 can be found [here](https://github.com/ynput/ayon-resolve/blob/develop/client/ayon_resolve/README.markdown).
 :::
 
