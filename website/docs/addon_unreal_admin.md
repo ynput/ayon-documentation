@@ -94,7 +94,7 @@ pip.main(["install", "pyside6"])
 Be aware that calling **pip** like so is deprecated by pip itself and might not work in newer versions.
 
 :::note
-For Unreal Engine versions `>= 5.4`, use `pyside6`. For earlier versions, use `pyside2`.
+For Unreal Engine versions `>= 5.4`, use `pyside6` with the version not later than *6.8.0*. For earlier versions, use `pyside2`.
 :::
 
 ## Setup Publish template for UAsset Product
