@@ -80,8 +80,20 @@ The AYON menu will be the main tool to interact with AYON in Unreal. It will all
 The structure of the project data is handled by AYON. The first time you create an instance or load an asset, AYON will create a folder called `AYON` in the Content Browser. This folder will contain all the data handled by AYON, and it is organised as follows:
 - `/Content/AYON/` is the default AYON root directory.
 - `/Content/AYON/{your_folder_path}/{your_product_name}` is the default directory which contains all the single assets that are loaded from AYON. Users can customize their asset directories through `ayon+settings://unreal/loaded_asset_dir`
+By default, the asset directories for all loaded assets are `{folder[path]}/{product[name]}_{version[version]}`
 
 ![Unreal AYON Asset Directories Setting](assets/unreal_ayon_asset_directory_setting.png)
+
+::: note
+There are several formats we can use as the template for the asset directories.
+For example:
+{folder[name]}: folder name
+{folder[path]}: folder path
+{product[name]}: product name
+{product{productType}}: product type
+{version[version]}: version number
+{representation[name]}: name of the representation type
+:::
 
 - `/Content/AYON/Assets` contains all the single assets that are loaded from AYON.
 - `/Content/AYON/PublishInstances` contains all the instances that are created in Unreal.
