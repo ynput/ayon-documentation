@@ -20,10 +20,10 @@ Open RV is an image and sequence viewer for VFX and animation artists. Open RV i
 
 ## AYON global tools
 
--   [Load](artist_tools_loader)
--   [Publish](artist_tools_publisher)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Work Files](artist_tools_workfiles)
+-   [Load](artist_tools_loader.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Work Files](artist_tools_workfiles.md)
 
 ## Usage
 

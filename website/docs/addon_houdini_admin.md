@@ -16,7 +16,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ### Add Self Publish Button
 
-Enabling this setting will cause Houdini creator to add a **self publish button** when creating new publish instances. More Info on how how the **self publish button** works [here](addon_houdini_artist#ayon-publishing-process)
+Enabling this setting will cause Houdini creator to add a **self publish button** when creating new publish instances. More Info on how how the **self publish button** works [here](addon_houdini_artist.md#ayon-publishing-process)
 
 ![general_settings_self_publish_button](assets/houdini/admin/general_settings_self_publish_button.png)
 
@@ -41,7 +41,7 @@ Allows admins to have a list of vars (e.g. JOB) with (dynamic) values that will 
 
 ## Color Management (ImageIO)
 
-Allows admins to override the global color management settings, check [Host specific overrides](https://ayon.ynput.io/docs/admin_colorspace#host-specific-overrides)
+Allows admins to override the global color management settings, check [Host specific overrides](admin_colorspace.md#host-specific-overrides)
 
 ![houdini-color-management](assets/houdini/admin/houdini-color-management.png)
 

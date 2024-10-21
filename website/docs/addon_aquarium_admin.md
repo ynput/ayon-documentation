@@ -30,12 +30,12 @@ Aquarium addon, allow you to:
 In the future, new feature will be added, based on your requests. Feel free to [reach us](https://support@fatfi.sh).
 :::
 
-We are open to receive new pull request (PR). Follow our [developer documentation to start](addon_aquarium_developer).
+We are open to receive new pull request (PR). Follow our [developer documentation to start](addon_aquarium_developer.md).
 
 
 ## Configuring addon
 
-First, you need to install the addon. It's available from Ayon market or you can install it from its repository. For that follow our [developer documentation](addon_aquarium_developer) or [Ayon's manual installation guide](admin_server_installing_addons)
+First, you need to install the addon. It's available from Ayon market or you can install it from its repository. For that follow our [developer documentation](addon_aquarium_developer.md) or [Ayon's manual installation guide](admin_server_installing_addons.md)
 
 ### Getting Aquarium bot
 

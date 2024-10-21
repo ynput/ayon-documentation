@@ -85,29 +85,29 @@ File rules feature is mainly supported for OCIO v1. It is used to derive colorsp
 #### OCIO managed
 ![distribution ocio managed](assets/settings/admin_colorspace_distribution_1.png)
 
-When the host uses the OCIO config from AYON settings, the colorspace distribution is most accurately rendered. File rules come into play only during transcoding or when creating reviewable files. Upon publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document. If the representation lacks a [**colorspaceData**](dev_colorspace#data-model) key, the loading process resorts to File rules.
+When the host uses the OCIO config from AYON settings, the colorspace distribution is most accurately rendered. File rules come into play only during transcoding or when creating reviewable files. Upon publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace.md#data-model) key in the representation document. If the representation lacks a [**colorspaceData**](dev_colorspace.md#data-model) key, the loading process resorts to File rules.
 
 #### Remapped internal colorspace
 ![distribution remapped](assets/settings/admin_colorspace_distribution_2.png)
 
-When the host uses the internal colorspace, the colorspace distribution employs the remapping rules which operate at the host level. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document.
+When the host uses the internal colorspace, the colorspace distribution employs the remapping rules which operate at the host level. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace.md#data-model) key in the representation document.
 
-During loading of the representation, there is a chance that the [**colorspaceData**](dev_colorspace#data-model) key might be missing. In such a scenario, the loading process follows two steps. Firstly if necessary, it resorts to File rules matching, and then, it remaps the colorspace to match the internal colorspace names.
+During loading of the representation, there is a chance that the [**colorspaceData**](dev_colorspace.md#data-model) key might be missing. In such a scenario, the loading process follows two steps. Firstly if necessary, it resorts to File rules matching, and then, it remaps the colorspace to match the internal colorspace names.
 
 
 #### Derived colorspace
 ![distribution derived](assets/settings/admin_colorspace_distribution_3.png)
 
-When the host does not have any internal colorspace management, the colorspace distribution is derived from the file path. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace#data-model) key in the representation document.
+When the host does not have any internal colorspace management, the colorspace distribution is derived from the file path. File rules are only used during transcoding or when creating reviewable files. When publishing, the resulting colorspace distribution is indicated by the [**colorspaceData**](dev_colorspace.md#data-model) key in the representation document.
 
-Since the host does not have any internal colorspace management, the loading process is ignoring [**colorspaceData**](dev_colorspace#data-model).
+Since the host does not have any internal colorspace management, the loading process is ignoring [**colorspaceData**](dev_colorspace.md#data-model).
 
 
 ## Configuration of global settings
 ### Activating colorspace management on project
 ![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_1.png)
 
-Colorspace management and distribution is disabled by default all project at the global level. Once it is enabled it is applied to all hosts. It is possible to override the global settings at the [host level](admin_colorspace#configuration-of-host-settings).
+Colorspace management and distribution is disabled by default all project at the global level. Once it is enabled it is applied to all hosts. It is possible to override the global settings at the [host level](#configuration-of-host-settings).
 
 :::warning Studio default
 
@@ -118,7 +118,7 @@ Please be aware that activating the studio default project colorspace management
 ### Config order
 ![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_3.png)
 
-It's worth noting that the order in which the configuration paths are defined matters, with higher priority given to paths listed earlier in the configuration list. In the example image above, the production team decided to switch a project to use the `nuke-default` ([v1, linear, sRGB, rec709](https://opencolorio.readthedocs.io/en/latest/configurations/nuke_default.html)) OCIO config. This implies that all hosts will implement this config for publishing and loading within the [mentioned scope](admin_colorspace#how-does-colorspace-distribution-work-at-host-level).
+It's worth noting that the order in which the configuration paths are defined matters, with higher priority given to paths listed earlier in the configuration list. In the example image above, the production team decided to switch a project to use the `nuke-default` ([v1, linear, sRGB, rec709](https://opencolorio.readthedocs.io/en/latest/configurations/nuke_default.html)) OCIO config. This implies that all hosts will implement this config for publishing and loading within the [mentioned scope](#host-level-colorspace-distribution-workflow).
 
 ### Project level config
 ![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_2.png)
@@ -130,7 +130,7 @@ avoids any hard-coding of paths that may be specific to one particular system.
 The example image above shows project level OCIO config file. This way the production is securing that any future changes on studio OCIO config file will not break any of old projects. It is recommended to use the project's OCIO config as starting point for all derivations of host level OCIO configs.
 
 ### File rules activation
-File rules are disabled by default. Once it is enabled it is applied to all hosts. It is possible to override them at the [host level](admin_colorspace#configuration-of-host-settings).
+File rules are disabled by default. Once it is enabled it is applied to all hosts. It is possible to override them at the [host level](#configuration-of-host-settings).
 
 ![admin_colorspace_settings_global](assets/settings/admin_colorspace_settings_global_4.png)
 
@@ -183,31 +183,31 @@ If the global File rules are disabled, but the host level File rules are enabled
 ## Upgrading from previous versions
 Upgrading may not always be a straightforward process, and we understand that its complexity can be frustrating. We strive to keep the upgrade process as simple as possible and to avoid any breaking changes. However, sometimes it's not possible, and we may need to introduce some breaking changes. This section aims to help you understand what needs to be done after the upgrade.
 
-### 1. Example of usage - [DCCs](admin_colorspace#used-acronyms) are set to native linear rec709 colorspace
+### 1. Example of usage - [DCCs](#used-acronyms) are set to native linear rec709 colorspace
 
 #### Actual configuration:
 A studio is having on-going production with project configured imageio at op 3.15. All hosts are set to `linear rec709` space with following combination of settings:
-- Nuke host [**CMS**](admin_colorspace#used-acronyms) custom config was not activated and it used `nuke-default`
+- Nuke host [**CMS**](#used-acronyms) custom config was not activated and it used `nuke-default`
 - Maya was set to internal ocio config in v2 `maya-scene-linear-rec709`
 - Global imageio custom config was set to `nuke-default`
 
 #### Required action after the upgrade:
-No need to do anything. Be aware that once the Global [**CMS**](admin_colorspace#used-acronyms) is enabled, the default config is set to `aces_1.2` and it will be applied to all hosts. If you want to keep the same behavior as before the upgrade, you need to set the Global [**CMS**](admin_colorspace#used-acronyms) to `nuke-default` config or disable it.
+No need to do anything. Be aware that once the Global [**CMS**](#used-acronyms) is enabled, the default config is set to `aces_1.2` and it will be applied to all hosts. If you want to keep the same behavior as before the upgrade, you need to set the Global [**CMS**](#used-acronyms) to `nuke-default` config or disable it.
 
-### 2. Example of usage - [DCCs](admin_colorspace#used-acronyms) are set to native ACES OCIO config
+### 2. Example of usage - [DCCs](#used-acronyms) are set to native ACES OCIO config
 #### Actual configuration:
 A studio is having on-going production with project configured imageio at op 3.15. All hosts are set to `ACES 1.2` space with following combination of settings:
-   - Nuke host [**CMS**](admin_colorspace#used-acronyms) custom config was not activated and it used OCIO with provided `aces_1.2`
+   - Nuke host [**CMS**](#used-acronyms) custom config was not activated and it used OCIO with provided `aces_1.2`
    - Maya was set to internal ocio config in v2 `maya-aces_1.2`
    - Global imageio custom config was set to distributed `aces_1.2`
 
 #### Required action after the upgrade:
-No need to do anything. Be aware that once the Global [**CMS**](admin_colorspace#used-acronyms) is enabled, the default config is set to `aces_1.2` and it will be applied to all hosts. If you want to keep the same behavior as before the upgrade, you need to set the Global [**CMS**](admin_colorspace#used-acronyms) to `aces_1.2` config or disable it.
+No need to do anything. Be aware that once the Global [**CMS**](#used-acronyms) is enabled, the default config is set to `aces_1.2` and it will be applied to all hosts. If you want to keep the same behavior as before the upgrade, you need to set the Global [**CMS**](#used-acronyms) to `aces_1.2` config or disable it.
 
 ### 3. Example of usage - Global custom ocio config used
 #### Actual configuration:
 A studio is having on-going production with project configured imageio at op 3.15. All hosts are set to custom config path via OCIO env var with following combination of settings:
-   - Nuke host [**CMS**](admin_colorspace#used-acronyms) is having defined creator nodes to corresponding colorspace name found in provided OCIO config
+   - Nuke host [**CMS**](#used-acronyms) is having defined creator nodes to corresponding colorspace name found in provided OCIO config
    - Maya is having activated OCIO v2 via OCIO env var and it is using provided OCIO config
    - Global File rules were defined to:
         - capture all render family products to be **acescg** colorspace
@@ -215,9 +215,9 @@ A studio is having on-going production with project configured imageio at op 3.1
         - capture all mp4 extensions to be **Output Rec.709** colorspace
 
 #### Required action after the upgrade:
-1. Enable Global [**CMS**](admin_colorspace#used-acronyms).
+1. Enable Global [**CMS**](#used-acronyms).
 2. Add Studio OCIO config into any folder within Root defined storage (the suggested approach will enhance the security of the distribution, ensuring its smooth operation across various platforms and workflows).
-3. Add path to the project config into Global [**CMS**](admin_colorspace#used-acronyms) or host config paths to first position from top. Path should not be absolute and should point at Anatomy root storage template - e.g. `{root[work]}/configs/ocio/aces_1.2/config.ocio`
+3. Add path to the project config into Global [**CMS**](#used-acronyms) or host config paths to first position from top. Path should not be absolute and should point at Anatomy root storage template - e.g. `{root[work]}/configs/ocio/aces_1.2/config.ocio`
 4. Enable Global File rules.
 
 ### Used acronyms:

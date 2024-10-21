@@ -32,7 +32,7 @@ AYON supports the latest Unreal Engine versions. To use it, you need to install 
 
 :::info
 If you encounter following warning when you run Unreal, your installation is missing Qt bindings.
-[Here are the steps](addon_unreal_admin#manually-installing-qt-bindings) to fix it.
+[Here are the steps](addon_unreal_admin.md#manually-installing-qt-bindings) to fix it.
 
 ![Unreal missing Qt Bindings](assets/unreal_qtbindings_warning.png)
 :::
@@ -65,9 +65,9 @@ import loaderVideoUE2 from './assets/video/unreal_menu.mp4'
 
 The AYON menu will be the main tool to interact with AYON in Unreal. It will allow you to create, load, publish and manage assets.
 
--   [Load](artist_tools_loader) is the tool to load assets from AYON into Unreal.
--   [Publisher](artist_tools_publisher) is the tool to create and publish assets from Unreal to AYON.
--   [Manage (Inventory)](artist_tools_inventory) is the tool to manage loaded assets.
+-   [Load](artist_tools_loader.md) is the tool to load assets from AYON into Unreal.
+-   [Publisher](artist_tools_publisher.md) is the tool to create and publish assets from Unreal to AYON.
+-   [Manage (Inventory)](artist_tools_inventory.md) is the tool to manage loaded assets.
 -   *Render* starts the render for a selected `AyonPublishInstance`.
 -   *Build Sequence Hierarchy* builds the shot structure in regards to the folder hierarchy.
 -   *Experimental tools* contains tools under developement.

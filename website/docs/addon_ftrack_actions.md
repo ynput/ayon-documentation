@@ -80,7 +80,7 @@ Project Manager or Supervisor must set project's applications during project pre
 Synchronization to AYON is key process to keep AYON data updated. Action updates selected entities (Project, Shot, Sequence, etc.) and all nested entities to AYON database. If action is successfully finished [Sync Hier Attrs](#sync-hier-attrs) action is triggered.
 
 There are 2 versions of **Sync to AYON**, first labeled as **server** second as **local**.
-* **server** version will be processed with [event server](addon_ftrack_admin#event-server)
+* **server** version will be processed with [event server](addon_ftrack_admin.md#event-server)
 * **local** version will be processed with user's AYON tray application
 
 It is recommended to use **local** version if possible to avoid unnecessary deceleration of event server.

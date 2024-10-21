@@ -147,13 +147,13 @@ Project attributes are used as default values for new _folders_ created under a 
 Templates are not supporting use of `{folder[type]}` yet.
 :::
 
-Read more about [Folders](artist_concepts#folder)
+Read more about [Folders](artist_concepts.md#folder)
 
 ![folders](assets/settings/anatomy_folder_types.png)
 
 ## Task Types
 
-Read more about [Tasks](artist_concepts#task)
+Read more about [Tasks](artist_concepts.md#task)
 
 Available task types on a project. Each task on an asset is referencing a task type on the project which allows access to additional task type attributes. At this moment only `short_name` is available (can be used in templates as `{task[short_name]}`).
 

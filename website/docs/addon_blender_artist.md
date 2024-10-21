@@ -21,12 +21,12 @@ Before starting to use the Blender AYON integration, please check the following 
 
 ## AYON Tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
--   [Library Loader](artist_tools_library_loader)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Library Loader](artist_tools_library_loader.md)
 
 ## Working with AYON in Blender
 
@@ -55,7 +55,7 @@ You will use `Workfiles` tool not just for saving your work but for all `.blend`
 
 Just navigate to `AYON` > `Workfiles` > `Open` instead.
 
-For more details and what options it offers navigate to [Work Files](artist_tools_workfiles) user's docs section.
+For more details and what options it offers navigate to [Work Files](artist_tools_workfiles.md) user's docs section.
 
 
 ## Publishing
@@ -120,7 +120,7 @@ Finally, let's publish our model! Go to **AYON → Publish...**. You will be pre
 
 :::note
 Content of this window can differ depending on your studio's AYON configuration.
-For more details see [Publisher](artist_tools_publisher) user's docs section.
+For more details see [Publisher](artist_tools_publisher.md) user's docs section.
 :::
 
 Items in left column are instances you will be publishing. You can disable them
@@ -186,7 +186,7 @@ By selecting your Suzanne's `modelMain` and performing right click on it and cho
 
 :::note
 **AYON Loader** offers you the ability to load available published products using different methods, which will vary depending on the occasion. Check
-[Asset Loader](artist_tools_loader) for more details.
+[Asset Loader](artist_tools_loader.md) for more details.
 :::
 
 ## Creating Rigs
@@ -225,11 +225,11 @@ this:
 ### Publishing rigs
 
 Publishing rig is done in same way as publishing everything else. Save your scene
-and go **AYON → Publish**. For more detail see [Publisher](artist_tools_publisher).
+and go **AYON → Publish**. For more detail see [Publisher](artist_tools_publisher.md).
 
 ### Loading rigs
 
-You can load rig with [Loader](artist_tools_loader). Go **AYON → Load...**,
+You can load rig with [Loader](artist_tools_loader.md). Go **AYON → Load...**,
 select your rig, right click on it and click **Link rig (blend)**.
 
 ## Layouts in Blender
@@ -240,7 +240,7 @@ layout from selected products and version manage such set via AYON toolset.
 ### Publishing a layout
 
 Working with Layout is easy. Just load your assets into scene with
-[Loader](artist_tools_loader) (**AYON → Load...**). Populate your scene as
+[Loader](artist_tools_loader.md) (**AYON → Load...**). Populate your scene as
 you wish, translate each piece to fit your need. When ready, select all imported
 stuff and go **AYON → Create...** and select **Layout**. When selecting rigs,
 you need to select only the armature, the geometry will automatically be included.
@@ -250,7 +250,7 @@ Now you can publish is with **AYON → Publish**.
 
 ### Loading layouts
 
-You can load a Layout using [Loader](artist_tools_loader)
+You can load a Layout using [Loader](artist_tools_loader.md)
 (**AYON → Load...**). Select your layout, right click on it and
 select **Link Layout (blend)**. This will populate your scene with all those
 models you've put into layout.

@@ -31,7 +31,7 @@ If they are enabled in Kitsu addon settings.
 
 :::note Notes
 - Depending on the kitsu addon configuration, publisher also can update the task status.
-- Admins are able to configure `Custom Comment Template`, [learn More](addon_kitsu_admin#custom-comment-template-example).
+- Admins are able to configure `Custom Comment Template`, [learn More](addon_kitsu_admin.md#custom-comment-template-example).
 :::
 
 | Publish Comment | Kitsu Note and Review |

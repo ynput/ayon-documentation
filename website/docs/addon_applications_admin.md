@@ -182,7 +182,7 @@ All the tools defined in Tools Definitions can then be assigned to projects, cer
 
 :::tip Example Filter profile
 Find example of Tool definition and a profile Filter in the FAQ section below:
-[How to make a tool available for all folder paths in a project for a specific application variant?](addon_applications_admin#how-to-make-a-tool-available-for-all-folder-paths-in-a-project-for-a-specific-application-variant-)
+[How to make a tool available for all folder paths in a project for a specific application variant?](#how-to-make-a-tool-available-for-all-folder-paths-in-a-project-for-a-specific-application-variant)
 :::
 
 ## FAQ
