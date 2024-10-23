@@ -121,7 +121,16 @@ It submits a dependent AYON Job to publish the rendered images.
 
 ![](assets/deadline/add_ayon_server_to_farm_job.png)
 
-When enabled submit along your `AYON_SERVER_URL` and the `AYON_API_KEY` specified in the setting to the job so you can enforce your current server even if Deadline AYON plugin configuration (`Deadline monitor > Tools > Configure Plugins > AYON`) is configured for another AYON server. This can be useful for example for submissions from a separate AYON dev server.
+:::tip
+This feature is handy for submissions from a separate AYON dev server.
+:::
+
+When enabled, submit your current `AYON_SERVER_URL` with the job to enforce using your current server. This requires modifying the Deadline AYON plugin configuration (`Deadline monitor > Tools > Configure Plugins > AYON`) to add additional AYON servers.
+
+Additional servers should follow this format: `{server url}@{token}`, e.g., `http://11.2.3.47@myapikey1`.
+
+![](assets/deadline/additional_ayon_servers.png)
+
 
 
 ## Troubleshooting
