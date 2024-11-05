@@ -27,6 +27,7 @@ const config = {
     stylesheets: [
         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
     ],
+
     presets: [
         [
             "classic",
@@ -203,6 +204,13 @@ const config = {
             }),
         ],
         "docusaurus-plugin-sass",
+    ],
+    scripts: [
+        {
+            src: "https://plausible.io/js/script.js",
+            defer: true,
+            "data-domain": "ayon.ynput.io",
+        },
     ],
 };
 

@@ -115,6 +115,23 @@ It submits a dependent AYON Job to publish the rendered images.
        3. **+ icon:** Add more AOV regexes 
    2. **+ icon:** Add more filters
 
+### Add AYON server to farm job
+
+> Setting Location: `ayon+settings://deadline/publish/CollectAYONServerToFarmJob`
+
+![](assets/deadline/add_ayon_server_to_farm_job.png)
+
+:::tip
+This feature is handy for submissions from a separate AYON dev server.
+:::
+
+When enabled, submit your current `AYON_SERVER_URL` with the job to enforce using your current server. This requires modifying the Deadline AYON plugin configuration (`Deadline monitor > Tools > Configure Plugins > AYON`) to add additional AYON servers.
+
+Additional servers should follow this format: `{server url}@{token}`, e.g., `http://11.2.3.47@myapikey1`.
+
+![](assets/deadline/additional_ayon_servers.png)
+
+
 
 ## Troubleshooting
 
