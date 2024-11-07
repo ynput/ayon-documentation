@@ -63,8 +63,10 @@ Deadline custom plugins and the `GlobalJobPreLoad` script are shipped with AYON 
 In Deadline addon, you'll find repository overlay where you can just copy its content to Deadline repository and it should work.
 
 There are two ways to get them: Feel free to pick either one.
-1. Get the files form the downloaded addon `0.3.3` on starting the AYON Launcher.By default the addon will be downloaded to the path saved in the `AYON_ADDONS_DIR` environment variable. 
+1. Get the files form the downloaded addon `0.3.3` on starting the AYON Launcher. By default the addon will be downloaded to the path saved in the `AYON_ADDONS_DIR` environment variable. 
+2. Download the addon `.zip` package from [ayon-deadline/releases - Github](https://github.com/ynput/ayon-deadline/releases).
 
+Either download the addon yourself from GitHub or locate the downloaded one using the launcher on your machine. The files should be in the `deadline_x.x.x/client/ayon_deadline/repository` directory.
 :::
 
 Custom Plugins:
