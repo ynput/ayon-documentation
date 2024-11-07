@@ -74,7 +74,7 @@ Custom Plugins:
 - [CelAction Plug-in](#celaction-plug-in)
 - [Harmony AYON Plug-in](#harmony-ayon-plug-in)
 - [Unreal Engine 5 Plug-in](#unreal-engine-5-plug-in)
-- [Husk Standalone Plug-in](#husk-standalone-deadline-plugin) *This one is not shipped with deadline addon. Get it from [Husk Standalone Deadline Submitter - Github](https://github.com/BigRoy/HuskStandaloneSubmitter)*
+- [Husk Standalone Plug-in](#husk-standalone-plug-in) *This one is not shipped with deadline addon. Get it from [Husk Standalone Deadline Submitter - Github](https://github.com/BigRoy/HuskStandaloneSubmitter)*
 
 #### AYON Plug-in
 
