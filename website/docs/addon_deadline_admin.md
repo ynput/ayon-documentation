@@ -27,7 +27,7 @@ The integration consists of two parts:
 
 The `GlobalJobPreLoad` handles populating submitted jobs with proper environment variables using settings from the `AYON` Deadline Plug-in.
 
-The addon also simplifies Unreal deadline submissions by leveraging the version control addon. See [UnrealEngine5](#unrealengine5).
+The addon also simplifies Unreal deadline submissions by leveraging the version control addon. See [UnrealEngine5](#unreal-engine-5-plug-in).
 
 
 ## Preparation
@@ -54,7 +54,7 @@ Deadline supports username and passwords authentication to protect webservice fr
 For this, admins need to enable authentication in the addon settings. See [System Deadline Webservice Info](#system-deadline-webservice-info).
 
 
-### Deadline Custom Plugins
+### Deadline Custom Plug-ins
 
 AYON Deadline addon assumes few deadline custom plugins to be installed.
 
@@ -68,13 +68,13 @@ There are two ways to get them: Feel free to pick either one.
 :::
 
 Custom Plugins:
-- [AYON](#ayon)
-- [CelAction](#celaction)
-- [HarmonyAYON](#harmonyayon)
-- [UnrealEngine5](#unrealengine5)
-- [HuskStandaloneSubmitter](#huskstandalonesubmitter) (This one is not shipped with deadline addon. Get it from [Husk Standalone Submitter](https://github.com/BigRoy/HuskStandaloneSubmitter))
+- [AYON Plug-in](#ayon-plug-in)
+- [CelAction Plug-in](#celaction-plug-in)
+- [Harmony AYON Plug-in](#harmony-ayon-plug-in)
+- [Unreal Engine 5 Plug-in](#unreal-engine-5-plug-in)
+- [Husk Standalone Plug-in](#husk-standalone-deadline-plugin) *This one is not shipped with deadline addon. Get it from [Husk Standalone Deadline Submitter - Github](https://github.com/BigRoy/HuskStandaloneSubmitter)*
 
-#### AYON
+#### AYON Plug-in
 
 The `AYON` Deadline Plug-in must be configured to point to a valid AYON executable location. The executable need to be installed to
 destinations accessible by DL process. Check permissions (must be executable and accessible by Deadline process)
@@ -89,17 +89,17 @@ executable. It is recommended to use the `ayon_console` executable as it provide
 
 ![](assets/deadline/deadline_configure_plugin.png)
 
-#### CelAction
+#### CelAction Plug-in
 
 It's required for CelAction submissions via deadline addon.
 ![](assets/deadline//celaction_dl_plugin.png)
 
-#### HarmonyAYON
+#### Harmony AYON Plug-in
 
 It's required for Harmony submissions via deadline addon.
 ![](assets/deadline/harmonyayon_dl_plugin.png)
 
-#### UnrealEngine5
+#### Unreal Engine 5 Plug-in
 
 It extends the official Unreal5 Plugin to support Unreal Perforce submissions.
 It implements `PreLoad` scripts that syncs your project to change list id within the exported `changelist` before rendering.
@@ -112,7 +112,7 @@ Unreal submissions via deadline addon requires `ayon-version-control` addon and 
 ![](assets/deadline//unreal5_dl_plugin.png)
 
 
-#### HuskStandaloneSubmitter
+#### Husk Standalone Plug-in
 
 It's required for Houdini `usdrender` submissions via deadline addon.
 
@@ -200,7 +200,7 @@ If every machine should have separate credentials, admin need to provide them in
 This feature is handy for submissions from a separate AYON dev server.
 :::
 
-When enabled, submit your current `AYON_SERVER_URL` with the job to enforce using your current server. This requires modifying the Deadline AYON plugin configuration to add additional AYON servers. See [Deadline AYON Plugin](#ayon).
+When enabled, submit your current `AYON_SERVER_URL` with the job to enforce using your current server. This requires modifying the Deadline AYON plugin configuration to add additional AYON servers. See [Deadline AYON Plug-in](#ayon-plug-in).
 
 ### Validate Expected Files
 > Setting Location: `ayon+settings://deadline/publish/ValidateExpectedFiles`
