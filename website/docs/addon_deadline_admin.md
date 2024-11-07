@@ -135,13 +135,16 @@ If you have the `PATH` configured in your application addon as mentioned in  [Ho
 ![Webservice url](assets/deadline/webserver_config.png)
 
 
-- `Url` - is IP or host name including port (example of locally running DL `http://127.0.0.1:8081`)
-- `Require authentication` - DL webservice could be protected by username/password (set in Deadline Monitor in `Tools > Configure Repository Options > Web Service Settings > Require Authentication`)
-- `Don't verify SSL` - if your Dl webservice is using SSL (eg. on https://) self-signed certificates might trigger an error. Disable verification of certificate here.
-- `Default user name` - if `Require authentication` is enabled, this and next field provides possibility to fill single credentials for all artists publishing to Deadline. 
-  
+1. **Server Name**: The designated name for a deadline server.
+2. **URL**: The IP or hostname, including the port (e.g., a locally running DL: `http://127.0.0.1:8081`).
+3. **Require Authentication**: The DL webservice may require a username and password. See [Authentication](#authentication).
+4. **Don't verify SSL**: Enable this if your DL webservice uses SSL (e.g., on `https://`). Self-signed certificates might trigger an error, so disable certificate verification here.
+5. **Default Username**: If `Require Authentication` is enabled, this field allows you to set a single username for all artists publishing to Deadline.
+6. **Default Password**: The password for the default username.
+7. **+**: Add more Deadline servers.
+
 :::info
-If every machine should have separate credentials, admin need to provide them in `Site Settings` on `Studio Settings` page.
+If each artist machine needs separate credentials, the admin must provide them in `Site Settings` on the `Studio Settings` page.
 
 ![](assets/deadline/studio_settings.png)
 :::
@@ -153,37 +156,40 @@ If every machine should have separate credentials, admin need to provide them in
 
 ![](assets/deadline/collect_job_info.png)
 
+A universal Deadline job info collector used across different DCCs/Hosts. When enabled, it will select the matching profile for your DCC.
+*It doesn't affect the AYON publish jobs or additional jobs submitted by publish plugins like export job in Houdini.*
+
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Profiles**: Provides a filter for matching DCCs and specifies the job info to add.
 
 #### Profiles
 <div class="row markdown">
 <div class="col">
 
-- Host names
-- Task Types
-- Task names
-- Frames per Task
-- Priority
-- Group
-- Limit Groups
-- Primary Pool
-- Secondary Pool
-- Machine Limit
-- Machine List
-- Machine List is a Deny
-- Number of concurrent tasks
-- Department
-- Use GPU
-- Delay Job
-- Use Published Scene
-- Use Asset dependencies
-- Workfile Dependency
-- Multiprocess
-- Allowed environment keys
-- Search & replace in environment values
-- Additional JobInfo data
-- Additional PluginInfo data
-- Exposed Overrides
-- **+** button
+- **Host name**: Pipeline integration name provided by an AYON addon.
+- **Task Types**: Select from a list of task types to determine which ones the filter profile will affect. Leave blank to apply the profile to all tasks.
+- **Task names**: List of task names to determine which ones the filter profile will affect.
+- **Frames per Task**: Number of frames per task (also known as `Chunk Size`).
+- **Priority**: Job’s priority (default is 50).
+- **Group**: Group to submit to.
+- **Limit Groups**: Specifies the limit groups this job belongs to (default is blank).
+- **Primary Pool**: Pool the job is submitted to (default is none).
+- **Secondary Pool**: Secondary pool the job can spread to if machines are available. If not specified, the job won't use a secondary pool.
+- **Machine Limit**: Maximum number of machines this job can be rendered on simultaneously (default is 0, meaning unlimited).
+- **Machine List**: Specifies which Workers are on the job’s list (default list is an allow list).
+- **Machine List is a Deny**: Enable to use the `Machine list` as a deny list.
+- **Number of concurrent tasks**: Maximum number of tasks a Worker can render at a time (default is 1).
+- **Department**: Department the job belongs to. Used to group jobs in the DL monitor; doesn't affect rendering.
+- **Use GPU**
+- **Delay Job**: Start time delay applied to the submission date.
+- **Use Published Scene**
+- **Use Asset dependencies**
+- **Workfile Dependency**
+- **Multiprocess**
+- **Additional JobInfo data**: Dictionary (JSON parsable) to add to `JobInfo` of submission.
+- **Additional PluginInfo data**: Dictionary (JSON parsable) to add to `PluginInfo` of submission.
+- **Exposed Overrides**: Expose the attributes in this list to the user when publishing.
+- **+**: Add more profiles.
 
 </div>
 <div class="col">
@@ -196,11 +202,11 @@ If every machine should have separate credentials, admin need to provide them in
 ### Add AYON server to farm job
 > Setting Location: `ayon+settings://deadline/publish/CollectAYONServerToFarmJob`
 
-![](assets/deadline/add_ayon_server_to_farm_job.png)
-
 :::tip
 This feature is handy for submissions from a separate AYON dev server.
 :::
+
+![](assets/deadline/add_ayon_server_to_farm_job.png)
 
 When enabled, submit your current `AYON_SERVER_URL` with the job to enforce using your current server. This requires modifying the Deadline AYON plugin configuration to add additional AYON servers. See [Deadline AYON Plug-in](#ayon-plug-in).
 
@@ -209,62 +215,134 @@ When enabled, submit your current `AYON_SERVER_URL` with the job to enforce usin
 
 ![](assets/deadline/validate_expected_files.png)
 
-1. Enable
-2. Active
-3. Allow user change frame range
-4. Trigger on families
-5. Trigger for plugins
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+3. **Allow user change frame range**
+4. **Trigger on families**: List of `families` to determine which ones the validator will affect.
+5. **Trigger for plugins**: List of `targets` to determine which ones the validator will affect.
 
 ### After Effects to deadline
 > Setting Location: `ayon+settings://deadline/publish/AfterEffectsSubmitDeadline`
 
 ![](assets/deadline/aftereffects_to_deadline.png)
 
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+   
 ### Blender Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/BlenderSubmitDeadline`
 
 ![](assets/deadline/blender_to_deadline.png)
 
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+
 ### Celaction Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/CelactionSubmitDeadline`
+
+![](assets/deadline/celaction_to_deadline.png)
+
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
 
 ### Fusion Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/FusionSubmitDeadline`
 
 ![](assets/deadline/fusion_to_deadline.png)
 
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+4. **Deadline Plugin**: Choose the default deadline plugin for Fusion submissions: `Fusion` or `FusionCmd`.
+
 ### Harmony Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/HarmonySubmitDeadline`
 
 ![](assets/deadline/harmony_to_deadline.png)
+
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
 
 ### Houdini Submit cache to deadline
 > Setting Location: `ayon+settings://deadline/publish/HoudiniCacheSubmitDeadline`
 
 ![](assets/deadline/houdini_cache_to_deadline.png)
 
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+
 ### Houdini Submit render to deadline
 > Setting Location: `ayon+settings://deadline/publish/HoudiniSubmitDeadline`
 
+:::info
+Houdini submissions can use different plugins to save on licenses. The `export job` uses a Houdini plugin to handle exporting caches or intermediate render files, like `.ass` or `.ifd`. This differs from the `render job`, which uses a separate Deadline plugin from Houdini to process these intermediate files, such as `Arnold` for `.ass` or `Mantra` for `.ifd`.
+:::
+
 ![](assets/deadline/houdini_render_to_deadline.png)
+
+This publish plugin provides additional settings specifically for the `export job`.
+
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+4. **Export Priority**: Export Job’s priority (default is 50).
+5. **Export Chunk Size**: Export Job's chunk size. (also known as `Number of frames per task `).
+6. **Export Group**: Group to submit the export job to.
+7. **Export Limit Groups**: Specifies the limit groups the export job belongs to (default is blank).
+8. **Export Machine Limit**: Maximum number of machines the export job can be rendered on simultaneously (default is 0, meaning unlimited).
 
 ### Max Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/MaxSubmitDeadline`
 
 ![](assets/deadline/max_to_deadline.png)
 
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+
 ### Maya Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/MayaSubmitDeadline`
 
+:::info
+This publish plugin can also submit Tile jobs.
+Tile jobs use the same job info that matches the Maya profile but also allow you to explicitly override some settings, like `priority`.
+:::
+
 ![](assets/deadline/maya_to_deadline.png)
-![](assets/deadline/maya_to_deadline_scene_patches.png)
+
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+4. **Use Scene with Imported Reference**
+5. **Tile Priority**: Tile job’s priority (default is 50).
+6. **Tile Assembler Plugin**: Choose the default deadline plugin for Tile submissions:  Currently, only `Draft Tile Assembler` is available.
+7. **Scene patches**
+    ![](assets/deadline/maya_to_deadline_scene_patches.png)
+    1. **Patch name**
+    2. **Patch regex**
+    3. **Patch line**
+    4. **+**: Add more scene patches.
+8. **Disable Strict Error Check profiles**
 
 ### Nuke Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/NukeSubmitDeadline`
 
 ![](assets/deadline/nuke_to_deadline.png)
 
-![](assets/deadline/nuke_to_deadline_nuke_limit_groups.png)
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Optional**: Enable this to let artists deactivate the plugin locally.
+3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+4. **Node based Limit Groups**: Set limit groups based on node types in the workfile. For example, if there is a node of type X, LimitX should be added, etc.
+    ![](assets/deadline/nuke_to_deadline_nuke_limit_groups.png)
+    1. **Node name**
+    2. **Limit Groups list**
+    3. **+**: Add more items to the Limit group list
+    4. **+**: Add another **Limit Groups** list for a different node name.
 
 ### Process submitted cache Job on farm
 > Setting Location: `ayon+settings://deadline/publish/ProcessSubmittedCacheJobOnFarm`
@@ -273,11 +351,11 @@ When enabled, submit your current `AYON_SERVER_URL` with the job to enforce usin
 
 It submits a dependent AYON Job to publish the exported cache.
 
-1. **Enable**
-2. **Department**
-3. **Pool**
-4. **Group**
-5. **Priority**
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Department**: Department the AYON publish job belongs to.
+3. **Pool**: Pool the job is submitted to.
+4. **Group**: Group to submit to.
+5. **Priority**: Job’s priority (default is 50).
 
 ### Process submitted job on farm
 > Setting Location: `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`
@@ -286,20 +364,20 @@ It submits a dependent AYON Job to publish the rendered images.
 
 ![](assets/deadline/process_submitted_job_on_farm.png)
 
-1. **Enable**
-2. **Department**
-3. **Pool**
-4. **Group**
-5. **Priority**
+1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
+2. **Department**: Department the AYON publish job belongs to.
+3. **Pool**: Pool the job is submitted to.
+4. **Group**: Group to submit to.
+5. **Priority**: Job’s priority (default is 50).
 6. **Skip integration of representation with ext:** list of extensions that shouldn't be published.
 7. **List of family names to transfer to generated instances (AOVs for example):** Ensure the AOV instances have these families if present.
 8. **Reviewable products filter:** Add review for specific aov names.
 ![](assets/deadline/reviewable_products_filter.png)
    1. **AOV Filter**
-       1. **host_name:** Pipeline integration name supplied by an AYON addon.
-       2. **AOV Regex:** AOV regex patterns for AOV filters.
-       3. **+ icon:** Add more AOV regexes 
-   2. **+ icon:** Add more filters
+       1. **host_name**: Pipeline integration name supplied by an AYON addon.
+       2. **AOV Regex**: AOV regex patterns for AOV filters.
+       3. **+**: Add more AOV regexes 
+   2. **+**: Add more filters
 
 
 ## Troubleshooting
