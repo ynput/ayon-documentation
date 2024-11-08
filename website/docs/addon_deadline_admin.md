@@ -18,29 +18,32 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-AYON integration for Deadline mainly uses deadline webservice to send jobs.
+AYON integration for Deadline primarily uses the Deadline web service to send jobs.
 
 The integration consists of two parts:
-
 - The Deadline custom plugins.
-- A `GlobalJobPreLoad` Deadline Script (this gets triggered for each deadline job)
+- A `GlobalJobPreLoad` Deadline Script (triggered for each Deadline job submitted via the Deadline addon).
 
-The `GlobalJobPreLoad` handles populating submitted jobs with proper environment variables using settings from the `AYON` Deadline Plug-in.
+The `GlobalJobPreLoad` script manages the population of submitted jobs with the correct environment variables, using settings from the AYON Deadline Plug-in.
 
-The addon also simplifies Unreal deadline submissions by leveraging the version control addon. See [UnrealEngine5](#unreal-engine-5-plug-in).
+Additionally, the addon streamlines Unreal Deadline submissions by utilizing the version control addon. See [Unreal Engine 5 Plug-in](#unreal-engine-5-plug-in).
 
 
 ## Preparation
 
 For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you need to set a few things up in both AYON and Deadline itself
 
-1. Deploy AYON launcher to all nodes of Deadline farm. See [Install & Run](admin_launcher_distribute.md)
-2. Set up *Deadline Web API service*. For more details on how to do it, see [here](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/web-service.html).
-3. Install our custom plugin and scripts to your deadline repository. It should be as simple as copying content of `ayon/modules/deadline/repository` to `path/to/your/deadline/repository`. See [Deadline Plugins](#deadline-plugins).
-4. Create a new AYON Bundle with Deadline Addon version.
-5. Configure Deadline addon settings. See [Addon Settings](#addon-settings) below.
-6. Select which Deadline server should be used for project in `ayon+settings://deadline/deadline_server?project=YOUR_PROJECT`
-7. Create service account on Ayon server http://YOUR_AYON/settings/users , `Generate new key` and store it, you would need it in Deadline plugin configuration.
+## Preparation
+
+For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support, you'll need to set up a few things in both AYON and Deadline itself.
+
+1. **Deploy AYON Launcher**: Install the AYON launcher on all nodes of the Deadline farm. See [Install & Run](admin_launcher_distribute.md) for guidance.
+2. **Set Up Deadline Web API Service**: Follow the instructions [here](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/web-service.html) to set up the Deadline Web API service.
+3. **Install Custom Plugin and Scripts**: Copy the contents of `ayon/modules/deadline/repository` to `path/to/your/deadline/repository`. Refer to [Deadline Custom Plug-ins](#deadline-custom-plug-ins) for more details.
+4. **Create a New AYON Bundle**: Include the Deadline Addon version in your new AYON Bundle.
+5. **Configure Deadline Addon Settings**: See [Addon Settings](#addon-settings) for configuration details.
+6. **Select Deadline Server**: By default, it uses the `default` server defined in the studio settings. See [System Deadline Webservice Info](#system-deadline-webservice-info). However, you can choose which Deadline server should be used for your project at  `ayon+settings://deadline/deadline_server?project=YOUR_PROJECT`.
+7. **Get AYON_API_KEY**: Visit `http://YOUR_AYON/settings/users`, create a new service account user, and click on generate a new key. Store this key as you'll need it for the Deadline [AYON Plug-in](#ayon-plug-in) configuration.
 
 :::note guide
 You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
@@ -56,17 +59,14 @@ For this, admins need to enable authentication in the addon settings. See [Syste
 
 ### Deadline Custom Plug-ins
 
-AYON Deadline addon assumes few deadline custom plugins to be installed.
+The AYON Deadline addon requires a few custom plugins to be installed.
 
 :::info
-Deadline custom plugins and the `GlobalJobPreLoad` script are shipped with AYON deadline addon.
-In Deadline addon, you'll find repository overlay where you can just copy its content to Deadline repository and it should work.
+The Deadline custom plugins and the GlobalJobPreLoad script come with the AYON Deadline addon.
+In the Deadline addon, you'll find a repository overlay that you can copy into the Deadline repository to make it work.
 
-There are two ways to get them: Feel free to pick either one.
-1. Get the files form the downloaded addon `0.3.3` on starting the AYON Launcher. By default the addon will be downloaded to the path saved in the `AYON_ADDONS_DIR` environment variable. 
-2. Download the addon `.zip` package from [ayon-deadline/releases - Github](https://github.com/ynput/ayon-deadline/releases).
-
-Either download the addon yourself from GitHub or locate the downloaded one using the launcher on your machine. The files should be in the `deadline_x.x.x/client/ayon_deadline/repository` directory.
+To get the custom plugins, you can either download the addon `.zip` package from [ayon-deadline/releases - GitHub](https://github.com/ynput/ayon-deadline/releases) or find the downloaded one using the launcher on your machine. By default, the addon downloads to the path saved in the `AYON_ADDONS_DIR` environment variable.
+The files should be in the `deadline_x.x.x/client/ayon_deadline/repository` directory.
 :::
 
 Custom Plugins:
