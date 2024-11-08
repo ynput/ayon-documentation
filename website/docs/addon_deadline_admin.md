@@ -31,10 +31,6 @@ Additionally, the addon streamlines Unreal Deadline submissions by utilizing the
 
 ## Preparation
 
-For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support you need to set a few things up in both AYON and Deadline itself
-
-## Preparation
-
 For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support, you'll need to set up a few things in both AYON and Deadline itself.
 
 1. **Deploy AYON Launcher**: Install the AYON launcher on all nodes of the Deadline farm. See [Install & Run](admin_launcher_distribute.md) for guidance.
