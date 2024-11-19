@@ -23,18 +23,24 @@ Ftrack is currently the main project management option for AYON. This documentat
 If you want to connect Ftrack to AYON you might need to make few changes in Ftrack settings. These changes would take a long time to do manually, so we prepared a few Ftrack actions to help you out. First, you'll need to have Ftrack enabled in your AYON bundle, and enter the address to your Ftrack server.
 
 ### Login
-Once your server is configured, restart AYON and you should be prompted to enter your [Ftrack credentials](addon_kitsu_artist.md#How-to-use-Ftrack-in-AYON) to be able to run our Ftrack actions. If you are already logged in to Ftrack in your browser, it is enough to press `Ftrack login` and it will connect automatically.
+Once your server is configured, restart AYON and you should be prompted to enter your [Ftrack credentials](addon_kitsu_artist.md#How-to-use-Ftrack-in-AYON) inside the standalone launcher to be able to run our Ftrack actions. If you are already logged in to Ftrack in your browser, it is enough to press `Ftrack login` and it will connect automatically.
 
 For more details step by step on how to login to Ftrack in AYON to go [artist Ftrack login](addon_kitsu_artist.md#How-to-use-Ftrack-in-AYON) documentation.
 
-You can only use our Ftrack Actions and publish to Ftrack if each artist is logged in.
+### Ftrack Actions
+After successfully connecting AYON with your Ftrack, you can right-click on any project in Ftrack and you should see a bunch of actions available. The most important one is called AYON Admin and contains multiple options inside. 
 
+If you cannot see the Actions or custom attributes in Ftrack, it is likely due to an incorrect or missing Ftrack role assignment. To resolve this:
+1.	Open the AYON – Ftrack Settings.
+2.	Locate the specific Action or Event.
+3.	Assign your Ftrack role to the relevant Action/Event to ensure you have the necessary permissions
+
+![Add Custom Roles To Actions](assets/ftrack/add-custom-roles-to-actions-main.png)
+
+Certain AYON Actions, such as publishing, are only accessible in Ftrack when you are logged into the standalone AYON Launcher.
 
 ### Custom Attributes
-After successfully connecting AYON with you Ftrack, you can right-click on any project in Ftrack and you should see a bunch of actions available. The most important one is called `AYON Admin` and contains multiple options inside.
-
 To prepare Ftrack for working with AYON you'll need to run [AYON Admin - Create/Update Custom Attributes](addon_ftrack_manager.md#create-update-custom-attributes), which creates and sets the Custom Attributes necessary for AYON to function.
-
 
 ## Event Server
 Ftrack Event Server is the key to automation of many tasks like _status change_, _thumbnail update_, _automatic synchronization to AYON server_ and many more. Event server should run at all times to perform the required processing as it is not possible to catch some of them retrospectively with enough certainty.
@@ -44,13 +50,43 @@ Ftrack Event Server is the key to automation of many tasks like _status change_,
 2. A machine where the services will be running.
 
 ### Which user to use?
--   should have `Administrator` role
+-   should have `Administrator` role (or a custom role added to all events inside the AYON Ftrack Addon settings)
 -   the same user should not be used by an artist
 -   the user should have permissions for private projects you want to sync
 
+Follow these steps to generate an API key and configure the connection:
+1.	Generate a Personal API Key
+    - Navigate to your Ftrack profile settings by selecting My Account > Security Settings.
+    -	Create a Personal API key and save it securely.
+3.	Add Secrets in AYON
+    -	In AYON, go to the Secrets page.
+    -	Create two new secrets:
+        -	`ftrack_username` – Enter your Ftrack username.
+        -	`ftrack_api_key` – Paste the API key you generated in Ftrack.
+4.	Configure the Ftrack Addon
+    -	Open the AYON – Ftrack Addon settings.
+    -	In the Service Settings, select the secrets you created (ftrack_username and ftrack_api_key) to complete the setup.
+
 
 ### How to run ftrack event server
-At this moment event server consist of 2 processes Leecher and Processor. There are prepared docker images for each process. We do recommend to use ASH (AYON service host) to be able to control them from AYON server web. In that case make sure you have running ASH and create both services in **Services** on server.
+At this moment event server consist of 2 processes Leecher and Processor. There are prepared docker images for each process. We do recommend to use [ASH (AYON service host)](admin_server_services.md#ash) to be able to control them from AYON server web. In that case make sure you have running ASH and create both services in **Services** on server.
+
+1.	Click the Settings icon in the top-right corner of AYON and navigate to the Services page.
+2.	Add two new services with the following configurations. If no workers appear at this stage, verify the ASH setup for issues.
+
+> **1st Service: Ftrack Processor**  
+Name: ftrack_processor  
+Addon: Ftrack  
+Addon Version: ftrack X.X.X  
+Service: Processor  
+Host: worker-01  
+
+> **2nd Service: Ftrack Leecher**  
+Name: ftrack_leecher  
+Addon: Ftrack  
+Addon Version: ftrack X.X.X  
+Service: Leecher  
+Host: worker-01  
 
 There is option to run the services manually, in that case please check ftrack addon repository for more information.
 
