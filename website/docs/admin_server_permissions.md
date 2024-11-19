@@ -8,13 +8,18 @@ toc_max_heading_level: 5
 
 # User Permissions and Project Access Groups
 
-AYON offers robust and detailed permissions to manage user access within projects and it's settings.
+AYON provides comprehensive and granular permissions to manage user access within projects and their settings.
+
+## Overview
+
+-   Users can be assigned one of three levels: `User`, `Manager`, or `Admin`.
+-   By default, a `User` does not have access to any projects.
+-   [Access groups](#project-access-groups) grant specific permissions within a project.
+-   To gain project access, a `User` must be assigned to an access group. For detailed steps, see the [Adding Users to Projects](#adding-users-to-projects) section.
 
 ## Top-Level Access Roles
 
 AYON has three main access levels: **Admin**, **Manager**, and **User**.
-
-### Overview of Access Levels
 
 | Access Level | Studio Settings | Project Settings | Bundle Control | Access Level Control | Project Access | Restart Server |
 | ------------ | --------------- | ---------------- | -------------- | -------------------- | -------------- | -------------- |
@@ -26,7 +31,7 @@ AYON has three main access levels: **Admin**, **Manager**, and **User**.
 -   **Manager**: Access to all projects and most settings, with the ability to manage users and assign roles up to the Manager level.
 -   **User**: By default, has no access to studio settings, project settings, or projects. However, access to project settings and projects can be granted based on assigned access groups.
 
-### User Access Level
+### Setting User Access Level
 
 Admins and Managers can assign users to access levels equal to or lower than their own on the user settings page.
 
