@@ -176,7 +176,6 @@ A universal Deadline job info collector used across different DCCs/Hosts. When e
 - **Machine List is a Deny**: Enable to use the `Machine list` as a deny list.
 - **Number of concurrent tasks**: Maximum number of tasks a Worker can render at a time (default is 1).
 - **Department**: Department the job belongs to. Used to group jobs in the DL monitor; doesn't affect rendering.
-- **Use GPU**
 - **Delay Job**: Start time delay applied to the submission date.
 - **Use Published Scene**
 - **Use Asset dependencies**
