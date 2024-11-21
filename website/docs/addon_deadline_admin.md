@@ -216,60 +216,12 @@ When enabled, submit your current `AYON_SERVER_URL` with the job to enforce usin
 4. **Trigger on families**: List of `families` to determine which ones the validator will affect.
 5. **Trigger for plugins**: List of `targets` to determine which ones the validator will affect.
 
-### After Effects to deadline
-> Setting Location: `ayon+settings://deadline/publish/AfterEffectsSubmitDeadline`
-
-![](assets/deadline/aftereffects_to_deadline.png)
-
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-   
-### Blender Submit to deadline
-> Setting Location: `ayon+settings://deadline/publish/BlenderSubmitDeadline`
-
-![](assets/deadline/blender_to_deadline.png)
-
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-
-### Celaction Submit to deadline
-> Setting Location: `ayon+settings://deadline/publish/CelactionSubmitDeadline`
-
-![](assets/deadline/celaction_to_deadline.png)
-
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-
 ### Fusion Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/FusionSubmitDeadline`
 
 ![](assets/deadline/fusion_to_deadline.png)
 
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-4. **Deadline Plugin**: Choose the default deadline plugin for Fusion submissions: `Fusion` or `FusionCmd`.
-
-### Harmony Submit to deadline
-> Setting Location: `ayon+settings://deadline/publish/HarmonySubmitDeadline`
-
-![](assets/deadline/harmony_to_deadline.png)
-
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-
-### Houdini Submit cache to deadline
-> Setting Location: `ayon+settings://deadline/publish/HoudiniCacheSubmitDeadline`
-
-![](assets/deadline/houdini_cache_to_deadline.png)
-
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+- **Deadline Plugin**: Choose the default deadline plugin for Fusion submissions: `Fusion` or `FusionCmd`.
 
 ### Houdini Submit render to deadline
 > Setting Location: `ayon+settings://deadline/publish/HoudiniSubmitDeadline`
@@ -282,23 +234,11 @@ Houdini submissions can use different plugins to save on licenses. The `export j
 
 This publish plugin provides additional settings specifically for the `export job`.
 
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-4. **Export Priority**: Export Job’s priority (default is 50).
-5. **Export Chunk Size**: Export Job's chunk size. (also known as `Number of frames per task `).
-6. **Export Group**: Group to submit the export job to.
-7. **Export Limit Groups**: Specifies the limit groups the export job belongs to (default is blank).
-8. **Export Machine Limit**: Maximum number of machines the export job can be rendered on simultaneously (default is 0, meaning unlimited).
-
-### Max Submit to deadline
-> Setting Location: `ayon+settings://deadline/publish/MaxSubmitDeadline`
-
-![](assets/deadline/max_to_deadline.png)
-
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
+- **Export Priority**: Export Job’s priority (default is 50).
+- **Export Chunk Size**: Export Job's chunk size. (also known as `Number of frames per task `).
+- **Export Group**: Group to submit the export job to.
+- **Export Limit Groups**: Specifies the limit groups the export job belongs to (default is blank).
+- **Export Machine Limit**: Maximum number of machines the export job can be rendered on simultaneously (default is 0, meaning unlimited).
 
 ### Maya Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/MayaSubmitDeadline`
@@ -310,29 +250,24 @@ Tile jobs use the same job info that matches the Maya profile but also allow you
 
 ![](assets/deadline/maya_to_deadline.png)
 
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-4. **Use Scene with Imported Reference**
-5. **Tile Priority**: Tile job’s priority (default is 50).
-6. **Tile Assembler Plugin**: Choose the default deadline plugin for Tile submissions:  Currently, only `Draft Tile Assembler` is available.
-7. **Scene patches**
+- **Use Scene with Imported Reference**
+- **Tile Priority**: Tile job’s priority (default is 50).
+- **Tile Assembler Plugin**: Choose the default deadline plugin for Tile submissions:  Currently, only `Draft Tile Assembler` is available.
+- **Scene patches**
     ![](assets/deadline/maya_to_deadline_scene_patches.png)
     1. **Patch name**
     2. **Patch regex**
     3. **Patch line**
     4. **+**: Add more scene patches.
-8. **Disable Strict Error Check profiles**
+- **Disable Strict Error Check profiles**
 
 ### Nuke Submit to deadline
 > Setting Location: `ayon+settings://deadline/publish/NukeSubmitDeadline`
 
 ![](assets/deadline/nuke_to_deadline.png)
 
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Optional**: Enable this to let artists deactivate the plugin locally.
-3. **Active**: Disable this to deactivate the plugin. The system will recognize the plugin, but it won't function.
-4. **Node based Limit Groups**: Set limit groups based on node types in the workfile. For example, if there is a node of type X, LimitX should be added, etc.
+- **Use GPU**: Use the GPU For Rendering.
+- **Node based Limit Groups**: Set limit groups based on node types in the workfile. For example, if there is a node of type X, LimitX should be added, etc.
     ![](assets/deadline/nuke_to_deadline_nuke_limit_groups.png)
     1. **Node name**
     2. **Limit Groups list**
@@ -346,11 +281,10 @@ Tile jobs use the same job info that matches the Maya profile but also allow you
 
 It submits a dependent AYON Job to publish the exported cache.
 
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Department**: Department the AYON publish job belongs to.
-3. **Pool**: Pool the job is submitted to.
-4. **Group**: Group to submit to.
-5. **Priority**: Job’s priority (default is 50).
+- **Department**: Department the AYON publish job belongs to.
+- **Pool**: Pool the job is submitted to.
+- **Group**: Group to submit to.
+- **Priority**: Job’s priority (default is 50).
 
 ### Process submitted job on farm
 > Setting Location: `ayon+settings://deadline/publish/ProcessSubmittedJobOnFarm`
@@ -359,14 +293,13 @@ It submits a dependent AYON Job to publish the rendered images.
 
 ![](assets/deadline/process_submitted_job_on_farm.png)
 
-1. **Enable**: Turn on the main toggle of the plugin. Disable it to have the system ignore it.
-2. **Department**: Department the AYON publish job belongs to.
-3. **Pool**: Pool the job is submitted to.
-4. **Group**: Group to submit to.
-5. **Priority**: Job’s priority (default is 50).
-6. **Skip integration of representation with ext:** list of extensions that shouldn't be published.
-7. **List of family names to transfer to generated instances (AOVs for example):** Ensure the AOV instances have these families if present.
-8. **Reviewable products filter:** Add review for specific aov names.
+- **Department**: Department the AYON publish job belongs to.
+- **Pool**: Pool the job is submitted to.
+- **Group**: Group to submit to.
+- **Priority**: Job’s priority (default is 50).
+- **Skip integration of representation with ext:** list of extensions that shouldn't be published.
+- **List of family names to transfer to generated instances (AOVs for example):** Ensure the AOV instances have these families if present.
+- **Reviewable products filter:** Add review for specific aov names.
 ![](assets/deadline/reviewable_products_filter.png)
    1. **AOV Filter**
        1. **host_name**: Pipeline integration name supplied by an AYON addon.
