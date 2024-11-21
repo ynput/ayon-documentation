@@ -227,7 +227,9 @@ When enabled, submit your current `AYON_SERVER_URL` with the job to enforce usin
 > Setting Location: `ayon+settings://deadline/publish/HoudiniSubmitDeadline`
 
 :::info
-Houdini submissions can use different plugins to save on licenses. The `export job` uses a Houdini plugin to handle exporting caches or intermediate render files, like `.ass` or `.ifd`. This differs from the `render job`, which uses a separate Deadline plugin from Houdini to process these intermediate files, such as `Arnold` for `.ass` or `Mantra` for `.ifd`.
+To save on licenses, *in compliance with the native Deadline node,* Houdini render submission supports splitting the render into two jobs:
+- **Export Job:** This job uses Houdini to handle exporting caches or intermediate render files, like `.ass` or `.ifd`.
+- **Render Job:** This job uses a separate Deadline plugin from Houdini to process these intermediate files, such as `Arnold` for `.ass` or `Mantra` for `.ifd`.
 :::
 
 ![](assets/deadline/houdini_render_to_deadline.png)
