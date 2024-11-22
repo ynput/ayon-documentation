@@ -84,6 +84,7 @@ executable. It is recommended to use the `ayon_console` executable as it provide
  location for itself.
 - provide your Ayon server address and API key for service account generated in step 6 of [Preparation](#Preparation)
 - provide additional servers if needed, they should follow this format: `{server url}@{token}`, e.g., `http://11.2.3.47@myapikey1`.
+  - See [add-ayon-server-to-farm-job](#add-ayon-server-to-farm-job)
 
 ![](assets/deadline/deadline_configure_plugin.png)
 
@@ -177,9 +178,9 @@ A universal Deadline job info collector used across different DCCs/Hosts. When e
 - **Number of concurrent tasks**: Maximum number of tasks a Worker can render at a time (default is 1).
 - **Department**: Department the job belongs to. Used to group jobs in the DL monitor; doesn't affect rendering.
 - **Delay Job**: Start time delay applied to the submission date.
-- **Use Published Scene**
+- **Use Published Scene**: Use workfile from `publish` folder, in 99% of cases should be enabled.
 - **Use Asset dependencies**
-- **Workfile Dependency**
+- **Workfile Dependency**: Wait for presense of workfile before rendering, in 99% of cases should be enabled
 - **Multiprocess**
 - **Additional JobInfo data**: Dictionary (JSON parsable) to add to `JobInfo` of submission.
 - **Additional PluginInfo data**: Dictionary (JSON parsable) to add to `PluginInfo` of submission.
@@ -203,7 +204,9 @@ This feature is handy for submissions from a separate AYON dev server.
 
 ![](assets/deadline/add_ayon_server_to_farm_job.png)
 
-When enabled, submit your current `AYON_SERVER_URL` with the job to enforce using your current server. This requires modifying the Deadline AYON plugin configuration to add additional AYON servers. See [Deadline AYON Plug-in](#ayon-plug-in).
+When enabled, submit your current `AYON_SERVER_URL` with the job to enforce using your current server. Based on this value Deadline can connect to different AYON (`production` or `development` installation for example).
+This requires modifying the Deadline AYON plugin configuration to add additional AYON servers. See [Deadline AYON Plug-in](#ayon-plug-in).
+
 
 ### Validate Expected Files
 > Setting Location: `ayon+settings://deadline/publish/ValidateExpectedFiles`
