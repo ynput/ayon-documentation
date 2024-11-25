@@ -23,9 +23,9 @@ Ftrack is currently the main project management option for AYON. This documentat
 If you want to connect Ftrack to AYON you might need to make few changes in Ftrack settings. These changes would take a long time to do manually, so we prepared a few Ftrack actions to help you out. First, you'll need to have Ftrack enabled in your AYON bundle, and enter the address to your Ftrack server.
 
 ### Login
-Once your server is configured, restart AYON and you should be prompted to enter your [Ftrack credentials](addon_kitsu_artist.md#How-to-use-Ftrack-in-AYON) inside the standalone launcher to be able to run our Ftrack actions. If you are already logged in to Ftrack in your browser, it is enough to press `Ftrack login` and it will connect automatically.
+Once your server is configured, restart AYON and you should be prompted to enter your [Ftrack credentials](addon_ftrack_artist.md#How-to-use-Ftrack-in-AYON) inside the standalone launcher to be able to run our Ftrack actions. If you are already logged in to Ftrack in your browser, it is enough to press `Ftrack login` and it will connect automatically.
 
-For more details step by step on how to login to Ftrack in AYON to go [artist Ftrack login](addon_kitsu_artist.md#How-to-use-Ftrack-in-AYON) documentation.
+For more details step by step on how to login to Ftrack in AYON to go [artist Ftrack login](addon_ftrack_artist.md#How-to-use-Ftrack-in-AYON) documentation.
 
 ### Ftrack Actions
 After successfully connecting AYON with your Ftrack, you can right-click on any project in Ftrack and you should see a bunch of actions available. The most important one is called AYON Admin and contains multiple options inside. 
