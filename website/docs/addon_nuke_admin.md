@@ -1,7 +1,9 @@
 ---
 id: addon_nuke_admin
-title: Nuke Admin Docs
-sidebar_label: Nuke
+title: Nuke Addon Admin Settings
+sidebar_label: Settings
+description: Nuke Addon's Settings - Admins documentation.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -20,159 +22,423 @@ The AYON Nuke addon integration is compatible exclusively with the `commercial` 
 For more details, check out the comparison between different Nuke licenses [here](https://learn.foundry.com/nuke/content/getting_started/meet_nuke/about_indie.html).
 :::
 
-## Workfile Builder
+## General
+### Menu Shortcuts
+> Setting Location: `ayon+settings://nuke/general/menu`
 
-All Workfile Builder related settings can be found here. This is a list of available features:
-- Create first workfile
-- Custom Template path (task type filtered)
-- Run Builder profiles at first run
-- Define Builder Profiles With Filters
+![](assets/nuke/settings/menu_shortcuts.png)
 
+Set Shortcuts for AYON global [artist tools](artist_tools.md).
 
-![nuke_workfile_options_location](assets/nuke_workfile_builder_location.png)
+Available tools: 
+- **Create...**
+- **Publish...**
+- **Load...**
+- **Manage...**
+- **Build Workfile...**
 
+## Color Management (ImageIO)
 
-:::important Auto Load Last Version
-In case you want to set the auto load of the latest available version of workfiles, you can do it from [here](addon_core_settings#open-last-workfile-at-launch).
-:::
+Color configuration for Nuke scripts and nodes and also override the global color management settings, check [Host specific overrides](admin_colorspace.md#host-specific-overrides).
 
-### Create first workfile
+### Enable Color Management
 
-By switchintg this feature on, AYON will generate initial workfile version. Following attributes are possible to configure:
+> Setting Location: `ayon+settings://nuke/imageio/activate_host_color_management`
 
+![](assets/nuke/settings/enable_color_management.png)
 
-![nuke_workfile_options_create_first_version](assets/nuke_workfile_builder_create_first_workfile.png)
+This toggle enables AYON's global color management.
+This toggle is a master switch that enables and disables the whole section.
 
+### File Rules
+> Setting Location: `ayon+settings://nuke/imageio/file_rules`
 
-#### Custom templates
-Custom templates are added into nuke's node graph as nodes. List of task types can be defined for templates filtering.
+![](assets/nuke/settings/file_rules.png)
 
-- Task types are sourced from project related Anatomy/Task Types
+- **Activate Host Rules**
+- Rules
+  - **+**: Add more rules
+  - Each rule consists of
+    ![](assets/nuke/settings/rules.png)
+    - **Rule name**
+    - **Regex pattern**
+    - **Colorspace name**
+    - **File extension**
 
+### Viewer
+> Setting Location: `ayon+settings://nuke/imageio/viewer`
 
-![nuke_workfile_builder_template_task_type](assets/nuke_workfile_builder_template_task_type.png)
+![](assets/nuke/settings/viewer.png)
 
+- **Display**
+- **View**
 
- - multi platform path can be used in a variety of ways. Along the absolute path to a template file also an python formatting could be used. At the moment these keys are supported (image example below):
-   - `root[key]`: definitions from anatomy roots
-   - `project[name, code]`: project in context
-   - `asset`: name of asset/shot in context
-   - `task[type, name, short_name]`: as they are defined on asset/shot and in **Anatomy/Task Type** on project context
+### Monitor OUT
+> Setting Location: `ayon+settings://nuke/imageio/monitor`
 
-![nuke_workfile_builder_template_anatomy](assets/nuke_workfile_builder_template_anatomy.png)
+![](assets/nuke/settings/monitor_out.png)
 
-#### Run Builder profiles on first launch
-Enabling this feature will look into available Builder's Prorfiles (look below for more information about this feature) and load available versions into node graph.
+- **Display**
+- **View**
 
-### Builder Profiles
-Builder profiles are set of rules allowing artist Load any available versions for the context of the asset, which it is run from. Preset is having following attributes:
+### Backing Target Colorspace
+> Setting Location: `ayon+settings://nuke/imageio/baking_target`
 
-- **Filter**: Each profile could be defined with task filter. In case no filter is defined, a profile will be working for all.
+#### Mode 1: Use Colorspace
+![](assets/nuke/settings/baking_target_colorspace.png)
 
-- **Context section**: filtres for product name (regex accepted), families, representation names and available Loader plugin.
+- **Enable**
+- **Target baking type**
+- **Colorspace**
 
-- **Linked Assets/Shots**: filters for asset builds to be added
+#### Mode 2: Use Display & View
+![](assets/nuke/settings/baking_target_colorspace_display_view.png)
 
+- **Enable**
+- **Target baking type**
+- **Display**
+- **View**
 
-![nuke_workfile_builder_profiles](assets/nuke_workfile_builder_profiles.png)
+### Workfile
+> Setting Location: `ayon+settings://nuke/imageio/workfile`
 
-## Slate Workflow
+![](assets/nuke/settings/workfile.png)
 
-1. Add a "slate" node above the instance node. The workflow requires the slate node to have "slate" in the name to detect it.
+Nuke script project color settings map 1:1 
 
-![](assets/nuke_admin_slate_graph.png)
+- **Color Management Workflow**
+- **Native OpenColorIO Config**
+- **Working Space**
+- **Thumbnails**
+- **Monitor Out**
+- **8-bit Files**
+- **16-bit Files**
+- **Log Files**
+- **Float Files**
 
-Here is the slate group from the example above;
+### Nodes
+> Setting Location: `ayon+settings://nuke/imageio/nodes`
 
-```
-set cut_paste_input [stack 0]
-version 15.0 v2
-push $cut_paste_input
-Group {
- name slate_group
- selected true
- xpos -172
- ypos -163
-}
- ColorBars {
-  inputs 0
-  name ColorBars1
-  xpos 410
-  ypos -202
- }
- Text2 {
-  font_size_toolbar 100
-  font_width_toolbar 100
-  font_height_toolbar 100
-  message "THIS IS A SLATE"
-  old_message {{84 72 73 83 32 73 83 32 65 32 83 76 65 84 69}
-    }
-  box {0 0 1920 1080}
-  xjustify center
-  yjustify center
-  transforms {{0 2}
-    }
-  cursor_position 15
-  center {960 540}
-  cursor_initialised true
-  autofit_bbox false
-  initial_cursor_position {{0 1080}
-    }
-  group_animations {{0} imported: 0 selected: items: "root transform/"}
-  animation_layers {{1 11 960 540 0 0 1 1 0 0 0 0}
-    }
-  name Text2
-  xpos 410
-  ypos -130
- }
- Input {
-  inputs 0
-  name footage
-  selected true
-  xpos 279
-  ypos -170
- }
- Switch {
-  inputs 2
-  which {{"\[python (nuke.root()\\\[\\\"first_frame\\\"\\].value()\\ -\\ 1)\\ ==\\ nuke.frame()]"}}
-  name Switch1
-  xpos 279
-  ypos -130
- }
- Output {
-  name Output1
-  xpos 279
-  ypos -30
- }
-end_group
-```
+#### Plugin required
 
-Any node can be used as a slate node, so feel free to customize or insert your studios own slate node. Just ensure it has `slate` in the name.
+![](assets/nuke/settings/node_plugins_required.png)
 
-2. Make sure the slate node is actually showing something by looking into `first-frame - 1`.
+- **Used in plugins**
+- **Nuke Node Class**
+- **Knobs**
+  - **Name**
+  - **Type**
+  - **Controller**
+  - **+**: Add more knobs
+- **+**: Add more node per plugins
 
-3. Add tag `slate-frame` into settings at `ayon+settings://core/publish/ExtractReview/profiles/0/outputs/1/tags`.
+#### Plugin's node overrides
 
-4. Make sure the render write node is marked as reviewable.
+![](assets/nuke/settings/node_plugins_nodes_overrides.png)
 
-## Custom Menu
-You can add your custom tools menu into Nuke by extending definitions in **Nuke -> Scripts Menu Definition**.
-![Custom menu definition](assets/nuke-admin_scriptsmenu.png)
+- **Used in plugins**
+- **Nuke Node Class**
+- **Knobs**
+  - **Name**
+  - **Type**
+  - **Controller**
+  - **+**: Add more knobs
+- **+**: Add more node per plugins
 
-:::note Work in progress
-This is still work in progress. Menu definition will be handled more friendly with widgets and not
-raw json.
+### Assign colorspace to read nodes via rules
+> Setting Location: `ayon+settings://nuke/imageio/regex_inputs`
+
+![](assets/nuke/settings/assign_colorspace_to_read_nodes.png)
+
+When using loading different clips and images sequences via AYON loader,
+you can set the default colorspace for the read node based on a regex expression.
+
+- **Regex expression**
+- **Colorspace**
+- **+**: Add more rules.
+
+## Nuke Directory Mapping
+> Setting Location: `ayon+settings://nuke/dirmap`
+
+![](assets/nuke/settings/nuke_dir_mapping.png)
+
+- **Enable**
+- **Source Paths**
+- **Destination Paths**
+
+## Custom Tools
+> Setting Location: `ayon+settings://nuke/scriptsmenu`
+
+![](assets/nuke/settings/custom_tools_settings.png)
+
+Creates a custom from the provided action definitions 
+- **Menu Name**
+- **Definitions**
+  - Each definition includes
+    - **Type**
+    - **Command**
+    - **Source Type**
+    - **Title**
+    - **Tooltip**
+  - **+**: Add more definitions
+
+:::tip Expected result
+For the setting value in the screen shot above, 
+custom tools menu will appear in Nuke's toolbar. 
+![](assets/nuke/settings/custom_tools.png)
 :::
 
 ## Gizmo Menu
-You can add your custom toolbar menu into Nuke by setting your gizmo path and extending definitions in **Nuke -> Gizmo Menu**.
-![Custom menu definition](assets/nuke-admin_gizmomenu.png)
+> Setting Location: `ayon+settings://nuke/gizmo`
+
+![](assets/nuke/settings/gizmo_menu.png)
+
+- Toolbar Menu Name
+- Toolbar Icon Path
+- Gizmo Menu Options
+  Gizmo Menu supports two modes:
+
+<div class="row">
+<div class="col">
+
+![](assets/nuke/settings/gizmo_menu_directory_path_mode.png)
+
+- Gizmo Directory Path
+
+</div>
+<div class="col">
+
+![](assets/nuke/settings/gizmo_menu_gizmos_defs_mode.png)
+
+- **Gizmo Definitions**
+  - Each Definition consists of:
+    - **Gizmo Menu Parent**
+    - **Gizmo List**
+      - Each Gizmo item consists of:
+        - **Label**
+        - **Type of usage**
+        - **Python command**
+        - **Icon Path**
+        - **Hotkey**
+      - **+**: Add More Gizmos
+  - **+**: Add More gizmo Definitions
+
+</div>
+</div>
 
 ## Creator Plugins
 
-### Exposed Knobs
-`ayon+settings://nuke/create/CreateWriteRender/exposed_knobs`
+### Create Write Render
 
-This list links knobs from the write node inside, to the publish group. The name of the knobs can be found when hovering over the knob, in the tooltip in bold.
+> Setting Location: `ayon+settings://nuke/create/CreateWriteRender`
 
-![](assets/nuke-knob_name.png)
+![](assets/nuke/settings/create_write_render_settings.png)
+
+- Temporary rendering path template
+- Default variants
+- Instance attributes
+- Write Node Exposed Knobs
+- Preceding nodes
+![](assets/nuke/settings/create_write_render_preceding_nodes.png)
+
+### Create Write Prerender
+
+> Setting Location: `ayon+settings://nuke/create/CreateWritePrerender`
+
+![](assets/nuke/settings/create_write_prerender_settings.png)
+
+- Temporary rendering path template
+- Default variants
+- Instance attributes
+- Write Node Exposed Knobs
+- Preceding nodes
+![](assets/nuke/settings/create_write_prerender_preceding_nodes.png)
+
+### Create Write Image
+
+> Setting Location: `ayon+settings://nuke/create/CreateWriteImage`
+
+![](assets/nuke/settings/create_write_image_settings.png)
+
+- Temporary rendering path template
+- Default variants
+- Instance attributes
+- Write Node Exposed Knobs
+- Preceding nodes
+![](assets/nuke/settings/create_write_image_preceding_nodes.png)
+
+## Publish Plugins
+
+### Collect Instance Version
+> Setting Location: `ayon+settings://nuke/publish/CollectInstanceData`
+
+![](assets/nuke/settings/collect_instnaces_version.png)
+
+- Product types
+
+### Validate Correct Folder Name
+> Setting Location: `ayon+settings://nuke/publish/ValidateCorrectAssetContext`
+
+![](assets/nuke/settings/validate_correct_folder_name.png)
+
+- Enable
+- Optional
+- Active
+
+### Validate Knobs
+> Setting Location: `ayon+settings://nuke/publish/ValidateKnobs`
+
+![](assets/nuke/settings/validate_knobs.png)
+
+- Knobs
+
+### Validate Output Resolution
+> Setting Location:`ayon+settings://nuke/publish/ValidateOutputResolution`
+
+![](assets/nuke/settings/validate_output_res.png)
+
+- Enable
+- Optional
+- Active
+
+### Validate Gizmo
+> Setting Location: `ayon+settings://nuke/publish/ValidateGizmo`
+
+![](assets/nuke/settings/validate_gizmo.png)
+
+- Enable
+- Optional
+- Active
+
+### Validate Backdrop
+> Setting Location: `ayon+settings://nuke/publish/ValidateBackdrop`
+
+![](assets/nuke/settings/validate_backdrop.png)
+
+- Enable
+- Optional
+- Active
+
+### Validate workfile attributes
+> Setting Location: `ayon+settings://nuke/publish/ValidateScriptAttributes`
+
+![](assets/nuke/settings/validate_workfile_attrs.png)
+
+- Enable
+- Optional
+- Active
+
+### Extract Review Data
+> Setting Location: `ayon+settings://nuke/publish/ExtractReviewData`
+
+![](assets/nuke/settings/extract_review_data.png)
+
+### Extract Review Data Lut
+> Setting Location: `ayon+settings://nuke/publish/ExtractReviewDataLut`
+
+![](assets/nuke/settings/extract_review_data_lut.png)
+
+### Extract Review Intermediates
+> Setting Location: `ayon+settings://nuke/publish/ExtractReviewIntermediates`
+
+![](assets/nuke/settings/extract_review_intermediates.png)
+
+- Viewer lut raw
+- Baking streams
+  - Each baking stream consists of
+    - Output name
+    - Publish
+    - Filter
+      ![](assets/nuke/settings/extract_review_intermediates_filters.png)
+    - Input read node RAW switch
+    - Bake viewer process
+    - Target backing colorspace override
+      ![](assets/nuke/settings/extract_review_intermediates_colorspace_override.png)
+    - Bake viewer input process node (LUT)
+    - Reformate Nodes
+    - ![](assets/nuke/settings/extract_review_intermediates_reposition_knobs.png)
+    - File extension
+    - Custom tags
+  - **+**: Add more baking streams
+
+### Extract Camera Formate
+> Setting Location: `ayon+settings://nuke/publish/ExtractCameraFormat`
+
+![](assets/nuke/settings/extract_camera_format.png)
+
+- Camera export format
+
+### Extract Slate Frame
+> Setting Location: `ayon+settings://nuke/publish/ExtractSlateFrame`
+
+![](assets/nuke/settings/extract_slate_frame.png)
+
+- Viewer lut raw
+- Key value mapping
+  - f_submission_note
+    - Template
+  - f_submitting_for
+    - Template
+  - f_vfx_scope_of_work
+    - Template
+
+### Increment Workfile Version
+> Setting Location: `ayon+settings://nuke/publish/IncrementScriptVersion`
+
+![](assets/nuke/settings/increment_workfile_version.png)
+
+- Enable
+- Optional
+- Active
+
+## Load Plugins
+### Load Image
+> Setting Location: `ayon+settings://nuke/load/LoadImage`
+
+![](assets/nuke/settings/load_image.png)
+
+- Include representations
+- Read node name template
+
+### Load Clip
+> Setting Location: `ayon+settings://nuke/load/LoadClip`
+
+![](assets/nuke/settings/load_clip.png)
+
+
+- Include representations
+- Read node name template
+- Loader options defaults
+  - Start at workfile's start frame
+  - Add retime
+  - Deep Exr Read Node
+
+## Workfile Builder
+> Setting Location: `ayon+settings://nuke/workfile_builder`
+
+![](assets/nuke/settings/workfile_builder_old.png)
+
+:::caution deprecation alert
+This setting is deprecated, use [Templated Workfile Builder](#templated-workfile-builder) Setting instead.
+:::
+
+- Create first workfile
+- Custom templates
+- RunBuilder at first workfile
+- Builder profiles
+
+## Templated Workfile Builder
+> Setting Location: `ayon+settings://nuke/templated_workfile_build`
+
+![](assets/nuke/settings/workfile_builder_new.png)
+
+First matched profile will be used as a workfile template
+
+- Profiles
+  - Each profile consists of:
+    - Task Types
+    - Task names
+    - Path to template
+    - Keep placeholders
+    - Create first version
+  - **+**: Add more profiles

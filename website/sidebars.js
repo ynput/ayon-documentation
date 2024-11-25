@@ -196,7 +196,21 @@ module.exports = {
                     ],
                 },
                 "addon_motionbuilder_admin",
-                "addon_nuke_admin",
+                {
+                    type: "category",
+                    label: "Nuke",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Nuke Addon',
+                        description:
+                            "Welcome to Nuke Integration Documentation!",
+                        keywords: ['nuke'],
+                    },
+                    items: [
+                        "addon_nuke_workflows_admin",
+                        "addon_nuke_admin",
+                    ]
+                },
                 "addon_photoshop_admin",
                 "addon_site_sync_admin",
                 "addon_slack_admin",
