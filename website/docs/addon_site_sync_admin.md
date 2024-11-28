@@ -91,7 +91,10 @@ Here artist could also change all user based configuration based on provider (fo
 ![Local overrides](assets/site_sync_local_setting.png)
 
 :::info
-Various use cases are explained in [Introduction to Site Sync in OpenPype / AYON | YouTube](https://www.youtube.com/watch?v=NEJ3kCeggn0)
+Various use cases are explained in the following YT video.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NEJ3kCeggn0?si=EYs4IAVaO8leiamO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 :::
 
 
@@ -129,12 +132,12 @@ Configuration would look like this:
 
 ![Configure project](assets/site_sync_project_settings.png)
 
-*Site Sync* for Google Drive works using its API: https://developers.google.com/drive/api/v3/about-sdk
+*Site Sync* for Google Drive works using its API: [Google Drive API overview](https://developers.google.com/drive/api/guides/about-sdk)
 
-To configure Google Drive side you would need to have access to Google Cloud Platform project: https://console.cloud.google.com/ 
+To configure Google Drive side you would need to have access to Google Cloud Platform project: [Google Cloud](https://console.cloud.google.com/)
 
 To get working connection to Google Drive there are some necessary steps:
-- first you need to enable GDrive API: https://developers.google.com/drive/api/v3/enable-drive-api
+- first you need to enable GDrive API: [Enable the Drive API](https://developers.google.com/drive/api/guides/enable-sdk)
 - next you need to create user, choose **Service Account** (for basic configuration no roles for account are necessary) 
 - add new key for created account and download .json file with credentials
 - share destination folder on the Google Drive with created account (directly in GDrive web application)

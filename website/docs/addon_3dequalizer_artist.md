@@ -30,7 +30,7 @@ The 3DEqualizer (3DE) Addon lets you manage your 3DE projects, load plates as ca
 
 ### Loading Plates
 
-You can load image data into 3DE by using the [Loader](artist_tools_loaderزةي) tool. Go to the `AYON` menu in 3DE, select `Load`, and pick the image sequence you want to use. This will create a new sequence camera, set the path for the image sequence, and set the correct frame range. From that moment, the loaded sequence is version tracked. You can follow the used versions in the [Manage tool](artist_tools_inventory.md).
+You can load image data into 3DE by using the [Loader](artist_tools_loader.md) tool. Go to the `AYON` menu in 3DE, select `Load`, and pick the image sequence you want to use. This will create a new sequence camera, set the path for the image sequence, and set the correct frame range. From that moment, the loaded sequence is version tracked. You can follow the used versions in the [Manage tool](artist_tools_inventory.md).
 
 :::note
 AYON uses **Project Notes** to store some of its information for version tracking. If you want to use them, please do not modify the content of the `AYON_CONTEXT:: ... ::AYON_CONTEXT` block, as it will probably break the version management of loaded image sequences.
@@ -38,7 +38,7 @@ AYON uses **Project Notes** to store some of its information for version trackin
 
 ### Publishing Matchmove Scripts
 
-Once you track your camera in 3DE, you can export and publish it as a version for Maya and/or Nuke. Go to the `AYON` menu in 3DE and click on [Publish](artist_tools_publisher). You can create a `Match Move` publishing instance and set various settings:
+Once you track your camera in 3DE, you can export and publish it as a version for Maya and/or Nuke. Go to the `AYON` menu in 3DE and click on [Publish](artist_tools_publisher.md). You can create a `Match Move` publishing instance and set various settings:
 
 - **Camera(s) to Publish**: Select which camera mode to publish. Options include *All Cameras*, *Current Camera* (active), *Reference Cameras* (for all reference cameras), and *Sequence Cameras*.
 - **Model Export**: Choose to export *All 3D Models* or no models.
