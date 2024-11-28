@@ -2,6 +2,8 @@
 id: addon_core_settings
 title: Core addon settings
 sidebar_label: Core addon settings
+description: AYON core addon settings documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -206,15 +208,15 @@ Notable parameters:
 - **`Colorspace`** - target colorspace, which must be available in used color config. (If `Transcoding type` is `Use Colorspace` value in configuration is used OR if empty value collected on instance from DCC).
 - **`Display & View`** - display and viewer colorspace. (If `Transcoding type` is `Use Display&View` values in configuration is used OR if empty values collected on instance from DCC).
 - **`Arguments`** - special additional command line arguments for `oiiotool`.
-- **[`Tags`](#tags)**
+- **[`Tags`](#tags)** - Add additional tags to representation.
 
 #### Examples
 
 Example here describes use case for creation of new color coded review of png image sequence. Original representation's files are kept intact, review is created from transcoded files, but these files are removed in cleanup process.
-![core_oiio_transcode](assets/core_oiio_transcode.png)
+![core_oiio_transcode](assets/core/admin/oiio_transcode_example.png)
 
 Another use case is to transcode in Maya only `beauty` render layers and use collected `Display` and `View` colorspaces from DCC.
-![core_oiio_transcode_in_Maya](assets/core_oiio_transcode2.png)
+![core_oiio_transcode_in_Maya](assets/core/admin/oiio_transcode_example2.png)
 
 
 ### Extract Review
