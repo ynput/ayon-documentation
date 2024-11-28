@@ -16,7 +16,7 @@ import TabItem from '@theme/TabItem';
 
 Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project.
 
-Refer to Settings related to [Working with settings](admin_settings) for more details.
+Refer to Settings related to [Working with settings](admin_settings.md) for more details.
 
 ## Creator Plugins
 

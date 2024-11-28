@@ -7,7 +7,7 @@ description: Allows loading published products from projects of type "Library".
 
 # Library Loader
 
-Library loader is extended [loader](artist_tools_loader) which allows to load published products from Library projects. Controls are same but library loader has extra Combo Box which allows you to choose project you want to load from.
+Library loader is extended [loader](artist_tools_loader.md) which allows to load published products from Library projects. Controls are same but library loader has extra Combo Box which allows you to choose project you want to load from.
 
 <div class="row markdown">
 <div class="col col--6 markdown">
