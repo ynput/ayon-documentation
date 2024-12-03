@@ -2,6 +2,8 @@
 id: addon_traypublisher_admin
 title: Tray Publisher
 sidebar_label: Tray Publisher
+description: Explore the available settings for Tray Publisher addon.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -14,85 +16,282 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project.
+## Introduction
 
-Refer to Settings related to [Working with settings](admin_settings) for more details.
+Tray publisher is a standalone [publisher](artist_tools_publisher.md) tool where you can just publish any files to AYON.
+It also capable of creating assets and shots in your projects.
+The tray publisher is minimal and doesn't have many validators allowing further flexibility.
 
-## Creator Plugins
+It has different create plugins. it also provide a dynamic creator definitions that you can extend it on your side on studio or project wise.
 
-Contains list of implemented families to show in middle menu in Tray Publisher. Each plugin must contain:
+:::tip
+Creator plugins are used to create products. 
+e.g. to publish a `pointcache` product, you'd need a `pointcache` product type creator, `pointcache` creator, for short.
 
-- **Product type**
-- **Label**
-- **Icon**
-- **Extensions**
+You can extend tray publisher product type creators via [Simple Create Plugins](#simple-create-plugins) setting.
 
-![example of simple creator plugin](assets/admin_traypublisher_settings_simple.png)
-![example of complex creator plugin](assets/admin_traypublisher_settings_simple_extensions.png)
-
-
-
-# CSV publishing
-
-You can use TrayPublisher to upload CSV data in two ways: interactive mode or headless mode (CLI). You can set up the CSV columns and what kind of data they should have. For each column, you can pick a data type and if it's needed or not. Plus, you can set a default value for when some data is missing.
-
-:::info CSV publishing
-Tray publisher pushes your products into an existing tasks in AYON.
-Tray publisher doesn't support **creating missing entities if they don't exist** yet.
-Currently, the CSV data must pass a preflight check, so we don't need to validate it.
-
-Please ensure your shots and assets are created in your project. 
+To learn more about using the tray publisher please check [Tray Publisher User Docs](addon_traypublisher_artist.md)
 :::
 
-## Feature settings
 
-To use the feature, you must first turn it on and set it up in the Studio settings under the Traypublisher addon. There, you can decide what goes in the CSV columns and what they need.
+## Addon Settings
 
-![CSV Ingest settings](assets/traypublisher/csv_publishing_settings.png)
-1. Enable the feature in `ayon+settings://traypublisher/create/IngestCSV`
-2. Define the columns and their requirements in `ayon+settings://traypublisher/create/IngestCSV/columns_config/columns`
-3. Define Representation requirements in `ayon+settings://traypublisher/create/IngestCSV/representations_config/representations`
-4. Save the settings and you are good for CSV ingestion
+### Color Management (ImageIO)
+> Setting Location: `ayon+settings://traypublisher/imageio`
 
-## CLI interface
+![](assets/traypublisher/settings/color_management.png)
 
-- **--filepath**: The absolute path to csv file which is in root of package folder
-- **--project**: The name of a project used for ingestion
-- **--folder-path**: The folder path used for ingestion data (storing csv file iterations)
-- **--task**: The name of task used for ingestion data iteration backup (case sensitive!)
-- **--ignore-validators**: Flag argument for skipping validators
+Color configuration and enable to override the global color management settings, check [Host specific overrides](admin_colorspace.md#host-specific-overrides).
 
-Example of CLI command for CSV ingestion:
+- **Enable Color Management**: Enables color management for Tray publisher.
 
-```powershell
-cd "C:\Program Files\Ynput\AYON 1.0.2"
-.\ayon_console.exe addon traypublisher ingestcsv --filepath '[CSV FILE ABS PATH]' --project [PROJECT_NAME] --folder-path [/FOLDER/PATH] --task [TASK NAME] --ignore-validators
-```
+- **File Rules**
+  - **Activate Host Rules**: Enable to override global color rules.
+  - **Rules**
+    - **+**: Add more rules
+    - Each rule consists of
+    ![](assets/traypublisher/settings/color_management_rules.png)
+      - **Rule name**
+      - **Regex pattern**
+      - **Colorspace name**
+      - **File extension**
+  
+### Simple Create Plugins
+> Setting Location: `ayon+settings://traypublisher/simple_creators`
 
+![](assets/traypublisher/settings/simple_creator_plugin.png)
 
-## Testing data and its use:
+This setting allows adding different create plugins from `simple create plugin` preset.
 
-1. Download testing package [ay_240319_0001.zip](https://github.com/ynput/ayon-core/files/14651928/ay_240319_0001.zip)
-2. Make sure to create shots in your testing project before running the command. This process only creates products, versions, and representations, not shot folders.
-3. The image below shows what the testing project should look like and how the shot hierarchy is set up to reflect the testing data found in the zip file mentioned above.
+- **+**: Add a simple create plugin
 
-![image](https://github.com/ynput/ayon-core/assets/40640033/577cc68e-9ffb-431e-ae07-e4ef9a18eb5d)
-1. Project: Moawiya
-2. CLI context: `ayon+entity://Moawiya/editorial?task=edit`
-3. CSV folder: `ayon+entity://Moawiya/shots/mw_110_01_0060?task=comp`
-4. CSV folder: `ayon+entity://Moawiya/shots/mw_110_01_0080?task=comp`
-5. Follow the CLI command above and ingest the data.
+#### Simple Create Plugin Preset
 
+Dynamic creator plugins definitions, *Items with <span style={{color:"red"}}>\*</span> are required.*
 
-# Editorial package
+<div class="row">
+<div class="col">
 
-Creator labeled as 'Editorial package' allows artists to import whole folder with OTIO file and resources easily. 
-This product type provides easy sharing of OTIO metadata for loading and creating timeline in other DCCs.
+- **Product type <span style={{color:"red"}}>\*</span>** : This name will be used in the pipeline. After publishing, it'll be in the product type column in the loader.
+- **Label** : Creator label, it'll be used in the publisher UI. if blank, the `identifier` will be used.
+- **Identifier** : Creator identifier, it's used in the pipeline, if blank the product type will be used (prefixed by `settings_`).
+- **Icon** : Creator's icon, supported icons are `qtawesome`.
+- **Default Variants**
+- **Description**
+- **Detailed Description**
+- **Allow Sequences**
+- **Allow multiple items**
+- **Allow version control**
+- **Extensions <span style={{color:"red"}}>\*</span>**
 
-One might want to convert all attached movie like resources into desired output format. That could be achieved by configuring
-`ayon+settings://traypublisher/publish/ExtractEditorialPckgConversion`
+</div>
 
-![Editorial package](assets/traypublisher/editorial_package_conversion.png)
+<div class="col">
 
-To skip conversion please toggle `Conversion enabled` to off. This propagates to Traypublisher UI where artists
-could decide if they want to convert ad-hoc.
+![](assets/traypublisher/settings/simple_creator_plugin_def.png)
+
+</div>
+
+</div>
+
+:::info Default Dynamic Plugins
+
+Tray publisher addon comes with predefined default dynamic plugins:
+<div class="row">
+<div class="col-md">
+
+- Workfile
+- Model
+- Pointcache
+- Plate
+- Render
+- Camera
+
+</div>
+<div class="col-md">
+
+- Image
+- VDB Volumes
+- Matchmove
+- Rig
+- Simple UE texture
+- Audio
+  
+</div>
+</div>
+:::
+
+### Editorial Simple Creator
+> Setting Location: `ayon+settings://traypublisher/editorial_creators/editorial_simple`
+
+![](assets/traypublisher/settings/editorial_simple_creator.png)
+
+[Editorial Simple](addon_traypublisher_artist.md#editorial-simple) creator configuration.
+
+- Default Variants
+- Clip Name Tokenizer
+  ![](assets/traypublisher/settings/editorial_simple_creator_clip_tokenizer.png)
+  - Each item consists of
+    - Token name
+    - Token regex
+  - **+**: Add more tokens 
+- Shot Rename
+  ![](assets/traypublisher/settings/editorial_simple_creator_shot_rename.png)
+  - Shot name template
+- Shot Hierarchy
+  ![](assets/traypublisher/settings/editorial_simple_creator_shot_hierarchy.png)
+  - Parent path template  
+  - Token to parent convertor
+    - Each item consists of
+      - parent type
+      - parent token name
+      - parent token value
+    - **+**: Add more parent tokens
+- Add tasks to shot:
+  ![](assets/traypublisher/settings/editorial_simple_creator_add_tasks.png)
+  - Each item consists of
+    - Key
+    - Task Type
+  - **+**: Add more shot tokens
+- Product Type Presets
+  ![](assets/traypublisher/settings/editorial_simple_creator_type_presets.png)
+  - Each item consists of
+    - Product type
+    - variant
+    - review
+    - OutputFile Type
+  - **+**: Add more presets
+
+### Batch Movie Creator
+> Setting Location: `ayon+settings://traypublisher/create/BatchMovieCreator`
+
+:::note
+Currently, This creator doesn't work as expected.
+It should be fixed soon.
+:::
+
+![](assets/traypublisher/settings/batch_movie_creator.png)
+
+- Default variants
+- Default tasks
+- Extensions
+
+### Ingest CSV
+> Settings Location: `ayon+settings://traypublisher/create/IngestCSV`
+
+![](assets/traypublisher/settings/ingest_csv.png)
+
+[CSV Ingest](addon_traypublisher_artist.md#csv-ingest) creator configuration.
+
+The settings are divided into three sections.
+
+#### Columns config
+
+:::caution
+
+Currently, The default `columns` are expected by the CSV Ingest creator.
+It's not advisable to add/remove/modify any columns.
+
+You may mark the **unrequired** columns as `required` to ensure the existence of some values in your published products.<br/>
+**But, any other changes can break the creator's logic!**
+
+:::
+
+  - **CSV delimiter**: CSV separator. by default, it's a comma `,`
+  - **Columns**
+    - Each column consists of:
+    ![](assets/traypublisher/settings/ingest_csv_column.png)
+      - **Name**: Column Name
+      - **Type**: Column item data type. Supported values (`number`, `decimal`, `bool`, `text`)
+      - **Default**: Default value. this value will be used if the column is missing or it has empty value.
+      - **Required Column**: Specify if the column is required.
+      - **Validation Regex Pattern**: This pattern will be applied to provided values.
+    - **+**: Add a column
+
+#### Representation config
+![](assets/traypublisher/settings/ingest_csv_repr_config.png)
+
+Representation column can have multiple values separated by the Tags delimiter.
+
+  - **Tags delimiter**: Representations separator. by default, it's a semicolon `;`
+  - **Default tags**: These tags will be added if the `Representation Tags` column is empty.
+  - **Representations**: Supported representations.
+    - Each representation includes:
+    ![](assets/traypublisher/settings/ingest_csv_reprs.png)
+      - **Name**: Representation name
+      - **Extensions**: Accepted extensions for this representation.
+      - **+**: Add an extension.
+    - **+**: Add more representations
+  
+:::info Default representation
+
+Default Representations are for publishing renders and reviews.
+Default Representations:
+- **Preview**: `.mp4` or `.mov`
+- **exr**: `.exr`
+- **edit**: `.mov`
+- **review**: `.mov`
+- **nuke**: `.nk` Nuke scripts.
+
+You are free to add more extensions to the default representations or to add more representations.
+
+:::
+
+#### Folder creation config
+
+![](assets/traypublisher/settings/ingest_csv_folder_creation.png)
+
+When this setting is enabled, the CSV Ingest creator will automatically generate any missing folder hierarchy.
+
+- **Default Folder Type**: This type will be used for creating new folders.
+- **Folder Type Regexes**: A list of regex and type pairs. If the `folder path` matches a folder regex, the corresponding folder type will be used instead of the default.
+- **Default Task Type**: This type will be used for creating new tasks.
+- **Task Type Regexes**: A list of regex and type pairs. If the `task name` matches a task regex, the corresponding task type will be used instead of the default.
+
+### Publish Plugins
+#### Collect Frame Data From Folder Entity
+
+![](assets/traypublisher/settings/collect_frame_data_from_folder.png)
+
+- **Enable**
+- **Optional**
+- **Active**
+  
+#### Collect Original Sequence Frame Data
+
+![](assets/traypublisher/settings/collect_original_sequence_frame_data.png)
+
+- **Enable**
+- **Optional**
+- **Active**
+  
+
+#### Validate Frame Range
+
+![](assets/traypublisher/settings/validate_frame_range.png)
+
+- **Enable**
+- **Optional**
+- **Active**
+  
+#### Validate Existing Version
+
+![](assets/traypublisher/settings/validate_existing_version.png)
+
+- **Enable**
+- **Optional**
+- **Active**
+- 
+#### Extract Editorial Package Conversion
+
+![](assets/traypublisher/settings/extract_editorial_package.png)
+
+[Editorial Package](addon_traypublisher_artist.md#editorial-package) conversion configuration.
+
+- **Conversion enabled**
+- **Output extension**
+- **FFmpeg arguments**
+  - **Video filters**
+  - **Audio filters**
+  - **Input arguments**
+  - **Output arguments**
