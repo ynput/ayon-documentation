@@ -153,6 +153,7 @@ module.exports = {
                     ],
                 },
                 "admin_server_updating_pipeline",
+                "admin_server_permissions",
             ],
         },
         {
