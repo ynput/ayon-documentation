@@ -27,7 +27,7 @@ After installing a release bundle, a new bundle is automatically created with yo
 ![AYON Market release bundle install](./assets/server/admin/market/market-release-install.png)
 
 :::info
-The Community Edition always has access to the latest release bundle, while AYON subscribers can access all previous release bundles.
+The Community Edition always has access to the latest release bundle, while [AYON subscribers](https://ynput.cloud/subscribe/ayon) can access all previous release bundles.
 :::
 
 ## Market Addons
@@ -40,6 +40,6 @@ After downloading a new addon version, you must add it to a bundle before using 
 
 ![AYON Market release bundle install](./assets/server/admin/market/market-downloading-addon.png)
 
-:::warning
+:::caution
 Installing addons individually is not recommended, as versions may not be compatible and do not include dependency packages or a launcher. [Release bundles](#release-bundles) are safer and more convenient.
 :::
