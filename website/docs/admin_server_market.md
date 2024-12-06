@@ -7,6 +7,7 @@ description: Downloading addons and releases from the market.
 
 :::info
 To access the market, you need to use AYON Cloud or have a local instance connected to Ynput Cloud.
+![Ynput connect status](./assets/server/admin/ynput-connect-status.png)
 :::
 
 The AYON Market provides the latest official addons and releases, making it easy to enhance your server and pipeline. Access the market through the app menu or by pressing the shortcut `m+m` (double-tap the **m** key).
@@ -21,7 +22,7 @@ Bundles are tailored for different production tracking setups. You can deselect 
 
 ![AYON Market release bundles](./assets/server/admin/market/market-release-bundles.png)
 
-After installing a release bundle, a new bundle is automatically created with your selected addons, launcher platforms, and pre-built, compatible dependency packages. We recommend testing the new bundle in a staging environment before using it in production. You can configure this in the Bundle Settings within Studio Settings.
+After installing a release bundle, a new bundle is automatically created with your selected addons, launcher platforms, and pre-built, compatible dependency packages. We recommend testing the new bundle in a <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>staging</span> environment before using it in <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>production</span>. You can configure this in the Bundle Settings within Studio Settings.
 
 ![AYON Market release bundle install](./assets/server/admin/market/market-release-install.png)
 
