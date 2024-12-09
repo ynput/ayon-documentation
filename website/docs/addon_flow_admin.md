@@ -147,3 +147,17 @@ You can effortlessly ensure that all reviewables will be uploaded to Flow. For t
    You can do this at the following path `ayon+settings://core/publish/ExtractReview/profiles/0/outputs`.
 
 ![Flow shotgrid review tag](assets/shotgrid/review_tag.png)
+
+
+### Synchronization of Users
+
+Users are only synchronized manually from Flow to AYON currently. 
+
+Synchronization is triggered by pressing `Sync Users` in `Shotgrid` tab under `Studio Settings`.
+
+![Flow synch users](assets/shotgrid/ay_sync_users.png)
+
+For users to be assigned to the tasks, they need to be first assign to any `Project access group` in
+`Project Settings > Project access`!
+
+After that assignment of task should be possible in both ways, eg. AYON <-> Flow.
