@@ -168,7 +168,7 @@ CSV Ingest also supports creating missing hierarchy folders in case they are mis
 The CSV columns should follow the columns specified in your AYON tray publisher [CSV Ingest settings](addon_traypublisher_admin.md#ingest-csv). <br/>
 Find example CSV file here: [ay_240319_0001.zip](https://github.com/ynput/ayon-core/files/14651928/ay_240319_0001.zip).
 
-Here's a list of the default columns. *Items with <span style={{color:"red"}}>\*</span> are required.*
+Here's a list of the default columns. *Items with <span style={{color:"red"}}>\*</span> are required (must exist in the CSV file).*
 
 - **File Path <span style={{color:"red"}}>*</span>**: File path of the product, it can be relative to the CSV file location.
 - **Folder Path <span style={{color:"red"}}>*</span>**: Relative folder path to the selected folder in he publisher UI. if left blank, it'll use the default folder type in [Folder creation config](addon_traypublisher_admin.md#folder-creation-config).
@@ -178,11 +178,11 @@ Here's a list of the default columns. *Items with <span style={{color:"red"}}>\*
 - **Version**: Leave blank to set the version to the next version.
 - **Version Comment**: Comment to use for the published version of the product.
 - **Version thumbnail**: Thumbnail to use for the published version of the product. Check supported   
-- **Frame Start <span style={{color:"red"}}>*</span>**
-- **Frame End <span style={{color:"red"}}>*</span>**
-- **Handle Start <span style={{color:"red"}}>*</span>**
-- **Handle End <span style={{color:"red"}}>*</span>**
-- **FPS <span style={{color:"red"}}>*</span>**
+- **Frame Start <span style={{color:"red"}}>*</span>**: Start frame of the product/task.
+- **Frame End <span style={{color:"red"}}>*</span>**: End frame of the product/task.
+- **Handle Start <span style={{color:"red"}}>*</span>**: Start Handle of the of the product/task.
+- **Handle End <span style={{color:"red"}}>*</span>**: End Handle of the of the product/task.
+- **FPS <span style={{color:"red"}}>*</span>**: FPS of the of the product/task.
 - **Slate Exists**: Indicates if the provided sequence includes a slate. Use Boolean values (literal `True` or `False`).
 - **Representation**: The provided representation must exist in [representation config](addon_traypublisher_admin.md#representation-config).
 - **Representation ColorSpace**: Color space name to associate to the provided sequence.
@@ -253,7 +253,7 @@ The result is a single `editorial_pkg` product type and (possibly) convert `.mov
 
 #### Usage
 - Select Folder and task from left side.
-- Drag & drop the folder containing the `OTIO` file and movie `.mov` files
+- Drag & drop the **folder** containing the `OTIO` file and movie `.mov` files
 - Create
 - (optional) Set publish options
 ![](assets/traypublisher/artist/editorial_package_publish.png)
@@ -264,9 +264,9 @@ The result is a single `editorial_pkg` product type and (possibly) convert `.mov
 ### Optinal plugins
 
 - **Override Colorspace**: A drop down menu that allows selecting colorspace for your render.
-- **Collect Original Sequence Frame Data**
-- **Validate Existing Version**
-- **Validate Existing Online Files**
+- **Collect Original Sequence Frame Data**: Disable to enforce the frame range from AYON folder or task entities (including start and end handles).
+- **Validate Existing Version**: Checks if the specified version of the product that is being published doesn't exist in AYON. Disable to override the specified version.
+- **Validate Existing Online Files**: Validate that product doesn't exist yet.
 - **Validate Frame Range**: Validating frame range of rendered files against state in AYON.
 - **Validate representation colorspaces**: Validate colorspace look attributes and representation colorspaces.
 - **Integrate Hero Version**

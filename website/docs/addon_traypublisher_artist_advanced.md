@@ -158,5 +158,5 @@ ayon addon traypublisher ingestcsv --filepath '[CSV FILE ABS PATH]' --project [P
 - **--ignore-validators**: Flag argument for skipping validators
 
 :::tip
-To more about the `CSV Ingest` and getting an example CSV, please go to [CSV Ingest User Docs](addon_traypublisher_artist.md#prepare-your-csv)
+To more about the `CSV Ingest` and getting an example CSV, please go to [CSV Ingest User Docs](addon_traypublisher_artist.md#prepare-your-csv-file)
 :::

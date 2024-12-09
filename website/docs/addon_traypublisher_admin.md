@@ -48,7 +48,7 @@ Color configuration and enable to override the global color management settings,
 - **File Rules**
   - **Activate Host Rules**: Enable to override global color rules.
   - **Rules**
-    - **+**: Add more rules
+    - **+** : Add more rules
     - Each rule consists of
     ![](assets/traypublisher/settings/color_management_rules.png)
       - **Rule name**
@@ -63,7 +63,7 @@ Color configuration and enable to override the global color management settings,
 
 This setting allows adding different create plugins from `simple create plugin` preset.
 
-- **+**: Add a simple create plugin
+- **+** : Add a simple create plugin
 
 #### Simple Create Plugin Preset
 
@@ -73,8 +73,8 @@ Dynamic creator plugins definitions, *Items with <span style={{color:"red"}}>\*<
 <div class="col">
 
 - **Product type <span style={{color:"red"}}>\*</span>** : This name will be used in the pipeline. After publishing, it'll be in the product type column in the loader.
-- **Label** : Creator label, it'll be used in the publisher UI. if blank, the `identifier` will be used.
 - **Identifier** : Creator identifier, it's used in the pipeline, if blank the product type will be used (prefixed by `settings_`).
+- **Label** : Creator label, it'll be used in the publisher UI. if blank, the `identifier` will be used.
 - **Icon** : Creator's icon, supported icons are `qtawesome`.
 - **Default Variants**
 - **Description**
@@ -128,53 +128,55 @@ Tray publisher addon comes with predefined default dynamic plugins:
 
 [Editorial Simple](addon_traypublisher_artist.md#editorial-simple) creator configuration.
 
-- Default Variants
-- Clip Name Tokenizer
+- **Default Variants**
+- **Clip Name Tokenizer**
   ![](assets/traypublisher/settings/editorial_simple_creator_clip_tokenizer.png)
   - Each item consists of
-    - Token name
-    - Token regex
-  - **+**: Add more tokens 
-- Shot Rename
+    - **Token name**
+    - **Token regex**
+  - **+** : Add more tokens 
+- **Shot Rename**
   ![](assets/traypublisher/settings/editorial_simple_creator_shot_rename.png)
-  - Shot name template
-- Shot Hierarchy
+  - **Enable**
+  - **Shot name template**
+- **Shot Hierarchy**
   ![](assets/traypublisher/settings/editorial_simple_creator_shot_hierarchy.png)
-  - Parent path template  
-  - Token to parent convertor
+  - **Enable**
+  - **Parent path template** 
+  - **Token to parent convertor**
     - Each item consists of
-      - parent type
-      - parent token name
-      - parent token value
-    - **+**: Add more parent tokens
-- Add tasks to shot:
+      - **parent type**
+      - **parent token name**
+      - **parent token value**
+    - **+** : Add more parent tokens
+- **Add tasks to shot**:
   ![](assets/traypublisher/settings/editorial_simple_creator_add_tasks.png)
   - Each item consists of
-    - Key
-    - Task Type
-  - **+**: Add more shot tokens
-- Product Type Presets
+    - **Key**
+    - **Task Type**
+  - **+** : Add more shot tokens
+- **Product Type Presets**
   ![](assets/traypublisher/settings/editorial_simple_creator_type_presets.png)
   - Each item consists of
-    - Product type
-    - variant
-    - review
-    - OutputFile Type
-  - **+**: Add more presets
+    - **Product type**
+    - **variant**
+    - **review**
+    - **OutputFile Type**
+  - **+** : Add more presets
 
 ### Batch Movie Creator
 > Setting Location: `ayon+settings://traypublisher/create/BatchMovieCreator`
 
 :::note
 Currently, This creator doesn't work as expected.
-It should be fixed soon.
+More info, see [Batch publish creator does not work | Github](https://github.com/ynput/ayon-traypublisher/issues/3).
 :::
 
 ![](assets/traypublisher/settings/batch_movie_creator.png)
 
-- Default variants
-- Default tasks
-- Extensions
+- **Default variants**
+- **Default tasks**
+- **Extensions**
 
 ### Ingest CSV
 > Settings Location: `ayon+settings://traypublisher/create/IngestCSV`
@@ -183,19 +185,14 @@ It should be fixed soon.
 
 [CSV Ingest](addon_traypublisher_artist.md#csv-ingest) creator configuration.
 
-The settings are divided into three sections.
+The settings are divided into three sections:
+- [Columns config](#columns-config)
+- [Representation config](#representation-config)
+- [Folder creation config](#folder-creation-config)
 
 #### Columns config
 
-:::caution
-
-Currently, The default `columns` are expected by the CSV Ingest creator.
-It's not advisable to add/remove/modify any columns.
-
-You may mark the **unrequired** columns as `required` to ensure the existence of some values in your published products.<br/>
-**But, any other changes can break the creator's logic!**
-
-:::
+![](assets/traypublisher/settings/ingest_csv_columns_config.png)
 
   - **CSV delimiter**: CSV separator. by default, it's a comma `,`
   - **Columns**
@@ -206,7 +203,16 @@ You may mark the **unrequired** columns as `required` to ensure the existence of
       - **Default**: Default value. this value will be used if the column is missing or it has empty value.
       - **Required Column**: Specify if the column is required.
       - **Validation Regex Pattern**: This pattern will be applied to provided values.
-    - **+**: Add a column
+    - **+** : Add a column
+
+:::caution
+
+Although users can remove **unnecessary** items from the CSV files, it's not advisable to remove them from the `columns` addon setting.
+
+You may mark the **unnecessary** columns as `required` to ensure the presence of certain values in your published products. <br/>
+**However, any other changes can break the CSV Ingest's logic!**
+
+:::
 
 #### Representation config
 ![](assets/traypublisher/settings/ingest_csv_repr_config.png)
@@ -217,11 +223,10 @@ Representation column can have multiple values separated by the Tags delimiter.
   - **Default tags**: These tags will be added if the `Representation Tags` column is empty.
   - **Representations**: Supported representations.
     - Each representation includes:
-    ![](assets/traypublisher/settings/ingest_csv_reprs.png)
       - **Name**: Representation name
       - **Extensions**: Accepted extensions for this representation.
-      - **+**: Add an extension.
-    - **+**: Add more representations
+      - **+** : Add an extension.
+    - **+** : Add more representations
   
 :::info Default representation
 
@@ -253,16 +258,20 @@ When this setting is enabled, the CSV Ingest creator will automatically generate
 
 ![](assets/traypublisher/settings/collect_frame_data_from_folder.png)
 
-- **Enable**
-- **Optional**
+Enable to fill in the the missing frame data from AYON folder or task entities.
+
+- **Enable**: Default state of the plugin.
+- **Optional**: Expose the enable toggle to the user in the publisher UI.
 - **Active**
   
 #### Collect Original Sequence Frame Data
 
 ![](assets/traypublisher/settings/collect_original_sequence_frame_data.png)
 
-- **Enable**
-- **Optional**
+Disable to enforce the frame range from AYON folder or task entities (including start and end handles)
+
+- **Enable**: Default state of the plugin.
+- **Optional**: Expose the enable toggle to the user in the publisher UI.
 - **Active**
   
 
@@ -270,27 +279,33 @@ When this setting is enabled, the CSV Ingest creator will automatically generate
 
 ![](assets/traypublisher/settings/validate_frame_range.png)
 
-- **Enable**
-- **Optional**
+Validating frame range of rendered files against state in AYON.
+
+- **Enable**: Default state of the plugin.
+- **Optional**: Expose the enable toggle to the user in the publisher UI.
 - **Active**
   
 #### Validate Existing Version
 
 ![](assets/traypublisher/settings/validate_existing_version.png)
 
-- **Enable**
-- **Optional**
+This validator checks if the specified version of the product that is being published doesn't exist in AYON. 
+
+This validation is enabled by default to prevent accidental override of existing versions.
+
+- **Enable**: Default state of the plugin.
+- **Optional**: Expose the enable toggle to the user in the publisher UI.
 - **Active**
 
 #### Extract Editorial Package Conversion
 
 ![](assets/traypublisher/settings/extract_editorial_package.png)
 
-[Editorial Package](addon_traypublisher_artist.md#editorial-package) conversion configuration.
+[Editorial Package](addon_traypublisher_artist.md#editorial-package) conversion configuration for the `.mov` file.
 
-- **Conversion enabled**
-- **Output extension**
-- **FFmpeg arguments**
+- **Conversion enabled**: Enable conversion.
+- **Output extension**: Desired output extension. Leave blank to skip the conversion even if the conversion is enabled.
+- **FFmpeg arguments**: FFmpeg configuration.
   - **Video filters**
   - **Audio filters**
   - **Input arguments**
