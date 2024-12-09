@@ -20,7 +20,7 @@ This page displays all your **assigned** tasks. To see the complete project cont
 
 ## Board View
 
-The task board, also known as Kanban, visually organizes your tasks by status. Click a task to open the details panel, revealing more information like its activity feed, versions, and attributes. Within the activity feed, you can discuss the task and leave comments. [Read more about the activity feed](artist_activity_feed).
+The task board, also known as Kanban, visually organizes your tasks by status. Click a task to open the details panel, revealing more information like its activity feed, versions, and attributes. Within the activity feed, you can discuss the task and leave comments. [Read more about the activity feed](artist_activity_feed.md).
 
 ### Status Management
 

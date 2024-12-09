@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 ![Aquarium addon for Ayon](assets/aquarium/aquarium-ayon-logo.png)
 
 :::info Requirements
-Don't forget to [setup and configure your addon](addon_aquarium_admin) before being able to use it.
+Don't forget to [setup and configure your addon](addon_aquarium_admin.md) before being able to use it.
 :::
 
 :::danger Only for Ayon managers
