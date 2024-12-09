@@ -105,11 +105,11 @@ With AYON, you can use Hiero/Nuke Studio as a starting point for creating a proj
 ### Preparing a timeline for publishing shot, plates and more
 Data conversion is not part of the process, so when working with raw camera sources or other formats which need to be converted for 2D/3D work, we recommend to convert those first and use those in the timeline. Before any clips in timeline could be converted to publishable instances we recommend following.
 1. Reduce track amount by merging all tracks that can be one
-2. Rename tracks to follow basic structure. Please avoid using [-/_.,%&*] or spaces. These names will be later used in *product* name creation as `{family}{trackName}` so for example **plateMain** or **plateFg01** 
+2. Rename tracks to follow basic structure. Please avoid using `[-/_.,%&*]` or spaces. These names will be later used in *product* name creation as `{family}{trackName}` so for example **plateMain** or **plateFg01** 
 	> if only one track it can be `main`
 	> when dealing with multiple layers (elements) for one shot then use `main` and other elements for example: `bg`, `greenscreen`, `fg01`, `fg02`, `display01`, etc. 
 3. Define correct `Set Media Color Transform` at all clips as those will be also published to metadata and used for later loading with correct color transformation.
-4. Additional reviewable video material which you wish to be used as preview videos on any supported Project manager platform (Ftrack) has to be added ideally to track named **review**. This can be offline edit used as reference video for 2D/3D artists. This video material can be edited to fit length of **main** timeline track or it cand be one long video clip under all clips in **main** track, because AYON will trim this to appropriate length with use of FFMPEG. Please be avare we only support MP4(h264) or JPG sequence at the moment.
+4. Additional reviewable video material which you wish to be used as preview videos on any supported Project manager platform (Ftrack) has to be added ideally to track named **review**. This can be offline edit used as reference video for 2D/3D artists. This video material can be edited to fit length of **main** timeline track or it can be one long video clip under all clips in **main** track, because AYON will trim this to appropriate length with use of FFMPEG. Please be aware we only support MP4(h264) or JPG sequence at the moment.
 
 <div class="col--6 markdown">
 
