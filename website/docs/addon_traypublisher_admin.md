@@ -18,64 +18,62 @@ import TabItem from '@theme/TabItem';
 
 ## Introduction
 
-Tray publisher is a standalone [publisher](artist_tools_publisher.md) tool where you can just publish any files to AYON.
-It also capable of creating assets and shots in your projects.
-The tray publisher is minimal and doesn't have many validators allowing further flexibility.
+Tray Publisher is a standalone [publisher](artist_tools_publisher.md) tool that allows you to publish any files to AYON. It's also capable of creating assets and shots in your projects. The Tray Publisher is minimal and doesn't have many validators, offering greater flexibility.
 
-It has different create plugins. it also provide a dynamic creator definitions that you can extend it on your side on studio or project wise.
+It features various creation plugins and provides dynamic creator definitions that you can extend for studio or project-specific needs.
 
 :::tip
-Creator plugins are used to create products. 
-e.g. to publish a `pointcache` product, you'd need a `pointcache` product type creator, `pointcache` creator, for short.
+Creator plugins are used to create products. For example, to publish a `pointcache` product, you'd need a `pointcache` product type creator, or simply, a `pointcache` creator.
 
-You can extend tray publisher product type creators via [Simple Create Plugins](#simple-create-plugins) setting.
+You can extend Tray Publisher product type creators via the [Simple Create Plugins](#simple-create-plugins) setting.
 
-To learn more about using the tray publisher please check [Tray Publisher User Docs](addon_traypublisher_artist.md)
+To learn more about using the Tray Publisher, please check the [Tray Publisher User Docs](addon_traypublisher_artist.md).
 :::
 
 
 ## Addon Settings
 
 ### Color Management (ImageIO)
+
 > Setting Location: `ayon+settings://traypublisher/imageio`
 
 ![](assets/traypublisher/settings/color_management.png)
 
-Color configuration and enable to override the global color management settings, check [Host specific overrides](admin_colorspace.md#host-specific-overrides).
+This section allows you to configure and override the global color management settings. For more details, check [Host specific overrides](admin_colorspace.md#host-specific-overrides).
 
-- **Enable Color Management**: Enables color management for Tray publisher.
-
+- **Enable Color Management**: Turns on color management for Tray Publisher.
 - **File Rules**
-  - **Activate Host Rules**: Enable to override global color rules.
+  - **Activate Host Rules**: Enable this to override global color rules.
   - **Rules**
     - **+** : Add more rules
-    - Each rule consists of
-    ![](assets/traypublisher/settings/color_management_rules.png)
+    - Each rule consists of:
+      ![](assets/traypublisher/settings/color_management_rules.png)
       - **Rule name**
       - **Regex pattern**
       - **Colorspace name**
       - **File extension**
   
 ### Simple Create Plugins
+
 > Setting Location: `ayon+settings://traypublisher/simple_creators`
 
 ![](assets/traypublisher/settings/simple_creator_plugin.png)
 
-This setting allows adding different create plugins from `simple create plugin` preset.
+This setting lets you add various create plugins from the `simple create plugin` preset.
 
 - **+** : Add a simple create plugin
 
 #### Simple Create Plugin Preset
 
-Dynamic creator plugins definitions, *Items with <span style={{color:"red"}}>\*</span> are required.*
+Dynamic creator plugin definitions. *Items with <span style={{color:"red"}}>\*</span> are required.*
 
 <div class="row">
 <div class="col">
 
-- **Product type <span style={{color:"red"}}>\*</span>** : This name will be used in the pipeline. After publishing, it'll be in the product type column in the loader.
-- **Identifier** : Creator identifier, it's used in the pipeline, if blank the product type will be used (prefixed by `settings_`).
-- **Label** : Creator label, it'll be used in the publisher UI. if blank, the `identifier` will be used.
-- **Icon** : Creator's icon, supported icons are `qtawesome`.
+- **Product type <span style={{color:"red"}}>\*</span>**: This name will be used in the pipeline. After publishing, it will appear in the product type column in the loader.
+- **Identifier**: Creator identifier used in the pipeline. If blank, the product type will be used (prefixed by `settings_`).
+- **Label**: Creator label used in the publisher UI. If blank, the `identifier` will be used.
+- **Icon**: Creator's icon, supports `qtawesome` icons.
 - **Default Variants**
 - **Description**
 - **Detailed Description**
@@ -96,7 +94,8 @@ Dynamic creator plugins definitions, *Items with <span style={{color:"red"}}>\*<
 
 :::info Default Dynamic Plugins
 
-Tray publisher addon comes with predefined default dynamic plugins:
+The Tray Publisher addon includes predefined default dynamic plugins. For more information about each creator, check [Default Simple Creators](addon_traypublisher_artist.md#default-simple-creators).
+
 <div class="row">
 <div class="col-md">
 
@@ -127,49 +126,78 @@ Tray publisher addon comes with predefined default dynamic plugins:
 ![](assets/traypublisher/settings/editorial_simple_creator.png)
 
 [Editorial Simple](addon_traypublisher_artist.md#editorial-simple) creator configuration.
+This configuration is not exposed to artists in the publisher UI.
 
-- **Default Variants**
-- **Clip Name Tokenizer**
-  ![](assets/traypublisher/settings/editorial_simple_creator_clip_tokenizer.png)
+#### Default Variants
+Default list of variants.
+
+#### Clip Name Tokenizer
+![](assets/traypublisher/settings/editorial_simple_creator_clip_tokenizer.png)
+
+Use regex expressions to create tokens. These tokens will be used later in the `Shot rename` creator or `Shot hierarchy`. Each token must be enclosed by underscores (`_`).
+
+- Each item consists of
+  - **Token name**
+  - **Token regex**
+- **+** : Add a token
+
+#### Shot Rename
+
+![](assets/traypublisher/settings/editorial_simple_creator_shot_rename.png)
+
+When enabled, any discovered shots will be renamed based on the `shot rename template`.
+
+The template supports both the available [template keys](admin_settings_project_anatomy.md#available-template-keys) and tokens defined in the [Clip Name Tokenizer](clip-name-tokenizer).
+
+- **Enable**
+- **Shot name template**
+ 
+#### Shot Hierarchy
+![](assets/traypublisher/settings/editorial_simple_creator_shot_hierarchy.png)
+
+Shot Hierarchy defines the folder path where each shot will be added.
+It uses the `Folder path template` to compute each path. 
+The `Folder path template` supports tokens defined in the `folder path template tokens` setting.
+
+Each token in the `Folder path template` represents a folder in the hierarchy. <br/>
+Each token's value supports both the available [template keys](admin_settings_project_anatomy.md#available-template-keys) and tokens defined in the [Clip Name Tokenizer](clip-name-tokenizer).
+
+- **Enable**
+- **Parent path template** 
+- **Token to parent convertor**
   - Each item consists of
-    - **Token name**
-    - **Token regex**
-  - **+** : Add more tokens 
-- **Shot Rename**
-  ![](assets/traypublisher/settings/editorial_simple_creator_shot_rename.png)
-  - **Enable**
-  - **Shot name template**
-- **Shot Hierarchy**
-  ![](assets/traypublisher/settings/editorial_simple_creator_shot_hierarchy.png)
-  - **Enable**
-  - **Parent path template** 
-  - **Token to parent convertor**
-    - Each item consists of
-      - **parent type**
-      - **parent token name**
-      - **parent token value**
-    - **+** : Add more parent tokens
-- **Add tasks to shot**:
-  ![](assets/traypublisher/settings/editorial_simple_creator_add_tasks.png)
-  - Each item consists of
-    - **Key**
-    - **Task Type**
-  - **+** : Add more shot tokens
-- **Product Type Presets**
-  ![](assets/traypublisher/settings/editorial_simple_creator_type_presets.png)
-  - Each item consists of
-    - **Product type**
-    - **variant**
-    - **review**
-    - **OutputFile Type**
-  - **+** : Add more presets
+    - **parent type**
+    - **parent token name**
+    - **parent token value**
+  - **+** : Add a folder token.
+
+#### Add tasks to shot
+![](assets/traypublisher/settings/editorial_simple_creator_add_tasks.png)
+
+This list of tasks will be added to each created shot.
+
+- Each item consists of
+  - **Key**
+  - **Task Type**
+- **+** : Add more shot tokens
+
+#### Product Type Presets
+![](assets/traypublisher/settings/editorial_simple_creator_type_presets.png)
+
+This section allows you to define presets for products to be published within each discovered shot in the Decision list file.
+
+- Each item consists of
+  - **Product type**
+  - **variant**: Specify the variant to be used with this product. Leave blank to use the user-selected variant.
+  - **review**: Mark the product as reviewable.
+  - **OutputFile Type**: List of available output file extensions. Each discovered shot will be converted to the specified output file.
+- **+** : Add a product type preset.
 
 ### Batch Movie Creator
 > Setting Location: `ayon+settings://traypublisher/create/BatchMovieCreator`
 
 :::note
-Currently, This creator doesn't work as expected.
-More info, see [Batch publish creator does not work | Github](https://github.com/ynput/ayon-traypublisher/issues/3).
+Currently, this creator doesn't work as expected. For more information, see [Batch publish creator does not work | Github](https://github.com/ynput/ayon-traypublisher/issues/3).
 :::
 
 ![](assets/traypublisher/settings/batch_movie_creator.png)
@@ -194,108 +222,95 @@ The settings are divided into three sections:
 
 ![](assets/traypublisher/settings/ingest_csv_columns_config.png)
 
-  - **CSV delimiter**: CSV separator. by default, it's a comma `,`
+  - **CSV delimiter**: The default separator is a comma `,`.
   - **Columns**
     - Each column consists of:
     ![](assets/traypublisher/settings/ingest_csv_column.png)
-      - **Name**: Column Name
-      - **Type**: Column item data type. Supported values (`number`, `decimal`, `bool`, `text`)
-      - **Default**: Default value. this value will be used if the column is missing or it has empty value.
-      - **Required Column**: Specify if the column is required.
-      - **Validation Regex Pattern**: This pattern will be applied to provided values.
-    - **+** : Add a column
+      - **Name**: The column name.
+      - **Type**: The data type of the column item. Supported types are `number`, `decimal`, `bool` and `text`.
+      - **Default**: The default value used if the column is missing or empty.
+      - **Required Column**: Indicates if the column is mandatory.
+      - **Validation Regex Pattern**: A pattern applied to validate provided values.
+    - **+** : Add a new column.
 
 :::caution
+Although users can remove **unnecessary** items from CSV files, it's not advisable to remove them from the `columns` addon setting.
 
-Although users can remove **unnecessary** items from the CSV files, it's not advisable to remove them from the `columns` addon setting.
-
-You may mark the **unnecessary** columns as `required` to ensure the presence of certain values in your published products. <br/>
-**However, any other changes can break the CSV Ingest's logic!**
-
+You can mark the **unnecessary** columns as `required` to ensure to ensure that certain values ​​are present in your published products. <br/>
+**However, any other changes may break the CSV ingestion logic!**
 :::
 
 #### Representation config
 ![](assets/traypublisher/settings/ingest_csv_repr_config.png)
 
-Representation column can have multiple values separated by the Tags delimiter.
+The representation column can have multiple values separated by the tags delimiter.
 
-  - **Tags delimiter**: Representations separator. by default, it's a semicolon `;`
-  - **Default tags**: These tags will be added if the `Representation Tags` column is empty.
+  - **Tags delimiter**: The default separator is a semicolon `;`.
+  - **Default tags**: These tags are added if the `Representation Tags` column is empty.
   - **Representations**: Supported representations.
     - Each representation includes:
-      - **Name**: Representation name
+      - **Name**: The name of the representation.
       - **Extensions**: Accepted extensions for this representation.
       - **+** : Add an extension.
-    - **+** : Add more representations
+    - **+** : Add a representation.
   
 :::info Default representation
-
-Default Representations are for publishing renders and reviews.
-Default Representations:
+Default representations are used for publishing renders and reviews. 
+They include:
 - **Preview**: `.mp4` or `.mov`
 - **exr**: `.exr`
 - **edit**: `.mov`
 - **review**: `.mov`
 - **nuke**: `.nk` Nuke scripts.
 
-You are free to add more extensions to the default representations or to add more representations.
-
+You can add more extensions to the available representations or create additional representations.
 :::
 
 #### Folder creation config
 
 ![](assets/traypublisher/settings/ingest_csv_folder_creation.png)
 
-When this setting is enabled, the CSV Ingest creator will automatically generate any missing folder hierarchy.
+When enabled, the CSV Ingest creator will automatically generate any missing folder hierarchy.
 
-- **Default Folder Type**: This type will be used for creating new folders.
-- **Folder Type Regexes**: A list of regex and type pairs. If the `folder path` matches a folder regex, the corresponding folder type will be used instead of the default.
-- **Default Task Type**: This type will be used for creating new tasks.
-- **Task Type Regexes**: A list of regex and type pairs. If the `task name` matches a task regex, the corresponding task type will be used instead of the default.
+- **Default Folder Type**: Used for creating new folders.
+- **Folder Type Regexes**: A list of regex and type pairs. If the `folder path` matches a regex, the corresponding folder type will be used instead of the default.
+- **Default Task Type**: Used for creating new tasks.
+- **Task Type Regexes**: A list of regex and type pairs. If the `task name` matches a regex, the corresponding task type will be used instead of the default.
 
 ### Publish Plugins
-#### Collect Frame Data From Folder Entity
-
-![](assets/traypublisher/settings/collect_frame_data_from_folder.png)
-
-Enable to fill in the the missing frame data from AYON folder or task entities.
-
-- **Enable**: Default state of the plugin.
-- **Optional**: Expose the enable toggle to the user in the publisher UI.
-- **Active**
   
 #### Collect Original Sequence Frame Data
 
 ![](assets/traypublisher/settings/collect_original_sequence_frame_data.png)
 
-Disable to enforce the frame range from AYON folder or task entities (including start and end handles)
+Disable this to enforce the frame range from AYON folder or task entities, including start and end handles.
 
-- **Enable**: Default state of the plugin.
-- **Optional**: Expose the enable toggle to the user in the publisher UI.
-- **Active**
+- **Enable**: The default state of the plugin.
+- **Optional**: Allows the user to toggle this setting in the publisher UI.
+- **Active**: The default value of the toggle in the publisher UI.
   
 
 #### Validate Frame Range
 
 ![](assets/traypublisher/settings/validate_frame_range.png)
 
-Validating frame range of rendered files against state in AYON.
+Validating the frame range of rendered files against the target publish folder or task in AYON.
 
-- **Enable**: Default state of the plugin.
-- **Optional**: Expose the enable toggle to the user in the publisher UI.
-- **Active**
+- **Enable**: The default state of the plugin.
+- **Optional**: Allows the user to toggle this setting in the publisher UI.
+- **Active**: The default value of the toggle in the publisher UI.
   
 #### Validate Existing Version
 
 ![](assets/traypublisher/settings/validate_existing_version.png)
 
-This validator checks if the specified version of the product that is being published doesn't exist in AYON. 
+This validator checks if the specified version of the product being published already exists in the target publish folder or task in AYON.
 
-This validation is enabled by default to prevent accidental override of existing versions.
+This validation is enabled by default to prevent accidental overrides of existing versions.
 
-- **Enable**: Default state of the plugin.
-- **Optional**: Expose the enable toggle to the user in the publisher UI.
-- **Active**
+- **Enable**: The default state of the plugin.
+- **Optional**: Allows the user to toggle this setting in the publisher UI.
+- **Active**: The default value of the toggle in the publisher UI.
 
 #### Extract Editorial Package Conversion
 
@@ -303,9 +318,9 @@ This validation is enabled by default to prevent accidental override of existing
 
 [Editorial Package](addon_traypublisher_artist.md#editorial-package) conversion configuration for the `.mov` file.
 
-- **Conversion enabled**: Enable conversion.
-- **Output extension**: Desired output extension. Leave blank to skip the conversion even if the conversion is enabled.
-- **FFmpeg arguments**: FFmpeg configuration.
+- **Conversion enabled**: Toggle to enable conversion.
+- **Output extension**: Set the desired output extension. Leave blank to skip conversion, even if enabled.
+- **FFmpeg arguments**: Configuration settings for FFmpeg.
   - **Video filters**
   - **Audio filters**
   - **Input arguments**

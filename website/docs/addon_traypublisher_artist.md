@@ -32,10 +32,10 @@ It can be reached via Tray menu.
 
 ## How to use it?
 
-**Just Drag and Drop**, That's how to use it.
+**Just Drag and Drop**—that's all there is to it.
 
-Tray Publisher is nothing different than the regular [publisher](artist_tools_publisher.md) tool.
-It implements two additional fields to drag and drop your files you want to publish. 
+Tray Publisher works just like the regular [publisher](artist_tools_publisher.md) tool.
+Unlike collecting exported files from your work scene, it adds extra fields for dragging and dropping the files you want to publish.
 
 import how_to_use_tray_publisher from './assets/traypublisher/how_to_use_tray_publisher.mp4'
 
@@ -101,12 +101,17 @@ It also creates any missing folders and shots when publishing.
 
 #### Usage
 
-- Select parent folder from the folders list on the left side.
-- Drag & drop the The edit list file and media files
-- Create, An instance will be created for each discovered product.
-- (optional) Set publish options
-- Publish
+- Select the folder path and task from the folders list on the left side. This folder will be used for publishing the `Decision List file`. If [Shot Hierarchy](addon_traypublisher_admin.md#shot-hierarchy) is disabled in addon settings, this folder will be the parent folder for the created shots.
+- Enable any desired products (leave them disabled if you only want to create the shots in your project).
+- Drag and drop the edit list file and media files.
+- Set the variant.
+- Create. An instance will be created for each discovered shot and for each product within each discovered shot.
+- (Optional) Set publish options.
+- Publish.
 
+:::caution
+Don't disable the `Decision List file` publish instance, as it may break your publishing process.
+:::
 
 #### Key Create Options
 1. Variant: Product's variant name.
