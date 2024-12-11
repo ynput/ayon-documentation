@@ -57,11 +57,7 @@ This section allows you to configure and override the global color management se
 
 > Setting Location: `ayon+settings://traypublisher/simple_creators`
 
-![](assets/traypublisher/settings/simple_creator_plugin.png)
-
-This setting lets you add various create plugins from the `simple create plugin` preset.
-
-- **+** : Add a simple create plugin
+The settings provide a list of presets where admins can add various create plugins from the `simple create plugin preset`. At the end of the list, you'll find a **+** button to add another simple create plugin.
 
 #### Simple Create Plugin Preset
 
@@ -145,9 +141,9 @@ Use regex expressions to create tokens. These tokens will be used later in the `
 
 ![](assets/traypublisher/settings/editorial_simple_creator_shot_rename.png)
 
-When enabled, any discovered shots will be renamed based on the `shot rename template`.
+When enabled, any discovered shots will be renamed based on the `Shot rename template`.
 
-The template supports both the available [template keys](admin_settings_project_anatomy.md#available-template-keys) and tokens defined in the [Clip Name Tokenizer](clip-name-tokenizer).
+The template supports both the available [template keys](admin_settings_project_anatomy.md#available-template-keys) and tokens defined under [Clip Name Tokenizer](#clip-name-tokenizer).
 
 - **Enable**
 - **Shot name template**
@@ -157,18 +153,18 @@ The template supports both the available [template keys](admin_settings_project_
 
 Shot Hierarchy defines the folder path where each shot will be added.
 It uses the `Folder path template` to compute each path. 
-The `Folder path template` supports tokens defined in the `folder path template tokens` setting.
+The `Folder path template` supports tokens defined in the `Folder path template tokens` setting.
 
 Each token in the `Folder path template` represents a folder in the hierarchy. <br/>
-Each token's value supports both the available [template keys](admin_settings_project_anatomy.md#available-template-keys) and tokens defined in the [Clip Name Tokenizer](clip-name-tokenizer).
+Each token's value supports both the available [template keys](admin_settings_project_anatomy.md#available-template-keys) and tokens defined under [Clip Name Tokenizer](#clip-name-tokenizer).
 
 - **Enable**
 - **Parent path template** 
-- **Token to parent convertor**
+- **Folder path template tokens**
   - Each item consists of
-    - **parent type**
-    - **parent token name**
-    - **parent token value**
+    - **Token name**
+    - **Token value**
+    - **Folder type**
   - **+** : Add a folder token.
 
 #### Add tasks to shot
@@ -177,9 +173,9 @@ Each token's value supports both the available [template keys](admin_settings_pr
 This list of tasks will be added to each created shot.
 
 - Each item consists of
-  - **Key**
-  - **Task Type**
-- **+** : Add more shot tokens
+  - **Task name**
+  - **Task type**
+- **+** : Add a task.
 
 #### Product Type Presets
 ![](assets/traypublisher/settings/editorial_simple_creator_type_presets.png)

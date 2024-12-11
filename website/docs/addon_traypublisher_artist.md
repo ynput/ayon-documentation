@@ -34,8 +34,8 @@ It can be reached via Tray menu.
 
 **Just Drag and Drop**—that's all there is to it.
 
-Tray Publisher works just like the regular [publisher](artist_tools_publisher.md) tool.
-Unlike collecting exported files from your work scene, it adds extra fields for dragging and dropping the files you want to publish.
+Tray Publisher works just like the regular [Publisher](artist_tools_publisher.md) tool.
+However, instead of just collecting exported files from your work scene, it offers additional fields for dragging and dropping the files you want to publish.
 
 import how_to_use_tray_publisher from './assets/traypublisher/how_to_use_tray_publisher.mp4'
 
@@ -44,36 +44,35 @@ import how_to_use_tray_publisher from './assets/traypublisher/how_to_use_tray_pu
 </video>
 
 
-## Supported Product Types 
+## Supported Product Types
 
 Tray Publisher supports publishing almost any type of data across the pipeline.
-It also supports special creators for advanced publishes.
+It also includes special creators for advanced publishing workflows.
 
 
 ### Simple Create Plugins
 
 :::tip Simple Create Plugins
-Simple Create Plugins are defined in the [Simple Create Plugins](addon_traypublisher_admin.md#simple-create-plugins) addon settings.
-Admins are able to change (remove/add/modify) them.
+Simple Create Plugins are defined in the [Simple Create Plugins](addon_traypublisher_admin.md#simple-create-plugins) addon settings. Admins can change, remove, add, or modify them as needed.
 :::
 
-Every simple creator shares the same usage.
+Every simple creator follows the same usage steps.
 
 ![](assets/traypublisher/artist/creator_plugins.png)
-*In this example, I've prefixed the labels of simple creators with `(ട)` for easy identification.*
+*In this example, I've prefixed the labels of simple creators with `(ട)` in the [settings](addon_traypublisher_admin.md#simple-create-plugin-preset) to make them easy to identify in the publisher UI.*
 
 #### Usage
-- Select Folder and task from left side.
-- Drag & drop Representations and reviewable representations.
-- Create
-- (optional) Set publish options
-- Publish
+- Select a folder and task from the left side.
+- Drag and drop representations and reviewable representations.
+- Create.
+- (Optional) Set publish options.
+- Publish.
 
 #### Key Create Options
-1. Variant: Product's variant name.
-2. Thumbnail: Product's Thumbnail.
-3. Representations: Files to include in your publish. The field can allow multiple items. each item can be a single file or file sequences. the field provides hints about the configuration of the representations filed.
-4. Reviewable representation: Supports a single reviewable item. it can be a single file or file sequences.
+1. **Variant**: The product's variant name.
+2. **Thumbnail**: The product's thumbnail.
+3. **Representations**: Files to include in your publish. This field can allow multiple items, each being a single file or file sequence. It provides hints about the configuration of the representations field.
+4. **Reviewable Representation**: Supports a single reviewable item, which can be a single file or file sequence.
 
 #### Default Simple Creators
 - `workfiles`: Workfiles are full scenes from any application that are directly edited by artists. They represent a state of work on a task at a given point and are usually not directly referenced into other scenes.
@@ -92,17 +91,17 @@ Every simple creator shares the same usage.
 
 ### Editorial Simple
 
-Tray Publisher Editorial workflow allows mass setup of shots from reference video and EDL (Edit Decision List).
-This creator dissects the input video file(s) into clip chunks based on the given edit list file and then converts each to a defined format defined Settings for each product preset.
+The Tray Publisher Editorial workflow allows for the mass setup of shots from reference videos and EDLs (Edit Decision Lists)
+This creator dissects the input video file(s) into clip chunks based on the provided edit list file and then converts each chunk to a format specified in the settings for each product preset.
 
-It also creates any missing folders and shots when publishing.
+Additionally, it creates any missing folders and shots during publishing.
 
 ![](assets/traypublisher/artist/editorial_simple.png)
 
 #### Usage
 
-- Select the folder path and task from the folders list on the left side. This folder will be used for publishing the `Decision List file`. If [Shot Hierarchy](addon_traypublisher_admin.md#shot-hierarchy) is disabled in addon settings, this folder will be the parent folder for the created shots.
-- Enable any desired products (leave them disabled if you only want to create the shots in your project).
+- Select a folder and task from the left side. This folder will be used for publishing the `Decision List file`. If [Shot Hierarchy](addon_traypublisher_admin.md#shot-hierarchy) is disabled in the addon settings, this folder will be the parent folder for the created shots.
+Enable any desired products (leave them disabled if you only want to create the shots in your project).
 - Drag and drop the edit list file and media files.
 - Set the variant.
 - Create. An instance will be created for each discovered shot and for each product within each discovered shot.
@@ -110,23 +109,27 @@ It also creates any missing folders and shots when publishing.
 - Publish.
 
 :::caution
-Don't disable the `Decision List file` publish instance, as it may break your publishing process.
+`Editorial Simple` publish instances are used to publish the `Decision List file`. 
+Do not disable them, as this may break the publishing process.
+
+![](assets/traypublisher/artist/editorial_simple_publish_instance.png)
 :::
 
 #### Key Create Options
-1. Variant: Product's variant name.
-2. Edit List File: source edit list file, it supports different file extensions.
-3. Media Files: Media files to convert
-4. Timeline offset
-5. Instances attributes: *This list is generated from `Product Type Presets` in Editorial Simple settings*
-   - Review: Extract Review
-   - plate
-   - audio
-6. FPS
-7. Workfile start frame:
-8. Handle start
-9. Handle end
-10. Additional attributes: This section includes attributes that will be populated by the entered edit list and clips.
+
+1. **Variant**: The product's variant name.
+2. **Edit Decision List**: The source edit decision list file, supporting various file extensions.
+3. **Media Files**: Media files to convert.
+4. **Timeline Offset**: Adjustments for the timeline.
+5. **Add Products for Each Discovered Shot**: This list is generated from [Product Type Presets](addon_traypublisher_admin.md#product-type-presets) in settings.
+   - **Review**: Review product from the shot.
+   - **Plate**: Shot plate.
+   - **Audio**: Shot audio.
+6. **FPS**: Frames per second.
+7. **Workfile Start Frame**: The starting frame for the workfile.
+8. **Handle Start**: The start handle.
+9. **Handle End**: The end handle.
+10. **Additional Attributes**: This section includes attributes populated by the entered edit list and clips.
 
 
 :::info
@@ -147,31 +150,33 @@ It's capable of publishing individual mov files to specific shots based on file 
 For context, the Batch mov creator doesn't work. -->
 
 :::note
-Currently, This creator doesn't work as expected.
-It should be fixed soon.
+Currently, this creator doesn't work as expected.
 :::
 
 
-### CSV Ingest 
-This feature allows mass publishing arbitrary files through a CSV file.
-It requires a CSV file and then drag and drop it inside the Tray Publisher.
-:::info Missing folders
-CSV Ingest also supports creating missing hierarchy folders in case they are missing.
+### CSV Ingest
+
+This feature allows for mass publishing of arbitrary files using a CSV file.
+Simply provide a CSV file and drag and drop it into the Tray Publisher.
+
+:::info Missing Folders
+CSV Ingest also supports creating missing hierarchy folders if they are not present.
 :::
 
 ![](assets/traypublisher/artist/csv_ingest.png)
 
 #### Usage
-- Prepare your CSV File.
-- Drag & Drop your CSV file
-- Create, An instance will be created for each discovered product.
-- (optional) set publish options
-- Publish
+- Prepare your CSV file.
+- Select a folder and task from the left side. *This folder will be used for publishing the `CSV file` itself.*
+- Drag and drop your CSV file.
+- Create. An instance will be created for each discovered product.
+- (Optional) Set publish options.
+- Publish.
 
 #### Prepare your CSV File
 
-The CSV columns should follow the columns specified in your AYON tray publisher [CSV Ingest settings](addon_traypublisher_admin.md#ingest-csv). <br/>
-Find example CSV file here: [ay_240319_0001.zip](https://github.com/ynput/ayon-core/files/14651928/ay_240319_0001.zip).
+The CSV columns should match those specified in your AYON tray publisher [CSV Ingest settings](addon_traypublisher_admin.md#ingest-csv).<br/>
+Find an example CSV file here: [ay_240319_0001.zip](https://github.com/ynput/ayon-core/files/14651928/ay_240319_0001.zip).
 
 Here's a list of the default columns. *Items with <span style={{color:"red"}}>\*</span> are required (must exist in the CSV file).*
 
@@ -191,7 +196,7 @@ Here's a list of the default columns. *Items with <span style={{color:"red"}}>\*
 - **Slate Exists**: Indicates if the provided sequence includes a slate. Use Boolean values (literal `True` or `False`).
 - **Representation**: The provided representation must exist in [representation config](addon_traypublisher_admin.md#representation-config).
 - **Representation ColorSpace**: Color space name to associate to the provided sequence.
-- **Representation Tags**: Tags to add to the provided representation. Find a list of available tags [here](addon_core_settings.md/#tags)
+- **Representation Tags**: Tags to add to the provided representation. Find a list of available tags [here](addon_core_settings.md#tags)
 
 :::tip Multiple representation per product
 
@@ -200,18 +205,19 @@ When using the same `File Path`, `Folder Path`, `Task Name`, `Product Type`, `Va
 :::
 
 ### Colorspace Look
-This creator is used to publish colorspace look files (`ociolook`) which are any LUT files. 
-This product is available for loading in Nuke host.
+
+This creator is used to publish colorspace look files (`ociolook`), which are any LUT files.
+This product is available for loading in the Nuke host.
 
 ![](assets/traypublisher/artist/ociolook_create_options.png)
 
 #### Usage
-- Select Folder and task from left side.
-- Drag & drop a single LUT file.
-- Create
-- Set publish options
-![](assets/traypublisher/artist/ociolook_publish_options.png)
-- Publish
+- Select a folder and task from the left side.
+- Drag and drop a single LUT file.
+- Create.
+- Set publish options.  
+  ![](assets/traypublisher/artist/ociolook_publish_options.png)
+- Publish.
 
 #### Supported Extensions 
 - `.3dl`
@@ -223,18 +229,17 @@ This product is available for loading in Nuke host.
 - `.spi3d`
 
 ### Online
-Online file retain their original name and use it as product name.
-To avoid conflicts, this creator checks if product with this name already exists under selected folder.
+Online files retain their original name and use it as the product name.
+To avoid conflicts, this creator checks if a product with this name already exists under the selected folder in AYON.
 
 ![](assets/traypublisher/artist/online.png)
 
 #### Usage
-- Select Folder and task from left side.
-- Drag & drop a single file or file sequence.
-- Create
-- (optional) Set publish options
-- Publish
-
+- Select a folder and task from the left side.
+- Drag and drop a single file or file sequence.
+- Create.
+- (Optional) Set publish options.
+- Publish.
 #### Supported Extensions
 
 - `.dpx`
@@ -250,30 +255,30 @@ To avoid conflicts, this creator checks if product with this name already exists
 
 ### Editorial Package
 
-This creator is used to publish a whole folder containing `OTIO` file and movie `.mov` files
+This creator is used to publish an entire folder containing `OTIO` files and `.mov` movie files.
 
-The result is a single `editorial_pkg` product type and (possibly) convert `.mov` files into different format and copy them into `publish` `resources` subfolder.
+The result is a single `editorial_pkg` product type, which may convert `.mov` files into different formats and copy them into the `publish` `resources` subfolder.
 
 ![](assets/traypublisher/artist/editorial_package.png)
 
 #### Usage
-- Select Folder and task from left side.
-- Drag & drop the **folder** containing the `OTIO` file and movie `.mov` files
-- Create
-- (optional) Set publish options
-![](assets/traypublisher/artist/editorial_package_publish.png)
-- Publish
+- Select a folder and task from the left side.
+- Drag and drop the **folder** containing the `OTIO` file and `.mov` movie files.
+- Create.
+- (Optional) Set publish options.  
+  ![](assets/traypublisher/artist/editorial_package_publish.png)
+- Publish.
 
 ## Default Publish Options
 
-### Optinal plugins
+### Optional Plugins
 
-- **Override Colorspace**: A drop down menu that allows selecting colorspace for your render.
-- **Collect Original Sequence Frame Data**: Disable to enforce the frame range from AYON folder or task entities (including start and end handles).
-- **Validate Existing Version**: Checks if the specified version of the product that is being published doesn't exist in AYON. Disable to override the specified version.
-- **Validate Existing Online Files**: Validate that product doesn't exist yet.
-- **Validate Frame Range**: Validating frame range of rendered files against state in AYON.
-- **Validate representation colorspaces**: Validate colorspace look attributes and representation colorspaces.
+- **Override Colorspace**: A dropdown menu that allows selecting the colorspace for your render.
+- **Collect Original Sequence Frame Data**: Disable to enforce the frame range from AYON folder or task entities, including start and end handles.
+- **Validate Existing Version**: Checks if the specified version of the product being published doesn't exist in AYON. Disable to override the specified version.
+- **Validate Existing Online Files**: Ensures that the product doesn't already exist.
+- **Validate Frame Range**: Validates the frame range of rendered files against the state in AYON.
+- **Validate Representation Colorspaces**: Validates colorspace look attributes and representation colorspaces.
 - **Integrate Hero Version**
 - **Validate Deadline Job Info**
 - **Validate Deadline Pools**
@@ -282,9 +287,9 @@ The result is a single `editorial_pkg` product type and (possibly) convert `.mov
 
 ![](assets/traypublisher/artist/deadline_options.png)
 
-Tray publisher supports deadline submissions for some product types like `render`.
+Tray Publisher supports deadline submissions for certain product types, such as `render`.
 
-Default deadline options, *Admins can modify this list from settings, See [Job Info Profiles](addon_deadline_admin.md/#profiles).*
+Default deadline options can be modified by admins in the settings. See [Job Info Profiles](addon_deadline_admin.md#profiles).
 
 - **Frames per Task**
 - **Priority**
