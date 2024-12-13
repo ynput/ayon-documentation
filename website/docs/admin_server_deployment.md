@@ -70,7 +70,7 @@ values={[
 8. If you see an error saying "port 5000 is already in use", there are 2 solutions:
    * **RECOMMENDED**: Set the port to 5001 instead of 5000 in `docker-compose.yml` (`ports: ["5001:5000"]`) and restart from step 6.
    * Alternative: Turn off `System Settings > General > AirDrop & Handoff > AirPlay Receiver` and restart from step 6.
-10. Once the setup is complete, navigate to [http://localhost:5000/](http://localhost:5000/) in your web browser and log in as `admin/admin`.
+9. Once the setup is complete, navigate to [http://localhost:5000/](http://localhost:5000/) in your web browser and log in as `admin/admin`.
 
 </ReactMarkdown>
 </TabItem>
