@@ -157,7 +157,7 @@ Synchronization is triggered by pressing `Sync Users` in `Shotgrid` tab under `S
 
 ![Flow synch users](assets/shotgrid/ay_sync_users.png)
 
-For users to be assigned to the tasks, they need to be first assign to any `Project access group` in
+For users to be assigned to the tasks, they need to first be assigned to any `Project access group` in
 `Project Settings > Project access`!
 
 After that assignment of task should be possible in both ways, eg. AYON <-> Flow.
