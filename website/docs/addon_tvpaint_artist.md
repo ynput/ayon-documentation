@@ -12,11 +12,11 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 </ReactMarkdown>
 
 
--   [Work Files](artist_tools_workfiles)
--   [Load](artist_tools_loader)
--   [Scene Inventory](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
--   [Library](artist_tools_library_loader)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Load](artist_tools_loader.md)
+-   [Scene Inventory](artist_tools_inventory.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Library](artist_tools_library_loader.md)
 
 
 ## Setup

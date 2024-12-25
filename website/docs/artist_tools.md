@@ -8,10 +8,10 @@ sidebar_label: Tools
 
 AYON offers a collection of core tools in tandem with the Integrations:
 
-- [Creator](artist_tools_creator)
-- [Loader](artist_tools_loader)
-- [Library Loader](artist_tools_library_loader)
-- [Publisher](artist_tools_publisher)
-- [Inventory](artist_tools_inventory)
-- [Workfiles](artist_tools_workfiles)
-- [Look Assigner](artist_tools_look_assigner)
+- [Creator](artist_tools_creator.md)
+- [Loader](artist_tools_loader.md)
+- [Library Loader](artist_tools_library_loader.md)
+- [Publisher](artist_tools_publisher.md)
+- [Inventory](artist_tools_inventory.md)
+- [Workfiles](artist_tools_workfiles.md)
+- [Look Assigner](artist_tools_look_assigner.md)
