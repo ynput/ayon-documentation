@@ -93,6 +93,21 @@ module.exports = {
                 "addon_nuke_artist",
                 "addon_photoshop_artist",
                 "addon_substancepainter_artist",
+                {
+                    type: "category",
+                    label: "Tray Publisher",
+                    link: {
+                        type: 'generated-index',
+                        title: 'Tray Publisher User',
+                        description:
+                          "Tray Publisher User Guide",
+                        keywords: ['tray', 'publisher'],
+                      },
+                    items: [
+                        "addon_traypublisher_artist",
+                        "addon_traypublisher_artist_advanced"
+                    ],
+                },
                 "addon_tvpaint_artist",
                 "addon_unreal_artist",
                 "addon_version_control_artist",
@@ -155,7 +170,9 @@ module.exports = {
                 "admin_settings_project_anatomy",
                 "admin_server_bundles_and_addons",
                 "admin_server_settings_management",
+                "admin_server_market",
                 "admin_server_updating_pipeline",
+                "admin_server_permissions",
             ],
         },
         {

@@ -24,8 +24,6 @@ Kitsu is a great open source production tracker and can be used for project mana
 
 ## Kitsu Addon Installation
 
-### Addon Market 
-
 If you have already connected your ayon instance to Ynput cloud, you would be able to get the addon from Addon Market.
 
 ![Addon Market](assets/kitsu/admin/kitsu_addon_market.png)

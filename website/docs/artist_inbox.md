@@ -8,7 +8,7 @@ sidebar_label: Inbox and Notifications
 The inbox was introduced in `1.2.0`.
 :::
 
-![Inbox overview](./assets/inbox/inbox_important.png)
+![Inbox overview](assets/inbox/inbox_important.png)
 
 ## Overview
 
@@ -35,7 +35,7 @@ The inbox has full keyboard support! Hover over any message and press `X` to mar
     -   Status changes
     -   Assignee changes
 
-[Read more about importance](./artist_inbox.md#importance-table)
+[Read more about importance](artist_inbox.md#importance-table)
 
 ## Watchers
 
@@ -45,7 +45,7 @@ Watchers are often added automatically. For example, posting a comment on an ent
 
 You can manually update your watcher status using the bell icon in the toolbar at the top of the entity’s details panel. A blue bell indicates that you are watching the entity.
 
-![Watchers dropdown](./assets/inbox/watchers.png)
+![Watchers dropdown](assets/inbox/watchers.png)
 
 Watchers was introduced in `1.3.1`
 
@@ -68,8 +68,8 @@ Enable browser push notifications to stay aware of new important inbox messages.
 
 You can also enable notification sounds for added awareness.
 
-![Turn on notifications](./assets/inbox/inbox_enable.png)
-![Turn on notifications in account](./assets/inbox/notifications_account_settings.png)
+![Turn on notifications](assets/inbox/inbox_enable.png)
+![Turn on notifications in account](assets/inbox/notifications_account_settings.png)
 
 :::tip
 Desktop notifications and notification sounds work independently to one another.

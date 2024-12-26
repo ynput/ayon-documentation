@@ -8,7 +8,7 @@ sidebar_label: Task Progress Page
 The Task Progress page was introduced in `1.4.0`.
 :::
 
-![Tasks for three folders](./assets/task_progress/task_progress_overview.png)
+![Tasks for three folders](assets/task_progress/task_progress_overview.png)
 
 ### Overview
 
@@ -32,7 +32,7 @@ import showcase from "./assets/task_progress/task_progress_showcase_v002_min.mp4
 
 To update a task's status or assignees, first select the task cell, then click on the left or middle section.
 
-![Editing the assignees of a task](./assets/task_progress/task_progress_editing.png)
+![Editing the assignees of a task](assets/task_progress/task_progress_editing.png)
 
 :::tip
 When selecting multiple tasks and adding or removing a user, the original assignees for each task will be updated to include or exclude that user. For example, adding "John" to tasks will keep the current assignees intact while adding "John" to each task.
@@ -42,8 +42,36 @@ When selecting multiple tasks and adding or removing a user, the original assign
 
 For more details or additional changes to a task, open the details panel by double-clicking on the task.
 
-![Selected task with a panel open with more details](./assets/task_progress/task_progress_details_panel.png)
+![Selected task with a panel open with more details](assets/task_progress/task_progress_details_panel.png)
 
 :::tip
 To quickly view a task's reviewables, press the `Spacebar` on a selected task. Tasks with available reviewables will display a play button in the top-right corner.
 :::
+
+### Search and Filtering
+
+To focus on specific tasks, use the search and filters bar to create a custom view.
+
+![Filtering tasks by status and assignee](./assets/task_progress/progress_filtering.gif)
+
+You can search using any keyword with the text filter or choose from the predefined filters in the dropdown.
+
+After selecting an attribute to filter by, choose the values to include or exclude.
+
+Each selected value will show tasks matching any of the chosen values. For example, filtering by “Status” and selecting “In Progress” and “Pending review” will display tasks that are either “In Progress” or “Pending review.”
+
+![Filtering tasks by status or status](./assets/task_progress/filter_status_or_status.png)
+
+Multiple filters work together to refine results. For example, filtering by “Status: Ready to start” and “Assignee: Has none” will show tasks that are both “Ready to start” and have no assigned users.
+
+![Filtering tasks by status and not assignee](./assets/task_progress/filter_status_and_no_assignee.png)
+
+:::tip
+You can add the same filter multiple times for advanced filtering. For example, adding two “Tag” filters, one with “Happy” or “Sad” and another with “Scary,” will display tasks that are either “Happy” or “Sad” and also “Scary.”
+
+![Filtering tasks by tags](./assets/task_progress/filter_tag_and_tag.png)
+:::
+
+To exclude a value, click the filter and toggle “Excludes” or use the button on the left of the filter card. In this example, the filter excludes all tasks with priority "Normal" or "Low".
+
+![Filtering excludes](./assets/task_progress/filter_excludes.png)
