@@ -24,6 +24,6 @@ toc_max_heading_level: 5
 *Addon settings are accessed via Bundles.*
 
 - Studio Settings: Addon settings on studio level.
-- Project Settings: Addon settings on project level. They inherit studio settings and allowing overrides per project.
+- Project Settings: Addon settings on project level. They inherit studio settings and allow pinned overrides per project. A pinned override does not inherit from studio settings anymore and is explicitly set on the project settings.
 - Studio Site Settings: Addon local settings on studio level. They don't inherit (nor override) any other settings.
 - Project Site Settings: Addon local settings on project level. They don't inherit (nor override) any other settings.
