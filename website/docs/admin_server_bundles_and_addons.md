@@ -222,6 +222,15 @@ Settings and their overrides use the following color code:
 - <span style={{color:'#25d15f'}}>▌</span>: Studio override
 - <span style={{color:'#ff9e3d'}}>▌</span>: Project override
 
+### Settings Filter
+
+In the **Studio Settings `S+S`** or **Project Settings `P+P`** tabs, a settings filter is available at the top of the tab for easy access to settings. This filter allows:
+
+- Search by a setting name or part of the name, including setting titles or nested settings.
+- Searching by a setting value or part of the value.
+
+![](assets/server/admin/server_and_addons/settings_filter.gif)
+
 ## Copy Settings
 ### Copy from Another Bundle
 
