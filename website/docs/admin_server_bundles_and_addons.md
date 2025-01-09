@@ -140,7 +140,7 @@ When creating a bundle, several options are available:
 6. **Compatibility Checker**: Ensures your selected addons meet compatibility requirements with other AYON products in the bundle. Learn more in [Understanding Dependencies in AYON Addons | Ynput Forums](https://community.ynput.io/t/understanding-dependencies-in-ayon-addons/1992).
 
 :::info
-After creation, the previously mentioned options will be locked. You can only change:
+After a bundle is created, most of the options will be locked. You can only change:
 
 - Dependency Packages
 - Version of some server addons that don't affect the pipeline, e.g., [Jira Addon](/features?addons=jira).
@@ -173,11 +173,11 @@ To start working with a bundle, you'll need to assign it a status so the system 
 The AYON launcher lets you override the default behavior, allowing you to specify a bundle and pipeline mode. For more details, visit [How to use different bundles with different projects? | Ynput Forums](https://community.ynput.io/t/how-to-use-different-bundles-with-different-projects/1096).
 :::
 
-### How settings are organized?
+### How are settings organized?
 
 Each addon version includes different settings variations:
 
-- **Default Values**: These values are built into the addon version.
+- **Factory defaults**: These values are built into the addon version.
 - **Production**: This variation is accessed when the addon is added to a bundle marked as production.
 - **Staging**: This variation is accessed when the addon is added to a bundle marked as staging.
 - **Development variations**: They are added on demand when the addon is included in a dev bundle. The variation name matches the name of the dev bundle that includes the addon.
@@ -198,7 +198,7 @@ The following example assumes a dev bundle named `Develop`.
 
 Addon settings in AYON are divided into four categories:
 
-- **Studio Settings `S+S`**: These are addon settings at the studio level. They inherit default values and allow overriding these defaults across the studio for all projects.
+- **Studio Settings `S+S`**: These are addon settings at the studio level. They inherit factory defaults and allow overriding these defaults across the studio for all projects.
 - **Project Settings `P+P`**: These settings are at the project level. They inherit studio settings and allow overriding them for the specific project.
 - **Studio Site Settings**: These are addon settings per `Site ID` at the studio level.
 - **Project Site Settings**: These are addon settings per `Site ID` at the project level.
