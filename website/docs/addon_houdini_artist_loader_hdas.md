@@ -72,7 +72,8 @@ When using `Load with AYON` parm action with a file parm that's already connecte
 - **Product**: Selected Product.
 - **Version**: Selected Version.
 - **Representation**: Selected Representation (format).
-- **USD Compatible Representations** [LOPs only]: When this toggle is enabled, it filters the 
+- **Enable Representation Filter**: Enable to show the **Representation Filter** parameter.
+- **Representation Filter**: A space-separated list of representation names to filter. When used, it filters the representation drop-down menu.
 - **Clear Cache**: Clears node's cache.
 - **File**: Shows the file of the selected product. It automatically applies `$F` and `<UDIM>` tokens.
 - **Use AYON Entity URI**: When enabled the File parameter will turn into an AYON URI.
@@ -93,10 +94,15 @@ Supports expressions and context options. more examples check
 #### Overview
 It uses a combination of [Generic Loader](#generic-loader) and [Reference](https://www.sidefx.com/docs/houdini/nodes/lop/reference.html) node
 
+> The **representation filter** parameter on the inner Generic loader is set to 
+> ```
+> usd usda usdlc usdnc abc
+> ```
+
 ![](assets/houdini/artist/hda_lop_import_parameters.png)
 
 #### Parameters
-It shares the same parameters as generic loader except for `Nodes referencing file` and also add few more parameters.
+It shares the same parameters as generic loader and also add few more parameters.
 It also exposes some parameters of [Reference](https://www.sidefx.com/docs/houdini/nodes/lop/reference.html) node. 
 
 - **Reload Files**
@@ -115,12 +121,18 @@ It also exposes some parameters of [Reference](https://www.sidefx.com/docs/houdi
 ### Load Shot
 
 #### Overview
+
 It uses a combination of [Generic Loader](#generic-loader) and [Sublayer](https://www.sidefx.com/docs/houdini/nodes/lop/sublayer.html) node.
+
+> The **representation filter** parameter on the inner Generic loader is set to 
+> ```
+> usd usda usdlc usdnc abc
+> ```
 
 ![](assets/houdini/artist/hda_load_shot_parameters.png)
 
 #### Parameters
-It share the same parameters as generic loader except for `Nodes referencing file` and also add few more parameters.
+It share the same parameters as generic loader and also add few more parameters.
 
 - **Reload Files**
 - **Mute Layer**
