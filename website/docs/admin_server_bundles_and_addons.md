@@ -76,7 +76,7 @@ A bundle is a collection of AYON products used in the AYON pipeline. It includes
 - Dependency Package
 - Addons List
 
-Bundles can have different statuses or tags to indicate their [Pipeline Mode](#pipeline-modes), such as <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> , <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>Staging</span> or <span style={{color:'#1c2026',backgroundColor:'#c78fff', borderRadius: '4px', padding: '2px 4px'}}>Dev</span>.
+Bundles can be activated in different variant statuses to indicate their [Pipeline Mode](#pipeline-modes), such as <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> , <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>Staging</span> or <span style={{color:'#1c2026',backgroundColor:'#c78fff', borderRadius: '4px', padding: '2px 4px'}}>Dev</span>.
 
 
 ### Bundles Tab
