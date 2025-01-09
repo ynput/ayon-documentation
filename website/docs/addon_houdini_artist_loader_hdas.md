@@ -14,7 +14,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 </ReactMarkdown>
 
 ## Introduction
-AYON Loader HDAs act as controllers that allows you to select AYON products to load into your scene.
+AYON Loader HDAs act as controllers that allow you to select AYON products to load into your scene.
 
 - Generic Loader as its name implies it's generic, it loads any AYON product as a filepath.
 - Lop Import (Load Asset): load USD assets. 
@@ -38,7 +38,7 @@ All of these nodes are accessible in TAB menu.
 | ![](assets/houdini/artist/hda_lop_tab_menu.png) | ![](assets/houdini/artist/hda_obj_tab_menu.png) | ![](assets/houdini/artist/hda_sop_tab_menu.png) |
 
 ### Loader Tool
-Some loaders depends on these nodes to perform loading.
+Some loaders depend on these nodes to perform loading.
 
 ![](assets/houdini/artist/hda_load_tool.png)
 
@@ -102,7 +102,7 @@ It uses a combination of [Generic Loader](#generic-loader) and [Reference](https
 ![](assets/houdini/artist/hda_lop_import_parameters.png)
 
 #### Parameters
-It shares the same parameters as generic loader and also add few more parameters.
+It shares the same parameters with generic loader and also adds few more parameters.
 It also exposes some parameters of [Reference](https://www.sidefx.com/docs/houdini/nodes/lop/reference.html) node. 
 
 - **Reload Files**
@@ -115,8 +115,8 @@ It also exposes some parameters of [Reference](https://www.sidefx.com/docs/houdi
 - **Time Scale**
 
 #### How to use LOP Import
-- Select products works the same as [generic loader](#how-to-use-generic-loader).
-- Set `Primitive Root`, the `Presets` menu provides provides default values for building assets and shots.
+- Select products works the same with [generic loader](#how-to-use-generic-loader).
+- Set `Primitive Root`, the `Presets`  menu provides default values for building assets and shots.
 
 ### Load Shot
 
@@ -132,7 +132,7 @@ It uses a combination of [Generic Loader](#generic-loader) and [Sublayer](https:
 ![](assets/houdini/artist/hda_load_shot_parameters.png)
 
 #### Parameters
-It share the same parameters as generic loader and also add few more parameters.
+It shares the same parameters with generic loader and also adds few more parameters.
 
 - **Reload Files**
 - **Mute Layer**
@@ -140,13 +140,13 @@ It share the same parameters as generic loader and also add few more parameters.
 - **Time Scale**
 
 #### How to use Load Shot
-- Select products works the same as [generic loader](#how-to-use-generic-loader).
-- Keep in mind, it adds loaded product as a sublayer.
+- Selecting products works the same with [generic loader](#how-to-use-generic-loader).
+- Keep in mind, it adds the loaded product as a sublayer.
 
 ## Example Usages
 These are examples from various discussions on our community.
 You can find here some inspiration.
-Although They might not fulfill your needs at your studios but they can serve as good starting point.
+Although They might not fulfill your needs at your studios, they can serve as good starting point.
 
 :::tip
 Feel free to share us your examples on [Ynput Community Forums](https://community.ynput.io/).
@@ -155,7 +155,7 @@ Feel free to share us your examples on [Ynput Community Forums](https://communit
 ### Context Options and MultiShots
 
 You can use 'context options' entry to select from - where the user is capable of selecting any folder in the project.
-e.g. you can create a menu that includes all folder paths that has tasks in the current project.
+e.g. you can create a menu that includes all folder paths that have tasks in the current project.
 
 <details><summary>Create <code>Folder Path</code> context menu</summary>
 
