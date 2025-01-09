@@ -223,6 +223,9 @@ Settings and their overrides use the following color code:
 - <span style={{color:'#ff9e3d'}}>▌</span>: Project override
 
 ### Settings Filter
+:::info
+Introduced in `1.5.4` as a footnote.
+:::
 
 In the **Studio Settings `S+S`** or **Project Settings `P+P`** tabs, a settings filter is available at the top of the tab for easy access to settings. This filter allows:
 
