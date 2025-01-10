@@ -13,6 +13,7 @@ const addon: Addon = {
         user: "addon_premiere_artist",
         admin: "addon_premiere_admin",
     },
+    github: "https://github.com/ynput/ayon-premiere",
 };
 
 export default addon;
