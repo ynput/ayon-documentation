@@ -14,11 +14,11 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 </ReactMarkdown>
 
 ## Introduction
-AYON Loader HDAs act as controllers that allow you to select AYON products to load into your scene.
+AYON Loader HDAs serve as controllers that let you select and load AYON products into your scene.
 
-- Generic Loader as its name implies it's generic, it loads any AYON product as a filepath.
-- Lop Import (Load Asset): load USD assets. 
-- Load Shot: Load USD shots.
+- **Generic Loader**: As the name suggests, it is generic and loads any AYON product as a *filepath*.
+- **Lop Import (Load Asset)**: Loads USD assets.
+- **Load Shot**: Loads USD shots.
 
 | Generic Loader |
 |--|
@@ -31,28 +31,28 @@ AYON Loader HDAs act as controllers that allow you to select AYON products to lo
 ## Access Loader HDAs
 
 ### TAB Menu
-All of these nodes are accessible in TAB menu.
+All of these nodes are accessible in the TAB menu.
 
 | LOPs | OBJs | SOPs |
 |--|--|--|
 | ![](assets/houdini/artist/hda_lop_tab_menu.png) | ![](assets/houdini/artist/hda_obj_tab_menu.png) | ![](assets/houdini/artist/hda_sop_tab_menu.png) |
 
 ### Loader Tool
-Some loaders depend on these nodes to perform loading.
+Some loader plugins rely on these nodes to perform loading:
 
 ![](assets/houdini/artist/hda_load_tool.png)
 
-1. Load Asset: It creates a `LOP Import` node in `\stage`. 
-2. Load Shot: It creates a `Load Shot` node in `\stage`. 
-3. Load filepath to node: It creates a `Generic Loader` node in `\obj\AVALON_CONTAINERS`
+1. **Load Asset**: Creates a `LOP Import` node in `\stage`.
+2. **Load Shot**: Creates a `Load Shot` node in `\stage`.
+3. **Load Filepath to Node**: Creates a `Generic Loader` node in `\obj\AVALON_CONTAINERS`.
 
-### Quickly load into any string parm
+### Quickly Load into Any String Parameter
 
-You can find a parameter action `Load with AYON` when right-click any parameter of type file on any non Rop nodes.
-this action will create a `Generic Loader` node in `\obj\AVALON_CONTAINERS` and copies its file parameter to the `File` parameter where the action was triggered.
+You can find a parameter action called `Load with AYON` by right-clicking any file-type parameter on non-Rop nodes.
+This action creates a `Generic Loader` node in `\obj\AVALON_CONTAINERS`, copies its file parameter to the `File` parameter where the action was triggered, and opens the parameter panel for the created `Generic Loader` node.
 
 :::tip
-When using `Load with AYON` parm action with a file parm that's already connected to a `Generic Loader`, it'll pop up the parm panel for that `Generic Loader` node without creating a new `Generic Loader`. 
+When using the `Load with AYON` parameter action with a file parameter already connected to a `Generic Loader`, it opens the parameter panel for that `Generic Loader` node without creating a new one.
 :::
 
 ![](assets/houdini/artist/hda_load_into_file_parm.gif)
@@ -66,35 +66,36 @@ When using `Load with AYON` parm action with a file parm that's already connecte
 
 #### Parameters
 
-- **Project**: Selected Project Name
-- **Folder Path**: Selected Folder Path
-- **Folder Name**: Label shows the name of the selected folder.
-- **Product**: Selected Product.
-- **Version**: Selected Version.
-- **Representation**: Selected Representation (format).
-- **Enable Representation Filter**: Enable to show the **Representation Filter** parameter.
-- **Representation Filter**: A space-separated list of representation names to filter. When used, it filters the representation drop-down menu.
-- **Clear Cache**: Clears node's cache.
-- **File**: Shows the file of the selected product. It automatically applies `$F` and `<UDIM>` tokens.
-- **Use AYON Entity URI**: When enabled the File parameter will turn into an AYON URI.
-- **Show Entity Thumbnail**: When enabled, it shows the selected product's thumbnail and show extra parameters for adjusting the image in network view.
-- **Size** & **Offset**: They are used to adjust the displayed thumbnail in network view.
-- **Update Thumbnail**: Click to manually update the thumbnail, in some cases auto update doesn't work, so you'd need to force update.
-- **Show Pipeline Parms**: It shows extra pipeline parms like `Representation ID`, It's mostly used for debugging and automations.
-- **Nodes Referencing File**: It shows nodes referencing the `File` parameter.
+- **Project**: Select a project.
+- **Folder Path**: Select a folder path.
+- **Folder Name**: Shows the name of the selected folder.
+- **Product**: Select a product.
+- **Version**: Select the product's version.
+- **Representation**: Select the product's representation (format).
+- **Enable Representation Filter**: Toggle to show the **Representation Filter** parameter.
+- **Representation Filter**: Enter a space-separated list of representation names to filter. This filters the representation drop-down menu.
+- **Clear Cache**: Clears the node's cache.
+- **File**: Displays the file of the selected product. Automatically applies `$F` and `<UDIM>` tokens.
+- **Use AYON Entity URI**: When enabled, the File parameter becomes an AYON URI.
+- **Show Entity Thumbnail**: When enabled, shows the selected product's thumbnail and extra parameters for adjusting the image in the network view.
+- **Size** & **Offset**: Adjust the displayed thumbnail in the network view.
+- **Update Thumbnail**: Click to manually update the thumbnail. Use this if auto-update doesn't work.
+- **Show Pipeline Parms**: Displays extra pipeline parameters like `Representation ID`, mainly for debugging and automation.
+- **Nodes Referencing File**: Displays nodes that reference the `File` parameter.
 
-#### How to use Generic Loader
+#### How to Use Generic Loader
 
-Select project and folder path
-Select product, version and representation.
-Supports expressions and context options. more examples check
-
+1. Select the project and folder path.
+2. Choose the product, version, and representation.
+3. The **File** parameter will be populated, allowing you to copy and use it as needed.
+4. Product selection fields support expressions and context options. Find examples below [Example Usages](#example-usages).
+   
 ### Lop Import 
 
 #### Overview
-It uses a combination of [Generic Loader](#generic-loader) and [Reference](https://www.sidefx.com/docs/houdini/nodes/lop/reference.html) node
+It uses a combination of the [Generic Loader](#generic-loader) and the [Reference](https://www.sidefx.com/docs/houdini/nodes/lop/reference.html) node.
 
-> The **representation filter** parameter on the inner Generic loader is set to 
+> The **representation filter** parameter on the inner `Generic Loader` node is set to:
 > ```
 > usd usda usdlc usdnc abc
 > ```
@@ -102,11 +103,14 @@ It uses a combination of [Generic Loader](#generic-loader) and [Reference](https
 ![](assets/houdini/artist/hda_lop_import_parameters.png)
 
 #### Parameters
-It shares the same parameters with generic loader and also adds few more parameters.
-It also exposes some parameters of [Reference](https://www.sidefx.com/docs/houdini/nodes/lop/reference.html) node. 
+
+This shares the same parameters as the Generic Loader and adds a few more. It also exposes some parameters of the [Reference](https://www.sidefx.com/docs/houdini/nodes/lop/reference.html) node.
+
+Additional parameters on the node include:
 
 - **Reload Files**
-- **Primitive Root** & **Presets**
+- **Primitive Root**
+- **Presets**: This menu provides default values for building assets and shots.
 - **Reference Type**
 - **Make Instanceable**
 - **Reference Primitive**
@@ -114,52 +118,50 @@ It also exposes some parameters of [Reference](https://www.sidefx.com/docs/houdi
 - **Time Offset (in Frames)**
 - **Time Scale**
 
-#### How to use LOP Import
-- Select products works the same with [generic loader](#how-to-use-generic-loader).
-- Set `Primitive Root`, the `Presets`  menu provides default values for building assets and shots.
+#### How to Use LOP Import
+- Selecting products works the same as with the [Generic Loader](#how-to-use-generic-loader).
+- Set the `Primitive Root`. The `Presets` menu provides default values for building assets and shots.
 
 ### Load Shot
 
 #### Overview
+It uses a combination of the [Generic Loader](#generic-loader) and the [Sublayer](https://www.sidefx.com/docs/houdini/nodes/lop/sublayer.html) node.
 
-It uses a combination of [Generic Loader](#generic-loader) and [Sublayer](https://www.sidefx.com/docs/houdini/nodes/lop/sublayer.html) node.
-
-> The **representation filter** parameter on the inner Generic loader is set to 
+> The **representation filter** parameter on the inner `Generic Loader` node is set to:
 > ```
 > usd usda usdlc usdnc abc
 > ```
 
 ![](assets/houdini/artist/hda_load_shot_parameters.png)
 
-#### Parameters
-It shares the same parameters with generic loader and also adds few more parameters.
+## Parameters
+It shares the same parameters as the Generic Loader and adds a few more:
 
 - **Reload Files**
 - **Mute Layer**
 - **Time Offset (in Frames)**
 - **Time Scale**
 
-#### How to use Load Shot
-- Selecting products works the same with [generic loader](#how-to-use-generic-loader).
+#### How to Use Load Shot
+- Selecting products works the same as with the [Generic Loader](#how-to-use-generic-loader).
 - Keep in mind, it adds the loaded product as a sublayer.
 
 ## Example Usages
-These are examples from various discussions on our community.
-You can find here some inspiration.
-Although They might not fulfill your needs at your studios, they can serve as good starting point.
+These examples come from tests during the development of the HDAs and various discussions in our community.
+You might find some inspiration here. While they may not perfectly meet your studio's needs, they can serve as a good starting point.
 
 :::tip
-Feel free to share us your examples on [Ynput Community Forums](https://community.ynput.io/).
+Feel free to share your examples with us on the [Ynput Community Forums](https://community.ynput.io/).
 :::
 
 ### Context Options and MultiShots
 
-You can use 'context options' entry to select from - where the user is capable of selecting any folder in the project.
-e.g. you can create a menu that includes all folder paths that have tasks in the current project.
+You can use a `context options` entry to select from, allowing the user to choose any folder in the project.
+For example, you can create a context options menu that includes all folder paths in the current project.
 
 <details><summary>Create <code>Folder Path</code> context menu</summary>
 
-You can create a Python Menu context option and use this:
+You can create a Python menu context option by using this:
 
 ```python
 from ayon_core.pipeline import get_current_project_name
@@ -184,43 +186,43 @@ return paths
 ![](assets/houdini/artist/hda_context_options_multishots.gif)
 
 ### Expressions and Context Options
-AYON Loader HDAs also support expressions in different contexts.
-e.g. we can leverage this feature to load multiple products in a loop using one loader.
-This example depends on using the same name for the products except the number.
 
-Firstly, I've published three products `pointcacherock_1`, `pointcacherock_2` and `pointcacherock_3`.
-![](assets/houdini/artist/hda_example_1_expressions.png)
+AYON Loader HDAs support expressions and context options, allowing users to automate operations.
 
-Then loaded them in my scene using loader HDAs in a loop using expressions.
+For instance, you can use this feature to load multiple products in a loop with a single loader.
+This method requires the products to share the same name, differing only by a number.
 
-- LOP, expressions and context options.
-    ```
-    pointcacherock_`@ITERATIONVALUE+1`
-    ```
-    ![](assets/houdini/artist/hda_expressions_lop.png)
-- SOP, expressions and detail attribute. 
-    ```
-    pointcacherock_`detail("../foreach_count","iteration", 0)+1`
-    ```
-    ![](assets/houdini/artist/hda_expressions_sop.png)
+First, I published three products: `pointcacherock_1`, `pointcacherock_2`, and `pointcacherock_3`.
+![Example 1](assets/houdini/artist/hda_example_1_expressions.png)
 
+Next, I loaded them into my scene using loader HDAs in a loop with expressions.
 
-### Build your own HDAs using Generic Loader
+- **LOP, expressions, and context options:**
+  ```
+  pointcacherock_`@ITERATIONVALUE+1`
+  ```
+  ![LOP Expressions](assets/houdini/artist/hda_expressions_lop.png)
+- **SOP, expressions, and detail attribute:**
+  ```
+  pointcacherock_`detail("../foreach_count","iteration", 0)+1`
+  ```
+  ![SOP Expressions](assets/houdini/artist/hda_expressions_sop.png)
 
-One of the main usages of generic loader is enabling users creating their own loader HDAs.
+### Build Your Own HDAs Using Generic Loader
+
+One of the main uses of loader HDAs is to enable users to incorporate them into their own HDAs or build new HDAs on top of them.
+My custom HDA example is based on using unified naming conventions for materials in my project. <br/>
+In my HDA, I just need to select the material folder path within my library project and specify the version. I can also set the material prim path prefix.
+
+> Download my example custom HDA: [Expr_random_hda_Material_Loader_v001.hda](assets/houdini/artist/Expr_random_hda_Material_Loader_v001.hda).
+
+![Custom Loader](assets/houdini/artist/hda_custom_loader.png)
 
 :::info
-This is a simple example, that is based on using a unified naming conventions for materials in my project.
-textures were published with product type `image` and variant name `materialName_AOV` using [Tray publisher](addon_traypublisher_artist.md).
-![](assets/houdini/artist/hda_custom_loader_textures.png)
+For this example, textures were published with the product type `image` and variant name `materialName_AOV` using [Tray Publisher](addon_traypublisher_artist.md).
 
-The material used in this example, [Concrete Floor Poured | Poliigon](https://www.poliigon.com/texture/mottled-matte-panel-concrete-texture-misty-grey/7656).
+![Custom Loader Textures](assets/houdini/artist/hda_custom_loader_textures.png)
+
+The material used in this example is [Concrete Floor Poured | Poliigon](https://www.poliigon.com/texture/mottled-matte-panel-concrete-texture-misty-grey/7656).
 :::
-
-Download the example custom HDA: [Expr_random_hda_Material_Loader_v001.hda](assets/houdini/artist/Expr_random_hda_Material_Loader_v001.hda).
-![](assets/houdini/artist/hda_custom_loader.png)
-
-
-
-
 
