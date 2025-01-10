@@ -219,7 +219,7 @@ In my HDA, I just need to select the material folder path within my library proj
 ![Custom Loader](assets/houdini/artist/hda_custom_loader.png)
 
 :::info
-For this example, textures were published with the product type `image` and variant name `materialName_AOV` using [Tray Publisher](addon_traypublisher_artist.md).
+For this example, textures are published with the product type `image` and variant name `materialName_AOV` using [Tray Publisher](addon_traypublisher_artist.md).
 
 ![Custom Loader Textures](assets/houdini/artist/hda_custom_loader_textures.png)
 
