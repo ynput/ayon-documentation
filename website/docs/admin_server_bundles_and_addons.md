@@ -223,9 +223,6 @@ Settings and their overrides use the following color code:
 - <span style={{color:'#ff9e3d'}}>▌</span>: Project override
 
 ### Settings Filter
-:::info
-Introduced in `1.5.4` as a footnote.
-:::
 
 In the **Studio Settings `S+S`** or **Project Settings `P+P`** tabs, a settings filter is available at the top of the tab for easy access to settings. This filter allows:
 
@@ -233,6 +230,7 @@ In the **Studio Settings `S+S`** or **Project Settings `P+P`** tabs, a settings 
 - Searching by a setting value or part of the value.
 
 ![](assets/server/admin/server_and_addons/settings_filter.gif)
+*Settings Filter, introduced in `1.5.4`*
 
 ## Copy Settings
 ### Copy from Another Bundle
