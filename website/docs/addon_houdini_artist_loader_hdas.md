@@ -108,15 +108,15 @@ This shares the same parameters as the Generic Loader and adds a few more. It al
 
 Additional parameters on the node include:
 
-- **Reload Files**
-- **Primitive Root**
+- **Reload Files**: Click to reload the contents of all files imported by this node.
+- **Primitive Root**: The referenced prim will be overlayed onto this prim, and the referenced prim’s descendants will become this prim’s descendants. If this prim doesn’t exist, the node will create it.
 - **Presets**: This menu provides default values for building assets and shots.
-- **Reference Type**
-- **Make Instanceable**
-- **Reference Primitive**
-- **Reference Primitive Path**
-- **Time Offset (in Frames)**
-- **Time Scale**
+- **Reference Type**: The type of composition arc to create to the referenced prim.
+- **Make Instanceable**: Mark the new or modified prims as *instanceable*.
+- **Reference Primitive**: Controls which prim to import from the multi-input connections.
+- **Reference Primitive Path**: The scene graph path of the prim in the referenced layer that that is composed onto the stage. Contents of the referenced layer outside of this referenced primitive path will not appear on the composed stage. This parameter is only used if the Reference primitive parameter is set to “Reference specific primitive”.
+- **Time Offset (in Frames)**: Offsets all time samples from the file or target primitive on the first input. You can use this to re-time animations in the references file.
+- **Time Scale**: Scales all time samples from the file or target primitive on the first input. You can use this to re-time animations in the references file.
 
 #### How to Use LOP Import
 - Selecting products works the same as with the [Generic Loader](#how-to-use-generic-loader).
@@ -135,12 +135,12 @@ It uses a combination of the [Generic Loader](#generic-loader) and the [Sublayer
 ![](assets/houdini/artist/hda_load_shot_parameters.png)
 
 ## Parameters
-It shares the same parameters as the Generic Loader and adds a few more:
+It shares the same parameters as the Generic Loader and also exposes some parameters of the [Sublayer](https://www.sidefx.com/docs/houdini/nodes/lop/sublayer.html) node:
 
-- **Reload Files**
-- **Mute Layer**
-- **Time Offset (in Frames)**
-- **Time Scale**
+- **Reload Files**: Click to reload the contents of all files imported by this node.
+- **Mute Layer**: Load the layer but immediately mute it. This may be useful if the layer must be loaded for other layers to work, but you don’t need to edit or display it.
+- **Time Offset (in Frames)**: Offsets all time samples from the file or target primitive on the first input. You can use this to re-time animations in the references file.
+- **Time Scale**: Scales all time samples from the file or target primitive on the first input. You can use this to re-time animations in the references file.
 
 #### How to Use Load Shot
 - Selecting products works the same as with the [Generic Loader](#how-to-use-generic-loader).
