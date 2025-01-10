@@ -1,7 +1,9 @@
 ---
-id: addon_aftereffects_artist
-title: After Effects Artist Docs
-sidebar_label: After Effects
+id: addon_premiere_artist
+title: Premiere Artist Docs
+sidebar_label: Premiere
+description: AYON Premiere Addon's documentations for artists.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
