@@ -111,6 +111,14 @@ For more details on customizing your pipeline, please refer to:
 
 :::
 
+:::caution Addons Upload Restriction
+
+[Ynput Cloud](https://ynput.cloud/) instances restrict custom addon uploads by default.
+This restriction does not apply to the [Addon Market](admin_server_market.md) since those addons are official and verified.
+
+:::
+
+
 :::tip Right-Click Menu
 
 Each list item has a right-click menu.
