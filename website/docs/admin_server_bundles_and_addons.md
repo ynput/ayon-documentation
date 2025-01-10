@@ -99,11 +99,11 @@ The Bundles Tab in the AYON server is used to manage your bundles.
    - **Set Production**: Assign a `Production` status to your bundle.
    - **Duplicate and Edit**: Create a new bundle from the selected bundle.
 
-:::info Upload AYON Products
+:::info Upload Addons, Launchers, and Dependency Packages
 
-Most of the time, you can make various AYON products available on your server using the [Addon Market](admin_server_market.md) and by [installing pipeline releases](admin_server_updating_pipeline.md).
+You can easily install or update existing AYON addons, launchers, and dependency packages on your server using the [installing pipeline releases](admin_server_updating_pipeline.md) or by getting new addons from the [Addon Market](admin_server_market.md).
 
-However, when customizing your pipeline, you'll often need to upload different AYON products manually. Use the **Upload Addons**, **Upload Launcher**, and **Upload Dependency Package** buttons for this process.
+However, when customizing your pipeline, you might need to manually upload different AYON addons, launchers, and dependency packages. Use the **Upload Addons**, **Upload Launcher**, and **Upload Dependency Package** buttons for this process.
 
 For more details on customizing your pipeline, please refer to:
 - [Dev Docs](dev_introduction.md)
