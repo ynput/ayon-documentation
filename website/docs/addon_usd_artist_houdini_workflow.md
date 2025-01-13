@@ -150,7 +150,7 @@ The `ayon-houdini` USD publishing logic detects these anonymous layers that will
 The Explicit Save Path's **filename** acts as suffix for the product name generating the additional products:
 - `{product_name}_{explict_save_filename}`
 
-It is totally fine to generate *more* layers at once and have them published, and this will work *with* and *without* the [AYON USD Contribution Workflow](addon_usd_artist_contribution_workflow).
+It is totally fine to generate *more* layers at once and have them published, and this will work *with* and *without* the [AYON USD Contribution Workflow](addon_usd_artist_contribution_workflow.md).
 
 However, there may be many cases where you do essentially not want this extra layer. For example, a SOP import by default generates that additional sublayer, but you may *just* want to write out that SOP data completely into the resulting USD file - not in an extra sublayer USD file that is layered into a USD file.
 

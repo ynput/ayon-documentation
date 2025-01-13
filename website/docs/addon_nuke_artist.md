@@ -15,14 +15,20 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 AYON supports Nuke version **`13.0`** and above.
 :::
 
+:::caution Nuke License compatibility
+The AYON Nuke addon integration is compatible exclusively with the `commercial` license of Nuke, which provides Full Python API Support and pipeline functionality. Please note that the `non-commercial` and `indie` licenses lack full Python API support and, as a result, are not supported by the addon.
+
+For more details, check out the comparison between different Nuke licenses [here](https://learn.foundry.com/nuke/content/getting_started/meet_nuke/about_indie.html).
+:::
+
 ## AYON global tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Publish](artist_tools_publisher)
--   [Load](artist_tools_loader)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Library Loader](artist_tools_library_loader)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Load](artist_tools_loader.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Library Loader](artist_tools_library_loader.md)
 
 ## Nuke specific tools
 
@@ -207,7 +213,7 @@ The Next Available Version checks the work folder for already used versions and 
 
 Subversion can be used to distinguish or name versions. For example used to add shortened artist name.
 
-More about [workfiles](artist_tools_workfiles).
+More about [workfiles](artist_tools_workfiles.md).
 
 
 :::tip Admin Tips
@@ -300,7 +306,7 @@ Artist can add Note before firing the publish button. The Note is meant for easy
 
 If you run the publish and decide to not publish the render product, you can turn it off right in the Publish dialog by clicking on the toggle.
 
-More info about [Using Pyblish](artist_tools_publisher)
+More info about [Using Pyblish](artist_tools_publisher.md)
 
 :::tip Admin Tip - Configuring validators
 You can configure Nuke validators like Output Resolution in:
@@ -324,7 +330,7 @@ If you choose to publish on the farm, you will render and do reviews on the farm
 
 So far there is no option for using existing frames (from your local / check render) and just do the review on the farm.
 
-More info about [configuring reviews](addon_core_settings#extract-review).
+More info about [configuring reviews](addon_core_settings.md#extract-review).
 
 :::tip Admin Tip - Configuring Reviews
 You can configure reviewsin **Studio Settings → Project → Global → Publish plugins → ExtractReview / ExtractBurnin**

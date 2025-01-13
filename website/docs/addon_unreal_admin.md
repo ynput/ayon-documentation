@@ -65,31 +65,12 @@ Default value could be there as:
 Please notice platform suport with `windows` key (could be also `linux` value).
 
 
-### Perforce support
+## AYON Perforce Support
 
-There is also a Perforce support for rendering on a Deadline. `ayon-version-control` addon needs to be installed and configured for that.
-(Install addon from AYON Marketplace or from https://github.com/ynput/ayon-version-control).
-
-This addon requires configuration in `Studio Settings` where `Perforce` should be selected as `Backend name`, `Host name` and `Port` filled.
-
-Each artist using this integration need to configure their `Local Setting` in `ayon+settings://version_control/local_setting?project=ayon_test&site=XXX-YYY-ZZZ`
-
-![Unreal AYON Local Settings](assets/unreal_perforce_local_settings.png)
-
-It is expected that value in `My Workspace Directory` would be pointing to existing and configured Perforce workspace on artist machine.
-Initial checkout from Perforce should be done by P4V tool. 
-
-AYON Perforce integration handles currently only rendering from P4 on Deadline, commits to Unreal project should be done in P4V or with 
-official Unreal Perforce plugin inside of Unreal editor.
-
-Each Deadline worker for this integration need to have set env vars:
-- P4PORT (`perforce_host:1666`)
-- P4USER
-- P4PASSWD
-
-Again these variables could be set locally on the worker or be controlled by AYON in `ayon+settings://applications/applications/unreal/variants/3/environment`.
-Please make sure you are modifying appropriate `Variant` of Unreal application as this configuration is separate.
-
+:::tip
+AYON has a dedicated addon for Perforce support.
+Please refer to [Version Control Admin Docs](category/version-control) to learn more.
+:::
 
 ## Manually installing Qt bindings
 
@@ -113,5 +94,56 @@ pip.main(["install", "pyside6"])
 Be aware that calling **pip** like so is deprecated by pip itself and might not work in newer versions.
 
 :::note
-For Unreal Engine versions `>= 5.4`, use `pyside6`. For earlier versions, use `pyside2`.
+For Unreal Engine versions `>= 5.4`, use `pyside6` with version *6.7.x*. For earlier versions, use `pyside2`.
 :::
+
+:::caution
+Early releases of PySide `6.8.x` has shown issues/crashes. As such, we recommend using `6.7.x` releases for the time being in the hope that future releases of `6.8` become more stable.
+:::
+
+## Setup Publish template for UAsset Product
+
+This requires two configurations:
+- Include the `unrealuasset` publish template in the project anatomy.
+- Link `uasset` product to its publish template, `unrealuasset`.
+
+### UAsset publish template in project anatomy
+
+![Unreal AYON UAsset Template Project Setting](assets/unreal/admin/uasset_template_project_anatomy.png)
+
+The `unrealuasset` publish template is added to the default templates in recent AYON server versions.
+
+:::tip
+If you don't have it, you can always create it manually. Follow these steps to create it manually.
+
+<details><summary>Steps to create <code>unrealuasset</code> manually</summary>
+
+- go to **Project Settings** shortcut `P+P` and select **Anatomy**.
+- Select your project.
+- Find publish template settings, setting location `ayon+anatomy://{project_name}/templates/publish`.
+- Add a publish template by clicking **+** icon. 
+- Fill in the publish template with `unrealuasset`.
+    ```json  title="unrealuasset publish template"
+    {
+        "name": "unrealuasset",
+        "directory": "{root[work]}/{project[name]}/{hierarchy}/{folder[name]}/publish/{product[type]}/{product[name]}/{@version}",
+        "file": "{originalBasename}.{ext}"
+    }
+    ```
+- Once you finished to add the template, Click **Save Changes**.
+  
+</details>
+
+:::
+
+### Add template name profile in core settings
+The next step is to link the `unrealuasset` publish template to the `uasset` product type.
+This is done via template name profiles in core addon settings `ayon+settings://core/tools/publish/template_name_profiles`
+**Steps:**
+- Locate the template name profiles settings, Setting location `ayon+settings://core/tools/publish/template_name_profiles`.
+- Add new template name profile using the **+** icon
+- Add `uasset` to **Product types**.
+- Add `unreal` to the **Hosts**.
+- Set **Template name** to `unrealuasset`
+
+![Unreal AYON UAsset Template Profiles](assets/unreal/admin/uasset_template_profile_ayon_core.png)

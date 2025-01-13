@@ -2,6 +2,8 @@
 id: addon_flow_admin
 title: Flow (ShotGrid)
 sidebar_label: Flow (ShotGrid)
+description: AYON Flame Addon's documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -145,3 +147,55 @@ You can effortlessly ensure that all reviewables will be uploaded to Flow. For t
    You can do this at the following path `ayon+settings://core/publish/ExtractReview/profiles/0/outputs`.
 
 ![Flow shotgrid review tag](assets/shotgrid/review_tag.png)
+
+
+### First synchronization of new project
+
+It is recommended to start first synchronization from Flow side. 
+
+Please create new project there, update its Project tracking as requested (`Project Actions` > `Tracking Settings`).
+
+![Flow Project Tracking](assets/shotgrid/project_tracking.png)
+
+In this example it is shown that all items of `Asset` and `Sequence` type will be synchronized to flat 
+hierarchy in AYON, `Shot` items will be parented under `Sequence`.
+
+Please provide `code` value for this project for AYON start recognizing it. 
+(Dropdown next to your profile picture > `Projects`. You might need to add `Code` column to be visible.)
+
+Now go back to your AYON server.
+
+Create new project via `Project Settings` > `Add New Project`, it is recommended to use same name and code values as in Flow.
+Use [`SG` Anatomy preset](#anatomy-preset-configuration) you set previously.
+
+Go to `Studio Settings` > `Shotgrid`, click on `Populate Table`.
+This should list all available projects on AYON server and Flow.
+
+:::note Note
+`Populate Table` requires at least `Processor` service to be running!
+:::
+
+Hit `Shotgrid -> AYON` button (if it is grayed out, it means that project is missing `code` in Flow).
+
+To keep both sides synchronized you need to:
+- in AYON go to `Project Settings > Anatomy` (of synchronized project) and toggle `Shotgrid Push`
+- in Flow go to `Projects` and toggle `Ayon Auto Sync` (you might need to add this column to be visible)
+
+:::note Note
+Synchronization between Flow and AYON started as unilateral from Flow. Two way synchronization features
+are being added, but parity is not achieved yet. It is recommended to start from Flow for now.
+:::
+
+
+### Synchronization of Users
+
+Users are only synchronized manually from Flow to AYON currently. 
+
+Synchronization is triggered by pressing `Sync Users` in `Shotgrid` tab under `Studio Settings`.
+
+![Flow synch users](assets/shotgrid/ay_sync_users.png)
+
+For users to be assigned to the tasks, they need to first be assigned to any [Project access group](admin_server_permissions.md#project-access-groups) in
+`Project Settings > Project access`!
+
+After that assignment of task, sync should be possible in both ways, eg. AYON <-> Flow.

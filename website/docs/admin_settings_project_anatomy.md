@@ -57,24 +57,28 @@ We have a few required anatomy templates for AYON to work properly, however we k
 | Context key | Description |
 | --- | --- |
 | `root[name]` | Path to root folder |
+| `studio[name]` | Studio's full name |
+| `studio[code]` | Studio's code |
 | `project[name]` | Project's full name |
 | `project[code]` | Project's code |
-| `hierarchy` | All folder between the asset and a project connected with `/` |
-| `asset` | Name of asset or shot |
+| `folder[name]` | Name of asset or shot |
+| `folder[type]` | Folder type |
+| `folder[path]` | Full folder path of asset or shot within a project |
+| `hierarchy` | The folder path excluding the folder name |
+| `parent` | Name of hierarchical parent of the folder |
 | `task[name]` | Name of task |
 | `task[type]` | Type of task |
-| `task[short]` | Short name of task type (eg. 'Modeling' > 'mdl') |
-| `parent` | Name of hierarchical parent |
+| `task[short]` | Short name of task type (eg. `Modeling` ➜ `mdl`) |
 | `version` | Version number |
-| `product` | Product name |
-| `family` | Main family name |
+| `product[name]` | Product name |
+| `product[type]` | Product type |
 | `ext` | File extension |
 | `representation` | Representation name |
 | `frame` | Frame number for sequence files. |
 | `app` | Application Name |
 | `user` | User's login name (can be overridden in local settings) |
 | `output` | Extract review output profile name |
-| `comment` | Subversion string from workfiles tool (only relevant for workfiles template right now.)|
+| `comment` | Subversion string from workfiles tool (only relevant for workfiles template right now.) |
 | `colorspace` | Colorspace profile name |
 | `originalDirname` | Original directory of published file  |
 | `originalBasename` | Original file name without extension |
@@ -124,7 +128,11 @@ Template `{project[code]}_{asset}_{product}<_{output}><.{@frame}>.{ext}` can han
 
 ## Attributes
 
-Project attributes are used as default values for new *folders* created under a project, except `Applications` which is project specific. Values of attributes that are **not** project specific are always used from *folders*. So if `tools` are not loading as expected it is because the *folders* have different values.
+:::info
+New attributes can be added or modified for all projects in the studio settings `/settings/attributes`
+:::
+
+Project attributes are used as default values for new _folders_ created under a project, except `Applications` which is project specific. Values of attributes that are **not** project specific are always used from _folders_. So if `tools` are not loading as expected it is because the _folders_ have different values.
 
 ![anatomy_attributes](assets/settings/anatomy_attributes.png)
 
@@ -139,11 +147,13 @@ Project attributes are used as default values for new *folders* created under a 
 Templates are not supporting use of `{folder[type]}` yet.
 :::
 
-Read more about folders in User docs: [Folders](artist_concepts#folder)
+Read more about [Folders](artist_concepts.md#folder)
 
 ![folders](assets/settings/anatomy_folder_types.png)
 
 ## Task Types
+
+Read more about [Tasks](artist_concepts.md#task)
 
 Available task types on a project. Each task on an asset is referencing a task type on the project which allows access to additional task type attributes. At this moment only `short_name` is available (can be used in templates as `{task[short_name]}`).
 
@@ -151,12 +161,12 @@ Available task types on a project. Each task on an asset is referencing a task t
 
 ## Statuses
 
-Place to manage all your task statuses.
+Statuses provide a way to indicate the current state of an entity. Any entity type, such as Folder, Product, Version, Representation, Task, or Workfile, can have a status, defined within its scope. This means Folders and Tasks can share the same set of statuses, while a Version may have a completely different set. Each entity can only have one status assigned at a time.
 
 ![statuses](assets/settings/anatomy_statuses.png)
 
 ## Tags
 
-Place to manage all project tags.
+Tags can be anything and are supported on all entity types, including Folder, Product, Version, Representation, Task, and Workfile. An entity can have multiple tags or none at all.
 
 ![statuses](assets/settings/anatomy_tags.png)

@@ -2,6 +2,8 @@
 id: addon_core_settings
 title: Core addon settings
 sidebar_label: Core addon settings
+description: AYON core addon settings documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -36,13 +38,13 @@ Globally applied environment variables that will be appended to any AYON process
 - Uses `subst` command, if configured volume character in `Destination` field already exists, no re-mapping is done for that character(volume).
 
 :::info
-Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project. Refer to Settings related to [Working with settings](admin_settings) for more details.
+Project settings can have project specific values. Each new project is using studio values defined in **studio settings** but these values can be modified or overridden per project. Refer to Settings related to [Working with settings](admin_settings.md) for more details.
 :::
 
 
 ## Tools
 ### Creator
-Settings related to [Creator tool](artist_tools_creator).
+Settings related to [Creator tool](artist_tools_creator.md).
 
 #### Product name profiles
 ![core_tools_creator_product_template](assets/core_tools_creator_product_template.png)
@@ -75,7 +77,7 @@ Some creators may have other keys as their context may require more information 
 
 
 ### Workfiles
-Settings related to [Workfile tool](artist_tools_workfiles).
+Settings related to [Workfile tool](artist_tools_workfiles.md).
 
 #### Open last workfile at launch
 This feature allows you to define a rule for each task/host or toggle the feature globally to all tasks as they are visible in the picture.
@@ -86,7 +88,7 @@ This feature allows you to define a rule for each task/host or toggle the featur
 
 #### Template name profiles
 
-Allows to select [anatomy template](admin_settings_project_anatomy#templates) based on context of product being published.
+Allows to select [anatomy template](admin_settings_project_anatomy.md#templates) based on context of product being published.
 
 For example for `render` profile you might want to publish and store assets in different location (based on anatomy setting) then for `publish` profile.
 Profile filtering is used to select between appropriate template for each context of published products.
@@ -148,7 +150,7 @@ AYON distributes its own OCIO configs. Those can be found in `{ayon install dir}
 ### Using OCIO config
 Global config path is set by default to AYON distributed configs. At the moment there are only two - **aces_1.2** and **nuke-default**. Since this path input is not platform specific it is required to use at least an environment variable for platform specific config root directory. Order of paths matter so first existing path found is used.
 
-Each OCIO config path input supports formatting using environment variables and [anatomy template keys](admin_settings_project_anatomy#available-template-keys). The default global OCIO config path is `{AYON_ROOT}/vendor/bin/ocioconfig/OpenColorIOConfigs/aces_1.2/config.ocio`.
+Each OCIO config path input supports formatting using environment variables and [anatomy template keys](admin_settings_project_anatomy.md#available-template-keys). The default global OCIO config path is `{AYON_ROOT}/vendor/bin/ocioconfig/OpenColorIOConfigs/aces_1.2/config.ocio`.
 
 If the project settings for a particular host has its own OCIO config **enabled** and set to at least one path and the path exists, it overrides the global OCIO config for that host.
 
@@ -183,6 +185,7 @@ A couple of settings make use of tags to customize the output.
 | ----------- | ----------- | ----------- |
 | burnin | `Add burnins` | Adds burnins with the `ExtractBurnin` plugin. |
 | review | `Create review` | Creates a review from the output with the [`ExtractReview`](#extract-review) plugin. |
+| webreview | `Add review to AYON` | Uploads the review to AYON. |
 | ftrackreview | `Add review to Ftrack` | Uploads the review to Ftrack. |
 | shotgridreview | `Add review to Shotgrid` | Uploads the review to Shotgrid. |
 | kitsureview | `Add review to Kitsu` | Uploads the review to Kitsu. |
@@ -205,15 +208,15 @@ Notable parameters:
 - **`Colorspace`** - target colorspace, which must be available in used color config. (If `Transcoding type` is `Use Colorspace` value in configuration is used OR if empty value collected on instance from DCC).
 - **`Display & View`** - display and viewer colorspace. (If `Transcoding type` is `Use Display&View` values in configuration is used OR if empty values collected on instance from DCC).
 - **`Arguments`** - special additional command line arguments for `oiiotool`.
-- **[`Tags`](#tags)**
+- **[`Tags`](#tags)** - Add additional tags to representation.
 
 #### Examples
 
 Example here describes use case for creation of new color coded review of png image sequence. Original representation's files are kept intact, review is created from transcoded files, but these files are removed in cleanup process.
-![core_oiio_transcode](assets/core_oiio_transcode.png)
+![core_oiio_transcode](assets/core/admin/oiio_transcode_example.png)
 
 Another use case is to transcode in Maya only `beauty` render layers and use collected `Display` and `View` colorspaces from DCC.
-![core_oiio_transcode_in_Maya](assets/core_oiio_transcode2.png)
+![core_oiio_transcode_in_Maya](assets/core/admin/oiio_transcode_example2.png)
 
 
 ### Extract Review
@@ -361,13 +364,13 @@ Create profiles to control how the plugin functions:
    - Choose specific products, hosts, and tasks that the plugin will identify and work with.
 2. Burnin definitions:
    - a. **Name**: Burnin definition name.
-   - b. **Placeholders Customization**: Tailor the placeholder text using [template keys](admin_settings_project_anatomy#available-template-keys), allowing flexibility for each user and context.
+   - b. **Placeholders Customization**: Tailor the placeholder text using [template keys](admin_settings_project_anatomy.md#available-template-keys), allowing flexibility for each user and context.
    - c. **Additional Filtering**: Add extra filters to manage the use of multiple burnin definitions effectively.
    - d. **Expansion (+)**: Add more definitions to fit your need.
 3. **Expansion (+)**: Add more profiles.
 
 :::info Placeholders and template keys
-To see a list of available template keys, please visit the [template keys](admin_settings_project_anatomy#available-template-keys) section.
+To see a list of available template keys, please visit the [template keys](admin_settings_project_anatomy.md#available-template-keys) section.
 Additionally, be aware that some keys are exclusive to specific hosts. Nevertheless, these keys should function properly as we often align the addon features to ensure compatibility.
 :::
 

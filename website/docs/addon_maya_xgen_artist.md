@@ -98,7 +98,7 @@ For example publishing `xgenMain` version 1 with the attribute `renderer` set to
 
 ### Connecting Xgen to animation
 
-When loading in an Xgen version, it does not have any connections to anything in the workfile, so its static in the position it was published in. Use the [Connect Geometry](addon_maya_artist#connect-geometry) action to connect Xgen to any matching loaded animated geometry.
+When loading in an Xgen version, it does not have any connections to anything in the workfile, so its static in the position it was published in. Use the [Connect Geometry](addon_maya_artist.md#connect-geometry) action to connect Xgen to any matching loaded animated geometry.
 
 ![Xgen Manage](assets/maya/artist/xgen_connect_geo.gif) 
 
@@ -134,7 +134,7 @@ The animation container gets connected with the Xgen container, so if the animat
 
 First check **AYON Setup** section below if all correctly setup within AYON settings.
 
-To render with Xgen, follow the [Rendering With AYON](addon_maya_artist#rendering-with-ayon) guide. AYON will manage all necessary actions related to Xgen and its source files, including baking patches and other requirements for successful rendering of the animated sequence.
+To render with Xgen, follow the [Rendering With AYON](addon_maya_artist.md#rendering-with-ayon) guide. AYON will manage all necessary actions related to Xgen and its source files, including baking patches and other requirements for successful rendering of the animated sequence.
 
 :::note Details
 When submitting a workfile with Xgen for rendering, all Xgen-related files are collected and published as the workfile's resources. This means the published workfile is no longer referencing the workspace's Xgen files and carries all dependencies exclusive to the rendering workfile.

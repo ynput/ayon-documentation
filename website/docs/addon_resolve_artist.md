@@ -16,7 +16,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 :::warning
-Before you are able to start with AYON tools in DaVinci Resolve, installation of its own Python 3.6 interpreter and PySide 2 has to be done. Go to [Installation of python and pyside](addon_resolve_admin.md#installation-of-python-and-pyside) link for more information. 
+Before you are able to start with AYON tools in DaVinci Resolve, installation of its own Python 3.6 interpreter and PySide 2 has to be done. Go to [Installation of python and pyside](addon_resolve_admin.md#installation-of-python-and-pyside) link for more information.
 :::
 
 :::note
@@ -25,18 +25,18 @@ Resolve Studio is the only version that works with the Ayon toolkit because of e
 
 ## AYON global tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Load](artist_tools_loader)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Publish](artist_tools_publisher)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Load](artist_tools_loader.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Publish](artist_tools_publisher.md)
 
 
 <div class="row markdown">
 
 ## Creating Shots from timeline items
 
-Before a clip can be published with [Publisher](artist_tools_publisher) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable product.
+Before a clip can be published with [Publisher](artist_tools_publisher.md) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable product.
 
 Lets do it step by step.
 
@@ -114,7 +114,9 @@ After all clips which are intended to be converted to publishable instances are 
 
 After the menu widget is opened (it can take while so be patient please :).
 
-Hit `Create ...` and then set **Use selection** to active and select the family to **Create Publishable Clips**. 
+Hit `Create ...` and then select the product type to **Create Publishable Clip**.
+
+You can leave `Use only clips with Chocolate clip colors` enabled to publish only the selection.
 
 The Product name can stay as it is, it is not going to be used because each clip will generate it's own name.
 
@@ -129,7 +131,7 @@ The Product name can stay as it is, it is not going to be used because each clip
 <div class="row markdown">
 <div class="col col--6 markdown">
 
-The new windows that opens, let's you define various attributes for your future products and shots.
+The "Create options" section let you define various attributes for your future products and shots.
 
 Set Rename clips to active if you wish to use different names of shots in pipeline then the original clip names conformed from EDL/XML.
 
@@ -223,3 +225,48 @@ Also important is to notice the asset name in *AYONData* at marker - the name is
 </div>
 
 </div>
+
+
+## Publishing Editorial Package
+
+An editorial package is a product that includes an OTIO file referencing all shots from a timeline and media sources linked to the OTIO clips.
+
+There are two ways to create a publishable editorial package: by creating a new one or by loading a previously published one.
+
+### Create/Convert a Timeline from Media Pool into an Editorial Package
+
+To create an editorial package, select a timeline in the media pool (1) and use the AYON Create tool (2).
+Then set the target folder (3) context and task (4). 
+
+Choose _`Editorial Package`_ (5) as the product type. You can also use a Variant (6) to differentiate between different versions of timelines within the same target context. Hit Create (7).
+
+Now, your timeline is ready to be published.
+
+![Create Editorial pkg01](assets/resolve/user_editorial_pkg_create01.png)
+
+:::warning Metadata storing
+AYON is storing metadata for production tracking in the media pool clip's **VFX Notes**. The content of this key should not be changed or removed.
+
+![Create metadata storing](assets/resolve/user_metadata_storing.png)
+
+:::
+
+### Loading a Previously Published Editorial Package
+
+Loading a previously published package adds publishable product data to the timeline, preparing it for publication as an editorial package.
+
+### Publishing Editorial Package
+
+Open the publisher (1) from the AYON menu. Ensure that your editorial package instance is enabled in the "Product to publish" section (2). You can then publish by clicking the _`Publish`_ button (3).
+
+![Publishing editorial package 01](assets/resolve/user_editorial_pkg_publishing01.png)
+
+
+The publishing process will also render the full timeline into a reference video, which is published along with the OTIO file.
+
+
+:::note Burn-ins Suggestion
+
+We suggest using Resolve's burn-ins to add timecode and shot names to the reference video. However, you must add shot name metadata to each media-source clip to display it in the burn-ins. This won't be possible if one media clip source is used for multiple shots on the timeline.
+
+:::

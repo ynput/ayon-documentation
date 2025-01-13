@@ -54,7 +54,7 @@ Developer mode actions and UI use a specific purple color to make them standout 
 
 This color is a custom color outside of the theme color.
 
-![Purple UI elements for developer mode actions](./assets/server/develoepr_mode_purple.png)
+![Purple UI elements for developer mode actions](assets/server/develoepr_mode_purple.png)
 
 ```CSS
   var(--color-hl-developer);
@@ -68,7 +68,7 @@ This color is a custom color outside of the theme color.
 
 Two specific colors are used to specify the difference between "production" and "staging". These color are outside of the theme color.
 
-![Production and Staging UI elements](./assets/server/prod_and_staging.png)
+![Production and Staging UI elements](assets/server/prod_and_staging.png)
 
 ```CSS
   var(--color-hl-production)

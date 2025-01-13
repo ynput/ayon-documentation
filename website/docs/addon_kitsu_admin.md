@@ -24,8 +24,6 @@ Kitsu is a great open source production tracker and can be used for project mana
 
 ## Kitsu Addon Installation
 
-### Addon Market 
-
 If you have already connected your ayon instance to Ynput cloud, you would be able to get the addon from Addon Market.
 
 ![Addon Market](assets/kitsu/admin/kitsu_addon_market.png)
@@ -51,8 +49,10 @@ Essential preparation for Kitsu addon to work.
 ### Create Bundle and Set Addon Version
 Create new production bundle, Set Kitsu Addon version to your installed version, and finally restart server.
 
-:::note
-As soon as you restart your server, you'll start seeing Empty Kitsu tab.
+:::info NOTE
+The Kitsu tab will only become visible once you set the bundle that includes the Kitsu addon to production mode.
+
+Once you restart your server, the Kitsu tab will appear, but it will be empty initially.
 :::
 
 ### Set Kitsu Admin Account
@@ -146,3 +146,12 @@ While changing the names of entities is allowed, Be aware it doesn't change the 
 Absolutely! Entities are linked by their unique IDs between the two databases.  
 - If you rename an entity in the AYON project editor, this change won't show up in Kitsu. Instead, it will be replaced with the original name when the next sync happens.
 - When you rename an entity directly in Kitsu, the new name will be updated in AYON during the upcoming synchronization.
+
+### Managing Multiple Production Tracker for Various Projects
+
+To effectively manage multiple projects with different production tracker addons such as ShotGrid and Kitsu, you'll need to include both addons in your production bundle. It will allow their respective tabs to appear within the Ayon server interface.
+
+Then, you should activate or deactivate each addon based on the specific needs of the project at hand.
+You can usually do this within the project settings.
+
+![](assets/kitsu/admin/deactivate_addon_per_project.png)

@@ -42,7 +42,7 @@ You are lacking the default primitive it expects.
 
 **<font size="5">Initialize as asset vs shot</font>**
 
-As explained in [Getting Started](addon_usd_artist_get_started)
+As explained in [Getting Started](addon_usd_artist_get_started.md)
 - `Asset` Layer supports:
   - Load/unload the asset
   - Have different layers to hold data from different departments
@@ -220,7 +220,7 @@ Resultant Products:
 
 Using the AYON USD Contribution Workflow manual 're-assigning' all the time for assets should be redundant for the majority of the workflow. (Preferably this should never be needed, but some sections like animation from shot layers may still fall outside of that scope.)
 
-1. Use the [AYON USD Contribution workflow](addon_usd_artist_contribution_workflow) where the asset build is built automatically from single product contributions into the root primitive.
+1. Use the [AYON USD Contribution workflow](addon_usd_artist_contribution_workflow.md) where the asset build is built automatically from single product contributions into the root primitive.
 2. Load the `usdAsset` - avoid using the individual layers. You should not need to load those individually since they are all in the main asset. 
 
 Now, in a shot based workflow you just load the asset and since e.g. Maya animation caches are not already overlaid over a USD asset structure that is one of the moments where you *will* need to define the path you're overlaying to.
