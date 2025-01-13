@@ -86,6 +86,7 @@ module.exports = {
                         "addon_usd_artist_contribution_workflow",
                         "addon_usd_artist_maya_workflow",
                         "addon_usd_artist_houdini_workflow",
+                        "addon_usd_resolver_artist",
                         "addon_usd_artist_faq",
                     ],
                 },
@@ -245,7 +246,21 @@ module.exports = {
                     ]
                 },
                 "addon_aquarium_admin",
-                "addon_usd_admin",
+                {
+                    type: "category",
+                    label: "USD",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON USD',
+                        description:
+                          "Welcome to AYON USD Docs for Admins!",
+                        keywords: ['usd'],
+                      },
+                    items: [
+                        "addon_usd_admin",
+                        "addon_usd_resolver_admin",
+                    ],
+                },
                 {
                     type: "category",
                     label: "Version Control",

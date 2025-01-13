@@ -2,6 +2,8 @@
 id: addon_usd_admin
 title: USD Admin Docs
 sidebar_label: USD
+description: AYON USD Addon documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
