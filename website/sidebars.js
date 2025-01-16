@@ -251,14 +251,15 @@ module.exports = {
                     label: "USD",
                     link: {
                         type: 'generated-index',
-                        title: 'AYON USD',
+                        title: 'AYON USD Admin Docs',
                         description:
                           "Welcome to AYON USD Docs for Admins!",
                         keywords: ['usd'],
                       },
                     items: [
+                        "addon_usd_about_admin",
                         "addon_usd_admin",
-                        "addon_usd_resolver_admin",
+                        "addon_usd_admin_workflow_settings",
                     ],
                 },
                 {

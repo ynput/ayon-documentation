@@ -1,7 +1,7 @@
 ---
 id: addon_usd_admin
-title: USD Admin Docs
-sidebar_label: USD
+title: USD Addon Settings
+sidebar_label: Settings
 description: AYON USD Addon documentations for admins.
 toc_max_heading_level: 5
 ---
@@ -39,31 +39,82 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
   </div>
 </div>
 
-:::tip
-Currently, there's no need to install the [ayon-usd](https://github.com/ynput/ayon-usd) addon to utilize our USD workflow outlined in our [USD Artist Docs](category/usd).
+## Binary Distribution
+> Setting Location: `ayon+settings://usd/distribution`
 
-The base functionality is implemented in the [ayon-core](https://github.com/ynput/ayon-core) addon and each DCC specific workflow is implemented in its related DCC addon. e.g. Houdini USD workflow is implemented in [ayon-houdini](https://github.com/ynput/ayon-houdini).
+![](assets/usd/admin/binary_distribution.png)
 
-For the future, it is considered to move all the USD bits into [ayon-usd](https://github.com/ynput/ayon-usd) addon in a similar fashion to [ayon-deadline](https://github.com/ynput/ayon-deadline) addon.
+
+- **Server URL**: The URL for the USD binary distribution LakeFs server. It's recommended to keep the default value to use the USD builds we provide.
+- **Repository URI**: The repository tag or branch URI within the LakeFs server.
+- **Access Key ID**: The LakeFs server access key ID.
+- **Secret Access Key**: The LakeFs server secret access key.
+
+:::info Access Keys
+These are currently not public, however they are provided upon request.
+
+Reach out us on our website [ynput.io](https://ynput.io/contact/) or Forums [community.ynput.io](https://community.ynput.io/) or Discord Server [Ynput Community](https://discord.gg/ynput).
 :::
 
-## USD Addon Settings
-Currently, the usd addon is only responsible for downloading of USD binaries for AYON, along with pre-built AYON USD resolvers for various DCCs.
+### Resolver Application Paths
+> Setting Location: `ayon+settings://usd/distribution/asset_resolvers`
 
-> The snippet below is from an early version of the USD add-on, which is still in development.
+![](assets/usd/admin/resolver_application_paths.png)
 
-![](assets/usd/admin/usd_addon_settings.png)
+Define a specific Resolver Zip for a specific Application.
 
-## USD Workflow Settings
-The USD workflow settings are currently limited. You can customize only the names and order of department layers at this stage.
+1. Each Application path group:
+   - **App Name**: Application name, e.g. `maya/2025`
+   - **Application Alias**: Define a list of App Names that use the same resolver.
+   - **Platform**: drop down menu to select the platform: `windows`, `linux` & `darwin`.
+   - **Repository Object Path**: The LakeFs internal path to the resolver zip, e.g: `AyonUsdResolverBin/Hou/ayon-usd-resolver_hou19.5_linux_py37.zip`. This information can be found on LakeFs server Object Information.
+2. **+**: Add application path group
 
-- `ayon+settings://core/publish/CollectUSDLayerContributions`
+### Resolver Application Overrides
+> Setting Location: `ayon+settings://usd/distribution/lake_fs_overrides`
 
-![](assets/usd/admin/usd_core_settings_1.png)
+![](assets/usd/admin/resolver_application_overrides.png)
 
-:::tip
-Hover over the `Order` field for more details on the strength ordering:
-- Higher order means a higher strength and stacks the layer on top.
-- Opinions from a layer that is on top are stronger than those below it.
-- See the USD acronym [LIVRPS](https://remedy-entertainment.github.io/USDBook/terminology/LIVRPS.html) for more details on USD's strength ordering.
+Define a specific Resolver Zip for a specific Application.
+
+- Each Application override group:
+  - **App Name**: Application name, e.g. `maya/2025`
+  - **Platform**: drop down menu to select the platform: `windows`, `linux` & `darwin`.
+  - **Repository Object URI**: "Path to USD Asset Resolver plugin zip file on the LakeFs server, e.g: `lakefs://ayon-usd/V001/AyonUsdResolverBin/Hou/ayon-usd-resolver_hou19.5_linux_py37.zip`.
+- **+**: Add application override group
+
+## AYON USD Resolver Config
+> Setting Location: `ayon+settings://usd/ayon_usd_resolver`
+
+![](assets/usd/admin/ayon_usd_resolver_config.png)
+
+AYON USD resolver Settings
+
+- **Resolver Log Level**: Set verbosity of the AyonUsdResolver logger.
+- **Resolver File Logger Enabled**: Enable or disable AyonUsdResolver file logger.
+- **Resolver File Logger file path**: Set a custom location where the file logger will export to. This can be a relative or absolute path. This is only used if `ayon_file_logger_enabled` is enabled.
+- **AyonCppApi Logging Keys**: List of extra logging options for the `AyonCppApi`.
+
+## USD Library Config
+> Setting location: `ayon+settings://usd/usd`
+
+![](assets/usd/admin/usd_lib_config.png)
+
+Settings for USD Library
+
+- **Tf Debug Variable for Debugging USD**: It's value will be set to `TF_DEBUG` which allows you to inspect specific log outputs of Usd. Typical use cases are to check if plugins are loaded correctly or if data is properly being refreshed.
+
+:::tip `TF_DEBUG`
+For more info about `TF_DEBUG`, See0 [Debugging | lucascheller USD Survival Guide](https://lucascheller.github.io/VFX-UsdSurvivalGuide/pages/core/profiling/debug.html#debugging).
+
 :::
+
+## Publish plugins
+### Process USD files to use relative paths
+> Setting Location: `ayon+settings://usd/publish/USDOutputProcessorRemapToRelativePaths`
+
+![](assets/usd/admin/process_usd_files_to_use_relative_paths.png)
+
+- **Enable**: The default state of the plugin.
+- **Optional**: Allows the user to toggle this setting in the publisher UI.
+- **Active**: The default value of the toggle in the publisher UI.
