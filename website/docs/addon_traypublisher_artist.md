@@ -78,13 +78,13 @@ Every simple creator follows the same usage steps.
 - `workfiles`: Workfiles are full scenes from any application that are directly edited by artists. They represent a state of work on a task at a given point and are usually not directly referenced into other scenes.
 - `model`: Models should only contain geometry data, without any extras like cameras, locators or bones. *Keep in mind that models published from tray publisher are not validated for correctness.* 
 - `pointcache`: Alembic or bgeo cache of animated data
-- `plate`: Any type of image seqeuence coming from outside of the studio. Usually camera footage, but could also be animatics used for reference.
+- `plate`: Any type of image sequence coming from outside of the studio. Usually camera footage, but could also be animatics used for reference.
 - `render`: Sequence or single file renders.
 - `camera`: Ideally this should be only camera itself with baked animation, however, it can technically also include helper geometry.
 - `image`: Any image data can be published as image product type. References, textures, concept art, matte paints. This is a fallback 2d product type for everything that doesn't fit more specific product type.
 - `vdb`: Hierarchical data structure for the efficient storage and manipulation of sparse volumetric data discretized on three-dimensional grids.
 - `matchmove`: Script exported from matchmoving application to be later processed into a tracked camera with additional data.
-- `rig`: CG rigged character or prop. Rig should be clean of any extra data and directly loadable into it's respective application.	
+- `rig`: CG rigged character or prop. Rig should be clean of any extra data and directly loadable into its respective application.	
 - `simpleUnrealTexture`: Texture files with Unreal Engine naming conventions.
 - `audio`: Audio files for review or final delivery.
 
