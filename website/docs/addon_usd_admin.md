@@ -70,6 +70,13 @@ Define a specific Resolver Zip for a specific Application.
    - **Repository Object Path**: The LakeFs internal path to the resolver zip, e.g: `AyonUsdResolverBin/Hou/ayon-usd-resolver_hou19.5_linux_py37.zip`. This information can be found on LakeFs server Object Information.
 2. **+**: Add application path group
 
+:::tip Application Alias
+You won't need to modify this setting as it already comes pre-configured with all packages we provide.
+Mostly, You will find the **Application Alias** setting more useful to you, where you can same resolver build with different version of an app (e.g. different patch version of Houdini 20.5)
+
+![](assets/usd/admin/application_alias_usage.png)
+:::
+
 ### Resolver Application Overrides
 > Setting Location: `ayon+settings://usd/distribution/lake_fs_overrides`
 
