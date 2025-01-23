@@ -24,8 +24,8 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 The Substance Designer AYON integration allows you to:
 - Easily export your textures/sbsar as versioned publishes for others to load and update.
-- Easily load your textures into resource folders in your package project and you
-    can use in your Substance Graph.
+- Easily load your textures into resource folders in your package project and use those
+    in your Substance Graphs.
 
 ## Setting up the project
 
@@ -92,6 +92,8 @@ they want to publish, and go to **AYON -> Create** to create Sbsar instance.
 Once the user hits **Publish**, it publishes the sbsar to AYON.
 
 ## Known issues
+
+![Texture Loader Embedded options](assets/substance_designer_ayon_menu.png)
 
 #### Can't see the AYON menu?
 
