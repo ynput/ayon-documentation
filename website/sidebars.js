@@ -93,6 +93,7 @@ module.exports = {
                 "addon_nuke_artist",
                 "addon_photoshop_artist",
                 "addon_substancepainter_artist",
+                "addon_substancedesigner_artist",
                 {
                     type: "category",
                     label: "Tray Publisher",
@@ -219,6 +220,7 @@ module.exports = {
                 "addon_slack_admin",
                 "addon_sso_admin",
                 "addon_substancepainter_admin",
+                "addon_substancedesigner_admin",
                 "addon_tvpaint_admin",
                 "addon_unreal_admin",
                 "addon_kitsu_admin",
