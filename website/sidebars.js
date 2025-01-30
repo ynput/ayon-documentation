@@ -171,7 +171,7 @@ module.exports = {
                 "admin_server_market",
                 "admin_server_updating_pipeline",
                 "admin_server_permissions",
-                "admin_server_powerpack",
+                "admin_server_power_features",
                 "admin_server_licenses",
             ],
         },
