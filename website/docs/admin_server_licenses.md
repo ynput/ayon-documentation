@@ -21,7 +21,7 @@ You can have multiple fixed pools. If you purchase a yearly subscription for 20 
 
 ## Metered User Pool
 
-AYON also offers **metered licensing**, where you only pay for users who log in during a given month. If a user does not log in, you are not charged for them.
+AYON also offers additional **metered licensing**, where you only pay for users who log in during a given month. If a user does not log in, you are not charged for them. This type of license if useful for fast ad-hoc team scaling.
 
 By default, metered usage is disabled, meaning only users in a fixed user pool can log in. To enable metered usage, please [contact our support team](https://ynput.io/contact/).
 
