@@ -74,12 +74,11 @@ module.exports = {
                     type: "category",
                     label: "USD",
                     link: {
-                        type: 'generated-index',
-                        title: 'AYON USD Book',
-                        description:
-                          "Welcome to AYON USD Book!",
-                        keywords: ['usd'],
-                      },
+                        type: "generated-index",
+                        title: "AYON USD Book",
+                        description: "Welcome to AYON USD Book!",
+                        keywords: ["usd"],
+                    },
                     items: [
                         "addon_usd_artist_usd_intro",
                         "addon_usd_artist_get_started",
@@ -98,15 +97,14 @@ module.exports = {
                     type: "category",
                     label: "Tray Publisher",
                     link: {
-                        type: 'generated-index',
-                        title: 'Tray Publisher User',
-                        description:
-                          "Tray Publisher User Guide",
-                        keywords: ['tray', 'publisher'],
-                      },
+                        type: "generated-index",
+                        title: "Tray Publisher User",
+                        description: "Tray Publisher User Guide",
+                        keywords: ["tray", "publisher"],
+                    },
                     items: [
                         "addon_traypublisher_artist",
-                        "addon_traypublisher_artist_advanced"
+                        "addon_traypublisher_artist_advanced",
                     ],
                 },
                 "addon_tvpaint_artist",
@@ -132,7 +130,7 @@ module.exports = {
                 "artist_activity_feed",
                 "artist_reviewables",
                 "artist_inbox",
-                "artist_task_progress_page"
+                "artist_task_progress_page",
             ],
         },
     ],
@@ -142,23 +140,22 @@ module.exports = {
             type: "category",
             label: "AYON Server",
             link: {
-                type: 'generated-index',
-                title: 'AYON Server',
-                description:
-                  "Welcome to AYON Server Admin Docs!",
-                keywords: ['server', 'admin'],
-              },
+                type: "generated-index",
+                title: "AYON Server",
+                description: "Welcome to AYON Server Admin Docs!",
+                keywords: ["server", "admin"],
+            },
             items: [
                 {
                     type: "category",
                     label: "Self-hosting",
                     link: {
-                        type: 'generated-index',
-                        title: 'Hosting AYON Server',
+                        type: "generated-index",
+                        title: "Hosting AYON Server",
                         description:
-                          "Documentation dedicated for self hosting AYON and running your own AYON instance.",
-                        keywords: ['server', 'admin'],
-                      },
+                            "Documentation dedicated for self hosting AYON and running your own AYON instance.",
+                        keywords: ["server", "admin"],
+                    },
                     items: [
                         "admin_server_deployment",
                         "admin_server_configuration",
@@ -171,6 +168,7 @@ module.exports = {
                 "admin_server_market",
                 "admin_server_updating_pipeline",
                 "admin_server_permissions",
+                "admin_server_power_features",
                 "admin_server_licenses",
             ],
         },
@@ -209,10 +207,7 @@ module.exports = {
                 {
                     type: "category",
                     label: "Maya",
-                    items: [
-                        "addon_maya_admin",
-                        "addon_maya_ornatrix_admin",
-                    ],
+                    items: ["addon_maya_admin", "addon_maya_ornatrix_admin"],
                 },
                 "addon_motionbuilder_admin",
                 "addon_nuke_admin",
@@ -235,17 +230,17 @@ module.exports = {
                     type: "category",
                     label: "Flame",
                     link: {
-                        type: 'generated-index',
-                        title: 'AYON Flame Addon',
+                        type: "generated-index",
+                        title: "AYON Flame Addon",
                         description:
                             "Welcome to Flame Integration Documentation!",
-                        keywords: ['flame'],
+                        keywords: ["flame"],
                     },
                     items: [
                         "addon_flame_admin_intro",
                         "addon_flame_admin_get_started",
-                        "addon_flame_admin_settings"
-                    ]
+                        "addon_flame_admin_settings",
+                    ],
                 },
                 "addon_aquarium_admin",
                 "addon_usd_admin",
@@ -253,17 +248,16 @@ module.exports = {
                     type: "category",
                     label: "Version Control",
                     link: {
-                        type: 'generated-index',
-                        title: 'AYON Version Control',
-                        description:
-                          "Welcome to AYON Version Control Docs!",
-                        keywords: ['version-control'],
-                      },
+                        type: "generated-index",
+                        title: "AYON Version Control",
+                        description: "Welcome to AYON Version Control Docs!",
+                        keywords: ["version-control"],
+                    },
                     items: [
                         "addon_version_control_admin_intro",
                         "addon_version_control_admin_get_started",
-                        "addon_version_control_admin_settings"
-                    ]
+                        "addon_version_control_admin_settings",
+                    ],
                 },
                 "addon_cinema4d_admin",
             ].sort(sorted),
@@ -288,19 +282,19 @@ module.exports = {
             type: "category",
             label: "APIs & Resources",
             link: {
-                type: 'generated-index',
-                title: 'AYON APIs an develoment resources',
+                type: "generated-index",
+                title: "AYON APIs an develoment resources",
                 description:
-                  "Welcome to AYON APIs and development resources catalogue!",
-                keywords: ['api', 'components'],
-              },
+                    "Welcome to AYON APIs and development resources catalogue!",
+                keywords: ["api", "components"],
+            },
             items: [
                 "dev_api_rest",
                 "dev_api_graphql",
                 "dev_api_python",
                 "dev_api_cpp",
                 "dev_api_usd_resolver",
-                "dev_components_react"
+                "dev_components_react",
             ],
         },
         {
@@ -320,17 +314,16 @@ module.exports = {
             type: "category",
             label: "Addon Development",
             link: {
-                type: 'generated-index',
-                title: 'AYON Addon Development',
-                description:
-                  "Welcome to AYON Addon Development Documentation!",
-                keywords: ['addon', 'dev'],
-              },
+                type: "generated-index",
+                title: "AYON Addon Development",
+                description: "Welcome to AYON Addon Development Documentation!",
+                keywords: ["addon", "dev"],
+            },
             items: [
                 "dev_addon_intro",
                 "dev_addon_creation",
                 "dev_host_implementation",
-                "dev_publishing"
+                "dev_publishing",
             ],
         },
         "dev_deadline",
