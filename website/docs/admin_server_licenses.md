@@ -7,7 +7,7 @@ description: Managing licenses and why you might need them
 
 The AYON server operates under a [Functional Source License (FSL)](https://fair.io/), ensuring that most features remain free for users.
 
-Some AYON features and addons require a license, which can be obtained through an AYON subscription or granted on a per-instance basis. For example, PowerPack features require an AYON subscription.
+Some AYON features and addons require a license, which can be obtained through an [AYON subscription](https://ynput.io/ayon/pricing/) or granted on a per-instance basis. For example, PowerPack features require an AYON subscription.
 
 An AYON subscription includes a set number of seats, limiting how many users can log in and use AYON. This limit is called a **license pool**, and you can have multiple pools of different types.
 
@@ -15,7 +15,7 @@ An AYON subscription includes a set number of seats, limiting how many users can
 
 The primary pool type is a **fixed user pool**, where a set number of seats are assigned to specific users.
 
-For example, a yearly AYON Pro subscription for 20 users provides a fixed pool of 20 seats, allowing 20 assigned users to log in.
+For example, a yearly [AYON Pro subscription](https://ynput.io/ayon/pricing/) for 20 users provides a fixed pool of 20 seats, allowing 20 assigned users to log in.
 
 You can have multiple fixed pools. If you purchase a yearly subscription for 20 users and a quarterly subscription for 10 users, you would have two fixed pools: one for 20 users and one for 10 users. This allows 30 users to log in while both subscriptions are active. If the quarterly subscription ends, the 10-user pool is removed, and those users lose access.
 
