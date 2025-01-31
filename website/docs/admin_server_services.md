@@ -61,6 +61,11 @@ worker:
     - "AYON_SERVER_URL=https://ayon.example.com"
 ```
 
+### Creating a Service User to generate the AYON_API_KEY
+1. In AYON, navigate to the Users tab and click Add Service User.
+    -	Name the user something like ftrack_service.
+    - Save the changes and click Generate New Key.
+
 
 Troubleshooting
 ---------------
