@@ -66,6 +66,17 @@ Developers can upload or remove addons using the AYON Python API.
 For example, see [AYON Python API First Steps: Upload Addon | Ynput Forums](https://community.ynput.io/t/ayon-python-api-first-steps/1278#upload-addon-7).
 :::
 
+### Install Addons
+
+You can install addons to your AYON server in a few ways:
+1. **Using Addon Market:** Search for addon releases and choose which one to install. Check out the [Addon Market](admin_server_market.md#market-addons) for more details.
+2. **Upload Addon `.zip` Packages:** Use the **Upload Addons** option on the [Addons](#addons-tab) or [Bundles](#bundles-tab) tab. This is usually for creating `.zip` packages for addons that aren't released yet, GitHub pull requests, or packages shared within the community. For more information, see [How to Test Addons in Active Development on GitHub | Yn Forums](https://community.ynput.io/t/how-to-test-addons-in-active-development-on-github/2203).
+
+:::info Add Installed Addons to Your Pipeline
+
+To add addons to your pipeline, include them in a bundle and assign a pipeline mode to the bundle. More details about bundles and how to create them are in the next section.
+:::
+
 ## Bundles
 
 ### What is a Bundle?
