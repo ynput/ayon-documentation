@@ -210,6 +210,10 @@ const products: { [type in ProductType]: Product } = {
         title: "Texture Set",
         icon: "photo_library",
     },
+    sbsar: {
+        title: "Sbsar",
+        icon: "photo_library",
+    },
     wrap: {
         title: "Wrap",
         icon: "language",
