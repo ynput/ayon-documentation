@@ -74,7 +74,7 @@ You can install addons to your AYON server in a few ways:
 
 :::info Add Installed Addons to Your Pipeline
 
-To add addons to your pipeline, include them in a bundle and assign a pipeline mode to the bundle. More details about bundles and how to create them are in the next section.
+To add addons to your pipeline, [create a bundle](#create-a-bundle) and include or update the desired addons in it. Assign a pipeline mode to the bundle. More details about bundles and how to create them are in the next section.
 :::
 
 ## Bundles
