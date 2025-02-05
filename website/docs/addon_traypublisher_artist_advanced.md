@@ -75,7 +75,7 @@ ayon addon traypublisher
 
 ### Launch
 
-Launch TrayPublish tool UI.
+Launch TrayPublisher tool UI.
 You can use it to access the tray publisher without running AYON. It can be used as a shortcut to launch the tray publisher directly without launching AYON launcher first.
 
 <Tabs

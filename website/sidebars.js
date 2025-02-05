@@ -94,6 +94,7 @@ module.exports = {
                 "addon_photoshop_artist",
                 "addon_premiere_artist",
                 "addon_substancepainter_artist",
+                "addon_substancedesigner_artist",
                 {
                     type: "category",
                     label: "Tray Publisher",
@@ -171,6 +172,8 @@ module.exports = {
                 "admin_server_market",
                 "admin_server_updating_pipeline",
                 "admin_server_permissions",
+                "admin_server_power_features",
+                "admin_server_licenses",
             ],
         },
         {
@@ -221,6 +224,7 @@ module.exports = {
                 "addon_slack_admin",
                 "addon_sso_admin",
                 "addon_substancepainter_admin",
+                "addon_substancedesigner_admin",
                 "addon_tvpaint_admin",
                 "addon_unreal_admin",
                 "addon_kitsu_admin",
