@@ -1,14 +1,16 @@
 ---
-id: addon_aftereffects_admin
-title: After Effects Admin Docs
-sidebar_label: After Effects
+id: addon_premiere_admin
+title: Premiere Admin Docs
+sidebar_label: Premiere
+description: AYON Premiere Addon's documentations for admins.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 <ReactMarkdown>
-{versions.Aftereffects_Badge}
+{versions.Premiere_Badge}
 </ReactMarkdown>
 
 import Tabs from '@theme/Tabs';
