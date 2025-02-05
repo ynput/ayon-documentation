@@ -22,12 +22,12 @@ Adobe extension must be installed on each artist machine willing to use this int
 
 Artists could do it themselves, see more details in [Artist documentation](addon_premiere_artist.md).
 
-It is also possible to enable pre launch hook `Install AYON Extension` which will try to install extension automatically.
+On Windows OS it is also possible to enable pre launch hook `Install AYON Extension` which will try to install extension automatically.
+Enable toggle at `ayon+settings://premiere/auto_install_extension`.
 
-:::info NOTE
-This hook is still in development, currently it brute force reinstalls every launch. By default this hook is
-disabled in Settings.
-:::
+This hook installs extension to user `appdata`.
+
+Example: `C:\Users\YOUR_USER_NAME\AppData\Roaming\Adobe\CEP\extensions\io.ynput.PPRO.panel`
 
 ## Premiere settings
 
