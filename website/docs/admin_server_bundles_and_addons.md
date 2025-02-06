@@ -165,6 +165,19 @@ After a bundle is created, most of the options will be locked. You can only chan
 - Version of some server addons that don't affect the pipeline, e.g., [Jira Addon](/features?addons=jira).
 :::
 
+### Dependency Packages
+
+Dependency packages are essential in bundles as they include the necessary Python dependencies for the addons' client code to function properly.
+
+Once a bundle is created, you can set or update the dependency package for each operating system. Clicking the `+` button shows a dropdown menu where you can select a dependency package.
+
+:::tip Get Dependency Packages
+When [updating the pipeline to the latest release](admin_server_updating_pipeline.md), you receive a bundle and a compatible dependency package. In some cases, when building a custom bundle, you may need to build a dependency package for it. For this, use the [ayon-dependencies-tool](https://github.com/ynput/ayon-dependencies-tool). For more information, check out this community [guide: What are dependency packages and how to update them? | Yn Forums](https://community.ynput.io/t/what-are-dependency-package-and-how-to-update-them/1991).
+
+:::
+
+![](assets/server/admin/server_and_addons/dependency_packages.png)
+
 ## Pipeline Modes and Settings
 
 ### Pipeline Modes
