@@ -23,9 +23,9 @@ This list will continue to expand, with new features being added. We would love 
 | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | --------------- | ----------------- |
 | [Multi view slicer](#multi-view-slicer)                           | Effortless, on-the-fly filtering to streamline project exploration.                            | PowerPack Addon | Production        |
 | [Annotations](#annotations)                                       | Create detailed visual feedback directly on media files.                                       | PowerPack Addon | Beta              |
-| [Reviewables transcoder service](#reviewables-transcoder-service) | Transcode and optimize uploaded reviewable video formats.                                      | Service         | Production        |
 | [Pipeline releases](#full-pipeline-release-access)                | Access and download the complete archive of releases                                           | Built-in        | Production        |
 | [SSO (OAuth2.0, Google)](#sso-oauth20-google)                     | Allow users to login using SSO options, like "Continue with Google".                           | SSO Addon       | Production        |
+| [Reviewables transcoder service](#reviewables-transcoder-service) | Transcode and optimize uploaded reviewable video formats.                                      | Service         | Under development |
 | Complex Filters                                                   | Advanced filter tools like, excludes, different operators (AND/OR) and more.                   | PowerPack Addon | Under development |
 | Save views and sharing                                            | Save different filters as views and share views with other team members.                       | PowerPack Addon | Under development |
 | E-mail notifications                                              | Receive email notifications for task specific and project overview updates.                    | Service         | Under development |
@@ -63,6 +63,10 @@ Annotations are currently in beta, so you may encounter bugs. Please let us know
 The **Reviewables transcoder service** automatically transcodes and optimises any video format to meet web and browser standards, ensuring smooth playback in the browser. By default, only specific `.mp4` formats are supported for publishing and playback due to browser limitations. This service takes care of transcoding your reviewables into the compatible format for you.
 
 ![Reviewable in the process of being transcoded](./assets/server/power/transcoding-reviewable.png)
+
+:::note
+This feature is still under development and not currently available. Please contact support if this is something that your studio requires.
+:::
 
 ## Full pipeline release access
 
