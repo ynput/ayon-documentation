@@ -120,6 +120,7 @@ module.exports = {
                     items: ["addon_aquarium_artist", "addon_aquarium_manager"],
                 },
                 "addon_cinema4d_artist",
+                "addon_zbrush_artist"
             ].sort(sorted),
         },
         {
@@ -267,6 +268,7 @@ module.exports = {
                     ]
                 },
                 "addon_cinema4d_admin",
+                "addon_zbrush_admin"
             ].sort(sorted),
         },
         "admin_releases",
