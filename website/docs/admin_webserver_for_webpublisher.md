@@ -1,7 +1,7 @@
 ---
 id: admin_webserver_for_webpublisher
 title: Webserver for webpublisher
-sidebar_label: Webserver for webpublisher
+sidebar_label: Web Publisher
 ---
 
 import Tabs from '@theme/Tabs';
