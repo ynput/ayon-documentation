@@ -93,7 +93,7 @@ and go to **AYON -> Create** to create texture instance.
 
 Users can define which graphs and which graph outputs they want to export.
 
-![Publishing Texture Option](assets/substance_designer_publish_texture_options.png)
+![Publishing Texture Options](assets/substance_designer_publish_texture_options.png)
 
 The Texture Set instance generates a publish per output map per graph that is defined in
 the Substance Designer's template during project creation.
