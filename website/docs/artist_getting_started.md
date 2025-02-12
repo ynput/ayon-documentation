@@ -125,4 +125,4 @@ password: `v3ry53cur3p455w0rd`
 
 ## Advanced Usage
 
-For more advanced usage of **AYON Launcher** app, like running with console, staging, or develop mode, please visit [Admin section](admin_launcher_run#arguments).
+For more advanced usage of **AYON Launcher** app, like running with console, staging, or develop mode, please visit [Admin section](admin_launcher_run.md#arguments).

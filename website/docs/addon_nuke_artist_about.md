@@ -15,12 +15,12 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## AYON global tools
 
--   [Work Files](artist_tools_workfiles)
--   [Create](artist_tools_creator)
--   [Publish](artist_tools_publisher)
--   [Load](artist_tools_loader)
--   [Manage (Inventory)](artist_tools_inventory)
--   [Library Loader](artist_tools_library_loader)
+-   [Work Files](artist_tools_workfiles.md)
+-   [Create](artist_tools_creator.md)
+-   [Publish](artist_tools_publisher.md)
+-   [Load](artist_tools_loader.md)
+-   [Manage (Inventory)](artist_tools_inventory.md)
+-   [Library Loader](artist_tools_library_loader.md)
 
 ## Nuke specific tools
 

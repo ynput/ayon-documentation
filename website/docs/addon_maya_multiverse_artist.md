@@ -13,8 +13,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Working with Multiverse in AYON
 
-AYON supports creating, publishing and loading of [Multiverse | USD](
-https://multi-verse.io) data. The minimum Multiverse version supported is v6.7,
+AYON supports creating, publishing and loading of [Multiverse | USD](https://multi-verse.io) data. The minimum Multiverse version supported is v6.7,
 and version 7.0 is recommended.
 
 In a nutshell it is possible to:
@@ -88,8 +87,7 @@ on the [Multiverse official documentation](https://multi-verse.io/docs).
 In Multiverse we use some terminology that relates to USD I/O: terms like
 "Assets", "Compounds", "Compositions", "Overrides" and "Layering".
 
-Please hop to the new [Multiverse Introduction](
-https://j-cube.jp/solutions/multiverse/docs/usage/introduction) page on the
+Please hop to the new [Multiverse Introduction](https://j-cube.jp/solutions/multiverse/docs/usage/introduction) page on the
 official documentation to understand them before reading the next sections.
 
 
@@ -145,8 +143,7 @@ specific USD primitives, or entire hierarchies, into the Maya scene as Maya data
 selectively from MEOW, it also tracks what is being imported with a "live
 connection" , so upon modification, it is possible to write (create & publish)
 the modifies data as a USD file for being layered on top of its relative
-Compound. See the [Multiverse Importer](
-https://j-cube.jp/solutions/multiverse/docs/usage/importer)) documentation.
+Compound. See the [Multiverse Importer](https://j-cube.jp/solutions/multiverse/docs/usage/importer) documentation.
 :::
 
 ### Look
@@ -241,11 +238,9 @@ procedural fashion.
 ### Example Multiverse Pipeline and API
 
 An example diagram of the data flow in a Maya pipeline using Multiverse is
-available, see the [Multiverse Pipeline](
-https://j-cube.jp/solutions/multiverse/docs/pipeline) documentation.
+available, see the [Multiverse Pipeline](https://j-cube.jp/solutions/multiverse/docs/pipeline) documentation.
 
 
 A very easy to use Python API to automate any task is available, the API is
 user friendly and does not require any knowledge of the vast and complex USD
-APIs. See the [Multiverse Python API](
-https://j-cube.jp/solutions/multiverse/docs/dev/python-api.html) documentation.
+APIs. See the [Multiverse Python API](https://j-cube.jp/solutions/multiverse/docs/dev/python-api.html) documentation.
