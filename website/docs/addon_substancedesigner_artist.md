@@ -88,7 +88,7 @@ with the latest version into the resources folder.
 
 ## Publishing Textures
 
-Users need to open the graph(s) of which inherited from the package they want to publish,
+Users must open the graph(s) inherited from the package they intend to publish,
 and go to **AYON -> Create** to create texture instance.
 
 Users can define which graphs and its output(s) they want to export.
