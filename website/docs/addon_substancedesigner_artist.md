@@ -64,8 +64,8 @@ as `metallic_roughness_sss`. You can take reference from the screenshot below.
 
 :::note
 Once the project is created with the template(s), there would be `temp_ayon_package.sbs`
-saved as the local temp file. You need to make sure you use workfile tool to save the files otherwise
-your working data inside `temp_ayon_package.sbs` would be gone after you closed the Substance Designer.
+saved as the local temp file. You need to make sure you use 'Work Files' tool to save the files otherwise
+your working data inside `temp_ayon_package.sbs` would be gone if closing the 'Substance Designer' application.
 
 :::
 
