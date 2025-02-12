@@ -88,10 +88,14 @@ with the latest version into the resources folder.
 
 ## Publishing Textures
 
-Users need to open the graph(s) of which they want to publish, and go to **AYON -> Create**
-to create texture instance.
+Users need to open the graph(s) of which inherited from the package they want to publish,
+and go to **AYON -> Create** to create texture instance.
 
-The Texture Set instance generates a publish per output map that is defined in
+Users can define which graphs and which graph outputs they want to export.
+
+![Publishing Texture Option](assets/substance_designer_publish_texture_options.png)
+
+The Texture Set instance generates a publish per output map per graph that is defined in
 the Substance Designer's template during project creation.
 When publishing default Substance Designer's PBR template with variant **Main** six
 instances will be published with the variants:
@@ -104,11 +108,6 @@ instances will be published with the variants:
 The bold output map name for the publish is based on the string that is pulled
 from the default pattern set in export presets.
 So `$(graph)_$(identifier)` becomes `basecolor`.
-
-:::note
-The custom pattern of the render output(s) is not supported for AYON publish
-due to the Substance Designer API limitation.
-:::
 
 ## Publishing Sbsar
 
