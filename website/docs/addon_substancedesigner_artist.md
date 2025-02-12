@@ -111,7 +111,7 @@ So `$(graph)_$(identifier)` becomes `basecolor`.
 
 ## Publishing Sbsar
 
-Users need to open the graph(s) of which are inherited from the package
+Users must open the graph(s) inherited from the package
 they want to publish, and go to **AYON -> Create** to create Sbsar instance.
 Once the user hits **Publish**, it publishes the sbsar to AYON.
 
