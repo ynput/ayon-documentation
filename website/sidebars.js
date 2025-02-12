@@ -207,7 +207,7 @@ module.exports = {
                         keywords: ['nuke'],
                     },
                     items: [
-                        "addon_nuke_workflows_admin",
+                        "addon_nuke_tutorials_admin",
                         "addon_nuke_admin",
                     ]
                 },

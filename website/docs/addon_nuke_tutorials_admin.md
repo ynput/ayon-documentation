@@ -1,8 +1,8 @@
 ---
-id: addon_nuke_workflows_admin
-title: Nuke Addon Workflows
-sidebar_label: Workflows
-description: Nuke Addon's Workflows - Admins documentation.
+id: addon_nuke_tutorials_admin
+title: Workflow Tutorials
+sidebar_label: Tutorials
+description: Nuke Addon's Workflow Tutorials - Admins documentation.
 toc_max_heading_level: 5
 ---
 
