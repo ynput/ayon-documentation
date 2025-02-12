@@ -90,7 +90,16 @@ module.exports = {
                     ],
                 },
                 "addon_motionbuilder_artist",
-                "addon_nuke_artist",
+                {
+                    type: "category",
+                    collapsed: true,
+                    label: "Nuke",
+                    link: { type: "doc", id: "addon_nuke_artist"},
+                    items: [
+                        "addon_nuke_artist_about",
+                        "addon_nuke_artist_tutorials",
+                    ]
+                },
                 "addon_photoshop_artist",
                 "addon_substancepainter_artist",
                 "addon_tvpaint_artist",
