@@ -44,6 +44,31 @@ information for either loading or publishing through AYON.
 ![AYON SD Metadata](assets/substance_designer_ayon_metadata.png)
 :::
 
+## Project creation
+You can preset the template you want to use with AYON settings by accessing
+`ayon+settings://substancedesigner/project_creation/project_templates`
+You fill your graph name in the blank(the red sequared in the screenshot below)
+and select your template type.
+
+![Project Creation](assets/substance_designer_project_creation_ayon_setting.png)
+
+If you choose `Custom Template` as template type, you need to fill in the
+filepath of substance file and the name of graph in the sbs file you want to use
+as template.
+e.g. If you want to add the graph `metallic_roughness_sss` from the substance file
+`D:\test_pbr_template.sbs` as template for your project creation, you can just fill
+Path to Custom Template as `D:\test_pbr_template.sbs` and Custom Template Graph Name
+as `metallic_roughness_sss`. You can take reference from the screenshot below.
+
+![Custom Template Project Creation](assets/substance_designer_custom_template_project_creation.png)
+
+:::note
+Once the project is created with the template(s), there would be `temp_ayon_package.sbs`
+saved as the local temp file. You need to make sure you use workfile tool to save the files otherwise
+your working data inside `temp_ayon_package.sbs` would be gone after you closed the Substance Designer.
+
+:::
+
 ## Loading Textures
 
 Users can go to **AYON -> Load** and load texture to the resources folder
