@@ -91,7 +91,7 @@ with the latest version into the resources folder.
 Users need to open the graph(s) of which inherited from the package they want to publish,
 and go to **AYON -> Create** to create texture instance.
 
-Users can define which graphs and which graph outputs they want to export.
+Users can define which graphs and its output(s) they want to export.
 
 ![Publishing Texture Options](assets/substance_designer_publish_texture_options.png)
 
