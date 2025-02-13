@@ -35,9 +35,9 @@ After that, you can continue with the installation instructions for the Premiere
 groupId="platforms"
 defaultValue="win"
 values={[
-{label: 'Windows', value: 'win'},
-{label: 'Linux', value: 'linux'},
-{label: 'Mac', value: 'mac'},
+{label: <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span>, value: 'win'},
+{label: <span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span>, value: 'linux'},
+{label: <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>Darwin</span>, value: 'mac'},
 ]}>
 
 <TabItem value="win">
@@ -75,39 +75,51 @@ Premiere implementation currently allows you to:
 
 ## Usage
 
-When you launch Premiere you will be met with the Workfiles app. If don't have any previous workfiles, you can just close this window.
-
-Workfiles tools takes care of saving your `.prproj` files in the correct location and under a correct name. You should use it instead of standard file saving dialog.
-
-In Premiere you'll find the tools in the `AYON` extension:
-
-![Extension](assets/premiere_extension.png) 
-
-You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
-
-:::note guide
+:::info guide
 On newer MacOS you need to:
 - go to `Applications/Adobe Premiere XXXX`
 - right clicking on the `Adobe Premiere XXXX.app`
 - then `Get Info`, check `Open using Rosetta`
 :::
 
+When you launch Premiere you will be met with the Workfiles app. If don't have any previous workfiles, you can just close this window.
+
+Workfiles tools takes care of saving your `.prproj` files in the correct location and under a correct name. You should use it instead of standard file saving dialog.
+
+![Workfiles](assets/premiere/artist/premiere_workfiles_tool.png)
+
+<div class="row">
+<div class="col">
+
+In Premiere you'll find the tools in the `AYON` extension. You can show the extension panel by going to `Window` > `Extensions` > `AYON`.
+
+</div>
+<div class="col">
+
+![Extension](assets/premiere/artist/premiere_extension.png)
+
+</div>
+</div>
+
 ### Publish
 
 When you are ready to share some work, you will need to publish it. This is done by opening the `Publisher` through the `Publish...` button.
 
-There is always instance for workfile created automatically (see 'workfileCompositing' item in `Products to publish` column.) This allows to publish (and therefore backup) workfile which is used to produce another publishable elements (as `image` and `review` items).
+There is always instance for workfile created automatically (see `workfileCompositing` item in `Products to publish` column.) This allows to publish (and therefore backup) workfile which is used to produce another publishable elements (as `image` and `review` items).
 
-
-Name of publishable instance (eg. product name) could be configured with a template in `project_settings/global/tools/creator/product_name_profiles`.
-(This must be configured by admin who has access to AYON Settings.)
-
+![](assets/premiere/artist/publisher.png)
 
 Workfile instance will be automatically recreated though. If you do not want to publish it, use pill toggle on the instance item.
 
 If you would like to modify publishable instance, click on `Publish` tab at the top. This would allow you to change name of publishable instances, disable them from publishing, change their task etc.
 
 Publisher allows publishing into different context, just click on any instance, update `Variant`, `Folder` or `Task` in the form in the middle and don't forget to click on the 'Confirm' button.
+
+:::note Custom Product Names
+
+Name of publishable instance (eg. product name) could be configured with a template in **Product name profiles** `ayon+settings://core/tools/creator/product_name_profiles`. <br/>
+(This must be configured by admin who has access to AYON Settings.)
+:::
 
 ### Load
 

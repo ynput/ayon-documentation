@@ -13,26 +13,19 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 {versions.Premiere_Badge}
 </ReactMarkdown>
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+## Premiere Extension Installation
 
-## Premiere Extension installation
+The Adobe extension needs to be installed on each artist's machine to use this integration. It can be installed automatically; see [Auto Install Extension](#auto-install-extension) for more information.Alternatively, artists can install it manually. For more details, refer to the [Premiere Extension installation](addon_premiere_artist.md#premiere-extension-installation).
 
-Adobe extension must be installed on each artist machine willing to use this integration.
-
-Artists could do it themselves, see more details in [Artist documentation](addon_premiere_artist.md).
-
-On Windows OS it is also possible to enable pre launch hook `Install AYON Extension` which will try to install extension automatically.
-Enable toggle at `ayon+settings://premiere/auto_install_extension`.
-
-This hook installs extension to user `appdata`.
-
-Example: `C:\Users\YOUR_USER_NAME\AppData\Roaming\Adobe\CEP\extensions\io.ynput.PPRO.panel`
 
 ## Premiere settings
 
-There is currently only single configuration which provides functionality to automatically installing required
-Adobe extension. 
+### Auto Install Extension
+> Setting Location: `ayon+settings://premiere/auto_install_extension`
 
-Location: `ayon+settings://Premiere/hooks`
+![](assets/premiere/admin/install_ayon_extension.png)
+
+When enabled, On <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> OS It will try to install AYON Premiere extension to user `appdata` if it's not installed already.
+
+Example: `C:\Users\YOUR_USER_NAME\AppData\Roaming\Adobe\CEP\extensions\io.ynput.PPRO.panel`
 
