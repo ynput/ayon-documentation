@@ -73,23 +73,32 @@ This toggle is a master switch that enables and disables the whole section.
 - **Display**
 - **View**
 
-### Backing Target Colorspace
+### Baking Target Colorspace
 > Setting Location: `ayon+settings://nuke/imageio/baking_target`
 
-#### Mode 1: Use Colorspace
-![](assets/nuke/settings/baking_target_colorspace.png)
+It supports two modes:
 
+<div class="row">
+<div class="col">
+
+Mode 1: **Use Colorspace**
+![](assets/nuke/settings/baking_target_colorspace.png)
 - **Enable**
 - **Target baking type**
 - **Colorspace**
 
-#### Mode 2: Use Display & View
-![](assets/nuke/settings/baking_target_colorspace_display_view.png)
+</div>
+<div class="col">
 
+Mode 2: **Use Display & View**
+![](assets/nuke/settings/baking_target_colorspace_display_view.png)
 - **Enable**
 - **Target baking type**
 - **Display**
 - **View**
+
+</div>
+</div>
 
 ### Workfile
 > Setting Location: `ayon+settings://nuke/imageio/workfile`
@@ -163,7 +172,7 @@ you can set the default colorspace for the read node based on a regex expression
 
 ![](assets/nuke/settings/custom_tools_settings.png)
 
-Creates a custom from the provided action definitions 
+Creates a custom tools menu from the provided action definitions 
 - **Menu Name**
 - **Definitions**
   - Each definition includes
@@ -282,6 +291,7 @@ custom tools menu will appear in Nuke's toolbar.
 
 ![](assets/nuke/settings/validate_knobs.png)
 
+- Enable
 - Knobs
 
 ### Validate Output Resolution
@@ -408,11 +418,11 @@ custom tools menu will appear in Nuke's toolbar.
 ## Workfile Builder
 > Setting Location: `ayon+settings://nuke/workfile_builder`
 
-![](assets/nuke/settings/workfile_builder_old.png)
-
 :::caution deprecation alert
 This setting is deprecated, use [Templated Workfile Builder](#templated-workfile-builder) Setting instead.
 :::
+
+![](assets/nuke/settings/workfile_builder_old.png)
 
 - Create first workfile
 - Custom templates
