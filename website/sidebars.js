@@ -92,6 +92,7 @@ module.exports = {
                 "addon_motionbuilder_artist",
                 "addon_nuke_artist",
                 "addon_photoshop_artist",
+                "addon_premiere_artist",
                 "addon_substancepainter_artist",
                 "addon_substancedesigner_artist",
                 {
@@ -219,6 +220,7 @@ module.exports = {
                 "addon_motionbuilder_admin",
                 "addon_nuke_admin",
                 "addon_photoshop_admin",
+                "addon_premiere_admin",
                 "addon_site_sync_admin",
                 "addon_slack_admin",
                 "addon_sso_admin",
