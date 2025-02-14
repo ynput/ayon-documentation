@@ -59,4 +59,6 @@ export type ProductType =
     | "textureSet"
     | "sbsar"
     | "wrap"
-    | "lut";
+    | "lut"
+    | "trackpoints"
+    | "matteshapes";
