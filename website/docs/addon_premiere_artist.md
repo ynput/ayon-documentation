@@ -42,19 +42,18 @@ values={[
 
 <TabItem value="win">
 
+There is a possibility that admin installed extension for you or set automatic installation. You could try to use AYON Launcher and start
+Premiere on selected task. 
+
+If you are seeing AYON integration gray menu (or after enabling it in `Window > Extensions > AYON`) you are good to go and you
+can safely skip next section about installing extension.
+
 1. Use your favorite app to install extensions. We recommend using [Anastasyi's Extension Manager](https://install.anastasiy.com/).
 2. Locate and install the `extension.zxp` file. You can find it in the `AppData` folder, typically at `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\premiere_X.X.X\ayon_premier\api`.
 
 :::tip
 You can quickly navigate to the local app data using the environment variable shortcut: `%LOCALAPPDATA%`. For example, using `%LOCALAPPDATA%\Ynput\AYON\addons` as path to see your installed addons.
 :::
-
-</TabItem>
-
-<TabItem value="linux">
-
-1. Use your favorite app to install extensions.
-2. Locate and install the `extension.zxp` file. You can find it in the user data folder, typically at `~/.local/share/Ynput/AYON/addons/premiere_X.X.X/ayon_premier/api`.
 
 </TabItem>
 
