@@ -45,6 +45,7 @@ export const officialAddons = [
     "motionbuilder",
     "nuke",
     "photoshop",
+    "premiere",
     "royalRender",
     "shotgrid",
     "silhouette",

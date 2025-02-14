@@ -28,6 +28,7 @@
     "OpenPype_Badge" : "[![OpenPype Addon - 3.7.17](https://img.shields.io/badge/OpenPype_Addon-3.7.17-00d6a1)](https://github.com/ynput/OpenPype)",
     "OpenRV_Badge" : "[![OpenRV Addon - 1.0.0](https://img.shields.io/badge/OpenRV_Addon-1.0.0-36a4cb)](https://github.com/ynput/ayon-openrv)",
     "Photoshop_Badge" : "[![Photoshop Addon - 0.1.0](https://img.shields.io/badge/Photoshop_Addon-0.1.0-041d36?logo=adobephotoshop)](https://github.com/ynput/OpenPype/tree/develop/server_addon/photoshop)",
+    "Premiere_Badge" : "[![Premiere Addon - 0.1.0](https://img.shields.io/badge/Premiere_Addon-0.1.0-000049)](https://github.com/ynput/ayon-premiere)",
     "Resolve_Badge" : "[![Davinci Resolve Addon - 0.1.0](https://img.shields.io/badge/Davinci_Resolve_Addon-0.1.0-2f4a67)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/resolve)",
     "RoyalRender_Badge" : "[![Royal Render Addon - 0.1.1](https://img.shields.io/badge/Royal_Render_Addon-0.1.1-black)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/royalrender)",
     "Flow_Badge" : "[![Flow (ShotGrid) Addon - 0.4.0](https://img.shields.io/badge/Flow_(ShotGrid)_Addon-0.4.0-3190b2)](https://github.com/ynput/ayon-shotgrid)",
