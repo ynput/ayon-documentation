@@ -92,6 +92,7 @@ module.exports = {
                 "addon_motionbuilder_artist",
                 "addon_nuke_artist",
                 "addon_photoshop_artist",
+                "addon_premiere_artist",
                 "addon_substancepainter_artist",
                 "addon_substancedesigner_artist",
                 {
@@ -120,6 +121,7 @@ module.exports = {
                     items: ["addon_aquarium_artist", "addon_aquarium_manager"],
                 },
                 "addon_cinema4d_artist",
+                "addon_zbrush_artist"
             ].sort(sorted),
         },
         {
@@ -219,6 +221,7 @@ module.exports = {
                 "addon_motionbuilder_admin",
                 "addon_nuke_admin",
                 "addon_photoshop_admin",
+                "addon_premiere_admin",
                 "addon_site_sync_admin",
                 "addon_slack_admin",
                 "addon_sso_admin",
@@ -268,6 +271,8 @@ module.exports = {
                     ]
                 },
                 "addon_cinema4d_admin",
+                "addon_zbrush_admin",
+                "admin_webserver_for_webpublisher"
             ].sort(sorted),
         },
         "admin_releases",

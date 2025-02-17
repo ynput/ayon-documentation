@@ -1,4 +1,5 @@
 ---
+id: artist_getting_started
 title: Getting started with AYON
 sidebar_label: Getting started
 ---
