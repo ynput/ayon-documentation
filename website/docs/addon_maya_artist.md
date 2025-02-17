@@ -312,6 +312,8 @@ for the animation product type. This set should include only your animated skele
 
 :::tip Enable FBX for animation product type
 Users need to enable **Collect Fbx Animation** before publishing it as animation product.
+![Maya - Collect Fbx Animation](assets/maya/artist/animation_collect_fbx_animation.png)
+
 :::
 
 ![Maya - Rig Hierarchy Example](assets/maya/artist/rig_skeletonAnim_skeletonMesh_set.png)
