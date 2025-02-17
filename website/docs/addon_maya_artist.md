@@ -309,7 +309,10 @@ you should put your skinned character geometry with skeleton in the set.
 
 The `skeletonAnim_SET` defines the animated content that should be published to FBX from an animation scene
 for the animation product type. You should include your animated skeleton data merely into the set.
+
+:::tip Enable FBX for animation product type
 Users need to enable **Collect Fbx Animation** before publishing it as animation product.
+:::
 
 ![Maya - Rig Hierarchy Example](assets/maya/artist/rig_skeletonAnim_skeletonMesh_set.png)
 
