@@ -32,7 +32,7 @@ You can find a comprehensive list of available addons [here](/features).
 
 ### Addons Tab
 
-The Addons Tab in the AYON server is used to manage your addon packages.
+The "Addons" tab in the AYON server is used to manage your addon packages. Navigate to the "Studio Settings" (S+S hotkey combo) and switch to "Addons" pane at the very top left to display all installed addons their status and available versions.
 
 ![Addons Tab](assets/server/admin/server_and_addons/addons_tab.png)
 
