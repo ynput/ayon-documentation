@@ -302,7 +302,7 @@ and geometry to `out_SET`. You should end up with something like this:
 
 ![Maya - Rig Hierarchy Example](assets/maya/artist/rig_hierarchy_example.jpg)
 
-The other two products `skeletonMesh_SET` and `skeletonAnim_SET` are proposed for fbx workflow.
+The other two products `skeletonMesh_SET` and `skeletonAnim_SET` are used for the fbx workflow.
 
 The `skeletonMesh_SET` defines the static FBX skeleton and mesh, as an FBX product directly from the rig publish,
 you should put your skinned character geometry with skeleton in the set.
