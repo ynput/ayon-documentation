@@ -297,7 +297,7 @@ Then I've put everything into `arm_rig` group.
 When you've prepared your hierarchy, it's time to create *Rig instance* in AYON.
 Select your whole rig hierarchy and go **AYON → Create...**. Select **Rig**.
 Set is created in your scene to mark rig parts for export. Notice that it has
-four products - `controls_SET`, `out_SET`,  `skeletonMesh_SET` and `skeletonAnim_SET`. Put your controls into `controls_SET`
+four children object sets - `controls_SET`, `out_SET`,  `skeletonMesh_SET` and `skeletonAnim_SET`. Put your controls into `controls_SET`
 and geometry to `out_SET`. You should end up with something like this:
 
 ![Maya - Rig Hierarchy Example](assets/maya/artist/rig_hierarchy_example.jpg)
