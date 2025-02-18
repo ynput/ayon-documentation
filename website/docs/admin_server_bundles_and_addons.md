@@ -232,8 +232,8 @@ The following example assumes a dev bundle named `Develop`.
 
 Addon settings in AYON are divided into four categories:
 
-- **Studio Settings `S+S`**: These are addon settings at the studio level. They inherit factory defaults and allow overriding these defaults across the studio for all projects.
-- **Project Settings `P+P`**: These settings are at the project level. They inherit studio settings and allow overriding them for the specific project.
+- **Studio Settings `S+S`**: These are addon settings at the studio level. They inherit factory defaults and allow overriding these defaults across the studio for all projects. Access the Studio Settings through the app menu or by pressing the shortcut **`S+S`** (double-tap the **`S`** key).
+- **Project Settings `P+P`**: These settings are at the project level. They inherit studio settings and allow overriding them for the specific project. Access the Project Settings through the app menu or by pressing the shortcut **`P+P`** (double-tap the **`P`** key).
 - **Studio Site Settings**: These are addon settings per `Site ID` at the studio level.
 - **Project Site Settings**: These are addon settings per `Site ID` at the project level.
 
