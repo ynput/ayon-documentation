@@ -70,11 +70,11 @@ For example, see [AYON Python API First Steps: Upload Addon | Ynput Forums](http
 
 You can install addons to your AYON server in a few ways:
 1. **Using Addon Market:** Search for addon releases and choose which one to install. Check out the [Addon Market](admin_server_market.md#market-addons) for more details.
-2. **Upload Addon `.zip` Packages:** Use the **Upload Addons** option on the [Addons](#addons-tab) or [Bundles](#bundles-tab) tab. This is usually for creating `.zip` packages for addons that aren't released yet, GitHub pull requests, or packages shared within the community. For more information, see [How to Test Addons in Active Development on GitHub | Yn Forums](https://community.ynput.io/t/how-to-test-addons-in-active-development-on-github/2203).
+2. **Upload Addon `.zip` Packages:** Use the **Upload Addons** option on the [Addons](#addons-tab) or [Bundles](#bundles-tab) tab. This is usually for creating `.zip` packages for addons that aren't released yet, GitHub pull requests, or packages shared within the community. For more information, see [How to Test Addons in Active Development on GitHub | Ynput Forums](https://community.ynput.io/t/how-to-test-addons-in-active-development-on-github/2203).
 
 :::info Add Installed Addons to Your Pipeline
 
-To add addons to your pipeline, [create a bundle](#create-a-bundle) and include or update the desired addons in it. Assign a pipeline mode to the bundle. More details about bundles and how to create them are in the next section.
+To add addons to your pipeline, [create a bundle](#create-a-bundle) and include or update the desired addons in it. Assign a [pipeline mode](#pipeline-modes) to the bundle. More details about bundles and how to create them are in the next section.
 :::
 
 ## Bundles
@@ -172,7 +172,7 @@ Dependency packages are essential in bundles as they include the necessary Pytho
 Once a bundle is created, you can set or update the dependency package for each operating system. Clicking the `+` button shows a dropdown menu where you can select a dependency package.
 
 :::tip Get Dependency Packages
-When [updating the pipeline to the latest release](admin_server_updating_pipeline.md), you receive a bundle and a compatible dependency package. In some cases, when building a custom bundle, you may need to build a dependency package for it. For this, use the [ayon-dependencies-tool](https://github.com/ynput/ayon-dependencies-tool). For more information, check out this community [guide: What are dependency packages and how to update them? | Yn Forums](https://community.ynput.io/t/what-are-dependency-package-and-how-to-update-them/1991).
+When [updating the pipeline to the latest release](admin_server_updating_pipeline.md), you receive a bundle and a compatible dependency package. In some cases, when building a custom bundle, you may need to build a dependency package for it. For this, use the [ayon-dependencies-tool](https://github.com/ynput/ayon-dependencies-tool). For more information, check out this community [guide: What are dependency packages and how to update them? | Ynput Forums](https://community.ynput.io/t/what-are-dependency-package-and-how-to-update-them/1991).
 
 :::
 
