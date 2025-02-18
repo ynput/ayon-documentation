@@ -170,11 +170,34 @@ Notice the relationship of following sections. Keys from **Shot Template Keyword
 </div>
 </div>
 
+### Reviewable source
+
+In case you wish to publish reviewable video per `plate`:
+1. Enable the `review` toggle
+2. Select either the appropriate track name or `[clip's media]` (will use the clip own source)
+
 ### Vertical synchronization of product attributes
 
-In case you are only working with two tracks on timeline where `main` track is going to be used as plates for compositors and `review` track holds mp4 clips for offlines and web preview. **Enable vertical sync** can be deactivated.
+This feature allows to publish multiple plate variant(s) per shot.
 
-In multiple tracks scenario - as mentioned [here](#rename-timeline-track-names) - it is recommended to activate **Enable vertical sync** and define the hero (driving) track to *main*. This will ensure that all of the clips on corresponding to the same shots will have the same publishing parameters.
+The timeline must contain multiple tracks - as mentioned [here](#rename-timeline-track-names) one of those being the hero (driving) track.
+Per shot, the clip on the hero track will be driving the shot creation (shot length, shot resolution...)
+
+To publish multiple plates for a shot process as following:
+
+1. Set up a multiple track timeline. Rename each track to determine plate variants (e.g `L01`, `L02` and `L03`)
+2. Pick-up one track the be the **hero** track and set your main plate clip onto it
+3. Then, for each shot, stack additional plate clip(s) on other tracks aligned with the hero/main plate clip. Clips can be shorter than the main hero track clip, but not longer.
+4. (Optional) You can setup another track to contain your review material
+5. Select all clips that needs to be published (with chocolate color)
+6. In the creator enable vertical align and select your main track as hero track
+5. Create instances by hitting "Create"
+6. Ensure all instances are parented to the same shot, which lenth is driven from the hero clip
+
+:::note
+If you are working with only two tracks where one track is going to be used as plates (e.g. `main`) and the other one holds video clips for offlines and web preview (e.g. `review`), then **Enable vertical sync** is not required.
+:::
+
 
 <br></br>
 

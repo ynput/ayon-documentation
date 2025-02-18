@@ -74,17 +74,45 @@ e.g. You can rename the clips, specify frame padding and etc.
 ![](assets/flame/artist/ayon_attribute_publish_creator.png)
 :::
 
-#### Vertical workflow
-* For a vertical workflow you need to first rename sequence tracks, so they can be used as product variant names. Just simply RMB click on the track and select _Rename Track_.
+In case you wish to publish reviewable video per `plate`:
+1. Enable the `review` toggle
+2. Select either the appropriate track name or `[clip's media]` (will use the clip own source)
+
+#### Vertical synchronization of attributes
+* This feature allows to publish multiple plate variant(s) per shot.
+* The timeline must contain multiple tracks one of those being the hero (driving) track. Per shot, the clip on the hero track will be driving the shot creation (shot length, shot resolution...).
+* You need to first rename sequence tracks, so they can be used as product variant names. Just simply RMB click on the track and select _Rename Track_.
 ![ayon_sequence_tracks_rename](assets/flame/artist/ayon_sequence_tracks_rename.png)
 ![ayon_vertical_alignment](assets/flame/artist/ayon_vertical_alignment.png)
 
-* In the **AYON Publish Attributes creator** window, enable _Enable Vertical Sync_ and select the _Hero track_ for Shot parenting. These hold the Shot metadata that needs to be distributed to other child clips, which are vertically aligned. Then in the _Product name_ set the option to `[track name]`
-![ayon_vertical_alignment_creator](assets/flame/artist/ayon_vertical_alignment_creator.png)
-* Confirm the changes by Create button and see that those clips were marked with the AYON marks.
+* To publish multiple plates for a shot process as following:
 
+1. Set up a multiple track timeline. Rename each track to determine plate variants (e.g `P01`, `P02` and `P03`)
+2. Pick-up one track the be the **hero** track and set your main plate clip onto it
+3. Then, for each shot, stack additional plate clip(s) on other tracks aligned with the hero/main plate clip. Clips can be shorter than the main hero track clip, but not longer.
+4. (Optional) You can setup another track to contain your review material
+5. Select all clips that needs to be published
+6. In the creator enable vertical align and select your main track as hero track
+5. Create instances by hitting "Create"
+6. Ensure all instances are parented to the same shot, which lenth is driven from the hero clip
+
+![ayon_vertical_alignment_creator](assets/flame/artist/ayon_vertical_alignment_creator.png)
+
+:::note
+If you are working with only two tracks where one track is going to be used as plates (e.g. `main`) and the other one holds video clips for offlines and web preview (e.g. `review`), then **Enable vertical sync** is not required.
+:::
 
 <!-- TODO: Add a note about publish plugins so that artists are aware of the changes that happens on publishing? -->
+
+### Speed retime and Timewarp
+
+Clip retiming via `TimeWarp` FX is supported. When such an effect is applied to a clip, it is automatically detected and stored as metadata for the relevant `plate` product.
+
+
+:::warning
+Autodesk Flame as some internal logic to compute retiming that can be extracted out of the software.
+AYON publisher rely on the logic from [FlameTimewarpML](https://github.com/talosh/flameTimewarpML) plugin to interpolate and gather the retiming. It works fine for most of the cases, but some limitations around speed-based timewarps and unusual curves are known. 
+:::
 
 ## Loading Products
 
