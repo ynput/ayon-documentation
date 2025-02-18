@@ -92,7 +92,7 @@ Bundles can be activated in different variant statuses to indicate their [Pipeli
 
 ### Bundles Tab
 
-The Bundles Tab in the AYON server is used to manage your bundles.
+The **Bundles `B+B`** tab in the AYON server is used to manage your bundles. Access the bundles tap through the app menu or by pressing the shortcut **`B+B`** (double-tap the **`B`** key).
 
 ![Bundles Tab](assets/server/admin/server_and_addons/bundles_tab.png)
 
