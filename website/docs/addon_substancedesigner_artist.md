@@ -44,6 +44,31 @@ information for either loading or publishing through AYON.
 ![AYON SD Metadata](assets/substance_designer_ayon_metadata.png)
 :::
 
+## Project creation
+You can preset the template you want to use with AYON settings by accessing
+`ayon+settings://substancedesigner/project_creation/project_templates`
+You fill your graph name in the blank(the red sequared in the screenshot below)
+and select your template type.
+
+![Project Creation](assets/substance_designer_project_creation_ayon_setting.png)
+
+If you choose `Custom Template` as template type, you need to fill in the
+filepath of substance file and the name of graph in the sbs file you want to use
+as template.
+e.g. If you want to add the graph `metallic_roughness_sss` from the substance file
+`D:\test_pbr_template.sbs` as template for your project creation, you can just fill
+Path to Custom Template as `D:\test_pbr_template.sbs` and Custom Template Graph Name
+as `metallic_roughness_sss`. You can take reference from the screenshot below.
+
+![Custom Template Project Creation](assets/substance_designer_custom_template_project_creation.png)
+
+:::note
+Once the project is created with the template(s), there would be `temp_ayon_package.sbs`
+saved as the local temp file. You need to make sure you use 'Work Files' tool to save the files otherwise
+your working data inside `temp_ayon_package.sbs` would be gone if closing the 'Substance Designer' application.
+
+:::
+
 ## Loading Textures
 
 Users can go to **AYON -> Load** and load texture to the resources folder
@@ -63,10 +88,14 @@ with the latest version into the resources folder.
 
 ## Publishing Textures
 
-Users need to open the graph(s) of which they want to publish, and go to **AYON -> Create**
-to create texture instance.
+Users must open the graph(s) inherited from the package they intend to publish,
+and go to **AYON -> Create** to create texture instance.
 
-The Texture Set instance generates a publish per output map that is defined in
+Users can define which graphs and its output(s) they want to export.
+
+![Publishing Texture Options](assets/substance_designer_publish_texture_options.png)
+
+The Texture Set instance generates a publish per output map per graph that is defined in
 the Substance Designer's template during project creation.
 When publishing default Substance Designer's PBR template with variant **Main** six
 instances will be published with the variants:
@@ -80,14 +109,9 @@ The bold output map name for the publish is based on the string that is pulled
 from the default pattern set in export presets.
 So `$(graph)_$(identifier)` becomes `basecolor`.
 
-:::note
-The custom pattern of the render output(s) is not supported for AYON publish
-due to the Substance Designer API limitation.
-:::
-
 ## Publishing Sbsar
 
-Users need to open the graph(s) of which are inherited from the package
+Users must open the graph(s) inherited from the package
 they want to publish, and go to **AYON -> Create** to create Sbsar instance.
 Once the user hits **Publish**, it publishes the sbsar to AYON.
 
