@@ -6,6 +6,13 @@ description: AYON Mocha Pro Addon's documentations for artists.
 toc_max_heading_level: 5
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Mocha_Badge}
+</ReactMarkdown>
+
 ## Overview
 
 The Mocha Pro Addon for AYON provide features to manage you Mocha Pro workfiles, load clips and
