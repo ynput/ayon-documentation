@@ -135,23 +135,11 @@ For more details on customizing your pipeline, please refer to:
 
 :::caution Addons Upload Restriction
 
-
-
-<div class="row">
-<div class="col">
-
 [AYON subscription](https://ynput.io/ayon/pricing/) restricts custom addon uploads by default.
 This restriction does not apply to the [Addon Market](admin_server_market.md) since those addons are official and verified.
 
 This restriction is lifted upon request. Please reach out via `support@ynput.io` or start a conversation on [ynput.io](https://ynput.io/) or [ynput.cloud](https://ynput.cloud/).
 
-</div>
-
-<div class="col">
-
-![Start a Conversation](assets/server/admin/server_and_addons/start_a_conversation.png)
-</div>
-</div>
 :::
 
 ### Create a Bundle
@@ -261,6 +249,14 @@ Each machine receives a unique `Site ID` when launching the app for the first ti
 ### Settings Values and Overrides
 
 ![Settings and Overrides Color Code](assets/server/admin/server_and_addons/settings_and_overrides_colorcode.png)
+
+Each AYON addon has its own settings that can be adjusted to suit user preferences on multiple levels. When the default settings are changed, an "override" is created. You can create overrides at either the "Studio" or "Project" level.
+
+A "Studio override" affects all projects and their add-on settings. In contrast, a "Project override" only applies to the selected project and doesn't impact others. You can also use a "Project override" to adjust a "Studio override" without any problems, allowing you to tweak the add-on settings to your desired state.
+
+:::tip
+It's recommended to perform overrides at the studio level first so they apply to all projects. Use project-level overrides only when necessary, as this makes managing addons settings easier later on!
+:::
 
 Settings and their overrides use the following color code:
 
