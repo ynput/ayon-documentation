@@ -110,6 +110,17 @@ The Bundles Tab in the AYON server is used to manage your bundles.
    - **Set Production**: Assign a `Production` status to your bundle.
    - **Duplicate and Edit**: Create a new bundle from the selected bundle.
 
+:::tip Right-Click Menu
+
+Each list item has a right-click menu.
+
+| **Bundle List** | **Bundle List** (Archived Bundle) | **Addons List** |
+|---|---|---|
+| ![](assets/server/admin/server_and_addons/right_click_bundles_list_2.png) | ![](assets/server/admin/server_and_addons/right_click_bundles_list_3.png) | ![](assets/server/admin/server_and_addons/right_click_addons_list_2.png) |
+
+:::
+
+
 :::info Upload Addons, Launchers, and Dependency Packages
 
 You can easily install or update existing AYON addons, launchers, and dependency packages on your server using the [installing pipeline releases](admin_server_updating_pipeline.md) or by getting new addons from the [Addon Market](admin_server_market.md).
@@ -124,20 +135,23 @@ For more details on customizing your pipeline, please refer to:
 
 :::caution Addons Upload Restriction
 
-[Ynput Cloud](https://ynput.cloud/) instances restrict custom addon uploads by default.
+
+
+<div class="row">
+<div class="col">
+
+[AYON subscription](https://ynput.io/ayon/pricing/) restricts custom addon uploads by default.
 This restriction does not apply to the [Addon Market](admin_server_market.md) since those addons are official and verified.
 
-:::
+This restriction is lifted upon request. Please reach out via `support@ynput.io` or start a conversation on [ynput.io](https://ynput.io/) or [ynput.cloud](https://ynput.cloud/).
 
+</div>
 
-:::tip Right-Click Menu
+<div class="col">
 
-Each list item has a right-click menu.
-
-| **Bundle List** | **Bundle List** (Archived Bundle) | **Addons List** |
-|---|---|---|
-| ![](assets/server/admin/server_and_addons/right_click_bundles_list_2.png) | ![](assets/server/admin/server_and_addons/right_click_bundles_list_3.png) | ![](assets/server/admin/server_and_addons/right_click_addons_list_2.png) |
-
+![Start a Conversation](assets/server/admin/server_and_addons/start_a_conversation.png)
+</div>
+</div>
 :::
 
 ### Create a Bundle
