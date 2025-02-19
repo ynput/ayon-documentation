@@ -288,6 +288,7 @@ module.exports = {
                 "addon_cinema4d_admin",
                 "addon_zbrush_admin",
                 "admin_webserver_for_webpublisher",
+                "addon_mochapro_admin",
                 "addon_silhouette_admin",
             ].sort(sorted),
         },
