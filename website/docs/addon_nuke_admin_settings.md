@@ -438,9 +438,9 @@ First matched profile will be used as a workfile template
 
 - Profiles
   - Each profile consists of:
-    - Task Types
-    - Task names
-    - Path to template
-    - Keep placeholders
-    - Create first version
+    - **Task types**: Specifies the task types this profile applies to.
+    - **Task names**: Lists the task names relevant to this profile.
+    - **Path to template**: Supports these [Available Template Keys](admin_settings_project_anatomy.md#available-template-keys).
+    - **Keep placeholders**: Enable this to replace placeholders without deleting them.
+    - **Create first version**: When enabled, the built workfile will be saved if there are no previous workfiles in the work directory.
   - **+**: Add more profiles
