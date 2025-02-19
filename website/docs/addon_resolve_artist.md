@@ -172,9 +172,11 @@ Notice the relationship of following sections. Keys from **Shot Template Keyword
 
 ### Reviewable source
 
+![Create menu](assets/resolve_review_toggle.png)
+
 In case you wish to publish reviewable video per `plate`:
-1. Enable the `review` toggle
-2. Select either the appropriate track name or `[clip's media]` (will use the clip own source)
+1. Ensure the `review` toggle is enabled for the plate instance
+2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`
 
 ### Vertical synchronization of product attributes
 

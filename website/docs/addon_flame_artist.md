@@ -74,9 +74,18 @@ e.g. You can rename the clips, specify frame padding and etc.
 ![](assets/flame/artist/ayon_attribute_publish_creator.png)
 :::
 
+### Reviewable source
+
+![Create menu](assets/resolve_review_toggle.png)
+
 In case you wish to publish reviewable video per `plate`:
+<<<<<<< Updated upstream
 1. Enable the `review` toggle
 2. Select either the appropriate track name or `[clip's media]` (will use the clip's own source)
+=======
+1. Ensure the `review` toggle is enabled for the plate instance
+2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`
+>>>>>>> Stashed changes
 
 #### Vertical synchronization of attributes
 * This feature allows to publish multiple plate variant(s) per shot.
