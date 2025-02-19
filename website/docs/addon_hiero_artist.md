@@ -168,7 +168,7 @@ Product name is created dynamically if `<track_name>` is selected on **Product n
 
 In case you wish to publish reviewable video per `plate`:
 1. Enable the `review` toggle
-2. Select either the appropriate track name or `[clip's media]` (will use the clip own source)
+2. Select either the appropriate track name or `[clip's media]` (will use the clip's own source).
 <br></br>
 
 Hover above each input field for help.
@@ -207,16 +207,16 @@ This feature allows to publish multiple plate variant(s) per shot.
 The timeline must contain multiple tracks - as mentioned [here](#rename-timeline-track-names) one of those being the hero (driving) track.
 Per shot, the clip on the hero track will be driving the shot creation (shot length, shot resolution...)
 
-To publish multiple plates for a shot process as following:
+To publish multiple plates for a shot proceed as follows:
 
 1. Set up a multiple track timeline. Rename each track to determine plate variants (e.g `L01`, `L02` and `L03`)
-2. Pick-up one track the be the **hero** track and set your main plate clip onto it
+2. Pick-up one track to be the **hero** track and set your main plate clip onto it.
 3. Then, for each shot, stack additional plate clip(s) on other tracks aligned with the hero/main plate clip. Clips can be shorter than the main hero track clip, but not longer.
 4. (Optional) You can setup another track to contain your review material
 5. Select all clips that needs to be published
 6. In the creator enable vertical align and select your main track as hero track
 5. Create instances by hitting "Create"
-6. Ensure all instances are parented to the same shot, which lenth is driven from the hero clip
+6. Ensure all instances are parented to the same shot, which length is driven by the hero clip.
 
 :::note
 If you are working with only two tracks where one track is going to be used as plates (e.g. `main`) and the other one holds video clips for offlines and web preview (e.g. `review`), then **Enable vertical sync** is not required.
@@ -226,12 +226,12 @@ If you are working with only two tracks where one track is going to be used as p
 
 When publishing a `plate` from Hiero, the process can automatically detect and export associated editorial effects (e.g. `Timewarp`, `OCIOFileTransform`, `Text`...) as `effect` products. Those are json files that can be used further down the pipeline to recreate the look/result from Hiero.
 
-This video shows a way to publish shot look as effect from Hiero to Nuke.
+This video shows a way to publish shot look as `effects` from Hiero to Nuke.
 
 <iframe width="512px" height="288px" src="https://www.youtube.com/embed/HzZDdtII5io" frameborder="0" modestbranding="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"></iframe>
 
 :::note
-If you are not interested in publishing `effects`, this feature can be opt out in the Publisher UI through a toggle on each `plate` product instance.
+If you are not interested in publishing `effects`, this feature can be opted out in the Publisher UI through a toggle on each `plate` product instance.
 :::
 
 ### Restrict instances collection to current clip selection
@@ -243,7 +243,7 @@ In that case, republishing only part of the sequence might be challenging, once 
 To ease this corner case, the user can leverage the `ayon+settings://hiero/create/CollectShotClip/collectSelectedInstance` settings which, when enabled, restrict the product instance collection to the selected clips from the timeline.
 
 :::note
-If current selection does not contain any clip, then all instances are collected.
+If the current selection does not contain any clip, then all instances are collected.
 :::
 
 ### Assembling edit from published shot versions

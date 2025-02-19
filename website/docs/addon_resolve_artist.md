@@ -180,7 +180,7 @@ In case you wish to publish reviewable video per `plate`:
 
 This feature allows to publish multiple plate variant(s) per shot.
 
-The timeline must contain multiple tracks - as mentioned [here](#rename-timeline-track-names) one of those being the hero (driving) track.
+The timeline must contain multiple tracks - as mentioned [here](#rename-timeline-track-names) - one of those being the hero (driving) track.
 Per shot, the clip on the hero track will be driving the shot creation (shot length, shot resolution...)
 
 To publish multiple plates for a shot process as following:
@@ -192,7 +192,7 @@ To publish multiple plates for a shot process as following:
 5. Select all clips that needs to be published (with chocolate color)
 6. In the creator enable vertical align and select your main track as hero track
 5. Create instances by hitting "Create"
-6. Ensure all instances are parented to the same shot, which lenth is driven from the hero clip
+6. Ensure all instances are parented to the same shot, whose length is driven by the hero clip.
 
 :::note
 If you are working with only two tracks where one track is going to be used as plates (e.g. `main`) and the other one holds video clips for offlines and web preview (e.g. `review`), then **Enable vertical sync** is not required.
