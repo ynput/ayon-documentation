@@ -81,7 +81,7 @@ To add addons to your pipeline, [create a bundle](#create-a-bundle) and include 
 
 ### What is a Bundle?
 
-A bundle is a collection of AYON products used in the AYON pipeline. It includes:
+A bundle is a collection of AYON integrations (Addons) used in your pipeline. It includes:
 
 - Launcher Version
 - Dependency Package
