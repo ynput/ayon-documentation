@@ -136,6 +136,7 @@ module.exports = {
                 },
                 "addon_cinema4d_artist",
                 "addon_zbrush_artist",
+                "addon_mochapro_artist",
                 "addon_silhouette_artist",
             ].sort(sorted),
         },

@@ -42,6 +42,7 @@ export const officialAddons = [
     "houdini",
     "jira",
     "maya",
+    "mochapro",
     "motionbuilder",
     "nuke",
     "photoshop",

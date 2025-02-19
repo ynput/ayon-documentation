@@ -22,6 +22,7 @@
     "Kitsu_Badge" : "[![Kitsu Addon - 1.1.0](https://img.shields.io/badge/Kitsu_Addon-1.1.0-e56b27)](https://github.com/ynput/ayon-kitsu)",
     "Max_Badge" : "[![3Ds Max Addon - 0.1.2](https://img.shields.io/badge/3Ds_Max_Addon-0.1.2-3190b2)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/max)",
     "Maya_Badge" : "[![Maya addon - 0.1.6](https://img.shields.io/badge/Maya_Addon-0.1.6-3190b2)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/maya)",
+    "Mocha_Badge":"[![Mocha Pro - 0.0.1](https://img.shields.io/badge/Mocha_Pro-0.0.1-d96527)](https://github.com/ynput/ayon-mocha)",
     "Muster_Badge" : "[![Muster Addon - 0.1.1](https://img.shields.io/badge/Muster_Addon-0.1.1-1589b8)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/muster)",
     "MotionBuilder_Badge" : "[![Motionbuilder Addon - 0.1.1](https://img.shields.io/badge/MotionBuilder_Addon-0.1.1-f279b1)](https://github.com/ynput/ayon-motionbuilder)",
     "Nuke_Badge" : "[![Nuke Addon - 0.1.5](https://img.shields.io/badge/Nuke_Addon-0.1.5-fab41a?logo=nuke&logoColor=fab41a)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/nuke)",
