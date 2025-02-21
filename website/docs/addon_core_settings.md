@@ -195,6 +195,12 @@ A couple of settings make use of tags to customize the output.
 | Skip handle frames | `no-handles` | If handles are present in the publish context, they will be ignored. |
 | Output as image sequence | `sequence` | Outputs as an image sequence |
 | Do not add audio | `no-audio` | Skip any audio found in the publish context |
+| | `thumbnail` | |
+| | `need_thumbnail` | |
+| | `toScanline` | |
+| | `publish_on_farm` | |
+| | `thumb-nuke` | |
+| | `passing` | *More [CSV Ingest](addon_traypublisher_artist.md#csv-ingest) related.* |
 
 ### Extract OIIO Transcode
 OIIOTools transcoder plugin with configurable output presets. Any incoming representation with `colorspaceData` is convertible to single or multiple representations with different target colorspaces or display and viewer names found in linked **config.ocio** file.
