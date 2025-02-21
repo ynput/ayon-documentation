@@ -60,11 +60,21 @@ You can set the settings filter to `usd` to quickly show usd settings within the
 ![](assets/usd/admin/core_department_layer_orders.png)
 
 Define available department layers and their strength ordering inside the USD contribution workflow.
+Also, It has Profiles to define instance attribute defaults for USD contribution in the publisher tool.
 
-- Each item group
-  - **Name**: Department layer name.
-  - **Order**: Department layer order.
-- **+**: Add an item.
+- Department Layer Orders
+  - Each item group
+    - **Name**: Department layer name.
+    - **Order**: Department layer order.
+  - **+**: Add an item.
+- Profiles
+  - Each profile item
+    - **Product types**: The product types to match this profile to. When matched, the settings below would apply to the instance as default attributes.
+    - **Task types**: The current create context task type to filter against. This allows to filter the profile to only be valid if currently  creating from within that task type.
+    - **Contribution Department Layer**: The default contribution layer to apply the contribution to when matching this profile. The layer name should be in the 'Department Layer Orders' list to get a sensible order.
+    - **Apply as variant**: The default contribution layer to apply the contribution to when matching this profile. The layer name should be in the 'Department Layer Orders' list to get a sensible order.
+    - **Target Product**: The default destination product name to apply the contribution to when matching this profile. Usually e.g. 'usdAsset' or 'usdShot'.
+  - **+**: Add a profile.
 
 :::tip Default Department Layers
 
@@ -72,8 +82,8 @@ Define available department layers and their strength ordering inside the USD co
   - **model**: `100`
   - **assembly**: `150`
   - **groom**: `175`
-  - **look**: `300`
-  - **rig**: `100`
+  - **look**: `200`
+  - **rig**: `300`
 - **Shot layers**
   - **layout**: `200`
   - **animation**: `300`
@@ -239,6 +249,19 @@ Default values of **Explicit Plugins Loading** (`ayon+settings://maya/explicit_p
 - **Default Products**: List of default variants for each product.
 
 ### Publishers
+
+#### Maya USD Export Chaser: Filter Properties
+> Setting Location: `ayon+settings://maya/publish/CollectMayaUsdFilterProperties`
+
+![](assets/usd/admin/maya_export_chaser.png)
+
+- **Default Filter**: Set the default filter for USD properties to export.
+  It uses [SideFX Houdini Pattern Matching in Parameters](https://www.sidefx.com/docs/houdini/network/patterns.html).<br/>
+  Some examples would include:
+  - Only include xforms: `xformOp*`
+  - Everything but xforms: `* ^xformOp*`
+  - Everything but mesh point data: `* ^extent ^points ^faceVertexCounts ^faceVertexIndices ^primvars*`
+
 #### Extract Maya USD Model
 > Settings Location: `ayon+settings://maya/publish/ExtractMayaUsdModel`
 
@@ -267,6 +290,13 @@ Default values of **Explicit Plugins Loading** (`ayon+settings://maya/explicit_p
 - **Active**: The default value of the toggle in the publisher UI.
 
 ### Loaders
+#### Maya Load USD to Maya Proxy Loader
+> Settings Location: `ayon+settings://maya/load/MayaUsdLoader`
+
+![](assets/usd/admin/maya_load_usd_maya_proxy.png)
+
+- **Use AYON Entity URI**: Enable to use Entity's URI instead of file path.
+
 #### Multiverse USD Loader
 > Settings Location: `ayon+settings://maya/load/MultiverseUsdLoader`
 
