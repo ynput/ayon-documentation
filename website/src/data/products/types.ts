@@ -57,5 +57,8 @@ export type ProductType =
     | "usd"
     | "usdRender"
     | "textureSet"
+    | "sbsar"
     | "wrap"
-    | "lut";
+    | "lut"
+    | "trackpoints"
+    | "matteshapes";

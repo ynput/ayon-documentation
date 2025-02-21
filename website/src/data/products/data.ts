@@ -210,6 +210,10 @@ const products: { [type in ProductType]: Product } = {
         title: "Texture Set",
         icon: "photo_library",
     },
+    sbsar: {
+        title: "Sbsar",
+        icon: "photo_library",
+    },
     wrap: {
         title: "Wrap",
         icon: "language",
@@ -217,6 +221,14 @@ const products: { [type in ProductType]: Product } = {
     lut: {
         title: "Lut",
         icon: "imagesmode",
+    },
+    trackpoints: {
+        title: "Track Points",
+        icon: "atr",
+    },
+    matteshapes: {
+        title: "Matte Shapes",
+        icon: "grain",
     },
 };
 
