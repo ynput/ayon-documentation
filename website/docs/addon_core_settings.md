@@ -159,7 +159,7 @@ If the project settings for a particular host has its own OCIO config **enabled*
 Project nuke-specific OCIO config: `project_settings/nuke/imageio/ocio_config`
 
 If config path is defined to particular shot target with following path inputs:
-1. `{root[work]}/{project[name]}/{hierarchy}/{asset}/config/aces.ocio`
+1. `{root[work]}/{project[name]}/{hierarchy}/{folder[name]}/config/aces.ocio`
 2. `{root[work]}/{project[name]}/{hierarchy}/config/aces.ocio`
 
 Procedure of resolving path (from above example) will look first into path number 1 and if the path does not exist then it will try path number 2. If none of the paths are found, it will fall back to global default.
