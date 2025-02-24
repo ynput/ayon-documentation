@@ -67,12 +67,11 @@ Define a specific Resolver Zip for a specific Application.
    - **App Name**: Application name, e.g. `maya/2025`
    - **Application Alias**: Define a list of App Names that use the same resolver.
    - **Platform**: drop down menu to select the platform: `windows`, `linux` & `darwin`.
-   - **Repository Object Path**: The LakeFs internal path to the resolver zip, e.g: `AyonUsdResolverBin/Hou/ayon-usd-resolver_hou19.5_linux_py37.zip`. This information can be found on LakeFs server Object Information.
+   - **Repository Object Path**: The LakeFs internal path to the resolver zip, e.g., `AyonUsdResolverBin/Hou/ayon-usd-resolver_hou19.5_linux_py37.zip`. You can find LakeFs `Path` information in the Object Info section by clicking the gear icon on the right side when hovering over a file on the [LakeFS](https://lake.ayon.cloud) server.
 2. **+**: Add application path group
 
 :::tip Application Alias
-You won't need to modify this setting as it already comes pre-configured with all packages we provide.
-Mostly, You will find the **Application Alias** setting more useful to you, where you can same resolver build with different version of an app (e.g. different patch version of Houdini 20.5)
+You won't need to modify this setting since it comes pre-configured with all the packages we provide. You'll likely find the **Application Alias** setting more useful, as it allows you to use the same resolver build with different versions of an app (e.g., different patch versions of Houdini 20.5).
 
 ![](assets/usd/admin/application_alias_usage.png)
 :::
@@ -87,7 +86,7 @@ Define a specific Resolver Zip for a specific Application.
 - Each Application override group:
   - **App Name**: Application name, e.g. `maya/2025`
   - **Platform**: drop down menu to select the platform: `windows`, `linux` & `darwin`.
-  - **Repository Object URI**: "Path to USD Asset Resolver plugin zip file on the LakeFs server, e.g: `lakefs://ayon-usd/V001/AyonUsdResolverBin/Hou/ayon-usd-resolver_hou19.5_linux_py37.zip`.
+  - **Repository Object URI**: Path to USD Asset Resolver plugin zip file on the LakeFs server, e.g: `lakefs://ayon-usd/V001/AyonUsdResolverBin/Hou/ayon-usd-resolver_hou19.5_linux_py37.zip`.
 - **+**: Add application override group
 
 ## AYON USD Resolver Config
@@ -109,10 +108,10 @@ AYON USD resolver Settings
 
 Settings for USD Library
 
-- **Tf Debug Variable for Debugging USD**: It's value will be set to `TF_DEBUG` which allows you to inspect specific log outputs of Usd. Typical use cases are to check if plugins are loaded correctly or if data is properly being refreshed.
+- **Tf Debug Variable for Debugging USD**: Its value will be set to `TF_DEBUG` which allows you to inspect specific log outputs of Usd. Typical use cases are to check if plugins are loaded correctly or if data is properly being refreshed.
 
 :::tip `TF_DEBUG`
-For more info about `TF_DEBUG`, See0 [Debugging | lucascheller USD Survival Guide](https://lucascheller.github.io/VFX-UsdSurvivalGuide/pages/core/profiling/debug.html#debugging).
+For more info about `TF_DEBUG`, See [Debugging | lucascheller USD Survival Guide](https://lucascheller.github.io/VFX-UsdSurvivalGuide/pages/core/profiling/debug.html#debugging).
 
 :::
 

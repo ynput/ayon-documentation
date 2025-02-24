@@ -39,12 +39,13 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
   </div>
 </div>
 
-
-These settings are related to USD contribution workflow but currently live outside of USD addon. 
+:::info
+**These settings are related to USD contribution workflow and they currently live outside of the USD addon.**
+:::
 
 :::tip settings filter
 
-You can set the settings filter to `usd` to quickly show usd settings within the addon.
+You can set the settings filter to `usd` to quickly show usd settings within an addon.
 ![](assets/usd/admin/settings_filter_usd.png)
 :::
 
@@ -78,6 +79,8 @@ Also, It has Profiles to define instance attribute defaults for USD contribution
 
 :::tip Default Department Layers
 
+Current default layers and their expected usage:
+
 - **Asset layers**
   - **model**: `100`
   - **assembly**: `150`
@@ -90,6 +93,10 @@ Also, It has Profiles to define instance attribute defaults for USD contribution
   - **simulation**: `400`
   - **fx**: `500`
   - **lighting**: `600`
+
+These values serve as typical configurations that suit common use cases. Keep in mind that we don't validate or enforce a layer to be used with a specific target product. For example, you can use `animation` and `lighting` as asset layers, even though they are typically used for building shots.
+
+Additionally, if you want a layer that serves the same purpose for both building assets and shots, consider slightly changing the name. For example, you can create an `animation` layer for building assets by adding another department layer named `assetAnim`, while keeping the original layer named `animation` for building shots. This helps avoid any unexpected results due to layer order when mixing shots and assets in your scene.
 
 :::
 
@@ -166,6 +173,8 @@ Hover over the `Order` field for more details on the strength ordering:
 > Settings Location:`ayon+settings://houdini/publish/ValidateRenderResolution` 
 
 ![](assets/usd/admin/houdini_publish_validate_usd_render_resolution.png)
+
+Validate render resolution and pixel aspect of USD render products match the context resolution.
 
 - **Enable**: The default state of the plugin.
 - **Optional**: Allows the user to toggle this setting in the publisher UI.
