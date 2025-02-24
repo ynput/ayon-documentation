@@ -17,16 +17,30 @@ Thus, USD significantly enhances team collaboration by enabling multiple individ
 
 
 ## What is USD
-USD, short for Universal Scene Description, is a robust ecosystem featuring a versatile file format and a comprehensive Library API. The USD file format,which represents a USD layer, is capable of representing a wide array of 3D data, including scene hierarchies, geometries, instances, material networks, lights, cameras, volumes, coordinate systems, and shading nodes.
+USD, short for Universal Scene Description, is a robust ecosystem featuring a versatile file format, a composition engine, a rich toolset, and a comprehensive library API.
 
-The accompanying USD API offers a suite of tools designed for broad adoption, enabling a wide array of applications to effectively interact with USD content.
+- **Versatile File Format**: The USD file format, *which represents a USD layer,* supports a wide range of 3D data, including scene hierarchies, geometries, instances, material networks, lights, cameras, volumes, coordinate systems, and shading nodes.
 
-This versatility is why USD has earned the name Universal Scene Description—it has the unique ability to "describe" scenes across any application that implements USD, independent of the operating system on which it runs.
+- **USD Composition Engine**: This powerful engine composes *(combines)* USD layers to display the final image. The composition algorithm is sometimes referred to as [LIVRPS (Liver Peas)](https://remedy-entertainment.github.io/USDBook/terminology/LIVRPS.html).
+
+- **Rich Toolset**: A command-line [toolset](https://openusd.org/release/toolset.html) for reading, writing, editing, and rapidly previewing USD layers, such as the `usdview` command.
+
+- **Comprehensive Library API**: The accompanying USD API, *a C++ library with Python bindings,* allows effective interaction with USD content from code, enabling a wide array of applications to adopt and support USD.
+
+This versatility is why USD has earned its name, Universal Scene Description—it uniquely "describes" scenes across any application that implements USD, independent of the operating system on which it runs.
 
 In the screenshot provided, I've opened the [ALab usd scene](https://animallogic.com/alab/) across various applications: Houdini, Omniverse, and Usdview. 
 
 ![](assets/usd/usd_intro/usd_scene.png)
 
+
+## USD Products in AYON Pipeline
+
+In the AYON pipeline, we use USD for exchanging assets and shots.
+
+Both `USD Assets` and `USD Shots` are USD layers structured differently to enable specific characteristics. In later sections, you'll find a quick demonstration for [Understanding a USD Asset](#understanding-a-usd-asset) and [Understanding a USD Shot](#understanding-a-usd-shot).
+
+*This topic is expanded in later pages.*
 
 ## Understanding a USD Asset
 A USD Asset is content organized to facilitate efficient asset exchange. It boasts several key features:
