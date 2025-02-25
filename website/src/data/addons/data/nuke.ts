@@ -8,9 +8,9 @@ Nuke is a powerful node-based compositing software used extensively in the film 
 
 **Variants**: _NukeX_, _NukeAssist_
 
-**Versions**: \`11.3\`, \`12.2\`, \`13.2\`, \`14.0\`
+**Versions**: AYON supports Nuke version **\`13.0\`** and above.
     `,
-    preview: "nuke.png",
+    icon: "nuke.png",
     badge: versions.Nuke_Badge,
     features: [
         "workfiles",
@@ -43,7 +43,7 @@ Nuke is a powerful node-based compositing software used extensively in the film 
         user: "addon_nuke_artist",
         admin: "addon_nuke_admin",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/nuke",
+    github: "https://github.com/ynput/ayon-nuke",
 };
 
 export default addon;
