@@ -53,7 +53,21 @@ module.exports = {
                 "addon_harmony_artist",
                 "addon_hiero_artist",
                 "addon_flame_artist",
-                "addon_houdini_artist",
+                {
+                    type: "category",
+                    label: "Houdini",
+                    link: {
+                        type: 'generated-index',
+                        title: 'AYON Houdini Artist Docs',
+                        description:
+                          "Welcome to AYON Houdini Artist Docs!",
+                        keywords: ['houdini'],
+                      },
+                    items: [
+                        "addon_houdini_artist",
+                        "addon_houdini_artist_loader_hdas",
+                    ],
+                },
                 "addon_jira_artist",
                 "addon_kitsu_artist",
                 {
@@ -92,6 +106,7 @@ module.exports = {
                 "addon_motionbuilder_artist",
                 "addon_nuke_artist",
                 "addon_photoshop_artist",
+                "addon_premiere_artist",
                 "addon_substancepainter_artist",
                 "addon_substancedesigner_artist",
                 {
@@ -120,6 +135,8 @@ module.exports = {
                     items: ["addon_aquarium_artist", "addon_aquarium_manager"],
                 },
                 "addon_cinema4d_artist",
+                "addon_zbrush_artist",
+                "addon_mochapro_artist",
             ].sort(sorted),
         },
         {
@@ -219,6 +236,7 @@ module.exports = {
                 "addon_motionbuilder_admin",
                 "addon_nuke_admin",
                 "addon_photoshop_admin",
+                "addon_premiere_admin",
                 "addon_site_sync_admin",
                 "addon_slack_admin",
                 "addon_sso_admin",
@@ -268,6 +286,9 @@ module.exports = {
                     ]
                 },
                 "addon_cinema4d_admin",
+                "addon_zbrush_admin",
+                "admin_webserver_for_webpublisher",
+                "addon_mochapro_admin",
             ].sort(sorted),
         },
         "admin_releases",
