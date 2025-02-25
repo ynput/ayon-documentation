@@ -2,6 +2,7 @@
 id: addon_planner
 title: Planner Addon
 sidebar_label: Planner Addon
+description: Planner Addon Documentation.
 ---
 
 # Planner Addon
