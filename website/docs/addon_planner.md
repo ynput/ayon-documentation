@@ -5,6 +5,12 @@ sidebar_label: Planner Addon
 description: Planner Addon Documentation.
 ---
 
+import ReactMarkdown from "react-markdown";
+import versions from '@site/docs/assets/json/Ayon_addons_version.json'
+
+<ReactMarkdown>
+{versions.Planner_Badge}
+</ReactMarkdown>
 
 The Planner Addon facilitates the planning of your productions, from initial outlining to detailed scheduling of tasks and artists. It can be extended for your own use cases, such as adding personal vacations or booking freelancers.
 
