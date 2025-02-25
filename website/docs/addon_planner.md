@@ -5,7 +5,6 @@ sidebar_label: Planner Addon
 description: Planner Addon Documentation.
 ---
 
-# Planner Addon
 
 The Planner Addon facilitates the planning of your productions, from initial outlining to detailed scheduling of tasks and artists. It can be extended for your own use cases, such as adding personal vacations or booking freelancers.
 
