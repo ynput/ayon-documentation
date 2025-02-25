@@ -222,6 +222,14 @@ const products: { [type in ProductType]: Product } = {
         title: "Lut",
         icon: "imagesmode",
     },
+    trackpoints: {
+        title: "Track Points",
+        icon: "atr",
+    },
+    matteshapes: {
+        title: "Matte Shapes",
+        icon: "grain",
+    },
 };
 
 export default products;
