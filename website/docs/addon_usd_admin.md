@@ -61,7 +61,8 @@ Reach out us on our website [ynput.io](https://ynput.io/contact/) or Forums [com
 
 ![](assets/usd/admin/resolver_application_paths.png)
 
-Define a specific Resolver Zip for a specific Application.
+Define a specific Resolver Zip for a particular application. <br/>
+**You won't need to modify this setting as it comes pre-configured with all the packages we provide. However, you may tweak the `Application Alias` to suit your applications' setup.**
 
 1. Each Application path group:
    - **App Name**: Application name, e.g. `maya/2025`
@@ -71,7 +72,7 @@ Define a specific Resolver Zip for a specific Application.
 2. **+**: Add application path group
 
 :::tip Application Alias
-You won't need to modify this setting since it comes pre-configured with all the packages we provide. You'll likely find the **Application Alias** setting more useful, as it allows you to use the same resolver build with different versions of an app (e.g., different patch versions of Houdini 20.5).
+You'll likely find the **Application Alias** setting most useful, as it lets you use the same resolver build with different versions of an app (e.g., different patch versions of Houdini 20.5).
 
 ![](assets/usd/admin/application_alias_usage.png)
 :::
