@@ -21,6 +21,26 @@ An AYON Entity URI may look like:
 - `ayon+entity://ayontest/assets/environments/kitchen?product=layoutMain&version=4&representation=usd`
 - `ayon://project_name/assets/char/hero?product=modelMain&version=v003&representation=usd`
 
+:::info AYON Entity URI Structure
+
+AYON Entity URI starts with `ayon+entity:` or simply `ayon:`.
+
+`ayon://{project_name}/{folder_path}?product={product_name}&version={version_number}&representation={representation_name}`
+
+- **project_name**: AYON Project name. *Case insensitive.*
+- **folder_path**: AYON folder path within the project hierarchy.
+- **product_name**: Name of the published product within the specified folder.
+- **version_number**: Version number of the specified product. It can be prefixed with the letter `v` and padded with zeros, e.g., `v004` or simply `4`.
+- **representation_name**: Representation name of the published product, e.g., `usd`, `exr`.
+
+:::
+
+:::tip
+
+AYON USD Resolver works with any product in AYON, regardless of its type. For example, you can use it with `jpg` or `exr` to load textures.
+
+:::
+
 ## Pinning
 
 The AYON USD Resolver supports **pinning**. Pinning allows to retarget an entity URI or path to a 'pinned' output filepath.
