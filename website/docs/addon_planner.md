@@ -18,6 +18,8 @@ The Planner Addon facilitates the planning of your productions, from initial out
 The Planner Addon is an early preview release and the documentation is a work in progress. It may contain bugs and experience instability. We welcome your feedback to help shape its development.
 :::
 
+![Planning events on the studio level](./assets/planner/studio-planner.png)
+
 The addon can be split up in two specific areas, the planning of high level, rough phases and detailed task scheduling.
 
 ## Phase Planner
@@ -47,11 +49,15 @@ Every event must have the following:
 -   **Title** – Often auto-filled
 -   **Start and End Dates** – Minimum duration of 1 day
 
+![Editing an event phase with all the different fields added](./assets/planner/planner-event-types.png)
+
 #### Optional Fields
 
 -   **People** – Assign relevant team members
 -   **Task Types** – Indicate the types of tasks this event relates to
 -   **Tags** – Customizable colored labels for additional context
+
+![Editing an event phase with all the different fields added](./assets/planner/planner-dialog.png)
 
 ### Planner Tracks
 
@@ -73,10 +79,13 @@ Scenarios let you explore and edit plans without affecting your main schedule. T
 -   **Independent Event Sets** – Changes in one scenario don’t impact others.
 -   **Duplicate Scenarios** – Easily duplicate existing scenarios to test different planning approaches.
 -   **Set as Live** – Once finalized, tag a scenario as **“Live”** to make it the active production plan.
+-   **Reordering** – Click and drag a scenario to reorder it.
 
-    :::note
-    Scenarios are only available within **project-specific plans**. The **studio-level planner** always displays the **Live** scenario from each project.  
-    :::
+![Looking at different scenarios](./assets/planner/planner-scenarios.png)
+
+:::note
+Scenarios are only available within **project-specific plans**. The **studio-level planner** always displays the **Live** scenario from each project.
+:::
 
 ### Planner Roadmap
 
