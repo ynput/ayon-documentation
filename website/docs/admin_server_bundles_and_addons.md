@@ -165,6 +165,7 @@ After a bundle is created, most of the options will be locked. You can only chan
 
 - Dependency Packages
 - Version of some server addons that don't affect the pipeline, e.g., [Jira Addon](/features?addons=jira).
+- Assign a [pipeline mode](#pipeline-modes) to the bundle. like production, dev, etc.
 :::
 
 ### Dependency Packages
