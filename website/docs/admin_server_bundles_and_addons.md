@@ -223,7 +223,9 @@ The following example assumes a dev bundle named `Develop`.
 ![](assets/server/admin/server_and_addons/addon_settings.png)<br/>
 *Example addon with three variations: Production, Staging, and Develop.*
 
-**It's important to remember that bundles only group the addons for use in the AYON pipeline, and any settings values are saved within the addons themselves. This explains why the same addon retains its production and staging values when added to other bundles marked as production or staging.**
+:::tip
+Addon settings are stored for each addon version and variant (not per bundle), that's why the same addon retains its production and staging values when added to other bundles marked as production or staging.
+:::
 
 ![](assets/server/admin/server_and_addons/bundle_and_addons.png)<br/>
 *Example of Production, Staging, and Develop Bundles. These bundles group different addons and demonstrate how they access various settings variations.*
