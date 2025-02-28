@@ -104,7 +104,16 @@ module.exports = {
                     ],
                 },
                 "addon_motionbuilder_artist",
-                "addon_nuke_artist",
+                {
+                    type: "category",
+                    collapsed: true,
+                    label: "Nuke",
+                    link: { type: "doc", id: "addon_nuke_artist"},
+                    items: [
+                        "addon_nuke_artist_about",
+                        "addon_nuke_artist_tutorials",
+                    ]
+                },
                 "addon_photoshop_artist",
                 "addon_premiere_artist",
                 "addon_substancepainter_artist",
@@ -235,7 +244,16 @@ module.exports = {
                     ],
                 },
                 "addon_motionbuilder_admin",
-                "addon_nuke_admin",
+                {
+                    type: "category",
+                    collapsed: true,
+                    label: "Nuke",
+                    link: { type: "doc", id: "addon_nuke_admin"},
+                    items: [
+                        "addon_nuke_admin_settings",
+                        "addon_nuke_admin_tutorials",
+                    ]
+                },
                 "addon_photoshop_admin",
                 "addon_premiere_admin",
                 "addon_site_sync_admin",
