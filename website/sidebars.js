@@ -158,7 +158,8 @@ module.exports = {
                 "artist_activity_feed",
                 "artist_reviewables",
                 "artist_inbox",
-                "artist_task_progress_page"
+                "artist_task_progress_page",
+                "addon_planner"
             ],
         },
     ],
@@ -194,6 +195,7 @@ module.exports = {
                         "admin_server_email",
                     ],
                 },
+                "admin_server_bundles_and_addons",
                 "admin_server_market",
                 "admin_server_updating_pipeline",
                 "admin_server_permissions",
