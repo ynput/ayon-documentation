@@ -116,17 +116,7 @@ Possible cases for switches:
 
 
 :::tip
-User can switch multiple assets in one step if they contain same data types, being it `representation`, `product`, `LOD` etc.
-:::
-
-There is one more switch layer above product for asset's LOD (Level Of Detail). That requires to have published products with suffix **"_LOD{number}"** where number represents level (e.g. modelMain_LOD1). Its possible to switch just `product` but keep `LOD` and vice versa.
- 
-
-![tools_scene_inventory_54](assets/tools/tools_scene_inventory_54.png) <!-- picture needs to be changed -->
-
-
-:::note
-This option is hidden if you didn't select product that have published product with LODs.
+Users can switch multiple assets in one step if they contain the same data types, such as `representation`, `product`, etc.
 :::
 
 ### Remove Items
