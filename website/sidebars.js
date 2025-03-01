@@ -12,6 +12,14 @@ module.exports = {
             label: "General",
             items: [
                 "artist_getting_started",
+                {
+                    type: "category",
+                    label: "AYON Launcher",
+                    items: [
+                        "ayon_launcher_artist_basic",
+                        "ayon_launcher_artist_advanced"
+                    ],
+                },
                 "artist_concepts",
                 "artist_publish",
                 {
