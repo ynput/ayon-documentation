@@ -168,7 +168,7 @@ When clicked it shows additional information about your installed AYON launcher,
 
 :::info
 
-See [Environment variables](ayon_launcher_artist_advanced.md#environment-variables) More information about environment variables set during start up.
+See [Environment variables](dev_launcher.md#environment-variables) More information about environment variables set during start up.
 :::
 
 ![](assets/launcher/artist/AYON_info.png)

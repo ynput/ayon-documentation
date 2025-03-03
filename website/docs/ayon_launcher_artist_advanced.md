@@ -191,22 +191,6 @@ ayon --use-dev
 </TabItem>
 </Tabs>
 
-### Site ID
-When installing AYON launcher on your machine, a unique id will be assigned to your machine.
-This id is usually a funny name consisting of 3 parts.
-
-### Environment Variables
-
-### Shims
-
-Shims are meant to help with registering of path to AYON launcher. 
-Right now you can point to a single version of AYON launcher, which would stop to work when the version is uninstalled because new version is available. Only think which shim does is to find an existing ayon launcher and execute it, it does not download it or handle logic.
-
-AYON launcher has new argument handling. When `init-ayon-launcher` is passed it just stores information about executable and deploys shims without any other action.
-
-The shim is also used for custom ayon-launcher:// protocol scheme, that is different based on OS. With this support we can start to use webactions.
-
-
 ## Global Executable Arguments
 
 These arguments can be used with both AYON and AYON Console executables.
@@ -302,7 +286,7 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
         </tr>
         <tr>
             <td><code>publish-report-viewer</code></td>
-            <td> Launch [Publish Report Viewer](ayon_launcher_artist_basic.md#publish-report-viewer)</td>
+            <td> Launch <a href="ayon_launcher_artist_basic#publish-report-viewer">Publish Report Viewer</a></td>
         </tr>
         <tr>
             <td><code>run &lt;SCRIPT_PATH&gt;</code></td>
