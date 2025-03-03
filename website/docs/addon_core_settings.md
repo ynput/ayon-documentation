@@ -199,7 +199,6 @@ A couple of settings make use of tags to customize the output.
 | **Use as Thumbnail Source** | `need_thumbnail` | [Internal Use] This tag indicates the representation will only be used for thumbnail creation, mainly for Nuke when multiple representations exist for one instance. |
 | **Convert to Scanline** | `toScanline` | [Internal Use] Enables scanline conversion, primarily for Maya. This tag is added automatically when users enable `Convert to Scanline` on render instances. |
 | **Publish on Farm** | `publish_on_farm` | [Internal Use] This tag indicates that the representations will be published on the farm, skipping local processing. |
-| | `thumb-nuke` | |
 | **Skip Extract Review** | `passing` | Skips the [`ExtractReview`](#extract-review) plugin for tagged representations. *Mostly used with [CSV Ingest](addon_traypublisher_artist.md#csv-ingest); see the provided CSV example.* |
 
 ### Extract OIIO Transcode
