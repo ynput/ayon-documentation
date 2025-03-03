@@ -9,6 +9,7 @@ toc_max_heading_level: 5
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Admonition from '@theme/Admonition';
 
 :::info
 This page explains the advanced usage of AYON Launcher for advanced users and TDs.
@@ -306,7 +307,16 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
         </tr>
         <tr>
             <td><code>run &lt;SCRIPT_PATH&gt;</code></td>
-            <td>Run python script in AYON context.</td>
+            <td>Run python script in AYON context.
+                <div>
+                    <Admonition type="caution" title="deprecated">
+                        <p>AYON launcher does support to run script directly which makes this command deprecated.</p>
+                        <pre>ayon /foo/bar/baz.py arg1 arg2</pre>
+                    </Admonition>
+                </div>
+            <div>
+            </div>
+            </td>
         </tr>
         <tr>
             <td><code>tray</code></td>
