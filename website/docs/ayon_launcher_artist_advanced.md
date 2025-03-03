@@ -235,21 +235,6 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
         <tr>
             <td><code>contextselection [OPTIONS] &lt;OUTPUT_PATH&gt;</code></td>
             <td>Show Qt dialog to select a context and save it to a output json file. You can specify options to preselect some parts of the context.
-                <details><summary>Example Output</summary>
-                    <pre>
-                        &#123; <br/>
-                        &ensp;&ensp;"project": "Animal_Logic_ALab", <br/>
-                        &ensp;&ensp;"project_name": "Animal_Logic_ALab", <br/>
-                        &ensp;&ensp;"asset": "decor_sheets_projector01", <br/>
-                        &ensp;&ensp;"folder_id": "5e065e68efba11efac2907e3bade2bbe", <br/>
-                        &ensp;&ensp;"folder_path": "/assets/decor_sheets_projector01", <br/>
-                        &ensp;&ensp;"task": "modeling", <br/>
-                        &ensp;&ensp;"task_name": "modeling", <br/>
-                        &ensp;&ensp;"task_id": "5e0b3067efba11efbdbd07e3bade2bbe", <br/>
-                        &ensp;&ensp;"initial_context_valid": true <br/>
-                        &#125;
-                    </pre>
-                </details>
                 <table>
                     <thead>
                         <tr>
@@ -273,6 +258,21 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
                     </tbody>
                 </table>
                 <img src={selectcontextWindow}/>
+                <details><summary>Example Output</summary>
+                    <pre>
+                        &#123; <br/>
+                        &ensp;&ensp;"project": "demo_Commercial", <br/>
+                        &ensp;&ensp;"project_name": "demo_Commercial", <br/>
+                        &ensp;&ensp;"asset": "00_traioloiaks_youctietch", <br/>
+                        &ensp;&ensp;"folder_id": "1d48b384ea3111ef87200242ac120004", <br/>
+                        &ensp;&ensp;"folder_path": "/assets/characters/00_traioloiaks_youctietch", <br/>
+                        &ensp;&ensp;"task": "modeling", <br/>
+                        &ensp;&ensp;"task_name": "modeling", <br/>
+                        &ensp;&ensp;"task_id": "1d4c39aaea3111ef87200242ac120004", <br/>
+                        &ensp;&ensp;"initial_context_valid": true <br/>
+                        &#125;
+                    </pre>
+                </details>
             </td>
         </tr>
         <tr>
