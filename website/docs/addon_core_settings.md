@@ -183,18 +183,18 @@ A couple of settings make use of tags to customize the output.
 
 | Tag Name | Tag value to be used | Description |
 | ----------- | ----------- | ----------- |
-| Add burnins | `burnin` | Adds burnins with the `ExtractBurnin` plugin. |
-| Create review | `review` | Creates a review from the output with the [`ExtractReview`](#extract-review) plugin. |
-| Add review to AYON | `webreview` | Uploads the review to AYON. |
-| Add review to Ftrack | `ftrackreview` | Uploads the review to Ftrack. |
-| Add review to Shotgrid | `shotgridreview` | Uploads the review to Shotgrid. |
-| Add review to Kitsu | `kitsureview` | Uploads the review to Kitsu. |
-| Add review to SyncSketch | `syncsketchreview` | Uploads the review to SyncSketch. |
-| Delete output | `delete` | Deletes the output once its been processed by `ExtractBurnin` and [`ExtractReview`](#extract-review). |
-| Add slate frame | `slate-frame` | Adds the slate frame. |
-| Skip handle frames | `no-handles` | If handles are present in the publish context, they will be ignored. |
-| Output as image sequence | `sequence` | Outputs as an image sequence |
-| Do not add audio | `no-audio` | Skip any audio found in the publish context |
+| **Add burnins** | `burnin` | Adds burnins with the `ExtractBurnin` plugin. |
+| **Create review** | `review` | Creates a review from the output with the [`ExtractReview`](#extract-review) plugin. |
+| **Add review to AYON** | `webreview` | Uploads the review to AYON. |
+| **Add review to Ftrack** | `ftrackreview` | Uploads the review to Ftrack. |
+| **Add review to Shotgrid** | `shotgridreview` | Uploads the review to Shotgrid. |
+| **Add review to Kitsu** | `kitsureview` | Uploads the review to Kitsu. |
+| **Add review to SyncSketch** | `syncsketchreview` | Uploads the review to SyncSketch. |
+| **Delete output** | `delete` | Deletes the output once its been processed by `ExtractBurnin` and [`ExtractReview`](#extract-review). |
+| **Add slate frame** | `slate-frame` | Adds the slate frame. |
+| **Skip handle frames** | `no-handles` | If handles are present in the publish context, they will be ignored. |
+| **Output as image sequence** | `sequence` | Outputs as an image sequence |
+| **Do not add audio** | `no-audio` | Skip any audio found in the publish context |
 | **Use for Thumbnail** | `thumbnail` | [Internal Use] This tag indicates the representation will be integrated as a thumbnail. You can leverage it explicitly with *[CSV Ingest](addon_traypublisher_artist.md#csv-ingest).* |
 | **Use as Thumbnail Source** | `need_thumbnail` | [Internal Use] This tag indicates the representation will only be used for thumbnail creation, mainly for Nuke when multiple representations exist for one instance. |
 | **Convert to Scanline** | `toScanline` | [Internal Use] Enables scanline conversion, primarily for Maya. This tag is added automatically when users enable `Convert to Scanline` on render instances. |
