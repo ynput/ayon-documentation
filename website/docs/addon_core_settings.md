@@ -195,12 +195,12 @@ A couple of settings make use of tags to customize the output.
 | Skip handle frames | `no-handles` | If handles are present in the publish context, they will be ignored. |
 | Output as image sequence | `sequence` | Outputs as an image sequence |
 | Do not add audio | `no-audio` | Skip any audio found in the publish context |
-| | `thumbnail` | |
-| | `need_thumbnail` | |
-| | `toScanline` | |
-| | `publish_on_farm` | |
+| **Use for Thumbnail** | `thumbnail` | [Internal Use] This tag indicates the representation will be integrated as a thumbnail. You can leverage it explicitly with *[CSV Ingest](addon_traypublisher_artist.md#csv-ingest).* |
+| **Use as Thumbnail Source** | `need_thumbnail` | [Internal Use] This tag indicates the representation will only be used for thumbnail creation, mainly for Nuke when multiple representations exist for one instance. |
+| **Convert to Scanline** | `toScanline` | [Internal Use] Enables scanline conversion, primarily for Maya. This tag is added automatically when users enable `Convert to Scanline` on render instances. |
+| **Publish on Farm** | `publish_on_farm` | [Internal Use] This tag indicates that the representations will be published on the farm, skipping local processing. |
 | | `thumb-nuke` | |
-| | `passing` | *More [CSV Ingest](addon_traypublisher_artist.md#csv-ingest) related.* |
+| **Skip Extract Review** | `passing` | Skips the [`ExtractReview`](#extract-review) plugin for tagged representations. *Mostly used with [CSV Ingest](addon_traypublisher_artist.md#csv-ingest); see the provided CSV example.* |
 
 ### Extract OIIO Transcode
 OIIOTools transcoder plugin with configurable output presets. Any incoming representation with `colorspaceData` is convertible to single or multiple representations with different target colorspaces or display and viewer names found in linked **config.ocio** file.
