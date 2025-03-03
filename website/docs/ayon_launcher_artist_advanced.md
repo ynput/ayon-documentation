@@ -223,6 +223,7 @@ Use `--help` to get information about the current existent commands.
 import selectcontextWindow from './assets/launcher/artist/selectcontext_window.png';
 import consoleInteractive from './assets/launcher/artist/console_interactive.png';
 
+<!-- This is written in HTML to use nested tables as markdown doesn't support nested tables. -->
 <table>
     <thead>
         <tr>
@@ -233,7 +234,22 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
     <tbody>
         <tr>
             <td><code>contextselection [OPTIONS] &lt;OUTPUT_PATH&gt;</code></td>
-            <td>Show Qt dialog to select a context. You can specify options to preselect soe parts of the context.
+            <td>Show Qt dialog to select a context and save it to a output json file. You can specify options to preselect some parts of the context.
+                <details><summary>Example Output</summary>
+                    <pre>
+                        &#123; <br/>
+                        &ensp;&ensp;"project": "Animal_Logic_ALab", <br/>
+                        &ensp;&ensp;"project_name": "Animal_Logic_ALab", <br/>
+                        &ensp;&ensp;"asset": "decor_sheets_projector01", <br/>
+                        &ensp;&ensp;"folder_id": "5e065e68efba11efac2907e3bade2bbe", <br/>
+                        &ensp;&ensp;"folder_path": "/assets/decor_sheets_projector01", <br/>
+                        &ensp;&ensp;"task": "modeling", <br/>
+                        &ensp;&ensp;"task_name": "modeling", <br/>
+                        &ensp;&ensp;"task_id": "5e0b3067efba11efbdbd07e3bade2bbe", <br/>
+                        &ensp;&ensp;"initial_context_valid": true <br/>
+                        &#125;
+                    </pre>
+                </details>
                 <table>
                     <thead>
                         <tr>
