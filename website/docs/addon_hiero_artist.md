@@ -162,19 +162,25 @@ In case you wish to use *multiple elements of shots* workflow then ensure **Enab
 
 </div>
 <div class="col col--6 markdown">
-
-Product name is created dynamically if `<track_name>` is selected on **Product name**.
-<br></br>
-
-In case you wish to publish reviewable video per `plate`:
-1. Ensure the `review` toggle is enabled for the plate instance
-2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`
-<br></br>
-
 Hover above each input field for help.
-<br></br>
 
-Handles can be defined here too. In order to have individual clip set differently we recommend to set here a default value and change those later in the created AYON shot instances under `handleStart` and `handleEnd` properties (look below for details).
+
+1. **Product Variant**
+
+Product variant is created dynamically if `<track_name>` is selected on **Product name**.
+
+2. **Reviewables**
+
+You can enable generating `review` product per plate through the review setting.
+
+3. **Handles**
+
+Here you can set default value and change those later in the created AYON shot instances under `handleStart` and `handleEnd` properties (look below for details).
+
+4. **Create**
+
+After you hit **Create** new instances get added in the "Products to publish section". Also custom AYON tags are added to selected clips.
+
 </div>
 
 <div class="col col--6 markdown">
@@ -184,51 +190,38 @@ Handles can be defined here too. In order to have individual clip set differentl
 
 <div class="col col--6 markdown">
 
-<br></br>
-You can adjust the reviewable property through eache `plate` created instance.
-
-If you wish to publish a reviewable video for the relevant `plate`:
-1. Ensure the `review` toggle is enabled for the plate instance
-2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`
-
-<br></br>
-</div>
-
-<div class="col col--6 markdown">
-
-![Create menu](assets/hiero_review_toggle.png)
-
-</div>
-
-<div class="col col--6 markdown">
-
-Product name is created dynamically if `<track_name>` is selected on **Product name**.
-<br></br>
-
-Hover above each input field for help.
-<br></br>
-
-Handles can be defined here too. In order to have individual clip set differently we recommend to set here a default value and change those later in the created AYON shot instances under `handleStart` and `handleEnd` properties (look below for details).
-</div>
-
-<div class="col col--6 markdown">
-
-![Create menu](assets/hiero_createUIFrames.png)
-</div>
-<div class="col col--6 markdown">
-
-After you hit **Create** new instances get added in the "Products to publish section". Also custom AYON tags are added to selected clips (except clips in **review** tracks).
-<br></br>
+5. **Adjust handles instance properties**
 
 If you wish to change any individual properties of the shot then you are able to do it directly on the instance under the `Publish` widget. In this example we can change `handleStart` and `handleEnd` to some other values.
 
-<br></br>
-Action the **Publish** button to trigger the publishing process for the active instances.
 </div>
 
 <div class="col col--6 markdown">
 
 ![Create menu](assets/hiero_tagHandles.png)
+
+</div>
+
+<div class="col col--6 markdown">
+
+6. **Adjust review instance properties**
+
+You can adjust the reviewable property through eache `plate` created instance.
+
+If you wish to publish a reviewable video for the relevant `plate`:
+1. Ensure the `review` toggle is enabled for the plate instance
+2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`.
+
+<br></br>
+
+7. **Publish**
+
+Action the **Publish** button to trigger the publishing process for the active instances.
+</div>
+
+<div class="col col--6 markdown">
+
+![Create menu](assets/hiero_review_toggle.png)
 
 </div>
 </div>
