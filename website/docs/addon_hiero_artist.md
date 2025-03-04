@@ -169,13 +169,8 @@ Product name is created dynamically if `<track_name>` is selected on **Product n
 ![Create menu](assets/resolve_review_toggle.png)
 
 In case you wish to publish reviewable video per `plate`:
-<<<<<<< Updated upstream
-1. Enable the `review` toggle
-2. Select either the appropriate track name or `[clip's media]` (will use the clip's own source).
-=======
-1. Ensure the `review` toggle is enabled in the plate instance
+1. Ensure the `review` toggle is enabled for the plate instance
 2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`
->>>>>>> Stashed changes
 <br></br>
 
 Hover above each input field for help.
