@@ -62,6 +62,13 @@ as `metallic_roughness_sss`. You can take reference from the screenshot below.
 
 ![Custom Template Project Creation](assets/substance_designer_custom_template_project_creation.png)
 
+If you choose `Template By Task Types` as template type, you can load your template with
+the filepath of substance file only when you launch Substance Designer with the
+chosen task types. Once you launch Substance Designer, it would grab the graph with your task
+name (See red framed in the screenshot below) from the sbs file and add it into your project.
+
+![Project Creation by Task Types Launcher](assets/substance_designer_project_creation_task_types.png)
+
 :::note
 Once the project is created with the template(s), there would be `temp_ayon_package.sbs`
 saved as the local temp file. You need to make sure you use 'Work Files' tool to save the files otherwise
