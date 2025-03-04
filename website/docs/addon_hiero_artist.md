@@ -49,7 +49,7 @@ This tool will recreate all necessary AYON tags needed for successful publishing
 </div>
 <div class="col col--6 markdown">
 
-![Default Tags](assets/hiero_defaultTags.png) <!-- picture needs to be changed -->
+![Default Tags](assets/hiero_defaultTags.png)
 
 </div>
 </div>
@@ -68,7 +68,7 @@ This tool will set any defined colorspace definition from AYON `Settings / Proje
 </div>
 <div class="col col--6 markdown">
 
-![Default Tags](assets/hiero_menuColorspaceProject.png) <!-- picture needs to be changed -->
+![Default Tags](assets/hiero_menuColorspaceProject.png)
 
 </div>
 </div>
@@ -88,7 +88,7 @@ This tool will set any defined colorspace definition from AYON `Settings / Proje
 </div>
 <div class="col col--6 markdown">
 
-![Default Tags](assets/hiero_menuColorspaceClip.png) <!-- picture needs to be changed -->
+![Default Tags](assets/hiero_menuColorspaceClip.png)
 
 </div>
 </div>
@@ -166,8 +166,6 @@ In case you wish to use *multiple elements of shots* workflow then ensure **Enab
 Product name is created dynamically if `<track_name>` is selected on **Product name**.
 <br></br>
 
-![Create menu](assets/resolve_review_toggle.png)
-
 In case you wish to publish reviewable video per `plate`:
 1. Ensure the `review` toggle is enabled for the plate instance
 2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`
@@ -182,7 +180,40 @@ Handles can be defined here too. In order to have individual clip set differentl
 <div class="col col--6 markdown">
 
 ![Create menu](assets/hiero_createUIFrames.png)
+</div>
 
+<div class="col col--6 markdown">
+
+<br></br>
+You can adjust the reviewable property through eache `plate` created instance.
+
+If you wish to publish a reviewable video for the relevant `plate`:
+1. Ensure the `review` toggle is enabled for the plate instance
+2. Select either the appropriate track name or `[clip's media]` (will use the clip own source) as `Reviewable Source`
+
+<br></br>
+</div>
+
+<div class="col col--6 markdown">
+
+![Create menu](assets/hiero_review_toggle.png)
+
+</div>
+
+<div class="col col--6 markdown">
+
+Product name is created dynamically if `<track_name>` is selected on **Product name**.
+<br></br>
+
+Hover above each input field for help.
+<br></br>
+
+Handles can be defined here too. In order to have individual clip set differently we recommend to set here a default value and change those later in the created AYON shot instances under `handleStart` and `handleEnd` properties (look below for details).
+</div>
+
+<div class="col col--6 markdown">
+
+![Create menu](assets/hiero_createUIFrames.png)
 </div>
 <div class="col col--6 markdown">
 
@@ -201,6 +232,7 @@ Action the **Publish** button to trigger the publishing process for the active i
 
 </div>
 </div>
+
 
 ### Vertical synchronization of product attributes
 
@@ -234,6 +266,7 @@ This video shows a way to publish shot look as `effects` from Hiero to Nuke.
 
 :::note
 If you are not interested in publishing `effects`, this feature can be opted out in the Publisher UI through a toggle on each `plate` product instance.
+![Create menu](assets/hiero_publishPlateEffects.png)
 :::
 
 ### Restrict instances collection to current clip selection
