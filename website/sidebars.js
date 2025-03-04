@@ -202,11 +202,7 @@ module.exports = {
                 "admin_server_licenses",
             ],
         },
-        {
-            type: "category",
-            label: "AYON Launcher",
-            items: ["admin_launcher_distribute", "admin_launcher_run"],
-        },
+        "ayon_launcher_admin",
         {
             type: "category",
             label: "Configuration",
