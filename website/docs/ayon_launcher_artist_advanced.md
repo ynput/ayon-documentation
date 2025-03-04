@@ -195,19 +195,64 @@ ayon --use-dev
 ## Global Executable Arguments
 
 These arguments can be used with both AYON and AYON Console executables.
-
-| Argument | Description |
-|--|--|
-| `init-ayon-launcher` | Initialize launcher. Register executable path to known AYON launcher locations, and install shim executable. |
-| `--bundle <BUNDLE NAME>` | Force AYON to use specific bundle instead of the one that is set in the config file. This is useful for testing new bundles before they are released. |
-| `--verbose <LOG LEVEL>` | Change logging level to one of the following: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. |
-| `--debug` | Simplified way how to change verbose to DEBUG. Also sets `AYON_DEBUG` environment variable to `1`. |
-| `--skip-headers` | Skip headers in the console output. |
-| `--use-dev` | Use dev bundle and settings, if bundle is not explicitly defined. |
-| `--use-staging` | Use staging settings, and use staging bundle, if bundle is not explicitly defined. Cannot be combined with staging. |
-| `--headless` | Tell AYON to run in headless mode. No UIs are shown during bootstrap. Affects `AYON_HEADLESS_MODE` environment variable. Custom logic must handle headless mode on own. |
-| `--ayon-login` | Show login dialog on startup. |
-| `--skip-bootstrap` | Skip bootstrap process. Used for inner logic of distribution. |
+<table>
+    <thead>
+        <tr>
+            <th>Argument</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><code>init-ayon-launcher</code></td>
+            <td>Initialize launcher. Register executable path to known AYON launcher locations, and install shim executable.</td>
+        </tr>
+        <tr>
+            <td><code>--bundle &lt;BUNDLE NAME&gt;</code></td>
+            <td>Force AYON to use specific bundle instead of the one that is set in the config file. This is useful for testing new bundles before they are released. <br/>
+            See examples here: <a href="https://community.ynput.io/t/how-to-use-different-bundles-with-different-projects/1096">How to use different bundles with different projects? | Ynput Forums</a>
+            </td>
+        </tr>
+        <tr>
+            <td><code>--verbose &lt;LOG LEVEL&gt;</code></td>
+            <td>Change logging level to one of the following: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`.
+                <div>
+                    <Admonition type="info" title="LOG Level Value">
+                        <p>LOG LEVEL value can be integer in range `0-50` or one of enum strings `"notset" (0)`, `"debug" (10)`, `"info" (20)`, `"warning" (30)`, `"error" (40)`, `"critical" (50)`. Value is stored to `AYON_LOG_LEVEL` environment variable for next processes. </p>
+                    </Admonition>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><code>--debug</code></td>
+            <td>Simplified way how to change verbose to DEBUG. Also sets `AYON_DEBUG` environment variable to `1`.</td>
+        </tr>
+        <tr>
+            <td><code>--skip-headers</code></td>
+            <td>Skip headers in the console output.</td>
+        </tr>
+        <tr>
+            <td><code>--use-dev</code></td>
+            <td>Use dev bundle and settings, if bundle is not explicitly defined.</td>
+        </tr>
+        <tr>
+            <td><code>--use-staging</code></td>
+            <td>Use staging settings, and use staging bundle, if bundle is not explicitly defined. Cannot be combined with staging.</td>
+        </tr>
+        <tr>
+            <td><code>--headless</code></td>
+            <td>Tell AYON to run in headless mode. No UIs are shown during bootstrap. Affects `AYON_HEADLESS_MODE` environment variable. Custom logic must handle headless mode on own.</td>
+        </tr>
+        <tr>
+            <td><code>--ayon-login</code></td>
+            <td>Show login dialog on startup.</td>
+        </tr>
+        <tr>
+            <td><code>--skip-bootstrap</code></td>
+            <td> Skip bootstrap process. Used for inner logic of distribution.</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Launcher CLI Interface
 
@@ -307,7 +352,8 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
         </tr>
         <tr>
             <td><code>run &lt;SCRIPT_PATH&gt;</code></td>
-            <td>Run python script in AYON context.
+            <td>Run python script in AYON context. Note that additional arguments are passed to the script.
+            <pre>ayon run --script /foo/bar/baz.py arg1 arg2</pre>
                 <div>
                     <Admonition type="caution" title="deprecated">
                         <p>AYON launcher does support to run script directly which makes this command deprecated.</p>
@@ -393,7 +439,7 @@ These commands are added by other addons.
                     <tbody>
                         <tr>
                             <td><code>extractenvironments</code></td>
-                            <td>Extract environment variables for context into json file
+                            <td>Extract environment variables for context into json file. context options must be passed; otherwise, only AYON's global environments will be extracted.
                                 <table>
                                     <thead>
                                         <tr>
