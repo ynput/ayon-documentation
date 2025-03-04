@@ -142,4 +142,4 @@ password: `v3ry53cur3p455w0rd`
 ## Launcher Usage
 
 For more information about usage of **AYON Launcher** app, like learning about the tray menu actions and running with console, staging, or develop mode, please check the next sections launcher [Basic Usage](ayon_launcher_artist_basic.md) and [Advanced Usage](ayon_launcher_artist_advanced.md).
-For further information, please visit [Admin section](admin_launcher_run.md).
+For further information, please visit [Admin section](ayon_launcher_admin.md).
