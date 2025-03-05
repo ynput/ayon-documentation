@@ -94,9 +94,6 @@ After the installation, you can find AYON among the other Applications.
 </Tabs>
 :::
 
-:::info Install for all users
-TODO.
-:::
 
 ## Run AYON Launcher
 

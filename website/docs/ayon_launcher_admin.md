@@ -33,6 +33,10 @@ This is useful if you don't have any Launcher available for downloading on your 
 Check FAQ, see [Automate launcher installation on Windows Machines](#automate-launcher-installation-on-windows-machines)
 :::
 
+:::info Install for all users
+When installing for "All Users". It should be in a location where it needs admin permissions. However, the app will run under the CURRENT_USER registry to avoid requirement for admin privileges and to avoid issues connected to multi-user machine.
+:::
+
 ## Upload Launcher binaries to AYON server
 
 On [Bundles Tab](admin_server_bundles_and_addons.md#bundles-tab), you can upload new launcher via clicking **Upload Launcher** button.
@@ -47,8 +51,9 @@ To use the launcher, in your pipeline you have to add it to your bundle.
 :::info Build AYON Launcher
 
 **Unless you know what you are doing,** 
-Building your own AYON Launcher is mostly useful to get unreleased launcher versions.
-Also, you can get the latest releases from Github directly
+Building your own AYON Launcher is mostly useful to get unreleased launcher versions. More info see [Building AYON Desktop application](dev_launcher.md#building-ayon-desktop-application)
+
+Also, you can find the all official launcher builds in [ayon-launcher/releases | Github](https://github.com/ynput/ayon-launcher/releases) wher eyou can download them directly.
 
 Keep in mind, You can extend AYON launcher using a custom addon where e.g. you can extend AYON [tray menu](ayon_launcher_artist_basic.md#tray-menu) to add your own actions, extend the [launcher actions](ayon_launcher_artist_basic.md#launcher-ui) to add your own actions.
 :::
