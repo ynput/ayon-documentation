@@ -157,9 +157,4 @@ See the [Implement Workfile Templates issue](https://github.com/ynput/ayon-silho
 
 The studio admin with access to the studio and project settings can configure
 the Silhouette Templated Workfile Build settings by setting up profiles for
-which they should apply: `ayon+settings://silhouette/templated_workfile_build/profiles`
-
-![AYON Silhouette - Templated Workfile Build Settings](assets/silhouette/ayon_silhouette_templated_workfile_build_settings.png)
-
-_In this case it would build the workfile template only for the Roto task type
-using the `.sfx` template project provided in the settings._
+which they should apply. See the [AYON Silhouette Admin documentation](addon_silhouette_admin.md#templated-workfile-builder).
