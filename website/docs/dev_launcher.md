@@ -118,6 +118,10 @@ These environment variables are set during startup.
 | **PYBLISH_GUI** | Default pyblish UI that should be used in pyblish -> TODO move to openpype addon. |
 | **USE_AYON_SERVER** | AYON mode is enabled. A flag for openpype addon. |
 | **SSL_CERT_FILE** | Use certificates from 'certifi' if 'SSL_CERT_FILE' is not set. |
+| **AYON_SITE_ID** | local site identifier |
+| **AYON_SERVER_URL** |  URL for the logged in AYON Server |
+| **AYON_API_KEY** | API key for the logged in AYON Server |
+| **AYON_DEFAULT_SETTINGS_VARIANT** | Variant used for settings |
 
 :::caution
 
