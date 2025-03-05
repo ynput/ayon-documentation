@@ -86,7 +86,7 @@ More info about settings categories in AYON. see,[Addon Settings Categories](adm
 
 :::info where site id is saved
 
-It's saved in a file called `site_id` located in local user directory.
+It's saved in a file called `site_id` located in the path saved in the `AYON_LAUNCHER_LOCAL_DIR`.
 :::
 
 :::tip Customize site ID
