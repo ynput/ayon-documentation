@@ -64,7 +64,7 @@ as `metallic_roughness_sss`. You can take reference from the screenshot below.
 
 If you choose `Template By Task Types` as template type, you can load your template with
 the filepath of substance file only when you launch Substance Designer with the
-chosen task types. Once you launch Substance Designer, it would grab the graph with your task
+chosen **task types**. Once you launch Substance Designer, it would grab the graph with your task
 name (See red framed in the screenshot below) from the sbs file and add it into your project.
 
 ![Project Creation by Task Types Launcher](assets/substance_designer_project_creation_task_types.png)
