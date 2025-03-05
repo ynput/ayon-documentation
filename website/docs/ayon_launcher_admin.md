@@ -87,11 +87,15 @@ More info about settings categories in AYON. see,[Addon Settings Categories](adm
 :::info where site id is saved
 
 It's saved in a file called `site_id` located in the path saved in the `AYON_LAUNCHER_LOCAL_DIR`.
+based on OS, by defaults to:
+- Windows: `%LOCALAPPDATA%\Ynput\AYON`
+- Linux: `~/.local/share/AYON`
+- macOS: `~/Library/Application Support/AYON`
 :::
 
-:::tip Customize site ID
+:::tip Customize Site ID
 
-TODO
+Check FAQ, see [How to set custom site id](#how-to-set-custom-site-id)
 :::
 
 ### Shims
@@ -101,7 +105,7 @@ Right now you can point to a single version of AYON launcher, which would stop t
 
 AYON launcher has new argument handling. When `init-ayon-launcher` is passed it just stores information about executable and deploys shims without any other action.
 
-The shim is also used for custom ayon-launcher:// protocol scheme, that is different based on OS. With this support we can start to use webactions.
+The shim is also used for custom `ayon-launcher://` protocol scheme, that is different based on OS. With this support we can start to use webactions.
 
 
 ## FAQ
@@ -144,3 +148,18 @@ AYON version control for addons and desktop applications is based on semantic ve
 
 For studios customizing the source code of AYON, a practical approach could be to build by adding a name and a number after the PATCH and not to deploy 1.0.0 from the original AYON repository. 
 For example, your builds will be: `1.0.0` < `1.0.0-yourstudio.1` < `1.0.0-yourstudio.2` < `1.0.1-yourstudio.1`.
+
+### How to set custom site id
+
+
+Setting custom site id can be beneficial to set site id to a sensible names which makes it easy to navigate.
+It also allows control machines in your farm in settings with single site by giving them all the same site id.
+
+To set custom site id there are two possible solutions: feel free to pick either on.
+- You can set an env var on the machine, like e.g. `AYON_SITE_ID=my-cool-machine`.
+- Modify the site-id file where we look.
+
+:::caution
+Be aware not to do that if the machines are artist machines not dedicated farm machine.
+Also, keep in mind these machines should also have the same OS.
+:::
