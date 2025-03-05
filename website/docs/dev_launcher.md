@@ -1,11 +1,12 @@
 ---
 id: dev_launcher
-title: AYON Launcher - Introduction
-sidebar_label: Introduction
+title: AYON Launcher
+sidebar_label: AYON Launcher
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import DocCardList from '@theme/DocCardList';
 
 ## Introduction
 For most recent documentation please use readme in [AYON launcher repository](https://github.com/ynput/ayon-launcher/blob/main/README.md).
@@ -23,9 +24,8 @@ AYON is written in Python 3 with specific elements still running in Python2 unti
 [CX_Freeze](https://cx-freeze.readthedocs.io/en/latest) is used to freeze the Python code and all of its dependencies, and [Poetry](https://python-poetry.org/) for virtual environment management.
 
 We provide comprehensive build steps:
-* [Windows](dev_launcher_build_windows.md)
-* [macOS](dev_launcher_build_macos.md)
-* [Linux](dev_launcher_build_linux.md)
+
+<DocCardList />
 
 Output of the build process is installer with metadata file that can be distributed to workstations.
 
@@ -33,13 +33,26 @@ Output of the build process is installer with metadata file that can be distribu
 
 Create installer information from json file on server and upload the installer file to be downloaded by users.
 
-### Windows
+Upload command has more options, use `--help` to investigate them. For example, it is possible to use username & password instead of api key.
+
+<Tabs
+    defaultValue='win'
+    values={[
+        {label: 'Windows', value: 'win'},
+        {label: 'Linux & MacOS', value: 'linuxmac'},
+    ]}>
+
+<TabItem value='win'>
+
 Run `./tools/manage.ps1 upload --server <your server> --api-key <your api key>`
 
-### Linux & macOS
-Run `./tools/make.sh upload --server <your server> --api-key <your api key>`
+</TabItem>
 
-Upload command has more options, use `--help` to investigate them. For example, it is possible to use username & password instead of api key.
+<TabItem value='linuxmac'>
+
+Run `./tools/make.sh upload --server <your server> --api-key <your api key>`
+</TabItem>
+</Tabs>
 
 
 ### Running AYON Desktop application
@@ -47,69 +60,81 @@ Upload command has more options, use `--help` to investigate them. For example, 
 AYON can be executed either from live sources (this repository) or from
 *"frozen code"* - executables that can be built using steps described above.
 
-### From sources
+
+<Tabs
+    defaultValue='source'
+    values={[
+        {label: 'From sources', value: 'source'},
+        {label: 'From frozen code', value: 'frozen'},
+    ]}>
+
+<TabItem value='source'>
+
 AYON can be run directly from sources by activating virtual environment:
 
 ```sh
 poetry run python start.py &args
 ```
+</TabItem>
 
-### From frozen code
+<TabItem value='frozen'>
 
 You need to build AYON first. This will produce executable - `ayon.exe` and `ayon_console.exe` on Windows, `ayon` on Linux and `AYON {version}.app` for macOS.
+For more info, check [AYON Executables](ayon_launcher_artist_advanced.md#ayon-executables)
 
-#### Windows
-Executable `ayon_console.exe` creates console with output - useful for debugging, `ayon.exe` does not create console, but does not have any stdout or stderr output.
+</TabItem>
+</Tabs>
 
+## Startup
 
-Startup
--------------
 Once AYON launcher is installed and launched there are few ways to affect what will happen next. Default behavior will ask for login to server (if user did not log in yet), then starts the distribution of updates, and eventually the main logic.
 
 Main logic is now using command line handling from `openpype` addon. If a path to a python script is passed, it will start the python script as main logic instead.
 
 ### Arguments
-There are reserved global arguments that cannot be used in any cli handling:
-- `--bundle <BUNDLE NAME>` - Force AYON to use specific bundle instead of the one that is set in the config file. This is useful for testing new bundles before they are released.
-- `--verbose <LOG LEVEL>` - Change logging level to one of the following: DEBUG, INFO, WARNING, ERROR, CRITICAL.
-- `--debug` - Simplified way how to change verbose to DEBUG. Also sets `AYON_DEBUG` environment variable to `1`.
-- `--skip-headers` - Skip headers in the console output.
-- `--use-dev` - Use dev bundle and settings, if bundle is not explicitly defined.
-- `--use-staging` - Use staging settings, and use staging bundle, if bundle is not explicitly defined. Cannot be combined with staging.
-- `--headless` - Tell AYON to run in headless mode. No UIs are shown during bootstrap. Affects `AYON_HEADLESS_MODE` environment variable. Custom logic must handle headless mode on its own.
-- `--skip-bootstrap` - Skip bootstrap process. Used for inner logic of distribution.
+AYON Launcher comes with [Global Executable Arguments](ayon_launcher_artist_advanced.md#global-executable-arguments). They cannot be used in any cli handling.
+
 
 ### Environment variables
-Environment variables that are set during startup:
-- **AYON_VERSION** - Version of AYON launcher.
-- **AYON_BUNDLE_NAME** - Name of bundle that is used.
-- **AYON_LOG_LEVEL** - Log level that is used.
-- **AYON_DEBUG** - Debug flag enabled when set to '1'.
-- **AYON_USE_STAGING** - Use staging settings when set to '1'.
-- **AYON_USE_DEV** - Use dev mode settings when set to '1'.
-- **AYON_HEADLESS_MODE** - Headless mode flag enabled when set to '1'.
-- **AYON_EXECUTABLE** - Path to executable that is used to run AYON.
-- **AYON_ROOT** - Root to AYON launcher content.
-- **AYON_LAUNCHER_STORAGE_DIR** - Directory where are stored dependency packages, addons and files related to addons.
-- **AYON_LAUNCHER_LOCAL_DIR** - Directory where are stored user/machine specific files. This MUST NOT be shared.
-- **AYON_ADDONS_DIR** - Path to AYON addons directory - still used but considered as deprecated. Please rather use `AYON_LAUNCHER_STORAGE_DIR` to change location.
-- **AYON_DEPENDENCIES_DIR** - Path to AYON dependencies directory - still used but considered as deprecated. Please rather use `AYON_LAUNCHER_STORAGE_DIR` to change location.
+AYON launcher provides the following environment variables for its subprocesses that can be used in various places, like scripting, etc.
+These environment variables are set during startup.
 
-- **AYON_MENU_LABEL** - Label for AYON menu -> TODO move to openpype addon.
-- **PYBLISH_GUI** - Default pyblish UI that should be used in pyblish -> TODO move to openpype addon.
-- **USE_AYON_SERVER** - Flag for openpype addon.
+| Environment Variable | Description |
+|--|--|
+| **AYON_VERSION** | String of the current desktop application version, like `1.0.0`. |
+| **AYON_BUNDLE_NAME** | Name of bundle that is used. |
+| **AYON_LOG_LEVEL** | Logging level that is used for AYON logger. |
+| **AYON_DEBUG** | Debug flag enabled when set to '1'. |
+| **AYON_USE_STAGING** | Use staging settings when set to '1'. |
+| **AYON_USE_DEV** | Use dev mode settings when set to '1'. |
+| **AYON_HEADLESS_MODE** | Headless mode flag enabled when set to '1'. |
+| **AYON_EXECUTABLE** | Path to the executable used to run AYON subprocesses - points to the **python** executable in the virtual environment when run from sources. If run from frozen code, it will point to either `ayon` (or `ayon_console` on windows). |
+| **AYON_ROOT** | Root to AYON launcher content. |
+| **AYON_LAUNCHER_STORAGE_DIR** | Directory where are stored dependency packages, addons and files related to addons. |
+| **AYON_LAUNCHER_LOCAL_DIR** | Directory where are stored user/machine specific files. This MUST NOT be shared. |
+| **AYON_ADDONS_DIR** | Path to AYON addons directory - still used but considered as deprecated. Please rather use `AYON_LAUNCHER_STORAGE_DIR` to change location. |
+| **AYON_DEPENDENCIES_DIR** | Path to AYON dependencies directory - still used but considered as deprecated. Please rather use `AYON_LAUNCHER_STORAGE_DIR` to change location. |
+| **AYON_MENU_LABEL** | Label for AYON menu -> TODO move to openpype addon. |
+| **PYBLISH_GUI** | Default pyblish UI that should be used in pyblish -> TODO move to openpype addon. |
+| **USE_AYON_SERVER** | AYON mode is enabled. A flag for openpype addon. |
+| **SSL_CERT_FILE** | Use certificates from 'certifi' if 'SSL_CERT_FILE' is not set. |
 
-- **SSL_CERT_FILE** - Use certificates from 'certifi' if 'SSL_CERT_FILE' is not set.
+:::caution
 
-Environment variables that are set for backwards compatibility with openpype addon:
-- **OPENPYPE_LOG_LEVEL** - Alias to **AYON_LOG_LEVEL**.
-- **OPENPYPE_DEBUG** - Alias to **AYON_DEBUG**.
-- **OPENPYPE_USE_STAGING** - Alias to **AYON_USE_STAGING**.
-- **OPENPYPE_HEADLESS_MODE** - Alias to **AYON_HEADLESS_MODE**.
-- **OPENPYPE_EXECUTABLE** - Alias to **AYON_EXECUTABLE**.
-- **OPENPYPE_ROOT** - Alias to **AYON_ROOT**.
-- **OPENPYPE_REPOS_ROOT** - Alias to **AYON_ROOT**.
-- **AVALON_LABEL** - Alias to **AYON_MENU_LABEL**.
+Environment variables that are set for backwards compatibility with openpype addon.
+
+| Environment Variable | Description |
+|--|--|
+| **OPENPYPE_VERSION** | Alias to **AYON_VERSION** |
+| **OPENPYPE_LOG_LEVEL** | Alias to **AYON_LOG_LEVEL**. |
+| **OPENPYPE_DEBUG** | Alias to **AYON_DEBUG**. |
+| **OPENPYPE_USE_STAGING** | Alias to **AYON_USE_STAGING**. |
+| **OPENPYPE_HEADLESS_MODE** | Alias to **AYON_HEADLESS_MODE**. |
+| **OPENPYPE_EXECUTABLE** | Alias to **AYON_EXECUTABLE**. |
+| **OPENPYPE_ROOT** | Alias to **AYON_ROOT**. |
+| **OPENPYPE_REPOS_ROOT** | Alias to **AYON_ROOT**. |
+| **AVALON_LABEL** | Alias to **AYON_MENU_LABEL**. |
+:::
 
 :::note
 Environment variables **AYON_LAUNCHER_STORAGE_DIR** and **AYON_LAUNCHER_LOCAL_DIR** are by default set to the same folder. Path is based on OS.
