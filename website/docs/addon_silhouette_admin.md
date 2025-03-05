@@ -55,7 +55,7 @@ First matched profile will be used as a workfile template
 
 For example:
 
-![AYON Silhouette - Templated Workfile Build Settings](assets/silhouette/ayon_silhouette_templated_workfile_build_settings.png)
+![AYON Silhouette - Templated Workfile Build Settings](assets/silhouette/admin/ayon_silhouette_templated_workfile_build_settings.png)
 
 _In this case it would build the workfile template only for the Roto task type
 using the `.sfx` template project provided in the settings._
