@@ -328,7 +328,7 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
             </td>
         </tr>
         <tr>
-            <td><code>publish</code></td>
+            <td><code>publish [OPTIONS] &lt;JSON_PATH&gt;</code></td>
             <td>Start CLI publishing. Publish collects json from path provided as an argument. Json like the generated one for deadline jobs.
                 <table>
                     <thead>
