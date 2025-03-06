@@ -45,6 +45,8 @@ information for either loading or publishing through AYON.
 :::
 
 ## Project creation
+
+### Default Template
 You can preset the template you want to use with AYON settings by accessing
 `ayon+settings://substancedesigner/project_creation/project_templates`
 You fill your graph name in the blank(the red sequared in the screenshot below)
@@ -52,6 +54,7 @@ and select your template type.
 
 ![Project Creation](assets/substance_designer_project_creation_ayon_setting.png)
 
+### Custom Template
 If you choose `Custom Template` as template type, you need to fill in the
 filepath of substance file and the name of graph in the sbs file you want to use
 as template.
@@ -62,6 +65,7 @@ as `metallic_roughness_sss`. You can take reference from the screenshot below.
 
 ![Custom Template Project Creation](assets/substance_designer_custom_template_project_creation.png)
 
+### Template By Task Types
 If you choose `Template By Task Types` as template type, you can load your template with
 the filepath of substance file only when you launch Substance Designer with the
 chosen **task types**. Once you launch Substance Designer, it would grab the graph with your task
