@@ -1,7 +1,9 @@
 ---
 id: addon_substancedesigner_artist
 title: Substance Designer Artist Docs
-sidebar_label: Substance Designer
+sidebar_label: Substance Designer.
+description: Substance Designer Addon Artist documentation.
+toc_max_heading_level: 5
 ---
 
 import ReactMarkdown from "react-markdown";
@@ -128,15 +130,24 @@ Once the user hits **Publish**, it publishes the sbsar to AYON.
 
 ## Known issues
 
-![Texture Loader Embedded options](assets/substance_designer_ayon_menu.png)
+### Can't see the AYON menu?
 
-#### Can't see the AYON menu?
+<div class="row">
+<div class="col">
 
 If you're unable to see the AYON top level menu in Substance Designer make
 sure you have launched Substance Designer through AYON and that the AYON
 Integration plug-in is loaded inside Substance Designer: **Tools > Plugins_Manager > ayon_plugin**
 
-#### Substance Designer + Steam
+</div>
+<div class="col">
+
+![Texture Loader Embedded options](assets/substance_designer_ayon_menu.png)
+</div>
+</div>
+
+
+### Substance Designer + Steam
 
 Running the steam version of Substance Designer within AYON will require you
 to close the Steam executable before launching Substance Designer through AYON.
