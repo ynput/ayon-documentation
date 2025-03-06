@@ -14,7 +14,7 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ## Color Management (ImageIO)
 
-Color configuration for Nuke scripts and nodes and also override the global color management settings, check [Host specific overrides](admin_colorspace.md#host-specific-overrides).
+Color configuration for Substance Designer and also override the global color management settings, check [Host specific overrides](admin_colorspace.md#host-specific-overrides).
 
 ### Enable Color Management
 
