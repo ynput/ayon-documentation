@@ -1,7 +1,7 @@
 ---
 id: addon_substancedesigner_artist
 title: Substance Designer Artist Docs
-sidebar_label: Substance Designer.
+sidebar_label: Substance Designer
 description: Substance Designer Addon Artist documentation.
 toc_max_heading_level: 5
 ---
