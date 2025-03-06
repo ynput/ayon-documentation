@@ -45,13 +45,52 @@ This toggle is a master switch that enables and disables the whole section.
 > Setting Location: `ayon+settings://substancedesigner/project_creation/project_templates`
 
 ![](assets/substance_designer/admin/project_templates.png)
+
+This setting initializes the substance designer workfile by creating a substance graph.
+
 - Each template consists of
   ![](assets/substance_designer/admin/project_template_profile.png)
-  - **Graph Name**
+  - **Graph Name**: This name will be used for the created graph.
   - **Document Resolution**: Choose from a list the texture resolution when creating new project.
-  - **Template Type**: Choose from a list either default substance templates or custom template for project creation.
-  - **Template**: Choose template to create your Substance Graph.
+  - **Template Type**: Choose from a list either default substance templates or custom template for project creation. Each selection shows different settings. Find below the available options.
 - **+**: Add more rules
+
+import templateDefault from './assets/substance_designer/admin/template_default.png';
+import templateCustom from './assets/substance_designer/admin/template_custom.png';
+import templateTaskType from './assets/substance_designer/admin/template_by_task_type.png';
+
+<table>
+  <thead>
+    <tr>
+    <th>Template Type</th><th>Available Settings</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+     <td>Default Substance Template</td>
+     <td>
+      <img src={templateDefault}/>
+      <li><strong>Template</strong>: Choose template to create your Substance Graph.</li>
+     </td>
+    </tr>
+    <tr>
+     <td>Custom Template</td>
+     <td>
+      <img src={templateCustom}/>
+      <li><strong>Custom Template Graph Name</strong>: Name of the graph from the custom template you want to create your project from. Leaving it blank, it won't do anything.</li>
+      <li><strong>Path to Custom Template</strong>: Path of which custom template located. It supports template keys.</li>
+     </td>
+    </tr>
+    <tr>
+     <td>Template By Task Types</td>
+     <td>
+      <img src={templateTaskType}/>
+      <li><strong>Task Types</strong>: Choose from a list of task types to determine which ones the filter profile will affect. Leaving it blank, it won't do anything.</li>
+      <li><strong>Path to template</strong>: A path of which a template located. It supports template keys.</li>
+     </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Creator Plugins
 ### Create Textures
