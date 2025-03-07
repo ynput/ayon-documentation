@@ -260,16 +260,32 @@ This will create a Group with a Write node inside.
 
 ![AYON Create](assets/nuke_tut/nuke_WriteNodeCreated.png)
 
-:::tip Admin Tip - Configuring write node
-You can configure write node parameters in **Studio Settings → Project → Anatomy → Color Management and Output Formats → Nuke → Nodes**
+#### Configuring write node
+
+You can configure write node parameters in **Studio Settings → Nuke → Color Management (imageio) → Nodes** (ayon+settings://nuke/imageio/nodes).
+
+These settings allow you to configure:
+* node to use for product type (e.g. `Write`)
+* knobs default
+
+:::note
+By default AYON relies on the `file_type` knob default to configure the extension of the output Write node.
+However some extensions do not match the `file_type`.
+In which case, set the `file_type` knob and enforce the relevant extension via an additional `ext` knob default.
+
+For example:
+* Stereo EXR (sxr): `file_type = exr` and `ext = sxr`
+* JPEG/JPG: `file_type = jpeg` and `ext = jpg`
 :::
+
+
 
 ### Create Prerender Node
 Creating Prerender is very similar to creating AYON managed Write node.
 
 <iframe width="512px" height="288px" src="https://www.youtube.com/embed/er4SztHFN-w" frameborder="0" modestbranding="1" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="1"></iframe>
 
-#### What Nuke Publish Does
+### What Nuke Publish Does
 From Artist perspective, Nuke publish gathers all the stuff found in the Nuke script with Publish checkbox set to on, exports stuff and raises the Nuke script (workfile) version.
 
 The Pyblish dialog shows the progress of the process.
