@@ -146,6 +146,7 @@ module.exports = {
                 "addon_cinema4d_artist",
                 "addon_zbrush_artist",
                 "addon_mochapro_artist",
+                "addon_silhouette_artist",
             ].sort(sorted),
         },
         {
@@ -260,7 +261,16 @@ module.exports = {
                 "addon_slack_admin",
                 "addon_sso_admin",
                 "addon_substancepainter_admin",
-                "addon_substancedesigner_admin",
+                {
+                    type: "category",
+                    collapsed: true,
+                    label: "Substance Designer",
+                    link: { type: "doc", id: "addon_substancedesigner_admin"},
+                    items: [
+                        "addon_substancedesigner_admin_tutorials",
+                        "addon_substancedesigner_admin_settings",
+                    ]
+                },
                 "addon_tvpaint_admin",
                 "addon_unreal_admin",
                 "addon_kitsu_admin",
@@ -308,6 +318,7 @@ module.exports = {
                 "addon_zbrush_admin",
                 "admin_webserver_for_webpublisher",
                 "addon_mochapro_admin",
+                "addon_silhouette_admin",
             ].sort(sorted),
         },
         "admin_releases",
