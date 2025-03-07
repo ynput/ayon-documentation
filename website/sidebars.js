@@ -248,6 +248,7 @@ module.exports = {
                     label: "Substance Designer",
                     link: { type: "doc", id: "addon_substancedesigner_admin"},
                     items: [
+                        "addon_substancedesigner_admin_tutorials",
                         "addon_substancedesigner_admin_settings",
                     ]
                 },
