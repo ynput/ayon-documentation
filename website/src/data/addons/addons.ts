@@ -49,6 +49,7 @@ export const officialAddons = [
     "premiere",
     "royalRender",
     "shotgrid",
+    "silhouette",
     "substancepainter",
     "substancedesigner",
     "slack",
