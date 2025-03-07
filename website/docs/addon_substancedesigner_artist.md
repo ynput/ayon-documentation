@@ -42,6 +42,11 @@ Once your admin configures AYON to work with Substance Designer, you'll find the
 Admins can configure the Substance Designer addon to automatically initialize a workfile when launching Designer from the launcher. If your admin has set it up, you won't need to create the Substance Graph yourself through `File` -> `New` -> `Substance Graph...`
 
 For more info, see [Substance Designer Project Templates](addon_substancedesigner_admin_tutorials.md#substance-designer-project-templates).
+
+:::note
+Once the project is created with the template(s), a `temp_ayon_package.sbs` file is saved as a local temp file. Make sure to use the [Work Files](artist_tools_workfiles.md) tool to save your files; otherwise, your work inside `temp_ayon_package.sbs` will be lost if you close the Substance Designer application.
+:::
+
 </div>
 <div class="col">
 
