@@ -50,9 +50,9 @@ This setting initializes the substance designer workfile by creating a substance
 
 - Each template consists of
   ![](assets/substance_designer/admin/project_template_profile.png)
-  - **Graph Name**: This name will be used for the created graph.
-  - **Document Resolution**: Choose from a list the texture resolution when creating new project.
-  - **Template Type**: Choose from a list either default substance templates or custom template for project creation. Each selection shows different settings. Find below the available options.
+  1. **Graph Name**: This name will be used for the created graph.
+  2. **Document Resolution**: Choose from a list the texture resolution when creating new project.
+  3. **Template Type**: Choose from a list either default substance templates or custom template for project creation. Each selection shows different settings. Find below the available options.
 - **+**: Add more rules
 
 import templateDefault from './assets/substance_designer/admin/template_default.png';
