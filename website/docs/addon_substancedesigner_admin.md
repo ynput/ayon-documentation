@@ -2,7 +2,7 @@
 id: addon_substancedesigner_admin
 title: Substance Designer Admin Docs
 sidebar_label: Substance Designer
-description: Substance Designer Addon Admins documentation.
+description: Substance Designer Addon Admin documentation.
 toc_max_heading_level: 5
 ---
 import ReactMarkdown from "react-markdown";
