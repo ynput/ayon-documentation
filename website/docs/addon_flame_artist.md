@@ -76,7 +76,7 @@ e.g. You can rename the clips, specify frame padding and etc.
 
 ### Reviewable source
 
-![Create menu](assets/resolve_review_toggle.png)
+![Create menu](assets/flame_review_toggle.png)
 
 In case you wish to publish reviewable video per `plate`:
 1. Ensure the `review` toggle is enabled for the plate instance
