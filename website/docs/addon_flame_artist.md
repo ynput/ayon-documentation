@@ -90,15 +90,14 @@ In case you wish to publish reviewable video per `plate`:
 ![ayon_vertical_alignment](assets/flame/artist/ayon_vertical_alignment.png)
 
 * To publish multiple plates for a shot proceed as following:
-
-1. Set up a multiple track timeline. Rename each track to determine plate variants (e.g `P01`, `P02` and `P03`)
-2. Pick-up one track to be the **hero** track and set your main plate clip onto it.
-3. Then, for each shot, stack additional plate clip(s) on other tracks, aligned with the hero/main plate clip. Clips can be shorter than the main hero track clip, but not longer.
-4. (Optional) You can setup another track to contain your review material
-5. Select all clips that needs to be published
-6. In the creator enable vertical align and select your main track as the hero track.
-5. Create instances by hitting "Create"
-6. Ensure all instances are parented to the same shot, which length is driven by the hero clip.
+  1. Set up a multiple track timeline. Rename each track to determine plate variants (e.g `P01`, `P02` and `P03`)
+  2. Pick-up one track to be the **hero** track and set your main plate clip onto it.
+  3. Then, for each shot, stack additional plate clip(s) on other tracks, aligned with the hero/main plate clip. Clips can be shorter than the main hero track clip, but not longer.
+  4. (Optional) You can setup another track to contain your review material
+  5. Select all clips that needs to be published
+  6. In the creator enable vertical align and select your main track as the hero track.
+  7. Create instances by hitting "Create"
+  8. Ensure all instances are parented to the same shot, which length is driven by the hero clip.
 
 ![ayon_vertical_alignment_creator](assets/flame/artist/ayon_vertical_alignment_creator.png)
 
@@ -113,7 +112,7 @@ If you are working with only two tracks where one track is going to be used as p
 Clip retiming via `TimeWarp` FX is supported. When such an effect is applied to a clip, it is automatically detected and stored as metadata for the relevant `plate` product.
 
 
-:::warning
+:::caution
 Autodesk Flame as some internal logic to compute retiming that can be extracted out of the software.
 AYON publisher relies on the logic from [FlameTimewarpML](https://github.com/talosh/flameTimewarpML) plugin to interpolate and gather the retiming. It works fine for most of the cases, but some limitations around speed-based timewarps and unusual curves are known. 
 :::
