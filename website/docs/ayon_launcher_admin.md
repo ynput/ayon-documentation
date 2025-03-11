@@ -113,6 +113,9 @@ AYON launcher has new argument handling. When `init-ayon-launcher` is passed it 
 
 The shim is also used for custom `ayon-launcher://` protocol scheme, that is different based on OS. With this support we can start to use webactions.
 
+:::note
+Shim on windows and linux is installed to resources dir (per user).
+:::
 
 ## FAQ
 
