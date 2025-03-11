@@ -12,15 +12,14 @@ import TabItem from '@theme/TabItem';
 import Admonition from '@theme/Admonition';
 
 :::info
-This page explains the advanced usage of AYON Launcher for advanced users and TDs.
-Where it explains different launcher arguments and CLI interface.
+This page explains the advanced usage of AYON Launcher for advanced users and TDs, covering different launcher arguments and the CLI interface.
 :::
 
 ## General Information
 
 ### AYON Executables
 
-After installing AYON launcher, you'll find different executables based on your OS.
+After installing the AYON Launcher, you'll find different executables based on your OS.
 
 <Tabs
     defaultValue='win'
@@ -33,29 +32,28 @@ After installing AYON launcher, you'll find different executables based on your 
 
 `ayon.exe` and `ayon_console.exe` on Windows
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon.exe
 ```
 Or 
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon_console.exe
 ```
 
-:::info 
+:::info
 
-Executable `ayon_console.exe` creates console with output - useful for debugging, `ayon.exe` does not create console, but does not have any `stdout` or `stderr` output.
+The executable `ayon_console.exe` creates a console with output, which is useful for debugging. `ayon.exe` does not create a console and has no `stdout` or `stderr` output.
 :::
 </TabItem>
-
 
 <TabItem value='linuxmac'>
 
 `ayon` on Linux and MacOS.
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ayon
 ```
@@ -75,24 +73,19 @@ ayon
 
 <TabItem value='production'>
 
-By default when launching the app, it runs in <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> mode.
+By default, when launching the app, it runs in <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> mode.
 
 :::info example
-<Tabs
-    defaultValue='win'
-    values={[
-        {label: 'Windows', value: 'win'},
-        {label: 'Linux & MacOS', value: 'linuxmac'},
-    ]}>
+<Tabs defaultValue='win' values={[{label: 'Windows', value: 'win'}, {label: 'Linux & MacOS', value: 'linuxmac'}]}>
 
 <TabItem value='win'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon_console.exe
 ```
 Or 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon.exe
 ```
@@ -101,7 +94,7 @@ cd <ayon-launcher-installation-location>
 
 <TabItem value='linuxmac'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ayon
 ```
@@ -111,11 +104,9 @@ ayon
 
 </TabItem>
 
-
 <TabItem value='staging'>
 
-when passing `--use-staging` argument to ayon executable.
-It runs in <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>Staging</span> mode.
+To run in <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>Staging</span> mode, pass the `--use-staging` argument to the AYON executable.
 
 :::info example
 <Tabs
@@ -127,12 +118,12 @@ It runs in <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadiu
 
 <TabItem value='win'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon_console.exe --use-staging
 ```
 Or 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon.exe --use-staging
 ```
@@ -141,7 +132,7 @@ cd <ayon-launcher-installation-location>
 
 <TabItem value='linuxmac'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ayon --use-staging
 ```
@@ -151,11 +142,9 @@ ayon --use-staging
 
 </TabItem>
 
-
 <TabItem value='dev'>
 
-when passing `--use-dev` argument to ayon executable.
-It runs AYON Launcher in <span style={{color:'#1c2026',backgroundColor:'#e2e2e3', borderRadius: '4px', padding: '2px 4px'}}>Development</span> mode.
+To run AYON Launcher in <span style={{color:'#1c2026',backgroundColor:'#e2e2e3', borderRadius: '4px', padding: '2px 4px'}}>Development</span> mode, pass the `--use-dev` argument to the executable.
 
 :::info example
 <Tabs
@@ -167,12 +156,12 @@ It runs AYON Launcher in <span style={{color:'#1c2026',backgroundColor:'#e2e2e3'
 
 <TabItem value='win'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon_console.exe --use-dev
 ```
 Or 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon.exe --use-dev
 ```
@@ -181,7 +170,7 @@ cd <ayon-launcher-installation-location>
 
 <TabItem value='linuxmac'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ayon --use-dev
 ```
@@ -195,6 +184,7 @@ ayon --use-dev
 ## Global Executable Arguments
 
 These arguments can be used with both AYON and AYON Console executables.
+
 <table>
     <thead>
         <tr>
@@ -205,51 +195,51 @@ These arguments can be used with both AYON and AYON Console executables.
     <tbody>
         <tr>
             <td><code>init-ayon-launcher</code></td>
-            <td>Initialize launcher. Register executable path to known AYON launcher locations, and install shim executable.</td>
+            <td>Initializes the launcher by registering the executable path to known AYON launcher locations and installing a shim executable.</td>
         </tr>
         <tr>
             <td><code>--bundle &lt;BUNDLE NAME&gt;</code></td>
-            <td>Force AYON to use specific bundle instead of the one that is set in the config file. This is useful for testing new bundles before they are released. <br/>
+            <td>Forces AYON to use a specific bundle instead of the one set in the bundle settings. This is useful for testing new bundles before release. <br/>
             See examples here: <a href="https://community.ynput.io/t/how-to-use-different-bundles-with-different-projects/1096">How to use different bundles with different projects? | Ynput Forums</a>
             </td>
         </tr>
         <tr>
             <td><code>--verbose &lt;LOG LEVEL&gt;</code></td>
-            <td>Change logging level to one of the following: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`.
+            <td>Changes the logging level to one of the following: <code>DEBUG</code>, <code>INFO</code>, <code>WARNING</code>, <code>ERROR</code>, <code>CRITICAL</code>.
                 <div>
                     <Admonition type="info" title="LOG Level Value">
-                        <p>LOG LEVEL value can be integer in range `0-50` or one of enum strings `"notset" (0)`, `"debug" (10)`, `"info" (20)`, `"warning" (30)`, `"error" (40)`, `"critical" (50)`. Value is stored to `AYON_LOG_LEVEL` environment variable for next processes. </p>
+                        <p>The LOG LEVEL value can be an integer from <code>0-50</code> or one of the enum strings: <code>"notset" (0)</code>, <code>"debug" (10)</code>, <code>"info" (20)</code>, <code>"warning" (30)</code>, <code>"error" (40)</code>, <code>"critical" (50)</code>. The value is stored in the <code>AYON_LOG_LEVEL</code> environment variable for subsequent processes.</p>
                     </Admonition>
                 </div>
             </td>
         </tr>
         <tr>
             <td><code>--debug</code></td>
-            <td>Simplified way how to change verbose to DEBUG. Also sets `AYON_DEBUG` environment variable to `1`.</td>
+            <td>A simplified way to set verbose to DEBUG. Also sets the <code>AYON_DEBUG</code> environment variable to <code>1</code>.</td>
         </tr>
         <tr>
             <td><code>--skip-headers</code></td>
-            <td>Skip headers in the console output.</td>
+            <td>Skips headers in the console output.</td>
         </tr>
         <tr>
             <td><code>--use-dev</code></td>
-            <td>Use dev bundle and settings, if bundle is not explicitly defined.</td>
+            <td>Uses the dev bundle and settings if a bundle is not explicitly defined.</td>
         </tr>
         <tr>
             <td><code>--use-staging</code></td>
-            <td>Use staging settings, and use staging bundle, if bundle is not explicitly defined. Cannot be combined with staging.</td>
+            <td>Uses staging settings and the staging bundle if a bundle is not explicitly defined. Cannot be combined with staging.</td>
         </tr>
         <tr>
             <td><code>--headless</code></td>
-            <td>Tell AYON to run in headless mode. No UIs are shown during bootstrap. Affects `AYON_HEADLESS_MODE` environment variable. Custom logic must handle headless mode on own.</td>
+            <td>Runs AYON in headless mode, with no UIs shown during bootstrap. Affects the <code>AYON_HEADLESS_MODE</code> environment variable. Custom logic must handle headless mode independently.</td>
         </tr>
         <tr>
             <td><code>--ayon-login</code></td>
-            <td>Show login dialog on startup.</td>
+            <td>Displays the login dialog on startup.</td>
         </tr>
         <tr>
             <td><code>--skip-bootstrap</code></td>
-            <td> Skip bootstrap process. Used for inner logic of distribution.</td>
+            <td>Skips the bootstrap process, used for internal distribution logic.</td>
         </tr>
     </tbody>
 </table>
@@ -257,11 +247,11 @@ These arguments can be used with both AYON and AYON Console executables.
 ## Launcher CLI Interface
 
 :::info Windows
-To access the following commands on windows, use `./ayon_console.exe`.
+To access the following commands on Windows, use `./ayon_console.exe`.
 :::
 
 :::tip
-Use `--help` to get information about the current existent commands.
+Use `--help` to get information about the available commands.
 :::
 
 ### Core
@@ -280,7 +270,7 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
     <tbody>
         <tr>
             <td><code>contextselection [OPTIONS] &lt;OUTPUT_PATH&gt;</code></td>
-            <td>Show Qt dialog to select a context and save it to a output json file. You can specify options to preselect some parts of the context.
+            <td>Displays a Qt dialog to select a context and save it to an output JSON file. Options can be specified to preselect parts of the context.
                 <table>
                     <thead>
                         <tr>
@@ -291,15 +281,15 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
                     <tbody>
                         <tr>
                             <td><code>--project &lt;TEXT&gt;</code></td>
-                            <td>Define project context</td>
+                            <td>Define project context.</td>
                         </tr>
                         <tr>
                             <td><code>--folder &lt;TEXT&gt;</code></td>
-                            <td>Define folder in project (project must be set)</td>
+                            <td>Define folder in project (project must be set).</td>
                         </tr>
                         <tr>
                             <td><code>--strict</code></td>
-                            <td>Full context must be set otherwise dialog can't be closed.</td>
+                            <td>Full context must be set; otherwise, the dialog can't be closed.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -323,13 +313,13 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
         </tr>
         <tr>
             <td><code>interactive</code></td>
-            <td>Interactive (Python like) console.
+            <td>Interactive (Python-like) console.
                 <img src={consoleInteractive}/>
             </td>
         </tr>
         <tr>
             <td><code>publish [OPTIONS] &lt;JSON_PATH&gt;</code></td>
-            <td>Start CLI publishing. Publish collects json from path provided as an argument. Json like the generated one for deadline jobs.
+            <td>Start CLI publishing using the provided JSON file. This process is similar to AYON publish job on Deadline.
                 <table>
                     <thead>
                         <tr>
@@ -340,7 +330,7 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
                     <tbody>
                         <tr>
                             <td><code>--targets &lt;TEXT&gt;</code> or <code>-t &lt;TEXT&gt;</code></td>
-                            <td>Targets</td>
+                            <td>Specify targets.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -348,26 +338,23 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
         </tr>
         <tr>
             <td><code>publish-report-viewer</code></td>
-            <td> Launch <a href="ayon_launcher_artist_basic#publish-report-viewer">Publish Report Viewer</a></td>
+            <td>Launch the <a href="ayon_launcher_artist_basic#publish-report-viewer">Publish Report Viewer</a>.</td>
         </tr>
         <tr>
             <td><code>run &lt;SCRIPT_PATH&gt;</code></td>
-            <td>Run python script in AYON context. Note that additional arguments are passed to the script.
+            <td>Run a Python script in the AYON context. Additional arguments are passed to the script.
             <pre>ayon run --script /foo/bar/baz.py arg1 arg2</pre>
                 <div>
-                    <Admonition type="caution" title="deprecated">
-                        <p>AYON launcher does support to run script directly which makes this command deprecated.</p>
+                    <Admonition type="caution" title="Deprecated">
+                        <p>AYON launcher now supports running scripts directly, making this command deprecated.</p>
                         <pre>ayon /foo/bar/baz.py arg1 arg2</pre>
                     </Admonition>
                 </div>
-            <div>
-            </div>
             </td>
         </tr>
         <tr>
             <td><code>tray</code></td>
-            <td>Launch AYON tray. Default action of AYON command is to launch tray 
-                widget to control basic aspects of AYON.
+            <td>Launch the AYON tray. The default action of the AYON command is to launch the tray widget to control basic aspects of AYON.
                 <table>
                     <thead>
                         <tr>
@@ -378,7 +365,7 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
                     <tbody>
                         <tr>
                             <td><code>--force</code></td>
-                            <td>Force to start tray and close any existing one.</td>
+                            <td>Force start the tray and close any existing instance.</td>
                         </tr>
                     </tbody>
                 </table>
@@ -398,7 +385,7 @@ import consoleInteractive from './assets/launcher/artist/console_interactive.png
 
 <TabItem value='win'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon_console.exe contextselection "E:/selected_context.json"
 ```
@@ -406,7 +393,7 @@ cd <ayon-launcher-installation-location>
 
 <TabItem value='linuxmac'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ayon contextselection "/mnt/share/selected_context.json"
 ```
@@ -418,125 +405,119 @@ ayon contextselection "/mnt/share/selected_context.json"
 ### Addons
 These commands are added by other addons. 
 
+`addon <addon-name>` is the main command to acess the addons commands.
+
+
+| Argument | Description |
+|--|--|
+| `addon applications` | Applications addon commands |
+| `addon traypublisher` | TrayPublisher related commands. More Info [Tray Publisher CLI Interface](addon_traypublisher_artist_advanced.md) |
+
+
+#### Applications Addon Commands
+
+`addon applications <command> [OPTIONS]` is the main command to acess the addons commands.
+
 <table>
     <thead>
         <tr>
-            <th>Argument</th>
+            <th>Command</th>
             <th>Description</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td><code>addon applications</code></td>
-            <td>Applications addon commands
+            <td><code>extractenvironments</code></td>
+            <td>Extract environment variables for context into a JSON file. Context options must be passed; otherwise, only AYON's global environments will be extracted.
                 <table>
                     <thead>
                         <tr>
-                            <th>Command</th>
+                            <th>Option</th>
                             <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><code>extractenvironments</code></td>
-                            <td>Extract environment variables for context into json file. context options must be passed; otherwise, only AYON's global environments will be extracted.
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Option</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><code>--project &lt;TEXT&gt;</code></td>
-                                            <td>Project name</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--folder &lt;TEXT&gt;</code></td>
-                                            <td>Folder Path</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--task &lt;TEXT&gt;</code></td>
-                                            <td>Task name</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--app &lt;TEXT&gt;</code></td>
-                                            <td>Full application name</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--envgroup &lt;TEXT&gt;</code></td>
-                                            <td>Environment group (e.g. "farm")</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
+                            <td><code>--project &lt;TEXT&gt;</code></td>
+                            <td>Project name</td>
                         </tr>
                         <tr>
-                            <td><code>launch</code></td>
-                            <td>Launch application.
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Option</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><code>--app &lt;TEXT&gt;</code></td>
-                                            <td>Full application name  [required]</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--project &lt;TEXT&gt;</code></td>
-                                            <td>Project name  [required]</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--folder &lt;TEXT&gt;</code></td>
-                                            <td>Folder path [required]</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--task &lt;TEXT&gt;</code></td>
-                                            <td>Task name [required]</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
+                            <td><code>--folder &lt;TEXT&gt;</code></td>
+                            <td>Folder path</td>
                         </tr>
                         <tr>
-                            <td><code>launch-by-id</code></td>
-                            <td>Launch application by id.
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Option</th>
-                                            <th>Description</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><code>--app &lt;TEXT&gt;</code></td>
-                                            <td>Full application name  [required]</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--project &lt;TEXT&gt;</code></td>
-                                            <td>Project name  [required]</td>
-                                        </tr>
-                                        <tr>
-                                            <td><code>--task-id &lt;TEXT&gt;</code></td>
-                                            <td>Task id  [required]</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </td>
+                            <td><code>--task &lt;TEXT&gt;</code></td>
+                            <td>Task name</td>
+                        </tr>
+                        <tr>
+                            <td><code>--app &lt;TEXT&gt;</code></td>
+                            <td>Full application name</td>
+                        </tr>
+                        <tr>
+                            <td><code>--envgroup &lt;TEXT&gt;</code></td>
+                            <td>Environment group (e.g. "farm")</td>
                         </tr>
                     </tbody>
                 </table>
             </td>
         </tr>
         <tr>
-            <td><code>addon traypublisher</code></td>
-            <td>TrayPublisher related commands. More Info <a href="addon_traypublisher_artist_advanced">Tray Publisher CLI Interface</a> </td>
+            <td><code>launch</code></td>
+            <td>Launch application.
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--app &lt;TEXT&gt;</code></td>
+                            <td>Full application name  [required]</td>
+                        </tr>
+                        <tr>
+                            <td><code>--project &lt;TEXT&gt;</code></td>
+                            <td>Project name  [required]</td>
+                        </tr>
+                        <tr>
+                            <td><code>--folder &lt;TEXT&gt;</code></td>
+                            <td>Folder path [required]</td>
+                        </tr>
+                        <tr>
+                            <td><code>--task &lt;TEXT&gt;</code></td>
+                            <td>Task name [required]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td><code>launch-by-id</code></td>
+            <td>Launch application by id.
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--app &lt;TEXT&gt;</code></td>
+                            <td>Full application name  [required]</td>
+                        </tr>
+                        <tr>
+                            <td><code>--project &lt;TEXT&gt;</code></td>
+                            <td>Project name  [required]</td>
+                        </tr>
+                        <tr>
+                            <td><code>--task-id &lt;TEXT&gt;</code></td>
+                            <td>Task ID  [required]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
         </tr>
     </tbody>
 </table>
@@ -552,7 +533,7 @@ These commands are added by other addons.
 
 <TabItem value='win'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ./ayon_console.exe addon applications launch --app houdini/20-5 --project Experiments --folder /shots/shot_01 --task fx
 ```
@@ -560,12 +541,11 @@ cd <ayon-launcher-installation-location>
 
 <TabItem value='linuxmac'>
 
-```
+```bash
 cd <ayon-launcher-installation-location>
 ayon addon applications launch --app houdini/20-5 --project Experiments --folder /shots/shot_01 --task fx
 ```
 </TabItem>
 </Tabs>
-
 
 :::

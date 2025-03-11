@@ -8,31 +8,32 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Intro
-AYON Launcher is the entry point to start working within the AYON studio platform.
 
-## Working in the studio
+AYON Launcher is your starting point for working within the AYON studio platform.
 
-Ensure AYON is installed and deployed in your studio environment for immediate use. Your admin likely placed the AYON icon on your desktop or configured your system to launch AYON upon startup.
+## Working in the Studio
+
+Make sure AYON is installed and set up in your studio environment for immediate use. Your admin likely placed the AYON icon on your desktop or set your system to launch AYON on startup.
 
 ![AYON Launcher Icon](assets/ayon_launcher_icon.png)
 
-If this is not the case, reach out to your administrator for guidance on deploying AYON in your studio.
+If not, contact your administrator for help with deploying AYON in your studio.
 
-## Working remotely
+## Working Remotely
 
-If you are working remotely e.g. from home, you'll need to install the AYON Launcher by yourself. AYON Launcher Installer should be available to download from AYON webUI.
+If you're working remotely, like from home, you'll need to install the AYON Launcher yourself. You can download the AYON Launcher Installer from the AYON webUI.
 
 :::tip
-See the [Installation section](#installation) for more information on how to download and install AYON launcher by yourself.
+Check the [Installation section](#installation) for details on downloading and installing the AYON Launcher yourself.
 :::
 
 ## Installation
 
-**AYON Launcher** and its installation files are available for all major operating systems: **Windows** 10 (Server, WIN 11 and newer), **macOS** (Mojave or later), and **Linux** distributions (Rocky Linux, Ubuntu and formerly CentOS).
+**AYON Launcher** and its installation files are available for all major operating systems: **Windows** 10 (Server, WIN 11 and newer), **macOS** (Mojave or later), and **Linux** distributions (Rocky Linux, Ubuntu, and formerly CentOS).
 
-Once you log into `AYON Server`, A `Download Launcher` button should be present at the top right of the webUI, which provides a binary for the Operating System you are accessing the server website, alternatively you clicking `Download Launcher` in the user menu, redirects you to `Downloads Tab` which allows you to pick a specific binary version.
+Once logged into `AYON Server`, you'll find a `Download Launcher` button at the top right of the webUI. This provides a binary for the operating system you're using to access the server. Alternatively, clicking `Download Launcher` in the user menu redirects you to the `Downloads Tab`, where you can choose a specific binary version.
 
-| Download Launcher Buttons|
+| Download Launcher Buttons |
 |--|
 | ![A screenshot of the AYON main menu with the "Download Launcher" menu expanded](assets/ayon_download_installer.png) |
 
@@ -41,8 +42,7 @@ Once you log into `AYON Server`, A `Download Launcher` button should be present 
 | ![](assets/launcher/artist/launchers_download_tab.png) |
 
 :::info
-AYON installation files can be obtained directly from Github [ayon-launcher releases](https://github.com/ynput/ayon-launcher/releases).
-However, it's recommended to use the specified version by your administrator to avoid any compatibility issues.
+You can also get AYON installation files directly from Github [ayon-launcher releases](https://github.com/ynput/ayon-launcher/releases). However, it's best to use the version specified by your administrator to avoid compatibility issues.
 :::
 
 :::important User Permissions

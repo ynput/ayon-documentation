@@ -4,96 +4,92 @@ title: AYON Launcher - Desktop Application
 sidebar_label: AYON Launcher
 ---
 
-The desktop application, AYON launcher, is the entry point to allow artists work within AYON system. It should be installed locally on the artist's workstation. It is self-contained (frozen) software that includes all the required dependencies to run itself.
+## Introduction
+The desktop application, AYON launcher, is the entry point for artists to work within the AYON system. It should be installed locally on the artist's workstation. This self-contained (frozen) software includes all the necessary dependencies to run.
 
-The AYON launcher contains the logic for connecting to the AYON server and distribution of addons, dependency packages and different versions of AYON launcher. Distribution is based on bundles that are set on server.
+The AYON launcher connects to the AYON server and distributes add-ons, dependency packages, and different versions of the launcher. Distribution is based on bundles set on the server.
 
 
 ## Distribution & Installation
 
-AYON server is used to distribute AYON launcher where artists can login to AYON webUI and find download button. 
+The AYON server distributes the AYON launcher. Artists can log in to the AYON web UI to find the download button.
 
-Launcher Binaries names looks like: 
+Launcher binaries are named as follows:
 - Windows: `AYON-1.0.0-win-setup.exe`
 - Linux: `AYON-1.0.0-linux.tar.gz`
 - Mac: `AYON-1.0.0-Installer.dmg`
 
-Installing AYON launcher on individual workstation as mentioned in [Artist Getting Started: Installation](artist_getting_started.md#installation).
+Install the AYON launcher on individual workstations as mentioned in [Artist Getting Started: Installation](artist_getting_started.md#installation).
 
-And, when the AYON launcher is starting. When an artist is running the `tray`, it is periodically checked for new updates in the current bundle. e.g. launching launcher in production mode, will fetch updates from your production bundle including addons distribution requires downloading, validating, and extracting to the user's machine to be able to use them.
+When the AYON launcher starts, it periodically checks for updates in the current bundle. For example, launching the launcher in production mode fetches updates from your production bundle, including add-ons that require downloading, validating, and extracting to the user's machine.
 
-:::info Updating Pipeline to latest Release
+:::info Updating Pipeline to Latest Release
 
-[Updating Pipeline to latest Release](admin_server_updating_pipeline.md) this tool automatically detects which addons need updates and identifies the platforms you’re already using (whether it’s MacOS, Windows, or Linux).
+[Updating Pipeline to Latest Release](admin_server_updating_pipeline.md) automatically detects which add-ons need updates and identifies the platforms you’re using (MacOS, Windows, or Linux).
 
-This is useful if you don't have any Launcher available for downloading on your AYON server.
+This is useful if no launcher is available for download on your AYON server.
 :::
 
-:::tip Automate installation on windows
-Check FAQ, see [Automate launcher installation on Windows Machines](#automate-launcher-installation-on-windows-machines)
+:::tip Automate Installation on Windows
+
+Check the FAQ for [Automate launcher installation on Windows Machines](#automate-launcher-installation-on-windows-machines).
 :::
 
-:::info [Win] Install for all users
+:::info [Win] Install for All Users
 
-On <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> , When installing for "All Users". It is installed to Program files by default, which requires admin permissions.
+On <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> , when installing for "All Users," it installs to Program Files by default, requiring admin permissions.
 :::
 
-## Upload Launcher binaries to AYON server
+## Upload Launcher Binaries to AYON Server
 
-On [Bundles Tab](admin_server_bundles_and_addons.md#bundles-tab), you can upload new launcher via clicking **Upload Launcher** button.
+On the [Bundles Tab](admin_server_bundles_and_addons.md#bundles-tab), you can upload a new launcher by clicking the **Upload Launcher** button.
 
 :::tip
 
-To use the launcher, in your pipeline you have to add it to your bundle.
+To use the launcher in your pipeline, add it to your bundle.
 :::
 
 ## AYON Launcher Builds
 
 :::info Build AYON Launcher
 
-**Unless you know what you are doing,** 
-Building your own AYON Launcher is mostly useful to get unreleased launcher versions. More info see [Building AYON Desktop application](dev_launcher.md#building-ayon-desktop-application)
+**Unless you know what you are doing,** building your own AYON Launcher is mainly useful for getting unreleased versions. For more info, see [Building AYON Desktop Application](dev_launcher.md#building-ayon-desktop-application).
 
-Also, you can find the all official launcher builds in [ayon-launcher/releases | Github](https://github.com/ynput/ayon-launcher/releases) wher eyou can download them directly.
+You can find all official launcher builds on [ayon-launcher/releases | Github](https://github.com/ynput/ayon-launcher/releases) for direct download.
 
-Keep in mind, You can extend AYON launcher using a custom addon where e.g. you can extend AYON [tray menu](ayon_launcher_artist_basic.md#tray-menu) to add your own actions, extend the [launcher actions](ayon_launcher_artist_basic.md#launcher-ui) to add your own actions.
+Remember, you can extend the AYON launcher using a custom add-on. For example, you can extend the AYON [tray menu](ayon_launcher_artist_basic.md#tray-menu) or [launcher actions](ayon_launcher_artist_basic.md#launcher-ui) to add your own actions.
 :::
 
 ## Run AYON
 
-Running AYON should be as mentioned in [Run AYON Launcher](artist_getting_started.md#run-ayon-launcher).
-
-Also, here are additional information
+Running AYON should follow the instructions in [Run AYON Launcher](artist_getting_started.md#run-ayon-launcher).
 
 ### Pipeline Modes
-AYON pipeline works allows working in different pipeline modes, AYON launcher provides a set arguments to specify the pipeline mode to work in and also allows specifying a bundle to work in.
-For more information, check
+
+AYON pipeline allows working in different modes. The launcher provides arguments to specify the pipeline mode and the bundle to work in. For more information, check:
 - [Pipeline Modes](admin_server_bundles_and_addons.md#pipeline-modes)
-- [Launch in different Pipeline Modes](ayon_launcher_artist_advanced.md#launch-in-different-pipeline-modes)
-- [How to use different bundles with different projects? | Ynput Forums](https://community.ynput.io/t/how-to-use-different-bundles-with-different-projects/1096) 
+- [Launch in Different Pipeline Modes](ayon_launcher_artist_advanced.md#launch-in-different-pipeline-modes)
+- [How to Use Different Bundles with Different Projects? | Ynput Forums](https://community.ynput.io/t/how-to-use-different-bundles-with-different-projects/1096)
 
 ### AYON Launcher Updates
 
-AYON launcher on startup when a connection to the server is made, AYON will get various information from the server - one among them is updates of add-ons. If add-ons are missing or outdated, the right versions are downloaded, validated, and extracted to the artist workstation.
+On startup, when connected to the server, AYON retrieves various information, including add-on updates. If add-ons are missing or outdated, the correct versions are downloaded, validated, and extracted to the artist's workstation.
 
-### Runtime provided environment variables
+### Runtime Provided Environment Variables
 
-See [Environment variables](dev_launcher.md#environment-variables) for information about environment variables set during start up.
-
+See [Environment Variables](dev_launcher.md#environment-variables) for information about environment variables set during startup.
 
 ## Additional Information
+
 ### Site ID
-After installing AYON launcher on a machine, a unique id will be assigned to that machine.
-This id is usually a funny name consisting of 3 parts. e.g. `military-mouse-of-jest`. 
 
-Site ID is used for setting site settings.
+After installing the AYON launcher, a unique ID is assigned to the machine, usually a funny name like `military-mouse-of-jest`. The Site ID is used for setting site settings.
 
-More info about settings categories in AYON. see,[Addon Settings Categories](admin_server_bundles_and_addons.md#addon-settings-categories).
+For more info about settings categories in AYON, see [Addon Settings Categories](admin_server_bundles_and_addons.md#addon-settings-categories).
 
-:::info where site id is saved
+:::info Where Site ID is Saved
 
-It's saved in a file called `site_id` located in the path saved in the `AYON_LAUNCHER_LOCAL_DIR`.
-based on OS, by defaults to:
+It's saved in a file called `site_id` located in the path saved in `AYON_LAUNCHER_LOCAL_DIR`. By default, based on OS:
 - Windows: `%LOCALAPPDATA%\Ynput\AYON`
 - Linux: `~/.local/share/AYON`
 - macOS: `~/Library/Application Support/AYON`
@@ -101,34 +97,35 @@ based on OS, by defaults to:
 
 :::tip Customize Site ID
 
-Check FAQ, see [How to set custom site id](#how-to-set-custom-site-id)
+Check the FAQ for [How to Set Custom Site ID](#how-to-set-custom-site-id).
 :::
 
 ### Shims
 
-Shims are meant to help with registering of path to AYON launcher. 
-Right now you can point to a single version of AYON launcher, which would stop to work when the version is uninstalled because new version is available. Only think which shim does is to find an existing ayon launcher and execute it, it does not download it or handle logic.
+Shims help register the path to the AYON launcher. Currently, you can point to a single version, which stops working when uninstalled for a new version. The shim finds an existing launcher and executes it without downloading or handling logic.
 
-AYON launcher has new argument handling. When `init-ayon-launcher` is passed it just stores information about executable and deploys shims without any other action.
+The AYON launcher has new argument handling. When `init-ayon-launcher` is passed, it stores information about the executable and deploys shims without further action.
 
-The shim is also used for custom `ayon-launcher://` protocol scheme, that is different based on OS. With this support we can start to use webactions.
+The shim is also used for the custom `ayon-launcher://` protocol scheme, which varies by OS. This support enables web actions.
 
 :::note
-Shim on windows and linux is installed to resources dir (per user).
+
+Shims on Windows and Linux are installed to the resources directory (per user).
 :::
 
 ## FAQ
 
-### Where login credentials are saved
+### Where Login Credentials are Saved
 
-When you start AYON for the first time, the login UI will show up to ask you for the server URL and credentials. It will then save it securely to your system's keyring - on Windows, it is **Credential Manager**, on macOS, it will use its **Keychain**, on Linux, it can be **GNOME Keyring** or other software, depending on your distribution.
+When starting AYON for the first time, the login UI prompts for the server URL and credentials, saving them securely to your system's keyring. On Windows, it's **Credential Manager**; on macOS, it's **Keychain**; on Linux, it could be **GNOME Keyring** or other software, depending on your distribution.
 
-This can also be set beforehand with the environment variable `AYON_SERVER_URL`. If set, it takes precedence over the one set in the keyring.
+This can also be set beforehand with the environment variable `AYON_SERVER_URL`, which takes precedence over the keyring setting.
 
-### Automate launcher installation on Windows Machines
-You can crate a `.bat` file with the following specs and run it on all machines through deadline.
+### Automate Launcher Installation on Windows Machines
 
-The installer build for Windows is built using InnoSetup - so any of [its default command line flags](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline) apply.
+You can create a `.bat` file with the following specs and run it on all machines through Deadline.
+
+The installer build for Windows uses InnoSetup, so any of [its default command line flags](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline) apply.
 
 ```shell
 set INSTALLER=/path/to/installer
@@ -138,37 +135,33 @@ set LOGFILE=/path/to/output/log.txt
 "%INSTALLER%" /NOCANCEL /VERYSILENT /CURRENTUSER /VERYSILENT /SP /SUPPRESSMSGBOXES /LOG="%LOGFILE%"
 ```
 
-For reference, here community post where the question was asked
+For reference, see the community post where this question was asked:
 - [Automating AYON Launcher Installation on User Machines Using the Command Line | Ynput Forums](https://community.ynput.io/t/automating-ayon-launcher-installation-on-user-machines-using-the-command-line/1836)
 
-### Use shared location for AYON launcher and addons
+### Use Shared Location for AYON Launcher and Add-ons
 
-This is done by leveraging `AYON_LAUNCHER_STORAGE_DIR` environment variable.
-For more information about it, See [Launcher Environment variables](dev_launcher.md#environment-variables).
+This is done by leveraging the `AYON_LAUNCHER_STORAGE_DIR` environment variable. For more information, see [Launcher Environment Variables](dev_launcher.md#environment-variables).
 
-Here's a community step by step guide
-- [Use shared location for AYON launcher and addons | Ynput Forums](https://community.ynput.io/t/use-shared-location-for-ayon-launcher-and-addons/1175).
+Here's a community step-by-step guide:
+- [Use Shared Location for AYON Launcher and Add-ons | Ynput Forums](https://community.ynput.io/t/use-shared-location-for-ayon-launcher-and-addons/1175).
 
+### AYON Launcher Versioning Convention
 
-### AYON Launcher versioning convention
+AYON uses semantic versioning for add-ons and desktop applications ([click here for more details](https://semver.org/)).
 
-AYON version control for addons and desktop applications is based on semantic versioning ([click here for more details](https://semver.org/)).
+For studios customizing the AYON source code, it's practical to build by adding a name and number after the PATCH, rather than deploying with the same version from the original AYON repository. For example, `1.0.0` should become `1.0.0-yourstudio.1`.
 
+Remember, versions with a name and number after the PATCH are considered higher versions. For instance, `1.0.0` < `1.0.0-yourstudio.1` < `1.0.0-yourstudio.2` < `1.0.1-yourstudio.1`.
 
-For studios customizing the source code of AYON, a practical approach could be to build by adding a name and a number after the PATCH and not to deploy 1.0.0 from the original AYON repository. 
-For example, your builds will be: `1.0.0` < `1.0.0-yourstudio.1` < `1.0.0-yourstudio.2` < `1.0.1-yourstudio.1`.
+### How to Set Custom Site ID
 
-### How to set custom site id
+Setting a custom site ID can help set site IDs to sensible names, making navigation easier. It also allows controlling machines in your farm with a single site by giving them all the same site ID.
 
-
-Setting custom site id can be beneficial to set site id to a sensible names which makes it easy to navigate.
-It also allows control machines in your farm in settings with single site by giving them all the same site id.
-
-To set custom site id there are two possible solutions: feel free to pick either on.
-- You can set an env var on the machine, like e.g. `AYON_SITE_ID=my-cool-machine`.
-- Modify the site-id file where we look.
+To set a custom site ID, there are two possible solutions:
+- Set an environment variable on the machine, e.g., `AYON_SITE_ID=my-cool-machine`.
+- Modify the value in the [Site ID](#site-id) file.
 
 :::caution
-Be aware not to do that if the machines are artist machines not dedicated farm machine.
-Also, keep in mind these machines should also have the same OS.
+
+Be cautious not to do this on machines that are not dedicated farm machines, such as artist machines. Also, ensure these machines have the same operating system.
 :::

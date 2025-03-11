@@ -7,8 +7,7 @@ toc_max_heading_level: 5
 ---
 
 :::info
-This page explains the basic usage of AYON Launcher.
-Where it explains the Tray Menu and how to use different actions.
+This page explains the basic usage of AYON Launcher, including the Tray Menu and how to use different actions.
 :::
 
 ## Intro
@@ -16,7 +15,7 @@ Where it explains the Tray Menu and how to use different actions.
 <div class="row">
 <div class="col">
 
-Once Launching AYON Launcher, AYON icon should appear in your tray.
+Once you launch the AYON Launcher, the AYON icon should appear in your system tray.
 
 </div>
 <div class="col">
@@ -26,22 +25,22 @@ Once Launching AYON Launcher, AYON icon should appear in your tray.
 </div>
 </div>
 
-:::tip launcher icon color code
+:::tip Launcher Icon Color Code
 
-AYON icon can appear in different colors indicating the [pipeline mode](admin_server_bundles_and_addons.md#pipeline-modes) AYON was launched in.
-- <span style={{color:'#23E0A9'}}>⬤</span> : AYON is launched in <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> mode.
-- <span style={{color:'#ff858b'}}>⬤</span> : AYON is launched in <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>Staging</span> mode.
-- <span style={{color:'#e2e2e3'}}>⬤</span> : AYON is launched in <span style={{color:'#1c2026',backgroundColor:'#e2e2e3', borderRadius: '4px', padding: '2px 4px'}}>Development</span> mode.
+The AYON icon can appear in different colors, indicating the [pipeline mode](admin_server_bundles_and_addons.md#pipeline-modes) in which AYON was launched.
+- <span style={{color:'#23E0A9'}}>⬤</span> : AYON is in <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> mode.
+- <span style={{color:'#ff858b'}}>⬤</span> : AYON is in <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>Staging</span> mode.
+- <span style={{color:'#e2e2e3'}}>⬤</span> : AYON is in <span style={{color:'#1c2026',backgroundColor:'#e2e2e3', borderRadius: '4px', padding: '2px 4px'}}>Development</span> mode.
 
-The default executable created when installing AYON Launcher starts the launcher in  the <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> mode, as it's the stable mode for your studio's daily work.
+The default executable starts AYON Launcher in <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span> mode, which is the stable mode for daily work.
 
-For more info about running the launcher in different modes, please refer to [Launch in different Pipeline Modes](ayon_launcher_artist_advanced.md#launch-in-different-pipeline-modes)
+For more info about running the launcher in different modes, see [Launch in Different Pipeline Modes](ayon_launcher_artist_advanced.md#launch-in-different-pipeline-modes).
 
 :::
 
 ## Tray Menu
-When clicking AYON Icon in your tray, AYON Tray menu appears.
-It provides a set of tools: 
+
+When you click the AYON icon in your tray, the AYON Tray Menu appears. It provides a set of tools:
 
 <div class="row">
 <div class="col">
@@ -51,7 +50,7 @@ It provides a set of tools:
 - [Browser](#browser)
 - [Admin (Utilities)](#admin-utilities)
 - [Login](#login)
-- [Launcher Info](#launcher-info) *The Button with Launcher version*
+- [Launcher Info](#launcher-info) *The button with the launcher version*
 - [Exit](#exit)
 
 </div>
@@ -64,63 +63,70 @@ It provides a set of tools:
 
 ### Launcher
 
-AYON Launcher which is used to launch DCCs in the specified AYON context.
+AYON Launcher is used to launch DCCs in the specified AYON context.
 
 #### Launcher UI
 
-| Select A project | Select a task and trigger an action |
+| Select a Project | Select a Task and Trigger an Action |
 |--|--|
 | ![](assets/launcher/artist/launcher_select_project.png) | ![](assets/launcher/artist/launcher_select_task.png) |
 
 Launcher UI:
-1. Select a Project, if there's no selected project, you'll find a project filter at the top.
+1. Select a Project. If no project is selected, use the project filter at the top.
 2. Refresh View
 3. Actions Pane
-4. Select Folder, You'll find a folder filter at the top.
+4. Select Folder. Use the folder filter at the top.
 5. Select Task
 
 #### Action Pane
 
-Available actions follow your studio's configuration for application and tools settings mentioned in [Applications and Tools](addon_applications_admin.md).
+Available actions follow your studio's configuration for application and tool settings mentioned in [Applications and Tools](addon_applications_admin.md).
 
+- Left-click an action to trigger it and open a list of available application variants. By default, it opens the last available workfile; otherwise, it starts a new scene.
+- Right-click an action to change its mode, which is useful for specifying how to launch applications. For example, enable `skip opening last workfile` to always start a new scene.
 
-Action left click: Trigger the action and Opens a list of available application variants.
-Action right click: Changes the mode of the action, this is mostly associated with running applications where you can specify if you want to launch the 
+:::tip Starting New Scenes
+
+Admins can enable initializing new scenes via the **Templated Build Workfile** feature.
+:::
 
 #### Common Actions
 
-- **Launch Applications** : As explained in the previous section, they are denoted by the DCC app icon.
-- **Explore here**: Opens the location for the selected folder or task in the file explorer.
-- **Show in AYON**: Opens the location for the selected folder or task on AYON server.
-- **Terminal**: This special one when clicked allows you to pick the shell context. This is most useful for admins and TDs. More info about it in [Launcher Advanced Usage](ayon_launcher_artist_advanced.md)
+- **Launch Applications**: Denoted by the DCC app icon.
+- **Explore Here**: Opens the location for the selected folder or task in the file explorer.
+- **Show in AYON**: Opens the location for the selected folder or task on the AYON server.
+- **Terminal**: Allows you to pick the shell context. Useful for admins and TDs. More info in [Launcher Advanced Usage](ayon_launcher_artist_advanced.md).
 
 ### Publisher 
 
-*This is only available if your admin added tray publisher addon to the pipeline bundle.*
+*This is only available if your admin added the tray publisher addon to the pipeline bundle.*
 
-When clicked it launches the standalone publisher, for more info refer to [Tray Publisher Docs](addon_traypublisher_artist.md).
-It's the same as our [Publisher](artist_tools_publisher.md) tool but it's standalone.
+When clicked, it launches the standalone publisher. For more info, see [Tray Publisher Docs](addon_traypublisher_artist.md). It's the same as our [Publisher](artist_tools_publisher.md) tool but standalone.
 
 ### Browser
-Explore Published Products.
-It's the same as [loader](artist_tools_loader.md) tool but it's used for browsing and checking published products.
+
+Explore Published Products. It's the same as the [Loader](artist_tools_loader.md) tool but used for browsing and checking published products.
 
 ![](assets/launcher/artist/browser_ui.png)
 
 1. Select a Project
 2. Refresh UI
-3. Select a folder
-4. Available published product types
-5. Available published products
-6. Thumbnail of the selected product or folder
-7. Version Info of the selected product
-8. Available representation for the selected product version.
+3. Select a Folder
+4. Available Published Product Types
+5. Available Published Products
+6. Thumbnail of the Selected Product or Folder
+7. Version Info of the Selected Product
+8. Available Representation for the Selected Product Version
 
 ### Admin (Utilities)
+
 <div class="row">
 <div class="col">
 
 Useful AYON utilities for Admins and TDs. 
+- [Console](#console)
+- [Publish Report Viewer](#publish-report-viewer)
+
 </div>
 <div class="col">
 
@@ -129,32 +135,36 @@ Useful AYON utilities for Admins and TDs.
 </div>
 
 #### Console
+
 It's like any other script editor in DCCs where you can interact directly with AYON.
 
 ![](assets/launcher/artist/script_console.png)
+
 1. Script Output Pane
 2. Script Input Pane
-3. Add tab...
+3. Add Tab...
 4. Execute
 
-:::tip Some useful code snippets
+:::tip Some Useful Code Snippets
 
 - [AYON Python API First Steps | Ynput Forums](https://community.ynput.io/t/ayon-python-api-first-steps/1278)
 - [BigRoy's Gist](https://gist.github.com/BigRoy)
-- [AYON Recipes](https://github.com/MustafaJafar/ayon-recipes)
+- [AYON Recipes by Mustafa](https://github.com/MustafaJafar/ayon-recipes)
 
 :::
 
 #### Publish Report Viewer
-This tool is used to examine exported publish report.
+
+This tool is used to examine exported publish reports.
 
 ![](assets/launcher/artist/publish_report_viewer.png)
-1. Publish reports pane: drag and drop publish report to add them. click the trash icon to remove them from the pane.
-2. Report viewer: which is 1:1 to what the publisher looked like when the report was exported.
+
+1. Publish Reports Pane: Drag and drop publish reports to add them. Click the trash icon to remove them.
+2. Report Viewer: Displays what the publisher looked like when the report was exported.
 
 ### Login
-Login to AYON where you use the credentials provided by your studio.
-You can login directly using the input fields on the login window or click `Login with AYON Server` to login using the browser.
+
+Log in to AYON using the credentials provided by your studio. You can log in directly using the input fields on the login window or click `Login with AYON Server` to log in using the browser.
 
 ![](assets/launcher/artist/login_window.png)
 
@@ -163,18 +173,18 @@ Once logged in, the login window will show the current user.
 ![](assets/launcher/artist/login_window_2.png)
 
 ### Launcher Info
-This button is labeled with AYON launcher version.
-When clicked it shows additional information about your installed AYON launcher, local site ID and environment variables.
+
+This button is labeled with the AYON launcher version. When clicked, it shows additional information about your installed AYON launcher, local site ID, and environment variables.
 
 :::info
 
-See [Environment variables](dev_launcher.md#environment-variables) More information about environment variables set during start up.
+See [Environment Variables](dev_launcher.md#environment-variables) for more information about environment variables set during startup.
 :::
 
 ![](assets/launcher/artist/AYON_info.png)
 
-- *<strong><span style={{color:"red"}}>\*</span></strong> Local Site ID.*: A unique id that is assigned to your machine on installing AYON Launcher. More info See [Site ID](ayon_launcher_artist_advanced.md#site-id).
+- **<strong><span style={{color:"red"}}>\*</span></strong> Local Site ID**: A unique ID assigned to your machine when installing AYON Launcher. More info in [Site ID](ayon_launcher_artist_advanced.md#site-id).
 
 ### Exit
 
-Exit and close AYON launcher desktop app.
+Exit and close the AYON Launcher desktop app.
