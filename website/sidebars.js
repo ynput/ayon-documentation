@@ -12,6 +12,14 @@ module.exports = {
             label: "General",
             items: [
                 "artist_getting_started",
+                {
+                    type: "category",
+                    label: "AYON Launcher",
+                    items: [
+                        "ayon_launcher_artist_basic",
+                        "ayon_launcher_artist_advanced"
+                    ],
+                },
                 "artist_concepts",
                 "artist_publish",
                 {
@@ -195,11 +203,7 @@ module.exports = {
                 "admin_server_licenses",
             ],
         },
-        {
-            type: "category",
-            label: "AYON Launcher",
-            items: ["admin_launcher_distribute", "admin_launcher_run"],
-        },
+        "ayon_launcher_admin",
         {
             type: "category",
             label: "Configuration",
@@ -311,9 +315,10 @@ module.exports = {
         "dev_requirements",
         {
             type: "category",
-            label: "AYON launcher",
+            collapsed: true,
+            label: "AYON Launcher",
+            link: { type: "doc", id: "dev_launcher"},
             items: [
-                "dev_launcher",
                 "dev_launcher_build_windows",
                 "dev_launcher_build_macos",
                 "dev_launcher_build_linux",
