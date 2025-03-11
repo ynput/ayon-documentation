@@ -33,8 +33,9 @@ This is useful if you don't have any Launcher available for downloading on your 
 Check FAQ, see [Automate launcher installation on Windows Machines](#automate-launcher-installation-on-windows-machines)
 :::
 
-:::info Install for all users
-When installing for "All Users". It should be in a location where it needs admin permissions. However, the app will run under the CURRENT_USER registry to avoid requirement for admin privileges and to avoid issues connected to multi-user machine.
+:::info [Win] Install for all users
+
+On <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> , When installing for "All Users". It is installed to Program files by default, which requires admin permissions.
 :::
 
 ## Upload Launcher binaries to AYON server
