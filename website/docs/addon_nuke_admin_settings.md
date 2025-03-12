@@ -127,9 +127,9 @@ Nuke script project color settings map 1:1
 - **Used in plugins**
 - **Nuke Node Class**
 - **Knobs**
-  - **Name**
-  - **Type**
-  - **Controller**
+  - **Name**: Knob name
+  - **Type**: Select the knob type from a dropdown menu.
+  - **Value**: This option varies based on the knob type, allowing you to set the value easily.
   - **+**: Add more knobs
 - **+**: Add more node per plugins
 
@@ -139,12 +139,20 @@ Nuke script project color settings map 1:1
 
 - **Used in plugins**
 - **Nuke Node Class**
+- **Product names**
 - **Knobs**
-  - **Name**
-  - **Type**
-  - **Controller**
+  - **Name**: Knob name
+  - **Type**: Select the knob type from a dropdown menu.
+  - **Value**: This option varies based on the knob type, allowing you to set the value easily.
   - **+**: Add more knobs
 - **+**: Add more node per plugins
+
+:::info Nuke Node Class
+
+Nuke node class enum supports `Custom Class`, allowing you to specify a custom class name.
+
+![](assets/nuke/settings/node_plugins_nodes_overrides_custom_class.png)
+:::
 
 ### Assign colorspace to read nodes via rules
 > Setting Location: `ayon+settings://nuke/imageio/regex_inputs`
