@@ -667,20 +667,21 @@ Once the render is finished, you can publish the render. Click on the AYON icon 
 
 ![Unreal AYON Tools Publish](assets/unreal_ayon_menu_publisher.png)
 
-### Farm rendering
+### Farm Rendering
 
-Unreal integration also supports rendering on Deadline. Process of creation of render instance is same as higher, difference is in
-selection of `Farm rendering` in `Render target`.
+Unreal integration also supports rendering on Deadline. The process for creating a render instance is the same as mentioned above, but you need to select `Farm Rendering` in `Render Target`.
 
-Deadline rendering process expects physically existing Render Queue and Render Settings uassets in the Unreal project.
+AYON requires `Render Queue` and `Render Configuration` uassets to be physically present in the Unreal project.
 
-By default they are expected at these paths:
+By default, they are expected at these locations:
 - `/Game/Ayon/renderQueue`
-- `/Game/Ayon/DefaultMovieRenderQueueConfig.DefaultMovieRenderQueueConfig`
+- `/Game/Ayon/DefaultMovieRenderQueueConfig`
 
-These could be modified by AYON admin in `ayon+settings://unreal/render_queue_path`
+:::info
 
-![Unreal AYON Render Queue and Settings](assets/unreal_render_queue_and_settings.png)
+Please refer to your admin to know the correct `Render Queue` and `Render Configuration` to use and where to place them in the project, as they follow admin configuration in [Rendering Settings](addon_unreal_admin.md#rendering).
+
+:::
 
 ## AYON Perforce Support
 
