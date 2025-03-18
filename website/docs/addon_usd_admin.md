@@ -122,6 +122,8 @@ For more info about `TF_DEBUG`, See [Debugging | lucascheller USD Survival Guide
 
 ![](assets/usd/admin/process_usd_files_to_use_relative_paths.png)
 
+When enabled, published USD layers will anchor the asset paths to the published filepath.
+
 - **Enable**: The default state of the plugin.
 - **Optional**: Allows the user to toggle this setting in the publisher UI.
 - **Active**: The default value of the toggle in the publisher UI.
