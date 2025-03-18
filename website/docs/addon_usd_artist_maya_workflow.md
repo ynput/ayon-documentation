@@ -36,14 +36,14 @@ Any contribution to an asset structure should be within the default root primiti
 
 So for folder path `/asset/characters/hero` that root name is `hero`.
 
-The Creator allows to create that asset structure for you by enabling the `Create Asset Structure` checkbox.
+The Creator allows to create that asset structure for you by enabling the `Create Asset Hierarchy` checkbox.
 Then select your geometry, create and it will directly be conveniently parented to the required hierarchy.
 
 ![](assets/usd/ayon_usd_maya_publish_model.gif)
 
-:::tip Create Asset Structure
+:::tip Create Asset Hierarchy
 
-The Create Asset Structure checkbox will create a root group `{asset}` and child group `geo`.
+The Create Asset Hierarchy checkbox will create a root group `{asset}` and child group `geo`.
 The root group is namespaced with the variant so that you can easily publish multiple variants from one scene without having naming conflicts on that root node's name which must match the current folder name exactly.
 
 So when working in `/asset/characters/hero` it will create for variant `modelMain`:
