@@ -44,6 +44,10 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 
 ![](assets/usd/admin/binary_distribution.png)
 
+:::caution
+
+Disabling this setting also disables the use of the AYON USD resolver.
+:::
 
 - **Server URL**: The URL for the USD binary distribution LakeFs server. It's recommended to keep the default value to use the USD builds we provide.
 - **Repository URI**: The repository tag or branch URI within the LakeFs server.
