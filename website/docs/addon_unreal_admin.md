@@ -38,19 +38,42 @@ To use a custom path for the compiled plugin, you need to set an environment var
 
 You can set this variable either in Ayon Studio Setting in `applications/unreal/environment`, or, from there, to a specific version of Unreal.
 
-### Farm rendering via Deadline
+### Rendering
 
-AYON Unreal integration supports rendering on Deadline, please take a look how to setup Deadline [here](addon_deadline_admin.md).
+AYON requires `Render Queue` and `Render Configuration` uassets to be physically present in the Unreal project.
 
-Deadline requires Render Queue and Render Settings uassets to be physically present in unreal project at expected locations.
-
-By default they are expected at these paths:
+By default, they are expected at these locations. To customize, see the note **Render Setup Settings** below:
 - `/Game/Ayon/renderQueue`
-- `/Game/Ayon/DefaultMovieRenderQueueConfig.DefaultMovieRenderQueueConfig`
-
-These could be modified by AYON admin in `ayon+settings://unreal/render_queue_path`.
+- `/Game/Ayon/DefaultMovieRenderQueueConfig`
 
 ![Unreal AYON Render Queue and Settings](assets/unreal_render_queue_and_settings.png)
+
+:::tip Render Setup Settings 
+> Setting Location: `ayon+settings://unreal/render_setup`
+
+![](assets/unreal/admin/farm_render_setup.png)
+
+- **Render Queue Path:** Path to Render Queue UAsset for farm publishing
+- **Render Config Path:** Path to Render Configuration UAsset for farm publishing
+- **Pre-roll frames:** The number of frames Unreal uses to initialize the scene before the sequencer starts playing.
+- **Render Format:** Choose format from a drop-down menu.
+
+<div class="row">
+<div class="col">
+
+When setting the `Render Queue Path` and `Render Config Path`, you can get their UAsset paths by right-clicking on the asset in the `Content Drawer` and selecting `Copy Object Path`.
+</div>
+<div class="col">
+
+![](assets/unreal/admin/copy_object_path.png)
+</div>
+</div>
+
+:::
+
+### Deadline Support
+
+AYON Unreal integration supports rendering on Deadline, please take a look how to setup Deadline [here](addon_deadline_admin.md).
 
 Deadline workers need to expose location of Unreal editor for rendering via `UnrealExecutable` (or `UnrealEditorExecutable_5_4` for specific version) environment variable.
 This variable could be set locally on the workers as needed or could be set and controlled by AYON by setting it in 
