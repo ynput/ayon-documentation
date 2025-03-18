@@ -125,3 +125,14 @@ For more info about `TF_DEBUG`, See [Debugging | lucascheller USD Survival Guide
 - **Enable**: The default state of the plugin.
 - **Optional**: Allows the user to toggle this setting in the publisher UI.
 - **Active**: The default value of the toggle in the publisher UI.
+
+### Generate USD Resolver Pinning file on publish
+> Setting Location: `ayon+settings://usd/publish/ExtractSkeletonPinningJSON`
+
+![](assets/usd/admin/generate_usd_resolver_pinning.png)
+
+When enabled, on publishing USD files a pinning file will be written along with the published file that pins all dynamic entity URIs to the paths in the pinning file. This should be disabled when not using the USD resolver.
+
+- **Enable**: The default state of the plugin.
+- **Optional**: Allows the user to toggle this setting in the publisher UI.
+- **Active**: The default value of the toggle in the publisher UI.
