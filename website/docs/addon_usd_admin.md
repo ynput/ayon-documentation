@@ -142,3 +142,21 @@ When enabled, on publishing USD files a pinning file will be written along with 
 - **Enable**: The default state of the plugin.
 - **Optional**: Allows the user to toggle this setting in the publisher UI.
 - **Active**: The default value of the toggle in the publisher UI.
+
+## FAQ
+### How to Use Relative Paths Without AYON USD Resolver
+
+Sharing assets with external studios and need everything to be absolute? 
+You'll likely want to use relative paths without the AYON USD resolver. Here's how:
+
+**Solution:**
+- Disable [USD Binary Distribution](#binary-distribution).
+- Disable [Generating Pinning Files](#generate-usd-resolver-pinning-file-on-publish).
+- Enable [Using USD Relative Paths](#process-usd-files-to-use-relative-paths).
+
+:::caution
+
+Enabling [Using USD Relative Paths](#process-usd-files-to-use-relative-paths) in studio settings will impact the current active project. It's best to enable it only in **Project Settings `P+P`** for new projects to avoid affecting existing ones.
+
+For more details on project and studio settings, check out [Addon Settings Categories](admin_server_bundles_and_addons.md#addon-settings-categories).
+:::
