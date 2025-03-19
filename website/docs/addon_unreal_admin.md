@@ -83,7 +83,7 @@ In later Unreal versions, the UAsset path includes the file name twice, separate
 
 ### Deadline Support
 
-AYON Unreal integration supports rendering on Deadline, please take a look how to setup Deadline [here](addon_deadline_admin.md).
+AYON Unreal integration supports rendering using Deadline, please take a look how to setup Deadline [here](addon_deadline_admin.md).
 
 Deadline workers need to expose location of Unreal editor for rendering via `UnrealExecutable` (or `UnrealEditorExecutable_5_4` for specific version) environment variable.
 This variable could be set locally on the workers as needed or could be set and controlled by AYON by setting it in 
