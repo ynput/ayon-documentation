@@ -32,7 +32,7 @@ This is useful if no launcher is available for download on your AYON server.
 
 :::tip Automate Installation on Windows
 
-Check the FAQ for [Automate launcher installation on Windows Machines](#automate-launcher-installation-on-windows-machines).
+See [Automating AYON Launcher Installation on User Machines Using the Command Line | Ynput Forums](https://community.ynput.io/t/automating-ayon-launcher-installation-on-user-machines-using-the-command-line/1836)
 :::
 
 :::info [Win] Install for All Users
@@ -114,29 +114,6 @@ Shims on Windows and Linux are installed to the resources directory (per user).
 :::
 
 ## FAQ
-
-### Where Login Credentials are Saved
-
-When starting AYON for the first time, the login UI prompts for the server URL and credentials, saving them securely to your system's keyring. On Windows, it's **Credential Manager**; on macOS, it's **Keychain**; on Linux, it could be **GNOME Keyring** or other software, depending on your distribution.
-
-This can also be set beforehand with the environment variable `AYON_SERVER_URL`, which takes precedence over the keyring setting.
-
-### Automate Launcher Installation on Windows Machines
-
-You can create a `.bat` file with the following specs and run it on all machines through Deadline.
-
-The installer build for Windows uses InnoSetup, so any of [its default command line flags](https://jrsoftware.org/ishelp/index.php?topic=setupcmdline) apply.
-
-```shell
-set INSTALLER=/path/to/installer
-set LOGFILE=/path/to/output/log.txt
-
-# start installation
-"%INSTALLER%" /NOCANCEL /VERYSILENT /CURRENTUSER /VERYSILENT /SP /SUPPRESSMSGBOXES /LOG="%LOGFILE%"
-```
-
-For reference, see the community post where this question was asked:
-- [Automating AYON Launcher Installation on User Machines Using the Command Line | Ynput Forums](https://community.ynput.io/t/automating-ayon-launcher-installation-on-user-machines-using-the-command-line/1836)
 
 ### Use Shared Location for AYON Launcher and Add-ons
 
