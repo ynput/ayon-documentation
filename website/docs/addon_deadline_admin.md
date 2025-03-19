@@ -33,7 +33,7 @@ Additionally, the addon streamlines Unreal Deadline submissions by utilizing the
 
 For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support, you'll need to set up a few things in both AYON and Deadline itself.
 
-1. **Deploy AYON Launcher**: Install the AYON launcher on all nodes of the Deadline farm. See [Install & Run](admin_launcher_distribute.md) for guidance.
+1. **Deploy AYON Launcher**: Install the AYON launcher on all nodes of the Deadline farm. See [Distribution & Installation](ayon_launcher_admin#distribution--installation) for guidance.
 2. **Set Up Deadline Web API Service**: Follow the instructions [here](https://docs.thinkboxsoftware.com/products/deadline/10.1/1_User%20Manual/manual/web-service.html) to set up the Deadline Web API service.
 3. **Install Custom Plugin and Scripts**: Copy the contents of `ayon/modules/deadline/repository` to `path/to/your/deadline/repository`. Refer to [Deadline Custom Plug-ins](#deadline-custom-plug-ins) for more details.
 4. **Create a New AYON Bundle**: Include the Deadline Addon version in your new AYON Bundle.
