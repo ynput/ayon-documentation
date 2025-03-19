@@ -149,9 +149,7 @@ Here's a community step-by-step guide:
 
 AYON uses semantic versioning for add-ons and desktop applications ([click here for more details](https://semver.org/)).
 
-For studios customizing the AYON source code, it's practical to build by adding a name and number after the PATCH, rather than deploying with the same version from the original AYON repository. For example, `1.0.0` should become `1.0.0-yourstudio.1`.
-
-Remember, versions with a name and number after the PATCH are considered higher versions. For instance, `1.0.0` < `1.0.0-yourstudio.1` < `1.0.0-yourstudio.2` < `1.0.1-yourstudio.1`.
+For studios customizing the AYON source code, it's practical to build by adding a name and number after the PATCH, rather than deploying with the same version from the original AYON repository. For example, `1.0.0` should become `1.0.0+yourstudio.1`.
 
 ### How to Set Custom Site ID
 
