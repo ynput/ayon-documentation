@@ -58,10 +58,20 @@ By default, they are expected at these locations. To customize, see the note **R
 - **Pre-roll frames:** The number of frames Unreal uses to initialize the scene before the sequencer starts playing.
 - **Render Format:** Choose format from a drop-down menu.
 
+#### Get UAsset Object Path
+
 <div class="row">
 <div class="col">
 
 When setting the `Render Queue Path` and `Render Config Path`, you can get their UAsset paths by right-clicking on the asset in the `Content Drawer` and selecting `Copy Object Path`.
+
+In later Unreal versions, the UAsset path includes the file name twice, separated by a dot, like this:
+
+```
+/Game/Ayon/renderQueue.renderQueue
+/Game/Ayon/DefaultMovieRenderQueueConfig.DefaultMovieRenderQueueConfig
+```
+
 </div>
 <div class="col">
 
