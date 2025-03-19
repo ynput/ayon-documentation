@@ -53,10 +53,10 @@ By default, they are expected at these locations. To customize, see the note **R
 
 ![](assets/unreal/admin/farm_render_setup.png)
 
-- **Render Queue Path:** Path to Render Queue UAsset for farm publishing
-- **Render Config Path:** Path to Render Configuration UAsset for farm publishing
+- **Render Queue Path:** Path to Render Queue UAsset for local and farm rendering.
+- **Render Config Path:** Path to Render Configuration UAsset for local and farm rendering.
 - **Pre-roll frames:** The number of frames Unreal uses to initialize the scene before the sequencer starts playing.
-- **Render Format:** Choose format from a drop-down menu.
+- **Render Format:** Choose file format for rendered images from a drop-down menu.
 
 #### Get UAsset Object Path
 
