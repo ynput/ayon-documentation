@@ -176,3 +176,13 @@ You can add your custom toolbar menu into Nuke by setting your gizmo path and ex
 This list links knobs from the write node inside, to the publish group. The name of the knobs can be found when hovering over the knob, in the tooltip in bold.
 
 ![](assets/nuke-knob_name.png)
+
+:::note
+By default AYON relies on the `file_type` knob default to configure the extension of the output Write node.
+However some extensions do not match the `file_type`.
+In which case, set the `file_type` knob and enforce the relevant extension via an additional `ext` knob default.
+
+For example:
+* Stereo EXR (sxr): `file_type = exr` and `ext = sxr`
+* JPEG/JPG: `file_type = jpeg` and `ext = jpg`
+:::
