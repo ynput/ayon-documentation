@@ -250,6 +250,16 @@ custom tools menu will appear in Nuke's toolbar.
 - Preceding nodes
 ![](assets/nuke/settings/create_write_render_preceding_nodes.png)
 
+:::note
+By default AYON relies on the `file_type` knob default to configure the extension of the output Write node.
+However some extensions do not match the `file_type`.
+In which case, set the `file_type` knob and enforce the relevant extension via an additional `ext` knob default.
+
+For example:
+* Stereo EXR (sxr): `file_type = exr` and `ext = sxr`
+* JPEG/JPG: `file_type = jpeg` and `ext = jpg`
+:::
+
 ### Create Write Prerender
 
 > Setting Location: `ayon+settings://nuke/create/CreateWritePrerender`
