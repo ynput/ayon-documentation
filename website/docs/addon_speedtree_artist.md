@@ -69,6 +69,6 @@ Due to the limitations of the SpeedTree API, the AYON menu must function as a st
 
 ### Publishing Model
 
-Users can navigate to **AYON -> Create** to create a model instance for the foliage which need to be published.
+Navigate to **AYON -> Publish -> Create** to create publish instance for the foliage which need to be published.
 
-Ayon would publish the model in fbx format along with xml files(which stores the data of the foliage)
+Switching to **AYON -> Publish** and hitting `Publish` button will produce a 3d model (FBX) along with `.xml` file storing the data of the foliage.
