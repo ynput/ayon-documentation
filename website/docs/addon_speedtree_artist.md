@@ -16,7 +16,8 @@ import versions from '@site/docs/assets/json/Ayon_addons_version.json'
 ## About SpeedTree Addon
 
 The SpeedTree AYON integration lets you:
-- Export your vegetation files as versioned publishes for others to load and update in the third-party software.
+- Export your vegetation files in fbx format with xml file as versioned publishes
+for others to load and update in the third-party software.
 
 ## Working with AYON in SpeedTree
 
@@ -25,11 +26,6 @@ The SpeedTree AYON integration lets you:
 <div class="col">
 
 Once your admin configures AYON to work with SpeedTree, you'll find the SpeedTree icon in the launcher.
-</div>
-<div class="col">
-
-![](assets/substance_designer/artist/launch_substnace_designer.png)
-
 </div>
 </div>
 
@@ -49,9 +45,8 @@ Once SpeedTree launched and spm project is automatically created, a `Blank.spm` 
 </div>
 </div>
 
-
 ## AYON Global Tools
-You can access AYON toolset in SpeedTree via floating window containing `AYON` tools. 
+You can access AYON toolset in SpeedTree via floating window containing `AYON` tools.
 :::note
 Due to the limitations of the SpeedTree API, the AYON menu must function as a standalone floating UI element. Since it cannot be integrated or accessed directly from the host application, users are unable to close the window using the standard close icon.
 :::
