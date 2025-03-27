@@ -51,7 +51,7 @@ Once SpeedTree launched and spm project is automatically created, a `Blank.spm` 
 
 
 ## AYON Global Tools
-You can access AYON global tools in Designer through the `AYON` menu.
+You can access AYON toolset in SpeedTree via floating window containing `AYON` tools. 
 :::note
 Due to the limitations of the SpeedTree API, the AYON menu must function as a standalone floating UI element. Since it cannot be integrated or accessed directly from the host application, users are unable to close the window using the standard close icon.
 :::
