@@ -138,6 +138,7 @@ module.exports = {
                 "addon_zbrush_artist",
                 "addon_mochapro_artist",
                 "addon_silhouette_artist",
+                "addon_speedtree_artist",
             ].sort(sorted),
         },
         {
@@ -301,6 +302,7 @@ module.exports = {
                 "admin_webserver_for_webpublisher",
                 "addon_mochapro_admin",
                 "addon_silhouette_admin",
+                "addon_speedtree_admin",
             ].sort(sorted),
         },
         "admin_releases",
