@@ -67,3 +67,11 @@ Due to the limitations of the SpeedTree API, the AYON menu must function as a st
 Navigate to **AYON -> Publish -> Create** to create publish instance for the foliage which need to be published.
 
 Switching to **AYON -> Publish** and hitting `Publish` button will produce a 3d model (FBX) along with `.xml` file storing the data of the foliage.
+
+
+## Load Product
+
+### Load Workfile
+
+Navigate to **AYON -> Load** to load the published workfile and the file would be automatically
+saved in your project work directory with the versioned naming conversion.
