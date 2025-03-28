@@ -73,5 +73,8 @@ Switching to **AYON -> Publish** and hitting `Publish` button will produce a 3d 
 
 ### Load Workfile
 
-Navigate to **AYON -> Load** to load the published workfile and the file would be automatically
-saved in your project work directory with the versioned naming conversion.
+Navigate to **AYON -> Load** to load any already published `workfile` products which replaces your current active scene and become new work file version automatically. 
+
+:::note
+Due to API limitations of Speedtree there is currently only limited support of AYON Loader tool which can be only used for opening `workfile` products e.g. ingested into the Project using Tray Publisher beforehand allowing for customization to some degree. 
+:::
