@@ -209,7 +209,7 @@ const config = {
         {
             src: "https://plausible.io/js/script.js",
             defer: true,
-            "data-domain": "ayon.ynput.io",
+            "data-domain": "docs.ayon.dev",
         },
     ],
 };
