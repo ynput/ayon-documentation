@@ -39,7 +39,7 @@ Resolve Studio is the only version that works with the Ayon toolkit because of e
 It is possible for AYON to automatically set the Resolve project FPS and Resolution settings from the current task.
 This feature can be enabled via the `ayon+settings://resolve/report_fps_resolution` addon setting.
 
-**Note that AYON can only handle this for file opened through the Workspace menu or at startup**.
+**Note that AYON can only handle this for file opened through the [Workfile Menu](./artist_tools_workfiles.md) or at Startup**.
 
 Unfortunately, Resolve has some limitations that can prevent those settings from being properly reported:
 * If one or multiple timeline(s) already exist within the Project, the project FPS settings might become non-editable.
