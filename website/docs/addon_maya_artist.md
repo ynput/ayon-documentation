@@ -304,8 +304,7 @@ and geometry to `out_SET`. You should end up with something like this:
 
 The other two products `skeletonMesh_SET` and `skeletonAnim_SET` are used for the fbx workflow.
 
-The `skeletonMesh_SET` defines the static FBX skeleton and mesh, as an FBX product directly from the rig publish,
-you should put your skinned character geometry with skeleton in the set.
+The `skeletonMesh_SET` defines the static FBX skeleton and mesh, put any skinned geometry here usually the same used for 'out_SET' too.
 
 The `skeletonAnim_SET` defines the animated content that should be published to FBX from an animation scene
 for the animation product type. This set should include only your animated skeleton.
