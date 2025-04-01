@@ -306,8 +306,7 @@ The other two products `skeletonMesh_SET` and `skeletonAnim_SET` are used for th
 
 The `skeletonMesh_SET` defines the static FBX skeleton and mesh, put any skinned geometry here usually the same used for 'out_SET' too.
 
-The `skeletonAnim_SET` defines the animated content that should be published to FBX from an animation scene
-for the animation product type. This set should include only your animated skeleton.
+The `skeletonAnim_SET` defines the skeleton consisting of bones hierarchy used for the animation product (FBX). Put your rig's skeleton hierarchy driving the animation here.
 
 :::tip Enable FBX for animation product type
 Users need to enable **Collect Fbx Animation** before publishing it as animation product.
