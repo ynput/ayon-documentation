@@ -2,9 +2,9 @@
 id: addon_usd_artist_get_started
 title: Getting Started with USD in AYON
 sidebar_label: Getting Started
+description: A quick start into AYON x USD
+toc_max_heading_level: 5
 ---
-
-A quick start into AYON x USD
 
 ## Assets and Shots
 

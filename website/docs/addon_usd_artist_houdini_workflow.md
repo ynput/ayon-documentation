@@ -2,9 +2,9 @@
 id: addon_usd_artist_houdini_workflow
 title: Houdini USD Workflow
 sidebar_label: Houdini Workflow
+description: Getting started with AYON USD integration in SideFX Houdini
+toc_max_heading_level: 5
 ---
-
-Getting started with AYON USD integration in SideFX Houdini
 
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
