@@ -296,11 +296,25 @@ Then I've put everything into `arm_rig` group.
 
 When you've prepared your hierarchy, it's time to create *Rig instance* in AYON.
 Select your whole rig hierarchy and go **AYON → Create...**. Select **Rig**.
-Set is created in your scene to mark rig parts for export. Notice that it has
-two products - `controls_SET` and `out_SET`. Put your controls into `controls_SET`
+A set named after the rig product is created in your scene to mark rig parts for export. Notice that it has
+four children object sets - `controls_SET`, `out_SET`,  `skeletonMesh_SET` and `skeletonAnim_SET`. Put your controls into `controls_SET`
 and geometry to `out_SET`. You should end up with something like this:
 
 ![Maya - Rig Hierarchy Example](assets/maya/artist/rig_hierarchy_example.jpg)
+
+The other two products `skeletonMesh_SET` and `skeletonAnim_SET` are used for the fbx workflow.
+
+The `skeletonMesh_SET` defines the static FBX skeleton and mesh, put any skinned geometry here usually the same used for 'out_SET' too.
+
+The `skeletonAnim_SET` defines the skeleton consisting of bones hierarchy used for the animation product (FBX). Put your rig's skeleton hierarchy driving the animation here.
+
+:::tip Enable FBX for animation product type
+Users need to enable **Collect Fbx Animation** before publishing it as animation product.
+![Maya - Collect Fbx Animation](assets/maya/artist/animation_collect_fbx_animation.png)
+
+:::
+
+![Maya - Rig Hierarchy Example](assets/maya/artist/rig_skeletonAnim_skeletonMesh_set.png)
 
 ### Publishing rigs
 
