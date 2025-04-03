@@ -34,6 +34,24 @@ Resolve Studio is the only version that works with the Ayon toolkit because of e
 
 <div class="row markdown">
 
+## Report Fps and Resolution from AYON task
+
+It is possible for AYON to automatically set the Resolve project FPS and Resolution settings from the current task.
+This feature can be enabled via the `ayon+settings://resolve/report_fps_resolution` addon setting.
+
+**Note that AYON can only handle this for workfiles opened through the [Workfile Menu](./artist_tools_workfiles.md) or at Startup**.
+
+Unfortunately, Resolve has some limitations that can prevent those settings from being properly reported:
+* If one or multiple timeline(s) already exist within the Project, the project FPS settings might become non-editable.
+* Resolve only supports a subset of common industry-standard FPS (see Resolve help for more information)
+* Resolve only supports a subset of common industry-standard Pixel Aspect Ratio
+* Vertical Resolution cannot be set automatically, this has to be done through the project settings 
+
+</div>
+
+
+<div class="row markdown">
+
 ## Creating Shots from timeline items
 
 Before a clip can be published with [Publisher](artist_tools_publisher.md) timeline item has to be marked with AYON metadata markers. This way it is converted to a publishable product.
