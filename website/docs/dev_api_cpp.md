@@ -56,7 +56,7 @@ and repeat them inside `ext` folder in your project folder.
 
 int main () {
     AyonApi con = AyonApi(
-        "path/to/log_file.json",     
+        "path/to/log_file.json",    // extension will be always changed to json
         "your_api_key",             // AYON API key
         "http://your.server",       // AYON server url
         "project_name",
@@ -88,6 +88,13 @@ target_link_libraries(${PROJECT_NAME} AyonCppApi)
 ```shell
 cmake -S . -B build -DJTRACE=0 
 cmake --build build --config Debug -j12
+```
+
+or 
+
+```shell
+cmake -S . -B build -DJTRACE=0 
+devenv build/main.sln /Build 
 ```
 
 #### Test Run
