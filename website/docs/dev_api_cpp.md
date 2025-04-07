@@ -54,9 +54,9 @@ and repeat them inside `ext` folder in your project folder.
 // AYON CPP API Test
 #include "AyonCppApi.h"
 
-int main (){
+int main () {
     AyonApi con = AyonApi(
-        "path/to/log_file.txt",     
+        "path/to/log_file.json",     
         "your_api_key",             // AYON API key
         "http://your.server",       // AYON server url
         "project_name",
@@ -85,33 +85,33 @@ target_link_libraries(${PROJECT_NAME} AyonCppApi)
 
 #### Build the project
 
-> I'm using `VS studio` (devenv.exe) on my side.
-
 ```shell
 cmake -S . -B build -DJTRACE=0 
-devenv build/main.sln /Build 
+cmake --build build --config Debug -j12
 ```
 
 #### Test Run
-
-you'd need to set few environment variables.
-otherwise, it won't work.
 
 ```shell
 build\Debug\main.exe
 ```
 
-Expected Output
+#### Expected Output
+
 ```shell
 my_cpp_project> build\Debug\main.exe
-[2024-09-20 15:59:31.541] [info] Loaded AYON_API_KEY and AYON_SERVER_URL
-[2024-09-20 15:59:31.542] [info] Found SideId
+[2025-04-07 13:24:47.985] [info] Failed to determine the OpenSSL directory. Falling back to the default certificate file path.
+[2025-04-07 13:24:48.368] [info] Connected to the Ayon server : 200
 ```
 
-:::tip `AYON_SITE_ID` fallback
-When skipping setting `AYON_SITE_ID` env variable, the lib will default to file named `site_id` *without an extension*.
-located at `%AppData%/Roaming/AYON/site_id` on windows.
-:::
+> If you don't see any output in the terminal, the logs may be written only to the `log_file.json` specified in the constructor.
+
+Example contents of `log_file.json`:
+
+```json
+{"timestamp":"2025-04-07 13:24:47.985","level":"info","Thread Id":"5832","Process Id":"13732","message":"Failed to determine the OpenSSL directory. Falling back to the default certificate file path."}
+{"timestamp":"2025-04-07 13:24:48.368","level":"info","Thread Id":"5832","Process Id":"13732","message":"Connected to the Ayon server : 200"}
+```
 
 </details>
 
