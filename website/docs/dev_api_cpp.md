@@ -55,12 +55,18 @@ and repeat them inside `ext` folder in your project folder.
 #include "AyonCppApi.h"
 
 int main (){
-    AyonApi con = AyonApi();
+    AyonApi con = AyonApi(
+        "path/to/log_file.txt",     
+        "your_api_key",             // AYON API key
+        "http://your.server",       // AYON server url
+        "project_name",
+        "site-id"                   // e.g. military-mouse-of-jest
+    );
     return 0;
 }
 ```
 
-```shell title="CMakelists.txt"
+```shell title="CMakeLists.txt"
 cmake_minimum_required(VERSION "3.28.1")
 
 set(CMAKE_CXX_STANDARD 17)
@@ -92,11 +98,6 @@ you'd need to set few environment variables.
 otherwise, it won't work.
 
 ```shell
-set AYON_SERVER_URL=<your ayon server url>
-set AYON_API_KEY=<your server api key>
-set AYON_PROJECT_NAME=<project name>
-set AYON_SITE_ID=<site id>  # e.g. military-mouse-of-jest
-
 build\Debug\main.exe
 ```
 
