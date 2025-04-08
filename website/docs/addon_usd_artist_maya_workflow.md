@@ -2,9 +2,9 @@
 id: addon_usd_artist_maya_workflow
 title: Maya USD Workflow
 sidebar_label: Maya Workflow
+description: Getting started with AYON USD integration in Autodesk Maya
+toc_max_heading_level: 5
 ---
-
-Getting started with AYON USD integration in Autodesk Maya
 
 import ReactMarkdown from "react-markdown";
 import versions from '@site/docs/assets/json/Ayon_addons_version.json'
