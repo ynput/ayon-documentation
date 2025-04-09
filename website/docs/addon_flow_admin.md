@@ -29,7 +29,7 @@ Current version of the integration also supports following features:
 - Folder attributes two way synchronization
 - Folder tasks two way synchronization
 - Status synchronization
-- AYON comment as Flow notes two way synchronization
+- AYON comments as Flow notes two way synchronization
 - Tags synchronization (currently only Ayon to Flow)
 - Reviewables upload from AYON as Flow Version
 
@@ -219,7 +219,7 @@ To synchronize users from Flow to AYON:
 ![Flow synch users](assets/shotgrid/ay_sync_users.png)
 
 :::tip Active users in Flow
-We understand that active Users in Flow directly impact costs. If an active User is present in AYON but it does not exist in Flow, Task and Version will still sync.
+We understand that the amount of active Users in Flow directly impact costs. If an active User is present in AYON but it does not exist in Flow, Task(s), Comment(s) and Reviewable(s) will sync.
 They will simply be left unassigned.
 :::
 
@@ -322,12 +322,43 @@ The following setting will:
 
 
 
-### AYON comment / Flow Note synchronization
+### AYON Comment / Flow Note synchronization
 
-AYON comment get synced as Flow note when `Note` is part of the `ShotGrid Enabled entities` setting (`ayon+settings://shotgrid/compatibility_settings/shotgrid_enabled_entities`).
+AYON comment can be synced as Flow note. 
+To enable this:
+1. Ensure `Note` is part of the `ShotGrid Enabled entities` setting (`ayon+settings://shotgrid/compatibility_settings/shotgrid_enabled_entities`).
+2. *Recommended* - [Re-Synchronize](#synchronize-users-between-from-flow-to-ayon) Users between from Flow to AYON]
+3. *Recommended* - Ensure [auto-sync between Flow and AYON](#enable-auto-sync-between-flow-and-ayon-for-a-specific-project) is active for your project.
+4. Any new `Note` created in Flow will be synced to AYON
+5. Any new `Comment` created in AYON will be synced to Flow
 
-:::note Note author
+:::info Note author
 Ensure that all of the Flow users get synced to AYON first to ensure note/comment `assigned_to` and `@` features work properly.
+Otherwise `Comment` and `Note` will sync but be left unassigned.
+
+Look at [Synchronize Users between from Flow to AYON](#synchronize-users-between-from-flow-to-ayon) for more details.
+:::
+
+
+### Syncing Tasks between AYON and Flow
+
+Tasks can be synced between AYON and Flow both ways. 
+To enable this:
+1. Ensure `Task` is part of the `ShotGrid Enabled entities` setting (`ayon+settings://shotgrid/compatibility_settings/shotgrid_enabled_entities`).
+2. *Recommended* - [Re-Synchronize](#synchronize-users-between-from-flow-to-ayon) Users between from Flow to AYON]
+3. *Recommended* - Ensure [auto-sync between Flow and AYON](#enable-auto-sync-between-flow-and-ayon-for-a-specific-project) is active for your project.
+4. Create a new `Task` in either AYON or Flow
+5. Ensure the created `Task` get reported to the other platform
+
+:::info Task types and statuses
+For `Task` to sync properly, the project anatomy in AYON must define all of the task type(s) and status(es) available in Flow.
+This can either reported manually or via the [Shotgrid -> AYON](#sync-back-an-asset-from-flow-to-ayon) button in the `Shotgrid` tab.
+:::
+
+:::info Task assignee
+Similar to comment/notes, users must be synced across AYON and Flow to ensure `assigned_to` field is properly reported.
+Otherwise `Task` will sync but be left unassigned.
+
 Look at [Synchronize Users between from Flow to AYON](#synchronize-users-between-from-flow-to-ayon) for more details.
 :::
 
