@@ -31,10 +31,6 @@ Current version of the integration also supports following features:
 - Status synchronization
 - Tags synchronization (currently only Ayon to Flow)
 - Reviewables upload from AYON as Flow Version
-- Three types of Ayon client (desktop) user login:
-  - via environment variable,
-  - via Tray widget for User email and password inputs,
-  - via Tray widget for User email input - with secret shared User api key set in addon settings
 
 
 ## Getting started
@@ -80,7 +76,6 @@ This section will guide you on creating a Script (API User) in Flow that is regi
 3. This page defines all of the available Script that will be available for your whole Flow instance (all projects).
 4. We recommend you create **dedicated** Script for AYON sync usage. Use the `Add Script` button for that.
 5. First, create a new `ayon_connector` Script with `API Admin` permissions which will be used for global sync between AYON and Flow via services.
-6. Then, create an additional `ayon_user_publishing` with `API User` permissions to be used by when logging into the Ayon Desktop app. ![Flow Scripts items](assets/shotgrid/sg_server_scripts_items.png)
 
 :::warning Script Hash Key
 When you create a Script, remember to save the generated hash key right away because it's only shown once.
@@ -93,7 +88,6 @@ When you create a Script, remember to save the generated hash key right away bec
 2. Go into the `Secrets` tab under Studio settings.
 3. Click the `+ Add` button to register a new secret.
 3. Register the Script hash keys for `ayon_connector` under a new secret called `sg_server_script_key`.
-4. We recommend that you also add the `ayon_user_publishing` secret here just for future reference, but it will not be used within SG addon settings.
 
 
 #### Configure the services Flow addon in AYON
@@ -188,6 +182,11 @@ This section will guide you syncing your first project between AYON and Flow.
 5. After the event is processed by the service, you should get a newly created Flow project in your Flow instance.
 
 ![Flow folder attributes](assets/shotgrid/ay_populate_sg_ayon.png)
+
+:::info New Project
+Ensure any new AYON project is synced to Flow manually via the `AYON -> Shotgrid` button.
+This ensures that all of the required fields/attributes are created and synced in both AYON and Flow.
+:::
 
 :::warning Troubleshooting
 If `Populate Table` does not do anything or fails, this could be because of issues when [setting up Flow Script connection](#setting-up-flow-script-connection).
