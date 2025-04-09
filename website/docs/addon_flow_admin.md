@@ -29,6 +29,7 @@ Current version of the integration also supports following features:
 - Folder attributes two way synchronization
 - Folder tasks two way synchronization
 - Status synchronization
+- AYON comment as Flow notes two way synchronization
 - Tags synchronization (currently only Ayon to Flow)
 - Reviewables upload from AYON as Flow Version
 
@@ -318,6 +319,17 @@ The following setting will:
 ##### Example 2: Reparent all of the Asset(s) under an `all_assets` folder
 
 ![type grouping](assets/shotgrid/ay_folder_parenting_type_grouping.png)
+
+
+
+### AYON comment / Flow Note synchronization
+
+AYON comment get synced as Flow note when `Note` is part of the `ShotGrid Enabled entities` setting (`ayon+settings://shotgrid/compatibility_settings/shotgrid_enabled_entities`).
+
+:::note Note author
+Ensure that all of the Flow users get synced to AYON first to ensure note/comment `assigned_to` and `@` features work properly.
+Look at [Synchronize Users between from Flow to AYON](#synchronize-users-between-from-flow-to-ayon) for more details.
+:::
 
 
 ### Targeting reviewables to Flow
