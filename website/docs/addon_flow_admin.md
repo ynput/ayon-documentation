@@ -28,7 +28,8 @@ Current version of the integration also supports following features:
 
 - Folder attributes two way synchronization
 - Folder tasks two way synchronization
-- Status synchronization
+- Status two way synchronization
+- Task assigneed user two way synchronization
 - AYON comments as Flow notes two way synchronization
 - Tags synchronization (currently only Ayon to Flow)
 - Reviewables upload from AYON as Flow Version
