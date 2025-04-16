@@ -377,6 +377,16 @@ You can effortlessly ensure that all reviewables will be uploaded to Flow. For t
 
 ## Known limitations and bugs
 
+#### Reparenting existing AYON Folder / Flow entities
+
+In Flow it is possible to re-parent an entity to a different parent after it gets created.
+E.g. Move a `Shot` under a different `Sequence`.
+Those operations get tricky when syncing is enabled, especially automated syncing.
+
+:::info Re-parenting existing entities
+In order to guarantee hierarchy integrity at all time, we do recommend to delete and re-create new entities as much as possible instead of moving already synced content around.
+:::
+
 #### Note/Comment parenting
 
 Flow allows its note(s) to be parented to multiple entities where AYON only parent to one.
