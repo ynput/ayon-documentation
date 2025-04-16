@@ -373,3 +373,38 @@ You can effortlessly ensure that all reviewables will be uploaded to Flow. For t
    You can do this at the following path `ayon+settings://core/publish/ExtractReview/profiles/0/outputs`.
 
 ![Flow shotgrid review tag](assets/shotgrid/review_tag.png)
+
+
+## Known limitations and bugs
+
+#### Reparenting existing AYON Folder / Flow entities
+
+In Flow it is possible to re-parent an entity to a different parent after it gets created.
+E.g. Move a `Shot` under a different `Sequence`.
+Those operations get tricky when syncing is enabled, especially automated syncing.
+
+:::info Re-parenting existing entities
+In order to guarantee hierarchy integrity at all time, we do recommend to delete and re-create new entities as much as possible instead of moving already synced content around.
+:::
+
+#### Note/Comment parenting
+
+Flow allows its note(s) to be parented to multiple entities where AYON only parent to one.
+When a Flow `Note` get synced to AYON, the sync process will automatically determine its most relevant (peculiar) parent.
+
+
+#### Flow Note vs Reply
+
+Flow has 2 different kind of note entities: `Note` and `Reply` where AYON only define `Comment`.
+Currently only `Note` entity is supported for synchronization.
+
+#### Synced comments from AYON not appearing in the Activity page in Flow
+
+This is a known bug reported to Autodesk. All `Comment` from AYON are synced as Flow `Note`.
+If they do not appear in the activity page, you should still find them under the Project Note page.
+
+#### Reviewable material size
+
+When syncing AYON reviewable to Flow, the relevant media might be automatically re-uploaded to Flow.
+Note that Flow impose a hard-limit of 5Go for its content, hence heavy reviewable might not be synced.
+
