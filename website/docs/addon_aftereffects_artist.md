@@ -24,6 +24,14 @@ import TabItem from '@theme/TabItem';
 
 ## AE Extension installation
 
+This could be handled by `auto_install` set up by your TD / Admin already. Please check with them, or if you are
+feeling adventurous just try to open AfterEffects via AYON directly. 
+
+If you see there AYON Menu or you find AYON option in `Windows > Extensions`, you are in luck and extension is installed.
+No need to install it manually and you can skip next section.
+
+### Manual install of extension
+
 :::info
 Once your admin has activated `After Effects` in the production bundle, you need to run the AYON launcher at least once. This allows the launcher to download the addon to the correct location on your computer. 
 After that, you can continue with the installation instructions for the After Effects extension.

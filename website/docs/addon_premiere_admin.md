@@ -25,7 +25,13 @@ The Adobe extension needs to be installed on each artist's machine to use this i
 
 ![](assets/premiere/admin/install_ayon_extension.png)
 
-When enabled, On <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> OS It will try to install AYON Premiere extension to user `appdata` if it's not installed already.
+When enabled, it will try to install AYON Photoshop extension to user `appData` if it's not installed already.
 
-Example: `C:\Users\YOUR_USER_NAME\AppData\Roaming\Adobe\CEP\extensions\io.ynput.PPRO.panel`
+Example: `C:\Users\YOUR_USER_NAME\AppData\Roaming\Adobe\CEP\extensions\io.ynput.PPRS.panel`
+
+It checks extension version for current addon version and updates it if necessary.
+
+If artist has extension installed in original directory (`Program Files`), installation in `appData` takes a precedence.
+
+Works for Windows and MacOS.
 
