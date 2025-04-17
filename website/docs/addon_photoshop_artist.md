@@ -30,10 +30,7 @@ The Photoshop AYON integration allows you to:
 
 ## Setup
 
-There need to be done several setup steps first before running the AYON integration. First your active project need to have Photoshop (PS) defined in the project anatomy as an available tool including its filepath to the executable (being set by default).
-We skip the first step due to the fact it should be already preset by TD / Admin.
-
-Second step is to have PS extension installed. This could be also handled by `auto_install` set up by your TD / Admin. Please check with them, or if you are
+You will need to have PS extension installed. This could be handled by `auto_install` set up by your TD / Admin. Please check with them, or if you are
 feeling adventurous just try to open Photoshop via AYON directly. If you see there AYON Menu or you find AYON option in `Windows > Extensions`, you are in luck and extension is installed.
 No need to install it manually and you can skip next section.
 
