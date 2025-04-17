@@ -23,6 +23,19 @@ Location: `ayon+settings://aftereffects/publish`
 
 ![AfterEffects Project Settings](assets/admin_hosts_aftereffects_settings.png)
 
+### Auto Install Extension
+> Setting Location: `ayon+settings://aftereffects/auto_install_extension`
+
+When enabled, it will try to install AYON AfterEffects extension to user `appData` if it's not installed already.
+
+Example: `C:\Users\YOUR_USER_NAME\AppData\Roaming\Adobe\CEP\extensions\io.ynput.AE.panel`
+
+It checks extension version for current addon version and updates it if necessary.
+
+If artist has extension installed in original directory (`Program Files`), installation in `appData` takes a precedence.
+
+Works for Windows and MacOS.
+
 ## Publish plugins
 
 ### Collect Review
