@@ -365,6 +365,14 @@ If you want to render and publish on the farm in one go, run publish with On far
 
 ![Versionless](assets/nuke_tut/nuke_RenderLocalFarm.png)
 
+### Rewriting old version
+
+Sometimes, it can be beneficial to rewrite only selected frames of a long image sequence. The Nuke integration includes a specific feature for local renders that makes this possible.
+
+In the Publisher UI, there are the following fields:
+- `Frames to Fix` – where the artist can specify the frame range to be re-rendered.
+- `Rewrite Latest Version` – a toggle that determines whether the last version should be updated in place, or if a new version should be created using the old frames, with only the newly re-rendered ones applied on top.
+
 #### Render Attributes
 
 - `Workfile Dependency` - when submitting the render to Deadline, the workfile is will added as an asset dependency putting the job in pending state initially. Once the workfile path is available to Deadline, the job will be released.
