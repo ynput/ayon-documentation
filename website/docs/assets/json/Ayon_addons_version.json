@@ -33,7 +33,7 @@
     "Premiere_Badge" : "[![Premiere Addon - 0.1.0](https://img.shields.io/badge/Premiere_Addon-0.1.0-000049)](https://github.com/ynput/ayon-premiere)",
     "Resolve_Badge" : "[![Davinci Resolve Addon - 0.1.0](https://img.shields.io/badge/Davinci_Resolve_Addon-0.1.0-2f4a67)](https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/resolve)",
     "RoyalRender_Badge" : "[![Royal Render Addon - 0.1.1](https://img.shields.io/badge/Royal_Render_Addon-0.1.1-black)](https://github.com/ynput/OpenPype/tree/develop/openpype/modules/royalrender)",
-    "Flow_Badge" : "[![Flow (ShotGrid) Addon - 0.4.0](https://img.shields.io/badge/Flow_(ShotGrid)_Addon-0.4.0-3190b2)](https://github.com/ynput/ayon-shotgrid)",
+    "Flow_Badge" : "[![Flow (ShotGrid) Addon - 0.5.5](https://img.shields.io/badge/Flow_(ShotGrid)_Addon-0.5.5-ok)](https://github.com/ynput/ayon-shotgrid)",
     "SitSync_Badge" : "![SiteSync Addon - 1.0.1](https://img.shields.io/badge/SiteSync_Addon-1.0.1-00d6a1)",
     "SpeedTree_Badge" : "[![SpeedTree Addon - 0.1.0](https://img.shields.io/badge/SpeedTree_Addon-0.1.0-5A164B?logo=slack&logoColor=a9e3cc)](https://github.com/ynput/ayon-speedtree)",
     "Slack_Badge" : "[![Slack Addon - 1.1.2](https://img.shields.io/badge/Slack_Addon-1.1.2-4A154B?logo=slack&logoColor=a9e3cc)](https://github.com/ynput/ayon-slack)",

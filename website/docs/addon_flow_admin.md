@@ -32,7 +32,7 @@ Current version of the integration also supports following features:
 - Task assigneed user two way synchronization
 - AYON comments as Flow notes two way synchronization
 - Tags synchronization (currently only Ayon to Flow)
-- Reviewables upload from AYON as Flow Version
+- AYON Version with reviewables upload as Flow Version
 
 
 ## Getting started
@@ -47,8 +47,8 @@ The following documentation will guide you through the configuration required to
 
 
 **A. Configure AYON/Flow connection**
-* [Create new Flow Script(s)](#create-new-flow-scripts)
-* [Register those Script credentials as AYON Secrets](#register-those-script-credentials-as-ayon-secrets)
+* [Create New AYON Connector Script in Flow](#create-new-ayon-connector-script-in-flow)
+* [Register Connector Script credentials as AYON Secrets](#register-connector-script-credentials-as-ayon-secrets)
 * [Configure the services Flow addon in AYON](#configure-the-services-flow-addon-in-ayon)
 * [Configure the users Flow addon in AYON](#configure-the-users-flow-addon-in-ayon)
 
@@ -71,7 +71,7 @@ The following documentation will guide you through the configuration required to
 
 This section will guide you on creating a Script (API User) in Flow that is registered in AYON so the connection can be establish between both.
 
-#### Create new Flow Script(s)
+#### Create New AYON Connector Script in Flow
 
 1. Log into your Flow server as admin.
 2. Open the admin menu (1) and select Scripts menu item (2) to open the Scripts page. ![Flow Scripts](assets/shotgrid/sg_server_scripts.png)
@@ -84,7 +84,7 @@ When you create a Script, remember to save the generated hash key right away bec
 :::
 
 
-#### Register those Script credentials as AYON Secrets
+#### Register Connector Script credentials as AYON Secrets
 
 1. Log into your AYON server as admin.
 2. Go into the `Secrets` tab under Studio settings.
@@ -99,20 +99,6 @@ When you create a Script, remember to save the generated hash key right away bec
 3. Report the Script name under (`ayon+settings://shotgrid/service_settings/script_name`). If you've followed the steps before, your Script name is `ayon_connector`.
 
 ![Ayon Scripts items](assets/shotgrid/ay_server_scripts_items.png)
-
-
-#### Configure the users Flow addon in AYON
-
-You need to decide how users will log into the Ayon Desktop app. Here are three options:
-
-1. **Via Environment variable** - This is the default login method. Enter the user's email as `AYON_SG_USERNAME` on each user's computer in your studio. With this method, users won't see their login details on the Tray app widget.
-![Ayon user login env](assets/shotgrid/ay_user_login_env.png)
-
-2. **Via Tray App with password** - Users log in with their email and password. It's a common method, and you can set permissions in Flow. You can create different permission groups for users. However, sometimes users might not have access to certain projects.
-![Ayon user login password](assets/shotgrid/ay_user_login_pass.png)
-
-3. **Via Tray App with shared API key** - Users log in with their email only. The shared secret API key is in the addon settings. This lets you set one permission group for all users.
-![Ayon user login shared](assets/shotgrid/ay_user_login_shared.png)
 
 
 ### B. Configure syncing entities
@@ -391,6 +377,15 @@ In order to guarantee hierarchy integrity at all time, we do recommend to delete
 
 Flow allows its note(s) to be parented to multiple entities where AYON only parent to one.
 When a Flow `Note` get synced to AYON, the sync process will automatically determine its most relevant (peculiar) parent.
+
+
+#### Sync Flow Version to AYON
+
+When enabled, an AYON `Version` object can get synced as a Flow `Version`. From there status update is supported both ways.
+However it is currently not possible to **create** a new AYON `Version` from a Flow one automatically.
+
+This is because Flow `Version` entity is way less strict than AYON equivalent, hence retrieving all of the expected mandatory data is very unlikely.
+(One could argue than a AYON `Version` could also be represented as a `PublishedFile` entity).
 
 
 #### Flow Note vs Reply
