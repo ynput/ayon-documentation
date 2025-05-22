@@ -47,8 +47,8 @@ The following documentation will guide you through the configuration required to
 
 
 **A. Configure AYON/Flow connection**
-* [Create new Flow Script(s)](#create-new-flow-scripts)
-* [Register those Script credentials as AYON Secrets](#register-those-script-credentials-as-ayon-secrets)
+* [Create New AYON Connector Script in Flow](#create-new-ayon-connector-script-in-flow)
+* [Register Connector Script credentials as AYON Secrets](#register-connector-script-credentials-as-ayon-secrets)
 * [Configure the services Flow addon in AYON](#configure-the-services-flow-addon-in-ayon)
 * [Configure the users Flow addon in AYON](#configure-the-users-flow-addon-in-ayon)
 
@@ -71,7 +71,7 @@ The following documentation will guide you through the configuration required to
 
 This section will guide you on creating a Script (API User) in Flow that is registered in AYON so the connection can be establish between both.
 
-#### Create new Flow Script
+#### Create New AYON Connector Script in Flow
 
 1. Log into your Flow server as admin.
 2. Open the admin menu (1) and select Scripts menu item (2) to open the Scripts page. ![Flow Scripts](assets/shotgrid/sg_server_scripts.png)
@@ -84,7 +84,7 @@ When you create a Script, remember to save the generated hash key right away bec
 :::
 
 
-#### Register this Script credentials as AYON Secrets
+#### Register Connector Script credentials as AYON Secrets
 
 1. Log into your AYON server as admin.
 2. Go into the `Secrets` tab under Studio settings.
