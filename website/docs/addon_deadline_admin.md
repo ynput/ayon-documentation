@@ -45,6 +45,11 @@ For [AWS Thinkbox Deadline](https://www.awsthinkbox.com/deadline) support, you'l
 You could check [deadline guide](https://community.ynput.io/t/ayon-openpype-deadline-setup/468) for more detailed steps and additional tips.
 :::
 
+:::note performance
+It is highly recommended to set environment variable `AYON_SITE_ID` on all worker nodes of Deadline render farm. This would
+limit performance hit on AYON server if/when large amount of worker nodes are spinning up at same time.
+:::
+
 ### Authentication
 Deadline supports username and passwords authentication to protect webservice from unwanted requests. (In Deadline `Tools>Configure Repository Options>Web Service Settings>Require Authentication`)
 
