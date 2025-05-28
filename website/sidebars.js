@@ -29,13 +29,7 @@ module.exports = {
                         "addon_usd_artist_houdini_workflow",
                         "addon_usd_artist_faq",
                     ],
-                },
-
-                "addon_cinema4d_artist",
-                "addon_zbrush_artist",
-                "addon_mochapro_artist",
-                "addon_silhouette_artist",
-                "addon_speedtree_artist",
+                }
             ].sort(sorted),
         },
         {
