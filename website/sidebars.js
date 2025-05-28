@@ -11,7 +11,6 @@ module.exports = {
             collapsed: false,
             label: "Integrations",
             items: [
-                "addon_3dsmax_artist",
                 "addon_3dequalizer_artist",
                 "addon_aftereffects_artist",
                 "addon_blender_artist",
