@@ -13,20 +13,6 @@ module.exports = {
             items: [
                 {
                     type: "category",
-                    label: "Maya",
-                    items: [
-                        "addon_maya_artist",
-                        "addon_maya_multiverse_artist",
-                        "addon_maya_yeti_artist",
-                        "addon_maya_xgen_artist",
-                        "addon_maya_ornatrix_artist",
-                        "addon_maya_arnold_artist",
-                        "addon_maya_vray_artist",
-                        "addon_maya_redshift_artist",
-                    ],
-                },
-                {
-                    type: "category",
                     label: "USD",
                     link: {
                         type: 'generated-index',
@@ -44,8 +30,6 @@ module.exports = {
                         "addon_usd_artist_faq",
                     ],
                 },
-                "addon_motionbuilder_artist",
-                "addon_nuke_artist",
                 "addon_photoshop_artist",
                 "addon_premiere_artist",
                 "addon_substancepainter_artist",
