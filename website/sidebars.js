@@ -11,8 +11,6 @@ module.exports = {
             collapsed: false,
             label: "Integrations",
             items: [
-                "addon_harmony_artist",
-                "addon_hiero_artist",
                 "addon_flame_artist",
                 {
                     type: "category",
