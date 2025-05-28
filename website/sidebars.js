@@ -9,21 +9,6 @@ module.exports = {
         {
             type: "category",
             collapsed: false,
-            label: "General",
-            items: [
-                {
-                    type: "category",
-                    collapsed: true,
-                    label: "Tools",
-                    link: { type: "doc", id: "artist_tools" },
-                    items: [
-                    ],
-                },
-            ],
-        },
-        {
-            type: "category",
-            collapsed: false,
             label: "Integrations",
             items: [
                 "addon_3dsmax_artist",
