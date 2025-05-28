@@ -195,6 +195,35 @@ A universal Deadline job info collector used across different DCCs/Hosts. When e
 </div>
 </div>
 
+### Rendering only explicit frames
+
+`CollectJobInfo` plugin also exposes `Use Custom Frames` field for artists in Publisher UI. This field provides
+possibility to send only specific frames/ranges to Deadline to render.
+
+It supports ranges as:
+- `1001, 1004, 1005`
+- `1002-1006`
+- `1001-1100x5` (each fifth frame)
+
+Publishes with these filled field result in versions with only these frames rendered and published.
+
+It is also possible to modify look of resulting review movie by configuring how/if to fill missing frames.
+These configuration is located in `ExtractReview` Settings `ayon+settings://core/publish/ExtractReview` in `Handle missing frames` in `Output Definitions` in `Profiles`.
+
+Possible options:
+- Use closest existing - (default) copies closest existing rendered frame over and over
+- Generate blank frame - creates black frame
+- Use previous version - looks for last published version and copies missing frame from it
+- Use only rendered - review is created only from rendered frames
+
+Similar configuration is also separate for Nuke (as same behavior as in other DCCs is not possible) 
+in `ayon+settings://nuke/publish/ExtractReviewIntermediates/outputs/0/fill_missing_frames`.
+Options:
+- Fail on missing - (default)
+- Generate blank frame
+- Use checkerboard - use checkerboard frame
+- Use closest existing
+
 ### Add AYON server to farm job
 > Setting Location: `ayon+settings://deadline/publish/CollectAYONServerToFarmJob`
 
