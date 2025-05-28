@@ -11,7 +11,6 @@ module.exports = {
             collapsed: false,
             label: "Integrations",
             items: [
-                "addon_resolve_artist",
                 {
                     type: "category",
                     label: "Ftrack",
