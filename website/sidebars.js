@@ -30,26 +30,6 @@ module.exports = {
                         "addon_usd_artist_faq",
                     ],
                 },
-                "addon_photoshop_artist",
-                "addon_premiere_artist",
-                "addon_substancepainter_artist",
-                "addon_substancedesigner_artist",
-                {
-                    type: "category",
-                    label: "Tray Publisher",
-                    link: {
-                        type: 'generated-index',
-                        title: 'Tray Publisher User',
-                        description:
-                          "Tray Publisher User Guide",
-                        keywords: ['tray', 'publisher'],
-                      },
-                    items: [
-                        "addon_traypublisher_artist",
-                        "addon_traypublisher_artist_advanced"
-                    ],
-                },
-                "addon_tvpaint_artist",
                 "addon_unreal_artist",
                 "addon_version_control_artist",
                 "addon_wrap_artist",
