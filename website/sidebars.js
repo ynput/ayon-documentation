@@ -11,8 +11,6 @@ module.exports = {
             collapsed: false,
             label: "Integrations",
             items: [
-                "addon_jira_artist",
-                "addon_kitsu_artist",
                 {
                     type: "category",
                     label: "Maya",
