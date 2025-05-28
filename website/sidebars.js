@@ -11,15 +11,6 @@ module.exports = {
             collapsed: false,
             label: "Integrations",
             items: [
-                {
-                    type: "category",
-                    label: "Ftrack",
-                    items: [
-                        "addon_ftrack_artist",
-                        "addon_ftrack_manager",
-                        "addon_ftrack_actions",
-                    ],
-                },
                 "addon_harmony_artist",
                 "addon_hiero_artist",
                 "addon_flame_artist",
