@@ -11,22 +11,6 @@ module.exports = {
             collapsed: false,
             label: "Integrations",
             items: [
-                "addon_flame_artist",
-                {
-                    type: "category",
-                    label: "Houdini",
-                    link: {
-                        type: 'generated-index',
-                        title: 'AYON Houdini Artist Docs',
-                        description:
-                          "Welcome to AYON Houdini Artist Docs!",
-                        keywords: ['houdini'],
-                      },
-                    items: [
-                        "addon_houdini_artist",
-                        "addon_houdini_artist_loader_hdas",
-                    ],
-                },
                 "addon_jira_artist",
                 "addon_kitsu_artist",
                 {
