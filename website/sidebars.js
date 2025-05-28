@@ -11,7 +11,6 @@ module.exports = {
             collapsed: false,
             label: "Integrations",
             items: [
-                "addon_aftereffects_artist",
                 "addon_blender_artist",
                 "addon_resolve_artist",
                 {
