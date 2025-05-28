@@ -30,15 +30,7 @@ module.exports = {
                         "addon_usd_artist_faq",
                     ],
                 },
-                "addon_unreal_artist",
-                "addon_version_control_artist",
-                "addon_wrap_artist",
-                "addon_openrv_artist",
-                {
-                    type: "category",
-                    label: "Aquarium",
-                    items: ["addon_aquarium_artist", "addon_aquarium_manager"],
-                },
+
                 "addon_cinema4d_artist",
                 "addon_zbrush_artist",
                 "addon_mochapro_artist",
