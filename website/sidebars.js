@@ -11,7 +11,6 @@ module.exports = {
             collapsed: false,
             label: "General",
             items: [
-                "artist_publish",
                 {
                     type: "category",
                     collapsed: true,
