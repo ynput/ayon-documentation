@@ -34,45 +34,6 @@ module.exports = {
         },
     ],
     Admin: [
-        "system_introduction",
-        {
-            type: "category",
-            label: "AYON Server",
-            link: {
-                type: 'generated-index',
-                title: 'AYON Server',
-                description:
-                  "Welcome to AYON Server Admin Docs!",
-                keywords: ['server', 'admin'],
-              },
-            items: [
-                {
-                    type: "category",
-                    label: "Self-hosting",
-                    link: {
-                        type: 'generated-index',
-                        title: 'Hosting AYON Server',
-                        description:
-                          "Documentation dedicated for self hosting AYON and running your own AYON instance.",
-                        keywords: ['server', 'admin'],
-                      },
-                    items: [
-                        "admin_server_deployment",
-                        "admin_server_configuration",
-                        "admin_server_installing_addons",
-                        "admin_server_provisioning",
-                        "admin_server_services",
-                        "admin_server_email",
-                    ],
-                },
-                "admin_server_bundles_and_addons",
-                "admin_server_market",
-                "admin_server_updating_pipeline",
-                "admin_server_permissions",
-                "admin_server_power_features",
-                "admin_server_licenses",
-            ],
-        },
         {
             type: "category",
             label: "AYON Launcher",
@@ -182,8 +143,6 @@ module.exports = {
                 "addon_speedtree_admin",
             ].sort(sorted),
         },
-        "admin_releases",
-        "admin_import_openpype_project",
     ],
     Dev: [
         "dev_introduction",
