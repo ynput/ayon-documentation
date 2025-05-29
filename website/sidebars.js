@@ -32,20 +32,6 @@ module.exports = {
                 }
             ].sort(sorted),
         },
-        {
-            type: "category",
-            collapsed: false,
-            label: "Production Tracking",
-            items: [
-                "artist_my_tasks_page",
-                "artist_details_panel",
-                "artist_activity_feed",
-                "artist_reviewables",
-                "artist_inbox",
-                "artist_task_progress_page",
-                "addon_planner"
-            ],
-        },
     ],
     Admin: [
         "system_introduction",
