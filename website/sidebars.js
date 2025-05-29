@@ -41,18 +41,6 @@ module.exports = {
         },
         {
             type: "category",
-            label: "Configuration",
-            items: [
-                "admin_environment",
-                "admin_settings",
-                "admin_colorspace",
-                "admin_settings_project_anatomy",
-                "addon_core_settings",
-                "addon_applications_admin",
-            ],
-        },
-        {
-            type: "category",
             label: "Integrations",
             items: [
                 "addon_3dsmax_admin",
