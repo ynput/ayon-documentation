@@ -8,29 +8,22 @@ module.exports = {
     artist: [
         {
             type: "category",
-            collapsed: false,
-            label: "Integrations",
+            label: "USD",
+            link: {
+                type: 'generated-index',
+                title: 'AYON USD Book',
+                description:
+                    "Welcome to AYON USD Book!",
+                keywords: ['usd'],
+                },
             items: [
-                {
-                    type: "category",
-                    label: "USD",
-                    link: {
-                        type: 'generated-index',
-                        title: 'AYON USD Book',
-                        description:
-                          "Welcome to AYON USD Book!",
-                        keywords: ['usd'],
-                      },
-                    items: [
-                        "addon_usd_artist_usd_intro",
-                        "addon_usd_artist_get_started",
-                        "addon_usd_artist_contribution_workflow",
-                        "addon_usd_artist_maya_workflow",
-                        "addon_usd_artist_houdini_workflow",
-                        "addon_usd_artist_faq",
-                    ],
-                }
-            ].sort(sorted),
+                "addon_usd_artist_usd_intro",
+                "addon_usd_artist_get_started",
+                "addon_usd_artist_contribution_workflow",
+                "addon_usd_artist_maya_workflow",
+                "addon_usd_artist_houdini_workflow",
+                "addon_usd_artist_faq",
+            ],
         },
     ],
     Admin: [

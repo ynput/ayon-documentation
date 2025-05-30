@@ -94,12 +94,12 @@ const config = {
                         position: "left",
                     },
                     {
-                        to: "docs/artist_getting_started",
+                        to: "docs/category/usd",
                         label: "User Docs",
                         position: "left",
                     },
                     {
-                        to: "docs/system_introduction",
+                        to: "docs/admin_launcher_distribute",
                         label: "Admin Docs",
                         position: "left",
                     },

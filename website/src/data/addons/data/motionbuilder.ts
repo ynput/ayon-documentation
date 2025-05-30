@@ -22,10 +22,11 @@ const addon: Addon = {
         "rig"
     ],
     docs: {
-        user: "addon_motionbuilder_artist",
-        admin: "addon_motionbuilder_admin",
+        user: "https://help.ayon.app/articles/7411907-working-with-motionbuilder-in-ayon",
+        admin: "https://help.ayon.app/articles/8914380-configure-motionbuilder-addon",
     },
     github: "https://github.com/ynput/ayon-motionbuilder",
+    discussion: "https://community.ynput.io/tag/motionbuilder",
 };
 
 export default addon;

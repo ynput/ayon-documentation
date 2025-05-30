@@ -27,10 +27,11 @@ const addon: Addon = {
         "maxScene",
     ],
     docs: {
-        user: "addon_3dsmax_artist",
-        admin: "addon_3dsmax_admin",
+        user: "https://help.ayon.app/articles/6074628-working-with-3ds-max-in-ayon",
+        admin: "https://help.ayon.app/articles/3959010-3ds-max-addon-settings",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/max",
+    github: "https://github.com/ynput/ayon-3dsmax",
+    discussion: "https://community.ynput.io/tag/3ds-max",
 };
 
 export default addon;
