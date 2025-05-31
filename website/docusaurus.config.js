@@ -104,7 +104,9 @@ const config = {
                         items: [
                             {
                                 label: "REST API Docs",
-                                to: "/api",
+                                href: "https://playground.ayon.app/doc/api",
+                                target: "_blank",
+                                rel: null,
                             },
                             {
                                 label: "GraphQL API Explorer",
@@ -114,19 +116,19 @@ const config = {
                             },
                             {
                                 label: "Python API Docs",
-                                href: "https://ynput.github.io/ayon-python-api/",
+                                href: "https://docs.ayon.dev/ayon-python-api",
                                 target: "_blank",
                                 rel: null,
                             },
                             {
                                 label: "C++ API Docs",
-                                href: "https://ynput.github.io/ayon-cpp-api/",
+                                href: "https://docs.ayon.dev/ayon-cpp-api",
                                 target: "_blank",
                                 rel: null,
                             },
                             {
                                 label: "USD Resolver Docs",
-                                href: "https://ynput.github.io/ayon-usd-resolver/",
+                                href: "https://docs.ayon.dev/ayon-usd-resolver",
                                 target: "_blank",
                                 rel: null,
                             },
@@ -197,12 +199,6 @@ const config = {
                             {
                                 label: "AYON 3DEqualizer",
                                 href: "https://docs.ayon.dev/ayon-3d-equalizer",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "AYON 3Ds Max",
-                                href: "https://docs.ayon.dev/ayon-3dsmax",
                                 target: "_blank",
                                 rel: null,
                             },
