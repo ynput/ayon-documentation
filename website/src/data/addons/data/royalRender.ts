@@ -7,7 +7,12 @@ const addon: Addon = {
         "Royal Render is a powerful render farm management application that helps you organize, control, and check your renders.",
     icon: "royal-render-icon.png",
     badge: versions.RoyalRender_Badge,
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/royal_render",
+    docs: {
+        // user: "",
+        admin: "https://help.ayon.app/en/help/articles/6879829-configure-royal-render-addon",
+    },
+    github: "https://github.com/ynput/ayon-royalrender",
+    discussion: "https://community.ynput.io/tag/royalrender",
 };
 
 export default addon;

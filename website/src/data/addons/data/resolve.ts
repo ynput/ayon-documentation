@@ -8,10 +8,11 @@ const addon: Addon = {
     icon: "resolve-icon.png",
     badge: versions.Resolve_Badge,
     docs: {
-        user: "addon_resolve_artist",
-        admin: "addon_resolve_admin",
+        user: "https://help.ayon.app/articles/9472845-working-with-resolve-studio-in-ayon",
+        admin: "https://help.ayon.app/articles/3786946-configure-resolve-studio-to-work-with-ayon",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/resolve",
+    github: "https://github.com/ynput/ayon-resolve",
+    discussion: "https://community.ynput.io/tag/resolve",
 };
 
 export default addon;

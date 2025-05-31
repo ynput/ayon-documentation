@@ -7,9 +7,11 @@ const addon: Addon = {
         "Blender is a free, open-source, and user-friendly 3D creation suite for artists.",
     badge: versions.Blender_Badge,
     docs: {
-        user: "addon_blender_artist",
-        admin: "addon_blender_admin",
+        user: "https://help.ayon.app/articles/2501380-working-with-blender-in-ayon",
+        admin: "https://help.ayon.app/articles/6836825-configure-blender-addon",
     },
+    github: "https://github.com/ynput/ayon-blender",
+    discussion: "https://community.ynput.io/tag/blender",
     features: [
         "workfiles",
         "loader",
@@ -31,7 +33,6 @@ const addon: Addon = {
         "pointcache",
     ],
     icon: "blender-icon.png",
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/blender",
 };
 
 export default addon;

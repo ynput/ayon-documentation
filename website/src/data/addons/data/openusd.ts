@@ -14,10 +14,11 @@ const addon: Addon = {
         "usdRender",
     ],
     docs: {
-        user: "category/usd",
-        admin: "addon_usd_admin",
+        user: "https://help.ayon.app/collections/3779298-openusd",
+        admin: "https://help.ayon.app/articles/8466002-openusd-addon-settings",
     },
     github: "https://github.com/ynput/ayon-usd",
+    discussion: "https://community.ynput.io/tag/usd",
 };
 
 export default addon;

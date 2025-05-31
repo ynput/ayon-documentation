@@ -19,14 +19,14 @@ const links = [
         title: "User",
         icon: Brush,
         bio: "Guides for users, artists and coordinators",
-        to: "docs/artist_getting_started",
+        to: "https://help.ayon.app/",
         button: "Get Help",
     },
     {
         title: "Admin",
         icon: Shield,
         bio: "Studio setup, configuration and management",
-        to: "docs/system_introduction",
+        to: "https://help.ayon.app/",
         button: "Get Setup",
     },
     {

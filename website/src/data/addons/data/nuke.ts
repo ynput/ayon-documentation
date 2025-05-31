@@ -6,9 +6,8 @@ const addon: Addon = {
     description: `
 Nuke is a powerful node-based compositing software used extensively in the film and television industry for creating high-quality visual effects, offering a range of advanced tools and features for efficient and flexible workflows.
 
-**Variants**: _NukeX_, _NukeAssist_
-
-**Versions**: \`11.3\`, \`12.2\`, \`13.2\`, \`14.0\`
+All the information also applies to _NukeX_ and _NukeAssist_.
+We are supporting versions \`11.0\` and above.
     `,
     preview: "nuke.png",
     badge: versions.Nuke_Badge,
@@ -40,10 +39,11 @@ Nuke is a powerful node-based compositing software used extensively in the film 
         "workfile",
     ],
     docs: {
-        user: "addon_nuke_artist",
-        admin: "addon_nuke_admin",
+        user: "https://help.ayon.app/articles/4670584-working-with-nuke-in-ayon",
+        admin: "https://help.ayon.app/articles/2833967-nuke-addon-settings",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/nuke",
+    github: "https://github.com/ynput/ayon-nuke",
+    discussion: "https://community.ynput.io/tag/nuke",
 };
 
 export default addon;

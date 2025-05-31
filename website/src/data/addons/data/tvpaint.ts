@@ -10,10 +10,11 @@ const addon: Addon = {
     features: ["localRendering", "workfiles", "reviewables"],
     products: ["image", "audio"],
     docs: {
-        user: "addon_tvpaint_artist",
-        admin: "addon_tvpaint_admin",
+        user: "https://help.ayon.app/articles/8337707-working-with-tvpaint-in-ayon",
+        admin: "https://help.ayon.app/articles/8770967-tvpaint-addon-settings",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/tvpaint",
+    github: "https://github.com/ynput/ayon-tvpaint",
+    discussion: "https://community.ynput.io/tag/tv-paint",
 };
 
 export default addon;

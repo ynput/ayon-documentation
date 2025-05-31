@@ -102,7 +102,7 @@ for item in containers:
 
 ### Publish workflow
 
-previously discussed in [What is publishing? | AYON Docs](artist_publish.md#what-is-publishing) and [What is "publishing"? | Pyblish Wiki](https://github.com/pyblish/pyblish/wiki/What-is-publishing)
+previously discussed in [What is publishing? | AYON Docs](https://help.ayon.app/articles/7070980-about-ayon-pipeline#7243zf37b25) and [What is "publishing"? | Pyblish Wiki](https://github.com/pyblish/pyblish/wiki/What-is-publishing)
 
 ![](assets/addon_dev/publish_diagram.png)
 
@@ -122,7 +122,7 @@ A `Model` product in Maya should have UVs to pass [Mesh Has UVs](https://github.
 
 :::tip Product-Types Vs Representations
 
-It's super important to differentiate between **[product-types](artist_concepts.md#product)** and **[representations](artist_concepts.md#representation)** when dealing with AYON, and in short:
+It's super important to differentiate between **[product-types](https://help.ayon.app/articles/3030530-ayon-glossary#o0fmdiprmzp)** and **[representations](https://help.ayon.app/articles/3030530-ayon-glossary#p3k2dz5wty6)** when dealing with AYON, and in short:
 
 * **Product-Type**: A product containing a specific type of information, e.g.
   * **pointcache/animation**: a character animation output as cache of its geometry only (no controls, no bones; just geometry cached)

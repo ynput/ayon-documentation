@@ -17,10 +17,11 @@ const addon: Addon = {
     ],
     products: ["workfile", "textureSet"],
     docs: {
-        user: "addon_substancepainter_artist",
-        admin: "addon_substancepainter_admin",
+        user: "https://help.ayon.app/articles/2948998-working-with-substance-painter",
+        admin: "https://help.ayon.app/articles/6244730-substance-painter-addon-settings",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/substancepainter",
+    github: "https://github.com/ynput/ayon-substance-painter",
+    discussion: "https://community.ynput.io/tag/substance-painter",
 };
 
 export default addon;

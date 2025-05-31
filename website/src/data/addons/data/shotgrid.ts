@@ -9,10 +9,10 @@ const addon: Addon = {
     features: ["sgSync"],
     badge: versions.Flow_Badge,
     docs: {
-        admin: "addon_flow_admin",
+        admin: "https://help.ayon.app/articles/3639938-configure-flow-shotgrid-addon",
     },
     github: "https://github.com/ynput/ayon-shotgrid",
-    discussion: "https://community.ynput.io/t/shotgrid-integration-addon/63",
+    discussion: "https://community.ynput.io/tag/shotgrid-flow",
 };
 
 export default addon;

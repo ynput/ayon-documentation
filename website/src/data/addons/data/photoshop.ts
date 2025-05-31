@@ -10,9 +10,11 @@ const addon: Addon = {
     features: ["workfiles", "localRendering"],
     products: ["plate", "image", "layeredImage", "background"],
     docs: {
-        user: "addon_photoshop_artist",
-        admin: "addon_photoshop_admin",
+        user: "https://help.ayon.app/articles/7712931-working-with-photoshop-in-ayon",
+        admin: "https://help.ayon.app/articles/0146725-photoshop-addon-settings",
     },
+    github: "https://github.com/ynput/ayon-photoshop",
+    discussion: "https://community.ynput.io/tag/photoshop",
 };
 
 export default addon;

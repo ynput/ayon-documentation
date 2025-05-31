@@ -15,6 +15,7 @@ const addon: Addon = {
         developer: "developer_hosts_addonName",
     },
     github: "https://github.com/ynput/OpenPype/tree/develop/openpype/modules/example_addons",
+    discussion: "https://community.ynput.io/",
     products: ["render", "plate", "image", "background"],
     features: ["localRendering", "workfiles"],
     addons: ["nuke", "flame"],
@@ -30,6 +31,7 @@ export default addon;
 // features? | An array of features that the addon supports | ["workfiles", "loader"]
 // products? | An array of products that the addon supports | ["image", "video", "model"]
 // addons? | An array of addons that the addon supports | ["nuke", "maya"]
-// docs? | An object of documentation links for the addon | { "user": "artist_hosts_blender", "admin": "admin_hosts_blender", "developer": "dev_publishing" }
+// docs? | Either an object of documentation links for the addon or a link to the doc in our new help center | { "user": "artist_hosts_blender", "admin": "admin_hosts_blender", "developer": "dev_publishing" }
 // github? | A link to the github repository of the addon
+// discussion? | A link to the forums filtered by the tag of the addon
 // id? | The id of the addon, if not set (recommended) it will be the same as the filename | "blender"

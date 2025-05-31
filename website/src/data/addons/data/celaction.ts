@@ -9,7 +9,12 @@ const addon: Addon = {
     badge: versions.Celaction_Badge,
     features: ["publisher", "farmRendering", "workfiles", "reviewables"],
     products: ["workfile", "render", "review", "audio"],
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/celaction",
+    docs: {
+        // user: "",
+        admin: "https://help.ayon.app/articles/7553962-celaction-addon-settings",
+    },
+    github: "https://github.com/ynput/ayon-celaction",
+    discussion: "https://community.ynput.io/tag/celaction",
 };
 
 export default addon;
