@@ -26,13 +26,6 @@ module.exports = {
             ],
         },
     ],
-    Admin: [
-        {
-            type: "category",
-            label: "AYON Launcher",
-            items: ["admin_launcher_distribute", "admin_launcher_run"],
-        },
-    ],
     Dev: [
         "dev_introduction",
         "dev_requirements",
