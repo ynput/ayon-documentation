@@ -24,7 +24,7 @@ You access the REST API Docs via `<your-ayon-server-url>/api` or via help icon.
 
 ![](assets/apis_and_resources/rest_api_docs.png)
 
-For instance, you can check the REST API Docs for our Public AYON Server here at [AYON REST API Docs](/api)
+For instance, you can check the REST API Docs for our Public AYON Server here at [AYON REST API Docs](https://playground.ayon.app/doc/api).
 
 ## Your First AYON API Calls
 

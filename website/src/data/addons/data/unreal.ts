@@ -23,10 +23,11 @@ Unreal Engine is a powerful real-time 3D creation tool used by game developers, 
         "render",
     ],
     docs: {
-        user: "addon_unreal_artist",
-        admin: "addon_unreal_admin",
+        user: "https://help.ayon.app/articles/2228078-working-with-unreal-in-ayon",
+        admin: "https://help.ayon.app/articles/1738168-setup-unreal-addon",
     },
     github: "https://github.com/ynput/ayon-unreal",
+    discussion: "https://community.ynput.io/tag/unreal-engine",
 };
 
 export default addon;

@@ -23,10 +23,11 @@ const addon: Addon = {
         "audio",
     ],
     docs: {
-        user:"addon_flame_artist",
-        admin: "addon_flame_admin",
+        user:"https://help.ayon.app/articles/5381712-working-with-autodesk-flame-in-ayon",
+        admin: "https://help.ayon.app/articles/3647766-setup-autodesk-flame-addon",
     },
     github: "https://github.com/ynput/ayon-flame",
+    discussion: "https://community.ynput.io/tag/flame",
 };
 
 export default addon;

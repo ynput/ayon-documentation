@@ -8,11 +8,12 @@ const addon: Addon = {
     icon: "kitsu-icon.png",
     badge: versions.Kitsu_Badge,
     docs: {
-        user: "addon_kitsu_artist",
-        admin: "addon_kitsu_admin",
+        user: "https://help.ayon.app/articles/6394498-working-with-kitsu-in-ayon",
+        admin: "https://help.ayon.app/articles/3271341-kitsu-addon-settings",
     },
     features: ["appLauncher", "reviewables", "trayPublisher", "projectManager"],
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/kitsu",
+    github: "https://github.com/ynput/ayon-kitsu",
+    discussion: "https://community.ynput.io/tag/kitsu",
 };
 
 export default addon;

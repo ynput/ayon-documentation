@@ -8,10 +8,11 @@ const addon: Addon = {
     preview: "after-effects.png",
     badge: versions.Aftereffects_Badge,
     docs: {
-        user: "addon_aftereffects_artist",
-        admin: "addon_aftereffects_admin",
+        user: "https://help.ayon.app/articles/9429657-working-with-after-effects-in-ayon",
+        admin: "https://help.ayon.app/articles/4515672-aftereffects-addon-settings",
     },
     github: "https://github.com/ynput/ayon-aftereffects",
+    discussion: "https://community.ynput.io/tag/after-effects",
     products: [
         "render",
         "plate",

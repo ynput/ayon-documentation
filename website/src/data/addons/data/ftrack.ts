@@ -2,15 +2,16 @@ import { type Addon } from "../types";
 import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
-    title: "Ftrack",
-    description: "Ftrack is a project management tool for creative teams.",
+    title: "ftrack",
+    description: "ftrack is a project management tool for creative teams.",
     badge: versions.Ftrack_Badge,
     docs: {
-        user: "addon_ftrack_artist",
-        admin: "addon_ftrack_admin",
+        user: "https://help.ayon.app/articles/6899451-working-with-ftrack-in-ayon",
+        admin: "https://help.ayon.app/articles/1229195-configure-ftrack-addon",
     },
     preview: "ftrack.png",
     github: "https://github.com/ynput/ayon-ftrack",
+    discussion: "https://community.ynput.io/tag/ftrack",
     features: [
         "appLauncher",
         "reviewables",

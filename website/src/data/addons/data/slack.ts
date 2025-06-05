@@ -6,10 +6,12 @@ const addon: Addon = {
     description: "Send publishing comments and previews to slack channels.",
     icon: "slack-icon.png",
     badge: versions.Slack_Badge,
-    github: "https://github.com/ynput/ayon-slack",
     docs: {
-        admin: "addon_slack_admin",
+        // user: "",
+        admin: "https://help.ayon.app/articles/8988101-slack",
     },
+    github: "https://github.com/ynput/ayon-slack",
+    discussion: "https://community.ynput.io/tag/slack",
 };
 
 export default addon;

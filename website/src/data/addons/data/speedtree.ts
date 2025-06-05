@@ -13,10 +13,11 @@ const addon: Addon = {
     ],
     products: ["workfile", "model"],
     docs: {
-        user: "addon_speedtree_artist",
-        admin: "addon_speedtree_admin",
+        user: "https://help.ayon.app/articles/1430359-working-with-speedtree-in-ayon",
+        admin: "https://help.ayon.app/articles/9963950-configure-speedtree-addon",
     },
     github: "https://github.com/ynput/ayon-speedtree",
+    discussion: "https://community.ynput.io/tag/speedtree",
 };
 
 export default addon;

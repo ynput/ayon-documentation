@@ -24,11 +24,11 @@ const addon: Addon = {
     ],
     products: [],
     docs: {
-        user: "artist_tools",
-        admin: "system_introduction",
+        user: "https://help.ayon.app/collections/3002056-pipeline-tools",
+        admin: "https://help.ayon.app/articles/3005275-core-addon-settings",
     },
-
-    github: "https://github.com/ynput/OpenPype",
+    github: "https://github.com/ynput/ayon-core",
+    discussion: "https://community.ynput.io/tag/core",
 };
 
 export default addon;

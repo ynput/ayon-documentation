@@ -17,9 +17,11 @@ const addon: Addon = {
     ],
     products: [],
     docs: {
-        admin: "addon_syncsketch_admin",
+        // user: "",
+        admin: "https://help.ayon.app/articles/0905719-syncsketch",
     },
-    github: "https://github.com/ynput/ayon-syncsketch/tree/develop",
+    github: "https://github.com/ynput/ayon-syncsketch",
+    discussion: "https://community.ynput.io/tag/syncsketch",
 };
 
 export default addon;

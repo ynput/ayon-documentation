@@ -18,10 +18,11 @@ const addon: Addon = {
         "workfile",
     ],
     docs: {
-        user: "addon_zbrush_artist",
-        admin: "addon_zbrush_admin",
+        user: "https://help.ayon.app/articles/2471745-working-with-zbrush-in-ayon",
+        admin: "https://help.ayon.app/articles/9376182-zbrush-addon-settings",
     },
-    github: "https://github.com/ynput/ayon-zbrush/tree/origin/AY-1029_Zbrush-integration/client/ayon_zbrush",
+    github: "https://github.com/ynput/ayon-zbrush",
+    discussion: "https://community.ynput.io/tag/zbrush",
 };
 
 export default addon;
