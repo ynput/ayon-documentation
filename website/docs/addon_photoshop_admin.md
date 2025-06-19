@@ -137,6 +137,18 @@ Handles tags for produced `.jpg` representation. `Create review` and `Add review
 
 Handles tags for produced `.mov` representation. `Create review` and `Add review to Ftrack` are defaults. 
 
+### Extract Layers
+
+Export layers within the instance layerset to a PSD file.
+
+![Photoshop Extract Layers](assets/admin_hosts_photoshop_publish_extract-layers.png)
+
+#### Merge layersets Options
+
+Each layerset within the instance will be merged into a layer.
+
+![Photoshop Extract Layers - Merge Layersets](assets/admin_hosts_photoshop_publish_extract-layers_merge-layersets.png)
+
 
 ### Workfile Builder
 
