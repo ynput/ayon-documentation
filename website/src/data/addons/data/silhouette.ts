@@ -20,10 +20,11 @@ const addon: Addon = {
         "matteshapes",
     ],
     docs: {
-        user: "addon_silhouette_artist",
-        admin: "addon_silhouette_admin",
+        user: "https://help.ayon.app/articles/9127304-working-with-silhouette-in-ayon",
+        admin: "https://help.ayon.app/articles/5294823-silhouette-addon-settings",
     },
     github: "https://github.com/ynput/ayon-silhouette",
+    discussion: "https://community.ynput.io/tag/silhouette",
 };
 
 export default addon;

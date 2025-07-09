@@ -9,11 +9,12 @@ const aquarium: Addon = {
     icon: "aquarium-icon.png",
     badge: versions.Aquarium_Badge,
     docs: {
-        user: "addon_aquarium_artist",
-        admin: "addon_aquarium_admin",
+        // user: "addon_aquarium_artist",
+        // admin: "addon_aquarium_admin",
         developer: "addon_aquarium_developer",
     },
     github: "https://github.com/ynput/ayon-aquarium",
+    discussion: "https://community.ynput.io/tag/aquarium",
     products: ["render", "plate", "image", "background", "review"],
     features: [
         "appLauncher",

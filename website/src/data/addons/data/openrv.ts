@@ -16,9 +16,11 @@ const addon: Addon = {
     ],
     products: ["workfile"],
     docs: {
-        user: "addon_openrv_artist",
+        user: "https://help.ayon.app/articles/5906891-working-with-openrv-in-ayon",
+        admin: "https://help.ayon.app/articles/6197405-openrv-addon-settings"
     },
     github: "https://github.com/ynput/ayon-openrv",
+    discussion: "https://community.ynput.io/tag/open-rv",
 };
 
 export default addon;

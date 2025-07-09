@@ -8,9 +8,8 @@ Professional-grade video editing and compositing software designed for film, TV,
 and commercial post-production, offering seamless collaboration, streamlined workflows,
 and efficient management of complex projects.
 
-**Variants**: _Hiero_, _NukeStudio_
-
-**Versions**: \`11.3\`, \`12.2\`, \`13.2\`, \`14.0\`
+All the information also applies to _Nuke Studio(NKS)_.
+We are supporting versions \`11.0\` and above.
     `,
     icon: "hiero.png",
     badge: versions.Hiero_Badge,
@@ -26,10 +25,11 @@ and efficient management of complex projects.
     ],
     products: ["audio", "plate", "review", "frame", "effect", "workfile"],
     docs: {
-        user: "addon_hiero_artist",
-        admin: "addon_hiero_admin",
+        user: "https://help.ayon.app/articles/0417137-working-with-hiero-in-ayon",
+        admin: "https://help.ayon.app/articles/3397387-configure-hiero-addon",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/hiero",
+    github: "https://github.com/ynput/ayon-hiero",
+    discussion: "https://community.ynput.io/tag/hiero",
 };
 
 export default addon;

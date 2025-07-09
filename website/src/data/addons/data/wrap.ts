@@ -16,9 +16,11 @@ const addon: Addon = {
     ],
     products: ["wrap", "workfile"],
     docs: {
-        user: "addon_wrap_artist",
-        admin: "addon_wrap_admin",
+        user: "https://help.ayon.app/articles/1462992-working-with-wrap-in-ayon",
+        admin: "https://help.ayon.app/articles/0840796-wrap-addon-settings",
     },
+    github: "https://github.com/ynput/ayon-wrap",
+    discussion: "https://community.ynput.io/tag/wrap",
 };
 
 export default addon;
