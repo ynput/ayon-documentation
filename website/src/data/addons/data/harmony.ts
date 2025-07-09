@@ -2,9 +2,9 @@ import { type Addon } from "../types";
 import versions from "@site/docs/assets/json/Ayon_addons_version.json";
 
 const addon: Addon = {
-    title: "ToonBoom Harmony",
+    title: "Harmony",
     description:
-        "Harmony 22 is an all-in-one 2D animation software. It allows you to create traditional and digital animation.",
+        "ToonBoom Harmony 22 is an all-in-one 2D animation software. It allows you to create traditional and digital animation.",
     icon: "harmony-icon.png",
     badge: versions.Harmony_Badge,
     features: [
@@ -35,9 +35,11 @@ const addon: Addon = {
         "image",
     ],
     docs: {
-        user: "addon_harmony_artist",
-        admin: "addon_harmony_admin",
+        user: "https://help.ayon.app/articles/3580393-working-with-harmony-in-ayon",
+        admin: "https://help.ayon.app/articles/5752971-harmony-addon-settings",
     },
+    github: "https://github.com/ynput/ayon-harmony",
+    discussion: "https://community.ynput.io/tag/toonboom-harmony",
 };
 
 export default addon;

@@ -7,8 +7,8 @@ const addon: Addon = {
         "Fusion is a visual effects and motion graphics tool that helps you create high-quality effects.",
     badge: versions.Fusion_Badge,
     docs: {
-        user: "artist_hosts_resolve",
-        admin: "admin_hosts_resolve",
+        // user: "",
+        admin: "https://help.ayon.app/en/help/articles/9576605-fusion-addon-settings",
     },
     products: ["image", "review", "render", "plate", "model", "pointcache"],
     features: [
@@ -25,7 +25,8 @@ const addon: Addon = {
         "nodePresets",
     ],
     icon: "fusion-icon.png",
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/fusion",
+    github: "https://github.com/ynput/ayon-fusion",
+    discussion: "https://community.ynput.io/tag/fusion",
 };
 
 export default addon;

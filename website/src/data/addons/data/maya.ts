@@ -10,7 +10,7 @@ through animation till final renders and scene settings. Your artists
 won't need to touch file browser at all and AYON will take care of all the file management. 
 Most of maya workflows are supported including gpucaches, automatic shader, nested references and render proxies.
 
-**Versions**: \`2020\`, \`2021\`, \`2022\`, \`2023\`, \`2024\`
+We are recommend using \`2023\` and above.
          `,
     icon: "maya-icon.png",
     badge: versions.Maya_Badge,
@@ -53,11 +53,12 @@ Most of maya workflows are supported including gpucaches, automatic shader, nest
         "mayaScene",
     ],
     docs: {
-        user: "addon_maya_artist",
-        admin: "addon_maya_admin",
+        user: "https://help.ayon.app/collections/8062296-maya",
+        admin: "https://help.ayon.app/collections/8127361-maya-addon-settings",
     },
 
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/maya",
+    github: "https://github.com/ynput/ayon-maya",
+    discussion: "https://community.ynput.io/tag/maya",
 };
 
 export default addon;

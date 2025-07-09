@@ -22,10 +22,11 @@ const addon: Addon = {
         "workfile",
     ],
     docs: {
-        user: "addon_cinema4d_artist",
-        admin: "addon_cinema4d_admin",
+        user: "https://help.ayon.app/articles/7284251-working-with-ayon-in-cinema4d",
+        admin: "https://help.ayon.app/articles/4858866-configure-cinema4d-addon",
     },
-    github: "https://github.com/Ynput/ayon-cinema4d",
+    github: "https://github.com/ynput/ayon-cinema4d",
+    discussion: "https://community.ynput.io/tag/cinema4d",
 };
 
 export default addon;
