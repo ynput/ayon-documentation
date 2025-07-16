@@ -15,7 +15,7 @@ const config = {
     tagline:
         "Documentation for the most robust open-source pipeline for studios and remote teams",
     url: "https://ynput.github.io", // Your website URL
-    baseUrl: "/",
+    baseUrl: "/ayon-documentation",
     onBrokenLinks: "warn",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
