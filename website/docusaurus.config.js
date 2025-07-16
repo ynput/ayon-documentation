@@ -23,7 +23,7 @@ const config = {
     // GitHub pages deployment config.
     // If you aren't using GitHub pages, you don't need these.
     organizationName: "ynput", // Usually your GitHub org/user name.
-    // trailingSlash: false,  // Disable trailing slash.
+    trailingSlash: false,  // Disable trailing slash.
     projectName: "ayon-documentation", // Usually your repo name.
     stylesheets: [
         "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200",
