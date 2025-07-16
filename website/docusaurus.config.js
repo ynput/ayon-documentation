@@ -46,23 +46,23 @@ const config = {
                 },
             }),
         ],
-        [
-            "redocusaurus",
-            {
-                // Plugin Options for loading OpenAPI files
-                specs: [
-                    {
-                        spec: "https://playground.ayon.app/openapi.json",
-                        route: "/api",
-                    },
-                ],
-                // Theme Options for modifying how redoc renders them
-                theme: {
-                    // Change with your site colors
-                    primaryColor: "#00d6a1",
-                },
-            },
-        ],
+        // [
+        //     "redocusaurus",
+        //     {
+        //         // Plugin Options for loading OpenAPI files
+        //         specs: [
+        //             {
+        //                 spec: "https://playground.ayon.app/openapi.json",
+        //                 route: "/api",
+        //             },
+        //         ],
+        //         // Theme Options for modifying how redoc renders them
+        //         theme: {
+        //             // Change with your site colors
+        //             primaryColor: "#00d6a1",
+        //         },
+        //     },
+        // ],
     ],
 
     themeConfig:
