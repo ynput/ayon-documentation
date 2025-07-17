@@ -104,9 +104,7 @@ const config = {
                         items: [
                             {
                                 label: "REST API Docs",
-                                href: "https://playground.ayon.app/doc/api",
-                                target: "_blank",
-                                rel: null,
+                                to: "/api",
                             },
                             {
                                 label: "GraphQL API Explorer",
@@ -452,6 +450,11 @@ const config = {
                         target: "_blank",
                         rel: null,
                         position: "left",
+                    },
+                    {
+                        label: "REST API Docs",
+                        position: "right",
+                        to: "/api",
                     },
                     {
                         label: "Addons",
