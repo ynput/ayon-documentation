@@ -55,3 +55,4 @@ jobs:
           publish_dir: ./website/build
           external_repository: ynput/ynput.github.io
           publish_branch: main
+          cname: docs.ayon.dev
