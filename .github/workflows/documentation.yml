@@ -51,7 +51,7 @@ jobs:
       - name: 📂 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.YNPUT_BOT_TOKEN  }}
+          deploy_key: ${{ secrets.DOCS_DEPLOY_KEY }}
           publish_dir: ./website/build
           external_repository: ynput/ynput.github.io
           publish_branch: main
