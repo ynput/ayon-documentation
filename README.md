@@ -1,14 +1,18 @@
-## AYON pipeline official documentation
+# AYON Developer Portal Official Documentation
 
-:exclamation: While we're transitioning from OpenPype, there are a lot of details the are factually incorrect. We're working on resolving all of them. :exclamation:
+AYON Developer Portal is where developer can find documentaiton about AYON development, backend, frontend, launcher desktop app or addons.
 
-:books: View the live [documentation](https://ayon.ynput.io).
+:books: View the live [AYON Developer Portal](https://docs.ayon.dev).
 
-:family: Check out our community discussions [forum](https://community.ynput.io).
+:open_book: Need to learn about using AYON as an artist or admin? Visit the [AYON Help Center](https://help.ayon.app/en/help).
 
-:phone: Want to know even more about AYON? Get in [contact](https://community.ynput.io/contact).
+:family: Join our community discussions in the [Ynput Forums](https://community.ynput.io).
 
-:raising_hand: Need some support or want something custom? Take a look at our [services](https://ynput.io/services/).
+:phone: Want to know even more about AYON? Get in [Contact](https://ynput.io/contact).
+
+:raising_hand: Need support or want something custom? Explore our [Services](https://ynput.io/services/).
+
+:bulb: Have ideas or requests? Share them on our [Feedback Portal](https://feedback.ayon.app/).
 
 ## Contribute
 
@@ -17,13 +21,15 @@ If you spot something incorrect or just think a page could do with some improvem
 1. Make the changes to the relevant markdown file.
 2. Make a PR documenting the changes.
 
-## Build
+## Running documentation live
 
 - Install Node.js https://nodejs.org/en/download
 - `npm install -g yarn`
-- `yarn add docusaurus --dev`
 - `cd {ayon-doc-repo}/website`
-- `yarn start`
+- `yarn install`
+- `yarn run start`
+
+For additional info, refer to the [Official Docusaurus Documentation](https://docusaurus.io/docs/installation#running-the-development-server).
 
 ## Addons
 
