@@ -4,7 +4,7 @@ title: Requirements
 sidebar_label: Requirements
 ---
 
-AYON is a modular project, the AYON server lies at the core of it, so to develop for AYON  we need an instance of it either in the localhost or in a remote server, refer to the [Admin Server Deployment](admin_server_deployment.md) for more.
+AYON is a modular project, the AYON server lies at the core of it, so to develop for AYON  we need an instance of it either in the localhost or in a remote server, refer to the [Admin Server Deployment](https://help.ayon.app/articles/2293963#14llflexlb4) for more.
 
 AYON is written in [**Python 3 (3.9.x)**](#python) and adheres to the versions defined in the [VFX Reference Platform](https://vfxplatform.com/).
 
@@ -16,7 +16,7 @@ The main requirements needed to run and build AYON are:
     - PowerShell 5.0+ (Windows)
     - Bash (Linux and macOs)
 - [**Python 3.9.x**](#python)
-- [**Ayon Server**](admin_server_deployment.md)
+- [**Ayon Server**](https://help.ayon.app/articles/2293963#14llflexlb4)
 
 
 ## Supported Operating Systems

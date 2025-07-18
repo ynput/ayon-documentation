@@ -35,10 +35,11 @@ const addon: Addon = {
         "usdRender",
     ],
     docs: {
-        user: "addon_houdini_artist",
-        admin: "addon_houdini_admin",
+        user: "https://help.ayon.app/articles/2777507-working-with-houdini-in-ayon",
+        admin: "https://help.ayon.app/articles/0982414-configure-houdini-addon",
     },
-    github: "https://github.com/ynput/OpenPype/tree/develop/openpype/hosts/houdini",
+    github: "https://github.com/ynput/ayon-houdini/",
+    discussion: "https://community.ynput.io/tag/houdini",
 };
 
 export default addon;

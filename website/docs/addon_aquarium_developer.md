@@ -92,14 +92,14 @@ You will need to clone several Ayon repositories in order to run everything loca
   - You can clone this one, into `ayon-docker/addons/core` folder. Here is the steps :
     2. From the `core` folder execute this command:
        - `git clone ssh://git@github.com:ynput/ayon-core.git dev`
-       - This command will clone the repository and rename it `dev`, in order to follow [Ayon addon directory structure](admin_server_installing_addons.md#directory-structure)
+       - This command will clone the repository and rename it `dev`, in order to follow [Ayon addon directory structure](https://help.ayon.app/articles/4089565#oxeyie32ie8)
 - [Ayon dependencies](https://github.com/ynput/ayon-dependencies-tool)
 - [Aquarium addon](https://github.com/ynput/ayon-aquarium)
   - You can clone this one, into `ayon-docker/addons` folder. Here is the steps :
     1. Create a folder `ayon-aquarium` in `ayon-docker/addons` folder
     2. From the `ayon-aquarium` folder execute this command:
        - `git clone ssh://git@github.com:ynput/ayon-aquarium.git dev`
-       - This command will clone the repository and rename it `dev`, in order to follow [Ayon addon directory structure](admin_server_installing_addons.md#directory-structure)
+       - This command will clone the repository and rename it `dev`, in order to follow [Ayon addon directory structure](https://help.ayon.app/articles/4089565#oxeyie32ie8)
 
 ### Optional requirements
 

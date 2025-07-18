@@ -10,10 +10,11 @@ const addon: Addon = {
     features: ["workfiles"],
     products: [],
     docs: {
-        user: "addon_premiere_artist",
-        admin: "addon_premiere_admin",
+        user: "https://help.ayon.app/articles/3607676-working-with-premiere-in-ayon",
+        admin: "https://help.ayon.app/articles/1663762-premiere-addon-settings",
     },
     github: "https://github.com/ynput/ayon-premiere",
+    discussion: "https://community.ynput.io/tag/premiere",
 };
 
 export default addon;

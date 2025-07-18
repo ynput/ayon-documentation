@@ -21,10 +21,11 @@ const addon: Addon = {
         "workfile",
     ],
     docs: {
-        user: "addon_mochapro_artist",
-        admin: "addon_mochapro_admin",
+        user: "https://help.ayon.app/articles/0309485-working-with-mocha-pro-in-ayon",
+        admin: "https://help.ayon.app/articles/3864909-mocha-pro-addon-settings",
     },
     github: "https://github.com/ynput/ayon-mocha",
+    discussion: "https://community.ynput.io/tag/mocha-pro",
 };
 
 export default addon;
