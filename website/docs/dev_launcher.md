@@ -116,8 +116,53 @@ ayon /foo/bar/baz.py arg1 arg2
 
 :::caution
 
-AYON Launcher comes with [Global Executable Arguments] (ayon_launcher_artist_advanced.md#global-executable-arguments). These cannot be used in any CLI handling. i.e. you can't reuse them when implementing a [CLI Interface](dev_addon_creation.md#cli-interface) for your addon.
+These cannot be used in any CLI handling. i.e. you can't reuse them when implementing a [CLI Interface](dev_addon_creation.md#cli-interface) for your addon.
 :::
+
+| <div style={{width: '190px'}}>Argument</div> | Description |
+| -- | -- |
+| `init-ayon-launcher` | Initializes the launcher by registering the executable path to known AYON launcher locations and installing a shim executable. |
+| `--bundle <BUNDLE NAME>` | Forces AYON to use a specific bundle instead of the one set in the bundle settings. This is useful for testing new bundles before release. <br/>See examples here: [How to use different bundles with different projects? \| Ynput Forums](https://community.ynput.io/t/how-to-use-different-bundles-with-different-projects/1096) |
+| `--verbose <LOG LEVEL>` | Sets the logging level. Acceptable values: `DEBUG` (10), `INFO` (20), `WARNING` (30), `ERROR` (40), `CRITICAL` (50). You can use either the string or the corresponding integer The value is stored in the `AYON_LOG_LEVEL` environment variable. | 
+| `--debug` | A simplified way to set verbose to DEBUG. Also sets the `AYON_DEBUG` environment variable to `1`. |
+| `--skip-headers` | Skips headers in the console output. |
+| `--use-dev` | Uses the dev bundle and settings if a bundle is not explicitly defined. |
+| `--use-staging` | Uses staging settings and the staging bundle if a bundle is not explicitly defined. Cannot be combined with staging. |
+| `--headless` | Runs AYON in headless mode, with no UIs shown during bootstrap. Affects the AYON_HEADLESS_MODE environment variable. Custom logic must handle headless mode independently. |
+| `--ayon-login` | Displays the login dialog on startup. |
+| `--skip-bootstrap` | Skips the bootstrap process, used for internal distribution logic. |
+
+
+You can access these executable arguments via terminal
+<Tabs>
+
+<TabItem value="windows" label=<span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> default>
+
+
+```bash
+cd <ayon-launcher-installation-location>
+./ayon.exe <arg>
+```
+Or 
+```bash
+cd <ayon-launcher-installation-location>
+./ayon_console.exe <arg>
+```
+
+</TabItem>
+
+<TabItem value="linux&mac" label=<div><span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> & <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>Darwin</span></div> >
+
+
+```bash
+cd <ayon-launcher-installation-location>
+ayon <arg>
+```
+
+</TabItem>
+
+</Tabs>
+
 
 ### Environment Variables
 
