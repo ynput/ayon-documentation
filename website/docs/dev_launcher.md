@@ -151,7 +151,7 @@ cd <ayon-launcher-installation-location>
 
 </TabItem>
 
-<TabItem value="linux&mac" label=<div><span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> & <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>Darwin</span></div> >
+<TabItem value="linux&mac" label=<div><span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> & <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span></div> >
 
 
 ```bash
@@ -242,7 +242,7 @@ Just throwing these here for future reference.
 
 - <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span>
 - <span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span>
-- <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>Darwin</span>
+- <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span>
 - <span style={{color:'#23E0A9'}}>⬤</span> <span style={{color:'#1c2026',backgroundColor:'#23E0A9', borderRadius: '4px', padding: '2px 4px'}}>Production</span>
 - <span style={{color:'#ff858b'}}>⬤</span> <span style={{color:'#1c2026', backgroundColor:'#ff858b', borderRadius: '4px', padding: '2px 4px'}}>Staging</span>
 - <span style={{color:'#c78fff'}}>⬤</span> <span style={{color:'#1c2026',backgroundColor:'#c78fff', borderRadius: '4px', padding: '2px 4px'}}>Development</span>
