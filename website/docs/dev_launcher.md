@@ -9,9 +9,6 @@ import TabItem from '@theme/TabItem';
 import DocCardList from '@theme/DocCardList';
 
 ## Introduction
-
-For the most recent documentation, please refer to the readme in the [AYON launcher repository](https://github.com/ynput/ayon-launcher/blob/main/README.md).
-
 The desktop application launcher for the AYON pipeline is essential for interacting with integrated applications. It serves as the main entry point for artists to publish and load data with AYON. Although the AYON launcher is a standalone desktop application, it requires a connection to an AYON server instance to function.
 
 The primary purpose of the application is to distribute updates based on the current server state and to initiate the core add-on logic.
@@ -190,6 +187,9 @@ Developer mode automatically disregards any production or staging information.
 For a step-by-step guide, Check [Ayon Developer Mode – Guide | Ynput Forums](https://community.ynput.io/t/ayon-developer-mode-guide/993)
 :::
 
+## Further Information
+
+For additional information, please refer to the readme in the [AYON launcher repository](https://github.com/ynput/ayon-launcher/blob/main/README.md).
 
 <!-- 
 Just throwing these here for future reference.
