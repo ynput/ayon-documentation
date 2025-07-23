@@ -28,8 +28,6 @@ You can find all official launcher builds on[ayon-launcher/releases | Github](ht
 
 We aim to closely follow the [**VFX Reference Platform**](https://vfxplatform.com/).
 
-AYON is written in Python 3, with some elements still running in Python 2 until all DCCs are fully updated. For a list of those not yet updated, visit the [VFX Python3 tracker](https://vfxpy.com/).
-
 We use [CX_Freeze](https://cx-freeze.readthedocs.io/en/latest) to freeze the Python code and its dependencies, and [Poetry](https://python-poetry.org/) for virtual environment management.
 
 Comprehensive build steps are provided:
