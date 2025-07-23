@@ -50,6 +50,7 @@ jobs:
         run: yarn run build
       - name: 📂 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
         with:
           deploy_key: ${{ secrets.DOCS_DEPLOY_KEY }}
           publish_dir: ./website/build
