@@ -9,9 +9,10 @@ import TabItem from '@theme/TabItem';
 import DocCardList from '@theme/DocCardList';
 
 ## Introduction
-The desktop application launcher for the AYON pipeline is essential for interacting with integrated applications. It serves as the main entry point for artists to publish and load data with AYON. Although the AYON launcher is a standalone desktop application, it requires a connection to an AYON server instance to function.
 
-The primary purpose of the application is to distribute updates based on the current server state and to initiate the core add-on logic.
+AYON Launcher is a standalone desktop application designed to be the primary gateway for connecting to your AYON Server. It manages the distribution of updates *including addons, dependency packages, and different versions of the launcher itself* according to your bundle configuration. Additionally, AYON Launcher is responsible for initiating the core addon logic, enabling artists to interact with AYON Pipeline.
+
+To function properly, AYON Launcher requires an active connection to an AYON Server instance.
 
 ## AYON Launcher Development
 
