@@ -10,9 +10,10 @@ module.exports = {
         "dev_requirements",
         {
             type: "category",
-            label: "AYON launcher",
+            collapsed: true,
+            label: "AYON Launcher",
+            link: { type: "doc", id: "dev_launcher"},
             items: [
-                "dev_launcher",
                 "dev_launcher_build_windows",
                 "dev_launcher_build_macos",
                 "dev_launcher_build_linux",
