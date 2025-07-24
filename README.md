@@ -1,6 +1,6 @@
 # AYON Developer Portal Official Documentation
 
-AYON Developer Portal is where developer can find documentaiton about AYON development, backend, frontend, launcher desktop app or addons.
+AYON Developer Portal is where developers can find documentaiton about AYON development, backend, frontend, launcher desktop app or addons.
 
 :books: View the live [AYON Developer Portal](https://docs.ayon.dev).
 
