@@ -154,7 +154,7 @@ function FeatureCard({ feature }: { feature: Feature }) {
                                     Object.entries(feature.docs).map(
                                         ([k, v]) => (
                                             <Link
-                                                href={"/docs/" + v}
+                                                href={v.startsWith("https://") ? `${v}` : `/docs/${v}`}
                                                 className={clsx(
                                                     "button button--secondary button--md",
                                                     "pagination-nav__link",

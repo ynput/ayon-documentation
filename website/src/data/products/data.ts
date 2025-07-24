@@ -4,47 +4,45 @@ const products: { [type in ProductType]: Product } = {
     model: {
         title: "Model",
         icon: "language",
-        docs: "#model",
+        docs: "#46rec8lr0em",
     },
     look: {
         title: "Look",
         icon: "ev_shadow",
-        docs: "#look",
+        docs: "#6b24is4bk2t",
     },
     rig: {
         title: "Rig",
         icon: "accessibility",
-        docs: "#rig",
+        docs: "#wyleae08si1",
     },
     layout: {
         title: "Layout",
         icon: "nature_people",
-        docs: "#layout",
     },
     setdress: {
         title: "Setdress",
         icon: "forest",
-        docs: "#setdress",
+        docs: "#7p3c6f8dzlw",
     },
     camera: {
         title: "Camera",
         icon: "videocam",
-        docs: "#camera",
+        docs: "#kr4ptbopqax",
     },
     animation: {
         title: "Animation",
         icon: "directions_run",
-        docs: "#animation",
+        docs: "#ciar7mid47i",
     },
     cache: {
         title: "Cache",
         icon: "animation",
-        docs: "#cache",
+        docs: "#er8bxsoc5si",
     },
     render: {
         title: "Render",
         icon: "photo_library",
-        docs: "#render",
     },
     prerender: {
         title: "Prerender",

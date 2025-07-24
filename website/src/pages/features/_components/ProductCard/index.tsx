@@ -8,8 +8,8 @@ import Link from "@docusaurus/Link";
 function ProductCard({ product }: { product: Product }) {
     return (
         <Link
-            href={`/docs/artist_publish${
-                product.docs ? product.docs : "#products"
+            href={`https://help.ayon.app/en/help/articles/7070980-about-ayon-pipeline${
+                product.docs ? product.docs : "#46rec8lr0em"
             }`}
             className={styles.link}
         >

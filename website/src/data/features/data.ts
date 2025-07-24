@@ -24,7 +24,7 @@ const features: { [type in FeatureType]: Feature } = {
             "Save and load workfiles in progress. Change the context inside of the application.",
         preview: "workfiles.png",
         docs: {
-            user: "artist_tools_workfiles",
+            user: "https://help.ayon.app/en/help/articles/9624270-workfiles",
         },
     },
     loader: {
@@ -33,7 +33,7 @@ const features: { [type in FeatureType]: Feature } = {
             "Universal GUI for loading published assets into your DCC app.",
         preview: "loader.mp4",
         docs: {
-            user: "artist_tools_loader",
+            user: "https://help.ayon.app/en/help/articles/4345209-loader",
         },
     },
     publisher: {
@@ -42,7 +42,7 @@ const features: { [type in FeatureType]: Feature } = {
             "Universal GUI for validating and publishing content from your DCC app.",
         preview: "publisher.mp4",
         docs: {
-            user: "artist_tools_publisher",
+            user: "https://help.ayon.app/en/help/articles/1075843-creator-publisher",
         },
     },
     sceneManager: {
@@ -51,19 +51,17 @@ const features: { [type in FeatureType]: Feature } = {
             "Universal GUI for managing versions of assets loaded into your working scene.",
         preview: "scene_manager.png",
         docs: {
-            user: "artist_tools_inventory",
+            user: "https://help.ayon.app/en/help/articles/9770233-scene-inventory",
         },
-    },
-    projectManager: {
-        title: "Project manager",
-        description:
-            "Tools for creating shots, assets and task within your project if you don't use third party project management",
     },
     sgSync: {
         title: "Flow (Shotgrid) Sync",
         description:
             "A way to synchronize projects across AYON and Flow (Shotgrid), as well as react to events in either platform.",
         preview: "shotgrid_sync.png",
+        docs: {
+            user: "https://help.ayon.app/en/help/articles/3639938-configure-flow-shotgrid-addon",
+        },
     },
     aquariumSync: {
         title: "Aquarium Sync",
@@ -72,17 +70,7 @@ const features: { [type in FeatureType]: Feature } = {
         preview: "aquarium_sync.png",
         github: "https://github.com/ynput/ayon-aquarium",
         docs: {
-            user: "addon_aquarium_artist",
-            admin: "addon_aquarium_admin",
             developer: "addon_aquarium_developer",
-        },
-    },
-    libraryLoader: {
-        title: "Library Loader",
-        description:
-            "A loader GUI that allows yo to load content from dedicated cross project asset library",
-        docs: {
-            user: "artist_tool_library_loader",
         },
     },
     trayPublisher: {
@@ -106,7 +94,7 @@ const features: { [type in FeatureType]: Feature } = {
         description:
             "Built in file synchronization between your central storage (cloud or physical) and all your freelancers",
         docs: {
-            admin: "addon_site_sync_admin",
+            admin: "https://help.ayon.app/en/help/articles/3882937-site-sync",
         },
     },
     timersManager: {
@@ -115,12 +103,13 @@ const features: { [type in FeatureType]: Feature } = {
             "Service for monitoring the user activity to start, stop and synchronise time tracking.",
         docs: {
         },
-        github: "https://github.com/ynput/ayon-core/tree/develop/client/ayon_core/modules/timers_manager"
+        github: "https://github.com/ynput/ayon-timers-manager"
     },
     farmRendering: {
         title: "Farm rendering",
         docs: {
-            admin: "addon_deadline_admin",
+            user: "https://help.ayon.app/en/help/articles/8138091-working-with-deadline-in-ayon",
+            admin: "https://help.ayon.app/en/help/articles/5372986-configure-deadline-addon",
         },
         description:
             "Integrations with render managers. Render, publish and generate reviews on the farm.",
@@ -138,7 +127,7 @@ const features: { [type in FeatureType]: Feature } = {
     reviewables: {
         title: "Reviewables",
         docs: {
-            user: "docs/project_settings/settings_project_global#extract-review",
+            user: "https://help.ayon.app/en/help/articles/3005275-core-addon-settings#izrleolormb",
         },
         description:
             "Generate automated reviewable quicktimes and sequences in any format, with metadata burnins.",
@@ -148,7 +137,7 @@ const features: { [type in FeatureType]: Feature } = {
         description: "Fully colour managed outputs for work and review",
         preview: "color_managed.png",
         docs: {
-            user: "artist_hosts_nuke#set-colorspace",
+            user: "https://help.ayon.app/en/help/articles/1279384-colorspace-settings",
         },
     },
     nodePresets: {

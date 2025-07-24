@@ -201,7 +201,7 @@ export default function Home() {
                     styles.features
                 )}
             >
-                <Link href="/docs/artist_publish">
+                <Link href="https://help.ayon.app/en/help/articles/7070980-about-ayon-pipeline#iw8re13zz2o">
                     <Heading as="h2" className={clsx("hero__subtitle")}>
                         Products
                     </Heading>
@@ -230,7 +230,7 @@ export default function Home() {
                             <ProductCard product={product} key={product.id} />
                         ))}
                     </ul>
-                    <a href="/features#products">
+                    <a href="https://help.ayon.app/en/help/articles/7070980-about-ayon-pipeline#iw8re13zz2o">
                         <div
                             className={clsx(
                                 "button button--secondary button--md",
