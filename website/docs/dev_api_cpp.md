@@ -97,10 +97,14 @@ target_link_libraries(${PROJECT_NAME} AyonCppApi)
 
 ### Build And Run Commands
 
-- **Build CPP**
+- **Fetch AYON CPP Repo**
+    ```
+    cd ext
+    git clone https://github.com/ynput/ayon-cpp-api.git --recurse-submodules
+    ```
+- **Build CPP** <br/>
     `ayon-cpp-api` repo provides python script to do the hard lifting for you.
     ```
-    git submodule update --init --recursive
     cd ext\ayon-cpp-api
     python AyonBuild.py --setup
     python AyonBuild.py --runStageGRP CleanBuild
