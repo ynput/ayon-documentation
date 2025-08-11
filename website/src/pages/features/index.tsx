@@ -406,7 +406,7 @@ function FeaturesCards() {
                                 ? "Supported Product Types"
                                 : "All Products Types"}
                             {!isAddonsSelected && (
-                                <Link href="/docs/artist_concepts#product">
+                                <Link href="https://help.ayon.app/en/help/articles/7070980-about-ayon-pipeline#iw8re13zz2o">
                                     What are products?
                                 </Link>
                             )}
