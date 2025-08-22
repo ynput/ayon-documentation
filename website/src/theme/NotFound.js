@@ -4,6 +4,7 @@ import {PageMetadata} from '@docusaurus/theme-common';
 import Layout from '@theme/Layout';
 import {useLocation} from '@docusaurus/router';
 import notFoundNewLinks from './NotFoundLinksTable';
+import Link from '@docusaurus/Link';
 
 
 export default function NotFound() {
@@ -15,7 +16,7 @@ export default function NotFound() {
     </>
   ) : (
     <>Can't find what you look for? 🙁 <br/>
-    Try searching for it on our New <a src="https://help.ayon.app/en/help">Help Center</a>.</>
+    Try searching for it on our New <Link to="https://help.ayon.app/en/help">AYON Help Center</Link>.</>
   );
     
   return (
