@@ -53,13 +53,6 @@ Optionally, you can add the `X-as-user` header and specify a user name to act as
 }
 ```
 
-:::info  `X-Api-Key` and `get_current_user`
-
-The [Get Current User](/api#tag/Users/operation/get_current_user) API call only works with a **Bearer token**. As a result, it will fail and return a `401` (Unauthorized) status code when using an `X-Api-Key` header.
-
-Therefore, this API call can be used as a conditional check in your code to determine whether to use an **API key** or to switch to a **Bearer token** for other API calls.
-:::
-
 ## Your First AYON API Call
 
 :::tip
