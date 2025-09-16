@@ -28,7 +28,7 @@ For instance, you can check the REST API Docs for our Public AYON Server here at
 
 ## Authentication Headers
 
-Almost all endpoints are private and require authentication, even if it's not explicitly mentioned in the [AYON REST API Docs](https://www.google.com/search?q=/api).
+Almost all endpoints are private and require authentication, even if it's not explicitly mentioned in the [AYON REST API Docs](/api).
 
 ### Access as a User
 This method expects a **Bearer token**, which you typically get by logging in with a username and password. You can find an example of this in the [Your First AYON API Call](#your-first-ayon-api-call) section.
