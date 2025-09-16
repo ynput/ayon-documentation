@@ -26,7 +26,34 @@ You access the REST API Docs via `<your-ayon-server-url>/api` or via help icon.
 
 For instance, you can check the REST API Docs for our Public AYON Server here at [AYON REST API Docs](/api).
 
-## Your First AYON API Calls
+## Authentication Headers
+
+Almost all endpoints are private and require authentication, even if it's not explicitly mentioned in the [AYON REST API Docs](/api).
+
+### Access as a User
+This method expects a **Bearer token**, which you typically get by logging in with a username and password. You can find an example of this in the [Your First AYON API Call](#your-first-ayon-api-call) section.
+```json
+{
+  "Authorization": "Bearer 07a8fd2050250309fdeb5530bb24e875e095ba031058ba8bb75ffb2760a0f64b"
+}
+```
+
+### Access as a Service User
+This method expects an [AYON API key](https://help.ayon.app/en/help/articles/6698141-user-management#klrl452c446). You set the `X-Api-Key` header to your **AYON API Key**.
+```json
+{
+  "X-Api-Key": "veryinsecureapikey"
+}
+```
+Optionally, you can add the `X-as-user` header and specify a user name to act as that user.
+```json
+{
+  "X-Api-Key": "veryinsecureapikey",
+  "X-as-user": "admin"
+}
+```
+
+## Your First AYON API Call
 
 :::tip
 Examples in this section were brought from the following Community guide.
