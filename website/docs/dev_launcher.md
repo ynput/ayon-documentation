@@ -172,6 +172,7 @@ AYON launcher provides the following environment variables for its subprocesses,
 |--|--|
 | **AYON_VERSION** | Current desktop application version, e.g., `1.0.0`. |
 | **AYON_BUNDLE_NAME** | Name of the bundle in use. |
+| **AYON_STUDIO_BUNDLE_NAME** | Name of the production bundle in your studio. |
 | **AYON_LOG_LEVEL** | Logging level for AYON logger. |
 | **AYON_DEBUG** | Debug flag enabled when set to '1'. |
 | **AYON_USE_STAGING** | Use staging settings when set to '1'. |
