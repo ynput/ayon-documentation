@@ -165,38 +165,14 @@ const config = {
                                 rel: null,
                             },
                             {
-                                label: "AYON Applications",
-                                href: "https://docs.ayon.dev/ayon-applications",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "AYON Tray Publisher",
-                                href: "https://docs.ayon.dev/ayon-traypublisher",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "AYON OCIO",
-                                href: "https://docs.ayon.dev/ayon-ocio",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "AYON Third Party",
-                                href: "https://docs.ayon.dev/ayon-third-party",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "AYON Site Sync",
-                                href: "https://docs.ayon.dev/ayon-sitesync",
+                                label: "AYON Launcher",
+                                href: "https://docs.ayon.dev/ayon-launcher",
                                 target: "_blank",
                                 rel: null,
                             },
                             {
                                 label: "AYON 3DEqualizer",
-                                href: "https://docs.ayon.dev/ayon-3d-equalizer",
+                                href: "https://docs.ayon.dev/ayon-equalizer",
                                 target: "_blank",
                                 rel: null,
                             },
@@ -213,8 +189,8 @@ const config = {
                                 rel: null,
                             },
                             {
-                                label: "AYON Aquarium",
-                                href: "https://docs.ayon.dev/ayon-aquarium",
+                                label: "AYON Applications",
+                                href: "https://docs.ayon.dev/ayon-applications",
                                 target: "_blank",
                                 rel: null,
                             },
@@ -327,6 +303,12 @@ const config = {
                                 rel: null,
                             },
                             {
+                                label: "AYON OCIO",
+                                href: "https://docs.ayon.dev/ayon-ocio",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
                                 label: "AYON OpenRV",
                                 href: "https://docs.ayon.dev/ayon-openrv",
                                 target: "_blank",
@@ -335,12 +317,6 @@ const config = {
                             {
                                 label: "AYON OpenUSD",
                                 href: "https://docs.ayon.dev/ayon-usd",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "AYON Perforce",
-                                href: "https://docs.ayon.dev/ayon-perforce",
                                 target: "_blank",
                                 rel: null,
                             },
@@ -381,6 +357,12 @@ const config = {
                                 rel: null,
                             },
                             {
+                                label: "AYON Site Sync",
+                                href: "https://docs.ayon.dev/ayon-sitesync",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
                                 label: "AYON Slack",
                                 href: "https://docs.ayon.dev/ayon-slack",
                                 target: "_blank",
@@ -411,6 +393,24 @@ const config = {
                                 rel: null,
                             },
                             {
+                                label: "AYON Timers Manager",
+                                href: "https://docs.ayon.dev/ayon-timers-manager",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "AYON Third Party",
+                                href: "https://docs.ayon.dev/ayon-third-party",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "AYON Tray Publisher",
+                                href: "https://docs.ayon.dev/ayon-traypublisher",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
                                 label: "AYON TVPaint",
                                 href: "https://docs.ayon.dev/ayon-tvpaint",
                                 target: "_blank",
@@ -425,6 +425,12 @@ const config = {
                             {
                                 label: "AYON Wrap",
                                 href: "https://docs.ayon.dev/ayon-wrap",
+                                target: "_blank",
+                                rel: null,
+                            },
+                            {
+                                label: "AYON xSTUDIO",
+                                href: "https://docs.ayon.dev/ayon-xstudio",
                                 target: "_blank",
                                 rel: null,
                             },
