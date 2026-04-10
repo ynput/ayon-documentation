@@ -181,7 +181,7 @@ AYON launcher provides the following environment variables for its subprocesses,
 | **AYON_EXECUTABLE** | Path to the executable used for AYON subprocesses. Points to the **python** executable in the virtual environment when run from sources. If run from frozen code, it points to either `ayon` or `ayon_console` on Windows. |
 | **AYON_ROOT** | Root directory for AYON launcher content. |
 | **AYON_LAUNCHER_STORAGE_DIR** | Directory for storing dependency packages, add-ons, and related files. |
-| **AYON_LAUNCHER_LOCAL_DIR** | Directory for storing user/machine-specific files. **This MUST NOT be unique for each user/machine.** |
+| **AYON_LAUNCHER_LOCAL_DIR** | Directory for storing user/machine-specific files. **This directory should not be shared across machines and users.** |
 | **AYON_ADDONS_DIR** | Path to AYON add-ons directory—considered deprecated. Use `AYON_LAUNCHER_STORAGE_DIR` instead. |
 | **AYON_DEPENDENCIES_DIR** | Path to AYON dependencies directory—considered deprecated. Use `AYON_LAUNCHER_STORAGE_DIR` instead. |
 | **AYON_MENU_LABEL** | Label for AYON menu. |
