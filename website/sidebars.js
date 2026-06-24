@@ -68,15 +68,14 @@ module.exports = {
                 "dev_publishing"
             ],
         },
-        "dev_deadline",
         "dev_colorspace",
         "dev_event_system",
         {
             type: "category",
             label: "Integrations",
             items: [
-                "addon_aquarium_developer",
                 "dev_addon_workflow",
+                "dev_deadline",
 
             ].sort(sorted),
         },
