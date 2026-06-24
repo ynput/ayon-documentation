@@ -74,7 +74,11 @@ module.exports = {
         {
             type: "category",
             label: "Integrations",
-            items: ["addon_aquarium_developer"].sort(sorted),
+            items: [
+                "addon_aquarium_developer",
+                "dev_addon_workflow",
+
+            ].sort(sorted),
         },
     ],
 };
