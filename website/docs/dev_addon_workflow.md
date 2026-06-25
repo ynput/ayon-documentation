@@ -20,10 +20,10 @@ Before deep-diving into execution frameworks, here is how to programmatically cr
 ```python
 from ayon_workflow.workflow_editor import Workflow
 from ayon_workflow.workflow_execution import execute_workflow
-from ayon_workflow.plugin_system import register_plugins
+from ayon_workflow.plugin_system import register_all_plugins
 
 # Discover all available node definitions in the environment
-register_plugins()
+register_all_plugins()
 
 # Create a new workflow
 my_workflow = Workflow(name="My First Workflow")
@@ -58,9 +58,9 @@ print(result)  # Output: {'NoOp1.output_data': 'hello world'}
 To query the registry for all node definitions currently active and available for graph construction:
 
 ```python
-from ayon_workflow.plugin_system import register_plugins, PluginRegistry
+from ayon_workflow.plugin_system import register_all_plugins, PluginRegistry
 
-register_plugins()
+register_all_plugins()
 
 for plugin in PluginRegistry().plugin_list():
     print(f"   + {plugin}")
@@ -134,9 +134,9 @@ For frame-range operations or multi-node rendering workflows, you must attach a 
 ```python
 from ayon_workflow.workflow_editor import Workflow, TaskChunkParameters
 from ayon_workflow.workflow_execution import submit_workflow_to_farm
-from ayon_workflow.plugin_system import register_plugins
+from ayon_workflow.plugin_system import register_all_plugins
 
-register_plugins()
+register_all_plugins()
 
 my_workflow = Workflow.import_from_file("/path/to/render_a_blender_file.json")
 dispatch_graph = my_workflow.create_dispatch_graph("My Dispatch Graph")
@@ -342,10 +342,10 @@ Open the AYON Console via the tray interface and run the following interactive b
 ```python
 from ayon_workflow.workflow_editor import Workflow
 from ayon_workflow.workflow_execution import execute_workflow
-from ayon_workflow.plugin_system import register_plugins
+from ayon_workflow.plugin_system import register_all_plugins
 
 # Re-register tools to discover the new plugin architecture
-register_plugins()
+register_all_plugins()
 
 my_workflow = Workflow(name="Test Resolve Workflow")
 graph = my_workflow.execution_graph
