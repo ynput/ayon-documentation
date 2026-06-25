@@ -95,6 +95,7 @@ AYON Workflow supports three distinct execution frameworks:
 ### Python API Execution Call Reference
 
 ```python
+from ayon_workflow.workflow_execution.from_backend.job_description import to_job_description
 from ayon_workflow.workflow_execution import (
     execute_workflow,
     execute_in_memory,
@@ -123,13 +124,19 @@ submit_workflow_to_farm(
 )
 
 # Persistent backend execution for individual slices/sub-graphs
-execute_from_backend(
-    "/path/to/workflow.json",
-    "/path/to/shared/farm/backend",
-    slice_flow_id,
-    full_flow_id,
-    project_name
+job_description = to_job_description(
+    my_workflow,
+    backend_dir="/path/to/shared/farm/backend"
 )
+for step in job_description.steps:
+    args = step.script.args
+    result = addon.execute_from_backend(
+        # Get command line to run.
+        args[5],  # execution graph path,
+        args[7],  # backend directory
+        args[9],  # slice flow id
+        args[11], # full flow id
+    )
 ```
 
 ### Advanced Distributed Farm Example (With Task Chunking)
