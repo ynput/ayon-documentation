@@ -102,12 +102,18 @@ from ayon_workflow.workflow_execution import (
     submit_workflow_to_farm,
 )
 
-# All execution functions works via workflow object or path
+# Local execution: the whole workflow is run all at once locally with the task status being held in memory
+execute_workflow(my_workflow)  # from a Workflow object
+execute_workflow("/path/to/workflow.json")  # from a Workfile file
 
-# Standard memory execution
-execute_workflow(my_workflow)
-execute_workflow("/path/to/workflow.json")
-execute_in_memory("/path/to/workflow.json")
+# optional 
+execute_workflow(
+    my_workflow,
+    inputs_data: Union[Dict, str, None] = {"NoOp1.input_data": "custom_value"},  # override input on the flight
+    log: Optional[Logger] = log,  # custom logger
+    flow_notifier: Optional[Callable] = my_flow_tracking_func,  # this function get notified on flow updates
+    task_notifier: Optional[Callable] = my_task_tracking_func,  # this function get notified on task updates
+)
 
 # Render farm job submission 
 submit_workflow_to_farm(
