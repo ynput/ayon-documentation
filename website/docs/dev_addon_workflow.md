@@ -109,6 +109,13 @@ execute_workflow(my_workflow)
 execute_workflow("/path/to/workflow.json")
 execute_in_memory("/path/to/workflow.json")
 
+# Render farm job submission 
+submit_workflow_to_farm(
+    "/path/to/workflow.json",
+    "/path/to/shared/farm/backend",  # Must exist and be network reachable
+    project_name="my_project_name"   # Required parameter for multi-platform root resolution
+)
+
 # Persistent backend execution for individual slices/sub-graphs
 execute_from_backend(
     "/path/to/workflow.json",
@@ -117,14 +124,6 @@ execute_from_backend(
     full_flow_id,
     project_name
 )
-
-# Render farm job submission and orchestration 
-submit_workflow_to_farm(
-    "/path/to/workflow.json",
-    "/path/to/shared/farm/backend",  # Must exist and be network reachable
-    project_name="my_project_name"   # Required parameter for multi-platform root resolution
-)
-
 ```
 
 ### Advanced Distributed Farm Example (With Task Chunking)
@@ -182,11 +181,11 @@ cd <ayon-launcher-installation-location>
 # In-memory execution with dynamic input injection file
 ./ayon_console.exe addon workflow execute --workflow-path /path/to/workflow.json --inputs-path /path/to/input.json
 
-# Individual slice flow processing on a farm worker node
-./ayon_console.exe addon workflow execute-slice-flow --backend-dir /shared/farm/backend --slice-flow-id <flow_uuid> --full-flow_id <full_flow_id>
-
 # Render farm submission
 ./ayon_console.exe addon workflow submit --workflow-path /path/to/workflow.json --backend-dir /path/to/shared/farm/backend
+
+# Individual slice flow processing on a farm worker node
+./ayon_console.exe addon workflow execute-slice-flow --backend-dir /shared/farm/backend --slice-flow-id <flow_uuid> --full-flow_id <full_flow_id>
 ```
 
 </TabItem>
