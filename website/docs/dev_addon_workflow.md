@@ -334,7 +334,7 @@ def get_plugins() -> list[type[WorkflowTaskNode]]:
 
 ```
 
-##### Testing the Resolve Node
+##### Testing the ResolveAssetURI Node
 
 Open the AYON Console via the tray interface and run the following interactive block to test input ingestion and path parsing logic:
 
