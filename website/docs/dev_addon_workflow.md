@@ -122,7 +122,8 @@ submit_workflow_to_farm(
     "/path/to/shared/farm/backend",  # Must exist and be network reachable
     project_name="my_project_name"   # Required parameter for multi-platform root resolution
 )
-
+```
+<!-- ```
 # Persistent backend execution for individual slices/sub-graphs
 job_description = to_job_description(
     my_workflow,
@@ -137,7 +138,7 @@ for step in job_description.steps:
         args[9],  # slice flow id
         args[11], # full flow id
     )
-```
+``` -->
 
 ### Advanced Distributed Farm Example (With Task Chunking)
 
