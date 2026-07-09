@@ -15,7 +15,7 @@ This developer reference guide covers how to programmatically create, edit, exec
 
 ## Quick Start: My First Workflow
 
-Before deep-diving into execution frameworks, here is how to programmatically create an execution graph, define an entry parameter, and compute an in-memory results dictionary inside the AYON console:
+Before deep-diving into execution frameworks, here is how to programmatically create an execution graph, define an entry parameter, and run the whole workflow in-memory inside the AYON console:
 
 ```python
 from ayon_workflow.workflow_editor import Workflow
@@ -26,7 +26,7 @@ from ayon_workflow.plugin_system import register_all_plugins
 register_all_plugins()
 
 # Create a new workflow
-my_workflow = Workflow(name="My First Workflow")
+my_workflow = Workflow(name="My First Workflow", description="An optional description here")
 graph = my_workflow.execution_graph
 
 # Create a node using the NoOp (No Operation) plugin type
@@ -44,10 +44,10 @@ print(result)  # Output: {'NoOp1.output_data': 'hello world'}
 | Term | Domain | Definition |
 | --- | --- | --- |
 | **Workflow** | Editing | An editable Python object describing an execution Graph and multiple optional DispatchGraphs. |
-| **Graph** | Editing | An editable Python object describing a workflow execution composed of multiple Node objects. |
+| **Graph** | Editing | An editable Python object describing a workflow to be executed, composed of multiple Node objects. |
 | **Node** | Editing | A Python object representing a unit of work created from a Plugin description. |
-| **Plugin** | Editing | A Python dictionary or class defining the type and behavior of a Node. |
-| **DispatchGraph** | Editing | An editable Python object describing how to split a Workflow execution Graph into discrete tasks. |
+| **Plugin** | Editing | A "type" of Node available in the Graph, implemented as Python class or dictionary. |
+| **DispatchGraph** | Editing | An editable Python object describing how to split a Workflow execution Graph into discrete tasks/jobs. |
 | **Flow** | Execution | A non-editable TaskFlow object generated from a Graph containing all Atom execution objects. |
 | **Backend** | Execution | A persistent, disk-based component storing task states, inputs, and outputs to enable distributed execution. |
 
@@ -69,7 +69,7 @@ for plugin in PluginRegistry().plugin_list():
 
 ### JSON Import/Export Serialization
 
-Workflows can be saved down to or loaded from `.json` workflow layout:
+Workflows can be saved down to or loaded from `.json` files:
 
 ```python
 from ayon_workflow.workflow_editor import Workflow
@@ -110,7 +110,7 @@ execute_workflow("/path/to/workflow.json")  # from a Workfile file
 # optional 
 execute_workflow(
     my_workflow,
-    inputs_data: Union[Dict, str, None] = {"NoOp1.input_data": "custom_value"},  # override input on the flight
+    inputs_data: Union[Dict, str, None] = {"NoOp1.input_data": "custom_value"},  # override input on the fly
     log: Optional[Logger] = log,  # custom logger
     flow_notifier: Optional[Callable] = my_flow_tracking_func,  # this function get notified on flow updates
     task_notifier: Optional[Callable] = my_task_tracking_func,  # this function get notified on task updates
