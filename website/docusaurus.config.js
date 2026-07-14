@@ -154,7 +154,7 @@ const config = {
                                 rel: null,
                             },
                             {
-                                label: "-------- Addons API references --------",
+                                label: "-------- Addons API References --------",
                                 href: "#",
                                 rel: null,
                             },
