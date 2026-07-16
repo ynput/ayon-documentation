@@ -79,5 +79,25 @@ module.exports = {
 
             ].sort(sorted),
         },
+        {
+            type: "category",
+            collapsed: true,
+            label: "AYON User Guides",
+            link: { type: "doc", id: "ayon_user_guides_overview"},
+            items: [
+                "ayon_what_is_ayon",
+                "ayon_first_steps",
+                "ayon_explore_production_tracking",
+                "ayon_explore_pipeline",
+                "ayon_ash_guide",
+                "ayon_houdini_user_guide",
+                "ayon_maya_user_guide",
+                "ayon_nuke_user_guide",
+                "ayon_collaboration_guide",
+                "ayon_python_guide",
+                "ayon_graphql_guide",
+                "ayon_addon_guide",
+            ],
+        },
     ],
 };
