@@ -504,10 +504,10 @@ def get_plugins() -> list[type[WorkflowTaskNode]]:
     return [ConcatenateAndFloat]
 
 ```
+For further information, please refer to:
 
-## Further Info
-For further info, you can refer to 
-- [AYON Workflow Addon API Reference](https://docs.ayon.dev/ayon-workflow/latest/) 
+- User and Admin Documentation: [Workflow Addon - AYON Help Center](https://help.ayon.app/help/collections/6014460-workflow) 
+- API Documentation: [AYON Workflow Addon API Reference](https://docs.ayon.dev/ayon-workflow-docs/latest/) 
 - The demo workflows shipped within the addon, you can locate the addon at 
   - Windows: `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\workflow_X.X.X\ayon_workflow\demo\`
   - Linux: `~/.local/share/Ynput/AYON/addons/workflow_X.X.X\ayon_workflow\demo\`
