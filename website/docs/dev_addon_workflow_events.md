@@ -105,7 +105,7 @@ You can create your own input logic by inheriting from the existing core input n
 ### Example 1: Implement a new schedule node that returns current time and timezone:
 ```python
 import datetime
- from typing import Tuple
+from typing import Tuple
 
 from ayon_workflow.plugin_system import (
     OutputAttribute,
