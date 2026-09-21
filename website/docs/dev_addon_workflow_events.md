@@ -105,6 +105,7 @@ You can create your own input logic by inheriting from the existing core input n
 ### Example 1: Implement a new schedule node that returns current time and timezone:
 ```python
 import datetime
+ from typing import Tuple
 
 from ayon_workflow.plugin_system import (
     OutputAttribute,
@@ -113,7 +114,7 @@ from ayon_workflow.plugins.workflow.inputs import OnSchedule
 
 
 class OnScheduleWithTimezone(OnSchedule):
-    """An input schedule node that return current time and timezone."""
+    """An input schedule node that returns the current time and timezone."""
 
     version = "0.0.1"
     outputs = [
@@ -129,11 +130,11 @@ class OnScheduleWithTimezone(OnSchedule):
 
     def execute(
             self,
-            cron_expression: str,   come from OnSchedule node
+            cron_expression: str,  # come from OnSchedule node
         ) -> Tuple[datetime.datetime, str]:
         """ Execute the node.
         """
-        super().execute(cron_expression)   validate cron expression
+        super().execute(cron_expression)  # validate cron expression
         local_dt = datetime.datetime.now().astimezone()
 
         return (
@@ -159,7 +160,7 @@ class OnNewEvent(EventTrigger):
     """Trigger node: on new event.new.todo."""
 
     version = "0.0.1"
-    event_type = "event.new.todo"   Enter your event type here.
+    event_type = "event.new.todo"  # Enter your event type here.
     outputs = [
         OutputAttribute(
             name="event_data",
@@ -174,9 +175,9 @@ class OnNewEvent(EventTrigger):
         """ Return the event data.
         """
         if event_id is None:
-            return None, None
+            return {}
 
-        event_data = super().execute(event_id)   gather event data from ID
-         TODO: transform/process event_data into richer data type.
+        event_data = super().execute(event_id)  # gather event data from ID
+        # TODO: transform/process event_data into richer data type.
         return event_data
 ```
