@@ -13,20 +13,20 @@ import TabItem from '@theme/TabItem';
 
 ## Introducing Event-triggered workflows
 
-Event-triggered workflows are workflows that are registered on the server. The workflow addon's event processor service listens for AYON events and runs the relevant workflows when those events occur. This is useful for incorporating workflow graphs into your automations.
+Event-triggered workflows are registered on the server. They allow to chain workflow execution from events, manual action from the AYON server or recurrently from scheduled trigger. The workflow addon's event processor listens for relevant event and executes registered workflows accordingly. This is useful for incorporating workflow graphs into your automations.
 
 Example use cases:
 - Running a workflow when a new product version is created
-- Reacting to an action triggered from a folder or a version on the AYON server
+- Reacting to an action menu triggered from selected folder(s) or version(s) on the AYON server
 - Running a daily workflow to create a playlist
 
 :::caution 
 Ensure you have the workflow processor service running.
 :::
 
-### Supported ways to run workflows
+### Supported ways to trigger workflows automatically
 
-There are several ways to run workflows:
+There are several ways to trigger workflows:
 
 1. Run workflows from folder and version actions.
 2. Run workflows when certain events are triggered on the server.
@@ -35,7 +35,8 @@ There are several ways to run workflows:
 
 ### Supported events
 
-It's worth noting that the workflow addon handles event-triggered workflows explicitly: events aren't configured via input parameters. Instead, each event requires a dedicated node with the event name hardcoded into it.
+Use the relevant input node in to gather input data within your workflow.
+Like other workflow nodes, the default list can be extended to support custom `event-topic` you might have.
 
 - `entity.version.created` — node: `OnVersionCreated`
 - `entity.task.assignees_changed` — node: `OnTaskAssigneesChanged`
