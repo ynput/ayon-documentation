@@ -67,10 +67,11 @@ There are two ways to register and run event-triggered workflows: through the AY
 - **Via the API**, using the `api/addons/workflow/{version}/upload` endpoint, where `{version}` is the addon version (e.g. `0.4.3`).
 
 ## Running the workflow event processor service
+The event processor listens for relevant events and executes registered workflows accordingly.
+The following options are available for running the workflow event processor service:
 
-- **Via the Services page** in the AYON UI — this requires login credentials, which are currently provided by request. Reach out to support to obtain them.
-- **Directly on your machine**, via the CLI:
-
+- **Via the Services page** in AYON, as outlined [here](Place-holder-for-configure-workflow-addon-doc). This requires Docker login credentials, which are currently provided by request. Reach out to support to obtain them.
+- **Directly on your machine**, via the CLI. Note that the processor does not use the credentials of the logged-in user. it requires a valid `AYON_API_KEY` to be passed explicitly using the `--token` flag:
 
 <Tabs>
 
