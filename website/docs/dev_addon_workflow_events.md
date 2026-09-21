@@ -62,9 +62,18 @@ Shipped event-triggered workflow demos
 
 There are two ways to register and run event-triggered workflows: through the AYON UI, or directly via API.
 
-
-- **Via the Workflow Editor** (UI), or
+- **Via the Workflow Editor** (UI) as outlined [here](place-holder-for-user-docs), or
 - **Via the API**, using the `api/addons/workflow/{version}/upload` endpoint, where `{version}` is the addon version (e.g. `0.4.3`).
+
+:::caution
+
+You cannot upload multiple workflows with the same name. An existing workflow must be de-registered before a new one with the same name can be uploaded.
+:::
+
+:::tip
+
+To obtain a list of registered workflow graphs, find it in the Workflow Editor or use `api/addons/workflow/{version}/registered_workflows`.
+:::
 
 ## Running the workflow event processor service
 The event processor listens for relevant events and executes registered workflows accordingly.
