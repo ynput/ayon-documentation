@@ -75,6 +75,7 @@ module.exports = {
             label: "Integrations",
             items: [
                 "dev_addon_workflow",
+                "dev_addon_workflow_event",
                 "dev_deadline",
 
             ].sort(sorted),
