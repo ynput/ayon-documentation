@@ -28,10 +28,21 @@ Ensure you have the workflow processor service running.
 
 There are several ways to trigger workflows automatically:
 
-1. **When certain events are triggered on the server**: When workflows with event input nodes like `OnVersionCreated` and `OnTaskAssigneesChanged` are registered, the event processor runs them whenever their respective event is triggered. To support more events, the list of event input nodes can be extended to cover custom event topics you might have.
-2. **On a schedule (periodically)**: When workflows with the cron input node `OnSchedule` are registered, the event processor runs them based on the provided cron expression.
-3. **From folder and version actions**: When workflows with the input nodes `OnActionFromFolder` and `OnActionFromVersion` are registered and exposed in action menus, clicking their respective workflow action emits either `workflow.from_simple_action.local` or `workflow.from_simple_action.remote`, depending on the `Execute Locally` toggle.
-4. **During the publishing process**: This isn't officially supported. It's possible to write a custom publish plugin to trigger a workflow directly; however, a more generic approach is to achieve a similar result by creating a workflow that triggers on version creation, which fires once publishing completes.
+- When an event occurs: the event processor runs the workflow whenever its respective event is triggered.
+  - On task assignees changed (`entity.task.assignees_changed`) — use the `OnTaskAssigneesChanged` node
+  - On version creation (`entity.version.created`) — use the `OnVersionCreated` node
+- When a workflow action is triggered from an entity's action menu: this relies on event triggering, as workflow actions emit either `workflow.from_simple_action.local` (runs the workflow on the user's machine) or `workflow.from_simple_action.remote` (runs the workflow on the workflow event processor service), depending on the `Execute Locally` setting in the workflow's configuration.
+  - Run the action from version actions — use the `OnActionFromVersion` node
+  - Run the action from folder actions — use the `OnActionFromFolder` node
+- Periodically: based on cron expressions.
+  - On a schedule — use the `OnSchedule` node
+
+> **During the publishing process**: this isn't officially supported. It's possible to write a custom publish plugin to trigger a workflow during publishing; however, a more generic approach is to trigger workflows based on events — for example, creating a workflow that triggers on version creation, which fires once publishing completes.
+
+:::tip Extend Workflows Input Nodes 
+
+To support more events, the input nodes can be extended to cover custom event topics you might have. Please refer to [Reference: creating your own EventTrigger or OnSchedule input node](#reference-creating-your-own-eventtrigger-or-onschedule-input-node).
+:::
 
 ## Examples
 
@@ -98,7 +109,7 @@ ayon addon workflow event-processor --token <AYON_API_KEY>
 
 ## Reference: creating your own EventTrigger or OnSchedule input node
 
-You can create your own input logic by inheriting from the existing core input nodes:
+You can extend the input nodes to support additional event topics or scheduling needs beyond what's provided out of the box (see [Triggering workflows automatically](#triggering-workflows-automatically)). You can do this by inheriting from the existing core input nodes:
 
 - `OnSchedule`: Registers a new input node that's triggered periodically by a schedule.
 - `EventTrigger`: Registers a new input node that reacts to an emitted AYON event. Keep in mind that for each event you want to act on, you'll need to create a dedicated node. You can find a list of well-known event topics [here](https://help.ayon.app/en/help/articles/2566382-ayon-event-viewer#e4bo4xwd0ei).
