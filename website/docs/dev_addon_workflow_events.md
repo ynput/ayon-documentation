@@ -63,7 +63,7 @@ Shipped event-triggered workflow demos
 
 There are two ways to register and run event-triggered workflows: through the AYON UI, or directly via API.
 
-- **Via the Workflow Editor** (UI) as outlined [here](place-holder-for-user-docs), or
+- **Via the Workflow Editor** (UI) as shown in [Example workflow graph automations](https://help.ayon.app/en/help/articles/1804107-workflows-and-automations#cczii712qik), or
 - **Via the API**, using the `api/addons/workflow/{version}/upload` endpoint, where `{version}` is the addon version (e.g. `0.4.3`).
 
 :::caution
@@ -78,10 +78,10 @@ To obtain a list of registered workflow graphs, find it in the Workflow Editor o
 
 ## Running the workflow event processor service
 The event processor listens for relevant events and executes registered workflows accordingly.
-The following options are available for running the workflow event processor service:
+There are two ways to run it, and you can't run both at the same time:
 
-- **Via the Services page** in AYON, as outlined [here](Place-holder-for-configure-workflow-addon-doc). This requires Docker login credentials, which are currently provided by request. Reach out to support to obtain them.
-- **Directly on your machine**, via the CLI. Note that the processor does not use the credentials of the logged-in user. it requires a valid `AYON_API_KEY` to be passed explicitly using the `--token` flag:
+- **As a regular AYON service**: This option is lightweight and best for server-side automations (e.g. syncing task/parent-folder status), but it doesn't support running workflows that include pipeline nodes (`NukeRender`, `BlenderRender`, `BlenderWorkfile`, `Publish`, `Representation`) and cannot dispatch to the farm (workflows always run in memory). It's managed via the Services page. This requires Docker login credentials, which are currently provided by request — reach out to support to obtain them. For setup steps, see [Spawn an AYON Event Processor Service - User Docs](https://help.ayon.app/en/help/articles/0480584-configure-workflow-addon#8xxbd4mzzpf).
+- **As a process on an AYON-initialized machine via CLI**: This option supports all node types, including pipeline nodes, and can dispatch to the farm. It requires a full AYON-initialized machine with AYON Launcher installed, access to pipeline storage, DCC applications installed, access to the dispatch directory, and access to the farm server (e.g. Deadline). Note that this method does not use the credentials of the logged-in user — a valid `AYON_API_KEY` must be passed explicitly via the `--token` flag:
 
 <Tabs>
 
