@@ -10,121 +10,106 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 ## Overview
-This developer reference guide covers how to programmatically create, edit, execute, and extend custom workflows using the `ayon-workflow` Python API and Command-Line Interface (CLI).
 
+This guide covers how to create, edit, run, and extend workflows with the
+`ayon-workflow` Python API and command-line interface (CLI).
 
 ## Quick Start: My First Workflow
 
-Before deep-diving into execution frameworks, here is how to programmatically create an execution graph, define an entry parameter, and run the whole workflow in-memory inside the AYON console:
+This example creates a workflow with a single node, sets one of its inputs,
+and runs it in memory. Run it in the AYON Console, which you can open from the
+AYON tray:
 
 ```python
 from ayon_workflow.workflow_editor import Workflow
 from ayon_workflow.workflow_execution import execute_workflow
 from ayon_workflow.plugin_system import register_all_plugins
 
-# Discover all available node definitions in the environment
+# Discover all available node types
 register_all_plugins()
 
 # Create a new workflow
 my_workflow = Workflow(name="My First Workflow", description="An optional description here")
 graph = my_workflow.execution_graph
 
-# Create a node using the NoOp (No Operation) plugin type
+# Create a node from the NoOp (No Operation) node type
 node = graph.create_node("NoOp")
 node["input_data"] = "hello world"
 
-# Execute locally in the active session
+# Run the workflow in the current session
 result = execute_workflow(my_workflow)
 print(result)  # Output: {'NoOp1.output_data': 'hello world'}
-
 ```
 
-## Glossary & Core Architecture
+## Glossary
 
 | Term | Domain | Definition |
 | --- | --- | --- |
-| **Workflow** | Editing | An editable Python object describing an execution Graph and multiple optional DispatchGraphs. |
-| **Graph** | Editing | An editable Python object describing a workflow to be executed, composed of multiple Node objects. |
-| **Node** | Editing | A Python object representing a unit of work created from a Plugin description. |
-| **Plugin** | Editing | A "type" of Node available in the Graph, implemented as Python class or dictionary. |
-| **DispatchGraph** | Editing | An editable Python object describing how to split a Workflow execution Graph into discrete tasks/jobs. |
-| **Flow** | Execution | A non-editable TaskFlow object generated from a Graph containing all Atom execution objects. |
-| **Backend** | Execution | A persistent, disk-based component storing task states, inputs, and outputs to enable distributed execution. |
+| **Workflow** | Editing | An editable Python object containing an execution Graph and optional DispatchGraphs. |
+| **Graph** | Editing | An editable Python object describing the workflow to run, made of Node objects. |
+| **Node** | Editing | A Python object representing a unit of work, created from a Plugin. |
+| **Plugin** | Editing | A node type available in the Graph, implemented as a Python class or dictionary. |
+| **DispatchGraph** | Editing | An editable Python object describing how to split a workflow's execution Graph into separate farm tasks or jobs. |
+| **Flow** | Execution | A non-editable TaskFlow object generated from a Graph, containing all Atom execution objects. |
+| **Backend** | Execution | A persistent, disk-based store of task states, inputs, and outputs, used for distributed execution. |
 
-## Workflow File Operations
+## Saving and Loading Workflows
 
-### Listing Discovered Node Types (Plugins)
-
-To query the registry for all node definitions currently active and available for graph construction:
-
-```python
-from ayon_workflow.plugin_system import register_all_plugins, PluginRegistry
-
-register_all_plugins()
-
-for plugin in PluginRegistry().plugin_list():
-    print(f"   + {plugin}")
-
-```
-
-### JSON Import/Export Serialization
-
-Workflows can be saved down to or loaded from `.json` files:
+Workflows can be saved to and loaded from `.json` files:
 
 ```python
 from ayon_workflow.workflow_editor import Workflow
 
-# Import existing workflow architecture from a JSON file
+# Load a workflow from a JSON file
 my_workflow = Workflow.import_from_file("/path/to/workflow.json")
 
-# Export layout changes back to disk
+# Save changes back to disk
 my_workflow.export_to_file("/path/to/workflow.json")
-
 ```
 
-## Execution Modes & Farm Dispatching
+## Running Workflows
 
-AYON Workflow supports three distinct execution frameworks:
+AYON Workflow supports three execution modes:
 
 | Mode | Description | Persistence | Distribution |
 | --- | --- | --- | --- |
-| **In-Memory** | Runs entirely in memory within a single Python process. Best for rapid local development or host-DCC automation. | None | Single process |
-| **Backend** | Persists state to a disk-based system. Enables individual flows to be split, resumed, or retried on failure. | **Disk** (Persistent backend directory data) | Single or Multi-process |
-| **Farm Distributed** | Automatically splits sub-flows, matching node connections to job dependencies inside a render farm. | **Disk + Farm** (Persistent backend directory data + Render jobs/tasks in farm manager) | Multi-machine |
+| **In-Memory** | Runs entirely in memory within a single Python process. Best for quick local development or automation inside a DCC. | None | Single process |
+| **Backend** | Saves state to disk, so individual flows can be split, resumed, or retried on failure. | **Disk** (backend directory) | Single or multiple processes |
+| **Farm Distributed** | Splits the workflow into sub-flows and submits them to a render farm, turning node connections into job dependencies. | **Disk + Farm** (backend directory, plus jobs and tasks in the farm manager) | Multiple machines |
 
-### Python API Execution Call Reference
+### Workflow Python API
 
 ```python
-from ayon_workflow.workflow_execution.from_backend.job_description import to_job_description
 from ayon_workflow.workflow_execution import (
     execute_workflow,
-    execute_in_memory,
-    execute_from_backend,
     submit_workflow_to_farm,
 )
 
-# Local execution: the whole workflow is run all at once locally with the task status being held in memory
-execute_workflow(my_workflow)  # from a Workflow object
-execute_workflow("/path/to/workflow.json")  # from a Workfile file
+# Run the whole workflow locally, in memory
+execute_workflow(my_workflow)               # from a Workflow object
+execute_workflow("/path/to/workflow.json")  # from a workflow file
 
-# optional 
+# Optional arguments
 execute_workflow(
     my_workflow,
-    inputs_data: Union[Dict, str, None] = {"NoOp1.input_data": "custom_value"},  # override input on the fly
-    log: Optional[Logger] = log,  # custom logger
-    flow_notifier: Optional[Callable] = my_flow_tracking_func,  # this function get notified on flow updates
-    task_notifier: Optional[Callable] = my_task_tracking_func,  # this function get notified on task updates
+    inputs_data={"NoOp1.input_data": "custom_value"},  # override inputs (dict, str, or None)
+    log=log,                              # custom logging.Logger
+    flow_notifier=my_flow_tracking_func,  # callable, notified on flow updates
+    task_notifier=my_task_tracking_func,  # callable, notified on task updates
 )
 
-# Render farm job submission 
+# Submit to the render farm
 submit_workflow_to_farm(
     "/path/to/workflow.json",
-    "/path/to/shared/farm/backend",  # Must exist and be network reachable
-    project_name="my_project_name"   # Required parameter for multi-platform root resolution
+    "/path/to/shared/farm/backend",  # must exist and be reachable from the farm
+    project_name="my_project_name",  # required, used to resolve roots on each platform
 )
 ```
 <!-- ```
 # Persistent backend execution for individual slices/sub-graphs
+from ayon_workflow.workflow_execution import execute_from_backend
+from ayon_workflow.workflow_execution.from_backend.job_description import to_job_description
+
 job_description = to_job_description(
     my_workflow,
     backend_dir="/path/to/shared/farm/backend"
@@ -140,9 +125,10 @@ for step in job_description.steps:
     )
 ``` -->
 
-### Advanced Distributed Farm Example (With Task Chunking)
+### Farm Example with Task Chunking
 
-For frame-range operations or multi-node rendering workflows, you must attach a `DispatchGraph` to partition your execution nodes into render farm tasks:
+To control how a workflow is split into farm jobs, for example to render a
+frame range in chunks, add a `DispatchGraph`:
 
 ```python
 from ayon_workflow.workflow_editor import Workflow, TaskChunkParameters
@@ -154,33 +140,36 @@ register_all_plugins()
 my_workflow = Workflow.import_from_file("/path/to/render_a_blender_file.json")
 dispatch_graph = my_workflow.create_dispatch_graph("My Dispatch Graph")
 
-# Create a render farm dispatch node (e.g., Deadline Thinkbox)
+# Create a farm dispatch node (for example, Deadline Thinkbox)
 dispatch_group = dispatch_graph.create_node("DeadlineThinkbox")
 dispatch_group.node_names = [node.name for node in my_workflow.execution_graph.all_nodes]
 
-# Set render farm job specifications
+# Set the farm job settings
 dispatch_group.job_name = "Render and Publish from a Blender File"
 dispatch_group.pool = "rendering-pool"
 dispatch_group.group = "render-group"
 dispatch_group.limit_groups = "blender"
 dispatch_group.priority = 50
 
-# Apply task chunking for frame-split workloads
+# Split the frame range into chunks
 dispatch_group.task_chunk = TaskChunkParameters(
-    node_name="BlenderRender1",        # Target execution node
-    node_input_name="frame_range",     # Input variable to chunk across blades
+    node_name="BlenderRender1",     # node to split
+    node_input_name="frame_range",  # input to split into chunks
     chunk_size=2,
 )
 
 backend_dir = "/path/to/backend"
 my_workflow.export_to_file("/path/to/workflow.json")
 
-# Deploy to the render manager
-submit_workflow_to_farm("/path/to/workflow.json", backend_dir)
-
+# Submit to the render farm
+submit_workflow_to_farm(
+    "/path/to/workflow.json",
+    backend_dir,
+    project_name="my_project_name",
+)
 ```
 
-### Command-Line Interface (CLI) Execution
+### Command-Line Interface (CLI)
 
 <Tabs>
 
@@ -189,16 +178,16 @@ submit_workflow_to_farm("/path/to/workflow.json", backend_dir)
 ```bash
 cd <ayon-launcher-installation-location>
 
-# In-memory execution
+# Run in memory
 ./ayon_console.exe addon workflow execute --workflow-path /path/to/workflow.json
 
-# In-memory execution with dynamic input injection file
+# Run in memory, with inputs from a JSON file
 ./ayon_console.exe addon workflow execute --workflow-path /path/to/workflow.json --inputs-path /path/to/input.json
 
-# Render farm submission
+# Submit to the render farm
 ./ayon_console.exe addon workflow submit --workflow-path /path/to/workflow.json --backend-dir /path/to/shared/farm/backend
 
-# Individual slice flow processing on a farm worker node
+# Run a single slice flow on a farm worker
 ./ayon_console.exe addon workflow execute-slice-flow --backend-dir /shared/farm/backend --slice-flow-id <flow_uuid> --full-flow_id <full_flow_id>
 ```
 
@@ -209,29 +198,25 @@ cd <ayon-launcher-installation-location>
 ```bash
 cd <ayon-launcher-installation-location>
 
-# In-memory execution
+# Run in memory
 ayon addon workflow execute --workflow-path /path/to/workflow.json
 
-# In-memory execution with dynamic input injection file
+# Run in memory, with inputs from a JSON file
 ayon addon workflow execute --workflow-path /path/to/workflow.json --inputs-path /path/to/input.json
 
-# Individual slice flow processing on a farm worker node
-ayon addon workflow execute-slice-flow --backend-dir /shared/farm/backend --slice-flow-id <flow_uuid> --full-flow_id <full_flow_id>
-
-# Render farm submission
+# Submit to the render farm
 ayon addon workflow submit --workflow-path /path/to/workflow.json --backend-dir /path/to/shared/farm/backend
 
+# Run a single slice flow on a farm worker
+ayon addon workflow execute-slice-flow --backend-dir /shared/farm/backend --slice-flow-id <flow_uuid> --full-flow_id <full_flow_id>
 ```
 
 </TabItem>
 
 </Tabs>
 
+For all supported commands and options, use the `--help` flag:
 
-
-
-
-You can find more info about the supported CLI commands via help flag.
 <Tabs>
 
 <TabItem value="windows" label=<span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> default>
@@ -245,7 +230,6 @@ cd <ayon-launcher-installation-location>
 
 <TabItem value="linux&mac" label=<div><span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> & <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span></div> >
 
-
 ```bash
 cd <ayon-launcher-installation-location>
 ayon addon workflow --help
@@ -255,19 +239,27 @@ ayon addon workflow --help
 
 </Tabs>
 
-:::tip Workflow Addon Verbosity
-You can enable full diagnostic verbosity for CLI executions by exporting the environment variable `AYON_WORKFLOW_VERBOSE=1` beforehand.
-
+:::tip Verbose output
+For full diagnostic output from CLI commands, set the environment variable
+`AYON_WORKFLOW_VERBOSE=1` before running them.
 :::
 
 ## Extending Workflow Nodes (Custom Plugins)
 
-### Add your custom workflow plugins to the system
-Custom node discovery can be achieved through **two separate integration pathways**, depending on how you intend to deploy and version control your custom tools:
+### Make your custom nodes available
 
-#### Pathway 1: The Environment Variable Method
+There are two ways to make custom nodes available to the Workflow addon.
+Choose based on how you want to deploy and version your nodes.
 
-You can group your script modules inside a folder and declare its destination via an environment variable. It can be set globally via AYON Studio Settings `ayon+settings://core/environments` or scoped directly to an active production project environment `ayon+settings://core/project_environments?project=<project_name>` :
+#### Pathway 1: Environment variable
+
+Put your node modules in a folder, and set `AYON_WORKFLOW_ADDITIONAL_PLUGIN_PATH`
+to that folder. Each module exposes its own `get_plugins()` function, as in the
+[examples below](#custom-node-examples).
+
+You can set the variable for the whole studio in
+`ayon+settings://core/environments`, or for a single project in
+`ayon+settings://core/project_environments?project=<project_name>`:
 
 ```json
 {
@@ -275,34 +267,59 @@ You can group your script modules inside a folder and declare its destination vi
 }
 ```
 
-#### Pathway 2: The Packaged Addon Method
+#### Pathway 2: Packaged addon
 
-This approach embeds your custom node definitions directly within a custom AYON addon. The workflow manager automatically runs a registration pass scanning the client's localized bundle environment for the following internal folder layout:
+Ship your nodes inside your own AYON addon, using this folder layout. The
+Workflow addon finds them automatically:
 
 ```text
 ayon_your_addon/
-├── plugins/
-│   └── workflow/
-│       ├── __init__.py          # Must expose a get_plugins() function
-│       descendants workflow plugins
-
+└── plugins/
+    └── workflow/
+        ├── __init__.py   # must expose a get_plugins() function
+        └── my_nodes.py   # your workflow node modules
 ```
 
-### Custom Workflow Node Blueprint
+#### Check that your nodes are available
 
-Every custom workflow node class must inherit from `WorkflowTaskNode`. Type hints for inputs and outputs, as well as default fallback values for inputs, are dynamically extracted directly from the signature of the `execute()` method.
+To list every node type the Workflow addon has discovered, including yours:
 
-You can leverage standard data types located inside `ayon_workflow.datatypes` for type hints for arguments in the `execute()` method:
+```python
+from ayon_workflow.plugin_system import register_all_plugins, PluginRegistry
 
-* `ContextItem` / `ProjectItem` / `FolderItem` / `TaskItem`
-* `FrameRange` / `ImageSequence` / `Video`
+register_all_plugins()
 
+for plugin in PluginRegistry().plugin_list():
+    print(f"   + {plugin}")
+```
 
-### Custom Node Example Implementations
+### Writing a custom node
 
-#### Example 1: Resolve Asset URI Node
+Every custom node class inherits from one of these base classes:
 
-This node contacts the server database via the native `ayon_api` to map global asset URIs to explicit file paths.
+- `WorkflowTaskNode`: most nodes, which take inputs and produce outputs.
+- `WorkflowConditionTaskNode`: branching nodes, where only one output continues
+  downstream.
+- `EventTrigger` or `OnSchedule`: nodes that start a workflow from an AYON event
+  or a cron schedule. See
+  [Reference: creating your own EventTrigger or OnSchedule input node](https://docs.ayon.dev/docs/dev_addon_workflow_event#reference-creating-your-own-eventtrigger-or-onschedule-input-node).
+
+The input and output types, and the input default values, are read from the
+type hints and defaults in the `execute()` method signature. For structured
+data, you can use the types in `ayon_workflow.datatypes`, such as `ContextItem`
+and `FrameRange`.
+
+:::tip
+For the full conventions, including inputs and widgets, outputs, data types,
+cross-platform paths, revert logic, and execution scopes, see the
+[Node Authoring Guide](https://github.com/ynput/ayon-workflow-nodes/blob/develop/docs/node_authoring.md).
+:::
+
+### Custom Node Examples
+
+#### Example 1: Resolve an AYON URI
+
+This node uses `ayon_api` to resolve an AYON URI to a file path.
 
 ```python title="my_workflows/resolve_uri.py"
 from ayon_workflow.plugin_system import (
@@ -313,7 +330,7 @@ from ayon_workflow.plugin_system import (
 
 class ResolveAssetURI(WorkflowTaskNode):
     """Resolve an AYON Asset URI into an absolute file path."""
-    
+
     version = "1.0.0"
 
     inputs = [
@@ -327,13 +344,13 @@ class ResolveAssetURI(WorkflowTaskNode):
 
     def execute(self, ayon_asset_uri: str, resolve_roots: bool = False) -> str:
         import ayon_api
-        
+
         response = ayon_api.post(
             "resolve",
             resolveRoots=resolve_roots,
             uris=[ayon_asset_uri]
         )
-        
+
         if response.status_code != 200:
             raise RuntimeError(f"Unable to resolve URI '{ayon_asset_uri}': {response.text}")
 
@@ -345,82 +362,49 @@ class ResolveAssetURI(WorkflowTaskNode):
 
 def get_plugins() -> list[type[WorkflowTaskNode]]:
     return [ResolveAssetURI]
-
 ```
 
-##### Testing the ResolveAssetURI Node
+##### Testing the ResolveAssetURI node
 
-Open the AYON Console via the tray interface and run the following interactive block to test input ingestion and path parsing logic:
+Open the AYON Console from the AYON tray and run:
 
 ```python
 from ayon_workflow.workflow_editor import Workflow
 from ayon_workflow.workflow_execution import execute_workflow
 from ayon_workflow.plugin_system import register_all_plugins
 
-# Re-register tools to discover the new plugin architecture
+# Discover node types, including your new node
 register_all_plugins()
 
 my_workflow = Workflow(name="Test Resolve Workflow")
 graph = my_workflow.execution_graph
 
-# Create the custom node type
+# Create a node from your custom node type
 node = graph.create_node("ResolveAssetURI")
 node["ayon_asset_uri"] = "ayon+entity://Trash_Can/assets/characters/peely_banana?product=lookGreen&version=v001&representation=usd"
 node["resolve_roots"] = True
 
-# Evaluate graph paths
+# Run the workflow
 result = execute_workflow(my_workflow)
-print(result)  
+print(result)
 # Output: {'ResolveAssetURI1.resolved_path': 'E:\\AYON\\Trash_Can\\assets\\characters\\peely_banana\\publish\\look\\lookGreen\\v001\\trshcn_peely_banana_lookGreen_v001.usd'}
-
 ```
 
-#### Example 2: File Creation Node with Revert Functionality
+#### Example 2: Create a file, with cross-platform paths and revert
 
-Nodes that commit external mutations (creating resources, updating tracking systems) must implement `revert_execute` to handle automatic transactional cleanups when downstream nodes fail.
+This example shows two conventions together:
 
-```python title="my_workflows/create_file.py"
-import os
-from ayon_workflow.plugin_system import (
-    InputAttribute,
-    OutputAttribute,
-    WorkflowTaskNode,
-)
+- **Cross-platform paths.** A workflow can be built on one OS and run on
+  another, for example on a Windows workstation and then a Linux farm node. So
+  path inputs can be rootless, such as `{root[work]}/to/a/file.ext`. Always
+  resolve path inputs with `remap_input()` before using them, and return the
+  original rootless path so the next node can resolve it on its own machine.
+- **Revert.** Nodes with side effects, such as creating files or updating
+  tracking systems, should implement `revert_execute()`. If a later node
+  fails, the Workflow addon calls it with the same arguments as `execute()`,
+  so the node can undo its changes.
 
-class CreateFile(WorkflowTaskNode):
-    """Generate a file on disk with custom content, including rollback logic."""
-    
-    version = "1.0.0"
-
-    inputs = [
-        InputAttribute(name="file_path", description="Path to create", widget={"type": "filepath"}),
-        InputAttribute(name="content", description="File content", default="random_content"),
-    ]
-
-    outputs = [
-        OutputAttribute(name="created_path", description="Path of created file"),
-    ]
-
-    def execute(self, file_path: str = "", content: str = "random_content") -> str:
-        with open(file_path, 'w') as f:
-            f.write(content)
-        return file_path
-
-    def revert_execute(self, file_path: str = "", content: str = "random_content"):
-        # Receives the exact same arguments context as execute for reverse processing
-        if os.path.exists(file_path):
-            os.remove(file_path)
-
-def get_plugins() -> list[type[WorkflowTaskNode]]:
-    return [CreateFile]
-
-```
-
-#### Example 3: Create Rootless File with Multi-Platform Compatibility
-
-Production networks frequently utilize heterogeneous environments (e.g., Windows workstations generating graphs for Linux render nodes). **Always process path inputs via `remap_input()**` to dynamically parse rootless path strings relative to local storage configurations.
-
-```python title="my_workflows/resolve_rootless_file.py"
+```python title="my_workflows/create_rootless_file.py"
 import os
 from ayon_workflow.datatypes import ContextItem
 from ayon_workflow.plugin_system import (
@@ -431,17 +415,14 @@ from ayon_workflow.plugin_system import (
 from ayon_workflow.utils import remap_input
 
 class CreateRootlessFile(WorkflowTaskNode):
-    """Create a file handling rootless input tokens dynamically at runtime.
-    
-    Accepts explicit paths or rootless tokens (e.g., '{root[work]}/to/a/file.ext').
-    """
-    
+    """Create a file at a rootless or absolute path, and remove it on revert."""
+
     version = "1.0.0"
 
     inputs = [
-        InputAttribute(name="context", description="Context item wrapper"),
-        InputAttribute(name="file_path", description="Path to create", widget={"type": "filepath"}),
-        InputAttribute(name="content", description="File content", default="default_content"),
+        InputAttribute(name="context", description="AYON context"),
+        InputAttribute(name="file_path", description="Path to create", widget={"name": "filepath"}),
+        InputAttribute(name="content", description="File content"),
     ]
 
     outputs = [
@@ -449,30 +430,31 @@ class CreateRootlessFile(WorkflowTaskNode):
     ]
 
     def execute(self, context: ContextItem, file_path: str, content: str = "default_content") -> str:
-        # Resolve the placeholder rootless string to the active OS file system paths on the fly
+        # Resolve the rootless path for this machine
         remapped_path = remap_input(file_path, context.project_name)
 
         with open(remapped_path, 'w') as f:
             f.write(content)
 
-        # Return original tokenized rootless reference so subsequent cross-platform nodes can interpret it
+        # Return the original rootless path, so the next node can resolve it itself
         return file_path
 
-    def revert_execute(self, context: ContextItem, file_path: str, content: str = ""):
+    def revert_execute(self, context: ContextItem, file_path: str, content: str = "default_content"):
+        # Receives the same arguments as execute(), so resolve the path again
         remapped_path = remap_input(file_path, context.project_name)
         if os.path.exists(remapped_path):
             os.remove(remapped_path)
 
 def get_plugins() -> list[type[WorkflowTaskNode]]:
     return [CreateRootlessFile]
-
 ```
 
-#### Example 4: Multi-Output Function Nodes
+#### Example 3: Multiple outputs
 
-When a node generates multiple distinct output branches, the return payload must be structured as a standard Python `tuple`. The indexes within the tuple must perfectly reflect the index order of the registered `outputs` block.
+A node with several outputs returns them as a `tuple`, in the same order as
+`outputs`.
 
-```python title="my_workflows/concatentate_and_float.py"
+```python title="my_workflows/concatenate_and_float.py"
 from ayon_workflow.plugin_system import (
     WorkflowTaskNode,
     InputAttribute,
@@ -480,35 +462,37 @@ from ayon_workflow.plugin_system import (
 )
 
 class ConcatenateAndFloat(WorkflowTaskNode):
-    """Combine text strings and track a floating-point computation constant."""
-    
+    """Combine two strings and return a float value."""
+
     version = "1.0.0"
 
     inputs = [
         InputAttribute(name="text1", description="First string"),
         InputAttribute(name="text2", description="Second string"),
-        InputAttribute(name="separator", description="Text delimiter character", default=" "),
+        InputAttribute(name="separator", description="Separator between the strings"),
     ]
 
     outputs = [
-        OutputAttribute(name="concatenated_text", description="Resulting combined text string"),
-        OutputAttribute(name="float_value", description="Computed metadata float metric"),
+        OutputAttribute(name="concatenated_text", description="The combined string"),
+        OutputAttribute(name="float_value", description="A float value"),
     ]
 
     def execute(self, text1: str, text2: str, separator: str = " ") -> tuple[str, float]:
-        # Tuple return ordering must match the index orientation of the outputs specification
+        # The tuple order matches the order of `outputs`
         combined_text = f"{text1}{separator}{text2}"
         return combined_text, 1.0
 
 def get_plugins() -> list[type[WorkflowTaskNode]]:
     return [ConcatenateAndFloat]
-
 ```
-For further information, please refer to:
 
-- User and Admin Documentation: [Workflow Addon - AYON Help Center](https://help.ayon.app/help/collections/6014460-workflow) 
-- API Documentation: [AYON Workflow Addon API Reference](https://docs.ayon.dev/ayon-workflow-docs/latest/) 
-- The demo workflows shipped within the addon, you can locate the addon at 
-  - Windows: `c:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\workflow_X.X.X\ayon_workflow\demo\`
-  - Linux: `~/.local/share/Ynput/AYON/addons/workflow_X.X.X\ayon_workflow\demo\`
-  - MacOs: `~/Library/Application Support/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/`
+## Further Reading
+
+- **User and admin documentation:** [Workflow Addon - AYON Help Center](https://help.ayon.app/en/help/collections/6014460-workflow)
+- **Event-triggered workflows:** [Event-triggered workflows developer documentation](https://docs.ayon.dev/docs/dev_addon_workflow_event)
+- **Node conventions:** [Node Authoring Guide](https://github.com/ynput/ayon-workflow-nodes/blob/develop/docs/node_authoring.md)
+- **API documentation:** [AYON Workflow Addon API Reference](https://docs.ayon.dev/ayon-workflow-docs/latest/)
+- **Demo workflows:** Available in the [`ayon-workflow-nodes` repository](https://github.com/ynput/ayon-workflow-nodes/tree/develop/demo).They also ship with the addon. By default, you can find them at:
+  - Windows: `C:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\workflow_X.X.X\ayon_workflow\demo\`
+  - Linux: `~/.local/share/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/`
+  - macOS: `~/Library/Application Support/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/`
