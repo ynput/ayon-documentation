@@ -11,77 +11,100 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-## Introducing Event-triggered workflows
+## Overview
 
-Event-triggered workflows are registered on the server. They allow to chain workflow execution from events, manual action from the AYON server or recurrently from scheduled trigger. The workflow addon's event processor listens for relevant event and executes registered workflows accordingly. This is useful for incorporating workflow graphs into your automations.
+Event-triggered workflows let you use workflow graphs for automations. Once a
+workflow is registered on the server, it runs without being started from the
+Workflow editor: when an AYON event occurs, on a schedule, or when a user runs
+it as an action from the AYON web UI. The Workflow addon's
+[event processor](#running-the-workflow-event-processor) listens for these
+triggers and runs the matching registered workflows.
 
 Example use cases:
 - Running a workflow when a new product version is created
-- Reacting to an action menu triggered from selected folder(s) or version(s) on the AYON server
-- Running a daily workflow to create a playlist
-
-:::caution 
-Ensure you have the workflow processor service running.
-:::
-
-### Triggering workflows automatically
-
-There are several ways to trigger workflows automatically:
-
-- When an event occurs: the event processor runs the workflow whenever its respective event is triggered.
-  - On task assignees changed (`entity.task.assignees_changed`) — use the `OnTaskAssigneesChanged` node
-  - On version creation (`entity.version.created`) — use the `OnVersionCreated` node
-- When a workflow action is triggered from an entity's action menu: this relies on event triggering, as workflow actions emit either `workflow.from_simple_action.local` (runs the workflow on the user's machine) or `workflow.from_simple_action.remote` (runs the workflow on the workflow event processor service), depending on the `Execute Locally` setting in the workflow's configuration.
-  - Run the action from version actions — use the `OnActionFromVersion` node
-  - Run the action from folder actions — use the `OnActionFromFolder` node
-- Periodically: based on cron expressions.
-  - On a schedule — use the `OnSchedule` node
-
-> **During the publishing process**: this isn't officially supported. It's possible to write a custom publish plugin to trigger a workflow during publishing; however, a more generic approach is to trigger workflows based on events — for example, creating a workflow that triggers on version creation, which fires once publishing completes.
-
-:::tip Extend Workflows Input Nodes 
-
-To support more events, the input nodes can be extended to cover custom event topics you might have. Please refer to [Reference: creating your own EventTrigger or OnSchedule input node](#reference-creating-your-own-eventtrigger-or-onschedule-input-node).
-:::
-
-## Examples
-
-The AYON workflow addon ships with event-triggered workflow demos, located at:
-- Windows: `C:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\workflow_X.X.X\ayon_workflow\demo\workflow_from_events`
-- Linux: `~/.local/share/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/workflow_from_events`
-- macOS: `~/Library/Application Support/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/workflow_from_events`
-
-Shipped event-triggered workflow demos
-- `on_task_assignees_changed_watch_parent_folder` (**Sets task assignees as parent folder watchers**): React to the `entity.task.assignees_changed` event.
-- `trigger_from_cron` (**CronWorkflow**): Tests triggering a workflow from a cron schedule.
-- `trigger_from_simple_action_folder` (**SimpleActionWorkflowFolder**): Tests triggering a workflow from a simple action event (folder scope).
-- `trigger_from_simple_action_version` (**SimpleActionWorkflowVersion**): Tests triggering a workflow from a simple action event (version scope).
-- `trigger_from_version_created_event` (**VersionCreatedWorkflow**): Tests triggering a workflow from a new version created event.
-
-
-### Registering a workflow
-
-There are two ways to register and run event-triggered workflows: through the AYON UI, or directly via API.
-
-- **Via the Workflow Editor** (UI) as shown in [Example workflow graph automations](https://help.ayon.app/en/help/articles/1804107-workflows-and-automations#cczii712qik), or
-- **Via the API**, using the `api/addons/workflow/{version}/upload` endpoint, where `{version}` is the addon version (e.g. `0.4.3`).
+- Running a workflow from the action menu of selected folders or versions in
+  the AYON web UI
+- Running a daily workflow that creates a playlist
 
 :::caution
-
-You cannot upload multiple workflows with the same name. An existing workflow must be de-registered before a new one with the same name can be uploaded.
+Event-triggered workflows only run while the
+[event processor](#running-the-workflow-event-processor) is running.
 :::
 
-:::tip
+## Trigger nodes
 
-To obtain a list of registered workflow graphs, find it in the Workflow Editor or use `api/addons/workflow/{version}/registered_workflows`.
+A workflow's trigger is set by its first node. These trigger nodes are
+available out of the box:
+
+| Trigger | Node | Event topic |
+| --- | --- | --- |
+| Task assignees change | `OnTaskAssigneesChanged` | `entity.task.assignees_changed` |
+| A new version is created | `OnVersionCreated` | `entity.version.created` |
+| A user runs an action from the folder action menu | `OnActionFromFolder` | `workflow.from_simple_action.local` or `workflow.from_simple_action.remote` |
+| A user runs an action from the version action menu | `OnActionFromVersion` | `workflow.from_simple_action.local` or `workflow.from_simple_action.remote` |
+| A cron schedule | `OnSchedule` | None; runs based on its cron expression |
+
+**Actions** are set up in the Workflow addon settings, at
+`ayon+settings://workflow/simple_actions`. Each action's **Execute Locally**
+setting decides which event it emits, and so where the workflow runs:
+
+- **Enabled:** The action emits `workflow.from_simple_action.local`, and the
+  workflow runs on the user's machine, bypassing the event processor. Use this
+  for workflows with pipeline nodes.
+- **Disabled:** The action emits `workflow.from_simple_action.remote`, and the
+  event processor runs the workflow.
+
+For setup steps, see
+[Simple Actions - User Docs](https://help.ayon.app/en/help/articles/0480584-configure-workflow-addon).
+
+To react to other event topics, you can write your own trigger node. See
+[Reference: creating your own EventTrigger or OnSchedule input node](#reference-creating-your-own-eventtrigger-or-onschedule-input-node).
+
+:::note Triggering a workflow during publishing
+This isn't officially supported. You can write a custom publish plugin that
+triggers a workflow, but triggering on events is usually simpler. For example,
+a workflow triggered by `OnVersionCreated` runs once publishing has created
+the new version.
 :::
 
-## Running the workflow event processor service
-The event processor listens for relevant events and executes registered workflows accordingly.
-There are two ways to run it, and you can't run both at the same time:
+## Running the workflow event processor
 
-- **As a regular AYON service**: This option is lightweight and best for server-side automations (e.g. syncing task/parent-folder status), but it doesn't support running workflows that include pipeline nodes (`NukeRender`, `BlenderRender`, `BlenderWorkfile`, `Publish`, `Representation`) and cannot dispatch to the farm (workflows always run in memory). It's managed via the Services page. This requires Docker login credentials, which are currently provided by request — reach out to support to obtain them. For setup steps, see [Spawn an AYON Event Processor Service - User Docs](https://help.ayon.app/en/help/articles/0480584-configure-workflow-addon#8xxbd4mzzpf).
-- **As a process on an AYON-initialized machine via CLI**: This option supports all node types, including pipeline nodes, and can dispatch to the farm. It requires a full AYON-initialized machine with AYON Launcher installed, access to pipeline storage, DCC applications installed, access to the dispatch directory, and access to the farm server (e.g. Deadline). Note that this method does not use the credentials of the logged-in user — a valid `AYON_API_KEY` must be passed explicitly via the `--token` flag:
+The event processor listens for events, runs scheduled workflows based on
+their cron expressions, and runs the matching registered workflows. It picks
+up newly registered workflows automatically, without a restart.
+
+There are two ways to run it. You can't run both at the same time.
+
+| | As an AYON service | Through the CLI |
+| --- | --- | --- |
+| **Best for** | Lightweight server-side automations, such as syncing task and parent-folder status | Workflows that need the full pipeline |
+| **Pipeline nodes** (`NukeRender`, `BlenderRender`, `BlenderWorkfile`, `Publish`, `Representation`) | Not supported | Supported |
+| **Farm dispatch** | Not supported; workflows always run in memory | Supported |
+| **Execution scope** | `ExecutionScope.SERVER` | `ExecutionScope.WORKSTATION` |
+| **Runs on** | The AYON server, managed from the Services page | An AYON-initialized machine |
+| **Updates** | Update the addon in your production bundle, then recreate the service | Managed manually |
+
+The execution scope decides which nodes are available. Nodes that need a
+local, interactive environment are only available in `WORKSTATION`. See
+[Execution scope](https://github.com/ynput/ayon-workflow-nodes/blob/main/docs/node_authoring.md#execution-scope)
+in the Node Authoring Guide.
+
+### As an AYON service
+
+Spawn the Workflow Event Processor from the Services page. This requires
+registry credentials, which are currently provided on request, so reach out
+to support to get them. For setup steps, see
+[Spawn an AYON Event Processor Service - User Docs](https://help.ayon.app/en/help/articles/0480584-configure-workflow-addon#8xxbd4mzzpf).
+
+### Through the CLI
+
+Run the processor on an AYON-initialized machine, with the AYON launcher
+installed. To support every node type, the machine also needs access to
+pipeline storage, the DCC applications used by your workflows, the dispatch
+directory, and the farm server (for example, Deadline).
+
+This method doesn't use the logged-in user's credentials, so pass a valid
+`AYON_API_KEY` with the `--token` flag:
 
 <Tabs>
 
@@ -107,14 +130,69 @@ ayon addon workflow event-processor --token <AYON_API_KEY>
 
 </Tabs>
 
+For long-term use, run it as a background service (daemon) rather than a
+one-off command in a terminal.
+
+## Registering a workflow
+
+Registering uploads a workflow to the server, so the event processor can run
+it. You can register a workflow in two ways:
+
+- **From the Workflow editor**, as shown in
+  [Example workflow graph automations - User Docs](https://help.ayon.app/en/help/articles/1804107-workflows-and-automations#cczii712qik).
+- **Through the API**, with the `api/addons/workflow/{version}/upload`
+  endpoint, where `{version}` is the addon version (for example, `0.4.3`).
+
+To list registered workflows, check the Workflow editor or use the
+`api/addons/workflow/{version}/registered_workflows` endpoint.
+
+:::caution
+Workflow names must be unique. To upload a new workflow with the same name as
+an existing one, de-register the existing workflow first.
+:::
+
+## Examples
+
+Event-triggered workflow demos are available in the
+[`ayon-workflow-nodes` repository](https://github.com/ynput/ayon-workflow-nodes/tree/main/demo/workflow_from_events).
+They also ship with the addon. By default, you can find them at:
+
+- Windows: `C:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\workflow_X.X.X\ayon_workflow\demo\workflow_from_events`
+- Linux: `~/.local/share/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/workflow_from_events`
+- macOS: `~/Library/Application Support/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/workflow_from_events`
+
+| File | Trigger node | What it does |
+| --- | --- | --- |
+| `on_task_assignees_changed_watch_parent_folder.json` | `OnTaskAssigneesChanged` | Runs when assignees change on any task (`entity.task.assignees_changed`) and adds the new assignees as watchers on the task's parent folder (`GetParentContext` → `SetEntityWatchers`). Runs without farm dispatch. |
+| `trigger_from_version_created_event.json` | `OnVersionCreated` | Runs when a new version is created (`entity.version.created`). Uses an `If` node so it only continues for versions in the `Demo` project, then dispatches to Deadline. |
+| `trigger_from_cron.json` | `OnSchedule` (cron: `*/1 * * * *`) | Runs every minute and dispatches a `NoOp` task to Deadline. |
+| `trigger_from_simple_action_folder.json` | `OnActionFromFolder` | Runs from a custom action in the folder action menu and dispatches a `NoOp` task to Deadline. |
+| `trigger_from_simple_action_version.json` | `OnActionFromVersion` | Runs from a custom action in the version action menu and dispatches a `NoOp` task to Deadline. |
+
+The demos that dispatch to Deadline need a working Deadline setup, and an
+event processor [running through the CLI](#through-the-cli), since the AYON
+service can't dispatch to the farm. For step-by-step instructions and
+expected results, see
+[Workflows & Automations - User Docs](https://help.ayon.app/en/help/articles/1804107-workflows-and-automations).
+
 ## Reference: creating your own EventTrigger or OnSchedule input node
 
-You can extend the input nodes to support additional event topics or scheduling needs beyond what's provided out of the box (see [Triggering workflows automatically](#triggering-workflows-automatically)). You can do this by inheriting from the existing core input nodes:
+To react to event topics or schedules not covered by the
+[built-in trigger nodes](#trigger-nodes), write your own trigger node by
+subclassing one of these:
 
-- `OnSchedule`: Registers a new input node that's triggered periodically by a schedule.
-- `EventTrigger`: Registers a new input node that reacts to an emitted AYON event. Keep in mind that for each event you want to act on, you'll need to create a dedicated node. You can find a list of well-known event topics [here](https://help.ayon.app/en/help/articles/2566382-ayon-event-viewer#e4bo4xwd0ei).
+- `OnSchedule`: For nodes that run on a cron schedule.
+- `EventTrigger`: For nodes that react to an AYON event. Each node handles its
+  own event topic, so create one node per topic. For well-known event topics,
+  see the
+  [AYON Event Viewer article](https://help.ayon.app/en/help/articles/2566382-ayon-event-viewer#e4bo4xwd0ei).
 
-### Example 1: Implement a new schedule node that returns current time and timezone:
+Trigger nodes are custom nodes like any other, so make them available to the
+Workflow addon the same way. See
+[Extending Workflow Nodes (Custom Plugins)](https://docs.ayon.dev/docs/dev_addon_workflow#extending-workflow-nodes-custom-plugins).
+
+### Example 1: A schedule node that returns the current time and timezone
+
 ```python
 import datetime
 from typing import Tuple
@@ -141,30 +219,34 @@ class OnScheduleWithTimezone(OnSchedule):
     ]
 
     def execute(
-            self,
-            cron_expression: str,  # come from OnSchedule node
-        ) -> Tuple[datetime.datetime, str]:
-        """ Execute the node.
-        """
-        super().execute(cron_expression)  # validate cron expression
+        self,
+        cron_expression: str,  # input inherited from OnSchedule
+    ) -> Tuple[datetime.datetime, str]:
+        super().execute(cron_expression)  # validates the cron expression
         local_dt = datetime.datetime.now().astimezone()
 
         return (
             local_dt,
             local_dt.tzname(),
         )
+
+
+def get_plugins():
+    return [OnScheduleWithTimezone]
 ```
 
-### Example 2: Implement a new input node related to an incoming event:
-```python
-from typing import Optional, Dict
+### Example 2: An event node for a custom event topic
 
-import ayon_api
+When the workflow runs outside an actual event, such as from the Workflow
+editor, `event_id` is `None`. Make sure `execute()` returns empty outputs in
+that case.
+
+```python
+from typing import Any, Dict, Optional
 
 from ayon_workflow.plugin_system import (
     OutputAttribute,
 )
-
 from ayon_workflow.plugins.workflow.inputs import EventTrigger
 
 
@@ -172,7 +254,7 @@ class OnNewEvent(EventTrigger):
     """Trigger node: on new event.new.todo."""
 
     version = "0.0.1"
-    event_type = "event.new.todo"  # Enter your event type here.
+    event_topic = "event.new.todo"  # the event topic to react to
     outputs = [
         OutputAttribute(
             name="event_data",
@@ -184,12 +266,14 @@ class OnNewEvent(EventTrigger):
         self,
         event_id: Optional[str] = None
     ) -> Dict[str, Any]:
-        """ Return the event data.
-        """
         if event_id is None:
             return {}
 
-        event_data = super().execute(event_id)  # gather event data from ID
-        # TODO: transform/process event_data into richer data type.
+        event_data = super().execute(event_id)  # fetches the event data from its id
+        # TODO: turn event_data into richer data types, such as ayon_workflow.datatypes.
         return event_data
+
+
+def get_plugins():
+    return [OnNewEvent]
 ```
