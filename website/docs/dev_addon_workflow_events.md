@@ -86,7 +86,7 @@ There are two ways to run it. You can't run both at the same time.
 
 The execution scope decides which nodes are available. Nodes that need a
 local, interactive environment are only available in `WORKSTATION`. See
-[Execution scope](https://github.com/ynput/ayon-workflow-nodes/blob/main/docs/node_authoring.md#execution-scope)
+[Execution scope](https://github.com/ynput/ayon-workflow-nodes/blob/develop/docs/node_authoring.md#execution-scope)
 in the Node Authoring Guide.
 
 ### As an AYON service
@@ -154,7 +154,7 @@ an existing one, de-register the existing workflow first.
 ## Examples
 
 Event-triggered workflow demos are available in the
-[`ayon-workflow-nodes` repository](https://github.com/ynput/ayon-workflow-nodes/tree/main/demo/workflow_from_events).
+[`ayon-workflow-nodes` repository](https://github.com/ynput/ayon-workflow-nodes/tree/develop/demo/workflow_from_events).
 They also ship with the addon. By default, you can find them at:
 
 - Windows: `C:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\workflow_X.X.X\ayon_workflow\demo\workflow_from_events`

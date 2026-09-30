@@ -312,7 +312,7 @@ and `FrameRange`.
 :::tip
 For the full conventions, including inputs and widgets, outputs, data types,
 cross-platform paths, revert logic, and execution scopes, see the
-[Node Authoring Guide](https://github.com/ynput/ayon-workflow-nodes/blob/main/docs/node_authoring.md).
+[Node Authoring Guide](https://github.com/ynput/ayon-workflow-nodes/blob/develop/docs/node_authoring.md).
 :::
 
 ### Custom Node Examples
@@ -490,9 +490,9 @@ def get_plugins() -> list[type[WorkflowTaskNode]]:
 
 - **User and admin documentation:** [Workflow Addon - AYON Help Center](https://help.ayon.app/en/help/collections/6014460-workflow)
 - **Event-triggered workflows:** [Event-triggered workflows developer documentation](https://docs.ayon.dev/docs/dev_addon_workflow_event)
-- **Node conventions:** [Node Authoring Guide](https://github.com/ynput/ayon-workflow-nodes/blob/main/docs/node_authoring.md)
+- **Node conventions:** [Node Authoring Guide](https://github.com/ynput/ayon-workflow-nodes/blob/develop/docs/node_authoring.md)
 - **API documentation:** [AYON Workflow Addon API Reference](https://docs.ayon.dev/ayon-workflow-docs/latest/)
-- **Demo workflows:** Available in the [`ayon-workflow-nodes` repository](https://github.com/ynput/ayon-workflow-nodes/tree/main/demo).They also ship with the addon. By default, you can find them at:
+- **Demo workflows:** Available in the [`ayon-workflow-nodes` repository](https://github.com/ynput/ayon-workflow-nodes/tree/develop/demo).They also ship with the addon. By default, you can find them at:
   - Windows: `C:\Users\YOUR_USER\AppData\Local\Ynput\AYON\addons\workflow_X.X.X\ayon_workflow\demo\`
   - Linux: `~/.local/share/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/`
   - macOS: `~/Library/Application Support/Ynput/AYON/addons/workflow_X.X.X/ayon_workflow/demo/`
