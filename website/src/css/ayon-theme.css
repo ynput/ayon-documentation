@@ -171,12 +171,67 @@ body {
     --ifm-button-border-color: var(--md-sys-color-surface-container-highest);
 }
 
-/* Navbar and sidebar share the page colour, separated by borders. Mint marks the active item. */
+/* Navbar: the group items are tabs, as in the AYON web app. The bar is darker
+   than the page; the active tab has the page color and rounded top corners, so
+   it looks attached to the content below. Sidebar and page share one color. */
 .navbar {
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
-.navbar__link--active {
-    color: var(--md-sys-color-tertiary);
+@media (min-width: 997px) {
+    :root[data-theme] {
+        --ayon-tab-height: 2.6rem;
+    }
+    .navbar {
+        background-color: var(--md-sys-color-surface-container-lowest);
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: stretch;
+    }
+    .navbar__inner {
+        align-items: stretch;
+    }
+    .navbar__items {
+        align-items: flex-end;
+    }
+    /* logo, search and other non-tab items stay centered */
+    .navbar__items > .custom-logo,
+    .navbar__items > .navbar__search,
+    .navbar__items .navbar__search {
+        align-self: center;
+    }
+    .navbar__items > .navbar__item.navbar__link {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        height: var(--ayon-tab-height);
+        margin: 0 0.1rem -1px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        border-radius: var(--ayon-radius-large) var(--ayon-radius-large) 0 0;
+        color: var(--md-sys-color-on-surface-variant);
+        font-weight: 500;
+    }
+    .navbar__items > .navbar__item.navbar__link:hover {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+    }
+    .navbar__items > .navbar__item.navbar__link--active {
+        position: relative;
+        background-color: var(--ifm-background-color);
+        border-color: var(--md-sys-color-outline-variant);
+        color: var(--md-sys-color-on-surface);
+        font-weight: 700;
+    }
+    /* the tab covers the bar's bottom border, so it joins the page */
+    .navbar__items > .navbar__item.navbar__link--active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 3px;
+        background-color: var(--ifm-background-color);
+    }
 }
 .theme-doc-sidebar-container {
     background-color: var(--md-sys-color-surface-container-low);
@@ -223,4 +278,21 @@ html {
    app's muted blue-tint selection instead. */
 :root [class*="searchBar"] [class*="dropdownMenu"] [class*="suggestion"][class*="cursor"] {
     background-color: var(--ayon-selected);
+}
+
+/* Navbar: eight group items. Never wrap a label, and tighten the spacing on
+   medium screens (below 997px Docusaurus switches to the hamburger menu). */
+.navbar__item,
+.navbar__link {
+    white-space: nowrap;
+}
+@media (min-width: 1081px) and (max-width: 1320px) {
+    :root[data-theme] {
+        --ifm-navbar-item-padding-horizontal: 0.45rem;
+    }
+}
+@media (min-width: 997px) and (max-width: 1080px) {
+    :root[data-theme] {
+        --ifm-navbar-item-padding-horizontal: 0.25rem;
+    }
 }

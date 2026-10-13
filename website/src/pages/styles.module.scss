@@ -75,10 +75,14 @@ html[data-theme="dark"] .title {
 .links {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
 
     gap: 32px;
+
+    // At most three cards per row (3 cards of 300px plus 2 gaps).
+    max-width: calc(3 * 300px + 2 * 32px);
+    margin: 0 auto;
 }
 
 @media screen and (max-width: 475) {
@@ -96,6 +100,7 @@ html[data-theme="dark"] .title {
     padding: 24px;
     background-color: var(--ifm-background-surface-color);
     border-radius: var(--ifm-global-radius);
+    flex: 0 1 300px;
     max-width: 300px;
     text-align: left;
     min-width: 250px;
