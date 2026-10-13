@@ -89,11 +89,6 @@ const config = {
                         },
                     },
                     {
-                        to: "/features",
-                        label: "Features",
-                        position: "left",
-                    },
-                    {
                         to: "docs/dev_introduction",
                         label: "Dev Docs",
                         position: "left",
@@ -102,10 +97,6 @@ const config = {
                         label: "Dev resources",
                         position: "left",
                         items: [
-                            {
-                                label: "REST API Docs",
-                                to: "/api",
-                            },
                             {
                                 label: "GraphQL API Explorer",
                                 href: "https://playground.ayon.app/explorer",
@@ -443,44 +434,6 @@ const config = {
                             {
                                 label: "AYON Zbrush API Reference",
                                 href: "https://docs.ayon.dev/ayon-zbrush",
-                                target: "_blank",
-                                rel: null,
-                            },
-                        ],
-                        className: "navbar__link--community",
-                    },
-                    {
-                        label: "User Docs",
-                        href: "https://help.ayon.app/",
-                        target: "_blank",
-                        rel: null,
-                        position: "left",
-                    },
-                    {
-                        label: "Admin Docs",
-                        href: "https://help.ayon.app/",
-                        target: "_blank",
-                        rel: null,
-                        position: "left",
-                    },
-                    {
-                        label: "REST API Docs",
-                        position: "right",
-                        to: "/api",
-                    },
-                    {
-                        label: "Addons",
-                        position: "right",
-                        items: [
-                            {
-                                label: "Web Publisher",
-                                href: "https://ynput.io/ayon/addons/web-publisher/",
-                                target: "_blank",
-                                rel: null,
-                            },
-                            {
-                                label: "Node Graph",
-                                href: "https://ynput.io/ayon/addons/node-graph",
                                 target: "_blank",
                                 rel: null,
                             },

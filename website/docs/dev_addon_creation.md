@@ -18,8 +18,8 @@ Below is a list of purposes that were developed over time.
 - **DCC Host Addon:** Host addon integrates AYON into your favorite DCC. It unlocks AYON pipeline powers straight with pyblish adoption.
 - **Connector Addon:** Connector addons connects AYON to external services.
     e.g.
-  - **Farm Manager Connector:** connects AYON to farm managers like [Deadline](/features?addons=deadline).
-  - **Production Tracker Connector:** connects AYON to external production tracker like [Flow(Shotgrid)](/features?addons=shotgrid) or [ftrack](/features?addons=ftrack).
+  - **Farm Manager Connector:** connects AYON to farm managers like Deadline.
+  - **Production Tracker Connector:** connects AYON to external production tracker like Flow(Shotgrid) or ftrack.
 - **Binaries Distribution Addon**: which downloads and distributes binaries to users like 3<sup>rd</sup> party addon which downloads ocio configs.
 
 ## Typical Addon Repo Structure
