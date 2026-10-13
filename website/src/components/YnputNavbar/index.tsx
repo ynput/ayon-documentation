@@ -11,7 +11,7 @@ const YnputNavbar = () => {
                     <div className={styles.title}>
                         <a href="https://ynput.io">
                             <img
-                                src="/img/ynput_logo_small_BG.svg"
+                                src="/img/ynput_logo_small_W.svg"
                                 alt="Ynput Logo"
                                 id="brand-logo"
                             />

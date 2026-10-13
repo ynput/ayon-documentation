@@ -70,8 +70,6 @@ html[data-theme="dark"] .title {
     flex: 1;
     padding: 64px 0;
     min-height: 50vh;
-
-    background-color: var(--ifm-background-surface-color);
 }
 
 .links {
@@ -94,7 +92,7 @@ html[data-theme="dark"] .title {
     flex-direction: column;
     align-items: flex-start;
 
-    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.45);
+    border: 1px solid var(--md-sys-color-outline-variant);
     padding: 24px;
     background-color: var(--ifm-background-surface-color);
     border-radius: var(--ifm-global-radius);
@@ -118,15 +116,18 @@ html[data-theme="dark"] .title {
     }
 
     .button {
-        background-color: transparent;
-        color: var(--ifm-navbar-link-color);
+        background-color: var(--md-sys-color-secondary-container);
+        border-color: var(--md-sys-color-secondary-container);
+        color: var(--md-sys-color-on-surface);
         height: auto;
         width: 100%;
         transition: all var(--ifm-transition-fast)
             var(--ifm-transition-timing-default);
 
         &:hover {
-            color: var(--ifm-color-primary);
+            background-color: var(--md-sys-color-surface-container-highest);
+            border-color: var(--md-sys-color-surface-container-highest);
+            color: var(--md-sys-color-on-surface);
         }
     }
 }

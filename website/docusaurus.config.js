@@ -41,7 +41,12 @@ const config = {
                         "https://github.com/ynput/ayon-documentation/tree/main/website",
                 },
                 theme: {
-                    customCss: require.resolve("./src/css/custom.css"),
+                    customCss: [
+                        require.resolve("@fontsource-variable/inter/index.css"),
+                        require.resolve("@fontsource-variable/jost/index.css"),
+                        require.resolve("./src/css/ayon-theme.css"),
+                        require.resolve("./src/css/custom.css"),
+                    ],
                 },
             }),
         ],
@@ -58,7 +63,7 @@ const config = {
                 // Theme Options for modifying how redoc renders them
                 theme: {
                     // Change with your site colors
-                    primaryColor: "#00d6a1",
+                    primaryColor: "#8fceff",
                 },
             },
         ],
@@ -447,9 +452,10 @@ const config = {
                 ],
             },
             colorMode: {
+                // AYON's UI is dark only, so the docs are too.
                 defaultMode: "dark",
-                disableSwitch: false,
-                respectPrefersColorScheme: true,
+                disableSwitch: true,
+                respectPrefersColorScheme: false,
             },
             algolia: {
                 // The application ID provided by Algolia
