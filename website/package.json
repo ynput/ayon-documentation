@@ -21,6 +21,7 @@
         "@docusaurus/core": "2.4.0",
         "@docusaurus/plugin-ideal-image": "^2.4.0",
         "@docusaurus/preset-classic": "2.4.0",
+        "@docusaurus/theme-mermaid": "2.4.0",
         "@easyops-cn/docusaurus-search-local": "0.35.0",
         "@fontsource-variable/inter": "^5.3.0",
         "@fontsource-variable/jost": "^5.3.0",
@@ -57,5 +58,8 @@
     },
     "engines": {
         "node": ">=16.14"
+    },
+    "resolutions": {
+        "cytoscape": "3.23.0"
     }
 }
