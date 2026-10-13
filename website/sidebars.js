@@ -4,80 +4,93 @@ function sorted(a, b) {
     return nameA > nameB ? 1 : -1;
 }
 
+// One sidebar per group. Each group is also a top-level folder in docs/ and an
+// item in the navbar, so a page's folder, sidebar and navbar item agree and
+// URLs stay clean: /docs/<group>/<topic>/...
 module.exports = {
-    Dev: [
-        "dev_introduction",
-        "dev_requirements",
+    Ayon: [
+        "ayon/what-is-ayon/index",
+        "ayon/how-ayon-works/index",
+        "ayon/glossary/index",
+        "ayon/ways-to-set-up/index",
+    ],
+    Backend: ["backend/data-model/index", "backend/settings/index"],
+    Pipeline: ["pipeline/pipeline-flow/index", "pipeline/pipeline-tools/index"],
+    Server: ["server/web-ui/index", "server/automations/index"],
+    Hosting: ["hosting/server-hosting/index", "hosting/ash/index"],
+    YnputCloud: [
+        "ynput-cloud/cloud-ui/index",
+        "ynput-cloud/plans/index",
+        "ynput-cloud/cloud-hosting/index",
+    ],
+    Addons: ["addons/index"],
+    Developer: [
+        "developer/index",
+        "developer/requirements",
         {
             type: "category",
             collapsed: true,
             label: "AYON Launcher",
-            link: { type: "doc", id: "dev_launcher"},
+            link: { type: "doc", id: "developer/launcher/index" },
             items: [
-                "dev_launcher_build_windows",
-                "dev_launcher_build_macos",
-                "dev_launcher_build_linux",
+                "developer/launcher/build-windows",
+                "developer/launcher/build-macos",
+                "developer/launcher/build-linux",
             ],
         },
         {
             type: "category",
             label: "APIs & Resources",
-            link: {
-                type: 'generated-index',
-                title: 'AYON APIs an develoment resources',
-                description:
-                  "Welcome to AYON APIs and development resources catalogue!",
-                keywords: ['api', 'components'],
-              },
+            link: { type: "doc", id: "developer/api/index" },
             items: [
-                "dev_api_rest",
-                "dev_api_graphql",
-                "dev_api_python",
-                "dev_api_cpp",
-                "dev_api_usd_resolver",
-                "dev_components_react"
+                "developer/api/rest",
+                "developer/api/graphql",
+                "developer/api/python",
+                "developer/api/cpp",
+                "developer/api/usd-resolver",
+                "developer/api/react-components",
             ],
         },
+        "developer/resources",
         {
             type: "category",
             label: "AYON server",
             items: [
-                "server_introduction",
-                "server_api_architecture",
-                "server_theme",
-                "server_testing",
+                "developer/server/introduction",
+                "developer/server/api-architecture",
+                "developer/server/theme",
+                "developer/server/testing",
             ],
         },
-        "dev_dev_mode",
-        "dev_testing",
-        "dev_contribute",
+        "developer/developer-mode",
+        "developer/testing",
+        "developer/contribute",
         {
             type: "category",
             label: "Addon Development",
             link: {
-                type: 'generated-index',
-                title: 'AYON Addon Development',
-                description:
-                  "Welcome to AYON Addon Development Documentation!",
-                keywords: ['addon', 'dev'],
-              },
+                type: "generated-index",
+                title: "AYON Addon Development",
+                description: "Welcome to AYON Addon Development Documentation!",
+                slug: "/developer/addon-development",
+                keywords: ["addon", "dev"],
+            },
             items: [
-                "dev_addon_intro",
-                "dev_addon_creation",
-                "dev_host_implementation",
-                "dev_publishing"
+                "developer/addon-development/intro",
+                "developer/addon-development/creation",
+                "developer/addon-development/host-implementation",
+                "developer/addon-development/publishing",
             ],
         },
-        "dev_colorspace",
-        "dev_event_system",
+        "developer/colorspace",
+        "developer/event-system",
         {
             type: "category",
             label: "Integrations",
             items: [
-                "dev_addon_workflow",
-                "dev_addon_workflow_event",
-                "dev_deadline",
-
+                "developer/integrations/workflow",
+                "developer/integrations/workflow-events",
+                "developer/integrations/deadline",
             ].sort(sorted),
         },
     ],
