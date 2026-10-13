@@ -266,3 +266,23 @@ $hover: #f0f4fe !default;
     --line-height-medium: 1.2;
     --line-height-large: 1.4;
 }
+
+// Eight links need ~1100px. Keep the product links first, drop the rest as the
+// bar gets narrower so it never wraps under the main navbar.
+.bHeader {
+    nav.links {
+        white-space: nowrap;
+    }
+
+    @media screen and (max-width: 1100px) {
+        .navPills > li:nth-child(n + 5) {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 640px) {
+        .navPills > li:nth-child(n + 2) {
+            display: none;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
-import { Github, Twitter } from "../Icons";
+import { Github, XIcon } from "../Icons";
 
 const YnputNavbar = () => {
     return (
@@ -20,8 +20,8 @@ const YnputNavbar = () => {
                     <div className={clsx(styles.panel, styles.clearfix)}>
                         <ul className={clsx(styles.icons, styles.clearfix)}>
                             <li>
-                                <a href="https://twitter.com/ynput_io">
-                                    <Twitter className={styles.svgIcon} />
+                                <a href="https://x.com/ynput_io" aria-label="X">
+                                    <XIcon className={styles.svgIcon} />
                                 </a>
                             </li>
                             <li>
@@ -34,10 +34,23 @@ const YnputNavbar = () => {
                     <nav className={styles.links}>
                         <ul className={clsx(styles.nav, styles.navPills)}>
                             <li>
-                                <a href="https://ynput.io/ayon/">AYON Home</a>
+                                <a href="https://ayon.app/">Visit website</a>
                             </li>
                             <li>
-                                <a href="https://ynput.io/services">Services</a>
+                                <a href="https://ynput.cloud/">Ynput Cloud</a>
+                            </li>
+                            <li>
+                                <a href="https://playground.ayon.app/">
+                                    Try AYON
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://feedback.ayon.app/">
+                                    Feedback
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://ayon.app/services">Services</a>
                             </li>
                             <li>
                                 <a href="https://ynput.io/community/">
@@ -45,10 +58,10 @@ const YnputNavbar = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="https://ynput.io/company/">Company</a>
+                                <a href="https://ayon.app/about-us">Company</a>
                             </li>
                             <li>
-                                <a href="https://ynput.io/contact">Contact</a>
+                                <a href="https://ayon.app/contact">Contact</a>
                             </li>
                         </ul>
                     </nav>

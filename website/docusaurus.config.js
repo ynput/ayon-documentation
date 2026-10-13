@@ -11,9 +11,9 @@
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-    title: "AYON Docs",
+    title: "AYONpedia",
     tagline:
-        "Documentation for the most robust open-source pipeline for studios and remote teams",
+        "A reference for AYON, the production management and pipeline platform for creative studios",
     url: "https://ynput.github.io", // Your website URL
     baseUrl: "/",
     onBrokenLinks: "warn",
