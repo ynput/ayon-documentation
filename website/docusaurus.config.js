@@ -457,17 +457,25 @@ const config = {
                 disableSwitch: true,
                 respectPrefersColorScheme: false,
             },
-            algolia: {
-                // The application ID provided by Algolia
-                appId: "RLOQGA5MLU",
-
-                // Public API key: it is safe to commit it
-                apiKey: "98e725168db71b204e80f843f3e277e0",
-
-                indexName: "ayon-ynput",
-            },
         }),
 
+    themes: [
+        [
+            // Local search: the index is built by `docusaurus build`, so it
+            // always matches the deployed pages (no external crawler).
+            require.resolve("@easyops-cn/docusaurus-search-local"),
+            /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+            ({
+                hashed: true,
+                indexDocs: true,
+                indexBlog: false,
+                indexPages: false,
+                docsRouteBasePath: "/docs",
+                highlightSearchTermsOnTargetPage: true,
+                explicitSearchResultPath: true,
+            }),
+        ],
+    ],
     plugins: [
         [
             "ideal-image",

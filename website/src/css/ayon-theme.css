@@ -135,16 +135,13 @@
     /* code blocks */
     --docusaurus-highlighted-code-line-bg: rgba(143, 206, 255, 0.12);
 
-    /* search (Algolia DocSearch) */
-    --docsearch-primary-color: var(--md-sys-color-primary);
-    --docsearch-text-color: var(--md-sys-color-on-surface);
-    --docsearch-modal-background: var(--md-sys-color-surface-container-high);
-    --docsearch-searchbox-background: var(--md-sys-color-surface-container-lowest);
-    --docsearch-searchbox-focus-background: var(--md-sys-color-surface-container-lowest);
-    --docsearch-hit-background: var(--md-sys-color-surface-container-highest);
-    --docsearch-hit-color: var(--md-sys-color-on-surface);
-    --docsearch-muted-color: var(--md-sys-color-on-surface-variant);
-    --docsearch-footer-background: var(--md-sys-color-surface-container);
+    /* search (@easyops-cn/docusaurus-search-local) */
+    --search-local-modal-background: var(--md-sys-color-surface-container-high);
+    --search-local-hit-background: var(--md-sys-color-surface-container-high);
+    --search-local-hit-color: var(--md-sys-color-on-surface);
+    --search-local-muted-color: var(--md-sys-color-on-surface-variant);
+    --search-local-highlight-color: var(--md-sys-color-primary);
+    --search-local-hit-active-color: var(--md-sys-color-on-primary-container);
 }
 
 /* ---------- Component touches ---------- */
@@ -220,4 +217,10 @@ table {
 html {
     scrollbar-width: thin;
     scrollbar-color: var(--md-sys-color-surface-container-highest) transparent;
+}
+
+/* Search: the plugin paints the selected hit with the highlight color. Use the
+   app's muted blue-tint selection instead. */
+:root [class*="searchBar"] [class*="dropdownMenu"] [class*="suggestion"][class*="cursor"] {
+    background-color: var(--ayon-selected);
 }
