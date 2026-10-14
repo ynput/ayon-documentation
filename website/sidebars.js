@@ -9,7 +9,7 @@ function sorted(a, b) {
 // URLs stay clean: /docs/<group>/<topic>/...
 module.exports = {
     Ayon: [
-        "ayon/what-is-ayon/index",
+        "ayon/introduction",
         "ayon/how-ayon-works/index",
         "ayon/glossary/index",
         "ayon/ways-to-set-up/index",

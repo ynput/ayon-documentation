@@ -11,8 +11,8 @@ const links = [
     {
         title: "AYON",
         bio: "What AYON is, how it works and how it is set up",
-        to: "docs/ayon/what-is-ayon",
-        button: "What is AYON",
+        to: "docs/ayon/introduction",
+        button: "Introduction",
     },
     {
         title: "Backend",

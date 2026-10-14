@@ -161,7 +161,9 @@ const config = {
                     themeVariables: {
                         darkMode: true,
                         background: "#1c2026",
-                        fontFamily: '"Inter Variable", Inter, sans-serif',
+                        // System stack: Mermaid measures text before webfonts load,
+                        // so a webfont would give boxes that clip their labels.
+                        fontFamily: '-apple-system, "Segoe UI", Roboto, Arial, sans-serif',
                         primaryColor: "#353b46",
                         primaryTextColor: "#f4f5f5",
                         primaryBorderColor: "#8fceff",
