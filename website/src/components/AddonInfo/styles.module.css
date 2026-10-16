@@ -1,0 +1,108 @@
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin: 0 0 1.5rem;
+    padding: 0.75rem 1rem;
+    background: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--ayon-radius-large);
+}
+
+.info > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+}
+
+.info dt {
+    font-size: 0.75rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.info dd {
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    align-items: center;
+    font-weight: 600;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 0.5rem;
+    border-radius: var(--ayon-radius);
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.5rem;
+    color: #16191d;
+}
+
+/* The AYON Market colors: Pro mint, Studio yellow. */
+.pro {
+    background: var(--ayon-brand-mint);
+}
+
+.studio {
+    background: var(--ayon-brand-yellow);
+}
+
+.free {
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface);
+}
+
+.flag {
+    background: transparent;
+    border: 1px solid var(--md-sys-color-outline);
+    color: var(--md-sys-color-on-surface);
+}
+
+.note {
+    font-weight: 400;
+    font-size: 0.85rem;
+    max-width: 32rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Archived addons: development has stopped. Greyed out, like in the sidebar. */
+.archived {
+    background: var(--md-sys-color-surface-container-highest);
+    color: var(--md-sys-color-on-surface-variant);
+    border: 1px dashed var(--md-sys-color-outline);
+}
+
+.info[data-archived="true"] {
+    border-style: dashed;
+    background: var(--md-sys-color-surface-container-low);
+}
+
+/* Addon type: pipeline addons (client part on workstations) vs server-only addons. */
+.pipeline {
+    background: transparent;
+    color: var(--md-sys-color-on-surface);
+    border: 1px solid var(--ayon-brand-mint);
+}
+
+.server {
+    background: transparent;
+    color: var(--md-sys-color-on-surface);
+    border: 1px solid var(--ayon-brand-blue);
+}
+
+.hint {
+    font-size: 0.85em;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Note and status take a full row of their own below the other cells. */
+.info > .grow {
+    flex: 1 1 100%;
+    min-width: 0;
+}
+
+.info .hint {
+    font-weight: 400;
+    line-height: 1.35;
+}

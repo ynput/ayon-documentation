@@ -102,26 +102,14 @@ const config = {
                     },
                     {
                         type: "docSidebar",
-                        sidebarId: "Backend",
-                        label: "Backend",
+                        sidebarId: "ProductionTracking",
+                        label: "Production tracking",
                         position: "left",
                     },
                     {
                         type: "docSidebar",
                         sidebarId: "Pipeline",
                         label: "Pipeline",
-                        position: "left",
-                    },
-                    {
-                        type: "docSidebar",
-                        sidebarId: "Server",
-                        label: "Server",
-                        position: "left",
-                    },
-                    {
-                        type: "docSidebar",
-                        sidebarId: "Hosting",
-                        label: "Hosting",
                         position: "left",
                     },
                     {

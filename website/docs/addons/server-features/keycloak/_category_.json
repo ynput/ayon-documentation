@@ -1,0 +1,5 @@
+{
+    "label": "Keycloak",
+    "collapsed": true,
+    "link": { "type": "doc", "id": "addons/server-features/keycloak/index" }
+}

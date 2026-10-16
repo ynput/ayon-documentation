@@ -1,0 +1,10 @@
+{
+    "label": "Automation",
+    "position": 10,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "Automation",
+        "description": "Addons for automating AYON with node-based workflows."
+    }
+}

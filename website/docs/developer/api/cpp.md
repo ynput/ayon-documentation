@@ -136,3 +136,9 @@ target_link_libraries(${PROJECT_NAME} AyonCppApi)
 
 For More info and a full list of available commands
 Please refer to our [AYON CPP API](https://docs.ayon.dev/ayon-cpp-api/).
+
+## Live reference
+
+The reference documentation of this project, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-cpp-api/).
+
+<Embed src="https://docs.ayon.dev/ayon-cpp-api/" title="AYON C++ API reference" height="800px" />

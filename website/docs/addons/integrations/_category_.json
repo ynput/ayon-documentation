@@ -1,0 +1,10 @@
+{
+    "label": "Other integrations",
+    "position": 2,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "Other integrations",
+        "description": "Addons that connect AYON to other third-party tools (time tracking, chat, issue tracking, HR) and to AI tooling, plus the timers manager."
+    }
+}

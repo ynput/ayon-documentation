@@ -1,0 +1,10 @@
+{
+    "label": "Production trackers",
+    "position": 1,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "Production trackers",
+        "description": "AYON addons that connect AYON to third-party production trackers."
+    }
+}

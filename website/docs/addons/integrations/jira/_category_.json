@@ -1,0 +1,9 @@
+{
+    "label": "Jira (archived)",
+    "collapsed": true,
+    "link": {
+        "type": "doc",
+        "id": "addons/integrations/jira/index"
+    },
+    "className": "addon-archived"
+}

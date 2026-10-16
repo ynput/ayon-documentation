@@ -1,0 +1,10 @@
+{
+    "label": "Production tracking",
+    "position": 1,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "Production tracking",
+        "description": "AYON's own production tracking features: planning, reports, node graphs, review sessions and the power features. Most of them are Pro or Studio addons. They run on the AYON server; Review Desktop adds a part for workstations."
+    }
+}

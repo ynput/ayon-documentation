@@ -296,3 +296,66 @@ html {
         --ifm-navbar-item-padding-horizontal: 0.25rem;
     }
 }
+
+/* Archived addons (front matter `sidebar_class_name: addon-archived`, or className in
+   _category_.json): greyed out in the sidebar and on the page. */
+.menu__list-item.addon-archived > .menu__link,
+.menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+article:has(dl[data-archived="true"]) h1 {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Sidebar hierarchy: top-level entries are the strongest, every nested level is lighter
+   (regular weight, smaller, muted) and sits behind a thin guide line, so an expanded
+   section can be followed with the eye. */
+.theme-doc-sidebar-menu > .menu__list-item > .menu__link,
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible > .menu__link {
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list {
+    margin-left: 0.75rem;
+    padding-left: 0.25rem;
+    border-left: 1px solid var(--md-sys-color-outline-variant);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__link {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: var(--md-sys-color-on-surface-variant);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__link--active:not(.menu__link--sublist) {
+    font-weight: 500;
+    color: var(--ifm-menu-color-active);
+}
+
+/* Second level (addons): regular weight. */
+.theme-doc-sidebar-menu .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link,
+.theme-doc-sidebar-menu .theme-doc-sidebar-item-link-level-2 > .menu__link {
+    font-weight: 400;
+}
+
+/* The addon groups: server addons blue, pipeline addons mint, third-party grey. */
+.menu__list-item.addons-server > .menu__list-item-collapsible > .menu__link,
+.menu__list-item.addons-pipeline > .menu__list-item-collapsible > .menu__link,
+.menu__list-item.addons-thirdparty > .menu__list-item-collapsible > .menu__link {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8em;
+}
+.menu__list-item.addons-server,
+.menu__list-item.addons-pipeline,
+.menu__list-item.addons-thirdparty {
+    padding-left: 0.25rem;
+    margin-bottom: 0.75rem;
+    border-left: 3px solid var(--md-sys-color-outline);
+}
+.menu__list-item.addons-server { border-left-color: var(--ayon-brand-blue); }
+.menu__list-item.addons-pipeline { border-left-color: var(--ayon-brand-mint); }
+
+/* Archived and legacy entries stay grey at every level (beats the nested-level color above). */
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__link,
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
+    color: var(--md-sys-color-outline);
+}

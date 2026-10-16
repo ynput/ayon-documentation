@@ -1,0 +1,10 @@
+{
+    "label": "Farm managers",
+    "position": 9,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "Farm managers",
+        "description": "AYON addons that submit publish and render jobs to render farm managers."
+    }
+}

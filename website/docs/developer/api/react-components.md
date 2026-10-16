@@ -16,7 +16,7 @@ You can find examples for creating a Frontend React App for addons in [Addon Fro
 Once set up, you can try different AYON components.
 
 :::tip
-Our [AYON React Components Docs](https://components.ayon.dev/?path=/docs/button--docs) provide examples you can copy and paste directly into your React app for easy experimenting.
+Our [AYON React Components Docs](https://components.ayon.dev/?path=/docs/buttons-button--docs) provide examples you can copy and paste directly into your React app for easy experimenting.
 
 Remember to import the component into your code, as it's not copied by default. For the following [EntityCard](https://components.ayon.dev/?path=/docs/entitycard--docs) example in the screen grab, use:
 
@@ -28,8 +28,14 @@ import { EntityCard } from '@ynput/ayon-react-components'
 :::
 
 ## Learn More
-You can find the full list of components and their documentation at [AYON React Components Docs](https://components.ayon.dev/?path=/docs/button--docs)
+You can find the full list of components and their documentation at [AYON React Components Docs](https://components.ayon.dev/?path=/docs/buttons-button--docs)
 
 :::tip
 To run Documentation locally follow [Get Started with Storybook](https://github.com/ynput/ayon-react-components?tab=readme-ov-file#get-started-with-storybook) on GitHub.
 :::
+
+## Live reference
+
+The reference documentation of this project, embedded from [components.ayon.dev](https://components.ayon.dev/?path=/docs/buttons-button--docs).
+
+<Embed src="https://components.ayon.dev/?path=/docs/buttons-button--docs" title="AYON component library" height="800px" />

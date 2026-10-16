@@ -110,3 +110,9 @@ Use the **Standard Methods** for quick, clean code when dealing with standard JS
 
 For More info and a full list of available commands
 Please refer to our [AYON Python API Docs](https://docs.ayon.dev/ayon-python-api/).
+
+## Live reference
+
+The reference documentation of this project, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-python-api/).
+
+<Embed src="https://docs.ayon.dev/ayon-python-api/" title="AYON Python API reference" height="800px" />

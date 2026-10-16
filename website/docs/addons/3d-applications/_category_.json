@@ -1,0 +1,10 @@
+{
+    "label": "3D applications",
+    "position": 3,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "3D applications",
+        "description": "AYON addons that integrate 3D applications such as Blender, Houdini and Maya: modeling, animation, rigging, lookdev, FX and game engines."
+    }
+}

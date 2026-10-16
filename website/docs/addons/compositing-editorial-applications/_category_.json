@@ -1,0 +1,10 @@
+{
+    "label": "Compositing and editorial applications",
+    "position": 5,
+    "collapsed": true,
+    "link": {
+        "type": "generated-index",
+        "title": "Compositing and editorial applications",
+        "description": "AYON addons that integrate compositing, editorial and finishing applications such as Nuke, After Effects, Premiere and DaVinci Resolve."
+    }
+}

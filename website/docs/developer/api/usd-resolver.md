@@ -25,3 +25,9 @@ For the info about get started please refer to [Getting Started](https://docs.ay
 ## Learn More
 
 For More info, please refer to our documentation for [AYON USD Resolver](https://docs.ayon.dev/ayon-usd-resolver/)
+
+## Live reference
+
+The reference documentation of this project, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-usd-resolver/).
+
+<Embed src="https://docs.ayon.dev/ayon-usd-resolver/" title="AYON USD Resolver reference" height="800px" />
