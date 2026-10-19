@@ -5,6 +5,7 @@ sidebar_label: Colorspace
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import houdiniTrace from "@site/src/data/flows/houdini-colorspace-data.json";
 
 ## Introduction
 Defines the distribution of colors and OCIO config during publishing. Once colorspace data are captured and integrated into representation loaders could use them for loading image and video data with correct colorspace.
@@ -117,3 +118,9 @@ class YourLoader(api.Loader):
 :::warning Loading
 A custom OCIO config can be set per asset/shot and thus it can happen the current session you are loading into uses a different config than the original context's **colorspaceData** was published with. It's up the loader's implementation to take that into account and decide what to do if the colorspace differs and or might not exist.
 :::
+
+## How colorspaceData travels in Houdini
+
+The trace follows the color keys of a Houdini publish from the scene, through the host plugins and the core plugins, to the integrated representation. Pick a scenario and select a step to see what it writes and which keys it touches. Review instances (OpenGL and Flipbook) are included, because they carry the colors of the node and not of the scene. The same steps are listed as plain tables under the chart. For the general workflow, see [color management in publishing](../pipeline/color-management-in-publishing.md).
+
+<FlowTrace data={houdiniTrace} />

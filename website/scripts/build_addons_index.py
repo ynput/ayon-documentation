@@ -110,6 +110,10 @@ def main() -> None:
          "management tools outside AYON.", ["third-party-trackers", "integrations"]),
     ]
     kinds = {"server": "Server", "pipeline-server": "Pipeline + server"}
+    out += [
+        '<TableFilter columns={["Type", "License"]} placeholder="Search the addons">',
+        "",
+    ]
     for part_title, part_desc, folders in parts:
         out += [f"## {part_title}", "", part_desc, ""]
         for folder in folders:
@@ -134,6 +138,7 @@ def main() -> None:
                 what = short(fm.get("description", ""))
                 out.append(f"| [{addon_label}]({link}) | {kind} | {version} | {lic} | {what} |")
             out.append("")
+    out += ["</TableFilter>", ""]
     (ADDONS / "index.md").write_text("\n".join(out), encoding="utf-8", newline="\n")
     print(f"{total} addons in {len(cats)} categories -> docs/addons/index.md")
 

@@ -7,6 +7,8 @@ sources:
   - https://help.ayon.app/en/articles/3005275-core-addon-settings
 ---
 
+import naming from "@site/src/data/templates/naming.json";
+
 # Naming conventions
 
 AYON names things in two steps. The first step names the **product** and its **versions**: the creator in a host application fills a product name template with the variant, task, folder and product type. The second step names the **files and folders** on disk: anatomy templates turn the same context data into work directories, work file names, publish directories, publish file names, hero paths, delivery paths and staging directories. No name is typed by hand in the pipeline except the variant (and an optional comment); everything else is calculated from settings and context.
@@ -448,6 +450,20 @@ Context for all rows: project `my_project`, code `mp`, root `work` = `C:/project
 | Unreal work file | Host `unreal`, ext `uproject` | Work `unreal` | `C:/projects/my_project/unreal/lighting/mp_sh010.uproject` |
 | Static mesh to Unreal | Product `S_chairMain`, folder `/assets/chair`, version `2`, ext `fbx` | Publish `maya2unreal` | `C:/projects/my_project/assets/chair/publish/staticMesh/S_chairMain_v002.fbx` |
 | Source in place | Original dir `my_project/in`, original basename `plate01`, ext `exr` | Publish `source` | `C:/projects/my_project/in/plate01.exr` |
+
+## Try it
+
+The name resolver holds the default product name templates of the Core addon and the default work, publish and hero templates of the project anatomy. Its inputs are the project values (name, code, root), the context (folder path, task, host), the product values (base type, variant, dynamic data such as `aov`) and the file values (version, extension, comment, output name, frame, UDIM tile, original file name, paddings). The table lists each template string and its result for the current inputs; the defaults are the values of the worked examples above.
+
+| Part of the resolver | Behavior |
+|---|---|
+| Colors | Each part of a result has the color of the input it came from. The product name used in path templates takes its own color. |
+| Product name group | The profile that the current base type and host select is marked. Its result is the `{product[name]}` key of the path templates. |
+| Optional parts | A part in angle brackets is dropped when a key inside it has no value, for example `<_{Aov}>` while the `aov` input is empty. |
+| Missing keys | A key without a value outside an optional part is shown as `{key}` and listed in the Notes column. |
+| Full paths | Directory template, a slash and file name template of the same entry. |
+
+<TemplateExplorer data={naming} />
 
 ## Related
 

@@ -20,6 +20,8 @@ Every addon page states the addon version it was written and checked for, so a p
 
 How addons are installed, activated and configured is described in [how AYON works](../ayon/how-ayon-works/index.md).
 
+<TableFilter columns={["Type", "License"]} placeholder="Search the addons">
+
 ## Production tracking
 
 AYON's own production tracking features: planning, reports, node graphs, review sessions, power features and user access (single sign-on, Ynput Cloud login and support). Most of them are Pro or Studio addons. They run on the AYON server, so AYON is more than a pipeline tool.
@@ -179,3 +181,5 @@ Addons that connect AYON to other third-party tools (time tracking, chat, issue 
 | [Slack](integrations/slack/index.md) | Pipeline | 1.3.1 | Free | The AYON Slack addon: it posts notifications to Slack channels when products are published, with profile-based filtering, message templates, user... |
 | [Soko Sync](integrations/soko/index.md) | Server | 0.1.4 | Free | The AYON Soko Sync addon, which synchronizes projects and their data between AYON and Soko. |
 | [TimersManager](integrations/timers-manager/index.md) | Pipeline | 0.2.0 | Free | The AYON Timers Manager addon: a common interface that starts and stops timers in connected time tracking addons, stops them after user inactivity,... |
+
+</TableFilter>

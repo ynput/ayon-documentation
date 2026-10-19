@@ -26,7 +26,11 @@ Plans use **fixed seats**: a studio buys a number of seats and assigns, reassign
 
 An addon is either included in a plan, available as a **paid addon** on top of AYON Pro, or not part of the plan. Paid addons apply to all active users of the server. AYON Studio includes every addon.
 
-In the tables, a check mark means the feature is included. Features marked *planned* are announced and not available yet.
+In the tables, "Included" means the plan has the feature and "Paid addon" means it needs an addon bought on top of the plan. Features marked *planned* are announced and not available yet.
+
+The search box and the plan filters below narrow the feature tables. Each filter reads as a sentence, for example "AYON Pro needs a paid addon" lists the features that cost extra on Pro, and a line under the filters repeats what is shown.
+
+<TableFilter columns={["Community", "Pro", "Studio"]} placeholder="Search the features" labels={{ Community: "Community", Pro: "AYON Pro", Studio: "AYON Studio" }} optionLabels={{ Included: "includes it", "Paid addon": "needs a paid addon", No: "does not have it" }}>
 
 ## Base features
 
@@ -92,6 +96,8 @@ The web app pages and features are described in the [Production tracking](../pro
 | Web Publisher | No | Paid addon | Included |
 | Archival tools | No | Paid addon | Included |
 | AYON Workflows | No | No | Included |
+
+</TableFilter>
 
 ## Services and licensing
 

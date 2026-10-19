@@ -2,6 +2,9 @@ import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import AddonInfo from "@site/src/components/AddonInfo";
 import Embed from "@site/src/components/Embed";
+import FlowTrace from "@site/src/components/FlowTrace";
+import TableFilter from "@site/src/components/TableFilter";
+import TemplateExplorer from "@site/src/components/TemplateExplorer";
 
 // External links in page content open in a new tab; internal links are unchanged.
 function Anchor(props) {
@@ -20,4 +23,7 @@ export default {
     a: Anchor,
     AddonInfo,
     Embed,
+    FlowTrace,
+    TableFilter,
+    TemplateExplorer,
 };

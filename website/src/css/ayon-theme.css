@@ -349,10 +349,11 @@ article:has(dl[data-archived="true"]) h1 {
 .menu__list-item.addons-thirdparty {
     padding-left: 0.25rem;
     margin-bottom: 0.75rem;
-    border-left: 3px solid var(--md-sys-color-outline);
 }
-.menu__list-item.addons-server { border-left-color: var(--ayon-brand-blue); }
-.menu__list-item.addons-pipeline { border-left-color: var(--ayon-brand-mint); }
+/* One shorthand per group: a longhand color rule can be merged away by the CSS minifier. */
+.menu__list-item.addons-server { border-left: 3px solid var(--ayon-brand-blue); }
+.menu__list-item.addons-pipeline { border-left: 3px solid var(--ayon-brand-mint); }
+.menu__list-item.addons-thirdparty { border-left: 3px solid var(--md-sys-color-outline); }
 
 /* Archived and legacy entries stay grey at every level (beats the nested-level color above). */
 .theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__link,

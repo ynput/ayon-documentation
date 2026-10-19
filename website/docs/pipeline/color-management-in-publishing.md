@@ -7,6 +7,8 @@ sources:
   - https://help.ayon.app/en/articles/1279384-colorspace-settings
 ---
 
+import trace from "@site/src/data/flows/color-data-flow.json";
+
 # Color management in publishing
 
 Publishing carries color information with the images it produces. The colorspace of every image representation is recorded in a `colorspaceData` entry. Optional extraction plugins convert images with OpenImageIO (`oiiotool`) using the OCIO config of the context, and the review plugins turn the result into playable media (image or movie) with FFmpeg. This page describes how the colorspace is detected, which plugins read and write it, in which order the plugins run, and where the limits are. The OCIO config used here is the one resolved at launch, see [Color management on launch](color-management-on-launch.md). The settings of the plugins are listed in [Core addon settings](../addons/essentials/core/settings.md).
@@ -256,6 +258,12 @@ When a host expresses display and view as one colorspace, the colorspace of a di
 - OIIO conversions use only the channels chosen for review; additional passes are not carried into the converted file.
 - Farm publishing: the transcode is skipped on the submitting machine and runs in the farm job; the farm job depends on the `colorspaceConfig`, display and view collected at submission.
 - Nuke baking (see above) and other host-specific plugins have their own settings; those are described in the host addon documentation.
+
+## Follow the color data
+
+Pick a case and select a step to see what happens to the color data there. The plain-text version under the chart lists every step.
+
+<FlowTrace data={trace} />
 
 ## Related
 
