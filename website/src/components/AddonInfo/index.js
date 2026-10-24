@@ -1,6 +1,7 @@
 import React from "react";
 import { useDoc } from "@docusaurus/theme-common/internal";
 import styles from "./styles.module.css";
+import apiDocs from "@site/src/data/addon-api-docs.json";
 
 /**
  * Version and license badges of an addon page, like the AYON Market shows them.
@@ -37,6 +38,7 @@ function formatDate(value) {
 }
 
 const EXTRA = {
+    alpha: "Alpha",
     beta: "Beta",
     "power-feature": "Power feature",
     "cloud-only": "Cloud only",
@@ -75,6 +77,13 @@ export default function AddonInfo() {
     if (!version) {
         return null;
     }
+    // A reference elsewhere (`other`) is shown even for a private repository, because it
+    // is a public site; the standard location only for public repositories.
+    const apiDocsUrl =
+        (apiDocs.other || {})[repo] ||
+        (repo && !isPrivate && apiDocs.repos.includes(repo)
+            ? `https://docs.ayon.dev/${repo}/latest/`
+            : null);
     const extras = flags.filter((f) => EXTRA[f]);
     return (
         <dl className={styles.info} data-archived={archived ? "true" : undefined}>
@@ -139,6 +148,16 @@ export default function AddonInfo() {
                 <div>
                     <dt>Checked</dt>
                     <dd>{formatDate(verified)}</dd>
+                </div>
+            ) : null}
+            {apiDocsUrl ? (
+                <div className={styles.row}>
+                    <dt>API docs</dt>
+                    <dd>
+                        <a href={apiDocsUrl} target="_blank" rel="noopener noreferrer">
+                            {apiDocsUrl.replace(/^https:\/\//, "").replace(/\/$/, "")}
+                        </a>
+                    </dd>
                 </div>
             ) : null}
             {scope ? (

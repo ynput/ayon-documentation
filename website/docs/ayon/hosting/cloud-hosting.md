@@ -53,7 +53,7 @@ A studio can also keep a self-hosted server and connect it to a Pro or Studio su
 
 ## Accounts
 
-A Ynput Cloud account is separate from the account on the AYON server. The Ynput Cloud account manages billing, seats and subscriptions, and is used by producers or technical directors. The AYON server account is the one artists and managers use every day to track tasks, launch software and publish. The Ynput Cloud login can also be enabled as a login method for administrators and managers of the AYON server. See the [Ynput Cloud addon](../../addons/server-features/ynput-cloud/index.md).
+A Ynput Cloud account is separate from the account on the AYON server. The Ynput Cloud account manages billing, seats and subscriptions, and is used by producers or technical directors. The AYON server account is the one artists and managers use every day to track tasks, launch software and publish. The Ynput Cloud login can also be enabled as a login method for the AYON server. See the [Ynput Cloud addon](../../addons/server-features/ynput-cloud/index.md).
 
 ## Data
 

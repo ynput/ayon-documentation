@@ -1,6 +1,7 @@
 ---
-title: Testing in AYON
+title: Testing the AYON pipeline
 sidebar_label: Testing
+description: "Automated tests of the AYON pipeline code: integration tests that launch an application, publish and compare the results with expected data, unit tests, and the content of the tests folder. The server API has its own test suite."
 ---
 
 ## Introduction

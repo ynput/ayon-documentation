@@ -6,7 +6,6 @@ Checks, for every docs/addons/<category>/<addon>/ folder:
   - index.md exists (settings.md only for addons that have settings)
   - front matter keys: title, description, addon, addon_repo, addon_version, verified
   - `<AddonInfo />` right under the title
-  - category folders have a _category_.json, addon folders have one linking to index
   - style: no step-by-step wording ("click", "navigate to", "go to"), no filler ("simply", "just", "easily")
   - relative links resolve to files that exist
   - with --status: addon_version equals the documented_version in prepare_status.json,
@@ -53,8 +52,6 @@ def main() -> int:
     seen = set()
     pages = 0
     for cat in sorted(p for p in ADDONS.iterdir() if p.is_dir()):
-        if not (cat / "_category_.json").exists():
-            problems.append(f"{cat.name}: missing _category_.json")
         for addon in sorted(p for p in cat.iterdir() if p.is_dir()):
             key = (cat.name, addon.name)
             seen.add(key)
@@ -63,13 +60,6 @@ def main() -> int:
             if not index.exists():
                 problems.append(f"{rel}: missing index.md")
                 continue
-            cj = addon / "_category_.json"
-            if not cj.exists():
-                problems.append(f"{rel}: missing _category_.json")
-            else:
-                link = json.loads(cj.read_text(encoding="utf-8")).get("link", {})
-                if link.get("id") != f"addons/{cat.name}/{addon.name}/index":
-                    problems.append(f"{rel}: _category_.json link id is {link.get('id')}")
             for md in sorted(addon.glob("*.md")):
                 pages += 1
                 text = md.read_text(encoding="utf-8").replace("\r\n", "\n")

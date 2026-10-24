@@ -1,6 +1,7 @@
 ---
-title: Event system
+title: AYON server event system
 sidebar_label: Event system
+description: "The event system of the AYON server: persistent and fire-and-forget events, the fields of an event (topic, payload, status, dependencies, retries, progress and others), dispatching, updating, deleting and querying events, and the enroll endpoint that services use to take jobs."
 ---
 
 

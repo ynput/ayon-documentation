@@ -1,6 +1,7 @@
 ---
-title: Addon Dev Docs
+title: Creating an addon
 sidebar_label: Addon Docs
+description: "How an AYON addon is built: the purposes an addon can serve, the typical repository structure, package.py, the server code (settings, site settings, endpoints, web actions), the client code (CLI, tray, plugins, host implementation), private and public static content, addon frontends (React app or raw HTML) and addon services."
 ---
 
 :::info

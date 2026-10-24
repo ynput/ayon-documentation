@@ -106,3 +106,9 @@
     font-weight: 400;
     line-height: 1.35;
 }
+
+/* A full-width row of its own (API docs). */
+.info > .row {
+    flex: 1 1 100%;
+    min-width: 0;
+}

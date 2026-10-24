@@ -69,7 +69,7 @@ Errors from the server appear in a message at the bottom of the dialog.
 
 Settings are stored per addon version (see [Bundles and addons](bundles-and-addons.md)):
 
-- At the studio level, a project bundle that uses the same addon version as the studio bundle shares its studio settings. A change to that version's studio settings shows in the project bundle.
+- Freezing a project writes the complete resolved settings (studio values plus project overrides) of each addon with an explicit version as project overrides for that addon version. Later changes to the studio settings of those fields no longer reach the frozen project. See [settings scopes](../backend/settings/index.md).
 - At the project level, a project keeps its own overrides whether it uses a studio bundle or a project bundle. Unfreezing does not delete them.
 - A project bundle locks the code. Project settings are already fixed per project wherever project overrides exist.
 

@@ -1,6 +1,7 @@
 ---
 title: Contribute to AYON development
 sidebar_label: Contribute
+description: "How to contribute to AYON: checking with the community first, proposing a new feature, reporting a bug, submitting a patch, and the contribution guidelines with the branching strategy."
 ---
 
 Thanks for taking the time and effort to contribute back to AYON!

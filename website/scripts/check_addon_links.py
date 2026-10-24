@@ -133,6 +133,13 @@ def main() -> int:
     print(f"  {len(infos)} repositories checked, "
           f"{sum(1 for i in infos if i.get('archived'))} archived")
 
+    api = json.loads((Path(__file__).resolve().parent.parent / "src" / "data" / "addon-api-docs.json")
+                     .read_text(encoding="utf-8"))
+    for repo in api["repos"]:
+        urls.setdefault(f"https://docs.ayon.dev/{repo}/latest/", []).append("src/data/addon-api-docs.json")
+    for url in api.get("other", {}).values():
+        urls.setdefault(url, []).append("src/data/addon-api-docs.json")
+
     results = []
     if not args.skip_external:
         with ThreadPoolExecutor(max_workers=8) as pool:

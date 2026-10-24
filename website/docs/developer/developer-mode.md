@@ -1,12 +1,13 @@
 ---
 title: Developer mode
 sidebar_label: Developer mode
+description: "Developer mode in AYON: enabling it, dev bundles next to the production and staging bundles, and running pipeline code from a local repository through custom addon paths, without packaging and uploading every change."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# Introduction
+## Introduction
 As the name suggests, the developer mode in AYON facilitates rapid propagation of code changes for developers. It is mainly 
 targeted at working with client side pipeline code live from a local repository, without having to re-package and upload changes to the
 server all the time. 

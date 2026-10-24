@@ -1,6 +1,7 @@
 ---
-title: Server Introduction
+title: AYON server repositories and stack
 sidebar_label: Introduction
+description: "The two code bases of the AYON server, ayon-backend (Python, FastAPI, Strawberry GraphQL, PostgreSQL, Redis) and ayon-frontend (React, TypeScript, Vite, Redux Toolkit with RTK Query), running them together with ayon-docker, the frontend environment variables and recommended VS Code extensions, and the AYON React Component Library."
 ---
 
 ## Getting Started
@@ -9,10 +10,10 @@ AYON Server is made up of two main repos, [ayon-backend](https://github.com/ynpu
 
 The fastest and easiest way to start testing both together is through docker using [ayon-docker](https://github.com/ynput/ayon-docker).
 
-Once the server is running it can be accessed through the frontend UI using `http//localhost:5000`.
+Once the server is running it can be accessed through the frontend UI using `http://localhost:5000`.
 
 :::tip
-Running the docker container is also a great way to start developing on the frontend. Set env variable `SERVER_URL=http//localhost:5000`.
+Running the docker container is also a great way to start developing on the frontend. Set env variable `SERVER_URL=http://localhost:5000`.
 :::
 
 ## AYON Overview
@@ -55,4 +56,4 @@ Create a `env.local` file in the root directory.
 
 The frontend uses a custom component library for colors, fonts and reusable React components. The components are separated so that AYON addons can also utilize them for their UIs. Any component that could be useful for an addon and is not too specific should be created in ARC.
 
-Read more about the style theme of AYON here: [Server Theme](theme.md)
+Read more about the style theme of AYON here: [AYON frontend theme](theme.md)

@@ -1,6 +1,7 @@
 ---
 title: Deadline integration
 sidebar_label: Deadline integration
+description: "Developer notes on the Deadline integration: why it differs from other hosts, how a job is bound to the AYON version that submitted it, and how to test AYON on Deadline."
 toc_max_heading_level: 4
 ---
 

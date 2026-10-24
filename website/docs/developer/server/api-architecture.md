@@ -1,6 +1,7 @@
 ---
-title: Server API Architecture
-sidebar_label: API Architecture
+title: AYON frontend API layer
+sidebar_label: Frontend API layer
+description: "How the AYON web app (ayon-frontend) calls the REST and GraphQL APIs of the server: the single RTK Query API slice, generating types and queries from the OpenAPI and GraphQL schemas, enhancing the generated queries, and TypeScript overrides."
 ---
 
 The backend exposes two APIs and redux is setup to handle both under a single api slice.

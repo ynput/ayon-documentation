@@ -1,6 +1,7 @@
 ---
 title: Colorspace Management and Distribution
 sidebar_label: Colorspace
+description: "How colorspace data is captured during publishing and travels with representations: the colorspaceData keys, how a host or addon that processes pixel data integrates them with the imageio settings, and how the data travels in Houdini."
 ---
 
 import Tabs from '@theme/Tabs';

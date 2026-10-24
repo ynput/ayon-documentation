@@ -220,12 +220,12 @@ const config = {
     },
     themes: [
         "@docusaurus/theme-mermaid",
-        [
+        /** @type {import("@docusaurus/types").PluginConfig} */
+        ([
             // Local search: the index is built by `docusaurus build`, so it
             // always matches the deployed pages (no external crawler).
             require.resolve("@easyops-cn/docusaurus-search-local"),
-            /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
-            ({
+            {
                 hashed: true,
                 indexDocs: true,
                 indexBlog: false,
@@ -233,8 +233,8 @@ const config = {
                 docsRouteBasePath: "/docs",
                 highlightSearchTermsOnTargetPage: true,
                 explicitSearchResultPath: true,
-            }),
-        ],
+            },
+        ]),
     ],
     plugins: [
         [
@@ -243,6 +243,7 @@ const config = {
             {
                 redirects: [
                         { from: "/docs/dev_introduction", to: "/docs/developer" },
+                        { from: "/docs/developer/resources", to: "/docs/developer" },
                         { from: "/docs/dev_requirements", to: "/docs/developer/requirements" },
                         { from: "/docs/dev_dev_mode", to: "/docs/developer/developer-mode" },
                         { from: "/docs/dev_testing", to: "/docs/developer/testing" },

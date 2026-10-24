@@ -1,6 +1,7 @@
 ---
 title: Host implementation
 sidebar_label: Host implementation
+description: "How an application (host) integration is implemented in AYON: the workflows it can support (workfiles, load, create and publish), the recommended folder structure, launch hooks, the public interface and the in-application integration, installing the integration at startup, and using the AYON tools."
 toc_max_heading_level: 4
 ---
 

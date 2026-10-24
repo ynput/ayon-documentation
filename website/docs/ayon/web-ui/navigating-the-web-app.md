@@ -41,8 +41,8 @@ The project menu is shown for users with the user role or above. While it is ope
 | Chat bubble | Opens the support messenger once it has loaded. A dot indicates unread messages. | none |
 | **Help** menu (question mark) | Opens the [Help menu](#help-menu). | `8` |
 | **Inbox** (inbox icon) | Opens `/inbox/important`. A dot indicates unread messages. | `i+i` |
-| **App** menu (grid icon) | Opens the [App menu](#app-menu). A dot indicates a pending server restart. | `0` |
-| **User** menu (avatar) | Opens the [User menu](#user-menu). | `9` |
+| **App** menu (grid icon) | Opens the [App menu](#app-menu). A dot indicates a pending server restart. | `9` |
+| **User** menu (avatar) | Opens the [User menu](#user-menu). | `0` |
 
 ## App menu
 

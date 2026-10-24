@@ -6,7 +6,7 @@ description: "A catalogue of AYON addons in two groups: server addons (productio
 
 # Addons
 
-AYON is modular: integrations with applications, trackers, render farms and review tools, production management features and many pipeline features are addons. This catalogue lists the 68 addons in three groups by scope. The groups show where an addon works, because server addons and pipeline addons are set up differently.
+AYON is modular: integrations with applications, trackers, render farms and review tools, production management features and many pipeline features are addons. This catalogue lists the 72 addons in three groups by scope. The groups show where an addon works, because server addons and pipeline addons are set up differently.
 
 | Type | What it is | Where it runs |
 |---|---|---|
@@ -16,7 +16,7 @@ AYON is modular: integrations with applications, trackers, render farms and revi
 
 **Pipeline addons** are part of a bundle's pipeline side, and their Python dependencies end up in the bundle's dependency package, so they need more care when a bundle is put together, and mixing addon versions needs attention. **Server addons** add no pipeline part and no dependencies to that package. Each addon page states its type in the box under the title.
 
-Every addon page states the addon version it was written and checked for, so a page can be compared with the latest release of the addon. The license column follows the AYON Market: **Free** addons are part of every edition, **Pro, Studio** addons need one of those plans, and **Studio** addons need the Studio plan. Addons marked **archived** are no longer developed and addons marked **unreleased** have no release yet; archived addons are still listed in the AYON Market. See the [plans](../ayon/plans.md).
+Every addon page states the addon version it was written and checked for, so a page can be compared with the latest release of the addon. The license column follows the AYON Market: **Free** addons are part of every edition, **Pro, Studio** addons need one of those plans, and **Studio** addons need the Studio plan. Addons marked **archived** are no longer developed and addons marked **alpha** are experimental, and addons marked **unreleased** have no release yet; archived addons are still listed in the AYON Market. See the [plans](../ayon/plans.md).
 
 How addons are installed, activated and configured is described in [how AYON works](../ayon/how-ayon-works/index.md).
 
@@ -28,11 +28,12 @@ AYON's own production tracking features: planning, reports, node graphs, review 
 
 | Addon | Type | Version | License | What it is |
 |---|---|---|---|---|
-| [Node Graph](production-tracking/node-graph/index.md) | Server | 0.3.0 | Pro, Studio | The AYON Node Graph addon: a node-based view of a project's entities and the links between them, with a hierarchy browser and a links creator. |
-| [Planner](production-tracking/planner/index.md) | Server | 2.3.2 | Pro, Studio | The AYON Planner addon: a studio-level resource and booking timeline with capacity and workload, and a project-level task schedule. |
+| [AYON MCP server (alpha)](production-tracking/mcp/index.md) | Server | 0.1.0 | Free | The AYON MCP server addon (mcp): the tools it exposes to AI assistants through the Model Context Protocol, its guardrails, transports,... |
+| [Node Graph](production-tracking/node-graph/index.md) | Server | 0.3.0 | Pro, Studio | The AYON Node Graph addon: a project page that draws the folder hierarchy and the entity links of a project as a node graph, and creates and deletes... |
+| [Planner](production-tracking/planner/index.md) | Server | 2.3.2 | Pro, Studio | The AYON Planner addon: a studio-level Plan timeline of resources, bookings, capacity and workload, a Resources page, a project-level Schedule of... |
 | [Power Pack](production-tracking/power-pack/index.md) | Server | 1.6.7 | Pro, Studio | The AYON Power Features addon (powerpack): the licensed features it adds, such as multi-view slicer, annotations, views, comment categories,... |
-| [Reports](production-tracking/reports/index.md) | Server | 0.3.13 | Pro, Studio | The AYON Reports addon: project-level dashboards of charts and KPI cards for tasks, folders and versions, with filters, shareable views and PDF or... |
-| [Review](production-tracking/review/index.md) | Server | 1.0.1 | Pro, Studio | The AYON Review addon (review sessions): playlists of versions with frame-accurate playback, annotations, comparison, synchronized sessions and... |
+| [Reports](production-tracking/reports/index.md) | Server | 0.3.13 | Pro, Studio | The AYON Reports addon: a project Reports page with dashboards of charts and cards counting folders, tasks and versions, current-state and... |
+| [Review](production-tracking/review/index.md) | Server | 1.0.3 | Pro, Studio | The AYON Review addon (review sessions): playlists of versions with a frame-accurate web player, annotations, comparison, synchronized sessions with... |
 | [Review Desktop](production-tracking/review-desktop/index.md) | Pipeline | 0.0.5 | Pro, Studio | The AYON Review Desktop addon: opens version lists and review sessions in OpenRV with an AYON activity panel for viewing feedback and submitting... |
 
 ### Access and support
@@ -43,11 +44,11 @@ Server addons for signing in and getting help: single sign-on with an identity p
 |---|---|---|---|---|
 | [Keycloak](server-features/keycloak/index.md) | Server | 1.0.2 | Pro, Studio | The AYON Keycloak addon: sign-in to AYON through a Keycloak realm using OpenID Connect, with Keycloak client roles mapped to AYON access levels and... |
 | [SSO](server-features/sso/index.md) | Server | 1.1.1 | Pro, Studio | The AYON SSO addon: sign-in to AYON with Authentik, Discord, Microsoft Entra, Google or Okta accounts, automatic creation of users and mapping of... |
-| [YnputCloud](server-features/ynput-cloud/index.md) | Server | 1.1.1 | Pro, Studio | The YnputCloud addon: Ynput Cloud support for an AYON server. |
+| [Ynput Cloud](server-features/ynput-cloud/index.md) | Server | 1.1.1 | Pro, Studio | The AYON Ynput Cloud addon: sign-in to an AYON server with a Ynput Cloud account, how users are created and mapped to roles, the remote support... |
 
 ## Pipeline addons
 
-Everything with a pipeline part that runs on workstations: the core, publishing and delivery features, the integrations with 3D, 2D and compositing applications, review players, render farm managers and automation.
+Everything with a pipeline part that runs on workstations: the core, publishing and delivery features, the integrations with 3D, 2D and compositing applications, review players, render farm managers, automation and AI tooling.
 
 ### Essentials
 
@@ -70,6 +71,7 @@ Pipeline addons that add publishing, delivery, storage and format features: site
 | [ArchivalTool](pipeline-features/archival-tool/index.md) | Pipeline + server | 0.1.2 | Pro, Studio | The AYON ArchivalTool addon: analysing folders of a project, reporting which published versions and work files can be removed, and deleting or... |
 | [Batch delivery](pipeline-features/batch-delivery/index.md) | Pipeline + server | 0.4.5 | Pro, Studio | The AYON Batch delivery addon: server actions that submit delivery and transcoding jobs to Deadline, the Deadline submitter service, the publish... |
 | [BatchIngest](pipeline-features/batch-ingest/index.md) | Pipeline | 0.3.0 | Pro, Studio | The AYON BatchIngest addon: the Batch Ingest creator of the Tray Publisher that groups files from dropped folders into products using presets, its... |
+| [Perforce (unreleased)](pipeline-features/perforce/index.md) | Pipeline | 0.0.1+dev.1 | Free | The AYON Perforce addon: Perforce workspace creation and changelist sync for Unreal Engine projects, a changelist viewer, and publish plugins that... |
 | [Premium burnins](pipeline-features/premium-burnins/index.md) | Pipeline | 0.2.4 | Pro, Studio | The Premium burnins addon: a publish plugin that renders configurable top and bottom burnin bars with text, images and spacers onto review videos,... |
 | [SiteSync](pipeline-features/sitesync/index.md) | Pipeline + server | 1.3.2 | Free | The AYON SiteSync addon: what a site is, how published files are kept in step between sites, the storage providers, the sync page, the background... |
 | [Slater](pipeline-features/slater/index.md) | Pipeline | 1.0.6 | Pro, Studio | The AYON Slater addon: the Slate Editor desktop tool, the slate templates stored on the AYON server and the publish plugin that adds generated... |
@@ -91,6 +93,7 @@ AYON addons that integrate 3D applications such as Blender, Houdini and Maya: mo
 | [Marvelous Designer](3d-applications/marvelous-designer/index.md) | Pipeline | 1.1.4 | Free | The AYON integration for Marvelous Designer: the AYON plugin entry, the garment and fabric products it can create, publish and load, launch hooks,... |
 | [Maya](3d-applications/maya/index.md) | Pipeline | 0.6.13 | Free | The AYON integration for Autodesk Maya: the AYON menu, the products Maya can create, publish and load, validators and extractors, inventory actions,... |
 | [Motionbuilder](3d-applications/motionbuilder/index.md) | Pipeline | 0.2.1 | Free | The AYON integration for Autodesk MotionBuilder: the AYON menu, the animation and workfile products, the FBX publish and load plugins, launch hooks... |
+| [PureRef](3d-applications/pureref/index.md) | Pipeline + server | 0.1.0 | Free | The AYON integration for PureRef: how PureRef is launched, the AYON tools window, the image and workfile products it can create and publish, the... |
 | [SpeedTree](3d-applications/speedtree/index.md) | Pipeline | 0.2.1 | Free | The AYON integration for SpeedTree: the floating AYON tools window, the model and workfile products, FBX and XML publishing, workfile loading,... |
 | [Substance Designer](3d-applications/substance-designer/index.md) | Pipeline | 0.2.1 | Free | The AYON integration for Substance Designer: the AYON menu, project templates, the texture set and SBSAR products, publishing, texture loading,... |
 | [Substance Painter](3d-applications/substance-painter/index.md) | Pipeline | 0.3.6 | Free | The AYON integration for Substance Painter: the AYON menu, loading the project mesh, publishing texture sets with their options and validator,... |
@@ -143,6 +146,7 @@ AYON addons that submit publish and render jobs to render farm managers.
 | Addon | Type | Version | License | What it is |
 |---|---|---|---|---|
 | [Deadline](farm-managers/deadline/index.md) | Pipeline | 0.7.5 | Free | The AYON integration for the Deadline render farm manager: the job and publish plugins it adds to each application, the Deadline repository plugins,... |
+| [Deadline Cloud](farm-managers/deadline-cloud/index.md) | Pipeline | 0.0.1 | Free | The AYON integration for AWS Deadline Cloud: the creator and publish plugins that submit Maya, Houdini and Nuke render jobs, the publishing step... |
 | [Royal Render](farm-managers/royal-render/index.md) | Pipeline | 0.4.1 | Free | The AYON integration for the Royal Render farm manager: the job creation and submission plugins, the RR_ROOT files it ships, and its requirements. |
 
 ### Automation
@@ -152,6 +156,14 @@ Addons for automating AYON with node-based workflows.
 | Addon | Type | Version | License | What it is |
 |---|---|---|---|---|
 | [Workflow](automation/workflow/index.md) | Pipeline + server | 0.4.4 | Studio | The AYON Workflow addon: node-based automation with a browser editor, local, farm and event-triggered execution, simple actions in the AYON web app,... |
+
+### AI
+
+Addons that connect AYON to AI tooling.
+
+| Addon | Type | Version | License | What it is |
+|---|---|---|---|---|
+| [ComfyUI](ai/comfyui/index.md) | Pipeline | 0.0.28 | Free | The AYON ComfyUI integration: how ComfyUI is launched locally or connected remotely, the AYON menu and nodes inside ComfyUI, and the products it can... |
 
 ## Third-party project management
 
@@ -170,13 +182,12 @@ AYON addons that connect AYON to third-party production trackers.
 
 ### Other integrations
 
-Addons that connect AYON to other third-party tools (time tracking, chat, issue tracking, HR) and to AI tooling, plus the timers manager.
+Addons that connect AYON to other third-party tools (time tracking, chat, issue tracking, HR) and the timers manager.
 
 | Addon | Type | Version | License | What it is |
 |---|---|---|---|---|
 | [Clockify](integrations/clockify/index.md) | Pipeline | 0.2.2 | Free | The AYON Clockify addon: it starts and stops Clockify time entries for AYON tasks, adds launcher actions to start a timer and sync projects, and... |
-| [ComfyUI](integrations/comfyui/index.md) | Pipeline | 0.0.28 | Free | The AYON ComfyUI integration: how ComfyUI is launched locally or connected remotely, the AYON menu and nodes inside ComfyUI, and the products it can... |
-| [HiBob](integrations/hibob/index.md) | Server | 1.1.3 | Free | The AYON HiBob addon, an integration with the HiBob HR information system. |
+| [HiBob](integrations/hibob/index.md) | Server | 1.1.3 | Free | The AYON HiBob addon: synchronizes time off from the HiBob HR system into the AYON Planner addon with a background service, and into ftrack... |
 | [Jira (archived)](integrations/jira/index.md) | Pipeline + server | 0.1.1 | Free | The AYON integration for Jira: template-based creation of AYON tasks and matching Jira tickets from a project page, the Jira current phase attribute... |
 | [Slack](integrations/slack/index.md) | Pipeline | 1.3.1 | Free | The AYON Slack addon: it posts notifications to Slack channels when products are published, with profile-based filtering, message templates, user... |
 | [Soko Sync](integrations/soko/index.md) | Server | 0.1.4 | Free | The AYON Soko Sync addon, which synchronizes projects and their data between AYON and Soko. |

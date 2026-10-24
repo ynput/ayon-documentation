@@ -1,6 +1,7 @@
 ---
-title: Addon Dev Intro
+title: Addon development introduction
 sidebar_label: Addon Intro
+description: "Background for developing AYON addons: how AYON grew from pyblish, Avalon and OpenPype, how the AYON pipeline builds on pyblish, the AYON context, publish instances and loaded containers with code to inspect them in an application, and the publish and load workflows."
 ---
 
 :::info

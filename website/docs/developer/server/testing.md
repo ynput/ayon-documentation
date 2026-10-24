@@ -1,9 +1,9 @@
 ---
-title: Testing AYON Server
-sidebar_label: Testing
+title: AYON frontend end-to-end tests
+sidebar_label: Frontend E2E tests
+description: "End-to-end tests of the AYON web app with Playwright: setting up and running the tests, spec and fixture files, test isolation and cleanup, and recording tests with the Playwright code generator. The testing strategy is still being decided."
 ---
 
-# Frontend E2E tests
 
 :::note Work In Progress
 Frontend E2E testing strategy is still under debate, current tests and their implementation details may change significantly in the near future.

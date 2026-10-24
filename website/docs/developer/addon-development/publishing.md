@@ -1,6 +1,7 @@
 ---
-title: Publishing
+title: Publishing for developers
 sidebar_label: Publishing
+description: "How creating and publishing work in AYON's code: the create context and created instances, the BaseCreator, HiddenCreator, AutoCreator and Creator plugins and the functions a host must provide, the pyblish-based publish part with validation exceptions, repair actions, known errors and plugin extensions, and the publisher UI."
 toc_max_heading_level: 4
 ---
 

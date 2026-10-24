@@ -1,6 +1,7 @@
 ---
-title: Server Theme
-sidebar_label: Theme
+title: AYON frontend theme
+sidebar_label: Frontend theme
+description: "The theme of the AYON web app and the AYON React Component Library, based on Material Design: the --md-sys-color CSS variables for surfaces, the primary color, text and borders, the colors of developer mode and of production and staging, other useful variables, typography and loading states."
 ---
 
 The ayon theme is based on the material design philosophy: https://m2.material.io/.

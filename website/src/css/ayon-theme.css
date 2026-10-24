@@ -298,7 +298,7 @@ html {
 }
 
 /* Archived addons (front matter `sidebar_class_name: addon-archived`, or className in
-   _category_.json): greyed out in the sidebar and on the page. */
+   sidebars.js): greyed out in the sidebar and on the page. */
 .menu__list-item.addon-archived > .menu__link,
 .menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
     color: var(--md-sys-color-outline);
@@ -358,5 +358,10 @@ article:has(dl[data-archived="true"]) h1 {
 /* Archived and legacy entries stay grey at every level (beats the nested-level color above). */
 .theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__link,
 .theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+
+/* Legacy and archived entries are grey at the top level of a sidebar too. */
+.theme-doc-sidebar-menu > .menu__list-item.addon-archived > .menu__link {
     color: var(--md-sys-color-outline);
 }

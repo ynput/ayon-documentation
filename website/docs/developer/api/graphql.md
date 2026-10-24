@@ -5,6 +5,13 @@ description: Information about AYON GraphQL API
 toc_max_heading_level: 5
 ---
 
+<!--
+  No live embed of the GraphQL explorer on this page, on purpose. The explorer (/graphiql on an AYON
+  server) needs a signed-in user and reads its access token from the local storage of the server's
+  own site, and the playground sign-in goes through the ynput.cloud login page, which cannot be shown
+  in a frame. An embed would need a guest mode on the playground.
+-->
+
 ## What is GraphQL?
 
 GraphQL is a query language between frontend and backend. it allows you to expose the data sent from server to client

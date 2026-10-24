@@ -2,18 +2,28 @@
 
     python scripts/build_addons_index.py
 
-Reads the front matter of every docs/addons/<category>/<addon>/index.md and the
-`_category_.json` of every category folder, so the catalogue follows the pages:
-a new addon folder shows up after running this script. The page is written
-completely; do not edit docs/addons/index.md by hand.
+Reads the front matter of every docs/addons/<category>/<addon>/index.md, and the
+labels and descriptions of the addon categories and addons from the Addons sidebar
+in sidebars.js (the single place where they are written), so the catalogue follows
+the sidebar: a new addon shows up after it is added to sidebars.js and this script
+runs. Needs Node.js to read sidebars.js. The page is written completely; do not
+edit docs/addons/index.md by hand.
+
+Also fills the addon API reference table of docs/developer/index.md (between its
+addon-api-docs markers) from src/data/addon-api-docs.json.
 """
 from __future__ import annotations
 
 import json
 import re
+import subprocess
 from pathlib import Path
 
-ADDONS = Path(__file__).resolve().parent.parent / "docs" / "addons"
+WEBSITE = Path(__file__).resolve().parent.parent
+ADDONS = WEBSITE / "docs" / "addons"
+API_DOCS = WEBSITE / "src" / "data" / "addon-api-docs.json"
+DEV_INDEX = WEBSITE / "docs" / "developer" / "index.md"
+ADDON_DOC = re.compile(r"^addons/([^/]+)/([^/]+)/index$")
 FRONT = re.compile(r"\A---\n(.*?)\n---\n", re.S)
 
 
@@ -45,19 +55,65 @@ def short(text: str, limit: int = 150) -> str:
     return cut + "..."
 
 
+def sidebar_labels() -> tuple[dict, dict]:
+    """Labels of the addons and of the addon categories, from the Addons sidebar.
+
+    Returns ({(category folder, addon folder): label}, {category folder: {"label", "description"}}).
+    """
+    script = "process.stdout.write(JSON.stringify(require('./sidebars.js').Addons))"
+    sidebar = json.loads(subprocess.run(["node", "-e", script], cwd=WEBSITE, check=True,
+                                        capture_output=True, text=True, encoding="utf-8").stdout)
+    addons: dict = {}
+    categories: dict = {}
+
+    def doc_label(doc_id: str) -> str:
+        fm = front_matter(WEBSITE / "docs" / f"{doc_id}.md")
+        return fm.get("sidebar_label") or fm.get("title", "")
+
+    def walk(items: list) -> list:
+        """Collect labels; return the category folders found below these items."""
+        folders = []
+        for item in items:
+            if isinstance(item, str) or item.get("type") == "doc":
+                doc_id = item if isinstance(item, str) else item["id"]
+                m = ADDON_DOC.match(doc_id)
+                if m:
+                    addons[(m.group(1), m.group(2))] = doc_label(doc_id)
+                    folders.append(m.group(1))
+                continue
+            link = item.get("link") or {}
+            m = ADDON_DOC.match(link.get("id", "")) if link.get("type") == "doc" else None
+            if m:
+                addons[(m.group(1), m.group(2))] = item["label"]
+                folders.append(m.group(1))
+            below = walk(item.get("items", []))
+            folders += below
+            if link.get("type") == "generated-index" and below:
+                categories[below[0]] = {"label": item["label"], "description": link.get("description", "")}
+        return folders
+
+    walk(sidebar)
+    return addons, categories
+
+
 def main() -> None:
+    addon_labels, category_info = sidebar_labels()
     cats = []
     for cat in sorted(p for p in ADDONS.iterdir() if p.is_dir()):
-        cj = json.loads((cat / "_category_.json").read_text(encoding="utf-8"))
+        # a category that is not a generated list in the sidebar (production-tracking)
+        # takes its label from the group that holds its addons
+        cj = category_info.get(cat.name, {"label": "Production tracking" if cat.name == "production-tracking" else cat.name,
+                                          "description": ""})
+        cj = {"label": cj["label"], "link": {"description": cj["description"]}}
         rows = []
         for addon in sorted(p for p in cat.iterdir() if p.is_dir()):
             idx = addon / "index.md"
             if not idx.exists():
                 continue
             fm = front_matter(idx)
-            ac = json.loads((addon / "_category_.json").read_text(encoding="utf-8"))
-            rows.append((ac["label"].replace(" (archived)", ""), addon.name, fm))
-        cats.append((cj.get("position", 99), cat.name, cj, rows))
+            label = addon_labels.get((cat.name, addon.name), fm.get("title", addon.name))
+            rows.append((label.replace(" (archived)", ""), addon.name, fm))
+        cats.append((0, cat.name, cj, rows))
     cats.sort()
 
     total = sum(len(c[3]) for c in cats)
@@ -90,7 +146,7 @@ def main() -> None:
         "compared with the latest release of the addon. The license column follows the AYON Market: "
         "**Free** addons are part of every edition, **Pro, Studio** addons need one of those plans, "
         "and **Studio** addons need the Studio plan. Addons marked **archived** are no longer developed and "
-        "addons marked **unreleased** have no release yet; archived addons are still listed in the AYON Market. "
+        "addons marked **alpha** are experimental, and addons marked **unreleased** have no release yet; archived addons are still listed in the AYON Market. "
         "See the [plans](../ayon/plans.md).",
         "",
         "How addons are installed, activated and configured is described in "
@@ -103,9 +159,9 @@ def main() -> None:
          "addons. They run on the AYON server, so AYON is more than a pipeline tool.",
          ["production-tracking", "server-features"]),
         ("Pipeline addons", "Everything with a pipeline part that runs on workstations: the core, publishing and delivery "
-         "features, the integrations with 3D, 2D and compositing applications, review players, render farm managers and automation.",
+         "features, the integrations with 3D, 2D and compositing applications, review players, render farm managers, automation and AI tooling.",
          ["essentials", "pipeline-features", "3d-applications", "2d-drawing-applications",
-          "compositing-editorial-applications", "review-and-media-players", "farm-managers", "automation"]),
+          "compositing-editorial-applications", "review-and-media-players", "farm-managers", "automation", "ai"]),
         ("Third-party project management", "Addons that connect AYON to production trackers and other project "
          "management tools outside AYON.", ["third-party-trackers", "integrations"]),
     ]
@@ -128,6 +184,8 @@ def main() -> None:
                 version = fm.get("addon_version", "")
                 lic = license_text(fm.get("addon_flags", ""))
                 status = []
+                if "alpha" in fm.get("addon_flags", ""):
+                    status.append("alpha")
                 if "unreleased" in fm.get("addon_flags", ""):
                     status.append("unreleased")
                 if fm.get("addon_archived", "").lower() == "true":
@@ -141,6 +199,44 @@ def main() -> None:
     out += ["</TableFilter>", ""]
     (ADDONS / "index.md").write_text("\n".join(out), encoding="utf-8", newline="\n")
     print(f"{total} addons in {len(cats)} categories -> docs/addons/index.md")
+    build_dev_api_table(addon_labels)
+
+
+def build_dev_api_table(addon_labels: dict) -> None:
+    """Fill the addon table of docs/developer/index.md (API docs) between its markers."""
+    api = json.loads(API_DOCS.read_text(encoding="utf-8"))
+    urls = {repo: f"https://docs.ayon.dev/{repo}/latest/" for repo in api["repos"]}
+    urls.update(api.get("other", {}))
+    text = DEV_INDEX.read_text(encoding="utf-8")
+    start = text.index("<!-- addon-api-docs:start")
+    start = text.index("\n", start) + 1
+    end = text.index("<!-- addon-api-docs:end -->")
+    rows = []
+    for idx in ADDONS.glob("*/*/index.md"):
+        repo = front_matter(idx).get("addon_repo", "")
+        if repo not in urls:
+            continue
+        cat, slug = idx.parent.parent.name, idx.parent.name
+        label = addon_labels.get((cat, slug), slug).replace(" (archived)", "")
+        site = urls[repo].split("://", 1)[1].rstrip("/").removesuffix("/latest")
+        rows.append((label.lower(), f"| {label} | [{label} addon](../addons/{cat}/{slug}/index.md) | [{site}]({urls[repo]}) |"))
+    missing = set(urls) - {r for r in (front_matter(i).get("addon_repo", "") for i in ADDONS.glob("*/*/index.md"))}
+    if missing:
+        raise SystemExit(f"no addon page for {sorted(missing)} in {API_DOCS.name}")
+    # HTML comments as markers: MDX v1 drops them, while it prints a {/* */} comment as text
+    table = [
+        "",
+        '<TableFilter columns={[]} placeholder="Search the addons">',
+        "",
+        "| Addon | Page here | API docs |",
+        "|---|---|---|",
+        *(row for _key, row in sorted(rows)),
+        "",
+        "</TableFilter>",
+        "",
+    ]
+    DEV_INDEX.write_text(text[:start] + "\n".join(table) + "\n" + text[end:], encoding="utf-8", newline="\n")
+    print(f"{len(rows)} addon API references -> docs/developer/index.md")
 
 
 if __name__ == "__main__":

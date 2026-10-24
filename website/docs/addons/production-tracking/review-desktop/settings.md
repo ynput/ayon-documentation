@@ -9,7 +9,6 @@ addon_scope: pipeline
 addon_flags: [licensed, beta]
 addon_private: true
 verified: 2026-10-15
-sources:
 ---
 
 # Review Desktop addon settings
