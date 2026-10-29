@@ -202,7 +202,7 @@ Shortcuts work in the Plan and Schedule timelines when no dialog or text field h
 | Event sorting | Multi-level sort by **Start Date**, **Duration**, **Name**, **Task Type** or **Resource Count**. |
 | **Snap to events** | On by default. |
 | Event preview | Hover preview, on by default. |
-| [Views](../../../production-tracking/views.md) | Filters, grouping, sorting, zoom and the settings above are saved in views. |
+| [Views](../../../ayon/web-ui/views.md) | Filters, grouping, sorting, zoom and the settings above are saved in views. |
 | **Export** (Plan only) | The bookings of a date range and selected groups as CSV (spreadsheet) or ICS (calendar), or copied to the clipboard. On the Schedule, tasks can only be copied as tab-separated rows. |
 
 ## Permissions
@@ -247,7 +247,7 @@ The legacy `events`, `tracks` and `setup` (root) routes are marked deprecated.
 ## Related
 
 - [Settings](settings.md)
-- [Views](../../../production-tracking/views.md)
+- [Views](../../../ayon/web-ui/views.md)
 - [Subtasks](../../../production-tracking/subtasks.md)
-- [Teams](../../../production-tracking/teams.md)
-- [Users and permissions](../../../ayon/web-ui/users-and-permissions.md)
+- [Teams](../../../ayon/web-ui/project/teams.md)
+- [Users](../../../ayon/web-ui/studio/users.md)

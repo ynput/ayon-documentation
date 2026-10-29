@@ -44,7 +44,7 @@ The Review addon (named **Review**, also called review sessions) adds a review p
 | Actions menu (category `review`) | The simple actions listed under [Actions](#actions). |
 | Share tab of a session | Guest and open-link access, described under [Guest access](#guest-access). |
 
-The addon exports its page, a guest-access form and a set of session card components to the web app. The **Review** page uses the same list table, folders and details panels as the [Lists](../../../production-tracking/lists.md) page. A session's items show as cards or as a playlist table with the columns Folder, Product, Version, Task, Status and Author. The item context menu has **Open in viewer** (`Space`) and **Show details** (double click).
+The addon exports its page, a guest-access form and a set of session card components to the web app. The **Review** page uses the same list table, folders and details panels as the [Lists](../../../ayon/web-ui/production-tracking/lists.md) page. A session's items show as cards or as a playlist table with the columns Folder, Product, Version, Task, Status and Author. The item context menu has **Open in viewer** (`Space`) and **Show details** (double click).
 
 ## Creating sessions
 
@@ -106,7 +106,7 @@ When another user changes a session, a message tells so. With auto-save off the 
 |---|---|
 | Player | The current clip with the comparison, annotation and view tools, and the timelines (the session timeline and the annotations timeline). |
 | Playlist | The clips of the session. **Add clips** inserts versions, **Add section** adds a named section. Clips can be sorted and grouped, dragged to reorder, replaced by another version, and removed (context menu **Remove**). **Version data** shows the data of a version. `,` shows or hides the panel. |
-| **Feedback** tab | The details panel of the current version with its comments (the version's [activity feed](../../../production-tracking/activity-feed-and-comments.md)). Unsaved annotations are attached to the comment being written. |
+| **Feedback** tab | The details panel of the current version with its comments (the version's [activity feed](../../../ayon/web-ui/details-panel.md)). Unsaved annotations are attached to the comment being written. |
 | **Share** tab | Access for internal users and the guest sections. Not shown to guests. |
 | **People** tab | Who is in the session, see below. |
 
@@ -207,7 +207,7 @@ All endpoints are under `/api/addons/review/<version>/`.
 ## Related
 
 - [Review Desktop addon](../review-desktop/index.md): opens version lists in OpenRV with the AYON activity panel.
-- [Lists](../../../production-tracking/lists.md)
-- [Activity feed and comments](../../../production-tracking/activity-feed-and-comments.md)
-- [Products and versions](../../../production-tracking/products-and-versions.md)
-- [Keyboard shortcuts](../../../ayon/web-ui/keyboard-shortcuts.md)
+- [Lists](../../../ayon/web-ui/production-tracking/lists.md)
+- [Activity feed](../../../ayon/web-ui/details-panel.md#activity-feed)
+- [Products and versions](../../../ayon/web-ui/production-tracking/products.md)
+- [Keyboard shortcuts](../../../ayon/web-ui/quick-navigation.md#keyboard-shortcuts)

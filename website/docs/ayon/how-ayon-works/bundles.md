@@ -10,7 +10,7 @@ sources:
 
 # Bundles
 
-A bundle is the release unit of an AYON setup. It names one version of each addon, one AYON launcher version and one dependency package per platform. Installing an addon only places it on the server; a bundle with a state (Production, Staging or Dev) is what puts addon versions into use. This page describes what the server and the workstations do with bundles. The **Bundles** and **Addons** pages are described in [Bundles and addons](../web-ui/bundles-and-addons.md).
+A bundle is the release unit of an AYON setup. It names one version of each addon, one AYON launcher version and one dependency package per platform. Installing an addon only places it on the server; a bundle with a state (Production, Staging or Dev) is what puts addon versions into use. This page describes what the server and the workstations do with bundles. The **Bundles** and **Addons** pages are described in [Bundles](../web-ui/studio/bundles.md).
 
 ## What a bundle holds
 
@@ -132,7 +132,7 @@ A server addon that has no client part can also be updated in place: its version
 
 ## Project bundles
 
-A project bundle is a bundle tied to one project and one variant (production or staging), named `__project__` followed by the project name and the variant. It fixes the launcher version, the dependency packages and the versions of the addons that allow project overrides, while the other addons inherit the studio bundle. The launcher uses it whenever it works for that project in that mode, and the project's settings are frozen for the fixed addon versions. A new project has no project bundle. See [Project bundles](../web-ui/project-bundles.md).
+A project bundle is a bundle tied to one project and one variant (production or staging), named `__project__` followed by the project name and the variant. It fixes the launcher version, the dependency packages and the versions of the addons that allow project overrides, while the other addons inherit the studio bundle. The launcher uses it whenever it works for that project in that mode, and the project's settings are frozen for the fixed addon versions. A new project has no project bundle. See [Project bundles](../web-ui/project/project-settings.md).
 
 ## Where to look
 
@@ -146,8 +146,8 @@ A project bundle is a bundle tied to one project and one variant (production or 
 
 ## Related
 
-- [Bundles and addons](../web-ui/bundles-and-addons.md)
-- [Project bundles](../web-ui/project-bundles.md)
+- [Bundles](../web-ui/studio/bundles.md)
+- [Project bundles](../web-ui/project/project-settings.md)
 - [Settings scopes and storage](../backend/settings/index.md)
 - [Market](../web-ui/market.md)
 - [Services](../web-ui/services.md)

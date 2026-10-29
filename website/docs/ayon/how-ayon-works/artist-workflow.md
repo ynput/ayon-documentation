@@ -66,7 +66,7 @@ See [Launcher](../../pipeline/launcher.md) for the pipeline modes and the tray m
 
 ## 2. See the task and pick the context
 
-The artist can check the assignment in two places. In the web app, Tasks home (`h+h`) shows the task card in the column of its status, and dragging the card from **Ready to start** to **In progress** tells the team that work has started. See [Tasks (home) page](../../production-tracking/tasks-home.md).
+The artist can check the assignment in two places. In the web app, Tasks home (`h+h`) shows the task card in the column of its status, and dragging the card from **Ready to start** to **In progress** tells the team that work has started. See [Home tasks](../web-ui/home/tasks.md).
 
 On the workstation, the **Launcher** window (tray entry **Launcher**, or a double click on the tray icon) has three levels:
 
@@ -162,16 +162,16 @@ In words:
 
 | Result | Where it shows |
 |---|---|
-| New version | The **Products** page of the project, and the task's details panel. See [Products and versions](../../production-tracking/products-and-versions.md). |
+| New version | The **Products** page of the project, and the task's details panel. See [Products and versions](../web-ui/production-tracking/products.md). |
 | Reviewable | When the publish produced a review movie or image, it is uploaded as a reviewable of the version and plays in the viewer. See [Reviewables](../../production-tracking/reviewables.md). |
-| Activity | A published version entry in the activity feed of the version and of the task. See [Activity feed and comments](../../production-tracking/activity-feed-and-comments.md). |
+| Activity | A published version entry in the activity feed of the version and of the task. See [Activity feed](../web-ui/details-panel.md#activity-feed). |
 | Watchers | The artist becomes a watcher of the new version; watchers of the task also follow it. |
 | Version status | Set at publish only when the studio enables a version status option in the Publisher; otherwise the version gets the project's default version status. |
 | Task status | Unchanged by the publish. The artist moves the task to **Pending review** on Tasks home or in the details panel, unless the studio uses status automation (see [AYON plans](../plans.md)). |
 
 ## 8. Feedback and iteration
 
-The supervisor reviews the version in the viewer or in a review session, writes comments (with frame-accurate notes and annotations where available), mentions the artist with `@`, and changes the status of the version or the task. The artist receives these in the **Important** tab of the [inbox](../../production-tracking/inbox-and-notifications.md) (`i+i`), where each message opens the entity in the details panel with the comment highlighted.
+The supervisor reviews the version in the viewer or in a review session, writes comments (with frame-accurate notes and annotations where available), mentions the artist with `@`, and changes the status of the version or the task. The artist receives these in the **Important** tab of the [inbox](../web-ui/inbox/index.md) (`i+i`), where each message opens the entity in the details panel with the comment highlighted.
 
 To address the notes, the artist opens the task again from the launcher, saves the workfile as the next version, makes the changes and publishes again from the **Publish** tab. The new version, for example `v002`, appears next to the first one, and the viewer can compare the two. Artists in other departments who loaded `modelMain v001` see it as outdated in their Scene Inventory and update when they are ready.
 
@@ -185,7 +185,7 @@ When the supervisor approves the version, the task is usually set to **Approved*
 - [Scene Inventory](../../pipeline/scene-inventory.md)
 - [Publisher](../../pipeline/publisher.md) and [Publishing](../../pipeline/publishing.md)
 - [Product types](../../pipeline/product-types.md) and [Naming conventions](../../pipeline/naming-conventions.md)
-- [Tasks (home) page](../../production-tracking/tasks-home.md)
-- [Activity feed and comments](../../production-tracking/activity-feed-and-comments.md)
-- [Quick navigation](navigation.md)
+- [Home tasks](../web-ui/home/tasks.md)
+- [Activity feed](../web-ui/details-panel.md#activity-feed)
+- [Quick navigation and server layout](../web-ui/quick-navigation.md)
 - [Production workflow](production-workflow.md)

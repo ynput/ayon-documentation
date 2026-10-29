@@ -43,7 +43,7 @@ Plain-text equivalent:
 4. **Create Project** (or `Ctrl+Enter` / `Shift+Enter`) sends the name, code, label, library flag and the complete edited anatomy to the server.
 5. The server checks that the user may create projects and that no project already uses the name or the code.
 6. In one database transaction the server creates the project record, the project's own database schema, the folder types, task types, statuses, tags and link types, and assigns the project to every user with default access groups.
-7. The server emits the `entity.project.created` event, which services and addons can react to (see [Events](../web-ui/events.md)).
+7. The server emits the `entity.project.created` event, which services and addons can react to (see [Event Viewer](../web-ui/event-viewer.md)).
 8. The web app opens the **Anatomy** page of the new project (`/manageProjects/anatomy?project=...`).
 
 ## Who can create a project
@@ -95,7 +95,7 @@ A request through the API can also name a preset (`anatomyPreset`) or send no an
 
 ### Project attributes
 
-The **Attributes** section of the anatomy editor lists every attribute whose scope includes projects, such as `fps`, `resolutionWidth`, `frameStart` or `startDate`, with the defaults of the attribute definitions (see [Attributes](../web-ui/attributes.md)). The values in the dialog become the project's own attribute values. Because folders and tasks inherit missing values from the project, these values apply to the whole hierarchy until a folder or task sets its own (see [Data model](../backend/data-model/index.md)). After creation, project attributes are edited in the project details panel; the **Attributes** section of the project anatomy edits the same values.
+The **Attributes** section of the anatomy editor lists every attribute whose scope includes projects, such as `fps`, `resolutionWidth`, `frameStart` or `startDate`, with the defaults of the attribute definitions (see [Attributes](../web-ui/studio/attributes.md)). The values in the dialog become the project's own attribute values. Because folders and tasks inherit missing values from the project, these values apply to the whole hierarchy until a folder or task sets its own (see [Data model](../backend/data-model/index.md)). After creation, project attributes are edited in the project details panel; the **Attributes** section of the project anatomy edits the same values.
 
 ### Access for users with default access groups
 
@@ -130,7 +130,7 @@ When a project with the same name is created again in the **Production** state, 
 | Project settings | **Project settings** (`/manageProjects/projectSettings`) | Project overrides of addon settings, such as Core profiles or application variants (see [Settings scopes and storage](../backend/settings/index.md)). |
 | Access | **Project access** (`/manageProjects/projectAccess`) | Users who did not receive access through default access groups. |
 | Access group overrides | **Project permissions** (`/manageProjects/permissions`) | Project-specific changes to an access group. |
-| Project bundle | Lock button of **Project settings** | Only when the project must stay on fixed addon versions (see [Project bundles](../web-ui/project-bundles.md)). |
+| Project bundle | Lock button of **Project settings** | Only when the project must stay on fixed addon versions (see [Project bundles](../web-ui/project/project-settings.md)). |
 | Folders on disk | Web action **Create Project Folder Structure** | Creates the directories defined in the Core setting **Project folder structure** under the project root. |
 
 ## Where to look
@@ -145,12 +145,12 @@ When a project with the same name is created again in the **Production** state, 
 
 ## Related
 
-- [Users and permissions](../web-ui/users-and-permissions.md)
+- [Users](../web-ui/studio/users.md)
 - [Permissions](permissions.md)
 - [Pipeline storage](pipeline-storage.md)
 - [Bundles](bundles.md)
-- [Attributes](../web-ui/attributes.md)
+- [Attributes](../web-ui/studio/attributes.md)
 - [Data model](../backend/data-model/index.md)
 - [Naming conventions](../../pipeline/naming-conventions.md)
 - [Settings scopes and storage](../backend/settings/index.md)
-- [Project bundles](../web-ui/project-bundles.md)
+- [Project bundles](../web-ui/project/project-settings.md)

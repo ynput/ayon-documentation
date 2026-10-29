@@ -21,7 +21,43 @@ AYON is a production platform for creative studios that make VFX, animation, gam
 - **Production management**: planning, tracking, review and delivery of a project.
 - **Pipeline**: the tools that launch applications in the right context, save versioned work files, publish results and load them again.
 
-Both work on the same data, a status that a producer sees is backed by the files and versions that artists actually published, instead of being typed in by hand.
+Both work on the same data, connecting creative work to production, seamless integration all in one central hub AYON.
+
+
+## Challenges
+
+AYON was built to address challenges that many VFX and animation studios
+face:
+
+- **Over-engineered, rigid tools** that are hard to change mid-production.
+- **Endless maintenance**, and falling behind as new software versions keep
+  coming.
+- **Per-project solutions** that don't carry over to the next project.
+- **Pipelines that don't scale** as projects and teams grow.
+- **Starting from scratch** every time a pipeline breaks down.
+- **No engineering team**, or a pipeline left behind when its developer
+  leaves.
+- **Separate systems and complex APIs** that keep production data apart.
+- **Pipelines that are hard for artists to manage** without writing code.
+- **Per-project solutions** instead of one system for the whole studio, so
+  nothing carries over between projects or teams.
+
+AYON tackles these challenges with:
+
+- **Open source:** The code stays available, and a large community keeps it
+  going, so the pipeline doesn't depend on one person.
+- **A modular system:** Studios add only what they need and grow at their own
+  pace.
+- **Actively maintained DCC integrations:** Integrations are kept up to date,
+  so recent DCC versions keep working.
+- **Production tracking and pipeline in one platform:** All production data
+  lives in one place.
+- **Built with artists in mind:** Configurable settings replace writing
+  scripts.
+- **One unified system across the studio:** Every project and team works with
+  the same pipeline, so setups, tools, and data carry over instead of being
+  rebuilt each time.
+
 
 ## What it is used for
 
@@ -77,7 +113,7 @@ flowchart LR
 
 The table above is the text version of this diagram.
 
-Where to read more: [how AYON works](how-ayon-works/index.md) (bundles, addons, project anatomy), [pipeline tools](../pipeline/launcher.md), the [web UI](web-ui/navigating-the-web-app.md), [ASH](hosting/ash.md) and the [addons](../addons/index.md).
+Where to read more: [how AYON works](how-ayon-works/index.md) (bundles, addons, project anatomy), [pipeline tools](../pipeline/launcher.md), the [web UI](web-ui/navigation-bar.md), [ASH](deployment/ash.md) and the [addons](../addons/index.md).
 
 ## Who it is for
 
@@ -103,7 +139,7 @@ The paid plans, Pro and Studio, start at 5 users. Pro supports up to 200 users. 
 - A distributed studio running fully or partly in the cloud.
 - A hybrid setup with different storage per project.
 
-More detail is in [AYON setups](setups.md) and the [hosting](hosting/self-hosting.md) section.
+More detail is in [setup options](setups.md) and the server deployment pages: [cloud](deployment/cloud.md) and [on-premise](deployment/on-premise.md).
 
 ## Open and extensible
 

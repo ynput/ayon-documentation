@@ -19,7 +19,7 @@ e.g. you can use it to get a list of projects or create new projects, get a list
 
 Each AYON server generates docs for its REST API as they can be extended via [Addons Devolvement](../addon-development/creation.md#end-points)
 
-You access the REST API Docs via `<your-ayon-server-url>/api` or via help icon.
+On a server, the REST API docs are at `<your-ayon-server-url>/docs`, shown in the web app at `/doc/api` and opened from **REST API** in the Help menu. By default only managers and admins can open them. See [REST API](../../ayon/web-ui/rest-api.md).
 
 ![](../assets/apis_and_resources/rest_api_docs.png)
 

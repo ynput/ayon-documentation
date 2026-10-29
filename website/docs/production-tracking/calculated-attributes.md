@@ -8,7 +8,7 @@ sources:
 
 # Calculated attributes
 
-A **calculated attribute** is an existing attribute whose value is computed by a formula instead of being typed in. The formula can use the other attributes of the entity and, for folders, the tasks and folders below it. A frame length attribute can, for example, be computed from the start frame, end frame and handles, and a folder description can show the progress of the tasks below the folder. Calculated values appear in tables, the [details panel](details-panel.md) and filters like any other attribute value.
+A **calculated attribute** is an existing attribute whose value is computed by a formula instead of being typed in. The formula can use the other attributes of the entity and, for folders, the tasks and folders below it. A frame length attribute can, for example, be computed from the start frame, end frame and handles, and a folder description can show the progress of the tasks below the folder. Calculated values appear in tables, the [details panel](../ayon/web-ui/details-panel.md) and filters like any other attribute value.
 
 Calculated attributes are a Power Features addon function. Requirements, licensing and the addon settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md); the overview of Power Features is in [Power features](power-features.md).
 
@@ -26,7 +26,7 @@ Each entry in the **Formulas** list of the addon settings has these fields.
 
 | Field | Description |
 |---|---|
-| **Attribute** | The attribute to calculate. The attribute must already exist (see [Attributes](../ayon/web-ui/attributes.md)) and be in scope for every chosen entity type. Turning off **Inherit** in the attribute definition is recommended. |
+| **Attribute** | The attribute to calculate. The attribute must already exist (see [Attributes](../ayon/web-ui/studio/attributes.md)) and be in scope for every chosen entity type. Turning off **Inherit** in the attribute definition is recommended. |
 | **Entity types** | Entity types the formula applies to: folders, products, versions, representations, tasks and workfiles. At least one is required. |
 | **Formula** | A Jinja2 template. |
 | **Calculation mode** | When the formula is evaluated. |
@@ -112,5 +112,5 @@ The actions are server actions in the actions menu. They send an empty update fo
 
 - [Power Features addon](../addons/production-tracking/power-pack/index.md)
 - [Power features](power-features.md)
-- [Attributes](../ayon/web-ui/attributes.md)
-- [Project overview](project-overview.md)
+- [Attributes](../ayon/web-ui/studio/attributes.md)
+- [Project overview](../ayon/web-ui/production-tracking/overview.md)

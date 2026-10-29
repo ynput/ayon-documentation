@@ -8,7 +8,7 @@ sources:
 
 # Services
 
-The **Services** page lists the addon services registered on the AYON server and manages them: it creates, starts, stops, edits and deletes services and shows their state. An addon service is a containerized program that an addon runs next to the AYON server. The page only records what should run; the container itself is started by an AYON Service Host (ASH) worker. How ASH works, how to run it and how it reaches the server are described on the [ASH page](../hosting/ash.md).
+The **Services** page lists the addon services registered on the AYON server and manages them: it creates, starts, stops, edits and deletes services and shows their state. An addon service is a containerized program that an addon runs next to the AYON server. The page only records what should run; the container itself is started by an AYON Service Host (ASH) worker. How ASH works, how to run it and how it reaches the server are described on the [ASH page](../deployment/ash.md).
 
 ## Where it appears
 
@@ -120,14 +120,14 @@ The panel header shows the service name with the edit and close buttons.
 
 The menu entry and the page are available to managers and admins. The server returns services only to admins, and only admins can create, start, stop, edit or delete them, so a manager sees an empty table and cannot change anything. The list of hosts is available to every signed-in user.
 
-Running services needs an ASH worker that connects with the API key of a service user. See the [ASH page](../hosting/ash.md) for its requirements.
+Running services needs an ASH worker that connects with the API key of a service user. See the [ASH page](../deployment/ash.md) for its requirements.
 
 ## Related
 
-- [AYON Service Host (ASH)](../hosting/ash.md)
-- [Bundles and addons](bundles-and-addons.md)
-- [Users and permissions](users-and-permissions.md)
-- [Events](events.md)
-- [Navigating the web app](navigating-the-web-app.md)
-- [Keyboard shortcuts](keyboard-shortcuts.md)
+- [AYON Service Host (ASH)](../deployment/ash.md)
+- [Bundles](studio/bundles.md)
+- [Users](studio/users.md)
+- [Event Viewer](event-viewer.md)
+- [Navigation bar](navigation-bar.md)
+- [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
 - [Addons](../../addons/index.md)

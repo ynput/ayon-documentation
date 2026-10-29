@@ -365,3 +365,11 @@ article:has(dl[data-archived="true"]) h1 {
 .theme-doc-sidebar-menu > .menu__list-item.addon-archived > .menu__link {
     color: var(--md-sys-color-outline);
 }
+
+/* Material Symbols in Mermaid node labels (the icons of the AYON web app). Global on
+   purpose: Mermaid measures labels in a temporary element outside the diagram container. */
+foreignObject .material-symbols-outlined {
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--ayon-brand-blue);
+}

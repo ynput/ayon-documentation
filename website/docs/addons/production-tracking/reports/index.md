@@ -111,7 +111,7 @@ A project without a saved dashboard starts with six charts. **Add chart** also o
 
 ## Views and sharing
 
-The charts of a dashboard, with their layout, are saved as a view of the project (see [views](../../../production-tracking/views.md)), so a project can keep several dashboards.
+The charts of a dashboard, with their layout, are saved as a view of the project (see [views](../../../ayon/web-ui/views.md)), so a project can keep several dashboards.
 
 ## Export
 
@@ -141,5 +141,5 @@ The addon registers these endpoints, used by the frontend.
 
 ## Related
 
-- [Views](../../../production-tracking/views.md)
-- [Task progress](../../../production-tracking/task-progress.md)
+- [Views](../../../ayon/web-ui/views.md)
+- [Task progress](../../../ayon/web-ui/production-tracking/task-progress.md)

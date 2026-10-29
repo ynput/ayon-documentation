@@ -71,17 +71,17 @@ The full comparison is on [AYON plans](../plans.md).
 
 The project is created on the **Projects** tab of Home with **Create new project**, available to managers, administrators and users with the permission to create projects. Its name, code, anatomy preset and attributes such as frame rate, resolution and dates are described on [Creating a project](creating-a-project.md).
 
-Users with the user role see a project only when they have an access group in it. Access is granted in **Projects Settings** (`p+p`), on the **Project access** tab: each user gets one or more access groups, which decide what they can see, edit and publish in the project. Managers and administrators have access to every project. See [Users and permissions](../web-ui/users-and-permissions.md).
+Users with the user role see a project only when they have an access group in it. Access is granted in **Projects Settings** (`p+p`), on the **Project access** tab: each user gets one or more access groups, which decide what they can see, edit and publish in the project. Managers and administrators have access to every project. See [Users](../web-ui/studio/users.md).
 
 ## 2. Build the folder hierarchy and tasks
 
-The project's **Overview** page is the spreadsheet where the hierarchy is built and maintained. See [Project overview](../../production-tracking/project-overview.md).
+The project's **Overview** page is the spreadsheet where the hierarchy is built and maintained. See [Project overview](../web-ui/production-tracking/overview.md).
 
 | Method | What it creates |
 |---|---|
 | **Create** menu (`N`, `M`, `T`) | One folder, a numbered sequence of folders (for example `sh010` to `sh200`), or a task in the selected folder. Names are generated from the labels by the project's naming rules. |
-| **Import CSV** | A whole hierarchy of folders and tasks from a spreadsheet, with folder types and task types per row. See [Data import](../../production-tracking/data-import.md). |
-| Entity templates | A stored set of folders and tasks, for example all the tasks of a character asset, reused for every new asset. See [Entity templates](../web-ui/entity-templates.md). |
+| **Import CSV** | A whole hierarchy of folders and tasks from a spreadsheet, with folder types and task types per row. See [Data import](../web-ui/dialogs/import-csv.md). |
+| Entity templates | A stored set of folders and tasks, for example all the tasks of a character asset, reused for every new asset. See [hierarchy templates](../../addons/production-tracking/power-pack/index.md#hierarchy-templates) of the Power Features addon. |
 
 Folder types (asset, sequence, shot, and others) and task types (modeling, animation, compositing, and others) come from the project anatomy. Attributes such as frame range or resolution are inherited from the parent folder unless a folder or task has its own value, which the Overview shows in gray when inherited.
 
@@ -93,7 +93,7 @@ Assignees and statuses can be set wherever tasks are listed: in the cells of the
 |---|---|
 | Assigning a user | The user sees the task on Tasks home and in the launcher's my tasks filter, gets an **Important** inbox message and becomes a watcher of the task. |
 | Setting a status | Moves the task to that column on everyone's Tasks home board and updates the progress figures. |
-| Grouping people into [teams](../../production-tracking/teams.md) | Lets comments mention a whole team at once. |
+| Grouping people into [teams](../web-ui/project/teams.md) | Lets comments mention a whole team at once. |
 
 The default task statuses of a new project are **Not ready**, **Ready to start**, **In progress**, **Pending review**, **Approved**, **On hold** and **Omitted**. Each status belongs to a state (not started, in progress, done, blocked) that the progress figures count. The list is part of the project anatomy and can be changed per project.
 
@@ -114,13 +114,13 @@ Without the addon, task dates are still attributes of the tasks and are edited i
 
 | Page | Question it answers |
 |---|---|
-| [Tasks (home) page](../../production-tracking/tasks-home.md) | What is each person working on? Managers can show the tasks of other users with the **Assignees** selector. |
-| [Task progress](../../production-tracking/task-progress.md) | How far is each shot or asset, task type by task type? Each folder row shows the share of done tasks. |
-| [Project overview](../../production-tracking/project-overview.md) | Which tasks match a condition, for example overdue or unassigned? Filters, slicers and saved [views](../../production-tracking/views.md) keep these questions one click away. |
+| [Home tasks](../web-ui/home/tasks.md) | What is each person working on? Managers can show the tasks of other users with the **Assignees** selector. |
+| [Task progress](../web-ui/production-tracking/task-progress.md) | How far is each shot or asset, task type by task type? Each folder row shows the share of done tasks. |
+| [Project overview](../web-ui/production-tracking/overview.md) | Which tasks match a condition, for example overdue or unassigned? Filters, slicers and saved [views](../web-ui/views.md) keep these questions one click away. |
 | [Reports](../../addons/production-tracking/reports/index.md) | How do the counts of tasks, folders and versions by status, type or assignee look now, and how did they change over time? |
-| [Lists](../../production-tracking/lists.md) | What is in a hand-picked set, for example this week's priority shots or the shots for the next client session? |
+| [Lists](../web-ui/production-tracking/lists.md) | What is in a hand-picked set, for example this week's priority shots or the shots for the next client session? |
 
-The [inbox](../../production-tracking/inbox-and-notifications.md) collects the activity on everything the producer watches: new versions, comments and status changes.
+The [inbox](../web-ui/inbox/index.md) collects the activity on everything the producer watches: new versions, comments and status changes.
 
 ## 6. Receive versions
 
@@ -178,7 +178,7 @@ Guests see only the session they are given and never the internal statuses.
 
 ## 8. Give feedback
 
-Feedback lives in the [activity feed](../../production-tracking/activity-feed-and-comments.md) of the version or the task, which every page shows in the details panel.
+Feedback lives in the [activity feed](../web-ui/details-panel.md) of the version or the task, which every page shows in the details panel.
 
 | Tool | Use |
 |---|---|
@@ -202,16 +202,17 @@ Delivery packages approved work for a client or a vendor. It works on versions p
 
 ## Related
 
+- [Upload version](../web-ui/dialogs/upload-version.md)
 - [Creating a project](creating-a-project.md)
-- [Project overview](../../production-tracking/project-overview.md)
-- [Task progress](../../production-tracking/task-progress.md)
-- [Tasks (home) page](../../production-tracking/tasks-home.md)
-- [Lists](../../production-tracking/lists.md)
+- [Project overview](../web-ui/production-tracking/overview.md)
+- [Task progress](../web-ui/production-tracking/task-progress.md)
+- [Home tasks](../web-ui/home/tasks.md)
+- [Lists](../web-ui/production-tracking/lists.md)
 - [Versions without a pipeline](../../production-tracking/versions-without-a-pipeline.md)
 - [Planner addon](../../addons/production-tracking/planner/index.md)
 - [Reports addon](../../addons/production-tracking/reports/index.md)
 - [Review addon](../../addons/production-tracking/review/index.md)
 - [Batch delivery addon](../../addons/pipeline-features/batch-delivery/index.md)
 - [AYON plans](../plans.md)
-- [Quick navigation](navigation.md)
+- [Quick navigation and server layout](../web-ui/quick-navigation.md)
 - [Artist workflow](artist-workflow.md)

@@ -1,5 +1,6 @@
 ---
-title: AYON setups
+title: AYON setup options
+sidebar_label: Setup options
 description: "The choices AYON supports for deploying the server, setting up the studio's people and storage, and setting up artist workstations: a map for newcomers."
 verified: 2026-10-14
 sources:
@@ -18,7 +19,7 @@ sources:
   - https://blogs.windows.com/windows-insider/2017/06/13/onedrive-files-demand-now-available-windows-insiders/
 ---
 
-# AYON setups
+# AYON setup options
 
 AYON adapts to how a studio works instead of asking the studio to change. This page is a map of the choices it supports, in three areas: where the server runs, how the studio's people and storage are arranged, and how each artist workstation is set up. It does not explain how to set anything up; it shows what is possible, so a newcomer can see the whole picture first.
 
@@ -123,4 +124,4 @@ Remote artists have two ways to reach the project files:
 
 - [Introduction](introduction.md)
 - [Settings and scopes](backend/settings/index.md) (planned)
-- [Self hosting](hosting/self-hosting.md) and [AYON Service Host](hosting/ash.md)
+- [On-premise deployment](deployment/on-premise.md) and [AYON Service Host](deployment/ash.md)

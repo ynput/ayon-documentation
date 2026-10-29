@@ -89,7 +89,7 @@ Because the files are written by the machines that run the pipeline, these machi
 | Launcher installers and dependency packages | Server storage | Downloaded by workstations (see [Bundles](bundles.md)). |
 | Installed addons | Server addon directory | |
 
-The project file storage is a directory on the server (`/storage/server/projects` by default) or an S3 bucket. For a self-hosted server these locations are described in [Self hosting](../hosting/self-hosting.md). Deleting a project removes its records and its server-side files; it does not delete anything on the studio storage.
+The project file storage is a directory on the server (`/storage/server/projects` by default) or an S3 bucket. For a self-hosted server these locations are described in [On-premise deployment](../deployment/on-premise.md). Deleting a project removes its records and its server-side files; it does not delete anything on the studio storage.
 
 ## Site sync
 
@@ -109,7 +109,7 @@ Without the SiteSync addon, every workstation reads and writes the same storage 
 - [Naming conventions](../../pipeline/naming-conventions.md)
 - [Core addon settings](../../addons/essentials/core/settings.md)
 - [SiteSync addon](../../addons/pipeline-features/sitesync/index.md)
-- [Self hosting](../hosting/self-hosting.md)
+- [On-premise deployment](../deployment/on-premise.md)
 - [Creating a project](creating-a-project.md)
 - [Settings scopes and storage](../backend/settings/index.md)
 - [Data model](../backend/data-model/index.md)

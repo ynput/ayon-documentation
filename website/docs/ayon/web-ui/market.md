@@ -121,7 +121,7 @@ Download progress is tracked through server events, so the state is shared acros
 | **Bundle** | Production version is current | Opens the production bundle at this addon |
 | **Report** | Download failed | Opens a bug report form |
 
-Downloading an addon makes it available to the server. It is used only once a [bundle](bundles-and-addons.md) references it.
+Downloading an addon makes it available to the server. It is used only once a [bundle](studio/bundles.md) references it.
 
 ## Release bundles
 
@@ -140,16 +140,7 @@ The latest release is available to every connected server. Earlier releases requ
 
 ### Install pipeline release dialog
 
-The dialog has these steps.
-
-| Step | Content |
-|---|---|
-| Overview | The release, the addons to install and the AYON launchers to install, each with a summary |
-| Addons | Selection of addons from the release. Addons already installed on the server are preselected from the highest existing bundle. |
-| Launcher platforms | Selection of the launcher platforms to download |
-| Progress | Download progress. On success the dialog offers **Restart now** or **Restart later (snooze)**. |
-
-Installation downloads the selected addons, launchers and compatible dependency packages, then creates a new bundle from them and opens **Bundles**. The same dialog is available from **Update Pipeline** in the App menu. If the server is not connected to Ynput Cloud, the dialog is replaced by a **Connect to Ynput Cloud** prompt.
+**Install release bundle** opens the [Install pipeline release](dialogs/install-pipeline-release.md) dialog for the selected release, with every addon of the release preselected. It downloads the selected addons, launchers and dependency packages and creates a new bundle from them. If the server is not connected to Ynput Cloud, a **Connect to Ynput Cloud** prompt appears instead.
 
 ## Connecting to Ynput Cloud
 
@@ -163,9 +154,9 @@ The connection control at the bottom of the filter column shows **link an accoun
 | Manager and below | No menu entry. The catalog endpoints return a forbidden error. |
 
 ## Related
-- [Bundles and addons](bundles-and-addons.md)
-- [Navigating the web app](navigating-the-web-app.md)
-- [Keyboard shortcuts](keyboard-shortcuts.md)
-- [Licenses](licenses.md)
+- [Bundles](studio/bundles.md)
+- [Navigation bar](navigation-bar.md)
+- [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
+- [Licenses](../licenses.md)
 - [Services](services.md)
 - [Addons](../../addons/index.md)

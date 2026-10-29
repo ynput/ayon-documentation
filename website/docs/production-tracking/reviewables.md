@@ -16,9 +16,9 @@ Reviewables were introduced in AYON server 1.3.0.
 
 | Location | Description |
 |---|---|
-| **Files** tab of the [details panel](details-panel.md) of a version | Lists, uploads, sorts, renames, downloads and deletes the reviewables of the version. |
+| **Files** tab of the [details panel](../ayon/web-ui/details-panel.md) of a version | Lists, uploads, sorts, renames, downloads and deletes the reviewables of the version. |
 | Viewer | Plays a reviewable. |
-| [Review sessions](../addons/production-tracking/review/index.md), [lists](lists.md), [products and versions](products-and-versions.md), [task progress](task-progress.md), [tasks home](tasks-home.md) | Open the viewer from a selection or from a thumbnail. |
+| [Review sessions](../addons/production-tracking/review/index.md), [lists](../ayon/web-ui/production-tracking/lists.md), [products and versions](../ayon/web-ui/production-tracking/products.md), [task progress](../ayon/web-ui/production-tracking/task-progress.md), [tasks home](../ayon/web-ui/home/tasks.md) | Open the viewer from a selection or from a thumbnail. |
 
 ## Files tab
 
@@ -92,7 +92,7 @@ The viewer plays reviewables with a timeline, the activity feed and the details 
 | Scrubbable timeline | Drag |
 | Previous or next reviewable of the version | `w` and `s` |
 
-See [Keyboard shortcuts](../ayon/web-ui/keyboard-shortcuts.md) for the complete list. The brush and eraser tools of annotations (`b`, `e`) are part of the Power Features addon.
+See [Keyboard shortcuts](../ayon/web-ui/quick-navigation.md#keyboard-shortcuts) for the complete list. The brush and eraser tools of annotations (`b`, `e`) are part of the Power Features addon.
 
 ## Comparing versions
 
@@ -108,12 +108,13 @@ A version selector in the viewer switches between the versions of the product. T
 
 ## Permissions
 
-Uploading reviewables is controlled by the **Upload reviewables** activity permission of an access group, together with the right to create the version. Sorting reviewables requires the right to update the version. See [Users and permissions](../ayon/web-ui/users-and-permissions.md).
+Uploading reviewables is controlled by the **Upload reviewables** activity permission of an access group, together with the right to create the version. Sorting reviewables requires the right to update the version. See [Users](../ayon/web-ui/studio/users.md).
 
 ## Related
 
+- [Upload version](../ayon/web-ui/dialogs/upload-version.md)
 - [Versions without a pipeline](versions-without-a-pipeline.md)
 - [Review sessions](../addons/production-tracking/review/index.md)
-- [Activity feed and comments](activity-feed-and-comments.md)
+- [Activity feed](../ayon/web-ui/details-panel.md#activity-feed)
 - [Review addon](../addons/production-tracking/review/index.md)
 - [Power features](power-features.md)

@@ -15,22 +15,22 @@ This section explains what happens inside AYON when people use it: which parts t
 
 | Page | What it explains |
 |---|---|
-| [Creating a project](creating-a-project.md) | What a new project receives from the anatomy preset, the access groups and the project attributes, and what to adjust afterwards. |
-| [Permissions](permissions.md) | The two layers of the permission system: the user level first, then the access groups of each project. |
-| [Pipeline storage](pipeline-storage.md) | How the roots, the templates of the project anatomy and the template profiles of the Core settings decide where work files and publishes are stored. |
 | [Bundles](bundles.md) | What a bundle sets on the server and on workstations, the production, staging and dev variants, and the usual way an addon reaches production. |
+| [Creating a project](creating-a-project.md) | What a new project receives from the anatomy preset, the access groups and the project attributes, and what to adjust afterwards. |
+| [Pipeline storage](pipeline-storage.md) | How the roots, the templates of the project anatomy and the template profiles of the Core settings decide where work files and publishes are stored. |
+| [Permissions](permissions.md) | The two layers of the permission system: the user level first, then the access groups of each project. |
 
 ## Daily use
 
 | Page | What it explains |
 |---|---|
-| [Quick navigation](navigation.md) | The main areas of the web app and the quickest ways to reach a project, task or version. |
 | [Artist workflow](artist-workflow.md) | From opening the AYON launcher to publishing a new version and receiving feedback. |
 | [Production workflow](production-workflow.md) | Setting up a project, planning and assigning work, tracking progress, reviewing and delivering. |
 
 ## Related
 
 - [Introduction to AYON](../introduction.md)
-- [AYON setups](../setups.md)
+- [Setup options](../setups.md)
 - [Data model](../backend/data-model/index.md) and [settings scopes](../backend/settings/index.md)
+- [Quick navigation and server layout](../web-ui/quick-navigation.md)
 - [Glossary](../glossary/index.md)

@@ -227,4 +227,4 @@ The core setting **Product type filtering** does not apply to the Browser interf
 - [Scene Inventory](scene-inventory.md): manages the loaded versions.
 - [Launcher](launcher.md): the tray menu.
 - [Product types](product-types.md).
-- [Products and versions page](../production-tracking/products-and-versions.md) of the web app, which uses the same kind of table, and the [Browser page](../production-tracking/browser.md) of the web app.
+- [Products and versions](../ayon/web-ui/production-tracking/products.md) of the web app, which uses the same kind of table, and the [Browser page](../ayon/web-ui/production-tracking/browser.md) of the web app.

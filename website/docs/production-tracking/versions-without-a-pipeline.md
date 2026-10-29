@@ -1,49 +1,40 @@
 ---
 title: Versions without a pipeline
-description: "Versions can be created in the web app by uploading reviewable files, without pipeline tools or DCC integrations: the entry points, the Create new version dialog, storage and file considerations."
-verified: 2026-10-15
+description: "Versions can be created in the web app by uploading reviewable files, without pipeline tools or DCC integrations: what an upload creates, where the files are stored, which files work, and how such versions are removed."
+verified: 2026-10-25
 sources:
   - https://help.ayon.app/en/articles/3889290-create-versions-without-a-pipeline
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/VersionUploader/context/version-upload/VersionUploadContext.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/EntityPanelUploader/EntityPanelUploader.tsx
+  - https://github.com/ynput/ayon-backend/blob/develop/api/review/upload.py
 ---
 
 # Versions without a pipeline
 
-The web app can create versions directly from uploaded media files, so the production tracking features work without the AYON pipeline tools or DCC integrations. This function is limited to uploading reviewables: the files are attached to a new version as [reviewables](reviewables.md) and are played in the viewer. It does not publish work files or representations.
+The web app can create versions directly from uploaded media files, so the production tracking features work without the AYON pipeline tools or DCC integrations. A producer or a vendor coordinator can put a delivered movie or a still on a shot or task, review it in the viewer, comment on it and set its status, just like a published version.
 
-## Where it appears
+This function is limited to reviewables: the files are attached to a new version as [reviewables](reviewables.md) and are played in the viewer. It does not publish work files or representations, and pipeline tools cannot load the files.
 
-| Entry point | Entities | Description |
-|---|---|---|
-| Drop files on the [details panel](details-panel.md) | Folder, task, product, version | Dropping files shows two drop zones, **Upload thumbnail** and **Upload version**. Dropping on **Upload version** creates a version from the files. When the entity is a folder or a task, the dialog **Upload Entity** asks for the **Product Name** first. |
-| **Upload Version** in the context menu of the [project overview](project-overview.md) | Folder, task | Creates the product when it does not exist yet and adds the new version below it. |
-| **Upload version** in the context menu of [products and versions](products-and-versions.md) | Product, version | Adds a version to an existing product. One entity must be selected. |
-| **Upload version** in the hierarchy context menu of the slicer | Folder, task | Same as on the overview. |
-| **Upload version** in the more menu of the details panel | Single entity, except representations | Opens the dialog for the entity shown in the panel. |
+## How it works
 
-The same drop zones upload and replace thumbnails of folders, tasks, products and versions. Thumbnails can also be uploaded from the thumbnail of the panel.
+An upload is started on a folder, task, product or version, from the details panel or from the right-click menus of the project pages. The **Create new version** dialog then asks for the product, the version number and an optional task, and takes the files. Its fields and the places it opens from are described in [Upload version](../ayon/web-ui/dialogs/upload-version.md).
 
-## Create new version dialog
-
-The dialog is titled **Create new version - Folder**, **- Task** or **- Product**, according to where it was opened. Its button reads **Create v&lt;number&gt;** with the version number in the form `v001`.
-
-| Field | Description |
+| Started on | What the upload adds |
 |---|---|
-| **Product Name** | Name of the product. Typing a name of an existing product of the folder adds the version to that product; the dialog then shows the latest version of the matched product. A list picks an existing product of the folder. Hidden when the dialog is opened from a product. |
-| **Product Type** | Product type of a new product, from the product types of the project. Hidden when the dialog is opened from a product or when the name matches an existing product. A note recommends starting the product name with the product type, with a button to apply the prefix. |
-| **Version** | Version number of the new version. |
-| **Task** | Optional link to a task. The task is chosen in a picker and can be cleared. Preset when the dialog is opened from a task. |
-| **Reviewable files** | The media files of the version, uploaded as reviewables. Files dropped on the dialog are listed and uploaded after the version is created. |
+| A folder | A version of a product of the folder. The product is created when its name matches no product of the folder. |
+| A task | The same, with the version linked to the task. |
+| A product or version | A new version of that product. |
 
-`Ctrl+Enter` or `Cmd+Enter` in the dialog creates the version. Errors from the AYON server are shown at the bottom of the dialog.
+The version number follows the latest version of the product, so uploads and published versions share one numbering. A version number in the file name, such as `_v003`, is taken over for a new product.
 
-When the dialog is opened from a product, the product type and name come from the selected product.
+Each uploaded file becomes one reviewable of the version, labelled with its file name. A version can hold several reviewables, for example several angles or a movie and a still. Reviewables with the same label in different versions are matched when versions are compared in the viewer.
 
 ## Deleting versions
 
 | Where | Entry | Description |
 |---|---|---|
-| [Products and versions](products-and-versions.md), context menu of a version | **Delete version (&lt;name&gt;)**, or **Delete &lt;n&gt; versions** for a selection | Deletes the versions after a confirmation. |
-| Products and versions, context menu of a product | Delete product | Removes a product, for example one left without versions. |
+| [Products and versions](../ayon/web-ui/production-tracking/products.md), right-click menu of a version | **Delete version (&lt;name&gt;)**, or **Delete &lt;n&gt; versions** for a selection | Deletes the versions after a confirmation. |
+| Products and versions, right-click menu of a product | **Delete product (&lt;name&gt;)**, or **Delete &lt;n&gt; products** | Removes a product, for example one left without versions. |
 
 ## Storage and files
 
@@ -51,16 +42,17 @@ When the dialog is opened from a product, the product type and name come from th
 |---|---|
 | Processing | Uploads need no local installation or addon. The files are processed and stored on the AYON server. |
 | Storage location | The files are kept in the storage of the AYON server for the project. They are not written to the local or network storage defined in the project anatomy, so pipeline tools in a DCC (Houdini, Maya and others) cannot load them. To keep versions in the pipeline storage, publish with Tray Publisher or Web Publisher. |
-| Product types | Any product type can be chosen, for example `render`. The upload is optimized for visual review. |
+| Product types | Any product type can be chosen, for example `render`. The default is `review`; the upload is optimized for visual review. |
 | File types | Video or image files. For smooth playback the files must be in a format the browser plays; see [Supported formats](reviewables.md#supported-formats). Files are not converted on upload. |
 
 ## Permissions
 
-Creating a version needs the right to create versions in the project; adding reviewables needs the **Upload reviewables** activity permission. See [Users and permissions](../ayon/web-ui/users-and-permissions.md).
+Creating a version needs the right to create products and versions in the project; adding reviewables needs the **Upload reviewables** activity permission. See [Upload version](../ayon/web-ui/dialogs/upload-version.md#permissions) and [Users](../ayon/web-ui/studio/users.md).
 
 ## Related
 
+- [Upload version](../ayon/web-ui/dialogs/upload-version.md)
 - [Reviewables](reviewables.md)
-- [Products and versions](products-and-versions.md)
-- [Project overview](project-overview.md)
-- [Details panel](details-panel.md)
+- [Web viewer](../ayon/web-ui/web-viewer.md)
+- [Products and versions](../ayon/web-ui/production-tracking/products.md)
+- [Details panel](../ayon/web-ui/details-panel.md)

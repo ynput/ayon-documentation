@@ -10,7 +10,7 @@ sources:
 
 # Permissions
 
-AYON decides what a request may do in two layers. The first layer is the access level of the account: admin, manager, user, service or guest. It decides what kind of account it is, and admins, managers and services stop there, with access to every project. The second layer applies to accounts with the **User** level only: access groups, assigned per project, define what the user can see and change inside that project. This page explains how the two layers are evaluated on every request. Each control of the **Users**, **Permissions**, **Project permissions** and **Project access** pages is described in [Users and permissions](../web-ui/users-and-permissions.md).
+AYON decides what a request may do in two layers. The first layer is the access level of the account: admin, manager, user, service or guest. It decides what kind of account it is, and admins, managers and services stop there, with access to every project. The second layer applies to accounts with the **User** level only: access groups, assigned per project, define what the user can see and change inside that project. This page explains how the two layers are evaluated on every request. Each control of the **Users**, **Permissions**, **Project permissions** and **Project access** pages is described in [Users](../web-ui/studio/users.md).
 
 Permissions cover AYON data and actions only. They do not change who can read or write files on the studio storage.
 
@@ -75,7 +75,7 @@ A project exists for a user only through these assignments. Adding a user to a p
 
 Each access group has a studio definition. A project can override a group on the **Project permissions** page. The override replaces the whole definition of that group in that project; it is not merged with the studio definition. Projects without an override keep following the studio definition, so a change at the studio level reaches them at once. **Clear project overrides** returns the project to the studio definition.
 
-Groups are created and deleted at the studio level only. A project override can be saved by managers and by users who have **Read & Write** on **Project access** in that project.
+Groups are created and deleted at the studio level only. In the web app, the **Project permissions** tab is open to managers and admins only. The server also accepts a project override from a user who has **Read & Write** on **Project access** in that project, for example through the API.
 
 ### How several groups combine
 
@@ -138,9 +138,9 @@ The folder restrictions take a list of **Assigned**, **Hierarchy** and **Childre
 
 ## Related
 
-- [Users and permissions](../web-ui/users-and-permissions.md)
+- [Users](../web-ui/studio/users.md)
 - [Creating a project](creating-a-project.md)
-- [Attributes](../web-ui/attributes.md)
+- [Attributes](../web-ui/studio/attributes.md)
 - [Data model](../backend/data-model/index.md)
 - [Settings scopes and storage](../backend/settings/index.md)
 - [Bundles](bundles.md)

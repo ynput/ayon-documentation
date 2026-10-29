@@ -65,7 +65,7 @@ The tray command also accepts `--force`, which closes an already running tray an
 
 ## Distribution and updates
 
-The AYON server distributes the launcher installers, addons, dependency packages and third-party binaries. What a machine receives is defined by the bundle of its mode. Launcher installer packages are named `AYON-<version>-win-setup.exe`, `AYON-<version>-linux.tar.gz` and `AYON-<version>-Installer.dmg`. Administrators upload them on the **Bundles & Addons** page of the web app (see [bundles and addons](../ayon/web-ui/bundles-and-addons.md)).
+The AYON server distributes the launcher installers, addons, dependency packages and third-party binaries. What a machine receives is defined by the bundle of its mode. Launcher installer packages are named `AYON-<version>-win-setup.exe`, `AYON-<version>-linux.tar.gz` and `AYON-<version>-Installer.dmg`. Administrators upload them on the **Bundles & Addons** page of the web app (see [bundles and addons](../ayon/web-ui/studio/bundles.md)).
 
 On start, the launcher compares its own version with the launcher version of the bundle. When they differ, it starts the matching installed version, and downloads and installs it first if it is missing.
 
@@ -228,7 +228,7 @@ A server action can answer with one of the following. The launcher handles them 
 | Core addon setting group **Tools** > **Workfiles**: **Open last workfile on launch**, **Open workfile tool on launch** | Profiles by host, task type and task name. See [Core addon settings](../addons/essentials/core/settings.md). |
 | Core addon setting **Update check interval (minutes)** | Interval of the tray update check. |
 | Core addon setting **Use task type sorting** | Task order in the tasks list. |
-| Bundles | Define the addon versions, launcher version and which actions exist. See [bundles and addons](../ayon/web-ui/bundles-and-addons.md). |
+| Bundles | Define the addon versions, launcher version and which actions exist. See [bundles and addons](../ayon/web-ui/studio/bundles.md). |
 
 ## Related
 

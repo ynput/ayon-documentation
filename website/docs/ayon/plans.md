@@ -1,5 +1,6 @@
 ---
 title: AYON plans
+sidebar_label: Plans
 description: "The AYON editions and plans, Community, Pro, Studio and Enterprise: what each includes, which features and addons are included or paid, usage limits and the cloud server specifications."
 verified: 2026-10-16
 sources:
@@ -22,7 +23,7 @@ AYON comes in a free Community edition and in the commercial plans AYON Pro and 
 | **Enterprise** | Role-based licensing for large studios: full access for developers, managers and producers, and artist-only access for the wider team. Arranged individually. |
 | **Schools** | Educational institutions can get AYON Studio free of charge with an on-premise installation, or hosted by Ynput for a fee. |
 
-Plans use **fixed seats**: a studio buys a number of seats and assigns, reassigns or swaps them between people. Seats limit how many people can log in as active users. Pro and Studio start at 5 active users. Pro supports up to 200 active users and Studio an unlimited number. How the seats appear in the AYON server is described on the [licenses page](web-ui/licenses.md).
+Plans use **fixed seats**: a studio buys a number of seats and assigns, reassigns or swaps them between people. Seats limit how many people can log in as active users. Pro and Studio start at 5 active users. Pro supports up to 200 active users and Studio an unlimited number. How the seats appear in the AYON server is described on the [licenses page](licenses.md).
 
 An addon is either included in a plan, available as a **paid addon** on top of AYON Pro, or not part of the plan. Paid addons apply to all active users of the server. AYON Studio includes every addon.
 
@@ -69,7 +70,7 @@ The search box and the plan filters below narrow the feature tables. Each filter
 | Guest review sessions | No | Paid addon | Included |
 | Time tracking (planned) | No | Paid addon | Included |
 
-The web app pages and features are described in the [Production tracking](../production-tracking/tasks-home.md) section. The addons behind them are [Planner](../addons/production-tracking/planner/index.md), [Reports](../addons/production-tracking/reports/index.md), [Node Graph](../addons/production-tracking/node-graph/index.md) and [Review](../addons/production-tracking/review/index.md).
+The web app pages and features are described in the [Production tracking](web-ui/home/tasks.md) section. The addons behind them are [Planner](../addons/production-tracking/planner/index.md), [Reports](../addons/production-tracking/reports/index.md), [Node Graph](../addons/production-tracking/node-graph/index.md) and [Review](../addons/production-tracking/review/index.md).
 
 ## Pipeline features
 
@@ -123,7 +124,7 @@ The web app pages and features are described in the [Production tracking](../pro
 
 ## Cloud server
 
-These specifications apply when Ynput hosts the server. See [cloud hosting](hosting/cloud-hosting.md).
+These specifications apply when Ynput hosts the server. See [cloud deployment](deployment/cloud.md).
 
 | | Pro | Studio |
 |---|---|---|
@@ -144,7 +145,7 @@ In the Community edition the server hosting, storage, monitoring and backups are
 
 ## Related
 
-- [Licenses page](web-ui/licenses.md): how seats and user license pools appear in the web UI.
+- [Licenses page](licenses.md): how seats and user license pools appear in the web UI.
 - [Addons catalogue](../addons/index.md): license of every addon.
-- [Cloud hosting](hosting/cloud-hosting.md) and [self hosting](hosting/self-hosting.md).
+- [Cloud deployment](deployment/cloud.md) and [on-premise deployment](deployment/on-premise.md).
 - [Ynput Cloud](../ynput-cloud/index.md): where subscriptions are managed.

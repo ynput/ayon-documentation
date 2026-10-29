@@ -40,6 +40,6 @@ The section describes concepts, rules and tools. It does not contain step-by-ste
 |---|---|
 | The pipeline addons (core, applications and the integrations with 3D, 2D and compositing applications) | [Addons](../addons/index.md) |
 | The settings that drive the pipeline | [Core addon settings](../addons/essentials/core/settings.md) |
-| Server administration: bundles, addons, dependency packages | [Web UI](../ayon/web-ui/bundles-and-addons.md) in the AYON section |
+| Server administration: bundles, addons, dependency packages | [Web UI](../ayon/web-ui/studio/bundles.md) in the AYON section |
 | Tracking the production in the web app | [Production tracking](../production-tracking/index.md) |
 | Writing pipeline plugins and addons | [Developer](../developer/index.md) |

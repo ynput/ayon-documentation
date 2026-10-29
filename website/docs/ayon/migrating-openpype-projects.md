@@ -49,7 +49,7 @@ Thumbnails are imported when the folder in which OpenPype stores the project's t
 | Requirement | Detail |
 |---|---|
 | A single project root | Projects with several roots cannot be packed. |
-| The addon on the server | The addon package is uploaded on the [Bundles page](web-ui/bundles-and-addons.md), the server is restarted, and the addon version is added to a bundle (the Production bundle for normal use). |
+| The addon on the server | The addon package is uploaded on the [Bundles page](web-ui/studio/bundles.md), the server is restarted, and the addon version is added to a bundle (the Production bundle for normal use). |
 | The import service | A running OpenPype import service, created on the Services page. |
 | An AYON server version supported by the addon | AYON server 1.0.2 or older. |
 | A packed project | The ZIP file from `pack-project`. |
@@ -71,6 +71,6 @@ The IDs of the converted entities come from a deterministic, name-based mapping 
 
 ## Related
 
-- [Bundles and addons](web-ui/bundles-and-addons.md)
+- [Bundles](web-ui/studio/bundles.md)
 - [Services](web-ui/services.md)
-- [AYON setups](setups.md)
+- [Setup options](setups.md)

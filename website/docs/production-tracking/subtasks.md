@@ -16,8 +16,8 @@ Subtasks are provided by the Planner addon. Without it, opening a subtasks view 
 
 | Location | Description |
 |---|---|
-| Details panel | A **Subtasks** tab (checklist icon) for tasks, next to the activity feed and **Details**. See [Details panel](details-panel.md). |
-| Subtasks column | A **Subtasks** column in task tables of the [project overview](project-overview.md) and [lists](lists.md). Cells show a chip per subtask with a done checkbox. Opening a cell opens the same manager as the tab. Cells of tasks that have subtasks disabled show the notice **Subtasks are disabled for this task**. |
+| Details panel | A **Subtasks** tab (checklist icon) for tasks, next to the activity feed and **Details**. See [Details panel](../ayon/web-ui/details-panel.md). |
+| Subtasks column | A **Subtasks** column in task tables of the [project overview](../ayon/web-ui/production-tracking/overview.md) and [lists](../ayon/web-ui/production-tracking/lists.md). Cells show a chip per subtask with a done checkbox. Opening a cell opens the same manager as the tab. Cells of tasks that have subtasks disabled show the notice **Subtasks are disabled for this task**. |
 | Planner schedule | Subtasks can be scheduled in the Planner schedule. |
 
 ## Fields
@@ -65,7 +65,7 @@ Subtasks are copied as tab-separated text, one subtask per line, so they can be 
 
 ## Related
 
-- [Details panel](details-panel.md)
-- [Project overview](project-overview.md)
+- [Details panel](../ayon/web-ui/details-panel.md)
+- [Project overview](../ayon/web-ui/production-tracking/overview.md)
 - [Planner](../addons/production-tracking/planner/index.md)
-- [Lists](lists.md)
+- [Lists](../ayon/web-ui/production-tracking/lists.md)

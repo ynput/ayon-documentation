@@ -11,7 +11,7 @@ sources:
 
 **Power features** are advanced production tracking functions that need a Power license. In the web app a feature that needs the license is marked with a lightning symbol; selecting the symbol shows a description of the feature. Features the user has no access to may not appear at all.
 
-Most Power features are delivered by the Power Features addon (addon name `powerpack`), which also manages the licensing of the other licensed addons. Addon version, requirements and settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md). License management is described in [Licenses](../ayon/web-ui/licenses.md).
+Most Power features are delivered by the Power Features addon (addon name `powerpack`), which also manages the licensing of the other licensed addons. Addon version, requirements and settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md). License management is described in [Licenses](../ayon/licenses.md).
 
 ## Feature list
 
@@ -21,21 +21,21 @@ Most Power features are delivered by the Power Features addon (addon name `power
 | [Annotations](#annotations) | Drawing tools on frames of videos and images. | Power Features addon | Production |
 | Release history | Access to and download of all pipeline releases, not only the latest. | Built in | Production |
 | Single sign-on | OAuth 2.0, Google, Discord, Okta, Entra, SAML. | SSO addon | Production |
-| List attributes | Attributes for the items of [lists](lists.md). | Power Features addon | Production |
-| List access | Access levels per [list](lists.md). | Power Features addon | Production |
+| List attributes | Attributes for the items of [lists](../ayon/web-ui/production-tracking/lists.md). | Power Features addon | Production |
+| List access | Access levels per [list](../ayon/web-ui/production-tracking/lists.md). | Power Features addon | Production |
 | List folders | Folders that organize lists. | Power Features addon | Production |
-| Comment categories | Categories for comments with colors and visibility rules. See [Activity feed and comments](activity-feed-and-comments.md). | Power Features addon | Production |
-| Entity templates | Create and apply templates of folders and tasks. See [Entity templates](../ayon/web-ui/entity-templates.md). | Power Features addon | Production |
+| Comment categories | Categories for comments with colors and visibility rules. See [Activity feed](../ayon/web-ui/details-panel.md#activity-feed). | Power Features addon | Production |
+| Entity templates | Create and apply templates of folders and tasks. See [hierarchy templates](../addons/production-tracking/power-pack/index.md#hierarchy-templates). | Power Features addon | Production |
 | Calculated attributes | Attributes computed by formulas. See [Calculated attributes](calculated-attributes.md). | Power Features addon | Production |
-| Advanced filters | Complex filters with exclusion, several operators and AND or OR groups. | Power Features addon | Production on the [project overview](project-overview.md) |
-| Group attributes | Group tasks by attributes such as status, assignees and tags, with ascending or descending group order. | Power Features addon | Production on the [project overview](project-overview.md) and [products and versions](products-and-versions.md) |
-| [Views](views.md) | Saved, shared and project default page layouts. | Power Features addon | Production |
+| Advanced filters | Complex filters with exclusion, several operators and AND or OR groups. | Power Features addon | Production on the [project overview](../ayon/web-ui/production-tracking/overview.md) |
+| Group attributes | Group tasks by attributes such as status, assignees and tags, with ascending or descending group order. | Power Features addon | Production on the [project overview](../ayon/web-ui/production-tracking/overview.md) and [products and versions](../ayon/web-ui/production-tracking/products.md) |
+| [Views](../ayon/web-ui/views.md) | Saved, shared and project default page layouts. | Power Features addon | Production |
 | Column summaries | Summary footer of tables with a calculation per column. | Power Features addon | Available |
 | Project folders | Folders that organize the projects list. | Power Features addon | Available |
 | Reviewables transcoder | Transcodes uploaded reviewable videos to formats the browser plays. See [Reviewables](reviewables.md). | Service | Under development |
 | Smart lists | Lists filled dynamically from filters. | Power Features addon | Under development |
 | Email notifications | Email for task and project updates. | Service | Under development |
-| Team assignments and mentions | Assign teams to tasks and mention teams in comments. See [Teams](teams.md). | Power Features addon | Under development |
+| Team assignments and mentions | Assign teams to tasks and mention teams in comments. See [Teams](../ayon/web-ui/project/teams.md). | Power Features addon | Under development |
 | Related work panel | Shows tasks related to the selected task, for example the previous and next shots. | Power Features addon | Planning |
 
 Statuses other than Production describe features that are not generally available.
@@ -52,7 +52,7 @@ The slicer filters the content of a page without changing the filters already ap
 | Task type | Task types. |
 | Custom attributes | Attributes of the entities on the page. |
 
-The slice type is stored in [views](views.md).
+The slice type is stored in [views](../ayon/web-ui/views.md).
 
 ## Annotations
 
@@ -65,7 +65,7 @@ Annotations draw on a frame of a video or an image in the viewer (see [Reviewabl
 | Colors | Preset colors, a custom color and an eyedropper. |
 | Undo and redo | Step through the drawing history. |
 
-Annotation tools can be fully operated from the keyboard. See [Keyboard shortcuts](../ayon/web-ui/keyboard-shortcuts.md).
+Annotation tools can be fully operated from the keyboard. See [Keyboard shortcuts](../ayon/web-ui/quick-navigation.md#keyboard-shortcuts).
 
 ## Status synchronization
 
@@ -102,8 +102,8 @@ ayon+settings://aftereffects/imageio
 ## Related
 
 - [Power Features addon](../addons/production-tracking/power-pack/index.md)
-- [Licenses](../ayon/web-ui/licenses.md)
-- [Views](views.md)
+- [Licenses](../ayon/licenses.md)
+- [Views](../ayon/web-ui/views.md)
 - [Calculated attributes](calculated-attributes.md)
-- [Lists](lists.md)
+- [Lists](../ayon/web-ui/production-tracking/lists.md)
 - [Market](../ayon/web-ui/market.md)

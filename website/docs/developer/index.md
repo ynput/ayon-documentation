@@ -40,11 +40,11 @@ Ynput publishes the images for deploying AYON in its Docker Hub registry, [hub.d
 
 | Images | Page here | Docker Hub |
 |---|---|---|
-| AYON server | [Self hosting](../ayon/hosting/self-hosting.md) | [ynput/ayon](https://hub.docker.com/r/ynput/ayon) |
-| AYON Service Host | [AYON Service Host](../ayon/hosting/ash.md) | [ynput/ayon-ash](https://hub.docker.com/r/ynput/ayon-ash) |
+| AYON server | [On-premise deployment](../ayon/deployment/on-premise.md) | [ynput/ayon](https://hub.docker.com/r/ynput/ayon) |
+| AYON Service Host | [AYON Service Host](../ayon/deployment/ash.md) | [ynput/ayon-ash](https://hub.docker.com/r/ynput/ayon-ash) |
 | Addon services | The page of each addon | [hub.docker.com/u/ynput](https://hub.docker.com/u/ynput) |
 
-The services of the addons are images named after the addon and the service, for example `ynput/ayon-ftrack-processor` or `ynput/ayon-kitsu-processor`. In a deployment they are pulled and started by the [AYON Service Host](../ayon/hosting/ash.md).
+The services of the addons are images named after the addon and the service, for example `ynput/ayon-ftrack-processor` or `ynput/ayon-kitsu-processor`. In a deployment they are pulled and started by the [AYON Service Host](../ayon/deployment/ash.md).
 
 ## Addons
 

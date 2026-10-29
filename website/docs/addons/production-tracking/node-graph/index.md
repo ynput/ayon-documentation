@@ -79,7 +79,7 @@ The panel can be collapsed. The top bar also offers a link type selector and a *
 
 ## Creating and deleting links
 
-Links are stored in the AYON server through the project links endpoints, so they are the same links that the [links manager](../../../production-tracking/links-manager.md) shows.
+Links are stored in the AYON server through the project links endpoints, so they are the same links that the [links manager](../../../ayon/web-ui/links-manager.md) shows.
 
 | Action | Behavior |
 |---|---|
@@ -110,4 +110,4 @@ The canvas pans with the scroll wheel or with the middle and right mouse buttons
 
 ## Related
 
-- [Links manager](../../../production-tracking/links-manager.md)
+- [Links manager](../../../ayon/web-ui/links-manager.md)

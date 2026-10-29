@@ -5,6 +5,9 @@
  * 9.x diagram types, such as `mindmap`, are lazy-loaded and only work with
  * `renderAsync`; the stock component crashes the page for them. This one
  * renders asynchronously and shows the error inline instead of crashing.
+ *
+ * Diagrams can show Material Symbols, the icons of the AYON web app, with
+ * `<span class='material-symbols-outlined'>folder</span>` in a node label.
  */
 import React, { useEffect, useState } from "react";
 import BrowserOnly from "@docusaurus/BrowserOnly";
@@ -24,8 +27,16 @@ function MermaidDiagram({ value }) {
         let cancelled = false;
         const id = `mermaid-svg-${Math.round(Math.random() * 10000000)}`;
         mermaid.mermaidAPI.initialize(config);
-        mermaid.mermaidAPI
-            .renderAsync(id, value)
+        // Mermaid measures labels when it draws, so an icon font that is still
+        // loading is measured as its ligature name ("folder"); wait for it first.
+        const fontReady = value.includes("material-symbols")
+            ? Promise.race([
+                  document.fonts.load('28px "Material Symbols Outlined"', "folder"),
+                  new Promise((resolve) => setTimeout(resolve, 3000)),
+              ])
+            : Promise.resolve();
+        fontReady
+            .then(() => mermaid.mermaidAPI.renderAsync(id, value))
             .then((result) => {
                 if (cancelled) return;
                 setError(null);

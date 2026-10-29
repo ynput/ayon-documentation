@@ -9,7 +9,7 @@ sources:
 
 # Ynput Cloud
 
-[Ynput Cloud](https://ynput.cloud/) is the platform where studios manage their AYON subscriptions and launch AYON servers hosted by Ynput. It is separate from the AYON server itself: Ynput Cloud handles accounts, organizations, subscriptions, seats, addons and billing, and the AYON server is where the production work happens. A server hosted by Ynput is described on the [cloud hosting](../ayon/hosting/cloud-hosting.md) page, and the available plans on the [plans](../ayon/plans.md) page.
+[Ynput Cloud](https://ynput.cloud/) is the platform where studios manage their AYON subscriptions and launch AYON servers hosted by Ynput. It is separate from the AYON server itself: Ynput Cloud handles accounts, organizations, subscriptions, seats, addons and billing, and the AYON server is where the production work happens. A server hosted by Ynput is described on the [cloud deployment](../ayon/deployment/cloud.md) page, and the available plans on the [plans](../ayon/plans.md) page.
 
 ## Structure
 
@@ -36,10 +36,10 @@ Members of an organization can invite teammates, change subscriptions and overse
 
 - A server hosted by Ynput is created and billed here. A self-hosted server can also be connected to a subscription to unlock the plan's features.
 - The [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md) on the AYON server adds the Ynput Cloud login (users sign in to the AYON server with their Ynput Cloud account, and the matching AYON user is created or updated) and the remote support access for the Ynput support team.
-- Seats and user licenses appear on the [licenses page](../ayon/web-ui/licenses.md).
+- Seats and user licenses appear on the [licenses page](../ayon/licenses.md).
 
 ## Related
 
-- [Cloud hosting](../ayon/hosting/cloud-hosting.md)
+- [Cloud deployment](../ayon/deployment/cloud.md)
 - [AYON plans](../ayon/plans.md)
 - [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md)
