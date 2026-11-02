@@ -2,7 +2,7 @@
 title: Cloud deployment
 sidebar_label: Cloud
 description: "AYON Cloud hosting: an AYON server run by Ynput, what it includes, how it differs from self hosting, what can be configured when it is created and what Ynput manages."
-verified: 2026-10-16
+verified: 2026-11-02
 sources:
   - https://help.ayon.app/en/help/articles/6619325-getting-started-with-ayon-cloud-hosted
   - https://ayon.app/pricing-eur
@@ -19,12 +19,16 @@ Cloud hosting means Ynput runs the AYON server. The studio gets its own isolated
 | Server | A secure AYON server on its own domain, `<name>.ayon.app`, with HTTPS. Servers are isolated from each other. |
 | Infrastructure | Elastic with the Pro plan and premium with the Studio plan. The infrastructure scales with load, for example many artists uploading review files at the same time. |
 | Updates | Applied by Ynput on a schedule that is announced to the studio beforehand. An update that conflicts with an older custom studio tool can be rolled back with Ynput's help. The rollout window is 3 months on Pro and 6 months on Studio. |
+| Audit history | The detailed event stream in the [Event Viewer](../web-ui/event-viewer.md) is kept for 21 days on Pro and 60 days on Studio. |
 | Backups | Automatic. Database restore points are kept: 3 per 72 hours and 1 per week on Pro, 4 per 16 hours and the Pro set on Studio. |
 | AYON Service Host | One preconfigured [AYON Service Host](ash.md) runs the services of addons. |
 | Email | Sent through Ynput servers, so no SMTP configuration is needed. |
 | Monitoring | Server monitoring by Ynput. |
 | Storage | Server storage for launcher installers, addons, dependency packages, thumbnails and review videos uploaded in the browser: 100 GB (Pro) or 200 GB (Studio). Media storage: 500 GB (Pro) or 1 TB (Studio). More media storage is available in blocks of 500 GB. |
+| Data transfer | Fair use of 1 TB (Pro) or 2 TB (Studio). |
 | Data residency | EU for Pro. EU and US for Studio, and other regions on request. |
+| Dev server | An additional server with up to 5 users and 50 GB of storage, for testing and development next to production. Included with Studio, optional with Pro. |
+| Production freeze | Pauses the server between projects at a lower monthly cost. Optional with both plans. |
 | Support | Annual subscriptions include onboarding hours in the first month. |
 
 The plan details are on the [plans](../plans.md) page.

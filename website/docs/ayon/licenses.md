@@ -20,11 +20,11 @@ Some features and addons, for example Power Features, require a license. A licen
 
 ## User licenses
 
-A subscription includes a number of seats. The seats form a user pool, which limits how many users can sign in at the same time. An instance can have several pools.
+A subscription includes a number of seats. The seats form a user pool, which limits how many active users can sign in. An instance can have several pools.
 
 | Pool type | Description |
 |---|---|
-| Fixed | A set number of seats assigned to specific users. Seats can be reassigned at any time. Several fixed pools add up: two active pools of 20 and 10 seats allow 30 users. When a pool expires, it is removed, and the users assigned to it lose access. |
+| Fixed | A set number of seats assigned to specific users. A seat stays with its user while the user is active. Several fixed pools add up: two active pools of 20 and 10 seats allow 30 users. When a pool expires, it is removed, and the users assigned to it lose access. |
 | Metered | A pool shown as "Up to N seats" in the license list. |
 
 A user can sign in when the user is **active** and, on a server that uses pools, is assigned to a pool. A user without a pool is assigned automatically to a fixed pool with free seats. When no seat is free, the user cannot sign in. Deactivating a user releases the user's license.

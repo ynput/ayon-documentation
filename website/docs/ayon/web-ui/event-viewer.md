@@ -8,7 +8,7 @@ sources:
 
 # Event Viewer
 
-The Event Viewer is a live stream of what happens on the AYON server: entity changes, server lifecycle events, background jobs, user actions and, optionally, the server log. Managers and admins use it to see who changed what and to diagnose failing jobs and services.
+The Event Viewer is a live stream of what happens on the AYON server: entity changes, server lifecycle events, background jobs, user actions and, optionally, the server log. Managers and admins use it to see who changed what and to diagnose failing jobs and services. It is where the detailed audit history of the server is browsed. On servers hosted by Ynput, how long the history is kept depends on the [plan](../plans.md).
 
 ## Where it appears
 
