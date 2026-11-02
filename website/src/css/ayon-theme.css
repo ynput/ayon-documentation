@@ -55,11 +55,16 @@
     --md-sys-color-surface-container-high-hover: hsl(214, 12%, 26%);
     --md-sys-color-surface-container-hover: hsl(212, 11%, 23%);
 
-    /* Brand swatch (ayon-colors.jpg): used for status accents */
-    --ayon-brand-mint: #00dcb4;
-    --ayon-brand-blue: #009be1;
-    --ayon-brand-yellow: #ffb400;
-    --ayon-brand-red: #ff6446;
+    /* Brand swatch (ayon-colors.jpg): used for status accents and card icons */
+    --ayon-brand-mint: #00dcb4; /* Ynput Mint */
+    --ayon-brand-blue: #009be1; /* Code Blue */
+    --ayon-brand-black: #000000; /* Terminal Black */
+    --ayon-brand-yellow: #ffb400; /* Construct Yellow */
+    --ayon-brand-red: #ff6446; /* Error Red */
+    --ayon-brand-grey-20: #c3c8cd; /* UI Grey 20 */
+    --ayon-brand-grey-40: #737d8c; /* UI Grey 40 */
+    --ayon-brand-grey-60: #555f73; /* UI Grey 60 */
+    --ayon-brand-grey-80: #2c313a; /* UI Grey 80 */
 
     /* Sampled from the web app: selected row / list item tint */
     --ayon-selected: #1b4154;

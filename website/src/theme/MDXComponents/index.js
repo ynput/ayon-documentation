@@ -1,6 +1,7 @@
 import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import AddonInfo from "@site/src/components/AddonInfo";
+import { Card, Cards } from "@site/src/components/Cards";
 import Embed from "@site/src/components/Embed";
 import FlowTrace from "@site/src/components/FlowTrace";
 import TableFilter from "@site/src/components/TableFilter";
@@ -22,6 +23,8 @@ export default {
     ...MDXComponents,
     a: Anchor,
     AddonInfo,
+    Card,
+    Cards,
     Embed,
     FlowTrace,
     TableFilter,

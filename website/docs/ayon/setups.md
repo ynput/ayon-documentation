@@ -81,7 +81,7 @@ Any combination of answers is possible, from a small team on one shared disk to 
 
 Storage is described to AYON as **roots**: the folders where project files live, set for each operating system the studio uses. Several roots can exist, for example to keep one kind of data on another disk. When files must exist in more than one storage location, such as a secondary studio in another country and the main studio, or a cloud drive and the studio storage, the **Site Sync** addon keeps published files in step between them. AYON calls each storage location a *site*.
 
-Read more: [project anatomy and roots](https://help.ayon.app/en/help/articles/3815114-project-anatomy) and [Site Sync](https://help.ayon.app/en/help/articles/3882937-site-sync). A few points to weigh when planning are listed in the [Introduction](introduction.md#setups-and-hosting).
+Read more: [project anatomy and roots](https://help.ayon.app/en/help/articles/3815114-project-anatomy) and [Site Sync](https://help.ayon.app/en/help/articles/3882937-site-sync). A few points to weigh when planning are listed in the [Introduction](introduction.md#studio-setups).
 
 ## Artist workstation setup
 
