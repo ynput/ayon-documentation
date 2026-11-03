@@ -1,0 +1,6 @@
+/* The heading takes the look of a plain admonition title. */
+.headingTitle > * {
+    display: inline;
+    margin: 0;
+    font: inherit;
+}
