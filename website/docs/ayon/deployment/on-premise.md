@@ -16,9 +16,9 @@ sources:
 
 # On-premise deployment
 
-An on-premise deployment, also called self hosting, runs the AYON server on infrastructure the studio manages: its own hardware or a virtual machine, in the studio or at a cloud provider. The supported way is the [ayon-docker](https://github.com/ynput/ayon-docker) repository: a Docker Compose file that starts the server together with its database and cache. The studio updates, backs up and monitors the server. Addons that run services also need an [AYON Service Host](ash.md).
+An on-premise deployment, also called self hosting, runs the AYON server on infrastructure the studio manages: its own hardware or a virtual machine, in the studio or at a cloud provider. The supported way is the [ayon-docker](https://github.com/ynput/ayon-docker) repository: a Docker Compose file that starts the server together with its database and cache. It can be run as it is or used as a reference for a customised setup. The studio updates, backs up and monitors the server. Addons that run services also need an [AYON Service Host](ash.md).
 
-The alternative is AYON Cloud, where Ynput runs the server. It updates automatically and includes one preconfigured AYON Service Host. See [Ynput Cloud hosting](cloud.md). Both run the same AYON, and the [setup options](../setups.md) page compares them next to the other setup choices.
+The alternative is AYON Cloud, where Ynput runs the server. It updates automatically and includes one preconfigured AYON Service Host. See [Ynput Cloud hosting](cloud.md). Both run the same AYON.
 
 ## What a self-hosted server consists of
 
@@ -198,6 +198,6 @@ The `dbshell` target opens a Postgres shell. A graphical client such as pgAdmin 
 ## Related
 
 - [AYON Service Host](ash.md)
-- [Setup options](../setups.md)
+- [Artist workstation setup](../workstation-setup.md)
 - [Ynput Cloud hosting](cloud.md)
 - [Bundles and addons](https://help.ayon.app/en/help/articles/4644998-bundles-and-addons) in the help center, for installing addons and dependency packages in the web app

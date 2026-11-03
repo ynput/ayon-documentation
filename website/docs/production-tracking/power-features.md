@@ -11,7 +11,7 @@ sources:
 
 **Power features** are advanced production tracking functions that need a Power license. In the web app a feature that needs the license is marked with a lightning symbol; selecting the symbol shows a description of the feature. Features the user has no access to may not appear at all.
 
-Most Power features are delivered by the Power Features addon (addon name `powerpack`), which also manages the licensing of the other licensed addons. Addon version, requirements and settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md). License management is described in [Licenses](../ayon/licenses.md).
+Most Power features are delivered by the Power Features addon (addon name `powerpack`), which also manages the licensing of the other licensed addons. Addon version, requirements and settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md).
 
 ## Feature list
 
@@ -102,7 +102,7 @@ ayon+settings://aftereffects/imageio
 ## Related
 
 - [Power Features addon](../addons/production-tracking/power-pack/index.md)
-- [Licenses](../ayon/licenses.md)
+- [Plans](../ayon/plans.md)
 - [Views](../ayon/web-ui/views.md)
 - [Calculated attributes](calculated-attributes.md)
 - [Lists](../ayon/web-ui/production-tracking/lists.md)

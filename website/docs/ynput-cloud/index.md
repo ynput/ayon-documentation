@@ -36,7 +36,7 @@ Members of an organization can invite teammates, change subscriptions and overse
 
 - A server hosted by Ynput is created and billed here. A self-hosted server can also be connected to a subscription to unlock the plan's features.
 - The [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md) on the AYON server adds the Ynput Cloud login (users sign in to the AYON server with their Ynput Cloud account, and the matching AYON user is created or updated) and the remote support access for the Ynput support team.
-- Seats and user licenses appear on the [licenses page](../ayon/licenses.md).
+- What each plan includes and how seats work is described on the [plans page](../ayon/plans.md).
 
 ## Related
 

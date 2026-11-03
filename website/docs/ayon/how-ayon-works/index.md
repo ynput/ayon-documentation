@@ -30,7 +30,7 @@ This section explains what happens inside AYON when people use it: which parts t
 ## Related
 
 - [Introduction to AYON](../introduction.md)
-- [Setup options](../setups.md)
+- [Artist workstation setup](../workstation-setup.md)
 - [Data model](../backend/data-model/index.md) and [settings scopes](../backend/settings/index.md)
 - [Quick navigation and server layout](../web-ui/quick-navigation.md)
 - [Glossary](../glossary/index.md)

@@ -97,7 +97,7 @@ AYON does not have to be adopted as a whole. Studios are free to use it the way 
 
 AYON has three main parts to set up, the AYON server, the AYON Service Host (ASH) and the AYON desktop app, and addons extend all of them.
 
-The table and the diagram below are a simplified view of how these parts fit together. A real setup can have more pieces, such as a render farm or more than one storage location, which are described on the [setup options](setups.md) and server deployment pages.
+The table and the diagram below are a simplified view of how these parts fit together. A real setup can have more pieces, such as a render farm or more than one storage location, which are described on the server deployment and [artist workstation setup](workstation-setup.md) pages.
 
 | Component | Where it runs | What it does |
 |---|---|---|
@@ -141,7 +141,7 @@ The AYON server is the center of every setup: artists, tools and services reach 
 | **Where people work** | In one studio location, fully remote from home workstations, or distributed across several locations. |
 | **Where the files are** | **One local storage**; **several local storages**, for example one per location; **hybrid**, a local storage synced to a cloud storage; or **fully in the cloud**. |
 
-More detail is in [setup options](setups.md) and the server deployment pages: [cloud](deployment/cloud.md) and [on-premise](deployment/on-premise.md).
+More detail is in the server deployment pages, [cloud](deployment/cloud.md) and [on-premise](deployment/on-premise.md), and in [artist workstation setup](workstation-setup.md).
 
 ## Open and extensible
 

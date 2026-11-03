@@ -45,7 +45,7 @@ The page lists all users of the AYON server in a table, with a detail panel for 
 | Totals | **Total users** (services excluded), **Active**, **Admins**, **Managers** and **Services**. When license pools exist, **Licenses** shows used and maximum seats of all pools; the tooltip splits it into base (fixed) and metered pools. |
 | **Send Invite** | Opens the invite dialog for the selected users. Disabled while no user is selected. |
 | **Import CSV** | Opens the import dialog to create users in bulk from a CSV file. |
-| **Licenses** | Opens the license dialog (see [Licenses](../../licenses.md)). |
+| **Licenses** | Opens the license dialog. |
 
 ### Table columns
 
@@ -134,5 +134,4 @@ An active user can log in and uses a license seat when license pools exist. Any 
 - [Permissions](permissions.md)
 - [Project access](../project/project-access.md)
 - [Attributes](attributes.md)
-- [Licenses](../../licenses.md)
 - [Permissions in How AYON works](../../how-ayon-works/permissions.md)

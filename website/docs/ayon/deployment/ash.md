@@ -144,5 +144,5 @@ The container is removed when it stops.
 ## Related
 
 - [On-premise deployment](on-premise.md)
-- [Setup options](../setups.md)
+- [Artist workstation setup](../workstation-setup.md)
 - Discussions about ASH are tagged `ash` on the [Ynput forums](https://community.ynput.io/tag/ash).

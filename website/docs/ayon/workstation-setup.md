@@ -1,99 +1,79 @@
 ---
-title: AYON setup options
-sidebar_label: Setup options
-description: "The choices AYON supports for deploying the server, setting up the studio's people and storage, and setting up artist workstations: a map for newcomers."
-verified: 2026-10-14
+title: Artist workstation setup
+sidebar_label: Artist workstation setup
+description: "Setting up artist workstations and render nodes for AYON: site IDs, root paths per machine, DCC application paths, AYON Launcher installs and folders, shared site IDs on render nodes, and remote artists."
+verified: 2026-11-03
 sources:
-  - https://help.ayon.app/en/help/articles/2243459-ayon-introduction
-  - https://help.ayon.app/en/help/articles/6619325-getting-started-with-ayon-cloud-hosted
-  - https://help.ayon.app/en/help/articles/2293963-ayon-server-local-deployment
-  - https://help.ayon.app/en/help/articles/7620452-ayon-service-host-ash
   - https://help.ayon.app/en/help/articles/3815114-project-anatomy
   - https://help.ayon.app/en/help/articles/3882937-site-sync
   - https://help.ayon.app/en/help/articles/3945756-applications-and-tools
   - https://help.ayon.app/en/help/articles/2308428-launcher-admin-notes
   - https://help.ayon.app/en/help/articles/4678978-installing-ayon-launcher-on-user-machine
   - https://help.ayon.app/en/help/articles/5372986-configure-deadline-addon
-  - https://community.ynput.io/t/setting-up-ayon-service-host-ash/1535
+  - https://community.ynput.io/t/use-shared-location-for-ayon-launcher-and-addons/1175
+  - https://github.com/ynput/ayon-launcher/blob/develop/common/ayon_common/utils.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/system/info.py
   - https://support.google.com/drive/answer/13401938
   - https://blogs.windows.com/windows-insider/2017/06/13/onedrive-files-demand-now-available-windows-insiders/
 ---
 
-# AYON setup options
+# Artist workstation setup
 
-AYON adapts to how a studio works instead of asking the studio to change. This page is a map of the choices it supports, in three areas: where the server runs, how the studio's people and storage are arranged, and how each artist workstation is set up. It does not explain how to set anything up; it shows what is possible, so a newcomer can see the whole picture first.
+Each workstation needs four things: the applications, the AYON Launcher, access to the studio storage, and access to the AYON server. The server is how the launcher is downloaded and how every AYON tool reaches the studio's data, so remote workstations need it just like the ones in the studio. To go straight to what has to be done, see [Setup steps](#setup-steps).
 
 ```mermaid
-mindmap
-  root((AYON setups))
-    Deploy the server
-      Ynput Cloud
-      On premise
-    Studio setup
-      Local, remote or distributed
-      One storage or several
-      Storage on premise or in the cloud
-    Artist workstation
-      DCC install paths
-      AYON Launcher install
-      Render nodes
-      Remote artists
+flowchart TB
+  subgraph STUDIO["Studio"]
+    S["<span class='material-symbols-outlined'>dns</span><br/>AYON Server<br/>projects, tasks, versions,<br/>bundles, settings"]
+    P["<span class='material-symbols-outlined'>folder_open</span><br/>Studio storage<br/>work files, published files"]
+  end
+  subgraph WS["Artist workstation"]
+    L["<span class='material-symbols-outlined'>rocket_launch</span><br/>AYON desktop app<br/>with its site ID"]
+    A["<span class='material-symbols-outlined'>palette</span><br/>Applications<br/>Maya, Houdini, Nuke, ..."]
+  end
+  S -->|"bundle and settings"| L
+  L -->|launches| A
+  S <-->|"publish: write records<br/>load: read records, file paths"| A
+  P <-->|"save, publish: write files<br/>load: read files"| A
+  classDef main stroke:#009be1,stroke-width:3px,fill:#009be126
+  class L,P main
 ```
 
-The sections below are the text version of this map. The [Introduction](introduction.md) explains what AYON is and what its components are.
+The studio side has the AYON Server, which holds the project data such as projects, tasks and versions, along with the bundles and settings, and the studio storage with the work files and published files. On the artist workstation, the AYON desktop app downloads the addons and the dependency package of the bundle from the server and reads the studio, project and site settings. It launches the applications, which work with both sides:
 
-## Deploy the server
+- **Saving and publishing:** the files are written to the studio storage, and their records to the AYON Server.
+- **Loading:** the record and its file path are read from the AYON Server, the path is resolved, and the file is opened from the studio storage.
 
-The AYON server is installed once for the whole studio. There are two ways to run it:
+## Setup steps
 
-| Option | What it is | Good to know |
-|---|---|---|
-| **Ynput Cloud** | A managed server, started in a few clicks and run by Ynput. Each one is an *AYON workspace*: a separate server on its own domain, belonging to the studio's organization on Ynput Cloud. | Updates, maintenance and backups are handled by Ynput. Every workspace is isolated from the others. A free trial is available. |
-| **On premise** | The studio runs the server itself. The Docker setup that AYON provides can be run as it is, or used as a reference for a customised setup. | Some knowledge of Docker is recommended. Linux is recommended for production. Studios without internet access are possible, but the images for the background services must be loaded in advance. |
+1. **Reach the AYON Server.** The workstation needs network access to the studio's AYON Server, also when it works remotely: the launcher is downloaded from it, and every AYON tool reads and writes the studio's data through it.
+2. **Install the DCC applications** in their default install location, or in a location agreed across the studio, so that the studio-wide application settings find them. See [DCC applications](#dcc-applications).
+3. **Install the AYON Launcher,** usually downloaded from the AYON Server, and log in. At its first start it creates the machine's site ID. See [AYON Launcher](#ayon-launcher) and [Site ID](#site-id).
+4. **Reach the studio storage** at the paths set in the project anatomy roots. When the workstation reaches it at another path, for example under another drive letter, set a root override for the workstation's site ID on the [Roots](web-ui/project/roots.md) tab. See [Studio storage](#studio-storage), and [Remote artists](#remote-artists) for workstations outside the studio network.
 
-Both options run the same AYON, with one difference: the free Community edition provides the base features out of the box, while the cloud provides the base features plus the Pro or Studio features that come with the plan. It's also possible to connect the on premise AYON server to a Pro or Studio plan to unlock more features (see the [plans](plans.md)).
+The rest of this page explains each step.
 
-Read more: [Getting started on Ynput Cloud](https://help.ayon.app/en/help/articles/6619325-getting-started-with-ayon-cloud-hosted) and [server local deployment](https://help.ayon.app/en/help/articles/2293963-ayon-server-local-deployment).
+## Site ID
 
-:::note
+Every machine that runs the AYON Launcher, an artist workstation or a render node, gets a **site ID**: three random words such as `military-mouse-of-jest`, created at the first start. Its purpose is to match settings that differ per machine, the *site settings*, such as root paths, to the machine they belong to.
 
-A cloud server comes with an AYON Service Host. When deploying AYON on premise, an [AYON Service Host](https://help.ayon.app/en/help/articles/7620452-ayon-service-host-ash) is needed for the addons that come with services. A studio that does not use the Services page in AYON does not need to deploy one. It can run together with the server or separately; see the community guide [Setting up AYON Service Host (ASH)](https://community.ynput.io/t/setting-up-ayon-service-host-ash/1535).
+The site ID is stored in the launcher's local folder, which belongs to the operating system user. Two operating system users on one machine therefore get two site IDs, while AYON users who log in under the same operating system user share one. The `AYON_SITE_ID` environment variable overrides the stored value. See [Site IDs](backend/settings/index.md#site-ids) and the [launcher](../pipeline/launcher.md#site-id).
 
-:::
+## Studio storage
 
-## Studio setup
+The project anatomy sets the root paths of the studio storage for each operating system. When a machine reaches the storage at another path, for example under another drive letter or mount point, the path is set for that machine on the [Roots](web-ui/project/roots.md) tab of the Projects Manager: one panel per site ID, with one field per root. An empty field uses the path of the anatomy.
 
-Setting up AYON starts with a few questions about the studio. The answers decide essential configurations:
+![The Roots tab of the Projects Manager with a panel per site, each with its work and configs root paths](./assets/workstation-setup/roots.png)
 
-| Question | Options |
-|---|---|
-| **Where do people work?** | In one **local studio**; fully **remote**, from home workstations; or **distributed** across several locations, including a mix of these. |
-| **How many storages are there?** | A **single central storage** for everything, or **several storages**, for example one per location or per project or per department. |
-| **Where is the storage?** | **On premise**, on the studio's own disks and servers, or **in the cloud**. |
+When files must exist in more than one storage location, see [Remote artists](#remote-artists).
 
-Any combination of answers is possible, from a small team on one shared disk to a studio spread over several countries with storage in more than one place.
+## DCC applications
 
-**Where do people work?** for local studio, on premise works well, but for remote or hybrid, having a cloud instance is the best bet which by passes a lot of technical challenges leaving you focusing more on the creative process.
-
-<!-- Stopped here -->
-
-**How many storages are there?** for each storage, you'll need to define a **root** in project anatomy . 
-
-Storage is described to AYON as **roots**: the folders where project files live, set for each operating system the studio uses. Several roots can exist, for example to keep one kind of data on another disk. When files must exist in more than one storage location, such as a secondary studio in another country and the main studio, or a cloud drive and the studio storage, the **Site Sync** addon keeps published files in step between them. AYON calls each storage location a *site*.
-
-Read more: [project anatomy and roots](https://help.ayon.app/en/help/articles/3815114-project-anatomy) and [Site Sync](https://help.ayon.app/en/help/articles/3882937-site-sync). A few points to weigh when planning are listed in the [Introduction](introduction.md#studio-setups).
-
-## Artist workstation setup
-
-Each workstation needs four things: the applications, the AYON Launcher, access to the project storage, and access to the AYON server. The server is how the launcher is downloaded and how every AYON tool reaches the studio's data, so remote workstations need it just like the ones in the studio.
-
-### DCC applications
-
-AYON starts each application from its executable paths, which are defined in settings for each operating system. Because of that, a studio can keep applications in their **default install location**, or in a **location agreed across the studio**, and one set of settings then fits every machine. Several paths can be listed for one application, and the launcher can show only the applications that are installed on the machine in front of the artist.
+The application settings hold one list of executable paths per application and operating system, for the whole studio. There is no override per machine. A studio therefore keeps applications in their **default install location**, or in a **location agreed across the studio**, so that the same settings fit every machine. Several paths can be listed for one application. At launch, they are checked in the order of the list, and the application starts from the first path that exists on the machine.
 
 Read more: [Applications and tools](https://help.ayon.app/en/help/articles/3945756-applications-and-tools).
 
-### AYON Launcher
+## AYON Launcher
 
 The launcher is downloaded from the studio's AYON Server and can be installed in different ways:
 
@@ -101,27 +81,49 @@ The launcher is downloaded from the studio's AYON Server and can be installed in
 - **For one user only.**
 - In a **shared location**, so that machines use the same installation.
 
-The launcher keeps two kinds of files. The **launcher storage** holds the addons and dependency packages, and can be local to a machine or a shared folder. Files that belong to one user or machine, such as its site ID, always stay local and are not shared. The launcher updates itself to the version the studio's bundle specifies every time it starts.
+The launcher keeps its files in two folders, the **launcher storage** and the **launcher local folder**, set with `AYON_LAUNCHER_STORAGE_DIR` and `AYON_LAUNCHER_LOCAL_DIR`. By default both are the same folder: `%LOCALAPPDATA%\Ynput\AYON` on Windows, `~/.local/share/AYON` on Linux and `~/Library/Application Support/AYON` on macOS.
+
+A simplified layout:
+
+```
+AYON
+├── addons/                 launcher storage
+├── addons_resources/       launcher storage
+├── dependency_packages/    launcher storage
+├── app/                    launcher versions installed for one user (Windows)
+├── site_id                 launcher local folder: a file with the site ID
+└── ...                     launcher local folder: tool settings, thumbnails, logs
+```
+
+The **launcher storage** can be shared between machines of the same operating system. The **launcher local folder** is never shared: each user on each machine has their own.
+
+The launcher updates itself to the version the studio's bundle specifies every time it starts. The environment variables are described in the [launcher developer docs](../developer/launcher/index.md#environment-variables).
 
 Read more: [installing the launcher](https://help.ayon.app/en/help/articles/4678978-installing-ayon-launcher-on-user-machine), [launcher admin notes](https://help.ayon.app/en/help/articles/2308428-launcher-admin-notes) and the community guide [Use a shared location for the launcher and addons](https://community.ynput.io/t/use-shared-location-for-ayon-launcher-and-addons/1175).
 
-### Render nodes
+## Render nodes
 
-Every machine with the launcher gets its own **site ID**, which identifies the machine to AYON. It is used for settings that differ per machine, such as local roots, and by Site Sync, which treats each machine as a storage location. Dedicated render nodes can be given the **same site ID**, which reduces the load of requests on the server during publishing jobs. This is meant for dedicated farm machines of the same operating system only, never for artist workstations.
+Render nodes run the launcher too, for example for publishing jobs on the farm, and each gets its own site ID like any other machine.
 
-Read more: [optimizing farm render nodes](https://help.ayon.app/en/help/articles/5372986-configure-deadline-addon).
+:::tip
 
-### Remote artists
+### Share one site ID across render nodes
 
-Remote artists have two ways to reach the project files:
+Dedicated render nodes can be given the **same site ID** by setting the `AYON_SITE_ID` environment variable to one value on all of them. This speeds up their communication with the server and reduces the load of requests on it during publishing jobs. It is meant for dedicated farm machines of the same operating system only, never for artist workstations.
 
-| Approach | How it works | Trade-off |
-|---|---|---|
-| **Local storage with Site Sync** | The artist works on their own disk. The project's root locations are mapped to local folders in the artist's own site settings, and the Site Sync addon downloads published files **on demand** and uploads what the artist publishes. | The artist only stores the files they need. Needs Site Sync to be set up. With Site Sync, the Loader knows which files are available and can request them. |
-| **Mounted storage** | The studio storage, or a cloud storage, is mounted on the artist's machine with a third-party storage client. | Simple for the artist, with nothing to set up in AYON. Depending on the storage client and its mode, files are either fetched when they are opened or all kept as a full local copy, so the cost is local disk space or waiting on first access. AYON does not know about the mount: its tools read what was published from the database and expect the files to be there. |
+:::
+
+## Remote artists
+
+An artist who works outside the studio network, without access to the studio storage, still needs a way to reach the project files. Two known ways are below, and the admin can pick either of them:
+
+- **Mounted storage:** the studio storage, or a cloud storage, is mounted on the artist's machine with a third-party storage client, usually as a drive or a mount point. When the mounted path differs from the anatomy roots, the root override is set for the artist's site ID on the [Roots](web-ui/project/roots.md) tab, as described in [Studio storage](#studio-storage).
+- **Local storage with Site Sync:** the artist works on their own disk. The project's roots are mapped to local folders for the artist's site, and the [Site Sync](../addons/pipeline-features/sitesync/index.md) addon downloads published files on demand and uploads what the artist publishes.
 
 ## Related
 
-- [Introduction](introduction.md)
-- [Settings and scopes](backend/settings/index.md) (planned)
-- [On-premise deployment](deployment/on-premise.md) and [AYON Service Host](deployment/ash.md)
+- [Introduction](introduction.md#studio-setups)
+- [AYON Launcher](../pipeline/launcher.md)
+- [Roots](web-ui/project/roots.md)
+- [Creating a project](how-ayon-works/creating-a-project.md)
+- [Site Sync addon](../addons/pipeline-features/sitesync/index.md)

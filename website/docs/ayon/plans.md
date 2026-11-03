@@ -27,7 +27,7 @@ AYON comes in a free Community edition and in the commercial plans AYON Pro and 
 | **Enterprise** | Role-based licensing for large studios: full access for developers, managers and producers, and artist-only access for the wider team. Arranged individually. |
 | **Schools** | Educational institutions can get AYON Studio free of charge with an on-premise installation, or hosted by Ynput for a fee. |
 
-AYON Pro and AYON Studio are priced **per active user**. A subscription has a number of seats, one for each active user, and on a server connected to a subscription only active users with a seat can log in. A user who becomes active takes a free seat automatically, and the seat stays assigned to that user. Pro and Studio start at 5 active users. Pro supports up to 200 active users and Studio an unlimited number. How the seats appear in the AYON server is described on the [licenses page](licenses.md).
+AYON Pro and AYON Studio are priced **per active user**. A subscription has a number of seats, one for each active user, and on a server connected to a subscription only active users with a seat can log in. A user who becomes active takes a free seat automatically, and the seat stays assigned to that user. Pro and Studio start at 5 active users. Pro supports up to 200 active users and Studio an unlimited number.
 
 All seats of a server must be on the same plan, with the same addons:
 
@@ -149,7 +149,6 @@ An additional AYON server that comes with hosting by Ynput: included with AYON S
 
 ## Related
 
-- [Licenses page](licenses.md): how seats and user license pools appear in the web UI.
 - [Addons catalogue](../addons/index.md): license of every addon.
 - [Cloud deployment](deployment/cloud.md) and [on-premise deployment](deployment/on-premise.md).
 - [Ynput Cloud](../ynput-cloud/index.md): where subscriptions are managed.

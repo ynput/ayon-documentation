@@ -173,4 +173,4 @@ See [Settings scopes and storage](../../backend/settings/index.md#permissions) f
 - [Site settings](site-settings.md)
 - [Bundles](../studio/bundles.md)
 - [Project configuration](index.md)
-- [AYON setups](../../setups.md)
+- [Artist workstation setup](../../workstation-setup.md)

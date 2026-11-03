@@ -11,8 +11,6 @@ module.exports = {
     Ayon: [
         "ayon/introduction",
         "ayon/plans",
-        "ayon/licenses",
-        "ayon/setups",
         {
             type: "category",
             label: "Server deployment",
@@ -23,6 +21,7 @@ module.exports = {
                 "ayon/deployment/ash",
             ],
         },
+        "ayon/workstation-setup",
         {
             type: "category",
             label: "How AYON works",

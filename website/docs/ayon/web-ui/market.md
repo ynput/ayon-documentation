@@ -157,6 +157,5 @@ The connection control at the bottom of the filter column shows **link an accoun
 - [Bundles](studio/bundles.md)
 - [Navigation bar](navigation-bar.md)
 - [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
-- [Licenses](../licenses.md)
 - [Services](services.md)
 - [Addons](../../addons/index.md)

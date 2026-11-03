@@ -236,4 +236,4 @@ A server action can answer with one of the following. The launcher handles them 
 - [Browser](browser.md) and [Loader](loader.md), the tools for published products.
 - [Process Monitor](process-monitor.md), the tray tool of the Applications addon.
 - [Publisher](publisher.md) and [Tray Publisher](../addons/essentials/traypublisher/index.md).
-- [Setups](../ayon/setups.md) for the arrangement of server, launcher and sites.
+- [Artist workstation setup](../ayon/workstation-setup.md) for launcher installs, render nodes and remote artists.

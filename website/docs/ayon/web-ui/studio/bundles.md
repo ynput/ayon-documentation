@@ -171,4 +171,4 @@ Addon settings do not carry over between addon versions. Setting a state on a bu
 - [Project bundles](../project/project-settings.md#project-bundles)
 - [Market](../market.md)
 - [Bundles in How AYON works](../../how-ayon-works/bundles.md)
-- [Setup options](../../setups.md)
+- [Artist workstation setup](../../workstation-setup.md)

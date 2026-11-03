@@ -73,4 +73,4 @@ The IDs of the converted entities come from a deterministic, name-based mapping 
 
 - [Bundles](web-ui/studio/bundles.md)
 - [Services](web-ui/services.md)
-- [Setup options](setups.md)
+- [Artist workstation setup](workstation-setup.md)
