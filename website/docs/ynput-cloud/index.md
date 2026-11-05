@@ -1,10 +1,12 @@
 ---
 title: Ynput Cloud
 description: "Ynput Cloud, the platform for managing AYON subscriptions and launching cloud-hosted AYON servers: organizations, AYON workspaces, subscriptions, seats, addons, billing and members."
-verified: 2026-10-16
+verified: 2026-11-05
 sources:
   - https://help.ayon.app/en/help/articles/6619325-getting-started-with-ayon-cloud-hosted
   - https://ynput.cloud/
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/metrics/__init__.py
+  - https://trust.ynput.io/
 ---
 
 # Ynput Cloud
@@ -37,6 +39,12 @@ Members of an organization can invite teammates, change subscriptions and overse
 - A server hosted by Ynput is created and billed here. A self-hosted server can also be connected to a subscription to unlock the plan's features.
 - The [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md) on the AYON server adds the Ynput Cloud login (users sign in to the AYON server with their Ynput Cloud account, and the matching AYON user is created or updated) and the remote support access for the Ynput support team.
 - What each plan includes and how seats work is described on the [plans page](../ayon/plans.md).
+
+## Data
+
+A server connected to Ynput Cloud sends anonymous server settings and usage metrics, such as the server version and the number of projects, users and addons. This applies to servers hosted by Ynput and to self-hosted servers connected to a subscription. The production data is not collected: no creative assets, file names or artwork. An admin can see exactly what the server sends with the [metrics endpoint](/api#tag/System/operation/get_production_metrics) of the REST API.
+
+Ynput's security, compliance and data processing policies are on the [Trust Center](https://trust.ynput.io/).
 
 ## Related
 
