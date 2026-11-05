@@ -100,3 +100,21 @@ AYON launcher will then use code from the location we've defined, rather than do
 :::note
 It is possible to use dev bundle even if it is not assigned to the user. In that case replace argument `--use-dev` with `--bundle <deb bundle name>`.
 :::
+
+## Addon code on the server
+
+On a self-hosted server, an addon can also be developed directly in the server's `addons` directory, without creating and uploading a package:
+
+```shell
+mkdir addons/core
+cd addons/core
+git clone https://github.com/ynput/ayon-core dev
+```
+
+The folder is named after the addon's name in `package.py`, and the clone goes in a version folder, here `dev`. After a server restart, the addon appears in bundles with the suffix `+git`, because the folder contains `.git` (`AYON_USE_GIT_SUFFIX_FOR_ADDONS` turns the suffix off). The server-side code of the addon is then live after each restart. The client-side code still needs its path set in a dev bundle, as described above.
+
+Because the server reads addons live, a change of the version string in `package.py` registers as a new version: the old version disappears from the bundles that used it, and the bundles have to be pointed to the new one. The settings of the old version stay stored and can be copied with **Copy settings from**.
+
+:::danger
+An addon developed this way on a server whose production or staging bundles use it breaks those bundles as soon as its version changes.
+:::
