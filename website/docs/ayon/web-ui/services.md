@@ -8,7 +8,7 @@ sources:
 
 # Services
 
-The **Services** page lists the addon services registered on the AYON server and manages them: it creates, starts, stops, edits and deletes services and shows their state. An addon service is a containerized program that an addon runs next to the AYON server. The page only records what should run; the container itself is started by an AYON Service Host (ASH) worker. How ASH works, how to run it and how it reaches the server are described on the [ASH page](../deployment/ash.md).
+The **Services** page lists the addon services registered on the AYON server and manages them: it creates, starts, stops, edits and deletes services and shows their state. An addon service is a containerized program that an addon runs next to the AYON server. The page only records what should run; the container itself is started by an AYON Service Host (ASH) worker. How services run is described in [Addon services](../how-ayon-works/services.md), and how to run ASH on the [ASH page](../deployment/ash.md).
 
 ## Where it appears
 

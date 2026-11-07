@@ -16,6 +16,7 @@ This section explains what happens inside AYON when people use it: which parts t
 | Page | What it explains |
 |---|---|
 | [Bundles](bundles.md) | What a bundle sets on the server and on workstations, the production, staging and dev variants, and the usual way an addon reaches production. |
+| [Addon services](services.md) | How the Services page, the AYON server and the AYON Service Host (ASH) start addon services as containers, and what happens when they stop. |
 | [Creating a project](creating-a-project.md) | What a new project receives from the anatomy preset, the access groups and the project attributes, and what to adjust afterwards. |
 | [Pipeline storage](pipeline-storage.md) | How the roots, the templates of the project anatomy and the template profiles of the Core settings decide where work files and publishes are stored. |
 | [Permissions](permissions.md) | The two layers of the permission system: the user level first, then the access groups of each project. |

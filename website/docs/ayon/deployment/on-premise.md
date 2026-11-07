@@ -42,7 +42,7 @@ The machine needs Docker and Git, plus Make on Linux and macOS, or PowerShell on
 
 :::tip
 
-On a system with the standalone `docker-compose` script instead of the newer `docker compose` plugin, `docker-compose` replaces `docker compose` in every command on this page.
+The commands on this page use `docker compose`. The older standalone `docker-compose` (with a hyphen) is deprecated and can fail to update the server with recent Docker versions, so it is replaced with the `docker compose` plugin, see [Migrate to Compose V2](https://docs.docker.com/compose/releases/migrate/).
 :::
 
 :::info Host machine operating system notes
@@ -54,7 +54,7 @@ When deploying the AYON server on:
 
 ## Default deployment
 
-The `docker compose` command starts the `server` container along with the `postgres` and `redis` containers. The `setup` command then creates the admin `admin` with the password `admin`, and the service user `service` with the API key `veryinsecurapikey`. See [Helper commands](#helper-commands).
+The `docker compose` command starts the `server` container along with the `postgres` and `redis` containers. The optional `setup` command then creates the admin `admin` with the password `admin`, and the service user `service` with the API key `veryinsecurapikey`. See [Helper commands](#helper-commands).
 
 <Tabs groupId="os">
 <TabItem value="windows" label="Windows" default>
@@ -62,7 +62,7 @@ The `docker compose` command starts the `server` container along with the `postg
 ```powershell
 git clone https://github.com/ynput/ayon-docker.git
 cd ayon-docker
-docker compose up -d --build
+docker compose up -d
 ./manage.ps1 setup
 ```
 
@@ -72,14 +72,14 @@ docker compose up -d --build
 ```bash
 git clone https://github.com/ynput/ayon-docker.git
 cd ayon-docker
-docker compose up -d --build
+docker compose up -d
 make setup
 ```
 
 </TabItem>
 </Tabs>
 
-The server answers on `http://localhost:5000/`, where the admin signs in. After the first sign-in, the [first-run setup](../web-ui/dialogs/first-run-setup.md) offers to install the latest pipeline release.
+The server answers on `http://localhost:5000/`. Without the `setup` command, the first visit asks to create an admin user. After the first sign-in, the [first-run setup](../web-ui/dialogs/first-run-setup.md) offers to install the latest pipeline release.
 
 :::tip Skipping AYON server first run setup
 
@@ -108,7 +108,7 @@ A self-hosted server is updated from the `ayon-docker` directory:
 ```bash
 git pull origin main
 docker compose pull
-docker compose up -d --build
+docker compose up -d
 ```
 
 ## Configuration
@@ -118,7 +118,7 @@ Configuration is set with environment variables, in two places:
 - The `AYON_STACK_*` variables configure the Compose file itself. They go in a `.env` file in the `ayon-docker` directory, which Docker Compose reads automatically.
 - The server variables (`AYON_*`) are passed to the `server` container, with an `environment` section under `server` in `docker-compose.yml`. Adding `env_file: .env` to the `server` service instead passes the whole `.env` file to the container.
 
-After a change, the containers are rebuilt with `docker compose up -d --build`.
+After a change, `docker compose up -d` recreates the containers whose settings changed.
 
 The `AYON_STACK_*` variables:
 
@@ -250,7 +250,7 @@ A server is backed up with a database dump and a copy of the files it holds. A p
 | Scope | Back up | Restore |
 |---|---|---|
 | One project | `make dump projectname=<name>` (Windows: `./manage.ps1 dump projectname=<name>`) writes `dump.<name>.sql`. `storage/server/projects/<name>` is copied. | `make restore projectname=<name>` applies the dump, and the project folder is copied back. |
-| Whole server | `docker compose exec postgres pg_dump -U ayon > <file>.sql`. The `storage/` and `addons/` directories are copied. | The two directories are copied back, then `docker compose exec -T postgres psql -U ayon ayon < <file>.sql` and `docker compose up -d --build`. |
+| Whole server | `docker compose exec postgres pg_dump -U ayon > <file>.sql`. The `storage/` and `addons/` directories are copied. | The two directories are copied back, then `docker compose exec -T postgres psql -U ayon ayon < <file>.sql` and `docker compose up -d`. |
 
 A project dump contains the project's settings overrides. The published files and workfiles of a project are on the studio storage and are backed up with it.
 

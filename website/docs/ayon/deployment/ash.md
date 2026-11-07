@@ -1,138 +1,130 @@
 ---
 title: AYON Service Host (ASH)
-description: "The AYON Service Host (ASH): the worker that runs addon services, how the AYON server, the Services page and ASH work together, its configuration and the default Docker setup."
-verified: 2026-10-15
+description: "Running the AYON Service Host (ASH) on premise: what it needs, running it in a separate stack or in the same Docker stack as the AYON server, its configuration, and stopping orphaned service containers."
+verified: 2026-11-06
 sources:
   - https://help.ayon.app/en/help/articles/7620452-ayon-service-host-ash
-  - https://help.ayon.app/en/help/articles/2668013-ayon-services
   - https://community.ynput.io/t/setting-up-ayon-service-host-ash/1535
   - https://github.com/ynput/ash
+  - https://github.com/ynput/ash/blob/main/ash/config.py
   - https://github.com/ynput/ayon-docker/blob/main/docker-compose.worker.yml
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # AYON Service Host (ASH)
 
-The AYON Service Host (ASH) is a worker that runs and manages the services of AYON addons. Like a farm node, it does the work that the AYON server hands out. The server never runs addon services itself: it records which services should run, and ASH starts, stops and removes the containers for them. ASH is free; some services belong to paid addons.
+The AYON Service Host (ASH) is a worker that runs the services of AYON addons as Docker containers. Like a farm node, it does the work that the AYON server hands out: the server records which services should run, and ASH starts and stops them. How this works is described in [Addon services](../how-ayon-works/services.md); services are created and controlled on the [Services](../web-ui/services.md) page of the web app.
 
-## Addon services
+This page is about running ASH on premise, next to a self-hosted server or as an additional worker for a server hosted on Ynput Cloud.
 
-An addon can include services: standalone, containerized Python programs that run next to the AYON server and take repetitive or heavy work off it. A tracker addon, for example, runs a service that watches the events of ftrack, Flow (ShotGrid) or Kitsu and acts on them. Services are usually Docker images published on the `ynput` account of Docker Hub. An addon that has services does not work as expected without a running service, so a missing or misconfigured ASH is a common cause of a tracker integration that does nothing.
-
-## How it works
-
-1. A service is created on the **Services** page of the AYON web app (shortcut `v+v`): host, addon, addon version and service. The server stores it in its database.
-2. ASH polls the server for the services of its host. It starts those that are not running, pulling the image first if it is not in the local Docker cache.
-3. ASH starts each service as a container named `aysvc_<service name>`, removed automatically when it stops. The container gets the server URL and API key of the ASH, and the variables `AYON_ADDON_NAME`, `AYON_ADDON_VERSION` and `AYON_SERVICE_NAME`, plus any variables set in the service definition. Mounts of the ASH container that target `/storage` are passed on.
-4. ASH offers a small API through which running services report their status and receive their configuration. The Services page shows the status.
-
-The Services page lists each service with its host, addon and version. Its context menu offers **Start Selected**, **Stop Selected**, **Edit Service** and **Delete Selected**. A new service asks for:
-
-| Field | Meaning |
-|---|---|
-| Host | The ASH worker that runs the service. |
-| Addon name, Addon version, Service | The service to run. The version has to match the addon version in the production bundle. |
-| Service name | A name for this instance. |
-| Settings variant | The bundle whose addon settings the service reads. |
-| Storages, Ports | Docker volumes and ports exposed to the service. |
-| Registry settings | Credentials for a private image registry. All official addon services are public except those of the Workflow addon. |
-
-| Status | Meaning |
-|---|---|
-| Unknown | The server gets no response from the service. |
-| Not running | The service was started but is not running yet. |
-| Running | The service is active. |
-| Disabled | The service was stopped. |
+:::note
+A server hosted on Ynput Cloud already has one ASH running in the cloud next to it.
+:::
 
 ## Requirements
 
-- An **API key of a service user**. ASH only accepts service accounts. A key is created on the Users page of the web app, or set in `settings/template.json` of `ayon-docker`. It is passed on to the services ASH starts.
-- The Docker socket, `/var/run/docker.sock`, mounted into the ASH container, so that it can control Docker and start services.
-- A network path to the AYON server. A connection error on start almost always means ASH cannot reach the server, particularly when it runs in a separate Docker stack.
-- Access to Docker images. In an air-gapped studio the images of the services have to be loaded onto the worker beforehand.
+- An **API key of a service user**. ASH only accepts service accounts. A service user is created on the Users page of the web app, or with `settings/template.json` of `ayon-docker`. ASH passes the key on to the services it starts.
+- The Docker socket, `/var/run/docker.sock`, mounted into the ASH container, so that ASH can start and stop containers.
+- A URL to the AYON server that is reachable from the worker.
+- Access to the Docker images of the services. In an air-gapped studio, the images have to be in the worker's local Docker image cache beforehand, for example with `docker load`, or available from a local registry mirror. When ASH cannot pull an image, it uses the one in the local cache.
 
-A cloud-hosted server includes one preconfigured ASH worker. More can be added on premise or alongside the cloud server with the setups below.
+## Running ASH
 
-## Default setup
-
-ASH is distributed as the Docker image `ynput/ayon-ash`. There are two ways to run it. Replace the API key and the server URL in the examples with real values.
+ASH is distributed as the Docker image [`ynput/ayon-ash`](https://hub.docker.com/r/ynput/ayon-ash/tags). It can run in the same Docker stack as a self-hosted server, or separately from the server, on the server machine or on another one. The API keys and server URLs in the examples below are examples, to be replaced with the studio's own.
 
 ### In the same stack as the server
 
-A `worker` service is added at the end of the `services` section of `docker-compose.yml` in the `ayon-docker` clone:
+The `ayon-docker` repository comes with an ASH worker, `docker-compose.worker.yml`, that runs in the same stack as the server. It is added to the stack in the `.env` file of the `ayon-docker` folder:
 
-```yaml
-  worker:
-    image: ynput/ayon-ash:latest
-    hostname: worker01
-    restart: unless-stopped
-    network_mode: host
-    depends_on:
-      - server
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-    environment:
-      - "AYON_API_KEY=veryinsecureapikey"
-      - "AYON_SERVER_URL=http://server:5000"
-```
-
-Then the stack is rebuilt:
+<Tabs groupId="os">
+<TabItem value="windows" label="Windows" default>
 
 ```bash
-docker compose up -d --build
+COMPOSE_FILE=docker-compose.yml;docker-compose.worker.yml
+AYON_API_KEY=veryinsecurapikey
 ```
 
-The `ayon-docker` repository also contains `docker-compose.worker.yml`, a worker definition that takes `AYON_API_KEY` and `AYON_SERVER_URL` from the environment.
+</TabItem>
+<TabItem value="unix" label="Linux/Mac">
+
+```bash
+COMPOSE_FILE=docker-compose.yml:docker-compose.worker.yml
+AYON_API_KEY=veryinsecurapikey
+```
+
+</TabItem>
+</Tabs>
+
+`AYON_API_KEY` is the API key of a service user, created by the `setup` command or on the Users page. Then the stack is started:
+
+```bash
+docker compose up -d
+```
 
 ### In a separate stack
 
-On the server machine or on another machine, a folder such as `my-ayon-ash` holds a `docker-compose.yml`:
+On the machine chosen for ASH, a folder such as `ayon-ash` holds a `docker-compose.yml`:
 
 ```yaml
 services:
   worker:
     image: ynput/ayon-ash:latest
-    hostname: worker-02
+    hostname: worker-01
     restart: unless-stopped
-    network_mode: host
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     environment:
-      - "AYON_API_KEY=veryinsecureapikey"
+      - "AYON_API_KEY=veryinsecurapikey"
       - "AYON_SERVER_URL=https://ayon.example.com"
 ```
 
-It is started from that folder with `docker compose up -d`.
+- `hostname` is the name of the worker on the Services page.
+- `AYON_API_KEY` is the API key of a service user.
+- `AYON_SERVER_URL` is the URL of the AYON server, including the scheme. It has to be reachable from inside the container, so it is the full address of the server, for example `http://192.168.1.10:5000` or `https://ayon.example.com`, not `localhost`.
 
-### Plain Docker
+With `restart: unless-stopped`, the worker starts again whenever Docker starts, for example after a reboot. The worker is started from that folder:
 
 ```bash
-docker run --rm -ti \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  --hostname worker01 \
-  --env AYON_API_KEY=verysecureapikey \
-  --env AYON_SERVER_URL="http://172.18.0.1:5000" \
-  ynput/ayon-ash
+docker compose up -d
 ```
 
-The container needs a fixed hostname. Without one, Docker assigns a random hostname. Without Docker, ASH can run with Python 3.10 from the [ash repository](https://github.com/ynput/ash).
+The worker then appears as a host when a service is created on the [Services](../web-ui/services.md) page. If it does not, see [Troubleshooting](#troubleshooting).
 
 ## Configuration
 
-ASH reads environment variables with the `AYON_` prefix. A `.env` file is supported.
+ASH has further optional settings, set as environment variables with the `AYON_` prefix. Each is added as a line in the `environment` section of the `worker` service, for example `- "AYON_LOG_LEVEL=INFO"`:
 
 | Variable | Default | Description |
 |---|---|---|
-| `AYON_SERVER_URL` | `http://ayon:5000` | URL of the AYON server, including the scheme. |
-| `AYON_API_KEY` | required | API key of a service user. |
-| `AYON_HOSTNAME` | the container hostname | Name of the worker on the Services page. |
-| `AYON_NETWORK`, `AYON_NETWORK_MODE` | none | Docker network or network mode for the services ASH starts. |
-| `AYON_LOG_LEVEL` | `DEBUG` | Console log level. |
+| `AYON_HOSTNAME` | the container hostname | Name of the worker on the Services page. The name has to stay the same, so either this variable or the container hostname (`hostname` in Compose) is set; otherwise Docker gives every new container a random hostname. |
+| `AYON_NETWORK`, `AYON_NETWORK_MODE` | the network of the ASH container | Docker network or network mode for the services ASH starts. |
+| `AYON_LOG_LEVEL` | `DEBUG` | Console log level: `TRACE`, `DEBUG`, `INFO`, `WARNING`, `ERROR` or `CRITICAL`. |
 | `AYON_LOG_MODE` | `text` | Log format, `text` or `json`. |
 | `AYON_LOG_CONTEXT` | `False` | Print the log context along with the message. |
 
-## Orphaned service containers
+## Troubleshooting
 
-If a service fails to stop and remove its container, the container has to be stopped by hand. Service containers are recognizable by the `aysvc_` prefix:
+### The worker does not appear on the Services page
+
+The worker's log gives the cause. It is shown from the folder of the worker's compose file:
+
+```bash
+docker compose logs -f worker
+```
+
+In both setups on this page, `worker` is the name of the ASH service in the compose file.
+
+Example error messages:
+
+- `Unable to connect to the server... Retrying`: `AYON_SERVER_URL` is not reachable from inside the container, see [In a separate stack](#in-a-separate-stack).
+- `Unable to login. Error: 401`: `AYON_API_KEY` is wrong. Another error code means that `AYON_SERVER_URL` points to something other than the AYON server.
+- `Heartbeat: No response`, repeated: `AYON_API_KEY` belongs to a regular user. It has to be the API key of a service user.
+
+### Orphaned service containers
+
+ASH runs each service as a container named `aysvc_<service name>` and stops it when the service should no longer run. If a container fails to stop, for example because its ASH worker is no longer running, it keeps running and is stopped by hand on the worker's machine:
 
 ```bash
 docker ps | grep aysvc
@@ -143,6 +135,7 @@ The container is removed when it stops.
 
 ## Related
 
+- [Addon services](../how-ayon-works/services.md)
+- [Services](../web-ui/services.md)
 - [On-premise deployment](on-premise.md)
-- [Artist workstation setup](../workstation-setup.md)
 - Discussions about ASH are tagged `ash` on the [Ynput forums](https://community.ynput.io/tag/ash).

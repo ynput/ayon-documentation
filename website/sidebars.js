@@ -29,6 +29,7 @@ module.exports = {
             link: { type: "doc", id: "ayon/how-ayon-works/index" },
             items: [
                 "ayon/how-ayon-works/bundles",
+                "ayon/how-ayon-works/services",
                 "ayon/how-ayon-works/creating-a-project",
                 "ayon/how-ayon-works/pipeline-storage",
                 "ayon/how-ayon-works/permissions",
