@@ -1,109 +1,176 @@
 ---
 title: Home tasks
 sidebar_label: Tasks
-description: "The Tasks page, the landing page of the AYON web app, showing the tasks assigned to a user as a status board or a list."
-verified: 2026-10-15
+description: "The Tasks page, the landing page of the AYON web app: the tasks assigned to a user across projects, shown as a status board or a list, with sorting, grouping, filtering and the tasks of other users."
+verified: 2026-11-07
+ui_purpose: "The landing page of the web app. Lets users see the tasks assigned to them in one or more projects and update their statuses. Producers and coordinators can do the same for one, several or all users."
+ui_location: "Home > Tasks"
+ui_url: /dashboard/tasks
+ui_shortcut: h+h
+ui_access: Everyone except guests
 sources:
   - https://help.ayon.app/en/articles/2408349-tasks-home-page
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardTasks/DashboardTasksToolbar/DashboardTasksToolbar.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardTasks/DashboardTasksToolbar/KanBanGroupByOptions.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardTasks/DashboardTasksToolbar/KanBanSortByOptions.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardTasks/UserDashboardKanBan.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardTasks/KanBanCard/KanBanCard.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/Filmstrip/Filmstrip.tsx
+  - https://github.com/ynput/ayon-react-components/blob/develop/src/EntityCard/EntityCard.tsx
 ---
 
 # Home tasks
 
-The Tasks page is the landing page of the AYON web app. It lists the tasks assigned to the current user across one or more projects, either as a board with one column per status (kanban) or as a grouped list. Artists use it to see their assignments, change task statuses and discuss tasks in the activity feed. It is the first tab of the Home section, next to the Projects page and the Planner.
+<PageInfo />
 
-## Where it appears
+![The Tasks page as a board, with one column per task status and the project list on the left](../../assets/web-ui/home-tasks/board.webp)
 
-| Item | Value |
-|---|---|
-| Location | Home section, **Tasks** tab. The root URL redirects to it |
-| URL path | `/dashboard/tasks` (`/dashboard` redirects to it) |
-| Shortcut | `h+h` from anywhere in the web app. See [Keyboard shortcuts](../quick-navigation.md#keyboard-shortcuts) |
-| Access | Every user except guests. Guests see a locked page |
+The page shows the tasks assigned to the signed-in user, or to selected users, as a board (kanban) or as a list. The [project list](../project-list.md) on the left chooses the projects, and the toolbar above the tasks sorts, groups and filters them. Only assigned tasks are shown, so the page has no option for unassigned tasks. Unassigned tasks are found on the [Project overview](../production-tracking/overview.md) page, with the **Assignee** filter set to no value. How the page differs from Task progress and the Overview is described in [Task pages](../../how-ayon-works/task-pages.md).
 
-The page shows only tasks assigned to the selected user. The whole project context, including unassigned tasks, is on the [Project overview](../production-tracking/overview.md) page.
+## Board and list
 
-## Layout
+The **Board** and **List** buttons at the top right switch between the two views. The board is the default.
 
-| Region | Contents |
-|---|---|
-| Project list | Left side, resizable. Multi-select list of the projects the user can access. Tasks of all selected projects are shown together |
-| Toolbar | Sort by, Group by, text filter, assignee switch, **List** and **Board** buttons |
-| Task area | Board or list of task cards |
-| [Details panel](../details-panel.md) | Right side. Opens for the selected task or tasks |
-| Related panel | Bottom bar below the board or list |
+### Board
 
-The selected view is kept in the `view` URL query parameter. The default view is **Board**.
+The board has one column per task status, with a card for each task. It suits a visual overview of where each task stands.
 
-## Toolbar
+- Drag a card to another column to change the task status. Several selected cards move together.
+- Double-click a card to open its [details panel](../details-panel.md), with the activity feed, versions and attributes of the task.
+- Minimize the board by collapsing the columns that are not needed, with the button in the top right corner of each column. Collapsed columns next to each other merge into one narrow strip.
 
-| Control | What it does |
-|---|---|
-| **Sort by** | Sorts tasks. Options: Task, Folder, Status, Priority, Due Date. Each has an ascending or descending direction. Several sort keys can be combined, for example Folder followed by Task, so tasks in equally named folders stay ordered by task name |
-| **Group by** | Groups tasks. Options: Folder, Parent Folder, Status, Priority, Type, Project. **Assignee** is added when tasks of other users are shown. One grouping at a time, ascending or descending. Grouping applies to the list view; the board always has one column per status |
-| **Filter tasks...** | Text filter over the displayed tasks |
-| **Me** | Shows the tasks assigned to the current user |
-| **Assignees** | Dropdown to show the tasks of one or more other users |
-| **List** | Switches to the list view |
-| **Board** | Switches to the board (kanban) view |
+<Gallery columns={3} rows={1} more="show-all">
 
-### Viewing other users' tasks
+![A task card dragged from the Ready to start column to the In progress column](../../assets/web-ui/home-tasks/drag-single.webp "Drag a card")
 
-The **Assignees** dropdown is available to administrators and managers. For other users it is available only when none of the selected projects has read restrictions enabled in the user's access group. Otherwise only **Me** is available, and the assignee selection resets to the current user.
+![Three selected task cards dragged together to the Pending review column, with the details panel showing 3 tasks selected](../../assets/web-ui/home-tasks/drag-multiple.webp "Drag several cards")
 
-## Board view
+![Two collapsed columns merged into one strip on the left of the board, and the collapse button in the corner of the Pending review column](../../assets/web-ui/home-tasks/collapse-columns.png "Collapse columns")
 
-The board has one column per task status of the selected projects. Each card shows the task thumbnail, the task name with its type icon, the folder path, the assignees and the priority.
+</Gallery>
 
-| Capability | Behavior |
-|---|---|
-| Change status | Dragging a card, or several selected cards, to another column sets the status. Statuses can also be changed in the details panel |
-| Multi-select | Several cards can be selected and moved or edited together. Only statuses that exist in every project of the selected tasks can be set |
-| Collapse a column | A button in the corner of each column collapses it. Adjacent collapsed columns merge into one collapsed strip |
-| Open the details panel | Double-click on a card, or **Show details** in the context menu. `Escape` toggles the panel |
-| Open in the project overview | `Ctrl`/`Cmd` + double-click on a card |
-| Thumbnails | A task shows its own thumbnail when one is set, otherwise the thumbnail of its latest version. A file dropped on the details panel sets the task thumbnail |
+:::tip What a card shows
 
-### Card context menu
+<Columns widths="65 35">
+<Column>
 
-| Entry | Shortcut | What it does |
-|---|---|---|
-| **Show details** / **Hide details** | Double click / `Escape` | Toggles the details panel |
-| **Open in viewer** | `Spacebar` | Opens the task in the web viewer |
-| **Open in overview** | `Ctrl`/`Cmd` + double click | Opens the task on the project's Overview page |
-| **Copy task ID** | | Copies the task id. Disabled when several tasks are selected |
-| **Copy latest version ID** | | Copies the id of the task's latest version. Disabled when several tasks are selected or the task has no version |
+- **Top:** the folder name, and the task name with the icon and color of its task type. Hovering the folder name shows its path, starting with the project code.
+- **Middle:** the thumbnail: the task's own thumbnail if one is set, otherwise the thumbnail of its latest version. Without either, the task type icon. A play button at the top right means the task has reviewables to watch in the [web viewer](../web-viewer.md).
+- **Bottom:** the assignees and the priority on the left, the status icon on the right.
+- **Scrubbing:** moving the mouse from left to right over the thumbnail of a card with a play button scrubs through its reviewable. A thin bar at the bottom shows the position.
 
-## List view
+</Column>
+<Column>
 
-The list view shows one row per task in collapsible groups, with the status icon, task, folder and project path, assignees and priority.
+![A task card: the folder robot at the top, the Render task below it, a play button, the assignee and priority at the bottom left and the status at the bottom right](../../assets/web-ui/home-tasks/task-card.png "A task card")
 
-| Capability | Behavior |
-|---|---|
-| Keyboard selection | `ArrowUp` and `ArrowDown` move the selection, `Spacebar` opens the viewer |
-| Collapse a group | `c` while hovering a group collapses or expands it |
-| Change status | The status icon of a row opens the list of statuses |
-| Groups | Defined by **Group by**. Empty groups are hidden |
+</Column>
+</Columns>
+:::
 
-## Related panel
+### List
 
-The Related panel is a [power feature](../../../production-tracking/power-features.md). It sits at the bottom of the page. When expanded it shows thumbnails of the selected task and up to five related tasks.
+The list has one row per task, with its status, thumbnail, folder, task type, tags, assignees, priority and project code. It fits more tasks on screen and can be used from the keyboard, which suits long task lists.
 
-| Mode | Shows |
-|---|---|
-| Related timeline tasks (default) | Tasks of the same task type in sibling folders, for example the previous and next shots |
-| Related workflow tasks | Sibling tasks in the same folder, ordered by the project anatomy, for example the tasks upstream and downstream of the selected one |
+![The Tasks page as a list, one row per task](../../assets/web-ui/home-tasks/list.webp)
 
-The panel is also available in the web viewer (`Spacebar`), where it switches playback between related tasks without closing the player. Without the Power Pack addon the panel is not shown. See [Power Pack](../../../addons/production-tracking/power-pack/index.md).
+- Click the status icon of a row to change the task status.
+- `ArrowUp` and `ArrowDown` move the selection; with `Shift` held, they add to it.
+- Double-click a row to open its [details panel](../details-panel.md).
+- With **Group by** set, press `C` while hovering a group to collapse or expand it.
 
-## Task details
+<Gallery columns={3} rows={1} more="show-all">
 
-The [details panel](../details-panel.md) shows the task attributes, versions and the [activity feed and comments](../details-panel.md). Edits with several tasks selected apply to all of them.
+![The status menu opened from the status icon of a row in the list](../../assets/web-ui/home-tasks/list-status.png "Change the status")
+
+![The Collapse/Expand tooltip with the C shortcut on a group header in the list](../../assets/web-ui/home-tasks/list-collapse.png "Collapse a group with C")
+
+</Gallery>
+
+## Controls and interactions
+
+### Projects
+
+The [project list](../project-list.md) on the left chooses the projects whose tasks are shown. Several projects can be selected, to see the tasks of all of them together. Pinned projects stay at the top of the list.
+
+### Sort by
+
+**Sort by** orders the tasks by Task, Folder, Status, Priority or Due Date, each ascending or descending. Several sort keys can be combined. For example, sorting by Folder and then by Task keeps tasks in equally named folders, such as `sh020` in two sequences, ordered by task name.
+
+### Group by
+
+**Group by** puts the tasks into groups by Folder, Parent Folder, Status, Priority, Type or Project, and by Assignee when other users' tasks are shown. Grouping works together with sorting, which then orders the tasks within each group. On the board, the groups appear inside each status column; in the list, they can be collapsed.
+
+<Gallery columns={2} rows={1} more="show-all">
+
+![Two board columns grouped by parent folder, with a folder name above each group of cards](../../assets/web-ui/home-tasks/group-by-board.webp "Board")
+
+![The list grouped by parent folder, with a collapsible header and a task count for each folder](../../assets/web-ui/home-tasks/group-by-list.webp "List")
+
+</Gallery>
+
+### Filter tasks
+
+**Filter tasks...** shows only the tasks that match the typed text. It searches the task name, folder name, folder path, status, task type and assignees. Words separated by a space must all match; words separated by a comma match any of them, for example `anim, layout`.
+
+### Assignees
+
+**Me** shows the tasks assigned to the signed-in user. The **Assignees** dropdown next to it shows the tasks of one or more other users, or of all users with **All Users**, for example to check the workload of an artist. It is available to admins and managers, and to other users when none of the selected projects has read restrictions in their access group.
+
+![The tasks of two selected users on the board, grouped by assignee](../../assets/web-ui/home-tasks/assignee-view.webp)
+
+### Interactions
+
+The mouse and keyboard interactions with the tasks on this page.
+
+<Columns widths="70 30">
+<Column>
+
+- **Multi-select:** select several tasks with `Ctrl`/`Cmd` + click or `Shift` + click. Edits then apply to all of them.
+- **Open details panel:** double-click a task to open its [details panel](../details-panel.md). `Escape` closes it.
+- **Play reviewable:** press `Spacebar` to open the selected task in the [web viewer](../web-viewer.md).
+- **Open in overview:** `Ctrl`/`Cmd` + double-click a task to open it in the [Project overview](../production-tracking/overview.md).
+- **Context menu:** right-click a task for the same options, plus **Copy task ID** and **Copy latest version ID**.
+
+</Column>
+<Column>
+
+![The right-click menu of a task card with Show details, Open in viewer, Open in overview, Copy task ID and Copy latest version ID, and their shortcuts](../../assets/web-ui/home-tasks/right-click-menu.png "Right-click menu")
+
+</Column>
+</Columns>
+
+## Power features
+
+### Related panel
+
+![The Related panel open below the board, showing the lighting tasks of the previous and next shots](../../assets/web-ui/home-tasks/related-panel.webp)
+
+The Related panel shows the selected task next to the tasks around it, for example the previous and next shots. It is a bar at the bottom of the page; expanded, it shows thumbnails of the selected task and up to five related tasks. The two buttons at its top left switch between two modes, **Timeline** and **Workflow**.
+
+The Related panel needs a Pro or Studio plan, see [Power features](../../../production-tracking/power-features.md). Without it, the panel is not shown.
+
+- **Timeline**, the default, shows the tasks of the same task type in the sibling folders, such as the lighting tasks of the previous and next shots. It helps to check continuity across a sequence.
+- **Workflow** shows the other tasks of the same folder, ordered as in the project anatomy. It helps to check the upstream and downstream work of a shot, such as layout before lighting.
+
+<Gallery columns={1} rows={2} more="show-all" fit="contain">
+
+![The Related panel in Timeline mode, showing the lighting tasks of shots 060_0020 to 060_0060 with the selected shot in the middle](../../assets/web-ui/home-tasks/related-timeline.png "Timeline")
+
+![The Related panel in Workflow mode, showing the layout, anim, FX, lighting and matte tasks of one shot](../../assets/web-ui/home-tasks/related-workflow.png "Workflow")
+
+</Gallery>
+
+:::tip Related tasks in the web viewer
+
+When the [web viewer](../web-viewer.md) is opened from this page (`Spacebar`), the Related panel stays below the player, in either mode. Clicking a related task switches playback to it without closing the player. The panel is not shown in the web viewer when it is opened from other pages.
+
+![The Related panel below the player in the web viewer](../../assets/web-ui/home-tasks/related-viewer.webp)
+:::
 
 ## Related
 
-- [Project overview](../production-tracking/overview.md)
-- [Task progress](../production-tracking/task-progress.md)
+- [Home](index.md)
 - [Details panel](../details-panel.md)
-- [Activity feed](../details-panel.md#activity-feed)
-- [Planner](../../../addons/production-tracking/planner/index.md)
-- [Navigation bar](../navigation-bar.md)
+- [Project overview](../production-tracking/overview.md)
+- [Web viewer](../web-viewer.md)

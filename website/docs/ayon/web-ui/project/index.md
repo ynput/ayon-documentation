@@ -53,49 +53,7 @@ A help button at the right end of the tab row (tooltip **Get help for this page*
 
 ## Project list
 
-The list on the left is titled **Projects**. It shows one row per project with the project label and the project code as a badge. Archived projects are dimmed. Its width is remembered in the browser. **Project access** has its own project pane and does not show this list.
-
-### Header buttons
-
-| Button | What it does |
-|---|---|
-| `...` (menu) | Opens the list menu (see below). |
-| **Add new project** (`+`) | Opens the **Create a new project** dialog. Shown only to users who can create projects. |
-| **Search projects** | Opens a search field above the list. The text is kept in the `project_search` query parameter. While searching, folders are not shown. |
-
-### Rows
-
-| Element | What it does |
-|---|---|
-| Click | Selects the project. The list has single selection here. |
-| Double-click | Opens the project (`/projects/<project>/<default tab>`). |
-| Settings button (on hover) | Opens the **Project settings** tab for the project. |
-| Pin button (on hover, always shown on pinned rows) | Pins or unpins the project. |
-
-Pinned projects are listed in a separate block at the top of the list. Pins are stored in the user's preferences on the server, so they follow the user to other browsers and are shared with the other project lists of the web app.
-
-### List menu and right-click menu
-
-The `...` menu and the right-click menu on a row offer the same actions for the selection; the right-click menu leaves out **Search**, **Add new project** and **Show archived**.
-
-| Entry | What it does | Available to |
-|---|---|---|
-| **Search** | Opens the search field. | Everyone |
-| **Open** | Opens the project. | Everyone except guests |
-| **Manage** | Opens the **Anatomy** tab for the project. | Everyone except guests |
-| **Show archived** | Shows or hides archived projects. Stored in the browser. Hiding them drops archived projects from the selection. | Everyone except guests |
-| **Pin** / **Unpin** | Pins or unpins the selected projects. | Everyone |
-| **Rename project** (`R`) | Edits the project label in place. The project name does not change. | Managers and admins |
-| **Add new project** | Opens the **Create a new project** dialog. | Users who can create projects |
-| **Create folder** (`F`), **Create subfolder** | Opens the folder dialog. Selected projects are put into the new folder. | Power Pack feature |
-| **Move project**, **Move folder** | Submenu with the folders to move the selection into, plus **Unset folder** or **Make root folder** (`Shift+Alt+F`). | Power Pack feature |
-| **Rename folder** (`R`), **Edit folder**, **Delete (only folder)** | Change or delete a folder. Deleting a folder does not delete its projects. | Power Pack feature |
-| **Archive** / **Activate** | Sets the project inactive or active. One project at a time. | Managers and admins |
-| **Delete** | Deletes an archived project after a confirmation (**Delete Project: ...**). For an active project the entry reads **Archive to delete** and is disabled. | Managers and admins |
-
-Project folders group projects in the project lists; they are a Power Pack feature. Without a Power Pack license the folder entries open the Power Pack dialog. Creating, changing, moving and deleting folders is accepted by the server from managers and admins only.
-
-Archiving keeps all data; an archived project is hidden from this list unless **Show archived** is on. Deleting drops the project record and its database schema with all entities, marks the project's files in the server's own file storage for deletion (with local storage, the project folder is renamed with a `.trash` suffix), removes the project from every user's access, and emits `entity.project.deleted`. It cannot be undone. Pipeline files on the studio storage are not touched.
+The [project list](../project-list.md) on the left, titled **Projects**, selects the project that the tabs work on. Only one project can be selected here. **Project access** has its own project pane and does not show this list. Planning projects are not listed.
 
 ## Create a new project
 

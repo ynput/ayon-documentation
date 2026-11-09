@@ -27,6 +27,7 @@ This section explains what happens inside AYON when people use it: which parts t
 |---|---|
 | [Artist workflow](artist-workflow.md) | From opening the AYON launcher to publishing a new version and receiving feedback. |
 | [Production workflow](production-workflow.md) | Setting up a project, planning and assigning work, tracking progress, reviewing and delivering. |
+| [Task pages](task-pages.md) | Home tasks, Task progress and the Overview: the question each one answers and which one to open. |
 
 ## Related
 

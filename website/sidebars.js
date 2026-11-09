@@ -35,6 +35,7 @@ module.exports = {
                 "ayon/how-ayon-works/permissions",
                 "ayon/how-ayon-works/artist-workflow",
                 "ayon/how-ayon-works/production-workflow",
+                "ayon/how-ayon-works/task-pages",
             ],
         },
         // Web UI mirrors the web app 1:1: one page per tab, grouped as the app groups them,
@@ -47,7 +48,15 @@ module.exports = {
             items: [
                 { type: "doc", id: "ayon/web-ui/quick-navigation", label: "Quick navigation and server layout" },
                 { type: "doc", id: "ayon/web-ui/navigation-bar", label: "Navigation bar" },
-                { type: "doc", id: "ayon/web-ui/details-panel", label: "Details panel" },
+                {
+                    type: "category",
+                    label: "Panels",
+                    items: [
+                        { type: "doc", id: "ayon/web-ui/details-panel", label: "Details panel" },
+                        { type: "doc", id: "ayon/web-ui/project-list", label: "Project list" },
+                        { type: "doc", id: "ayon/web-ui/slicer", label: "Slicer" },
+                    ],
+                },
                 { type: "doc", id: "ayon/web-ui/web-viewer", label: "Web viewer" },
                 { type: "doc", id: "ayon/web-ui/views", label: "Views" },
                 { type: "doc", id: "ayon/web-ui/links-manager", label: "Links manager" },

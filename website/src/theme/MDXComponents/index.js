@@ -1,11 +1,15 @@
 import React from "react";
 import MDXComponents from "@theme-original/MDXComponents";
 import AddonInfo from "@site/src/components/AddonInfo";
+import PageInfo from "@site/src/components/PageInfo";
 import { Card, Cards } from "@site/src/components/Cards";
 import Embed from "@site/src/components/Embed";
 import FlowTrace from "@site/src/components/FlowTrace";
+import Gallery from "@site/src/components/Gallery";
 import TableFilter from "@site/src/components/TableFilter";
 import TemplateExplorer from "@site/src/components/TemplateExplorer";
+import ZoomableImage from "@site/src/components/ZoomableImage";
+import { Column, Columns } from "@site/src/components/Columns";
 
 // External links in page content open in a new tab; internal links are unchanged.
 function Anchor(props) {
@@ -22,11 +26,16 @@ function Anchor(props) {
 export default {
     ...MDXComponents,
     a: Anchor,
+    img: ZoomableImage,
     AddonInfo,
     Card,
     Cards,
+    Column,
+    Columns,
     Embed,
     FlowTrace,
+    Gallery,
+    PageInfo,
     TableFilter,
     TemplateExplorer,
 };
