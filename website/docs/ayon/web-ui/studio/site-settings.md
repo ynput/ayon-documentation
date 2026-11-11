@@ -2,6 +2,11 @@
 title: Site settings
 description: "The Site settings tab of the AYON Studio Settings: per-workstation addon settings of the signed-in user, edited per addon and site ID for every project, and the only Studio Settings tab that users without the manager role see."
 verified: 2026-10-25
+ui_purpose: "Edits settings for one workstation of one user, in every project."
+ui_location: "Studio Settings > Site settings; App menu > Site Settings for users"
+ui_url: "/settings/site"
+ui_shortcut: "s+s (users)"
+ui_access: "Everyone"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/SiteSettings.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/SiteList.jsx
@@ -14,13 +19,11 @@ sources:
 
 # Site settings
 
+<PageInfo />
+
 The **Site settings** tab edits the studio-level site settings: values that apply to one workstation (site) of one user, in every project. These values are a separate set of fields defined by each addon, with no variant and no inheritance from the studio or project settings. What a site ID is and how the site scopes differ is explained in [Settings scopes and storage](../../backend/settings/index.md#site-ids).
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Site settings | Studio Settings, **Site settings** (managers and admins); **App** menu, **Site Settings** (users) | `s+s` (users) | `/settings/site` | Everyone |
 
 For users without the manager role, **Site Settings** replaces **Studio Settings** in the **App** menu, and **Site settings** is the only tab in the Studio Settings tab row. The `s+s` shortcut and the paths of the other built-in tabs lead them here.
 

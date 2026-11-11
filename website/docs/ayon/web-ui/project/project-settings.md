@@ -2,6 +2,11 @@
 title: Project settings
 description: "The Project settings tab of the AYON Projects Manager: editing addon settings for one project per variant, the addon list, the editor and its overrides, copying settings, and freezing a project bundle with its own launcher, dependency packages and addon versions."
 verified: 2026-10-25
+ui_purpose: "Edits the addon settings of one project, on top of the studio settings."
+ui_location: "App menu > Projects Settings, or Projects Manager > Project settings"
+ui_url: "/manageProjects/projectSettings"
+ui_shortcut: "p+p"
+ui_access: "Managers and admins; users with access to Project addon settings"
 sources:
   - https://help.ayon.app/en/help/articles/0782429-project-bundles
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/ProjectManagerPage.jsx
@@ -20,15 +25,13 @@ sources:
 
 # Project settings
 
+<PageInfo />
+
 The **Project settings** tab of the [Projects Manager](index.md) edits the addon settings of the selected project. Values set here are project overrides: they apply to this project only and are stored on top of the studio settings of the same addon version and variant. Fields without a project override keep following the [Studio settings](../studio/studio-settings.md). Scopes, override layers and storage are explained in [Settings scopes and storage](../../backend/settings/index.md).
 
 The toolbar of this tab also holds the lock button that freezes a [project bundle](#project-bundles).
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Project settings | App menu, **Projects Settings**; Projects Manager, **Project settings** | `p+p` | `/manageProjects/projectSettings?project=<project>` | Managers and admins; users with **Read only** or **Read & Write** on **Project addon settings** in at least one project |
 
 The settings button on a project row of the project lists also opens this tab for that project.
 

@@ -7,9 +7,11 @@ import styles from "@site/src/components/AddonInfo/styles.module.css";
  * front matter, so a page only needs to write <PageInfo /> under its title:
  *
  *   ui_purpose: "..."         one or two sentences: what the page is for
- *   ui_location: "Home > Tasks"  how to reach it in the web app
+ *   ui_location: "Home > Tasks"  how to reach it in the web app, or where it is found when it has
+ *                             no address of its own, e.g. "At the top of every page"
  *   ui_url: /dashboard/tasks  URL path
- *   ui_shortcut: h+h          keyboard shortcut, if any
+ *   ui_shortcut: h+h          keyboard shortcut, if any. A single key combination is shown as a
+ *                             key; a longer text such as "0 opens the User menu" as plain text
  *   ui_access: "..."          who can open it
  *   verified: 2026-11-07      date the page was last checked against the code
  */
@@ -48,9 +50,7 @@ export default function PageInfo() {
             {shortcut ? (
                 <div>
                     <dt>Shortcut</dt>
-                    <dd>
-                        <kbd>{shortcut}</kbd>
-                    </dd>
+                    <dd>{/^\S+$/.test(String(shortcut)) ? <kbd>{shortcut}</kbd> : String(shortcut)}</dd>
                 </div>
             ) : null}
             {access ? (

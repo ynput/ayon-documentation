@@ -2,6 +2,10 @@
 title: Site settings (project)
 description: "The Site settings tab of the AYON Projects Manager: per-workstation overrides of site-capable addon settings for one project, edited by each user for the sites registered to them."
 verified: 2026-10-25
+ui_purpose: "Overrides addon settings for one workstation, one user and one project."
+ui_location: "Projects Manager > Site settings"
+ui_url: "/manageProjects/siteSettings"
+ui_access: "Everyone"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/ProjectManagerPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AddonSettings/AddonSettings.jsx
@@ -12,13 +16,9 @@ sources:
 
 # Site settings (project)
 
+<PageInfo />
+
 The **Site settings** tab of the [Projects Manager](index.md) edits project site settings: overrides of an addon's normal settings fields for one workstation (site), one user and one project. Only fields the addon marks as site-capable appear. Values set here apply on top of the studio and project values. This tab is not the same as the studio-level [Site settings](../studio/site-settings.md) page, which edits a separate set of fields for every project; neither reads the other. See [Settings scopes and storage](../../backend/settings/index.md#the-four-scopes) and [Site IDs](../../backend/settings/index.md#site-ids).
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Site settings | Projects Manager, **Site settings** | none | `/manageProjects/siteSettings?project=<project>` | Everyone |
 
 ## Layout and controls
 

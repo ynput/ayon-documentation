@@ -2,6 +2,10 @@
 title: Project permissions
 description: "The Project permissions tab of the AYON Projects Manager: overriding the definition of a studio access group for one project, how the override is stored and used, and clearing it."
 verified: 2026-10-25
+ui_purpose: "Overrides the studio access groups for one project."
+ui_location: "Projects Manager > Project permissions"
+ui_url: "/manageProjects/permissions"
+ui_access: "Managers and admins"
 sources:
   - https://help.ayon.app/en/help/articles/2635883-user-permissions-and-project-access-groups
   - https://help.ayon.app/en/help/articles/6698141-user-management
@@ -17,13 +21,11 @@ sources:
 
 # Project permissions
 
+<PageInfo />
+
 The **Project permissions** tab of the Projects Manager overrides the settings of the studio [access groups](../studio/permissions.md) for the selected project. A project override replaces the whole definition of the group in that project; it is not merged with the studio definition. Groups without an override keep following the studio definition. How overrides fit into permission checks is explained in [Permissions](../../how-ayon-works/permissions.md#studio-definition-and-project-overrides).
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Project permissions | Projects Manager, **Project permissions** | none | `/manageProjects/permissions?project=<project>` | Managers and admins |
 
 The tab is limited to managers and admins in the web app. Other users who open its URL are redirected to the first tab they can open.
 

@@ -3,21 +3,19 @@ title: Task progress
 sidebar_label: Task progress
 description: "The Task progress page, a per-folder matrix of task cards by task type for tracking progress and editing statuses, assignees and priorities of many tasks."
 verified: 2026-10-15
+ui_purpose: "Shows how far each folder of a project is, as a matrix of folders and task types, and edits many tasks at once."
+ui_location: "Project tab row > Task progress"
+ui_url: "/projects/<project>/tasks"
+ui_access: "Everyone except guests"
 sources:
   - https://help.ayon.app/en/articles/5526719-task-progress-page
 ---
 
 # Task progress
 
+<PageInfo />
+
 The Task progress page shows the tasks of a project as a matrix: one row per folder, one column per task type, and each cell holds the task cards of that type. It gives an overview of how far a project or a part of it has progressed, and supports editing statuses, assignees and priorities of many tasks at once. The page is available since AYON 1.4.0.
-
-## Where it appears
-
-| Item | Value |
-|---|---|
-| Location | Project page, **Task progress** tab |
-| URL path | `/projects/<project>/tasks` |
-| Access | Every user except guests |
 
 ## Layout
 

@@ -2,6 +2,11 @@
 title: Important
 description: "The Important tab of the AYON inbox lists activity where the user is mentioned or watches the entity, except status changes, and is the only tab that triggers notifications."
 verified: 2026-10-25
+ui_purpose: "The default inbox tab: activity where the user is mentioned or watches the entity. The only tab that notifies."
+ui_location: "Inbox icon in the top bar"
+ui_url: "/inbox/important"
+ui_shortcut: "i+i"
+ui_access: "Everyone"
 sources:
   - https://help.ayon.app/en/articles/7870202-inbox-and-notifications
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/InboxPage.tsx
@@ -18,13 +23,9 @@ sources:
 
 # Important
 
+<PageInfo />
+
 **Important** is the default tab of the [inbox](index.md). It lists the activity where the current user is mentioned or watches the entity, except status changes. It is the tab that the header icon, `i+i` and notifications open, and the only one whose new messages trigger notifications.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Important | Inbox icon in the header, **Important** tab | `i+i` | `/inbox/important` | Everyone |
 
 ## What lands here
 

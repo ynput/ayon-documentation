@@ -3,6 +3,11 @@ title: Inbox and notifications
 sidebar_label: Inbox
 description: "The AYON inbox lists the activity that concerns the current user across projects in three tabs, Important, Other and Cleared, with filters, read and clear actions, watchers and real-time notifications."
 verified: 2026-10-25
+ui_purpose: "The activity that concerns the user across all projects, as a list of items still needing attention."
+ui_location: "Inbox icon in the top bar"
+ui_url: "/inbox/important"
+ui_shortcut: "i+i"
+ui_access: "Everyone"
 sources:
   - https://help.ayon.app/en/articles/7870202-inbox-and-notifications
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/InboxPage.tsx
@@ -29,6 +34,8 @@ sources:
 ---
 
 # Inbox and notifications
+
+<PageInfo />
 
 The **inbox** lists the activity that concerns the current user across all projects: comments that mention them, activity on entities they watch, assignments, publishes, reviews and status changes. Each activity reaches a user at most once, through one reference: a mention, watching the entity, or a relation to it (assignee or author). The reference and the activity type decide whether the message lands in **Important** or **Other**. Messages can be marked read and cleared, which moves them to **Cleared**, so the inbox works as a list of items still needing attention.
 

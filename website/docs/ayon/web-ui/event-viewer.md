@@ -2,22 +2,20 @@
 title: Event Viewer
 description: "The Event Viewer page of the AYON server web app: events table, filtering, detail panel, overview and event topics."
 verified: 2026-10-15
+ui_purpose: "A live stream of what happens on the server, used to see who changed what and to diagnose failing jobs and services."
+ui_location: "App menu (nine dots, top right) > Event Viewer"
+ui_url: "/events"
+ui_shortcut: "e+e"
+ui_access: "Managers and admins"
 sources:
   - https://help.ayon.app/en/help/articles/2566382-ayon-event-viewer
 ---
 
 # Event Viewer
 
+<PageInfo />
+
 The Event Viewer is a live stream of what happens on the AYON server: entity changes, server lifecycle events, background jobs, user actions and, optionally, the server log. Managers and admins use it to see who changed what and to diagnose failing jobs and services. It is where the detailed audit history of the server is browsed. On servers hosted by Ynput, how long the history is kept depends on the [plan](../plans.md).
-
-## Where it appears
-
-| Item | Value |
-|---|---|
-| Menu entry | App menu (nine-dot icon, top right) > **Event Viewer** |
-| Shortcut | `E+E` |
-| URL path | `/events` |
-| Visible to | Managers and admins. Users and guests do not get the menu entry and are redirected to the start page. |
 
 ## Layout
 

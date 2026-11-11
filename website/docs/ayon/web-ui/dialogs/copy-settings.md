@@ -2,6 +2,9 @@
 title: Copy settings
 description: "The copy settings dialogs of the AYON web app: copying addon settings into the studio or project settings editor with a per-value comparison, and copying all settings between bundles on the Bundles page."
 verified: 2026-10-25
+ui_purpose: "Copies addon settings across addon versions, variants, bundles and projects, so a new addon version or bundle starts from existing values."
+ui_location: "Copy settings button or right-click menu of the addon list in Studio and Project settings; Bundles when a state is set"
+ui_access: "Studio settings: managers and admins. Project settings: users who can open them. Bundles: admins"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/CopySettings/CopySettingsDialog.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/CopySettings/CopySettingsNode.jsx
@@ -22,6 +25,8 @@ sources:
 
 # Copy settings
 
+<PageInfo />
+
 Addon settings are stored per addon version and variant, so a new addon version does not see the values of the previous one (see [Settings scopes and storage](../../backend/settings/index.md)). The web app has two dialogs that copy values across addon versions, variants, bundles and projects:
 
 | Dialog | Where | What it does |
@@ -29,7 +34,7 @@ Addon settings are stored per addon version and variant, so a new addon version 
 | [Settings copy dialog](#settings-copy-dialog) | [Studio settings](../studio/studio-settings.md) and [Project settings](../project/project-settings.md) | Compares the source and target values field by field and loads the chosen ones into the editor as unsaved changes. |
 | [Bundle state dialog](#bundle-state-dialog) | [Bundles](../studio/bundles.md) | Copies all studio, project and project site settings of every addon from one bundle and variant to another, at once. |
 
-## Where it appears
+## Where it opens
 
 | Opens from | Control | Shortcut | Who sees it |
 |---|---|---|---|

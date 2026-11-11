@@ -2,21 +2,19 @@
 title: Secrets
 description: "The Secrets page of the AYON server studio settings: storing named key-value pairs such as API keys and referencing them from addon settings."
 verified: 2026-10-15
+ui_purpose: "Stores API keys and passwords that addon settings refer to by name."
+ui_location: "Studio Settings > Secrets"
+ui_url: "/settings/secrets"
+ui_access: "Managers and admins; only admins read values and make changes"
 sources:
   - https://help.ayon.app/en/help/articles/3701069-ayon-server-secrets
 ---
 
 # Secrets
 
+<PageInfo />
+
 Secrets are named key-value pairs stored on the AYON server, typically API keys and passwords that addons need. Addon settings reference a secret by its name, so the value does not have to be written into the settings.
-
-## Where it appears
-
-| Item | Value |
-|---|---|
-| Location | Studio settings, **Secrets** entry in the left sidebar |
-| URL path | `/settings/secrets` |
-| Visible to | Managers and admins. Only admins can read values and make changes. |
 
 ## Layout
 

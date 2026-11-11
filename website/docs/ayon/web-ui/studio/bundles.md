@@ -2,6 +2,11 @@
 title: Bundles
 description: "The Bundles tab of the AYON Studio Settings: bundle states and settings variants, the bundle list and form, the compatibility check, dependency packages, uploading addons, launchers and dependency packages, pipeline releases and copying settings."
 verified: 2026-10-15
+ui_purpose: "Manages bundles, launcher installers and dependency packages, which decide what the server and the launcher run."
+ui_location: "Studio Settings > Bundles"
+ui_url: "/settings/bundles"
+ui_shortcut: "b+b"
+ui_access: "Admins"
 sources:
   - https://help.ayon.app/en/help/articles/4644998-bundles-and-addons
   - https://help.ayon.app/en/help/articles/5135604-how-to-update-an-addon
@@ -9,6 +14,8 @@ sources:
 ---
 
 # Bundles
+
+<PageInfo />
 
 An addon is a package of code and settings that extends the AYON server and the pipeline. A bundle is a named, versioned set of addons together with an AYON launcher version and dependency packages. Bundles decide which addon versions the server and the launcher run. The **Bundles** tab of the Studio Settings manages bundles, launcher installers and dependency packages. Which addon versions are installed and where they are used is shown on the [Addons](addons.md) tab.
 
@@ -27,10 +34,6 @@ An addon is a package of code and settings that extends the AYON server and the 
 Installing an addon only places it on the server. An addon version is used once it is part of a bundle that has a state.
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Bundles | Studio Settings, **Bundles** | `b+b` | `/settings/bundles` | Admins |
 
 Managers and users are redirected to the start page when they open the path.
 

@@ -2,6 +2,10 @@
 title: Global
 description: "The Global tab of the AYON Studio Settings: the server configuration with the studio name, login page customization, password login, project code regex, changelog visibility and CDN resolver URL, with the default of every field."
 verified: 2026-10-25
+ui_purpose: "Edits the configuration of the server itself, such as the studio name, login page and password login."
+ui_location: "Studio Settings > Global"
+ui_url: "/settings/server"
+ui_access: "Admins"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/ServerConfig/ServerConfig.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/ServerConfig/ServerConfigUpload.tsx
@@ -19,13 +23,9 @@ sources:
 
 # Global
 
+<PageInfo />
+
 The **Global** tab edits the server configuration: values that belong to the AYON server itself rather than to an addon or a project. It covers the studio name, the look of the login page, password login, the rule that suggests project codes, who sees the changelog, and the CDN resolver for project files. The server stores only the values that differ from the defaults.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Global | Studio Settings, **Global** | none | `/settings/server` | Admins |
 
 ## Layout and controls
 

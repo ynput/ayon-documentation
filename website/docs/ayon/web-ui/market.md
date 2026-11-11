@@ -2,23 +2,22 @@
 title: Market
 description: "The Market page of the AYON web app: browsing, installing and updating addons and pipeline release bundles from Ynput Cloud."
 verified: 2026-10-15
+ui_purpose: "The catalog of addons and pipeline releases from Ynput, where admins install and update them on the server."
+ui_location: "App menu (nine dots, top right) > Market"
+ui_url: "/market"
+ui_shortcut: "m+m"
+ui_access: "Admins; needs a connection to Ynput Cloud"
 sources:
   - https://help.ayon.app/en/help/articles/7317917-ayon-market
 ---
 
 # Market
 
+<PageInfo />
+
 The Market is the catalog of addons and pipeline release bundles that Ynput publishes for AYON servers. The page lists them, shows their installation state on the current server, and downloads them to the server directly from Ynput Cloud. Administrators use it to add addons, update installed addons and install tested sets of addons, launchers and dependency packages.
 
 ## Where it appears
-
-| Item | Value |
-|---|---|
-| Menu | **App** menu, **Market** |
-| Shortcut | `m+m` |
-| Route | `/market`, with query parameters `type` (`addons` or `releases`), `filter` and `selected` (the open addon or release) |
-| Visible to | Administrators (the menu entry is hidden for other roles). The catalog endpoints reject users who are not administrators. |
-| Requires | A connection between the AYON server and Ynput Cloud, and an AYON server that is not in offline mode |
 
 The Market needs a connected Ynput Cloud account but no paid plan. Addons flagged as requiring a subscription are listed but cannot be downloaded without one. An AYON server in offline mode cannot reach the Market and reports that the marketplace is not available.
 

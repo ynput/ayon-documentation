@@ -2,6 +2,9 @@
 title: Import CSV
 description: "The Import CSV dialog of the AYON web app: where it opens, the import options, the five stages from upload to import, column and value mapping, the columns of folders and tasks, list items and users, mapping presets and permissions."
 verified: 2026-10-25
+ui_purpose: "Creates or updates folders and tasks, list items or users in bulk from a CSV file, with each column mapped to an AYON field."
+ui_location: "Import CSV button on the Overview, Lists and Users pages"
+ui_access: "Users who can open the project; managers and admins for users"
 sources:
   - https://help.ayon.app/en/articles/4296440-data-import
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ImportDialog/ImportDialog.tsx
@@ -35,9 +38,11 @@ sources:
 
 # Import CSV
 
+<PageInfo />
+
 The **Import CSV** dialog creates or updates folders and tasks, list items and users in bulk from CSV data. The columns of the file do not have to match the AYON names: each column and each value is mapped to an AYON field in the dialog, so exports from other production trackers or spreadsheets can be used as they are. Every import is checked by the AYON server and previewed before anything is written.
 
-## Where it appears
+## Where it opens
 
 | Opens from | Control | Shortcut | Who sees it |
 |---|---|---|---|

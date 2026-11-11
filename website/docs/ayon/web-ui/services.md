@@ -2,22 +2,22 @@
 title: Services
 description: "The Services page of the AYON web app: the table of addon services, the New service dialog, the context menu, statuses and the service details panel."
 verified: 2026-10-15
+ui_purpose: "Creates, starts, stops and deletes the addon services that ASH workers run next to the server."
+ui_location: "App menu (nine dots, top right) > Services"
+ui_url: "/services"
+ui_shortcut: "v+v"
+ui_access: "Managers and admins"
 sources:
   - https://help.ayon.app/en/help/articles/2668013-ayon-services
 ---
 
 # Services
 
+<PageInfo />
+
 The **Services** page lists the addon services registered on the AYON server and manages them: it creates, starts, stops, edits and deletes services and shows their state. An addon service is a containerized program that an addon runs next to the AYON server. The page only records what should run; the container itself is started by an AYON Service Host (ASH) worker. How services run is described in [Addon services](../how-ayon-works/services.md), and how to run ASH on the [ASH page](../deployment/ash.md).
 
 ## Where it appears
-
-| Item | Value |
-|---|---|
-| Menu entry | **Services**, in the AYON menu of the header, below **Event Viewer** |
-| Shortcut | `v+v` |
-| URL path | `/services` |
-| Visible to | Managers and admins (see [Permissions](#permissions)) |
 
 The browser tab title is **Services • AYON**, or **Services • &lt;addon name&gt; • AYON** while a service is selected.
 

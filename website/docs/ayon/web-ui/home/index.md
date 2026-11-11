@@ -2,6 +2,11 @@
 title: Home
 description: "The Home space of the AYON web app: how it opens, its Tasks and Projects tabs, the Planner tab or the Plan and Resources pages of the Planner addon, other addon tabs, and what a server without projects shows."
 verified: 2026-10-25
+ui_purpose: "The studio-level start page: the user's own tasks across projects, all projects, and studio pages added by addons."
+ui_location: "Home button in the top bar"
+ui_url: "/dashboard/tasks"
+ui_shortcut: "h+h"
+ui_access: "Everyone except guests"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardPage.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/DashboardAddon.jsx
@@ -16,13 +21,11 @@ sources:
 
 # Home
 
+<PageInfo />
+
 Home is the studio-level start page of the web app. It is not tied to one project: it shows the signed-in user's own tasks across projects, the list of all projects the user can reach, and studio pages added by addons, such as resource planning. All its pages live under the route `/dashboard/` and share one row of tabs.
 
 ## Where it appears
-
-| Item | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Home | **Home** button in the top bar | `h+h` | `/dashboard/tasks` | Everyone except guests |
 
 The server root `/` and `/dashboard` both redirect to `/dashboard/tasks`, so a sign-in that starts at the root lands on the **Tasks** tab. A sign-in that starts from a link to another page returns to that page. The **Home** button is highlighted while any `/dashboard` page is open.
 

@@ -2,6 +2,9 @@
 title: Install pipeline release
 description: "The Install pipeline release dialog of the AYON web app: where it opens, the release, addon and launcher cards, the selection steps, the download progress and the bundle it creates."
 verified: 2026-10-25
+ui_purpose: "Downloads a pipeline release from Ynput Cloud to the server and creates a bundle from it."
+ui_location: "App menu (nine dots, top right) > Update Pipeline; Market > release details"
+ui_access: "Admins"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ReleaseInstallerDialog/ReleaseInstallerDialog.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ReleaseInstallerDialog/ReleaseInstaller.tsx
@@ -27,11 +30,13 @@ sources:
 
 # Install pipeline release
 
+<PageInfo />
+
 A pipeline release is an official set of tested addons, AYON launchers and dependency packages, published by Ynput on Ynput Cloud. The **Install pipeline release** dialog downloads one release to the server and creates a new [bundle](../studio/bundles.md) from it. How bundles are used once they exist is explained in [Bundles](../../how-ayon-works/bundles.md).
 
 The first-run setup of a new server installs a release with its own steps; see [First-run setup](first-run-setup.md).
 
-## Where it appears
+## Where it opens
 
 | Opens from | Control | Shortcut | Who sees it |
 |---|---|---|---|

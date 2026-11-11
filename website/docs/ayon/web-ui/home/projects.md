@@ -2,6 +2,10 @@
 title: Projects
 description: "The Projects tab of the AYON web app's Home space: the table of all projects with thumbnails, activity heartbeat, state and attributes, filters and grouping, project folders, the project details panel, Create new project and the project context menu."
 verified: 2026-10-25
+ui_purpose: "All projects of the server in one table, where producers and managers create, archive, delete and organize projects."
+ui_location: "Home > Projects"
+ui_url: "/dashboard/projects"
+ui_access: "Everyone except guests"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardPage.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/ProjectsPage.tsx
@@ -33,13 +37,11 @@ sources:
 
 # Projects
 
+<PageInfo />
+
 The **Projects** tab of Home lists the projects of the server in one table, with their thumbnail, recent activity, state and project attributes. It is where producers and managers get an overview of all productions, create new projects, archive or delete old ones and organize projects into folders. Selecting a project opens a details panel with its dates, attributes and teams; opening a project leads to its project pages.
 
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Projects | **Home**, then the **Projects** tab | none | `/dashboard/projects` | Everyone except guests |
+## Projects listed
 
 Which projects are listed depends on the user:
 

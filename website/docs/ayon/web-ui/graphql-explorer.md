@@ -2,6 +2,11 @@
 title: GraphQL Explorer
 description: "The GraphQL Explorer page of the AYON web app: the in-app GraphiQL editor for running read-only GraphQL queries against the server as the signed-in user, with the query builder, schema documentation, query variables and history."
 verified: 2026-10-25
+ui_purpose: "An interactive editor for the server's GraphQL API, to try out queries and look up entity fields."
+ui_location: "Help menu > GraphQL Explorer (opens in a new tab)"
+ui_url: "/explorer"
+ui_shortcut: "8 opens the Help menu"
+ui_access: "Users and above"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ExplorerPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AppRoutes.tsx
@@ -14,13 +19,11 @@ sources:
 
 # GraphQL Explorer
 
+<PageInfo />
+
 The GraphQL Explorer is an interactive editor for the server's GraphQL API, built on GraphiQL. It is used to try out queries, look up which fields an entity has, and copy working queries into scripts and tools. Queries run against the live server with the signed-in user's own session, so the results are exactly what that user may see. How to write queries, with examples, is in the developer guide [GraphQL API](../../developer/api/graphql.md).
 
 ## Where it appears
-
-| Page | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| GraphQL Explorer | **Help** menu, **GraphQL Explorer** (opens in a new browser tab) | `8` opens the Help menu | `/explorer` | User role and above |
 
 The page keeps the top bar of the web app; the breadcrumbs show **Explorer**. The editor itself is served by the server at `/graphiql` and shown in a frame. Opening `/graphiql` directly shows the same editor without the top bar; it requires being signed in to the web app in the same browser.
 

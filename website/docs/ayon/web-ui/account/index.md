@@ -2,6 +2,11 @@
 title: Account
 description: "The Account space of the AYON web app: how it opens from the User menu, and its Profile, Sessions and Launchers tabs for the signed-in user's own profile, sign-in sessions and launcher downloads."
 verified: 2026-10-25
+ui_purpose: "The signed-in user's own part of the web app: profile and preferences, sessions, and the launcher installers to download."
+ui_location: "User menu (avatar at the top right) > Account"
+ui_url: "/account/profile"
+ui_shortcut: "0 opens the User menu"
+ui_access: "Everyone except guests"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/AccountPage/AccountPage.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AppRoutes.tsx
@@ -10,6 +15,8 @@ sources:
 ---
 
 # Account
+
+<PageInfo />
 
 Account is the part of the web app that belongs to the signed-in user: their profile and preferences, the sessions they are signed in with, and the launcher installers to download. All its pages live under the route `/account/` and share one row of tabs. Other users' accounts are managed on the [Users](../studio/users.md) page of Studio Settings.
 

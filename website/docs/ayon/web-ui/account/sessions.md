@@ -2,6 +2,11 @@
 title: Sessions
 description: "The Sessions tab of the AYON web app's Account space: the signed-in user's active sessions with IP address, platform, client, device, location and last activity, and how to invalidate one."
 verified: 2026-10-25
+ui_purpose: "Lists the user's sessions on the server, in browsers, the launcher and other clients, and ends any of them."
+ui_location: "User menu > Account > Sessions"
+ui_url: "/account/sessions"
+ui_shortcut: "0 opens the User menu"
+ui_access: "Everyone except guests"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/AccountPage/SessionListPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/api/queries/users/getUsers.ts
@@ -14,13 +19,9 @@ sources:
 
 # Sessions
 
+<PageInfo />
+
 The **Sessions** tab lists the sessions the signed-in user currently has on the server: one per sign-in in a browser, in the AYON launcher or in another client. It shows where and with what each session was opened and when it was last used, and lets the user end any of them, for example after signing in on a shared machine.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Sessions | **User** menu, **Account**, then the **Sessions** tab | `0` opens the User menu | `/account/sessions` | Everyone except guests |
 
 ## Layout and controls
 

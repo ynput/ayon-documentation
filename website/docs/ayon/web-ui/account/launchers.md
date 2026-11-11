@@ -2,6 +2,11 @@
 title: Launchers
 description: "The Launchers tab of the AYON web app's Account space: downloading the AYON launcher installer of the production bundle for Windows, macOS or Linux, and every other launcher version hosted on the server."
 verified: 2026-10-25
+ui_purpose: "Downloads the AYON launcher installers hosted on the server, with the installer of the production bundle first."
+ui_location: "User menu > Download Launcher, or Account > Launchers"
+ui_url: "/account/downloads"
+ui_shortcut: "0 opens the User menu"
+ui_access: "Everyone except guests"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/AccountPage/DownloadsPage/DownloadsPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/AccountPage/DownloadsPage/DownloadsPageHelpers.jsx
@@ -15,13 +20,9 @@ sources:
 
 # Launchers
 
+<PageInfo />
+
 The **Launchers** tab offers the AYON launcher installers hosted on the server for download. The launcher is the desktop application that artists install on their workstation to run the pipeline (see [Launcher](../../../pipeline/launcher.md)). The page puts the installer of the production bundle first, for each platform, and lists every other version below.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Launchers | **User** menu, **Download Launcher**; or **Account**, then the **Launchers** tab | `0` opens the User menu | `/account/downloads` | Everyone except guests |
 
 ## Layout and controls
 

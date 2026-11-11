@@ -2,6 +2,10 @@
 title: First-run setup
 description: "The first-run setup of a new AYON server: when it appears, creating the first admin, connecting to Ynput Cloud, installing a pipeline release and how the setup ends, plus Launch Bootstrap Setup."
 verified: 2026-10-25
+ui_purpose: "Creates the first admin account of a new server and can install a pipeline release from Ynput Cloud."
+ui_location: "Shown on the first visit to a new server, before the web app"
+ui_url: "/onboarding"
+ui_access: "Everyone on a server without an admin; then admins until the setup is finished"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/OnBoarding/OnBoardingPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/OnBoarding/context/on-boarding/OnBoardingContext.jsx
@@ -26,9 +30,11 @@ sources:
 
 # First-run setup
 
+<PageInfo />
+
 The first-run setup (also called onboarding or bootstrap setup) is the full-screen flow that a new AYON server shows before the regular web app. It creates the first admin account and can install a pipeline release from Ynput Cloud: addons, AYON launchers and dependency packages, plus a bundle that uses them. Setting up a server is described in [On-premise deployment](../../deployment/on-premise.md); releases and bundles in [Install pipeline release](install-pipeline-release.md) and [Bundles](../studio/bundles.md).
 
-## Where it appears
+## Where it opens
 
 | Opens from | Control | Shortcut | Who sees it |
 |---|---|---|---|

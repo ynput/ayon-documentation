@@ -2,6 +2,11 @@
 title: Studio settings
 description: "The Studio settings tab of the AYON web app: the addon settings editor at studio scope with the variant buttons, bundle selector, addon list, search, override actions, copy and paste, copying settings from another bundle, the low-level editor and saving."
 verified: 2026-10-25
+ui_purpose: "Edits the settings of the server's addons for the whole studio, for every project and workstation."
+ui_location: "App menu (nine dots, top right) > Studio Settings"
+ui_url: "/settings/studio"
+ui_shortcut: "s+s"
+ui_access: "Managers and admins"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/StudioSettings.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AddonSettings/AddonSettings.jsx
@@ -22,13 +27,11 @@ sources:
 
 # Studio settings
 
+<PageInfo />
+
 The **Studio settings** tab edits the settings of the server's addons at the studio level. The values saved here apply to every project and every workstation unless a project or site overrides them. Values are stored per addon version and variant (production, staging or a dev bundle), not per bundle. How scopes, overrides and variants work is explained in [Settings scopes and storage](../../backend/settings/index.md); this page describes the controls.
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Studio settings | **App** menu, **Studio Settings** | `s+s` | `/settings/studio` | Managers and admins |
 
 Users without the manager role are redirected to [Site settings](site-settings.md).
 

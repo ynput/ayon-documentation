@@ -2,21 +2,21 @@
 title: Attributes
 description: "The Attributes page of the AYON web app: the attribute table, scopes, data types, the attribute editor, dynamic enums, and attribute permissions."
 verified: 2026-10-15
+ui_purpose: "Lists and edits the attribute definitions of the server, such as fps or frameStart."
+ui_location: "Studio Settings > Attributes"
+ui_url: "/settings/attributes"
+ui_access: "Managers and admins; only admins save changes"
 sources:
   - https://help.ayon.app/en/help/articles/4636995-attributes
 ---
 
 # Attributes
 
+<PageInfo />
+
 Attributes are the named, typed properties of AYON entities, such as `frameStart`, `fps` or `priority`. An attribute is defined once for the whole AYON server (its name, scopes, type and validation rules) and then exists on every entity of its scopes. The **Attributes** page lists all definitions and edits them. Attribute values are not edited here; they belong to the individual entities.
 
 ## Where it appears
-
-| Item | Value |
-|---|---|
-| Location | **Attributes** link in the settings navigation bar, after **Anatomy presets** |
-| URL path | `/settings/attributes` |
-| Visible to | Managers and admins. Only admins can save changes (see [Permissions](#permissions)). |
 
 Attributes are defined for the AYON server as a whole. There is no per-project attribute definition.
 

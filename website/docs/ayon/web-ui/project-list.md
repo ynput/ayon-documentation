@@ -2,6 +2,9 @@
 title: Project list
 description: "The project list of the AYON web app, titled Projects: the pages that show it, selecting one or several projects, pinning, searching, project folders, and its menu with open, rename, archive and delete."
 verified: 2026-11-07
+ui_purpose: "Selects the projects a page works on, and pins, organizes and manages projects."
+ui_location: "Left side of Home tasks, the Inbox and the Projects Manager, titled Projects"
+ui_access: "Everyone; managing projects depends on the user's role"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ProjectsList/ProjectsList.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ProjectsList/ProjectsListTableHeader.tsx
@@ -15,6 +18,8 @@ sources:
 ---
 
 # Project list
+
+<PageInfo />
 
 The project list, titled **Projects**, sits on the left of several pages of the web app and selects the projects the page works on. It also pins, organizes and manages projects.
 

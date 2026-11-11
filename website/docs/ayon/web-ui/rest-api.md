@@ -2,6 +2,11 @@
 title: REST API reference
 description: "The REST API page of the AYON web app: the Redoc reference generated from the running server's OpenAPI specification, with search, the spec download, addon endpoints and the settings that control who can open it."
 verified: 2026-10-25
+ui_purpose: "The reference of the server's REST API, generated from the running server."
+ui_location: "Help menu > REST API (opens in a new tab)"
+ui_url: "/doc/api"
+ui_shortcut: "8 opens the Help menu"
+ui_access: "Menu entry: users and above. Content: managers and admins by default"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/APIDocsPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AppRoutes.tsx
@@ -17,13 +22,11 @@ sources:
 
 # REST API reference
 
+<PageInfo />
+
 The REST API page shows the reference of the server's REST API: every endpoint with its method, path, parameters, request body and responses. It is generated from the OpenAPI specification of the running server, so it always matches the server version in use. It is a reference to read; requests are made from scripts and tools. How to authenticate and call the API, with examples, is in the developer guide [REST API](../../developer/api/rest.md).
 
 ## Where it appears
-
-| Page | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| REST API reference | **Help** menu, **REST API** (opens in a new browser tab) | `8` opens the Help menu | `/doc/api` | Menu entry: user role and above. Content: managers and admins by default, see [Permissions](#permissions) |
 
 The page keeps the top bar of the web app; the breadcrumbs show **Doc / Api**. The reference itself is served by the server at `/docs` and shown in a frame. Opening `/docs` directly shows it without the top bar.
 

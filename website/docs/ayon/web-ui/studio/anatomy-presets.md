@@ -2,6 +2,10 @@
 title: Anatomy presets
 description: "The Anatomy presets tab of the AYON Studio Settings: the preset list, the built-in AYON default, the primary preset, creating, renaming, deleting and editing presets, what a preset contains, and how presets are used when a project is created."
 verified: 2026-10-25
+ui_purpose: "Manages the anatomy templates that new projects copy."
+ui_location: "Studio Settings > Anatomy presets"
+ui_url: "/settings/anatomyPresets"
+ui_access: "Managers and admins"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/AnatomyPresets/AnatomyPresets.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/AnatomyPresets/PresetList.jsx
@@ -16,13 +20,11 @@ sources:
 
 # Anatomy presets
 
+<PageInfo />
+
 An anatomy preset is a stored template of a project anatomy: roots, path templates, entity naming, project attributes and the lists of folder types, task types, link types, statuses, tags and product type appearance. The **Anatomy presets** tab manages these templates. A new project copies a preset into its own anatomy; after that, the project and the preset are independent (see [Creating a project](../../how-ayon-works/creating-a-project.md#the-anatomy-preset-becomes-the-projects-own-anatomy)).
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Anatomy presets | Studio Settings, **Anatomy presets** | none | `/settings/anatomyPresets` | Managers and admins |
 
 The path `/settings` without a tab also opens this tab.
 

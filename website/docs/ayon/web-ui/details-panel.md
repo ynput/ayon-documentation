@@ -2,12 +2,17 @@
 title: Details panel
 description: "The details panel of the AYON web app, the side panel that opens for a selected entity on most pages: header, tabs and actions, the activity feed with comments, mentions, checklists, attachments, reactions and comment categories, and the attributes of the entity."
 verified: 2026-10-15
+ui_purpose: "Shows the selected folders, tasks, versions or representations, edits their main fields, and holds their comments and activity."
+ui_location: "Right side of the project pages, Home tasks and the Inbox, when an entity is selected"
+ui_access: "Users who can open the project"
 sources:
   - https://help.ayon.app/en/articles/0219162-the-details-panel
   - https://help.ayon.app/en/articles/8709483-activity-feed-and-comments
 ---
 
 # Details panel
+
+<PageInfo />
 
 The details panel is the side panel that shows one or more selected entities (folders, tasks, versions and representations) and lets users edit their core fields, read and write comments, and open actions. It is the shared place for communication about an entity across the web app.
 

@@ -2,6 +2,10 @@
 title: Workfiles
 description: "The Workfiles tab of an AYON project: the folder hierarchy, task list, workfile list and detail panel, with the workfile author, site-resolved path, attributes and deletion."
 verified: 2026-10-25
+ui_purpose: "Lists the workfiles saved by the pipeline for each task of a project, with their thumbnails, paths and attributes."
+ui_location: "Project tab row > Workfiles"
+ui_url: "/projects/<project>/workfiles"
+ui_access: "Users with access to the project; guests see a locked page"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/WorkfilesPage/WorkfilesPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/WorkfilesPage/WorkfileList.jsx
@@ -29,13 +33,11 @@ sources:
 
 # Workfiles
 
+<PageInfo />
+
 The **Workfiles** tab lists the workfile records of a project's tasks. Folders are picked in a hierarchy, tasks in the task list next to it, and the workfiles of the selected tasks appear in a third column, with the selected workfile's thumbnail, path and attributes in a detail panel on the right. The records are written by the pipeline when artists save scene files with the [Workfiles tool](../../../pipeline/workfiles.md); the tab only shows them and can delete them. What a workfile is and how it relates to tasks is described in the [data model](../../backend/data-model/index.md#workfile).
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Workfiles | Project tab row, **Workfiles** | none (`1` opens the project menu) | `/projects/<project>/workfiles` | Users with access to the project; managers and admins for every project. Guests see a locked page |
 
 The tab is part of every project, after **Reports** in the tab row and before the tabs added by addons. See [Project production tracking](index.md).
 

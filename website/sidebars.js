@@ -50,31 +50,6 @@ module.exports = {
                 { type: "doc", id: "ayon/web-ui/navigation-bar", label: "Navigation bar" },
                 {
                     type: "category",
-                    label: "Panels",
-                    items: [
-                        { type: "doc", id: "ayon/web-ui/details-panel", label: "Details panel" },
-                        { type: "doc", id: "ayon/web-ui/project-list", label: "Project list" },
-                        { type: "doc", id: "ayon/web-ui/slicer", label: "Slicer" },
-                    ],
-                },
-                { type: "doc", id: "ayon/web-ui/web-viewer", label: "Web viewer" },
-                { type: "doc", id: "ayon/web-ui/views", label: "Views" },
-                { type: "doc", id: "ayon/web-ui/links-manager", label: "Links manager" },
-                {
-                    type: "category",
-                    label: "Dialogs",
-                    collapsed: true,
-                    link: { type: "doc", id: "ayon/web-ui/dialogs/index" },
-                    items: [
-                        { type: "doc", id: "ayon/web-ui/dialogs/first-run-setup", label: "First-run setup (bootstrap)" },
-                        { type: "doc", id: "ayon/web-ui/dialogs/install-pipeline-release", label: "Install pipeline release" },
-                        { type: "doc", id: "ayon/web-ui/dialogs/copy-settings", label: "Copy settings" },
-                        { type: "doc", id: "ayon/web-ui/dialogs/upload-version", label: "Upload version" },
-                        { type: "doc", id: "ayon/web-ui/dialogs/import-csv", label: "Import CSV" },
-                    ],
-                },
-                {
-                    type: "category",
                     label: "Home",
                     collapsed: true,
                     link: { type: "doc", id: "ayon/web-ui/home/index" },
@@ -141,6 +116,31 @@ module.exports = {
                         { type: "doc", id: "ayon/web-ui/inbox/cleared", label: "Cleared" },
                     ],
                 },
+                {
+                    type: "category",
+                    label: "Panels",
+                    items: [
+                        { type: "doc", id: "ayon/web-ui/details-panel", label: "Details panel" },
+                        { type: "doc", id: "ayon/web-ui/project-list", label: "Project list" },
+                        { type: "doc", id: "ayon/web-ui/slicer", label: "Slicer" },
+                    ],
+                },
+                {
+                    type: "category",
+                    label: "Dialogs",
+                    collapsed: true,
+                    link: { type: "doc", id: "ayon/web-ui/dialogs/index" },
+                    items: [
+                        { type: "doc", id: "ayon/web-ui/dialogs/first-run-setup", label: "First-run setup (bootstrap)" },
+                        { type: "doc", id: "ayon/web-ui/dialogs/install-pipeline-release", label: "Install pipeline release" },
+                        { type: "doc", id: "ayon/web-ui/dialogs/copy-settings", label: "Copy settings" },
+                        { type: "doc", id: "ayon/web-ui/dialogs/upload-version", label: "Upload version" },
+                        { type: "doc", id: "ayon/web-ui/dialogs/import-csv", label: "Import CSV" },
+                    ],
+                },
+                { type: "doc", id: "ayon/web-ui/web-viewer", label: "Web viewer" },
+                { type: "doc", id: "ayon/web-ui/views", label: "Views" },
+                { type: "doc", id: "ayon/web-ui/links-manager", label: "Links manager" },
                 {
                     type: "category",
                     label: "Account",

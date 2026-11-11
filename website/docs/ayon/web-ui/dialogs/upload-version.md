@@ -2,6 +2,9 @@
 title: Upload version
 description: "The Create new version dialog of the AYON web app, which creates a version from uploaded media files: where it opens, the product, version and task fields, reviewable files, what it creates, and the direct upload on pages without the dialog."
 verified: 2026-10-25
+ui_purpose: "Creates a version from uploaded media files in the web app, without the pipeline tools."
+ui_location: "Details panel > More actions > Upload version, or dropping files on the details panel; right-click menus of the project pages"
+ui_access: "Users who can open the project"
 sources:
   - https://help.ayon.app/en/articles/3889290-create-versions-without-a-pipeline
   - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/VersionUploader/components/UploadVersionDialog.tsx
@@ -29,9 +32,11 @@ sources:
 
 # Upload version
 
+<PageInfo />
+
 The **Create new version** dialog creates a version from media files uploaded in the web app, without the pipeline tools. It creates the product when needed, then the version, and uploads the files to the version as [reviewables](../../../production-tracking/reviewables.md). How this fits into production work, and what it does not do, is explained in [Versions without a pipeline](../../../production-tracking/versions-without-a-pipeline.md).
 
-## Where it appears
+## Where it opens
 
 The dialog is available on the project pages and in the [Inbox](../inbox/index.md).
 

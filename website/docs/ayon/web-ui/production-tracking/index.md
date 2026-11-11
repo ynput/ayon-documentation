@@ -3,6 +3,11 @@ title: Project production tracking
 sidebar_label: Project production tracking
 description: "The pages of a project in the AYON web app: how a project opens, its tab row, and the native tabs Overview, Task progress, Products, Lists and Workfiles, next to the tabs that come with addons and plans."
 verified: 2026-10-25
+ui_purpose: "The pages of one project, shown as a row of tabs under the top bar."
+ui_location: "Project menu in the top bar, or a double-click on a project in Home > Projects"
+ui_url: "/projects/<project>/<tab>"
+ui_shortcut: "1 opens the project menu"
+ui_access: "Users with access to the project; managers and admins for every project"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectPage/ProjectPage.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AppRoutes.tsx
@@ -10,13 +15,9 @@ sources:
 
 # Project production tracking
 
+<PageInfo />
+
 Each project in the web app has its own pages, shown as a row of tabs under the top bar. The location in the middle of the top bar reads **Projects / &lt;project&gt; / &lt;tab&gt;**. A project opens on the tab used last, the **Overview** the first time, and switching to another project from a project page keeps the current tab.
-
-## Where it appears
-
-| Space | Opens from | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Project pages | Project menu in the top bar, or a double click on a project on the [Projects](../home/projects.md) tab of Home | `1` opens the project menu | `/projects/<project>/<tab>` | Users with access to the project; managers and admins for every project |
 
 ## Tabs
 

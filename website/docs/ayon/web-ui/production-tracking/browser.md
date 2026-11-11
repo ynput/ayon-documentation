@@ -2,21 +2,19 @@
 title: Browser page (deprecated)
 description: "The legacy Browser page lists the products published in a folder; it is deprecated and replaced by the Products page."
 verified: 2026-10-15
+ui_purpose: "The deprecated page that lists the products and versions of a project folder by folder. Replaced by Products."
+ui_location: "Project tab row > Browser, when enabled on the server"
+ui_url: "/projects/<project>/browser"
+ui_access: "Hidden by default"
 sources:
   - https://help.ayon.app/en/articles/7648006-browser-page-deprecated
 ---
 
 # Browser page (deprecated)
 
+<PageInfo />
+
 The **Browser** page lists the products and versions published to a project, folder by folder. It is deprecated and not maintained. The [Products and versions](products.md) replaces it.
-
-## Where it appears
-
-| Item | Value |
-|---|---|
-| Project navigation bar | **Browser**, marked as deprecated |
-| URL path | `/projects/<project>/browser` |
-| Availability | Hidden by default. The server configuration setting **Frontend Flags**, option **Enable legacy version browser page**, shows it in the navigation. |
 
 ## Layout
 

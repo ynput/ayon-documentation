@@ -2,6 +2,11 @@
 title: Users
 description: "The Users tab of the AYON Studio Settings: access levels (admin, manager, user, service), the user table, the detail panel, creating users and service users, invitations, and active and inactive users."
 verified: 2026-10-15
+ui_purpose: "Creates and manages user accounts and sets their access level."
+ui_location: "Studio Settings > Users"
+ui_url: "/settings/users"
+ui_shortcut: "u+u"
+ui_access: "Managers and admins"
 sources:
   - https://help.ayon.app/en/help/articles/2635883-user-permissions-and-project-access-groups
   - https://help.ayon.app/en/help/articles/6698141-user-management
@@ -9,15 +14,11 @@ sources:
 
 # Users
 
+<PageInfo />
+
 AYON controls what a person or a service can do with two layers. The **access level** of a user (admin, manager, user, service) sets the base authority on the server, and is set on the **Users** tab of the Studio Settings. For users with the access level **User**, access groups then define what they can see and change inside each project; they are defined on the [Permissions](permissions.md) tab and assigned on the [Project access](../project/project-access.md) tab of each project. How the two layers work together is explained in [Permissions](../../how-ayon-works/permissions.md).
 
 AYON permissions apply to AYON data only. They do not change file system permissions on storage.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Users | Studio Settings, **Users** | `u+u` | `/settings/users` | Managers and admins |
 
 ## Access levels
 

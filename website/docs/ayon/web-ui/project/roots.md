@@ -2,6 +2,10 @@
 title: Roots
 description: "The Roots tab of the AYON Projects Manager: per-site root paths that replace the project anatomy roots for one user on one workstation in one project."
 verified: 2026-10-25
+ui_purpose: "Sets a project's root paths for one workstation, when the storage is mounted elsewhere there."
+ui_location: "Projects Manager > Roots"
+ui_url: "/manageProjects/roots"
+ui_access: "Everyone"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/ProjectRoots.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/ProjectManagerPage.jsx
@@ -12,13 +16,9 @@ sources:
 
 # Roots
 
+<PageInfo />
+
 The **Roots** tab of the [Projects Manager](index.md) sets root paths for the selected project per site. A path saved here replaces the root path of the project anatomy for the signed-in user on that workstation, for example when the storage is mounted under another drive letter or mount point. The anatomy roots themselves are edited on the [Anatomy](anatomy.md) tab. The order in which root paths are resolved, including Site Sync, is described in [Pipeline storage](../../how-ayon-works/pipeline-storage.md#roots).
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Roots | Projects Manager, **Roots** | none | `/manageProjects/roots?project=<project>` | Everyone |
 
 ## Layout and controls
 

@@ -2,6 +2,11 @@
 title: Profile
 description: "The Profile tab of the AYON web app's Account space: the signed-in user's avatar, username, full name, email and custom user attributes, password change, desktop notifications and notification sound."
 verified: 2026-10-25
+ui_purpose: "Where users edit their own account: avatar, full name, email, password, custom attributes and how they are notified of inbox messages."
+ui_location: "User menu > Account > Profile"
+ui_url: "/account/profile"
+ui_shortcut: "0 opens the User menu"
+ui_access: "Everyone except guests"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/AccountPage/ProfilePage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/components/Avatar/Avatar.jsx
@@ -17,13 +22,9 @@ sources:
 
 # Profile
 
+<PageInfo />
+
 The **Profile** tab is where a user edits their own account: the avatar, the full name and email, the custom user attributes of the server, the password, and how the web app notifies them of new inbox messages. The same values of other users are edited by managers on the [Users](../studio/users.md) page.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Profile | **User** menu, **Account** | `0` opens the User menu | `/account/profile` | Everyone except guests |
 
 ## Layout and controls
 

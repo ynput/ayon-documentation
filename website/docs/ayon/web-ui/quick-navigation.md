@@ -3,6 +3,7 @@ title: Quick navigation and server layout
 sidebar_label: Quick navigation and server layout
 description: "A map of the AYON web app: its main areas and who uses them, every keyboard shortcut, how to reach a project, task, product or version quickly, and the details panel as the common view of an entity."
 verified: 2026-10-15
+ui_purpose: "A map of the web app for new users: which area is for what, every keyboard shortcut, and how to reach an entity quickly."
 sources:
   - https://help.ayon.app/en/articles/0358916-ayon-on-cloud-a-complete-studio-walkthrough
   - https://help.ayon.app/en/articles/5961925-navigating-ayon-server
@@ -10,6 +11,8 @@ sources:
 ---
 
 # Quick navigation and server layout
+
+<PageInfo />
 
 The AYON web app has a handful of areas that people return to every day: their own tasks, the pages of a project, the inbox, and the settings. This page is a map of those areas for someone new to AYON. It explains which area is for what, lists every keyboard shortcut, and shows how to reach a single project, task, product or version quickly. The pages of the Web UI section follow the layout of the web app: one page per tab, grouped as the app groups them. The top bar and its menus are described on the [Navigation bar](navigation-bar.md) page.
 

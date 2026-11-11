@@ -2,6 +2,9 @@
 title: Slicer
 description: "The slicer of the AYON web app: the panel on the left of the Overview, Task progress and Products pages that filters the page by folder hierarchy, and, with the Power Pack, by assignee, status, type, attribute or list, in one or several panels."
 verified: 2026-11-07
+ui_purpose: "Filters a project page by folder, assignee, status, type or list."
+ui_location: "Left side of the Overview, Task progress and Products pages"
+ui_access: "Users with access to the project; slice types other than Hierarchy need the Power Pack"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Slicer/context/slicer/SlicerContextInstance.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Slicer/components/Slicer.tsx
@@ -13,6 +16,8 @@ sources:
 ---
 
 # Slicer
+
+<PageInfo />
 
 The slicer is the panel on the left of several project pages. It filters what the page shows: selecting a folder shows only the entities inside that folder, and selecting an assignee or a status shows only the matching ones.
 

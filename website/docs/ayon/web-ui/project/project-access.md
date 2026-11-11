@@ -2,6 +2,10 @@
 title: Project access
 description: "The Project access tab of the AYON Projects Manager: assigning access groups to users per project, the projects, users and access groups panes, and who can edit the assignments."
 verified: 2026-10-25
+ui_purpose: "Gives users access to a project by assigning them access groups in it."
+ui_location: "Projects Manager > Project access"
+ui_url: "/manageProjects/projectAccess"
+ui_access: "Managers and admins; users with access to Project access"
 sources:
   - https://help.ayon.app/en/help/articles/2635883-user-permissions-and-project-access-groups
   - https://help.ayon.app/en/help/articles/6698141-user-management
@@ -18,13 +22,11 @@ sources:
 
 # Project access
 
+<PageInfo />
+
 Users with the **User** level see a project only after an access group is assigned to them in that project. **Default projects access** is a template that is applied when a project is created; it does not change existing projects. Managers and admins have access to all projects and are not listed on this tab.
 
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Project access | Projects Manager, **Project access** | none | `/manageProjects/projectAccess?project=<project>` | Managers and admins; users with **Read only** or **Read & Write** on **Project access** in at least one project |
+## Interactions
 
 | Keys | Action |
 |---|---|

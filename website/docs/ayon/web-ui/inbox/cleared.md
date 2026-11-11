@@ -2,6 +2,10 @@
 title: Cleared
 description: "The Cleared tab of the AYON inbox holds the messages cleared from Important and Other, which can be restored to their tab as unread."
 verified: 2026-10-25
+ui_purpose: "The messages cleared from Important and Other, in one list, where they can be restored."
+ui_location: "Inbox > Cleared"
+ui_url: "/inbox/cleared"
+ui_access: "Everyone"
 sources:
   - https://help.ayon.app/en/articles/7870202-inbox-and-notifications
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/InboxPage.tsx
@@ -14,13 +18,9 @@ sources:
 
 # Cleared
 
+<PageInfo />
+
 **Cleared** is the third tab of the [inbox](index.md). It holds the messages cleared from [Important](important.md) and [Other](other.md), together in one list. Clearing a message also marks it read; restoring it (**Unclear**) returns it to its original tab as unread.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Cleared | **Cleared** tab of the inbox | | `/inbox/cleared` | Everyone |
 
 ## What lands here
 

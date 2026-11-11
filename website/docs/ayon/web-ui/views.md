@@ -2,11 +2,16 @@
 title: Views
 description: "Views save the layout of a web app page (filters, sorting, grouping, columns) as a working view, saved views with sharing, and studio or project default views."
 verified: 2026-10-15
+ui_purpose: "Saves a page's layout of filters, sorting, grouping and columns under a name, to share or set as the default."
+ui_location: "Views button in the toolbar of the pages that support views"
+ui_access: "Everyone; sharing and defaults depend on the user's role"
 sources:
   - https://help.ayon.app/en/articles/4664475-views
 ---
 
 # Views
+
+<PageInfo />
 
 A **view** stores the layout of a page of the AYON web app: filters, sorting, grouping, columns and the other display settings of that page. Every user has a private **Working view** per page that records the current layout. Saved views keep a layout under a name, can be shared with other users, groups and teams, and can be set as the default layout of a project or of the whole AYON server.
 

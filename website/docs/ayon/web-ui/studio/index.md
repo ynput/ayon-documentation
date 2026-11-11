@@ -3,6 +3,11 @@ title: Studio configuration
 sidebar_label: Studio configuration
 description: "The Studio Settings space of the AYON web app: how it opens, which tabs it has (Global, Addons, Bundles, Studio settings, Site settings, Anatomy presets, Attributes, Users, Permissions, Secrets and addon tabs) and which role sees each one."
 verified: 2026-10-25
+ui_purpose: "Configures the whole server: addons, bundles, studio settings, anatomy presets, attributes, users, permissions and secrets."
+ui_location: "App menu (nine dots, top right) > Studio Settings"
+ui_url: "/settings/studio"
+ui_shortcut: "s+s"
+ui_access: "Managers and admins; users get Site Settings"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/SettingsPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/header/AppNavLinks.tsx
@@ -13,6 +18,8 @@ sources:
 ---
 
 # Studio configuration
+
+<PageInfo />
 
 The studio configuration, called **Studio Settings** in the web app (its header and App menu entry), configures the whole AYON server rather than one project: the server configuration, installed addons and bundles, the studio values of addon settings, anatomy presets, attributes, users, access groups and secrets. All its pages live under the route `/settings/` and share one row of tabs. Per-project configuration is in **Projects Settings** instead.
 

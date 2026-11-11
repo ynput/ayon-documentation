@@ -2,11 +2,16 @@
 title: Navigation bar
 description: "The AYON web app's top bar, the App, Help and User menus, the project menu, page tabs and the server version indicator."
 verified: 2026-10-15
+ui_purpose: "The top bar shared by every page, with the navigation buttons and menus."
+ui_location: "At the top of every page of the web app"
+ui_access: "Everyone; the entries depend on the user's role"
 sources:
   - https://help.ayon.app/en/help/articles/5961925-navigating-ayon-server
 ---
 
 # Navigation bar
+
+<PageInfo />
 
 The AYON web app is served by the AYON server and is the main interface for production work and server administration. Every page shares a top bar with navigation buttons and menus. Most pages add a second row of tabs below it. Which entries appear depends on the user's role.
 

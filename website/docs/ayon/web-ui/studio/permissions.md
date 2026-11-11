@@ -2,6 +2,10 @@
 title: Permissions
 description: "The Permissions tab of the AYON Studio Settings: access groups and their defaults, the access group editor, the permission settings (restrictions, folder access lists, studio and project permissions) and how permissions are evaluated."
 verified: 2026-10-15
+ui_purpose: "Defines the access groups of the server, which decide what users can do in each project."
+ui_location: "Studio Settings > Permissions"
+ui_url: "/settings/accessGroups"
+ui_access: "Managers and admins"
 sources:
   - https://help.ayon.app/en/help/articles/2635883-user-permissions-and-project-access-groups
   - https://help.ayon.app/en/help/articles/6698141-user-management
@@ -9,13 +13,9 @@ sources:
 
 # Permissions
 
+<PageInfo />
+
 An access group is a named set of permission settings. The **Permissions** tab of the Studio Settings defines the access groups of the server. Groups are assigned to users per project on the [Project access](../project/project-access.md) tab, and a project can override a group's settings on the [Project permissions](../project/project-permissions.md) tab. Access groups apply to users with the access level **User**; admins and managers bypass them (see [Users](users.md#access-levels)).
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Permissions | Studio Settings, **Permissions** | none | `/settings/accessGroups` | Managers and admins |
 
 ## Access groups
 

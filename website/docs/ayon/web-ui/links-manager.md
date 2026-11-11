@@ -2,11 +2,16 @@
 title: Links manager
 description: "Links are typed, static relationships between entities of a project; the links manager shows and edits them from the link columns of project tables."
 verified: 2026-10-15
+ui_purpose: "Lists and edits the links of one entity for one link type, such as the assets of a shot breakdown."
+ui_location: "Link columns of the Overview, Products and Lists tables"
+ui_access: "Users who can open the project"
 sources:
   - https://help.ayon.app/en/articles/1802697-links-manager
 ---
 
 # Links manager
+
+<PageInfo />
 
 A link is a stored relationship between two entities of the same project, for example a breakdown from a shot folder to an asset folder or a reference between two versions. Links are permanent data, so they can be analyzed, displayed and used by pipeline automation, unlike relationships derived from events. The links manager is the popover of the web app that lists the links of one entity for one link type and edits them.
 

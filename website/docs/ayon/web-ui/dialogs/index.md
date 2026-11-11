@@ -3,12 +3,15 @@ title: Dialogs
 sidebar_label: Dialogs
 description: "The larger dialogs of the AYON web app that open from several places: the first-run setup of a new server, Install pipeline release, Copy settings, Upload version and Import CSV."
 verified: 2026-10-25
+ui_purpose: "The larger dialogs of the web app: those with several steps or panes, or that open from several pages."
 sources:
   - https://github.com/ynput/ayon-frontend/tree/develop/src/containers
   - https://github.com/ynput/ayon-frontend/tree/develop/shared/src/components
 ---
 
 # Dialogs
+
+<PageInfo />
 
 Most popups in the web app belong to one button, such as renaming a user or creating a list, and are described on the page of that button. The dialogs in this group are larger: they have several steps or panes, or open from several pages, so each has a page of its own.
 

@@ -3,21 +3,19 @@ title: Products and versions
 sidebar_label: Products
 description: "The Products page lists the products and versions published in a project as a table or as thumbnail cards, with slicing, filtering, grouping and saved views."
 verified: 2026-10-15
+ui_purpose: "Browses everything published in a project, as versions or products, in a table or as cards."
+ui_location: "Project tab row > Products"
+ui_url: "/projects/<project>/products"
+ui_access: "Users with access to the project"
 sources:
   - https://help.ayon.app/en/articles/1183758-products-and-versions-page
 ---
 
 # Products and versions
 
+<PageInfo />
+
 The **Products** page is the central place for browsing everything published in a project. It lists **versions** (the default) or **products** with their versions, as a table or as cards with thumbnails, and lets users filter, group, sort, preview media and edit version fields in place. It replaces the deprecated [Browser page](browser.md).
-
-## Where it appears
-
-| Item | Value |
-|---|---|
-| Project navigation bar | **Products** |
-| URL path | `/projects/<project>/products` |
-| Saved views | Supported, see [Views](../views.md) |
 
 ## Layout
 

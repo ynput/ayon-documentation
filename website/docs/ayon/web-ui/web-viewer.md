@@ -3,6 +3,10 @@ title: AYON web viewer
 sidebar_label: Web viewer
 description: "The AYON web viewer, also called the player or review player, which plays the reviewables of a version: where it opens, the version and product selection, the player controls, theater and full screen modes, keyboard shortcuts, and the annotations that need the power features."
 verified: 2026-10-25
+ui_purpose: "Plays the reviewables of a version, compares versions and takes comments, over the current page."
+ui_location: "Spacebar or Open in viewer on the project pages, Home tasks and the details panel"
+ui_shortcut: "Space"
+ui_access: "Users who can open the project"
 sources:
   - https://help.ayon.app/en/articles/0359490-reviewables
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/Viewer/ViewerDialog.tsx
@@ -33,11 +37,13 @@ sources:
 
 # AYON web viewer
 
+<PageInfo />
+
 The AYON web viewer, also called the player or review player, plays the [reviewables](../../production-tracking/reviewables.md) of a version: videos with a frame-accurate player, and images. It opens over the current page, next to the details panel of the version, so a version can be watched, compared with other versions and commented on in one place. The viewer is built into the web app; only drawing annotations needs a plan that includes the power features.
 
 It opens with **Open in viewer** and `Space`. It is not related to [views](views.md), the saved layouts of the table pages.
 
-## Where it appears
+## Where it opens
 
 | Opens from | Control | Shortcut | Who sees it |
 |---|---|---|---|

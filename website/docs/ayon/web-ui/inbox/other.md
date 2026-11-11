@@ -2,6 +2,10 @@
 title: Other
 description: "The Other tab of the AYON inbox lists status changes and activity on entities the user is related to as assignee or author without watching them."
 verified: 2026-10-25
+ui_purpose: "Status changes and activity on entities the user is related to without watching them. Does not notify."
+ui_location: "Inbox > Other"
+ui_url: "/inbox/other"
+ui_access: "Everyone"
 sources:
   - https://help.ayon.app/en/articles/7870202-inbox-and-notifications
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/InboxPage.tsx
@@ -16,13 +20,9 @@ sources:
 
 # Other
 
+<PageInfo />
+
 **Other** is the second tab of the [inbox](index.md). It lists every status change that reaches the current user, and the activity on entities the user is related to (as assignee or author) without watching them. New messages here update the unread count but do not notify.
-
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Other | **Other** tab of the inbox | | `/inbox/other` | Everyone |
 
 ## What lands here
 

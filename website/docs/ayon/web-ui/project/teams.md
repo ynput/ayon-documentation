@@ -2,24 +2,22 @@
 title: Teams
 description: "The Teams page of project settings groups a project's users into named teams with per-member roles and team leaders."
 verified: 2026-10-15
+ui_purpose: "Defines the teams of a project: named groups of users with roles and leaders."
+ui_location: "Projects Manager > Teams"
+ui_url: "/manageProjects/teams"
+ui_shortcut: "p+p opens the Projects Manager"
+ui_access: "Managers and admins"
 sources:
   - https://help.ayon.app/en/articles/6300319-teams
 ---
 
 # Teams
 
+<PageInfo />
+
 Teams are named groups of users defined per project. A team has members, and each member has any number of roles and an optional leader flag. Teams are stored in the project data and are managed on the **Teams** page of the project manager.
 
 Teams currently organize users. Roles and leader flags are descriptive. Teams are offered as mention targets in comments (see [Activity feed](../details-panel.md#activity-feed)) and as entries in project access lists of the Power Pack addon, such as comment categories (see [Power Pack](../../../addons/production-tracking/power-pack/index.md)).
-
-## Where it appears
-
-| Item | Value |
-|---|---|
-| Location | Project manager, **Teams** tab, next to **Project permissions**, **Site settings** and **Roots** |
-| Shortcut | `p+p` opens the project manager; select the **Teams** tab |
-| Path | `/manageProjects/teams`, with the project in the `project` query parameter |
-| Visible to | Managers and administrators |
 
 ## Layout
 

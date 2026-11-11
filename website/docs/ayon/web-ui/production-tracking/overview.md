@@ -3,21 +3,21 @@ title: Project overview
 sidebar_label: Overview
 description: "The Overview page of a project, a spreadsheet-style table of folders and tasks for viewing, editing, filtering, grouping, creating and exporting project data."
 verified: 2026-10-15
+ui_purpose: "The spreadsheet of a project's folders and tasks, to view, create and edit them. The default project page."
+ui_location: "Project tab row > Overview"
+ui_url: "/projects/<project>/overview"
+ui_access: "Everyone except guests"
 sources:
   - https://help.ayon.app/en/articles/7885519-project-overview-page
 ---
 
 # Project overview
 
+<PageInfo />
+
 The Overview page is the central place to view and edit the folders and tasks of a project. It is a spreadsheet-style table: one row per folder or task, one column per attribute, with editing in cells, copy and paste, filtering, grouping, entity creation, moving and CSV export. The page is available since AYON 1.8.0.
 
 ## Where it appears
-
-| Item | Value |
-|---|---|
-| Location | Project page, **Overview** tab |
-| URL path | `/projects/<project>/overview` |
-| Access | Every user except guests |
 
 The Overview page is the default project page. The other tabs of the project page are [Task progress](task-progress.md), [Products and versions](products.md), [Lists](lists.md), Review ([Review sessions](../../../addons/production-tracking/review/index.md)), Schedule, [Reports](../../../addons/production-tracking/reports/index.md) and Workfiles.
 

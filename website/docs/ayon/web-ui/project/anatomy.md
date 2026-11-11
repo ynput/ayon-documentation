@@ -2,6 +2,11 @@
 title: Anatomy
 description: "The Anatomy tab of the AYON Projects Manager: editing a project's own anatomy (entity naming, roots, templates, attributes, folder and task types, link types, statuses, tags, product types), copying and pasting it as JSON, and saving it."
 verified: 2026-10-25
+ui_purpose: "Edits the anatomy of one project: roots, path templates, project attributes, and its types, statuses and tags."
+ui_location: "Projects Manager > Anatomy, or Manage in the project list menu"
+ui_url: "/manageProjects/anatomy"
+ui_shortcut: "a+a"
+ui_access: "Managers and admins; users with access to Project anatomy"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/ProjectAnatomy.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AnatomyEditor.jsx
@@ -17,13 +22,11 @@ sources:
 
 # Anatomy
 
+<PageInfo />
+
 The **Anatomy** tab of the [Projects Manager](index.md) edits the anatomy of the selected project: its roots, path templates, project attributes and the lists of types, statuses and tags its entities can use. A project gets its anatomy as a copy of an anatomy preset when it is created; from then on the project's anatomy is its own and changes here do not reach the preset or other projects (see [Creating a project](../../how-ayon-works/creating-a-project.md#the-anatomy-preset-becomes-the-projects-own-anatomy)). The presets themselves are edited on the [Anatomy presets](../studio/anatomy-presets.md) tab.
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Anatomy | Projects Manager, **Anatomy**; **Manage** in the project list menu | `a+a` | `/manageProjects/anatomy?project=<project>` | Managers and admins; users with **Read only** or **Read & Write** on **Project anatomy** in at least one project |
 
 After a project is created from the Projects page, the web app opens this tab for the new project.
 

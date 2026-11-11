@@ -3,6 +3,11 @@ title: Project configuration
 sidebar_label: Project configuration
 description: "The Projects Manager of the AYON web app: how it opens, the project list with its actions (new project, pin, rename, folders, archive, delete), and the tabs Anatomy, Project settings, Project permissions, Project access, Site settings, Roots and Teams."
 verified: 2026-10-25
+ui_purpose: "Configures projects one at a time: anatomy, addon settings, permissions, access, site settings, roots and teams."
+ui_location: "App menu (nine dots, top right) > Projects Settings"
+ui_url: "/manageProjects/<tab>"
+ui_shortcut: "p+p"
+ui_access: "Everyone with the App menu; the tabs depend on the user's role"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/ProjectManagerPage.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/mappers.ts
@@ -23,13 +28,11 @@ sources:
 
 # Project configuration
 
+<PageInfo />
+
 The project configuration, called **Projects Manager** in the web app header (its App menu entry reads **Projects Settings**), configures projects one at a time: their anatomy, addon settings, access groups, user access, per-site settings and roots, and teams. It has a project list on the left and a row of tabs at the top; each tab works on the project selected in the list. What happens on the server when a project is created is described in [Creating a project](../../how-ayon-works/creating-a-project.md).
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Projects Manager | App menu, **Projects Settings** | `p+p` | `/manageProjects/<tab>?project=<project>` | Everyone with the App menu; the tabs depend on the access level and access groups (see below) |
 
 The page header reads **Projects Manager**. **Projects Settings** in the App menu and `p+p` open the **Project settings** tab; `a+a` opens the **Anatomy** tab. Both shortcuts keep the current query parameters, so the selected project stays selected. The settings button on a row of a project list elsewhere in the web app also opens the **Project settings** tab for that project.
 

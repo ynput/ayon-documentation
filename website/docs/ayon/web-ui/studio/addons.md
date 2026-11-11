@@ -2,12 +2,18 @@
 title: Addons
 description: "The Addons tab of the AYON Studio Settings: the installed addons, their versions and the bundles that use them, status dots, uninstalling versions, and how a new addon version is installed and put into use."
 verified: 2026-10-15
+ui_purpose: "Shows which addon versions are installed on the server and which bundles use them."
+ui_location: "Studio Settings > Addons"
+ui_url: "/settings/addons"
+ui_access: "Admins"
 sources:
   - https://help.ayon.app/en/help/articles/4644998-bundles-and-addons
   - https://help.ayon.app/en/help/articles/5135604-how-to-update-an-addon
 ---
 
 # Addons
+
+<PageInfo />
 
 An addon is a package of code and settings that extends the AYON server and the pipeline. The **Addons** tab of the Studio Settings shows which addon versions are installed on the server and which bundles use them. Installing an addon only places it on the server: an addon version is used once it is part of a bundle that has a state, which is set on the [Bundles](bundles.md) tab.
 
@@ -18,10 +24,6 @@ An addon is a package of code and settings that extends the AYON server and the 
 | Pipeline addon | An addon of type `pipeline`. Ships client code that the launcher loads. |
 
 ## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| Addons | Studio Settings, **Addons** | none | `/settings/addons` | Admins |
 
 Managers and users are redirected to the start page when they open the path.
 
@@ -66,7 +68,6 @@ Updating is separated into installing a new version and putting it into use.
 | Use in a server addon | A new version of a server addon can be selected directly in the Production bundle. |
 | Use in a pipeline addon | A new version of a pipeline addon requires a new bundle, created with **Duplicate and edit** or from a pipeline release. |
 | Roll out | Setting the new bundle to Staging and then Production switches the studio over. Settings can be copied at that moment. |
-
 
 Pipeline releases, which install a tested set of addons at once, and copying settings between bundles are described on the [Bundles](bundles.md#pipeline-releases) tab.
 

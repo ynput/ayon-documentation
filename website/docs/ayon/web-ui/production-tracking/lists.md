@@ -3,21 +3,21 @@ title: Lists
 sidebar_label: Lists
 description: "Lists collect folders, tasks or versions from anywhere in a project into one view, with list folders, list attributes and access levels."
 verified: 2026-10-15
+ui_purpose: "Groups folders, tasks or versions from anywhere in a project into lists, for reviews, tracking or personal to-dos."
+ui_location: "Project tab row > Lists"
+ui_url: "/projects/<project>/lists"
+ui_access: "Users with access to the project"
 sources:
   - https://help.ayon.app/en/articles/7382645-lists
 ---
 
 # Lists
 
+<PageInfo />
+
 **Lists** group folders, tasks or versions from anywhere in a project into one table, outside the folder and task hierarchy. A list can hold shots to review, tasks to track, versions to compare or a personal to-do collection. There is no limit on the number of lists or of items per list.
 
 ## Where it appears
-
-| Item | Value |
-|---|---|
-| Project navigation bar | **Lists** |
-| URL path | `/projects/<project>/lists`; a list is addressed with the `list` query parameter |
-| Other pages | The **Lists** field of the slicer on the [Project overview](overview.md) and [Products and versions](products.md) pages filters those pages by a list. Review lists are shown on the [Review sessions](../../../addons/production-tracking/review/index.md) page. |
 
 The page shows lists of the generic type. Lists of the review-session type belong to the Review addon.
 
