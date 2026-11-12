@@ -13,6 +13,11 @@ sources:
 
 Cloud hosting means the studio's AYON server runs on [Ynput Cloud](../../ynput-cloud/index.md) and is managed by the Ynput team. The studio gets its own isolated server on a dedicated domain, connected to the subscription the studio chooses, with updates, maintenance and backups handled by Ynput. The alternative is [on-premise deployment](on-premise.md): the studio runs the server on its own machines and connects it to a subscription. Both run the same AYON.
 
+:::tip Step-by-step guide
+
+[AYON on Cloud: A Complete Studio Walkthrough](https://help.ayon.app/en/help/articles/0358916-ayon-on-cloud-a-complete-studio-walkthrough) in the AYON help center goes from a new cloud server to a running production: preparing the server and its users, creating projects, bundles and addons, the pipeline and the artist workflow, and delivery.
+:::
+
 ## What it includes
 
 | Area | Cloud hosting |
@@ -38,14 +43,9 @@ Cloud hosting means the studio's AYON server runs on [Ynput Cloud](../../ynput-c
 - **Addons:** the official addons are installed from the [Market](../web-ui/market.md). Uploading custom addons is turned off by default and can be turned on by contacting Ynput support.
 - **Logs:** the server's events and log messages are in the [Event Viewer](../web-ui/event-viewer.md). Ynput support can help with anything deeper.
 
-## Accounts
+## Create a cloud server
 
-A Ynput Cloud account is separate from the account on the AYON server:
-
-- **Ynput Cloud account:** manages billing, seats and subscriptions. Used by producers or technical directors.
-- **AYON server account:** used every day by artists and managers to track tasks, launch software and publish.
-
-The Ynput Cloud login can also be enabled as a login method for the AYON server. See the [Ynput Cloud addon](../../addons/server-features/ynput-cloud/index.md).
+A cloud server is created from an organization on [Ynput Cloud](../../ynput-cloud/index.md), which also manages its subscription, seats and billing.
 
 ## Related
 

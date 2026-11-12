@@ -1,44 +1,133 @@
 ---
 title: Ynput Cloud
-description: "Ynput Cloud, the platform for managing AYON subscriptions and launching cloud-hosted AYON servers: organizations, AYON workspaces, subscriptions, seats, addons, billing and members."
-verified: 2026-11-05
+description: "Ynput Cloud, where studios manage their AYON subscriptions and launch AYON servers hosted by Ynput: logging in, organizations, the organization dashboard, starting a free trial, creating a cloud subscription, changing seats and addons, billing, members, and the data a connected server sends."
+verified: 2026-11-12
 sources:
   - https://help.ayon.app/en/help/articles/6619325-getting-started-with-ayon-cloud-hosted
   - https://ynput.cloud/
+  - https://ayon.app/pricing-eur
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/metrics/__init__.py
   - https://trust.ynput.io/
 ---
 
 # Ynput Cloud
 
-[Ynput Cloud](https://ynput.cloud/) is the platform where studios manage their AYON subscriptions and launch AYON servers hosted by Ynput. It is separate from the AYON server itself: Ynput Cloud handles accounts, organizations, subscriptions, seats, addons and billing, and the AYON server is where the production work happens. A server hosted by Ynput is described on the [cloud deployment](../ayon/deployment/cloud.md) page, and the available plans on the [plans](../ayon/plans.md) page.
+[Ynput Cloud](https://ynput.cloud/) is where studios manage their AYON subscriptions and launch AYON servers hosted by Ynput. It handles accounts, organizations, subscriptions, seats, addons and billing. The production work happens on the AYON server itself.
 
-## Structure
+A subscription can be used in two ways:
+
+- **With a server hosted by Ynput:** Ynput Cloud creates the server and Ynput runs it. What this includes is on the [cloud deployment](../ayon/deployment/cloud.md) page.
+- **With a self-hosted server:** the studio runs the server on its own machines and connects it to the subscription to unlock the plan's features. See [on-premise deployment](../ayon/deployment/on-premise.md).
+
+The plans and what they include are on the [plans](../ayon/plans.md) page.
+
+## Accounts, organizations and instances
 
 | Level | What it is |
 |---|---|
-| Account | A person's login on Ynput Cloud. It is a business account for producers or technical directors who manage billing, seats and subscriptions, and is not the login of an AYON server. |
-| Organization | The studio or entity. A person can create an organization or be invited to one. |
-| AYON workspace | A server created under an organization. Each has its own domain, `<name>.ayon.app`, and its own subscription. The Ynput Cloud interface calls it an AYON workspace; this site calls it an AYON server. |
+| Account | A person's login on Ynput Cloud, used by producers or technical directors to manage billing, seats and subscriptions. |
+| Organization | The studio. A person can create an organization or be invited to one. Members of an organization can invite teammates, change subscriptions and oversee billing. |
+| Instance | An AYON server under an organization, with its own domain `<name>.ayon.app` and its own subscription. An organization can have several. Ynput Cloud calls it an instance (the help center calls it a workspace); this site calls it an AYON server. |
 
-Members of an organization can invite teammates, change subscriptions and oversee billing from the same dashboard.
+A Ynput Cloud account is not an account on the AYON server. Artists and managers use their AYON server account every day to track tasks, launch software and publish. The Ynput Cloud login can also be enabled as a login method for the AYON server, see the [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md).
 
-## What the interface offers
+## Log in
 
-| Area | Contents |
+The login page of [Ynput Cloud](https://ynput.cloud/) offers two ways in: **Send magic link**, which emails a login link to the work email, or **Continue with Google**. No password is needed.
+
+![The Ynput Cloud login page with the Work email field, Send magic link and Continue with Google](assets/login.png)
+
+## Organizations
+
+After logging in, **Your Organizations** lists the organizations of the account, each with its name, ID and the account's role in it. **Create new Organization** asks for a name and creates one. Someone invited to an organization finds it in the same list.
+
+![The Ynput Cloud portal with Your Organizations, the organization Null Egy with the role Manager, and the Create new Organization button](assets/organizations.png)
+
+## Organization dashboard
+
+Opening an organization shows its pages as tabs: **Org Dashboard**, **Billing**, **Members** and **Subscriptions**.
+
+The **Org Dashboard** shows the number of members, instances and subscriptions, then the organization's **Instances**. Each instance shows:
+
+- its name and domain;
+- its state, such as **active**, and the AYON server version;
+- its subscriptions, with the plan, the number of seats, the payment period and the renewal date;
+- a `⋮` menu with the actions for the instance.
+
+**New Cloud Subscription** at the top right creates a new instance, see [Create a cloud subscription](#create-a-cloud-subscription).
+
+![The Org Dashboard of the organization Null Egy: Members 5, Instances 1, Subscriptions 1, and the instance null-egy-ayon-app, active, version 1.15.11, with an AYON trial subscription of 50 seats](assets/org-dashboard.png)
+
+## Start a free trial
+
+<Columns widths="55 45">
+<Column>
+
+**Start Free Trial** opens the **Try AYON** form for a 14-day trial server with the production tracking features, such as Planner, Review, Reports, SSO and the Power Features.
+
+| Field | What it is |
 |---|---|
-| Organizations | List of the organizations of the account, with **Create New Organization**. |
-| Workspaces | The AYON workspaces of an organization, with **Start Free Trial** (a 14-day evaluation server) and **Add New Cloud Subscription** (a commercial server). A link opens the server. |
-| Workspace creation | Cloud region, domain name, payment period (yearly or monthly), base plan (AYON Pro or AYON Studio), premium addons, billing type (stored payment method or invoice). A trial asks for the country, the studio address and the domain name. |
-| Subscription and billing | The subscription of each workspace, with the seat count (**Manage Seats**, also called update license pool), the addons of the plan and extra storage. New seats are available immediately on the Users page of the AYON server. Premium addons on a Pro subscription are listed with **Add** to activate a license. Additional media storage is bought in blocks of 500 GB. |
-| Billing | Payment methods and billing preferences for renewals. |
-| Members | The people of the organization, with an invitation for production managers or technical leads to help manage seats, addons and subscriptions. |
+| **Organization** | The organization the trial is for |
+| **Organization name** | The name of that organization |
+| **Country or region**, **Address line 1** | The studio's address |
+| **Domain name** | The server's address, `<name>.ayon.app` |
 
-## Relation to the AYON server
+**Start free trial** creates the server. Payment information can be added at any time during the trial to keep using the server after the 14 days. Without it, the server is terminated when the trial ends, and its data may be deleted permanently.
 
-- A server hosted by Ynput is created and billed here. A self-hosted server can also be connected to a subscription to unlock the plan's features.
-- The [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md) on the AYON server adds the Ynput Cloud login (users sign in to the AYON server with their Ynput Cloud account, and the matching AYON user is created or updated) and the remote support access for the Ynput support team.
-- What each plan includes and how seats work is described on the [plans page](../ayon/plans.md).
+</Column>
+<Column>
+
+![The Try AYON form with Organization, Organization name, Country or region, Address line 1, Domain name and the Start free trial button](assets/start-free-trial.png "Try AYON")
+
+</Column>
+</Columns>
+
+## Create a cloud subscription
+
+<Columns widths="55 45">
+<Column>
+
+**New Cloud Subscription** on the Org Dashboard opens a dialog that creates a commercial server and its subscription.
+
+| Field | What it is |
+|---|---|
+| **Region** | The cloud region the server runs in. See data residency on the [cloud deployment](../ayon/deployment/cloud.md) page |
+| **Domain** | The server's name and address, `<name>.ayon.app` |
+| **Subscription period** | **Yearly**, the cheapest per month, or **Monthly** |
+| **Plan** | **AYON Pro** or **AYON Studio** |
+| **Users** | The number of seats |
+| **Addons** | The premium addons. With AYON Pro, the addons with a price are added per user; AYON Studio includes all addons |
+| **Billing type** | **Stored payment method**, or **Invoice** for invoices that are paid manually |
+
+After a domain is entered, the dialog shows a quote preview. **Create subscription** creates the server. When it is ready, its link on the Org Dashboard opens the AYON web app.
+
+</Column>
+<Column>
+
+![The New Cloud Subscription dialog with Region, Domain, Subscription period, Plan, Users, Addons, Billing type and the quote preview](assets/new-cloud-subscription.png "New Cloud Subscription")
+
+</Column>
+</Columns>
+
+## Change a subscription
+
+A change shows the amount due before it is confirmed.
+
+- **Seats:** **Manage Seats** (also called **Update License Pool**) on the instance's subscription. Seats limit how many people can log in to the server, and can be reassigned between people. New seats are available right away on the server's [Users](../ayon/web-ui/studio/users.md) page.
+- **Premium addons:** on an AYON Pro subscription, **Add** next to a premium addon activates its license for the server.
+- **Media storage:** extra media storage is bought in blocks of 500 GB.
+
+## Billing
+
+The **Billing** tab holds the organization's billing information and payment methods, used for renewals. An organization without billing information shows **Set up billing information**.
+
+![The Billing tab of an organization that is not a customer yet, with the Set up billing information button](assets/billing.png)
+
+## Members
+
+The **Members** tab lists the people of the organization with their full name, email, level, such as **Admin**, and state. **Invite Member** invites someone, for example a production manager or a technical lead who helps manage seats, addons and subscriptions. The `×` in the **Remove** column removes a member.
+
+![The Members tab with one member, the level Admin and the state active, and the Invite Member button](assets/members.png)
 
 ## Data
 
@@ -49,5 +138,6 @@ Ynput's security, compliance and data processing policies are on the [Trust Cent
 ## Related
 
 - [Cloud deployment](../ayon/deployment/cloud.md)
+- [On-premise deployment](../ayon/deployment/on-premise.md)
 - [AYON plans](../ayon/plans.md)
 - [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md)
