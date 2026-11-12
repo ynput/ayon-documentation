@@ -86,7 +86,7 @@ The launcher is downloaded from the studio's AYON Server and can be installed in
 The official AYON launcher releases are made for:
 
 - **Windows:** `win-setup.exe`
-- **macOS:** `.dmg`
+- **macOS:** `.dmg`, for Apple silicon (M1 or newer) since launcher 1.5.0, with a dependency package built for `arm64` as well. A bundle has one launcher and one dependency package for macOS, so a studio with Intel Macs uses Intel builds on all its Macs, see [Intel and Apple silicon Macs](../developer/launcher/build-macos.md#intel-and-apple-silicon-macs).
 - **Linux:** `.tar.gz` for Ubuntu 20.04, Debian 11, Rocky Linux 8 and Rocky Linux 9. Rocky Linux is the choice for RHEL-compatible distributions.
 
 :::

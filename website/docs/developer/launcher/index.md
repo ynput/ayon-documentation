@@ -1,42 +1,101 @@
 ---
 title: AYON launcher development
 sidebar_label: AYON Launcher
-description: "Developing the AYON launcher: building the desktop application and its output, uploading the installer to the server, the shim, running it from sources, startup arguments and environment variables, and developer mode."
+description: "Developing the AYON launcher: its command line with arguments, commands and addon commands, running it from sources, building it per platform and uploading the installer to the server, the shim, the environment variables and developer mode."
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import DocCardList from '@theme/DocCardList';
 
-## Introduction
+This page is about developing the AYON launcher itself: its command line, running it from sources, building it and uploading the installer to the server, the shim and the environment variables. Using the launcher is described in [Launcher](../../pipeline/launcher.md).
 
-AYON Launcher is a standalone desktop application designed to be the primary gateway for connecting to your AYON Server. It manages the distribution of updates *including addons, dependency packages, and different versions of the launcher itself* according to your bundle configuration. Additionally, AYON Launcher is responsible for initiating the core addon logic, enabling artists to interact with AYON Pipeline.
+## Command line
 
-To function properly, AYON Launcher requires an active connection to an AYON Server instance.
+The launcher takes the same command line whether it runs from a build or from sources:
 
-## AYON Launcher Development
+<Tabs groupId="os">
+<TabItem value="windows" label="Windows" default>
 
-### Building AYON Desktop Application
+```powershell
+# Build
+ayon_console.exe [arguments] [command] [options]
+# Sources
+./tools/manage.ps1 run [arguments] [command] [options]
+# Addon command
+ayon_console.exe [arguments] addon <addon name> <command> [options]
+```
 
-:::info
+</TabItem>
+<TabItem value="unix" label="Linux/Mac">
 
-You won't need to build the launcher yourself unless you are modifying the source code.
-You can find all official launcher builds on[ayon-launcher/releases | Github](https://github.com/ynput/ayon-launcher/releases) ready for direct download.
+```bash
+# Build
+ayon [arguments] [command] [options]
+# Sources
+./tools/make.sh run [arguments] [command] [options]
+# Addon command
+ayon [arguments] addon <addon name> <command> [options]
+```
+
+</TabItem>
+</Tabs>
+
+- [**Arguments**](../../pipeline/launcher-administration.md#arguments), such as `--use-dev` or `--bundle`, are read by the launcher in `start.py` and removed before the rest is passed on.
+- [**Commands**](../../pipeline/launcher-administration.md#commands), such as `tray` or `publish`, come from the command line of the Core addon, which the launcher starts after the bootstrap.
+- [**Addon commands**](../../pipeline/launcher-administration.md#addon-commands) are reached with `addon <addon name> <command>`. An addon adds them in its `cli()` method, see [CLI interface](../addon-development/creation.md#cli-interface).
+
+`--help` lists the commands, `<command> --help` the options of a command, and `addon <addon name> --help` the commands of an addon. The full lists are in [Launcher administration](../../pipeline/launcher-administration.md).
+
+:::caution Addon commands
+
+An addon's commands are reached with `addon <addon name> <command>`. Launcher arguments, such as `--bundle` or `--debug`, come before it.
+
 :::
 
-We aim to closely follow the [**VFX Reference Platform**](https://vfxplatform.com/).
+## Run from sources
 
-We use [cx_Freeze](https://cx-freeze.readthedocs.io/en/latest) to freeze the Python code and its dependencies, and [uv](https://docs.astral.sh/uv/) for virtual environment management. The launcher requires Python 3.11. See [Requirements](../requirements.md) for the full list of tools.
+The environment and the runtime dependencies are set up once, and again after each update of the repository.
 
-Comprehensive build steps are provided:
+<Tabs groupId="os">
+<TabItem value="windows" label="Windows" default>
 
-<DocCardList />
+```powershell
+cd <ayon-launcher-repo-clone>
 
-The build process outputs an installer with a metadata file that can be distributed to workstations. On Windows, the installer is created with Inno Setup. On macOS it is a `.dmg`. On Linux, we recommend the Docker build variants.
+# Create or update the virtual environment (.venv) from the lock file
+./tools/manage.ps1 create-env
 
-#### Commands
+# Install the Qt binding: PySide6, or PySide2 with --use-pyside2
+./tools/manage.ps1 install-runtime-dependencies
 
-The build tooling is a single script per platform: `./tools/manage.ps1` on Windows (PowerShell 7 or newer) and `./tools/make.sh` on Linux and macOS. Both accept the same targets. Run the script without arguments to print the list.
+# Run the launcher; the arguments are passed through to start.py
+./tools/manage.ps1 run <args>
+```
+
+</TabItem>
+<TabItem value="unix" label="Linux/Mac">
+
+```bash
+cd <ayon-launcher-repo-clone>
+
+# Create or update the virtual environment (.venv) from the lock file
+./tools/make.sh create-env
+
+# Install the Qt binding: PySide6, or PySide2 with --use-pyside2
+./tools/make.sh install-runtime-dependencies
+
+# Run the launcher; the arguments are passed through to start.py
+./tools/make.sh run <args>
+```
+
+</TabItem>
+</Tabs>
+
+Both scripts run `uv run python start.py <args>`.
+
+## Helper scripts
+
+The repository has one helper script per platform: `./tools/manage.ps1` on Windows (PowerShell 7 or newer) and `./tools/make.sh` on Linux and macOS. Both accept the same targets. Run the script without arguments to print the list.
 
 | Target | Description |
 | -- | -- |
@@ -49,38 +108,77 @@ The build tooling is a single script per platform: `./tools/manage.ps1` on Windo
 | `run` | Run the desktop application from code |
 | `docker-build [variant]` | Build in Docker. Variant is `ubuntu` (default), `debian`, `rocky8` or `rocky9` |
 
-#### Build output
+## Build and upload
 
-| Platform | Application | Installer and metadata |
-| -- | -- | -- |
-| Windows | `build/output/` (`ayon.exe`, `ayon_console.exe`) | `build/installer/` (`.exe` and `.json`) |
-| macOS | `build/AYON {version}.app` | `build/installer/` (`.dmg` and `.json`) |
-| Linux (Docker) | `build_<variant>/output/` | `build_<variant>/installer/` and `build_<variant>/metadata.json` |
+:::info
 
-The `build` step also compiles the shim, a small Rust executable (see [The shim](#the-shim)), so Rust must be installed.
+The launcher only needs to be built to change its code. Ready-made builds for every platform are on the [releases page](https://github.com/ynput/ayon-launcher/releases).
 
-By default, the Qt binding is PySide6. For Linux builds that need PySide2, add `--use-pyside2` to `docker-build`, or set the `QT_BINDING=pyside2` environment variable for a local build.
+:::
 
-### Upload Installer to Server
+After the environment is set up as in [Run from sources](#run-from-sources), two commands build the installer and upload it to the server:
 
-The `upload` command creates installer information on the server from the JSON file and uploads the installer file for users to download.
+<Tabs groupId="os">
+<TabItem value="windows" label="Windows" default>
 
-The upload command has more options; use `--help` to explore them. For example, you can use `--username` and `--password` instead of an API key.
+```powershell
+# Build the launcher and create the installer
+./tools/manage.ps1 build-make-installer
 
-- On <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span>
-    ```bash
-    cd <ayon-launcher-repo-clone>
-    ./tools/manage.ps1 upload --server <your server> --api-key <your api key>
-    ```
-- On <span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> and <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span>
-    ```bash
-    cd <ayon-launcher-repo-clone>
-    ./tools/make.sh upload --server <your server> --api-key <your api key>
-    ```
+# Upload the installer to the server
+./tools/manage.ps1 upload --server $env:AYON_SERVER_URL --api-key $env:AYON_API_KEY --force
+```
 
-To use credentials instead of an API key, replace `--api-key <your api key>` with `--username <your admin username> --password <your password>`.
+</TabItem>
+<TabItem value="unix" label="Linux/Mac">
 
-### The shim
+```bash
+# Build the launcher and create the installer
+./tools/make.sh build-make-installer
+
+# Upload the installer to the server
+./tools/make.sh upload --server $AYON_SERVER_URL --api-key $AYON_API_KEY --force
+```
+
+</TabItem>
+</Tabs>
+
+### Build steps per platform
+
+Each platform needs a few tools besides the common ones in [Requirements](../requirements.md):
+
+<Cards variant="compact">
+<Card icon="desktop_windows" title="Windows" href="/docs/developer/launcher/build-windows">
+PowerShell 7, the Visual Studio C++ build tools and Inno Setup 6.
+</Card>
+<Card icon="laptop_mac" title="macOS" href="/docs/developer/launcher/build-macos">
+Xcode tools and create-dmg, then signing and notarization.
+</Card>
+<Card icon="terminal" title="Linux" href="/docs/developer/launcher/build-linux">
+Docker builds for Ubuntu, Debian and Rocky Linux.
+</Card>
+</Cards>
+
+### Output and options
+
+- **Output:** the installer and its `.json` metadata file are in `build/installer/`: an `.exe` made with Inno Setup on Windows, a `.dmg` on macOS and a `.tar.gz` on Linux. The application itself is in `build/output/`, or `build/AYON {version}.app` on macOS. Docker builds write to `build_<variant>/`.
+- **Shim:** the build also compiles the [shim](#the-shim) with Rust.
+- **Qt binding:** PySide6 by default. `--use-pyside2` with `install-runtime-dependencies` or `docker-build` uses PySide2.
+- **Upload:** creates the installer entry on the server from the `.json` file and uploads the installer. `--force` replaces an installer of the same version whose details differ. `--username` and `--password` can replace the API key, and `--help` lists the other options.
+
+### Platforms and hardware
+
+Each official launcher release is a standalone executable that comes with its own dependencies:
+
+| Platform | Installer |
+| -- | -- |
+| Windows | `AYON-<version>-win-setup.exe` |
+| macOS | `AYON-<version>-macos.dmg`, for Apple silicon (`arm64`) since 1.5.0. Earlier releases were for Intel (`x86_64`) |
+| Linux | `AYON-<version>-linux-<distribution>.tar.gz`, for Ubuntu 20.04, Debian 11, Rocky Linux 8 and Rocky Linux 9 |
+
+Linux builds are made in Docker, one per distribution: Rocky Linux is the choice for RHEL-compatible systems. The launcher follows the [VFX Reference Platform](https://vfxplatform.com/), and has no minimum hardware requirements: a computer that can run a DCC or render can run it.
+
+## The shim
 
 The AYON shim is a small executable that knows where to find the "real" AYON launcher executable. It is used to:
 
@@ -95,139 +193,7 @@ On macOS the shim is installed to `/Applications/AYON.app`. To use it in automat
 
 :::
 
-### Running AYON Desktop Application
-
-AYON can be executed either from live sources (this repository) or from "frozen code"—executables built using the steps described above.
-
-<Tabs
-    defaultValue='source'
-    values={[
-        {label: 'From sources', value: 'source'},
-        {label: 'From frozen code', value: 'frozen'},
-    ]}>
-
-<TabItem value='source'>
-
-Create the environment and install the runtime dependencies first. Ideally, repeat this with each new version.
-
-```bash
-cd <ayon-launcher-repo-clone>
-./tools/make.sh create-env
-./tools/make.sh install-runtime-dependencies
-```
-
-On Windows, use `./tools/manage.ps1` instead of `./tools/make.sh`.
-
-Then run AYON from sources. Arguments are passed through:
-
-```bash
-./tools/make.sh run <args>
-```
-
-On Windows:
-
-```bash
-./tools/manage.ps1 run <args>
-```
-
-This runs `uv run python start.py <args>`.
-
-</TabItem>
-
-<TabItem value='frozen'>
-
-A build produces these executables: `ayon.exe` and `ayon_console.exe` on Windows, `ayon` on Linux, and `AYON {version}.app` on macOS.
-
-- On <span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> : `ayon.exe` and `ayon_console.exe`
-    ```bash
-    cd <ayon-launcher-installation-location>
-    ./ayon.exe
-    ```
-    Or 
-    ```bash
-    cd <ayon-launcher-installation-location>
-    ./ayon_console.exe
-    ```
-    > The executable `ayon_console.exe` creates a console with output, which is useful for debugging. `ayon.exe` does not create a console and has no `stdout` or `stderr` output.
-
-- On <span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> and <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span> : `ayon`
-    ```bash
-    cd <ayon-launcher-installation-location>
-    ayon
-    ```
-
-</TabItem>
-</Tabs>
-
-## Startup
-
-Once the AYON launcher is installed and launched, there are several ways to influence what happens next. By default, it will prompt for server login (if not already logged in), then start distributing updates, and eventually initiate the main logic.
-
-:::tip
-
-The main logic now uses command line handling from the `core` add-on. If a path to a Python script is provided, it will execute the script as the main logic instead.
-
-```bash
-cd <ayon-launcher-installation-location>
-ayon /foo/bar/baz.py arg1 arg2
-```
-:::
-
-### Executable Arguments
-
-:::caution
-
-These cannot be used in any CLI handling. i.e. you can't reuse them when implementing a [CLI Interface](../addon-development/creation.md#cli-interface) for your addon.
-:::
-
-| <div style={{width: '190px'}}>Argument</div> | Description |
-| -- | -- |
-| `init-ayon-launcher` | Initializes the launcher by registering the executable path to known AYON launcher locations and installing a shim executable. |
-| `--bundle <BUNDLE NAME>` | Forces AYON to use a specific bundle instead of the one set in the bundle settings. This is useful for testing new bundles before release. <br/>See examples here: [How to use different bundles with different projects? \| Ynput Forums](https://community.ynput.io/t/how-to-use-different-bundles-with-different-projects/1096) |
-| `--verbose <LOG LEVEL>` | Sets the logging level. Acceptable values: `DEBUG` (10), `INFO` (20), `WARNING` (30), `ERROR` (40), `CRITICAL` (50). You can use either the string or the corresponding integer The value is stored in the `AYON_LOG_LEVEL` environment variable. | 
-| `--debug` | A simplified way to set verbose to DEBUG. Also sets the `AYON_DEBUG` environment variable to `1`. |
-| `--skip-headers` | Skips headers in the console output. |
-| `--use-dev` | Uses the dev bundle and settings if a bundle is not explicitly defined. |
-| `--use-staging` | Uses staging settings and the staging bundle if a bundle is not explicitly defined. Cannot be combined with `--use-dev`. |
-| `--project-bundle <BUNDLE NAME>` | Sets the project bundle (`AYON_BUNDLE_NAME`) to use. |
-| `--project <PROJECT NAME>` | Sets the project name (`AYON_PROJECT_NAME`) for the launcher session. |
-| `--headless` | Runs AYON in headless mode, with no UIs shown during bootstrap. Affects the AYON_HEADLESS_MODE environment variable. Custom logic must handle headless mode independently. |
-| `--ayon-login` | Displays the login dialog on startup. |
-| `--skip-bootstrap` | Skips the bootstrap process, used for internal distribution logic. |
-
-
-You can access these executable arguments via terminal
-<Tabs>
-
-<TabItem value="windows" label=<span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> default>
-
-
-```bash
-cd <ayon-launcher-installation-location>
-./ayon.exe <arg>
-```
-Or 
-```bash
-cd <ayon-launcher-installation-location>
-./ayon_console.exe <arg>
-```
-
-</TabItem>
-
-<TabItem value="linux&mac" label=<div><span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> & <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span></div> >
-
-
-```bash
-cd <ayon-launcher-installation-location>
-ayon <arg>
-```
-
-</TabItem>
-
-</Tabs>
-
-
-### Environment Variables
+## Environment variables
 
 AYON launcher provides the following environment variables for its subprocesses, useful in scripting and other applications. These variables are set during startup.
 
@@ -235,13 +201,15 @@ AYON launcher provides the following environment variables for its subprocesses,
 |--|--|
 | **AYON_VERSION** | Current desktop application version, e.g., `1.0.0`. |
 | **AYON_BUNDLE_NAME** | Name of the bundle in use. |
-| **AYON_STUDIO_BUNDLE_NAME** | Name of the production bundle in your studio. |
+| **AYON_STUDIO_BUNDLE_NAME** | Name of the studio bundle in use: the production, staging or dev bundle, or the one set with `--bundle`. |
+| **AYON_PROJECT_NAME** | Project name set with `--project`. |
+| **AYON_IN_LOGIN_MODE** | `1` when the user logged in through the login dialog, rather than with environment variables. |
 | **AYON_LOG_LEVEL** | Logging level for AYON logger. |
 | **AYON_DEBUG** | Debug flag enabled when set to '1'. |
 | **AYON_USE_STAGING** | Use staging settings when set to '1'. |
 | **AYON_USE_DEV** | Use dev mode settings when set to '1'. |
 | **AYON_HEADLESS_MODE** | Headless mode flag enabled when set to '1'. |
-| **AYON_EXECUTABLE** | Path to the executable used for AYON subprocesses. Points to the **python** executable in the virtual environment when run from sources. If run from frozen code, it points to either `ayon` or `ayon_console` on Windows. |
+| **AYON_EXECUTABLE** | Path to the executable used for AYON subprocesses. Points to the **python** executable in the virtual environment when run from sources. If run from frozen code, it points to `ayon` or `ayon_console` on Windows, and to `ayon` on Linux and macOS. |
 | **AYON_ROOT** | Root directory for AYON launcher content. |
 | **AYON_LAUNCHER_STORAGE_DIR** | Directory for storing dependency packages, add-ons, and related files. |
 | **AYON_LAUNCHER_LOCAL_DIR** | Directory for storing user/machine-specific files. **This directory should not be shared across machines and users.** |
@@ -280,22 +248,15 @@ Changing their values will alter where addons and dependency packages are stored
 
 :::
 
-## Developer Mode
+### Variables read by the launcher
 
-[Developer mode](../developer-mode.md) lets you skip the standard distribution process of add-ons and use local sources of add-on code instead. This is useful for add-on development. Developer mode must be enabled and configured on the AYON server.
+| Environment Variable | Description |
+|--|--|
+| **AYON_AUTO_UPDATE** | `skip` starts without distributing updates; `block` stops with an error when updates are needed. |
 
-There are two ways to start in developer mode using command line arguments:
-1. Start the AYON launcher in dev mode by using the `--use-dev` argument flag. It finds the dev bundle assigned to the logged-in user.
-2. Choose a bundle explicitly using the `--bundle` argument, e.g., `--use-dev --bundle <dev bundle name>`.
+## Developer mode
 
-Both options can be set with the environment variables `AYON_BUNDLE_NAME` and `AYON_USE_DEV` (set to `1` to enable).
-
-Developer mode automatically disregards any production or staging information.
-
-:::tip
-
-For a step-by-step guide, Check [Ayon Developer Mode – Guide | Ynput Forums](https://community.ynput.io/t/ayon-developer-mode-guide/993)
-:::
+[Developer mode](../developer-mode.md) runs addon code from local repositories instead of the distributed addons. It is enabled and configured on the AYON server. The launcher starts in it with `--use-dev`, which uses the dev bundle of the logged-in user, or with `--use-dev --bundle <dev bundle name>`. The same can be set with the environment variables `AYON_USE_DEV=1` and `AYON_STUDIO_BUNDLE_NAME`.
 
 ## Further Information
 

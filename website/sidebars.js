@@ -197,6 +197,7 @@ module.exports = {
             collapsed: false,
             items: [
                 "pipeline/launcher",
+                "pipeline/launcher-administration",
                 "pipeline/workfiles",
                 "pipeline/loader",
                 "pipeline/browser",

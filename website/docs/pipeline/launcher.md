@@ -32,36 +32,7 @@ The launcher runs in one of three modes. The mode decides which bundle is used a
 
 Staging is never derived from a bundle name; it must be requested explicitly. Development is also active when the bundle name passed with `--bundle` (or set in `AYON_STUDIO_BUNDLE_NAME`) or `AYON_BUNDLE_NAME` is a development bundle. Without any of these, the mode is production.
 
-### Command-line arguments
-
-| Argument | Effect |
-|---|---|
-| `--use-staging` | Staging mode. |
-| `--use-dev` | Development mode. |
-| `--bundle <name>` | Uses the named bundle as the studio bundle instead of the one of the current mode. |
-| `--project-bundle <name>` | Uses the named bundle for project-scoped processes. |
-| `--ayon-login` | Shows the login dialog even if credentials are stored. |
-| `--headless` | Bootstrap does not show any UI. Cannot be combined with `--ayon-login`. |
-| `--verbose <level>`, `--debug` | Log level and debug mode. |
-| `--skip-headers`, `--skip-bootstrap` | Skip the printed headers, or the bootstrap (update and addon preparation) step. |
-| `init-ayon-launcher` | Deploys the shim and registers the `ayon-launcher://` protocol scheme, then exits. The installer runs it. |
-
-The tray command also accepts `--force`, which closes an already running tray and starts a new one. Other commands of the launcher are provided by the core addon and by addons: `publish`, `publish-report-viewer`, `browser`, `run`, `interactive`, `contextselection`, `create-project-structure`, `deliver` and `addon <addon name> <command>`.
-
-### Environment variables
-
-| Variable | Meaning |
-|---|---|
-| `AYON_VERSION` | Version of the launcher. |
-| `AYON_BUNDLE_NAME`, `AYON_STUDIO_BUNDLE_NAME` | Bundle names in use. |
-| `AYON_USE_STAGING`, `AYON_USE_DEV` | `1` when the mode is active. |
-| `AYON_SERVER_URL`, `AYON_API_KEY` | Server connection. |
-| `AYON_SITE_ID` | Site ID of the machine (see below). |
-| `AYON_LAUNCHER_STORAGE_DIR` | Directory for addons, dependency packages and shims. Can point to a shared location. |
-| `AYON_LAUNCHER_LOCAL_DIR` | Directory for machine and user specific files. |
-| `AYON_ADDONS_DIR`, `AYON_DEPENDENCIES_DIR` | Locations of the downloaded addons and dependency packages. |
-| `AYON_HEADLESS_MODE`, `AYON_DEBUG` | `1` when headless or debug mode is active. |
-| `AYON_MENU_LABEL` | Label of the AYON menu in DCC integrations (`AYON`). |
+The command-line arguments, the commands and the environment variables of the launcher are described in [Launcher administration](launcher-administration.md).
 
 ## Distribution and updates
 
