@@ -5,8 +5,6 @@ description: Information about AYON frontend react components
 toc_max_heading_level: 5
 ---
 
-## About AYON React Components
-
 The [AYON Component Library](https://github.com/ynput/ayon-react-components) is a collection of components for the AYON project. It's extensively used in our [ayon-frontend](https://github.com/ynput/ayon-frontend), the React frontend code for the Ayon server.
 It can be used to create consistent and accessible AYON addons.
 
@@ -27,14 +25,11 @@ import { EntityCard } from '@ynput/ayon-react-components'
 ![](../assets/apis_and_resources/copying_react_examples.gif)
 :::
 
-## Learn More
-You can find the full list of components and their documentation at [AYON React Components Docs](https://components.ayon.dev/?path=/docs/buttons-button--docs)
+## Live reference
 
 :::tip
 To run Documentation locally follow [Get Started with Storybook](https://github.com/ynput/ayon-react-components?tab=readme-ov-file#get-started-with-storybook) on GitHub.
 :::
-
-## Live reference
 
 The reference documentation of this project, embedded from [components.ayon.dev](https://components.ayon.dev/?path=/docs/buttons-button--docs).
 

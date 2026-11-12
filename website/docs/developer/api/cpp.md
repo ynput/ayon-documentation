@@ -8,8 +8,6 @@ toc_max_heading_level: 5
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## About AYON C++ API
-
 The AYON CPP API is a static lib. It allows communication with the AYON server.
 Implementation is mainly focused on [AYON USD Resolver](usd-resolver.md) to communicate with the server resolve endpoint.
 
@@ -17,7 +15,6 @@ Implementation is mainly focused on [AYON USD Resolver](usd-resolver.md) to comm
 We assume you already have setup your C++ dev environment as well as cmake.
 You need to use at least C++17 in CMake
 :::
-
 
 ## C++ Example Project
 
@@ -93,7 +90,6 @@ target_link_libraries(${PROJECT_NAME} AyonCppApi)
 
 *This example is brought from: [test_cpp_api](https://github.com/MustafaJafar/ayon-recipes/tree/main/test_cpp_api).*
 
-
 ### Build And Run Commands
 
 - **Fetch AYON CPP Repo**
@@ -132,13 +128,8 @@ target_link_libraries(${PROJECT_NAME} AyonCppApi)
     {"timestamp":"2025-07-18 18:16:48.017","level":"warning","Thread Id":"33948","Process Id":"38436","message":"asset identification cant be generated {"entities":[],"error":"Invalid scheme: ","uri":"{root[work]}/Animal_Logic_ALab/assets/book_encyclopedia01/work/lookdev/ALA_book_encyclopedia01_lookdev_v001.hip"}"}
     ```
 
-## Learn More
-
-For More info and a full list of available commands
-Please refer to our [AYON CPP API](https://docs.ayon.dev/ayon-cpp-api/).
-
 ## Live reference
 
-The reference documentation of this project, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-cpp-api/).
+The full reference of the library, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-cpp-api/).
 
 <Embed src="https://docs.ayon.dev/ayon-cpp-api/" title="AYON C++ API reference" height="800px" />

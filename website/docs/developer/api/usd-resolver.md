@@ -5,8 +5,6 @@ description: Information about AYON USD Resolver.
 toc_max_heading_level: 5
 ---
 
-## AYON USD Resolver Project
-
 The Ayon USD Resolver enables resolution of Ayon URIs and pinning files using Pixar's Open USD.
 It's designed to turn URIs with the `ayon://` or `ayon+entity://` formats into local file paths.
 
@@ -16,18 +14,13 @@ AYON USD Resolver is an [AR2.0](https://openusd.org/release/wp_ar2.html) resolve
 Make sure that your software package is compatible with the `AR2.0` standard or use the **defaults** we provide in the [AYON USD Addon](https://github.com/ynput/ayon-usd)
 :::
 
-
 ## Get Started
 
 For the info about get started please refer to [Getting Started](https://docs.ayon.dev/ayon-usd-resolver/md_md_Getting_Started.html) in our AYON USD Resolver Docs.
-
-
-## Learn More
-
-For More info, please refer to our documentation for [AYON USD Resolver](https://docs.ayon.dev/ayon-usd-resolver/)
 
 ## Live reference
 
 The reference documentation of this project, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-usd-resolver/).
 
 <Embed src="https://docs.ayon.dev/ayon-usd-resolver/" title="AYON USD Resolver reference" height="800px" />
+

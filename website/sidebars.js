@@ -1023,7 +1023,6 @@ module.exports = {
         {
             type: "category",
             label: "APIs & Resources",
-            link: { type: "doc", id: "developer/api/index" },
             items: [
                 "developer/api/rest",
                 "developer/api/graphql",

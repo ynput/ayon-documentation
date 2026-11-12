@@ -137,6 +137,12 @@ const config = {
                         position: "left",
                     },
                     {
+                        // GraphQL API reference (generated docs, routeBasePath /graphql)
+                        to: "/graphql",
+                        label: "GraphQL API",
+                        position: "left",
+                    },
+                    {
                         type: "search",
                         position: "right",
                     },
@@ -238,12 +244,40 @@ const config = {
     ],
     plugins: [
         [
+            // GraphQL API reference, generated from static/schema.graphql into ./graphql
+            // by `docusaurus graphql-to-doc` (run before start and build, see package.json).
+            "@graphql-markdown/docusaurus",
+            {
+                schema: "./static/schema.graphql",
+                rootPath: "./graphql",
+                baseURL: ".",
+                linkRoot: "/graphql",
+                homepage: "./graphql-homepage.md",
+                loaders: {
+                    GraphQLFileLoader: "@graphql-tools/graphql-file-loader",
+                },
+                docOptions: {
+                    index: true,
+                },
+            },
+        ],
+        [
+            "@docusaurus/plugin-content-docs",
+            {
+                id: "graphql",
+                path: "graphql",
+                routeBasePath: "graphql",
+                sidebarPath: require.resolve("./graphql-sidebars.js"),
+            },
+        ],
+        [
             // Old flat URLs of the dev docs, still linked from other sites.
             "@docusaurus/plugin-client-redirects",
             {
                 redirects: [
                         { from: "/docs/dev_introduction", to: "/docs/developer" },
                         { from: "/docs/developer/resources", to: "/docs/developer" },
+                        { from: "/docs/developer/api", to: "/docs/developer" },
                         { from: "/docs/dev_requirements", to: "/docs/developer/requirements" },
                         { from: "/docs/dev_dev_mode", to: "/docs/developer/developer-mode" },
                         { from: "/docs/dev_testing", to: "/docs/developer/testing" },
@@ -273,7 +307,7 @@ const config = {
                         { from: "/docs/dev_deadline", to: "/docs/developer/integrations/deadline" },
                         // generated category pages of the old Dev sidebar
                         { from: "/docs/category/addon-development", to: "/docs/developer/addon-development" },
-                        { from: "/docs/category/apis--resources", to: "/docs/developer/api" },
+                        { from: "/docs/category/apis--resources", to: "/docs/developer" },
                 ],
             },
         ],

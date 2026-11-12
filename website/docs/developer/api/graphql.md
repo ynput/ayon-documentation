@@ -1,9 +1,30 @@
 ---
 title: AYON GraphQL API
 sidebar_label: GraphQL API
-description: Information about AYON GraphQL API
+description: "The GraphQL API of the AYON server: what it is for, that it is read-only, trying it in the GraphQL Explorer with its Docs and Explorer panels, and a first query."
 toc_max_heading_level: 5
+verified: 2026-11-12
+sources:
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/graphql/__init__.py
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ExplorerPage.jsx
 ---
+
+GraphQL is a query language for APIs: a request names exactly the fields it needs, and can follow related data, such as a project with its folders, tasks and versions, in one call.
+
+The GraphQL API of the AYON server is read-only: it has queries only, no mutations. Changes go through the [REST API](rest.md). GraphQL suits reading related data in one request; the REST API suits changes and single resources.
+
+## Reference
+
+<Cards variant="compact">
+<Card icon="hub" title="GraphQL API reference" href="/graphql/">
+Every query, type, field and argument, also under GraphQL API in the top bar.
+</Card>
+<Card icon="description" title="schema.graphql" href="pathname:///schema.graphql">
+The whole schema in one file, for tools and AI assistants.
+</Card>
+</Cards>
+
+## Try it
 
 <!--
   No live embed of the GraphQL explorer on this page, on purpose. The explorer (/graphiql on an AYON
@@ -12,66 +33,30 @@ toc_max_heading_level: 5
   in a frame. An embed would need a guest mode on the playground.
 -->
 
-## What is GraphQL?
+The [GraphQL Explorer of the AYON playground](https://playground.ayon.app/explorer) runs queries against a demo server. Log in to the playground to try it. Every AYON server has the same explorer, under **GraphQL Explorer** in the Help menu of the web app; its controls are described in [GraphQL Explorer](../../ayon/web-ui/graphql-explorer.md).
 
-GraphQL is a query language between frontend and backend. it allows you to expose the data sent from server to client
+Two panels of the explorer help with writing queries:
 
-GraphQL is a query language and server-side runtime for application programming interfaces (APIs) that gives API clients exactly the data they requested. As an alternative to REST, GraphQL allows developers to make requests to fetch data from multiple data sources with a single API call.
+<Columns widths="50 50">
+<Column>
 
-You can use GraphQL and REST APIs interchangeably. 
+![The Docs panel showing the Query type with its fields project and projects and their arguments](../assets/apis_and_resources/graphql_docs_query.png "Docs: the schema reference")
 
-You have limited bandwidth, and you want to minimize the number of requests and responses
-You have multiple data sources, and you want to combine them at one endpoint
-You have client requests that vary significantly, and you expect very different responses
+</Column>
+<Column>
 
-interrelated data
+![The Explorer panel with the fields of the query tree, where ticking a field adds it to the query](../assets/apis_and_resources/graphql_explorer_panel.png "Explorer: the query builder")
 
-## About GraphQL and AYON
+</Column>
+</Columns>
 
-Each GraphQl call is constructed from a schema which describes the data to work with.
+- **Docs**, at the top right: the reference of the schema, with every type, field and argument and its description, and a search.
+- **Explorer**, in the toolbar: a query builder. Ticking fields and arguments in the tree writes the query.
 
-There are two main root types of schemas:
-1. Query: Read
-2. Mutation: Create, update or Delete
+## Your first query
 
-Currently, AYON supports only Query Root type where you can fetch data directly from AYON's Backend.
+This query lists the names of the projects and whether they are active:
 
-To perform any operations or mutation please consider using our [REST API](rest.md) instead.
-
-## AYON GraphQL Explorer
-
-While you can access GraphQL from code, you can also access it via your AYON Web UI as we integrate `GraphiQL`, an in-browser tool for writing, validating, and testing GraphQL queries.
-
-<div class="row markdown">
-<div class="col col--6 markdown">
-
-You access the GraphQL Explorer via `<your-ayon-server-url>/graphiql` or via help icon.
-
-</div>
-<div class="col col--6 markdown">
-
-![](../assets/apis_and_resources/graphql_explorer.png)
-
-</div>
-</div>
-
-
-### AYON GraphQL Explorer UI
-
-![](../assets/apis_and_resources/graphql_explorer_ui.png)
-1. GraphiQL Bar:
-   - ▶️ Button: Execute Query (ctrl+Enter)
-   - Prettify: It formats your input.
-   - History: Shows your queries history.
-   - Explorer: Opens Explorer window, you can use it to construct queries. It's also can be an alternative to Docs as it shows supported queries.
-   - Docs: It shows Documentation Explorer.
-2. Input Box: Where you add your GraphQL queries.
-3. Output Box: Shows the output.
-
-
-## Your First AYON query
-Here's a simple query to try out. 
-When executed it returns a list of the current projects names and whether or not they are active.
 ```graphql
 query MyQuery {
   projects {
@@ -85,4 +70,6 @@ query MyQuery {
 }
 ```
 
-![](../assets/apis_and_resources/graphql_example.png)
+![The GraphQL Explorer with the Explorer panel open, the query in the editor and the list of projects in the result](../assets/apis_and_resources/graphql_example.png)
+
+Lists such as `projects` follow the connection pattern: the items are in `edges`, each with a `node`, and `first`, `after` and the other arguments page through them.

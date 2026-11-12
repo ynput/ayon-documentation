@@ -5,8 +5,6 @@ description: Information about AYON Python API
 toc_max_heading_level: 5
 ---
 
-## About AYON Python API
-
 A Python client for connecting to AYON server using `requests` module. Wraps REST API endpoints including GraphQl to communicate with server.
 
 The module supports singleton connection which is using `AYON_SERVER_URL` and `AYON_API_KEY` environment variables as source for connection. But you can create multiple connection to different servers using `ServerAPI` class.
@@ -60,7 +58,6 @@ The Difference in Argument Handling
 * **Standard Methods (`get`, `delete`):** Any `**kwargs` you pass are bundled into the `params` argument.
 * **Raw Methods (`raw_*`):** These are **transparent pass-throughs** to the Python `requests` library. You must explicitly define your arguments (e.g., `json=...`, `params=...`, or `headers=...`).
 
-
 ### Practical Example: Creating a User
 
 The following example demonstrates how to create a user using both the standard (concise) and raw (explicit) methods.
@@ -105,14 +102,8 @@ You should use the `raw_` variants whenever you need to access specific features
 Use the **Standard Methods** for quick, clean code when dealing with standard JSON payloads. Use **Raw Methods** for complex integrations where you need full control over the HTTP stack.
 :::
 
-
-## Learn More
-
-For More info and a full list of available commands
-Please refer to our [AYON Python API Docs](https://docs.ayon.dev/ayon-python-api/).
-
 ## Live reference
 
-The reference documentation of this project, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-python-api/).
+The full reference of the module, with every function and class, embedded from [docs.ayon.dev](https://docs.ayon.dev/ayon-python-api/).
 
 <Embed src="https://docs.ayon.dev/ayon-python-api/" title="AYON Python API reference" height="800px" />

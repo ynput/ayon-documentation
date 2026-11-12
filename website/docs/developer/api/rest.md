@@ -5,25 +5,36 @@ description: Information about AYON Rest API
 toc_max_heading_level: 5
 ---
 
-## What is a REST API?
-
 REST is a short name for `RESTful` which is a programming interface that allows you to communicate with web servers via `HTTP` requests to access and use data.
 HTTP requests include `POST` (create), GET (read), `PUT` (update) and DELETE data.
 
 These 4 types of requests form the famous terminology `CRUD`: Create, Read, Update and Delete.
 
-## AYON REST API
+The AYON REST API works with the resources of an AYON server: for example, it lists or creates projects and users, and uploads or downloads AYON launcher installers, addons and dependency packages.
 
-You can use `AYON REST API` to manipulate AYON Resources.
-e.g. you can use it to get a list of projects or create new projects, get a list of current users or add users and manage resources e.g. download or upload AYON Launcher, addons and dependency packages.
+<Cards variant="compact">
+<Card icon="api" title="REST API reference" href="/api">
+Every endpoint of the AYON server, also under REST API in the top bar.
+</Card>
+</Cards>
 
-Each AYON server generates docs for its REST API as they can be extended via [Addons Devolvement](../addon-development/creation.md#end-points)
+<Columns widths="65 35">
+<Column>
 
-On a server, the REST API docs are at `<your-ayon-server-url>/docs`, shown in the web app at `/doc/api` and opened from **REST API** in the Help menu. By default only managers and admins can open them. See [REST API](../../ayon/web-ui/rest-api.md).
+Every AYON server also has its own reference, which includes the endpoints that its addons add (see [Addon development](../addon-development/creation.md#end-points)):
+
+- **Where:** `<your-ayon-server-url>/docs`, or **REST API** in the Help menu of the web app, which shows it at `/doc/api`.
+- **Who:** managers and admins, by default.
+
+See [REST API](../../ayon/web-ui/rest-api.md) in the Web UI section.
+
+</Column>
+<Column>
 
 ![](../assets/apis_and_resources/rest_api_docs.png)
 
-For instance, you can check the REST API Docs for our Public AYON Server here at [AYON REST API Docs](/api).
+</Column>
+</Columns>
 
 ## Authentication Headers
 
@@ -84,15 +95,8 @@ For the following example, I'll stick to `VsCode Thunder Client`.
 
 ![](../assets/apis_and_resources/rest_get_projects.png)
 
-### Conclusion
-As you may have noticed, using the API, sending and processing the data is not meant to be read and processed by Humans. 
-we should do that with the aid of scripts where we can deal with them from a higher perspective where we can use a command like `get_projects_names` and it should use the proper API call and process the output for us.
-and, that's why REST API is called a programming interface.
+## Conclusion
 
-:::tip
-While AYON REST API solely doesn't process the data for us.
-You would need to write the essential code to make the API call
-and then process the data before displaying it for you.
-For example check [AYON REST API Guide](https://community.ynput.io/t/ayon-rest-api-guide/1268) to
-explore different ways to make REST API calls.
-:::
+The REST API returns raw data meant for programs, not for people. Scripts usually wrap its calls in functions that do one task, such as listing the project names, and process the response. The [Python API](python.md) already does this for most endpoints, for example `ayon_api.get_projects()`.
+
+More ways to call the REST API are in the forum guide [AYON REST API Guide](https://community.ynput.io/t/ayon-rest-api-guide/1268).

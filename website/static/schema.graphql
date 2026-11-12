@@ -1,0 +1,2258 @@
+# Ayon server 1.17.4
+
+type ActivitiesConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [ActivityEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type ActivityCategory {
+  name: String!
+  color: String!
+}
+
+type ActivityEdge {
+  node: ActivityNode!
+  cursor: String
+}
+
+type ActivityFileNode {
+  id: String!
+  size: String!
+  author: String
+  name: String
+  mime: String
+
+  """Media info extracted from the file"""
+  mediaInfo: JSON
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ActivityNode {
+  projectName: String!
+  referenceId: String!
+  activityId: String!
+  referenceType: String!
+  activityType: String!
+  entityType: String!
+  entityId: String
+  entityName: String
+  entityPath: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  creationOrder: Int!
+  body: String!
+  tags: [String!]!
+  category: ActivityCategory
+  activityData: String!
+  referenceData: String!
+  active: Boolean!
+  read: Boolean!
+  origin: ActivityOriginNode
+  parents: [ActivityOriginNode!]!
+  reactions: [ActivityReactionNode!]!
+  author: UserNode
+  assignee: UserNode
+  version: VersionNode
+  files: [ActivityFileNode!]!
+}
+
+type ActivityOriginNode {
+  id: String!
+  type: String!
+  subtype: String
+  name: String!
+  label: String
+  link: String!
+}
+
+type ActivityReactionNode {
+  userName: String!
+  fullName: String
+  reaction: String!
+  timestamp: DateTime!
+}
+
+input AttributeFilterInput {
+  name: String!
+  values: [String!]!
+}
+
+interface BaseNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  projectName: String!
+  id: String!
+  name: String!
+  active: Boolean!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  links(direction: String = null, linkTypes: [String!] = null, names: [String!] = null, nameEx: String = null, first: Int! = 100, after: String = null): LinksConnection!
+
+  """Entity lists containing this entity"""
+  entityLists(
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+    entityListTypes: [String!] = null
+  ): [EntityListInfo!]!
+  activities(first: Int = null, last: Int = 100, after: String = null, before: String = null, activityTypes: [String!] = null, referenceTypes: [String!] = null): ActivitiesConnection!
+  parents: [String!]!
+}
+
+type ColumnStats {
+  columnName: String!
+  valueFilledCount: Int
+  percentageFilled: Float
+  valueNotFilledCount: Int
+  percentageNotFilled: Float
+  checkedCount: Int
+  checkedPercentage: Float
+  notCheckedCount: Int
+  notCheckedPercentage: Float
+  avg: Float
+  min: Float
+  max: Float
+  sum: Float
+  count: Float
+  distribution: JSON
+}
+
+"""Date with time (isoformat)"""
+scalar DateTime
+
+type EntityComment {
+  activityId: String!
+  body: String!
+  author: String
+  createdAt: String!
+}
+
+type EntityListEdge {
+  node: EntityListNode!
+  cursor: String
+}
+
+type EntityListInfo {
+  id: String!
+  label: String!
+  entityListType: String!
+  entityType: String!
+  active: Boolean!
+
+  """List items of the entity in this list, in list order"""
+  itemIds: [String!]!
+}
+
+type EntityListItemEdge {
+  id: String!
+  projectName: String!
+  entityType: String!
+  entityId: String!
+  position: Int!
+  folderPath: String!
+  tags: [String!]!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  cursor: String
+  Entity: BaseNode
+  Forbidden: Boolean!
+  attrib: JSON!
+  allAttrib: String!
+  ownAttrib: [String!]!
+  entityAttrib: JSON!
+  data: String!
+
+  """Item node"""
+  node: BaseNode
+}
+
+type EntityListItemsConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [EntityListItemEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type EntityListNode {
+  projectName: String!
+  id: String!
+  entityType: String!
+  entityListType: String!
+  entityListFolderId: String
+  label: String!
+  access: String!
+  allAttrib: String!
+  tags: [String!]!
+  activityCategories: [String!]!
+  owner: String
+  active: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  createdBy: String
+  updatedBy: String
+  count: Int!
+  data: String!
+  attributes: String!
+  items(
+    first: Int = null
+    after: String = null
+    last: Int = null
+    before: String = null
+    sortBy: [String!] = null
+    accessibleOnly: Boolean! = false
+    filter: String = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+  ): EntityListItemsConnection!
+  accessLevel: Int!
+}
+
+type EntityListsConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [EntityListEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+enum EntityVisibility {
+  ALL
+  VISIBLE
+  HIDDEN
+}
+
+type EventEdge {
+  node: EventNode!
+  cursor: String
+}
+
+type EventNode {
+  id: String!
+  hash: String!
+  topic: String!
+  project: String
+  user: String
+  sender: String
+  dependsOn: String
+  status: String!
+  retries: Int!
+  description: String!
+  summary: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  data: String
+  payload: String
+}
+
+type EventsConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [EventEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type FileNode {
+  id: String!
+  name: String!
+  path: String!
+  hash: String
+  size: String!
+  hashType: String!
+}
+
+type FolderEdge {
+  node: FolderNode!
+  cursor: String
+}
+
+type FolderNode implements BaseNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  projectName: String!
+  id: String!
+  name: String!
+  active: Boolean!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  links(direction: String = null, linkTypes: [String!] = null, names: [String!] = null, nameEx: String = null, first: Int! = 100, after: String = null): LinksConnection!
+
+  """Entity lists containing this entity"""
+  entityLists(
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+    entityListTypes: [String!] = null
+  ): [EntityListInfo!]!
+  activities(first: Int = null, last: Int = 100, after: String = null, before: String = null, activityTypes: [String!] = null, referenceTypes: [String!] = null): ActivitiesConnection!
+  parents: [String!]!
+  label: String
+  folderType: String!
+  parentId: String
+  thumbnailId: String
+  thumbnail: ThumbnailInfo
+  path: String
+  status: String!
+  tags: [String!]!
+  data: String
+  thumbnailHash: String!
+  latestComments: [EntityComment!]
+  childCount: Int!
+  productCount: Int!
+  taskCount: Int!
+  hasVersions: Boolean!
+  hasReviewables: Boolean!
+  totalFolderCount: Int!
+  totalTaskCount: Int!
+  totalProductCount: Int!
+  totalVersionCount: Int!
+
+  """Return a list of products."""
+  products(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """List of parent folder IDs to filter by"""
+    folderIds: [String!] = null
+
+    """Include versions in child folders when folderIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    """Filter by a list of names"""
+    names: [String!] = null
+
+    """Filter by a list of names (case insensitive)"""
+    namesCi: [String!] = null
+
+    """Match product names by a regular expression"""
+    nameEx: String = null
+
+    """Match product by a regex of the parent folder path regex"""
+    pathEx: String = null
+
+    """List of product types to filter by"""
+    productTypes: [String!] = null
+
+    """List of base types"""
+    productBaseTypes: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter products using QueryFilter"""
+    filter: String = null
+
+    """Filter products by their parent folders using QueryFilter"""
+    folderFilter: String = null
+
+    """Filter products by their versions using QueryFilter"""
+    versionFilter: String = null
+
+    """Filter products by their tasks (via versions) using QueryFilter"""
+    taskFilter: String = null
+
+    """
+    Filter products by their representations (via versions) using QueryFilter
+    """
+    representationFilter: String = null
+
+    """Filter products that have at least one version with reviewables"""
+    hasReviewables: Boolean = null
+
+    """
+    Sort by one or more of name, productType, productBaseType, folderName, folderType, status, createdAt, updatedAt, createdBy, updatedBy, tags, path, version. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): ProductsConnection!
+
+  """Return a list of tasks."""
+  tasks(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """List of task types to filter by"""
+    taskTypes: [String!] = null
+
+    """List of parent folder IDs to filter by"""
+    folderIds: [String!] = null
+
+    """Filter by a list of attributes"""
+    attributes: [AttributeFilterInput!] = null
+
+    """List of names to filter by"""
+    names: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """
+    List tasks with all of the provided assignees. Empty list will return tasks with no assignees.
+    """
+    assignees: [String!] = null
+
+    """
+    List tasks with any of the provided assignees. Empty list will return tasks with any assignees.
+    """
+    assigneesAny: [String!] = null
+
+    """
+    List tasks with all of the provided tags. Empty list will return tasks with no tags.
+    """
+    tags: [String!] = null
+
+    """
+    List tasks with any of the provided tags. Empty list will return tasks with any tags.
+    """
+    tagsAny: [String!] = null
+
+    """Include tasks in child folders when folderIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Filter tasks by queryfilter on folders"""
+    folderFilter: String = null
+
+    """
+    Sort by one or more of name, taskType, assignees, status, createdAt, updatedAt, createdBy, updatedBy, folderName. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): TasksConnection!
+  type: String!
+  hasChildren: Boolean!
+  hasProducts: Boolean!
+  hasTasks: Boolean!
+  parent: FolderNode
+  ownAttrib: [String!]!
+}
+
+type FolderType {
+  name: String!
+  icon: String
+  shortName: String
+  color: String
+}
+
+type FoldersConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [FolderEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+enum HasLinksFilter {
+  NONE
+  IN
+  OUT
+  ANY
+  BOTH
+}
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf).
+"""
+scalar JSON @specifiedBy(url: "https://ecma-international.org/wp-content/uploads/ECMA-404_2nd_edition_december_2017.pdf")
+
+type KanbanConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [KanbanEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type KanbanEdge {
+  node: KanbanNode!
+  cursor: String
+}
+
+type KanbanNode {
+  projectName: String!
+  projectCode: String!
+  id: String!
+  name: String!
+  label: String
+  status: String!
+  tags: [String!]!
+  taskType: String!
+  assignees: [String!]!
+  updatedAt: DateTime!
+  createdAt: DateTime!
+  priority: String
+  dueDate: DateTime
+  folderId: String!
+  folderName: String!
+  folderLabel: String
+  folderPath: String!
+  thumbnailId: String
+  thumbnail: ThumbnailInfo
+  thumbnailHash: String!
+  hasReviewables: Boolean!
+  lastVersionWithThumbnailId: String
+  lastVersionWithReviewableVersionId: String
+  lastVersionWithReviewableProductId: String
+}
+
+type LinkEdge {
+  id: String!
+  projectName: String!
+  entityType: String!
+  entityId: String!
+  name: String
+  linkType: String!
+  direction: String!
+  description: String!
+  author: String
+  cursor: String
+  data: JSON!
+
+  """Linked node"""
+  node: BaseNode
+}
+
+type LinkType {
+  name: String!
+  linkType: String!
+  inputType: String!
+  outputType: String!
+  color: String
+  style: String!
+}
+
+type LinksConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [LinkEdge!]!
+}
+
+input MetricTargetInput {
+  """The attribute path, e.g., 'attrib.fps'"""
+  field: String!
+
+  """List of statistical calculations to run"""
+  aggregations: [StatsOperation!]!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+  columnMetadata: [ColumnStats!]
+}
+
+type ProductBaseType {
+  name: String!
+  icon: String!
+  color: String!
+}
+
+type ProductEdge {
+  node: ProductNode!
+  cursor: String
+}
+
+type ProductNode implements BaseNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  projectName: String!
+  id: String!
+  name: String!
+  active: Boolean!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  links(direction: String = null, linkTypes: [String!] = null, names: [String!] = null, nameEx: String = null, first: Int! = 100, after: String = null): LinksConnection!
+
+  """Entity lists containing this entity"""
+  entityLists(
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+    entityListTypes: [String!] = null
+  ): [EntityListInfo!]!
+  activities(first: Int = null, last: Int = 100, after: String = null, before: String = null, activityTypes: [String!] = null, referenceTypes: [String!] = null): ActivitiesConnection!
+  parents: [String!]!
+  folderId: String!
+  productType: String!
+  productBaseType: String
+  status: String!
+  tags: [String!]!
+  data: String
+  path: String
+
+  """Return a list of versions."""
+  versions(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+    version: Int = null
+    versions: [Int!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """List of parent products IDs"""
+    productIds: [String!] = null
+
+    """List of parent task IDs"""
+    taskIds: [String!] = null
+
+    """List of folder IDs to filter by"""
+    folderIds: [String!] = null
+
+    """Include versions in child folders when folderIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    """List of version author user names to filter by."""
+    authors: [String!] = null
+
+    """DEPRECATED List only latest versions"""
+    latestOnly: Boolean! = false
+
+    """DEPRECATED List only hero versions"""
+    heroOnly: Boolean! = false
+
+    """DEPRECATED List hero versions. If hero does not exist, list latest"""
+    heroOrLatestOnly: Boolean! = false
+
+    """Filter versions that have reviewables"""
+    hasReviewables: Boolean = null
+
+    """Filter versions that have a hero version"""
+    hasHero: Boolean = null
+
+    """
+    List only one version for each product, based on the order of flags, that can be 'hero', 'latestDone' and 'latest.This is a replacement for the deprecated heroOnly, latestOnly and heroOrLatestOnly
+    """
+    featuredOnly: [String!] = null
+
+    """Deprecated and noop"""
+    featuredOnlyEntityType: String! = "product"
+
+    "\nReturn only a single version - the latest one (by creation order)\nfor each folder that matches all the other given filters.\nThe result set is still ordered according to sortBy.\n"
+    latestPerFolder: Boolean! = false
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Filter tasks by their folders using QueryFilter"""
+    folderFilter: String = null
+
+    """Filter products by their tasks (via versions) using QueryFilter"""
+    taskFilter: String = null
+
+    """Filter versions by their product using QueryFilter"""
+    productFilter: String = null
+
+    """Filter versions by their representations using QueryFilter"""
+    representationFilter: String = null
+
+    """
+    Sort by one or more of author, version, createdAt, updatedAt, createdBy, updatedBy, tags, productType, productBaseType, productName, folderName, folderType, taskName, taskType, path. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): VersionsConnection!
+
+  """Simple (id /version) list of versions in the product"""
+  versionList: [VersionListItem!]!
+  type: String!
+
+  """Parent folder of the product"""
+  folder: FolderNode!
+
+  """Last version of the product"""
+  latestVersion: VersionNode
+  featuredVersion(order: [String!] = null): VersionNode
+}
+
+type ProductType {
+  name: String!
+  icon: String
+  color: String
+}
+
+type ProductsConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [ProductEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type ProjectBundleType {
+  production: String
+  staging: String
+}
+
+type ProjectEdge {
+  node: ProjectNode!
+  cursor: String
+}
+
+type ProjectLinkEdge {
+  id: String!
+  projectName: String!
+  linkType: String!
+  inputType: String!
+  outputType: String!
+  inputId: String!
+  outputId: String!
+  name: String
+  author: String
+  createdAt: DateTime!
+  cursor: String
+  data: JSON!
+
+  """Input node"""
+  inputNode: BaseNode
+
+  """Output node"""
+  outputNode: BaseNode
+}
+
+type ProjectLinksConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [ProjectLinkEdge!]!
+}
+
+type ProjectNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  name: String!
+  label: String
+  projectName: String!
+  code: String!
+  color: String
+  projectFolder: String
+  data: String
+  config: String
+  active: Boolean!
+  library: Boolean!
+  skeleton: Boolean!
+  thumbnail: ThumbnailInfo
+  bundle: ProjectBundleType!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+
+  """Return a folder node based on its ID"""
+  entityList(id: String!): EntityListNode!
+  entityLists(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """
+    Sort by one or more of label, owner, entityListType, createdAt, updatedAt, count, active. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+  ): EntityListsConnection!
+
+  """Return a folder node based on its ID"""
+  folder(id: String!): FolderNode
+
+  """Return a list of folders."""
+  folders(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """Include child folders when ids or parentIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    "\nID of the parent folder.\nUse 'root' to get top level folders.\n"
+    parentId: String = null
+
+    """List of parent ids."""
+    parentIds: [String!] = null
+
+    """Filter by a list of attributes"""
+    attributes: [AttributeFilterInput!] = null
+
+    """List of folder types to filter by"""
+    folderTypes: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """List of paths to filter by"""
+    paths: [String!] = null
+
+    """Match paths by regular expression"""
+    pathEx: String = null
+
+    """Text string to filter names by. Use `%` as wildcard."""
+    name: String = null
+
+    """List of names to filter. Only exact matches are returned"""
+    names: [String!] = null
+
+    """List folders with tasks assigned to these users"""
+    assignees: [String!] = null
+
+    """Whether to filter by folders with children"""
+    hasChildren: Boolean = null
+
+    """Whether to filter by folders with products"""
+    hasProducts: Boolean = null
+
+    """Whether to filter by folders with tasks"""
+    hasTasks: Boolean = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter folders using QueryFilter"""
+    filter: String = null
+
+    """Filter folders by tasks"""
+    taskFilter: String = null
+
+    """Fuzzy search folders by tasks"""
+    taskSearch: String = null
+
+    "\nFuzzy text search matching folders by their own fields\nor by any of their tasks (same as the REST folder search)\n"
+    globalSearch: String = null
+
+    "\nInclude the parent folders of the matching folders.\nParents are only limited by access, visibility, ids and parentIds.\n"
+    includeParents: Boolean! = false
+
+    """
+    Sort by one or more of name, createdAt, updatedAt, createdBy, updatedBy, folderType. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): FoldersConnection!
+
+  """Return a task node based on its ID"""
+  task(id: String!): TaskNode
+
+  """Return a list of tasks."""
+  tasks(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """List of task types to filter by"""
+    taskTypes: [String!] = null
+
+    """List of parent folder IDs to filter by"""
+    folderIds: [String!] = null
+
+    """Filter by a list of attributes"""
+    attributes: [AttributeFilterInput!] = null
+
+    """List of names to filter by"""
+    names: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """
+    List tasks with all of the provided assignees. Empty list will return tasks with no assignees.
+    """
+    assignees: [String!] = null
+
+    """
+    List tasks with any of the provided assignees. Empty list will return tasks with any assignees.
+    """
+    assigneesAny: [String!] = null
+
+    """
+    List tasks with all of the provided tags. Empty list will return tasks with no tags.
+    """
+    tags: [String!] = null
+
+    """
+    List tasks with any of the provided tags. Empty list will return tasks with any tags.
+    """
+    tagsAny: [String!] = null
+
+    """Include tasks in child folders when folderIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Filter tasks by queryfilter on folders"""
+    folderFilter: String = null
+
+    """
+    Sort by one or more of name, taskType, assignees, status, createdAt, updatedAt, createdBy, updatedBy, folderName. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): TasksConnection!
+
+  """Return a representation node based on its ID"""
+  product(id: String!): ProductNode
+
+  """Return a list of products."""
+  products(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """List of parent folder IDs to filter by"""
+    folderIds: [String!] = null
+
+    """Include versions in child folders when folderIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    """Filter by a list of names"""
+    names: [String!] = null
+
+    """Filter by a list of names (case insensitive)"""
+    namesCi: [String!] = null
+
+    """Match product names by a regular expression"""
+    nameEx: String = null
+
+    """Match product by a regex of the parent folder path regex"""
+    pathEx: String = null
+
+    """List of product types to filter by"""
+    productTypes: [String!] = null
+
+    """List of base types"""
+    productBaseTypes: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter products using QueryFilter"""
+    filter: String = null
+
+    """Filter products by their parent folders using QueryFilter"""
+    folderFilter: String = null
+
+    """Filter products by their versions using QueryFilter"""
+    versionFilter: String = null
+
+    """Filter products by their tasks (via versions) using QueryFilter"""
+    taskFilter: String = null
+
+    """
+    Filter products by their representations (via versions) using QueryFilter
+    """
+    representationFilter: String = null
+
+    """Filter products that have at least one version with reviewables"""
+    hasReviewables: Boolean = null
+
+    """
+    Sort by one or more of name, productType, productBaseType, folderName, folderType, status, createdAt, updatedAt, createdBy, updatedBy, tags, path, version. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): ProductsConnection!
+
+  """Return a task node based on its ID"""
+  version(id: String!): VersionNode
+
+  """Return a list of versions."""
+  versions(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+    version: Int = null
+    versions: [Int!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """List of parent products IDs"""
+    productIds: [String!] = null
+
+    """List of parent task IDs"""
+    taskIds: [String!] = null
+
+    """List of folder IDs to filter by"""
+    folderIds: [String!] = null
+
+    """Include versions in child folders when folderIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    """List of version author user names to filter by."""
+    authors: [String!] = null
+
+    """DEPRECATED List only latest versions"""
+    latestOnly: Boolean! = false
+
+    """DEPRECATED List only hero versions"""
+    heroOnly: Boolean! = false
+
+    """DEPRECATED List hero versions. If hero does not exist, list latest"""
+    heroOrLatestOnly: Boolean! = false
+
+    """Filter versions that have reviewables"""
+    hasReviewables: Boolean = null
+
+    """Filter versions that have a hero version"""
+    hasHero: Boolean = null
+
+    """
+    List only one version for each product, based on the order of flags, that can be 'hero', 'latestDone' and 'latest.This is a replacement for the deprecated heroOnly, latestOnly and heroOrLatestOnly
+    """
+    featuredOnly: [String!] = null
+
+    """Deprecated and noop"""
+    featuredOnlyEntityType: String! = "product"
+
+    "\nReturn only a single version - the latest one (by creation order)\nfor each folder that matches all the other given filters.\nThe result set is still ordered according to sortBy.\n"
+    latestPerFolder: Boolean! = false
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Filter tasks by their folders using QueryFilter"""
+    folderFilter: String = null
+
+    """Filter products by their tasks (via versions) using QueryFilter"""
+    taskFilter: String = null
+
+    """Filter versions by their product using QueryFilter"""
+    productFilter: String = null
+
+    """Filter versions by their representations using QueryFilter"""
+    representationFilter: String = null
+
+    """
+    Sort by one or more of author, version, createdAt, updatedAt, createdBy, updatedBy, tags, productType, productBaseType, productName, folderName, folderType, taskName, taskType, path. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): VersionsConnection!
+
+  """Return a representation node based on its ID"""
+  representation(id: String!): RepresentationNode
+
+  """Return a list of representations."""
+  representations(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """List of parent version IDs to filter by"""
+    versionIds: [String!] = null
+
+    """List of names to filter"""
+    names: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): RepresentationsConnection!
+
+  """Return a task node based on its ID"""
+  workfile(id: String!): WorkfileNode
+
+  """Return a list of workfiles."""
+  workfiles(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """List of paths to filter by"""
+    paths: [String!] = null
+
+    """Match paths by regular expression"""
+    pathEx: String = null
+
+    """List of parent task IDs"""
+    taskIds: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """
+    Sort by one or more of name, path, status, createdAt, updatedAt. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): WorkfilesConnection!
+  activities(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """Entity type to filter by"""
+    entityType: String = null
+
+    """List of entity IDs to filter by"""
+    entityIds: [String!] = null
+
+    """List of entity names to filter by"""
+    entityNames: [String!] = null
+
+    """List of activity types to filter by"""
+    activityTypes: [String!] = null
+
+    """List of reference types to filter by"""
+    referenceTypes: [String!] = null
+
+    """List of activity IDs to filter by"""
+    activityIds: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """List of categories to filter by"""
+    categories: [String] = null
+
+    """Filter activities updated before this timestamp"""
+    changedBefore: String = null
+
+    """Filter activities updated after this timestamp"""
+    changedAfter: String = null
+
+    """Filter for activities based on author names"""
+    authors: [String!] = null
+
+    """Filter activities using QueryFilter"""
+    filter: String = null
+  ): ActivitiesConnection!
+
+  """List all links in the project, with optional filters."""
+  links(ids: [String!] = null, entityIds: [String!] = null, inputIds: [String!] = null, outputIds: [String!] = null, linkTypes: [String!] = null, inputTypes: [String!] = null, outputTypes: [String!] = null, first: Int! = 100, after: String = null, names: [String!] = null, nameEx: String = null): ProjectLinksConnection!
+
+  """List of project's task types"""
+  taskTypes(activeOnly: Boolean! = false): [TaskType!]!
+
+  """List of project's folder types"""
+  folderTypes(activeOnly: Boolean! = false): [FolderType!]!
+
+  """List of project's link types"""
+  linkTypes(activeOnly: Boolean! = false): [LinkType!]!
+
+  """List of project's product types"""
+  productTypes: [ProductType!]!
+
+  """List of project's product base types"""
+  productBaseTypes: [ProductBaseType!]!
+
+  """List of project's statuses"""
+  statuses: [Status!]!
+
+  """List of tags in the project"""
+  tags: [Tag!]!
+
+  """List of tags used in the project"""
+  usedTags: [String!]!
+}
+
+type ProjectsConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [ProjectEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type Query {
+  """Get a project by name"""
+  project(name: String = null, code: String = null): ProjectNode!
+
+  """Get a list of projects"""
+  projects(
+    "\nThe name of the project to retrieve.\nIf not provided, all projects will be returned.\n"
+    name: String = null
+
+    """The code of the project to retrieve."""
+    code: String = null
+
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+    includeSkeleton: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): ProjectsConnection!
+
+  """Get a list of users"""
+  users(
+    "\nThe name of the user to retrieve.\n"
+    name: String = null
+
+    "\nThe names of the users to retrieve.\n"
+    names: [String!] = null
+
+    "\nThe emails of the users to retrieve.\n"
+    emails: [String!] = null
+
+    """List only users assigned to a given project"""
+    projectName: String = null
+
+    """List only users assigned to projects"""
+    projects: [String!] = null
+
+    """Deprecated: Filter users by isSupport flag in data"""
+    isSupport: Boolean = null
+
+    """Fuzzy text search filter (name, full name and email)"""
+    search: String = null
+
+    """
+    Sort by one or more of name, fullName, email. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    "\nStatistics of the filtered users (e.g. COUNT of name) returned\nin fieldStats instead of the edges. Pagination is ignored.\nFields: name, attrib.fullName, attrib.email (managers only).\n"
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+  ): UsersConnection!
+
+  """Get a user by name"""
+  user(name: String!): UserNode!
+
+  """Get a list of recorded events"""
+  events(
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """List of topics"""
+    topics: [String!] = null
+
+    """List of projects"""
+    projects: [String!] = null
+
+    """List of users"""
+    users: [String!] = null
+
+    """List of states (deprecated. use statuses)"""
+    states: [String!] = null
+
+    """List of statuses"""
+    statuses: [String!] = null
+
+    """Has children"""
+    hasChildren: Boolean = null
+
+    """Timestamp"""
+    olderThan: String = null
+
+    """Timestamp"""
+    newerThan: String = null
+    filter: String = null
+
+    """Include logs in the response"""
+    includeLogs: Boolean! = false
+
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+  ): EventsConnection!
+
+  """Get user inbox"""
+  inbox(
+    """Pagination: last"""
+    last: Int = 100
+
+    """Pagination: before"""
+    before: String = null
+    showActiveProjects: Boolean = null
+    showActiveMessages: Boolean = true
+    showUnreadMessages: Boolean = null
+    showImportantMessages: Boolean = null
+  ): ActivitiesConnection!
+
+  """Get kanban board"""
+  kanban(
+    """Pagination: last"""
+    last: Int = 2000
+
+    """Pagination: before"""
+    before: String = null
+    projects: [String!] = null
+    assigneesAny: [String!] = null
+    taskIds: [String!] = null
+  ): KanbanConnection!
+
+  """Current user"""
+  me: UserNode!
+
+  """Studio-wide product type configuration"""
+  productTypes: [ProductType!]!
+}
+
+type RepresentationEdge {
+  node: RepresentationNode!
+  cursor: String
+}
+
+type RepresentationNode implements BaseNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  projectName: String!
+  id: String!
+  name: String!
+  active: Boolean!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  links(direction: String = null, linkTypes: [String!] = null, names: [String!] = null, nameEx: String = null, first: Int! = 100, after: String = null): LinksConnection!
+
+  """Entity lists containing this entity"""
+  entityLists(
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+    entityListTypes: [String!] = null
+  ): [EntityListInfo!]!
+  activities(first: Int = null, last: Int = 100, after: String = null, before: String = null, activityTypes: [String!] = null, referenceTypes: [String!] = null): ActivitiesConnection!
+  parents: [String!]!
+  versionId: String!
+  status: String!
+  tags: [String!]!
+  data: String
+  traits: String
+  path: String
+
+  """Files in the representation"""
+  files: [FileNode!]!
+
+  """JSON serialized context data"""
+  context: String
+
+  """Parent version of the representation"""
+  version: VersionNode!
+
+  """Number of files of the representation"""
+  fileCount: Int!
+}
+
+type RepresentationsConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [RepresentationEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+enum StatsOperation {
+  MIN
+  MAX
+  AVG
+  SUM
+  COUNT
+  FILLED
+  NOT_FILLED
+  PERCENTAGE_FILLED
+  PERCENTAGE_NOT_FILLED
+  CHECKED
+  NOT_CHECKED
+  PERCENTAGE_CHECKED
+  PERCENTAGE_NOT_CHECKED
+  DISTRIBUTION
+}
+
+type Status {
+  name: String!
+  shortName: String
+  icon: String
+  color: String
+  state: String
+  scope: [String!]
+}
+
+type SubTaskNode {
+  id: String!
+  name: String!
+  label: String!
+  description: String
+  startDate: DateTime
+  endDate: DateTime
+  assignees: [String!]!
+  isDone: Boolean!
+}
+
+type Tag {
+  name: String!
+  color: String
+}
+
+type TaskEdge {
+  node: TaskNode!
+  cursor: String
+}
+
+type TaskNode implements BaseNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  projectName: String!
+  id: String!
+  name: String!
+  active: Boolean!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  links(direction: String = null, linkTypes: [String!] = null, names: [String!] = null, nameEx: String = null, first: Int! = 100, after: String = null): LinksConnection!
+
+  """Entity lists containing this entity"""
+  entityLists(
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+    entityListTypes: [String!] = null
+  ): [EntityListInfo!]!
+  activities(first: Int = null, last: Int = 100, after: String = null, before: String = null, activityTypes: [String!] = null, referenceTypes: [String!] = null): ActivitiesConnection!
+  parents: [String!]!
+  label: String
+  taskType: String!
+  thumbnailId: String
+  thumbnailHash: String!
+  thumbnail: ThumbnailInfo
+  assignees: [String!]!
+  folderId: String!
+  status: String!
+  hasReviewables: Boolean!
+  tags: [String!]!
+  data: String
+  path: String
+  subtasks: [SubTaskNode!]!
+  latestComments: [EntityComment!]
+
+  """Return a list of versions."""
+  versions(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+    version: Int = null
+    versions: [Int!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """List of parent products IDs"""
+    productIds: [String!] = null
+
+    """List of parent task IDs"""
+    taskIds: [String!] = null
+
+    """List of folder IDs to filter by"""
+    folderIds: [String!] = null
+
+    """Include versions in child folders when folderIds is used"""
+    includeFolderChildren: Boolean! = false
+
+    """List of version author user names to filter by."""
+    authors: [String!] = null
+
+    """DEPRECATED List only latest versions"""
+    latestOnly: Boolean! = false
+
+    """DEPRECATED List only hero versions"""
+    heroOnly: Boolean! = false
+
+    """DEPRECATED List hero versions. If hero does not exist, list latest"""
+    heroOrLatestOnly: Boolean! = false
+
+    """Filter versions that have reviewables"""
+    hasReviewables: Boolean = null
+
+    """Filter versions that have a hero version"""
+    hasHero: Boolean = null
+
+    """
+    List only one version for each product, based on the order of flags, that can be 'hero', 'latestDone' and 'latest.This is a replacement for the deprecated heroOnly, latestOnly and heroOrLatestOnly
+    """
+    featuredOnly: [String!] = null
+
+    """Deprecated and noop"""
+    featuredOnlyEntityType: String! = "product"
+
+    "\nReturn only a single version - the latest one (by creation order)\nfor each folder that matches all the other given filters.\nThe result set is still ordered according to sortBy.\n"
+    latestPerFolder: Boolean! = false
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Filter tasks by their folders using QueryFilter"""
+    folderFilter: String = null
+
+    """Filter products by their tasks (via versions) using QueryFilter"""
+    taskFilter: String = null
+
+    """Filter versions by their product using QueryFilter"""
+    productFilter: String = null
+
+    """Filter versions by their representations using QueryFilter"""
+    representationFilter: String = null
+
+    """
+    Sort by one or more of author, version, createdAt, updatedAt, createdBy, updatedBy, tags, productType, productBaseType, productName, folderName, folderType, taskName, taskType, path. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to calculate column statistics"""
+    calculateStatistics: Boolean! = false
+
+    """Map of attribute names to lists of desired statistical aggregations"""
+    calculateSpecificStatistics: [MetricTargetInput!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): VersionsConnection!
+
+  """Return a list of workfiles."""
+  workfiles(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """List of paths to filter by"""
+    paths: [String!] = null
+
+    """Match paths by regular expression"""
+    pathEx: String = null
+
+    """List of parent task IDs"""
+    taskIds: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """
+    Sort by one or more of name, path, status, createdAt, updatedAt. Multiple keys are applied in order of precedence. Prefix a key with '-' to sort it in descending order. A single string is accepted as well.
+    """
+    sortBy: [String!] = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): WorkfilesConnection!
+  type: String!
+
+  """Parent folder of the task"""
+  folder: FolderNode!
+  ownAttrib: [String!]!
+}
+
+type TaskType {
+  name: String!
+  icon: String
+  shortName: String
+  color: String
+}
+
+type TasksConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [TaskEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type ThumbnailInfo {
+  id: String!
+  sourceEntityType: String
+  sourceEntityId: String
+  relation: String
+}
+
+type UserEdge {
+  node: UserNode!
+  cursor: String
+}
+
+type UserNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  name: String!
+  active: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  accessGroups: String!
+  defaultAccessGroups: [String!]!
+  isAdmin: Boolean!
+  isManager: Boolean!
+  isService: Boolean!
+  isGuest: Boolean!
+  isDeveloper: Boolean!
+  isStagingAllowed: Boolean!
+  inviteSentAt: DateTime
+  inviteAcceptedAt: DateTime
+  hasPassword: Boolean!
+  disablePasswordLogin: Boolean!
+  userPool: String
+  apiKeyPreview: String
+  deleted: Boolean!
+  tasks(projectName: String!): TasksConnection!
+}
+
+type UsersConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [UserEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type VersionEdge {
+  node: VersionNode!
+  cursor: String
+}
+
+type VersionListItem {
+  id: String!
+  version: Int!
+
+  """Version name"""
+  name: String!
+}
+
+type VersionNode implements BaseNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  projectName: String!
+  id: String!
+  name: String!
+  active: Boolean!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  links(direction: String = null, linkTypes: [String!] = null, names: [String!] = null, nameEx: String = null, first: Int! = 100, after: String = null): LinksConnection!
+
+  """Entity lists containing this entity"""
+  entityLists(
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+    entityListTypes: [String!] = null
+  ): [EntityListInfo!]!
+  activities(first: Int = null, last: Int = 100, after: String = null, before: String = null, activityTypes: [String!] = null, referenceTypes: [String!] = null): ActivitiesConnection!
+  parents: [String!]!
+  version: Int!
+  productId: String!
+  status: String!
+  tags: [String!]!
+  taskId: String
+  thumbnailId: String
+  thumbnail: ThumbnailInfo
+  thumbnailHash: String!
+  hasReviewables: Boolean!
+  author: String
+  data: String
+  path: String
+  heroVersionId: String
+  featuredVersionType: String
+  isLatest: Boolean!
+  isLatestDone: Boolean!
+  latestComments: [EntityComment!]
+
+  """Return a list of representations."""
+  representations(
+    """Pagination: first"""
+    first: Int = null
+
+    """Pagination: first"""
+    after: String = null
+
+    """Pagination: last"""
+    last: Int = null
+
+    """Pagination: before"""
+    before: String = null
+
+    """List of ids to be returned"""
+    ids: [String!] = null
+
+    """List of parent version IDs to filter by"""
+    versionIds: [String!] = null
+
+    """List of names to filter"""
+    names: [String!] = null
+
+    """List of statuses to filter by"""
+    statuses: [String!] = null
+
+    """List of tags to filter by"""
+    tags: [String!] = null
+
+    """Filter by links presence"""
+    hasLinks: HasLinksFilter = null
+
+    """Fuzzy text search filter"""
+    search: String = null
+
+    """Filter tasks using QueryFilter"""
+    filter: String = null
+
+    """Whether to include the AYON internal folder and its descendants"""
+    includeInternalFolder: Boolean! = false
+
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+  ): RepresentationsConnection!
+
+  """Parent product of the version"""
+  product: ProductNode!
+
+  """Task"""
+  task: TaskNode
+}
+
+type VersionsConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [VersionEdge!]!
+  fieldStats: [ColumnStats!]!
+}
+
+type WorkfileEdge {
+  node: WorkfileNode!
+  cursor: String
+}
+
+type WorkfileNode implements BaseNode {
+  """
+  Attribute values (JSON object). Use the attributes endpoint to get the attribute definitions.
+  """
+  attrib(
+    """Return only the given attributes"""
+    names: [String!] = null
+
+    """
+    Used internally for backwards compatibility: `attrib { a b: c }` queries are rewritten to `attrib(legacySelection: "a b:c")`
+    """
+    legacySelection: String = null @deprecated(reason: "Use `names` or select all attributes")
+  ): JSON!
+  allAttrib: String!
+  projectName: String!
+  id: String!
+  name: String!
+  active: Boolean!
+  createdBy: String
+  updatedBy: String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  links(direction: String = null, linkTypes: [String!] = null, names: [String!] = null, nameEx: String = null, first: Int! = 100, after: String = null): LinksConnection!
+
+  """Entity lists containing this entity"""
+  entityLists(
+    """
+    Filter by visibility. VISIBLE returns only visible entities, HIDDEN returns only hidden entities, ALL (default) returns both.
+    """
+    visibility: EntityVisibility! = ALL
+    entityListTypes: [String!] = null
+  ): [EntityListInfo!]!
+  activities(first: Int = null, last: Int = 100, after: String = null, before: String = null, activityTypes: [String!] = null, referenceTypes: [String!] = null): ActivitiesConnection!
+  parents: [String!]!
+  path: String!
+  taskId: String
+  thumbnailId: String
+  thumbnail: ThumbnailInfo
+  thumbnailHash: String!
+  status: String!
+  data: String
+  tags: [String!]!
+  Parents: [String!]
+
+  """Parent task of the workfile"""
+  task: TaskNode!
+}
+
+type WorkfilesConnection {
+  """Pagination information"""
+  pageInfo: PageInfo!
+  edges: [WorkfileEdge!]!
+  fieldStats: [ColumnStats!]!
+}
