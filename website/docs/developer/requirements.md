@@ -1,78 +1,101 @@
 ---
 title: Development requirements
 sidebar_label: Requirements
-description: "What developing for AYON needs: an AYON server instance, the main tools (a terminal, git, Python 3.11), the supported operating systems, Python versions, hardware and dependencies."
+description: "What developing for AYON needs: the tools for a local AYON server, the live frontend, the AYON launcher and addons, the code style checks with ruff and codespell, and where the dependencies of the server, the launcher and the addons are set."
+verified: 2026-11-12
+sources:
+  - https://github.com/ynput/ayon-backend/blob/develop/pyproject.toml
+  - https://github.com/ynput/ayon-frontend/blob/develop/package.json
+  - https://github.com/ynput/ayon-frontend/blob/develop/mise.toml
+  - https://github.com/ynput/ayon-core/blob/develop/pyproject.toml
+  - https://github.com/ynput/ayon-core/blob/develop/create_package.py
+  - https://github.com/ynput/ayon-docker/blob/main/Dockerfile
+  - https://github.com/ynput/ayon-docker/blob/main/docker-compose.yml
+  - https://github.com/ynput/ayon-launcher/blob/develop/pyproject.toml
+  - https://github.com/ynput/ayon-launcher/blob/develop/tools/manage.ps1
+  - https://github.com/ynput/ayon-launcher/blob/develop/tools/make.sh
+  - https://github.com/ynput/ayon-launcher/blob/develop/tools/runtime_dependencies.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/pyproject.toml
+  - https://github.com/ynput/ayon-core/blob/develop/package.py
+  - https://community.ynput.io/t/understanding-dependencies-in-ayon-addons/1992
+  - https://community.ynput.io/t/what-are-dependency-package-and-how-to-update-them/1991
+  - https://github.com/ynput/ayon-dependencies-tool
 ---
 
-AYON is a modular project. The AYON server lies at its core, so to develop for AYON you need an instance of it, either on localhost or on a remote server. See [AYON server repositories and stack](server/introduction.md) and the [Admin Server Deployment](https://help.ayon.app/articles/2293963#14llflexlb4) guide for more.
+# Development requirements
 
-The [AYON launcher](launcher/index.md) is written in Python 3.11 and closely follows the [VFX Reference Platform](https://vfxplatform.com/). Some parts of the pipeline may still run on Python 2.7 until all supported third-party software is updated. You can follow the progress at the [VFX Python3 tracker](https://vfxpy.com/).
+What a development environment needs depends on the part of AYON being worked on.
 
-## Main requirements
+- **An AYON server** to develop against: a local one, with the prerequisites in [On-premise deployment](../ayon/deployment/on-premise.md#host-machine-specs-and-prerequisites), or the dev server of a cloud subscription, included with Studio and optional with Pro, see [Cloud deployment](../ayon/deployment/cloud.md#what-it-includes).
+- **The frontend running live (`yarn dev`):** [Node.js](https://nodejs.org/en/download) 20.19 or newer, [Yarn](https://classic.yarnpkg.com/en/docs/install) 1, and a running AYON server.
+- **Pipeline (the AYON launcher and addons):** git, [Python](https://www.python.org/downloads/) `3.11.9` and [uv](https://docs.astral.sh/uv/getting-started/installation/), plus Bash on Linux and macOS or [PowerShell](https://learn.microsoft.com/powershell/scripting/overview) 7 or newer on Windows to run the scripts of the repositories.
+- **Building the AYON launcher:** the pipeline tools, plus [Rust](https://rust-lang.org/tools/install/). The build page of each platform lists the rest: [Windows](launcher/build-windows.md), [macOS](launcher/build-macos.md), [Linux](launcher/build-linux.md).
 
-To run AYON from sources or to build the launcher you need:
+:::caution Python version of the applications
 
-- A **terminal** application:
-    - PowerShell 7.0 or newer (Windows). `tools/manage.ps1` is a PowerShell script.
-    - Bash (Linux and macOS)
-- [**Python 3.11**](#python)
-- [**uv**](https://docs.astral.sh/uv/) to manage the virtual environment and dependencies
-- [**git**](https://git-scm.com/downloads)
-- [**Rust**](https://rust-lang.org/tools/install/) to build the shim
-- [**CMake**](https://cmake.org/)
-- [**Inno Setup**](https://jrsoftware.org/isdl.php) to create the installer (Windows only)
-- An [**AYON server**](server/introduction.md)
+The client code of an addon runs inside the applications, so it has to work with the Python version of each application the addon supports.
 
-The platform specific build guides list the remaining tools:
+:::
 
-- [Windows](launcher/build-windows.md)
-- [Linux](launcher/build-linux.md)
-- [macOS](launcher/build-macos.md)
+:::note Backend
 
-## Operating systems
+Backend code is worked on by mounting it into the server container: the compose file of [ayon-docker](https://github.com/ynput/ayon-docker) has a commented line for it. The code then runs with the dependencies shipped in the container, unless the server image is built from scratch.
 
-The official launcher installers are built for these platforms:
+:::
 
-| Platform | How it is built |
-| -- | -- |
-| Windows | Natively with `tools/manage.ps1` and Inno Setup |
-| macOS | Natively with `tools/make.sh` |
-| Linux | In Docker, with the Ubuntu (20.04), Debian (Bullseye), Rocky Linux 8 and Rocky Linux 9 variants |
+## Code style
 
-Rocky Linux is the RHEL-compatible choice. CentOS 7 is not part of the build files anymore. See [Linux build steps](launcher/build-linux.md) for details.
+The pipeline repositories, the AYON launcher and the addons, come with their code style configuration:
 
-## Python
+- [**ruff**](https://docs.astral.sh/ruff/) is a Python linter: it finds errors, unused code and style issues. Its rules are in the `ruff.toml` at the root of each repository, and it runs in the checks of their pull requests. Some repositories, such as ayon-core, also set the ruff version for the checks in their `pyproject.toml`; running that version locally gives the same results.
+- [**codespell**](https://github.com/codespell-project/codespell) finds common spelling mistakes in code and comments. Repositories that run it in their pre-commit hooks, such as ayon-core, configure it in the `[tool.codespell]` section of their `pyproject.toml`, and a commit only goes through when it passes.
 
-Python is only required if you want to build the [AYON launcher](launcher/index.md), develop, or run from the source code. Otherwise, use the pre-built installers from the [releases page](https://github.com/ynput/ayon-launcher/releases), which include Python.
-
-The launcher requires **Python 3.11.9** exactly (`requires-python == 3.11.9` in `pyproject.toml`). [uv](https://docs.astral.sh/uv/) manages the virtual environment and can install this Python version for you, so a separate Python installation or version manager is not needed. Dependencies are pinned in `uv.lock`.
-
-## Hardware
-
-There are no minimum hardware requirements. The launcher should be deployed on all machines that interact with AYON. As a rule of thumb, if a computer can run a DCC or perform render workloads, it can run AYON.
+Following this style matters beyond pull requests: an addon shared with the community, or proposed for the [Market](../ayon/web-ui/market.md), is easier to read and review when it uses the same style as the official addons. Both tools can run in the code editor, which shows the issues while typing.
 
 ## Dependencies
 
-AYON is built on top of other projects. The main runtime dependencies of the launcher are listed below. The full list, including development dependencies, is in [`pyproject.toml`](https://github.com/ynput/ayon-launcher/blob/develop/pyproject.toml).
+### Server frontend
 
-| Package | Purpose |
-| -- | -- |
-| [ayon-python-api](https://github.com/ynput/ayon-python-api) | Communication with the AYON server |
-| aiohttp | Asynchronous HTTP |
-| arrow | Date and time handling |
-| Unidecode | Text transliteration to ASCII |
-| platformdirs | Platform specific user directories |
-| coolname | Random name generation |
-| keyring | Secure storage of credentials |
-| blessed, enlighten | Terminal formatting and progress bars |
-| cryptography | Cryptographic primitives |
-| dnspython | DNS toolkit |
-| urllib3 | HTTP client |
-| semver | Semantic version handling |
-| QtPy | Abstraction layer over Qt bindings |
-| pywin32 | Windows API access (Windows only) |
-| python3-xlib, distro | X11 access and distribution detection (Linux only) |
+The web app's dependencies are listed in the [`package.json` of ayon-frontend](https://github.com/ynput/ayon-frontend/blob/develop/package.json), with the exact versions in `yarn.lock`. The server image builds the frontend with Yarn and ships the result, so nothing is installed on the server at run time.
 
-The Qt binding is installed separately by `install-runtime-dependencies`. It is PySide6 6.8.3 by default, or PySide2 5.15.2 when you pass `--use-pyside2` or set `QT_BINDING=pyside2`.
+An addon with a frontend of its own has a `frontend/package.json`. Its `create_package.py` builds it with Yarn into `frontend/dist` and puts the result in the addon package, so packaging such an addon also needs Node.js and Yarn.
 
-The launcher is frozen into an executable with [cx_Freeze](https://cx-freeze.readthedocs.io/en/latest).
+### Server backend
+
+The AYON server ships its dependencies in its Docker image. They are listed in the [`pyproject.toml` of ayon-backend](https://github.com/ynput/ayon-backend/blob/develop/pyproject.toml). The server code of an addon uses these libraries: adding libraries of its own is not supported. Heavier work goes to an addon service, a Docker image whose Dockerfile sets its dependencies.
+
+### Launcher
+
+The launcher's dependencies are listed in the [`pyproject.toml` of ayon-launcher](https://github.com/ynput/ayon-launcher/blob/develop/pyproject.toml) and frozen into the installer. The Qt binding is PySide6 6.8.3 by default, or PySide2 5.15.2 when `install-runtime-dependencies` gets `--use-pyside2`.
+
+### Addons and pipeline
+
+An addon has a `pyproject.toml` in two places:
+
+- **The repository root:** the tools for developing the addon and for its checks, such as ruff.
+- **`client/pyproject.toml`:** the dependencies of the client code, picked up by the AYON dependencies tool:
+  - `[tool.poetry.dependencies]`: available to the launcher and to the applications.
+  - `[ayon.runtimeDependencies]`: available only to the launcher process, with sections per platform such as `[ayon.runtimeDependencies.darwin]`.
+
+<Columns widths="55 45">
+<Column>
+
+An addon's `package.py` also sets the versions it works with: `ayon_server_version`, `ayon_launcher_version`, `ayon_required_addons` and `ayon_compatible_addons`. They are checked when a bundle is created.
+
+</Column>
+<Column>
+
+![The compatibility check of a bundle without a launcher version: Bundle has unresolved compatibility errors, applications: Launcher is required, core: Launcher is required](assets/requirements/bundle-compatibility-errors.png "A bundle that fails the compatibility check")
+
+</Column>
+</Columns>
+
+:::tip Shipping AYON Addons Python Dependencies
+
+The client dependencies of a bundle's addons are resolved into one dependency package per platform, which the [bundle](../ayon/how-ayon-works/bundles.md) uses. A custom package is built with the [AYON dependencies tool](https://github.com/ynput/ayon-dependencies-tool), see [Bundles](../ayon/web-ui/studio/bundles.md).
+
+For more info and step by step guide see [What are dependency package and how to update them?](https://community.ynput.io/t/what-are-dependency-package-and-how-to-update-them/1991)  
+:::
+
+
+

@@ -203,7 +203,7 @@ def main() -> None:
 
 
 def build_dev_api_table(addon_labels: dict) -> None:
-    """Fill the addon table of docs/developer/index.md (API docs) between its markers."""
+    """Fill the addon table of docs/developer/index.md between its markers: every addon, with its API docs when it has them."""
     api = json.loads(API_DOCS.read_text(encoding="utf-8"))
     urls = {repo: f"https://docs.ayon.dev/{repo}/latest/" for repo in api["repos"]}
     urls.update(api.get("other", {}))
@@ -214,12 +214,13 @@ def build_dev_api_table(addon_labels: dict) -> None:
     rows = []
     for idx in ADDONS.glob("*/*/index.md"):
         repo = front_matter(idx).get("addon_repo", "")
-        if repo not in urls:
-            continue
         cat, slug = idx.parent.parent.name, idx.parent.name
         label = addon_labels.get((cat, slug), slug).replace(" (archived)", "")
-        site = urls[repo].split("://", 1)[1].rstrip("/").removesuffix("/latest")
-        rows.append((label.lower(), f"| {label} | [{label} addon](../addons/{cat}/{slug}/index.md) | [{site}]({urls[repo]}) |"))
+        docs = "—"
+        if repo in urls:
+            site = urls[repo].split("://", 1)[1].rstrip("/").removesuffix("/latest")
+            docs = f"[{site}]({urls[repo]})"
+        rows.append((label.lower(), f"| {label} | [{label} addon](../addons/{cat}/{slug}/index.md) | {docs} |"))
     missing = set(urls) - {r for r in (front_matter(i).get("addon_repo", "") for i in ADDONS.glob("*/*/index.md"))}
     if missing:
         raise SystemExit(f"no addon page for {sorted(missing)} in {API_DOCS.name}")
@@ -236,7 +237,7 @@ def build_dev_api_table(addon_labels: dict) -> None:
         "",
     ]
     DEV_INDEX.write_text(text[:start] + "\n".join(table) + "\n" + text[end:], encoding="utf-8", newline="\n")
-    print(f"{len(rows)} addon API references -> docs/developer/index.md")
+    print(f"{len(rows)} addons, {sum(1 for _k, r in rows if not r.endswith('| — |'))} with API docs -> docs/developer/index.md")
 
 
 if __name__ == "__main__":

@@ -81,6 +81,16 @@ The launcher is downloaded from the studio's AYON Server and can be installed in
 - **For one user only.**
 - In a **shared location**, so that machines use the same installation.
 
+:::note Supported platforms
+
+The official AYON launcher releases are made for:
+
+- **Windows:** `win-setup.exe`
+- **macOS:** `.dmg`
+- **Linux:** `.tar.gz` for Ubuntu 20.04, Debian 11, Rocky Linux 8 and Rocky Linux 9. Rocky Linux is the choice for RHEL-compatible distributions.
+
+:::
+
 The launcher keeps its files in two folders, the **launcher storage** and the **launcher local folder**, set with `AYON_LAUNCHER_STORAGE_DIR` and `AYON_LAUNCHER_LOCAL_DIR`. By default both are the same folder: `%LOCALAPPDATA%\Ynput\AYON` on Windows, `~/.local/share/AYON` on Linux and `~/Library/Application Support/AYON` on macOS.
 
 A simplified layout:

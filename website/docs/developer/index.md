@@ -1,54 +1,67 @@
 ---
 title: Developer
 sidebar_label: Introduction
-description: "The starting point for developers who build, extend or contribute to AYON: the API references of AYON and of every addon, the DeepWikis of the main code bases, and the Docker images for deployment, each next to its page here."
+description: "The starting point for developers who build, extend or contribute to AYON: quick links to the API references (REST, GraphQL, Python, C++, USD resolver, React components and AYON launcher), the DeepWikis of the backend and frontend, the Docker images, and every addon with its API docs."
 ---
 
 # Developer
 
 This section is for developers who build, extend or contribute to AYON: setting up a development environment, building the AYON launcher, using the APIs, developing addons and working on the AYON server, and testing.
 
-The tables below list the references of AYON next to the pages of this site. Each row gives the page here first, when there is one, and then the references, which open in a new tab:
+## Quick links
 
-- **Reference** and **API docs**: the API references that Ynput generates from the code and publishes on [docs.ayon.dev](https://docs.ayon.dev), the REST API reference of this site, the GraphQL explorer and the React component library of the frontend.
-- **DeepWiki**: wikis written by [DeepWiki](https://deepwiki.com), an AI service outside Ynput, for the main code bases of AYON. They are useful to find one's way around a code base, but are not written or checked by Ynput.
-
-## APIs
-
-| Resource | Page here | Reference |
-|---|---|---|
-| REST API | [REST API](api/rest.md) | [REST API reference](/api) |
-| GraphQL API | [GraphQL API](api/graphql.md) | [GraphQL explorer](https://playground.ayon.app/explorer) |
-| Python API | [Python API](api/python.md) | [docs.ayon.dev/ayon-python-api](https://docs.ayon.dev/ayon-python-api/) |
-| C++ API | [C++ API](api/cpp.md) | [docs.ayon.dev/ayon-cpp-api](https://docs.ayon.dev/ayon-cpp-api/) |
-| USD resolver | [USD resolver](api/usd-resolver.md) | [docs.ayon.dev/ayon-usd-resolver](https://docs.ayon.dev/ayon-usd-resolver/) |
-
-## Main code bases
-
-The AYON server is made of two code bases: the backend (`ayon-backend`, which serves the REST and GraphQL APIs) and the frontend (`ayon-frontend`, the web app). The [AYON server](server/introduction.md) pages of this section cover both. On workstations, the AYON launcher and the Core addon hold the base of the pipeline.
-
-| Code base | Page here | API docs | DeepWiki |
-|---|---|---|---|
-| Backend | [Repositories and stack](server/introduction.md) | [REST API reference](/api) | [ynput/ayon-backend](https://deepwiki.com/ynput/ayon-backend) |
-| Frontend | [Repositories and stack](server/introduction.md), [Frontend API layer](server/api-architecture.md), [React components](api/react-components.md) | [components.ayon.dev](https://components.ayon.dev/?path=/docs/button--docs) | [ynput/ayon-frontend](https://deepwiki.com/ynput/ayon-frontend) |
-| AYON launcher | [AYON launcher development](launcher/index.md) | [docs.ayon.dev/ayon-launcher](https://docs.ayon.dev/ayon-launcher/latest/) | [ynput/ayon-launcher](https://deepwiki.com/ynput/ayon-launcher) |
-| Core addon | [Core addon](../addons/essentials/core/index.md) | [docs.ayon.dev/ayon-core](https://docs.ayon.dev/ayon-core/latest/) | [ynput/ayon-core](https://deepwiki.com/ynput/ayon-core) |
+<Cards variant="compact">
+<Card icon="api" title="REST API" href="/api">
+Reference of every endpoint.
+</Card>
+<Card icon="hub" title="GraphQL explorer" href="https://playground.ayon.app/explorer">
+Schema and queries on the playground. Log in to try it.
+</Card>
+<Card icon="code" title="Python API" href="https://docs.ayon.dev/ayon-python-api/">
+ayon-python-api reference.
+</Card>
+<Card icon="memory" title="C++ API" href="https://docs.ayon.dev/ayon-cpp-api/">
+ayon-cpp-api reference.
+</Card>
+<Card icon="link" title="USD resolver" href="https://docs.ayon.dev/ayon-usd-resolver/">
+AYON USD resolver reference.
+</Card>
+<Card icon="widgets" title="React components" href="https://components.ayon.dev/?path=/docs/button--docs">
+Component library of the web app.
+</Card>
+<Card icon="rocket_launch" title="AYON launcher" href="https://docs.ayon.dev/ayon-launcher/latest/">
+ayon-launcher API reference.
+</Card>
+<Card icon="dns" title="Backend DeepWiki" href="https://deepwiki.com/ynput/ayon-backend">
+AI-written wiki of ayon-backend.
+</Card>
+<Card icon="web" title="Frontend DeepWiki" href="https://deepwiki.com/ynput/ayon-frontend">
+AI-written wiki of ayon-frontend.
+</Card>
+</Cards>
 
 ## Docker images
 
-Ynput publishes the images for deploying AYON in its Docker Hub registry, [hub.docker.com/u/ynput](https://hub.docker.com/u/ynput). The tags of each image are listed on its Docker Hub page.
+<Columns widths="65 35">
+<Column>
 
-| Images | Page here | Docker Hub |
-|---|---|---|
-| AYON server | [On-premise deployment](../ayon/deployment/on-premise.md) | [ynput/ayon](https://hub.docker.com/r/ynput/ayon) |
-| AYON Service Host | [AYON Service Host](../ayon/deployment/ash.md) | [ynput/ayon-ash](https://hub.docker.com/r/ynput/ayon-ash) |
-| Addon services | The page of each addon | [hub.docker.com/u/ynput](https://hub.docker.com/u/ynput) |
+Ynput publishes the images for deploying AYON on Docker Hub: the AYON server (`ynput/ayon`), the [AYON Service Host](../ayon/deployment/ash.md) (`ynput/ayon-ash`) and the services of the addons, such as `ynput/ayon-ftrack-processor`, which the AYON Service Host pulls and starts.
 
-The services of the addons are images named after the addon and the service, for example `ynput/ayon-ftrack-processor` or `ynput/ayon-kitsu-processor`. In a deployment they are pulled and started by the [AYON Service Host](../ayon/deployment/ash.md).
+</Column>
+<Column>
+
+<Cards variant="compact">
+<Card icon="deployed_code" title="Docker Hub" href="https://hub.docker.com/u/ynput">
+All images published by Ynput.
+</Card>
+</Cards>
+
+</Column>
+</Columns>
 
 ## Addons
 
-The API docs of each addon (the generated reference of its Python code), next to the addon's page in the [addons catalogue](../addons/index.md).
+The API docs are generated from each addon's code and published on [docs.ayon.dev](https://docs.ayon.dev). Addons without them show —.
 
 <!-- addon-api-docs:start (generated by scripts/build_addons_index.py from src/data/addon-api-docs.json; do not edit by hand) -->
 
@@ -62,6 +75,10 @@ The API docs of each addon (the generated reference of its Python code), next to
 | After Effects | [After Effects addon](../addons/compositing-editorial-applications/after-effects/index.md) | [docs.ayon.dev/ayon-aftereffects](https://docs.ayon.dev/ayon-aftereffects/latest/) |
 | Airtable | [Airtable addon](../addons/third-party-trackers/airtable/index.md) | [docs.ayon.dev/ayon-airtable](https://docs.ayon.dev/ayon-airtable/latest/) |
 | Applications | [Applications addon](../addons/essentials/applications/index.md) | [docs.ayon.dev/ayon-applications](https://docs.ayon.dev/ayon-applications/latest/) |
+| ArchivalTool | [ArchivalTool addon](../addons/pipeline-features/archival-tool/index.md) | — |
+| AYON MCP server | [AYON MCP server addon](../addons/production-tracking/mcp/index.md) | — |
+| Batch delivery | [Batch delivery addon](../addons/pipeline-features/batch-delivery/index.md) | — |
+| BatchIngest | [BatchIngest addon](../addons/pipeline-features/batch-ingest/index.md) | — |
 | Blender | [Blender addon](../addons/3d-applications/blender/index.md) | [docs.ayon.dev/ayon-blender](https://docs.ayon.dev/ayon-blender/latest/) |
 | CelAction | [CelAction addon](../addons/2d-drawing-applications/celaction/index.md) | [docs.ayon.dev/ayon-celaction](https://docs.ayon.dev/ayon-celaction/latest/) |
 | Cinema4D | [Cinema4D addon](../addons/3d-applications/cinema4d/index.md) | [docs.ayon.dev/ayon-cinema4d](https://docs.ayon.dev/ayon-cinema4d/latest/) |
@@ -81,23 +98,34 @@ The API docs of each addon (the generated reference of its Python code), next to
 | Hiero | [Hiero addon](../addons/compositing-editorial-applications/hiero/index.md) | [docs.ayon.dev/ayon-hiero](https://docs.ayon.dev/ayon-hiero/latest/) |
 | Houdini | [Houdini addon](../addons/3d-applications/houdini/index.md) | [docs.ayon.dev/ayon-houdini](https://docs.ayon.dev/ayon-houdini/latest/) |
 | Jira | [Jira addon](../addons/integrations/jira/index.md) | [docs.ayon.dev/ayon-jira](https://docs.ayon.dev/ayon-jira/latest/) |
+| Keycloak | [Keycloak addon](../addons/server-features/keycloak/index.md) | — |
 | Kitsu | [Kitsu addon](../addons/third-party-trackers/kitsu/index.md) | [docs.ayon.dev/ayon-kitsu](https://docs.ayon.dev/ayon-kitsu/latest/) |
 | Marvelous Designer | [Marvelous Designer addon](../addons/3d-applications/marvelous-designer/index.md) | [docs.ayon.dev/ayon-marvelous-designer](https://docs.ayon.dev/ayon-marvelous-designer/latest/) |
 | Maya | [Maya addon](../addons/3d-applications/maya/index.md) | [docs.ayon.dev/ayon-maya](https://docs.ayon.dev/ayon-maya/latest/) |
 | Mocha Pro | [Mocha Pro addon](../addons/compositing-editorial-applications/mocha-pro/index.md) | [docs.ayon.dev/ayon-mocha](https://docs.ayon.dev/ayon-mocha/latest/) |
 | Motionbuilder | [Motionbuilder addon](../addons/3d-applications/motionbuilder/index.md) | [docs.ayon.dev/ayon-motionbuilder](https://docs.ayon.dev/ayon-motionbuilder/latest/) |
+| Node Graph | [Node Graph addon](../addons/production-tracking/node-graph/index.md) | — |
 | Nuke | [Nuke addon](../addons/compositing-editorial-applications/nuke/index.md) | [docs.ayon.dev/ayon-nuke](https://docs.ayon.dev/ayon-nuke/latest/) |
 | OCIO configs | [OCIO configs addon](../addons/essentials/ocio/index.md) | [docs.ayon.dev/ayon-ocio](https://docs.ayon.dev/ayon-ocio/latest/) |
 | Open RV | [Open RV addon](../addons/review-and-media-players/open-rv/index.md) | [docs.ayon.dev/ayon-openrv](https://docs.ayon.dev/ayon-openrv/latest/) |
 | Perforce | [Perforce addon](../addons/pipeline-features/perforce/index.md) | [docs.ayon.dev/ayon-perforce](https://docs.ayon.dev/ayon-perforce/latest/) |
 | Photoshop | [Photoshop addon](../addons/2d-drawing-applications/photoshop/index.md) | [docs.ayon.dev/ayon-photoshop](https://docs.ayon.dev/ayon-photoshop/latest/) |
+| Planner | [Planner addon](../addons/production-tracking/planner/index.md) | — |
+| Power Pack | [Power Pack addon](../addons/production-tracking/power-pack/index.md) | — |
 | Premiere Pro | [Premiere Pro addon](../addons/compositing-editorial-applications/premiere-pro/index.md) | [docs.ayon.dev/ayon-premiere](https://docs.ayon.dev/ayon-premiere/latest/) |
+| Premium burnins | [Premium burnins addon](../addons/pipeline-features/premium-burnins/index.md) | — |
 | PureRef | [PureRef addon](../addons/3d-applications/pureref/index.md) | [docs.ayon.dev/ayon-pureref](https://docs.ayon.dev/ayon-pureref/latest/) |
+| Reports | [Reports addon](../addons/production-tracking/reports/index.md) | — |
+| Review | [Review addon](../addons/production-tracking/review/index.md) | — |
+| Review Desktop | [Review Desktop addon](../addons/production-tracking/review-desktop/index.md) | — |
 | Royal Render | [Royal Render addon](../addons/farm-managers/royal-render/index.md) | [docs.ayon.dev/ayon-royalrender](https://docs.ayon.dev/ayon-royalrender/latest/) |
 | Silhouette | [Silhouette addon](../addons/compositing-editorial-applications/silhouette/index.md) | [docs.ayon.dev/ayon-silhouette](https://docs.ayon.dev/ayon-silhouette/latest/) |
 | SiteSync | [SiteSync addon](../addons/pipeline-features/sitesync/index.md) | [docs.ayon.dev/ayon-sitesync](https://docs.ayon.dev/ayon-sitesync/latest/) |
 | Slack | [Slack addon](../addons/integrations/slack/index.md) | [docs.ayon.dev/ayon-slack](https://docs.ayon.dev/ayon-slack/latest/) |
+| Slater | [Slater addon](../addons/pipeline-features/slater/index.md) | — |
+| Soko Sync | [Soko Sync addon](../addons/integrations/soko/index.md) | — |
 | SpeedTree | [SpeedTree addon](../addons/3d-applications/speedtree/index.md) | [docs.ayon.dev/ayon-speedtree](https://docs.ayon.dev/ayon-speedtree/latest/) |
+| SSO | [SSO addon](../addons/server-features/sso/index.md) | — |
 | Substance Designer | [Substance Designer addon](../addons/3d-applications/substance-designer/index.md) | [docs.ayon.dev/ayon-substance-designer](https://docs.ayon.dev/ayon-substance-designer/latest/) |
 | Substance Painter | [Substance Painter addon](../addons/3d-applications/substance-painter/index.md) | [docs.ayon.dev/ayon-substance-painter](https://docs.ayon.dev/ayon-substance-painter/latest/) |
 | SyncSketch | [SyncSketch addon](../addons/review-and-media-players/syncsketch/index.md) | [docs.ayon.dev/ayon-syncsketch](https://docs.ayon.dev/ayon-syncsketch/latest/) |
@@ -107,9 +135,11 @@ The API docs of each addon (the generated reference of its Python code), next to
 | Unreal | [Unreal addon](../addons/3d-applications/unreal/index.md) | [docs.ayon.dev/ayon-unreal](https://docs.ayon.dev/ayon-unreal/latest/) |
 | USD | [USD addon](../addons/pipeline-features/usd/index.md) | [docs.ayon.dev/ayon-usd](https://docs.ayon.dev/ayon-usd/latest/) |
 | Version Control | [Version Control addon](../addons/pipeline-features/version-control/index.md) | [docs.ayon.dev/ayon-version-control](https://docs.ayon.dev/ayon-version-control/latest/) |
+| Web Publisher | [Web Publisher addon](../addons/pipeline-features/web-publisher/index.md) | — |
 | Workflow | [Workflow addon](../addons/automation/workflow/index.md) | [docs.ayon.dev/ayon-workflow-docs](https://docs.ayon.dev/ayon-workflow-docs/latest/) |
 | Wrap | [Wrap addon](../addons/3d-applications/wrap/index.md) | [docs.ayon.dev/ayon-wrap](https://docs.ayon.dev/ayon-wrap/latest/) |
 | xStudio | [xStudio addon](../addons/review-and-media-players/xstudio/index.md) | [docs.ayon.dev/ayon-xstudio](https://docs.ayon.dev/ayon-xstudio/latest/) |
+| Ynput Cloud | [Ynput Cloud addon](../addons/server-features/ynput-cloud/index.md) | — |
 | Zbrush | [Zbrush addon](../addons/3d-applications/zbrush/index.md) | [docs.ayon.dev/ayon-zbrush](https://docs.ayon.dev/ayon-zbrush/latest/) |
 
 </TableFilter>
