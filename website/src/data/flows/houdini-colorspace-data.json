@@ -1,0 +1,632 @@
+{
+  "lanes": [
+    {
+      "id": "inst",
+      "label": "Instance data or node"
+    },
+    {
+      "id": "repre",
+      "label": "Representation data"
+    }
+  ],
+  "statuses": {
+    "ok": "as expected",
+    "warn": "known limitation",
+    "gap": "not set"
+  },
+  "nowLabel": "Behavior",
+  "expectedLabel": "Expected",
+  "keysLabel": "Keys",
+  "keys": [
+    {
+      "id": "cfg",
+      "name": "colorspaceConfig",
+      "group": "instance",
+      "groupColor": "a",
+      "text": "Absolute path of the OCIO config of the Houdini session (hou.Color.ocio_configPath). On render products published from the farm it becomes colorspaceData.config.path. Local renders take the config from the colorspace settings resolved for the publish context."
+    },
+    {
+      "id": "cs",
+      "name": "colorspace",
+      "group": "instance",
+      "groupColor": "a",
+      "text": "Name of the scene_linear role colorspace of the config (for example ACEScg). Extract Colorspace data uses it for representations that have no colorspaceData."
+    },
+    {
+      "id": "rp",
+      "name": "renderProducts",
+      "group": "instance",
+      "groupColor": "a",
+      "text": "One entry per AOV, with the AOV name and its colorspace. Used when the farm publish job creates the AOV instances; the colorspace of the entry becomes colorspaceData.colorspace of that AOV."
+    },
+    {
+      "id": "scn",
+      "name": "sceneDisplay / sceneView",
+      "group": "instance",
+      "groupColor": "a",
+      "text": "Display and view the artist works with in the application. They are not baked into the pixels. Core reads these names first. Houdini does not write them."
+    },
+    {
+      "id": "old",
+      "name": "colorspaceDisplay / colorspaceView",
+      "group": "instance",
+      "groupColor": "a",
+      "text": "Older names of sceneDisplay / sceneView, written by Houdini (default display and view of the session). Core reads them when the newer names are absent. Used as the transcode target when the profile leaves display and view empty."
+    },
+    {
+      "id": "src",
+      "name": "sourceDisplay / sourceView",
+      "group": "instance",
+      "groupColor": "a",
+      "text": "Display and view that are baked into the pixels. Copied to colorspaceData.display and colorspaceData.view of farm AOVs. No Houdini plugin writes them."
+    },
+    {
+      "id": "rcs",
+      "name": "colorspaceData.colorspace",
+      "group": "representation",
+      "groupColor": "b",
+      "text": "Colorspace of the pixels in the files. Source of the transcode and of the thumbnail conversion; fills the {colorspace} template key at integration."
+    },
+    {
+      "id": "rcfg",
+      "name": "colorspaceData.config (path, template)",
+      "group": "representation",
+      "groupColor": "b",
+      "text": "OCIO config that defines that colorspace: absolute path, and a template with anatomy root tokens that another machine (for example a farm worker) can resolve."
+    },
+    {
+      "id": "rdv",
+      "name": "colorspaceData.display / view",
+      "group": "representation",
+      "groupColor": "b",
+      "text": "Display and view baked into the pixels. Inverted as the source by the transcode and used as the target by the thumbnail."
+    },
+    {
+      "id": "rop",
+      "name": "colorcorrect, ociocolorspace, ociodisplay, ocioview",
+      "group": "ROP parameters",
+      "groupColor": "c",
+      "text": "Color correction of an OpenGL or Flipbook ROP: LUT or gamma, an OCIO colorspace, or an OCIO display and view. This is the actual color state of the review pixels."
+    },
+    {
+      "id": "pub",
+      "name": "representation.data.colorspaceData",
+      "group": "published",
+      "groupColor": "d",
+      "text": "What the integrator stores on the server: the final colorspaceData of each published representation."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "farm",
+      "label": "Render on farm",
+      "steps": [
+        {
+          "phase": "Collect (ayon-houdini): render ROPs"
+        },
+        {
+          "lane": 0,
+          "title": "colorspaceConfig",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "ok",
+          "now": "hou.Color.ocio_configPath(): the OCIO config of the session. The plugin does nothing when the instance has no expected files.",
+          "keys": [
+            "cfg"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "colorspace",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "warn",
+          "now": "Name of the scene_linear role colorspace, for every output. A renderer-specific output colorspace (for example in Karma) is not read.",
+          "expected": "The colorspace the renderer writes.",
+          "keys": [
+            "cs"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "renderProducts",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "warn",
+          "now": "Every AOV gets the scene_linear colorspace, including non-color AOVs.",
+          "expected": "Per-AOV colorspace: scene_linear for color AOVs, data for non-color AOVs.",
+          "keys": [
+            "rp"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "colorspaceDisplay / View",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "warn",
+          "now": "Default display and view of the session (hou.Color.ocio_defaultDisplay and ocio_defaultView), written under the older key names. Not baked into the pixels.",
+          "expected": "Written as sceneDisplay / sceneView, the names core reads first.",
+          "keys": [
+            "old",
+            "scn"
+          ]
+        },
+        {
+          "phase": "Submit to the farm (Deadline publish job, Integrator +0.2)"
+        },
+        {
+          "lane": 0,
+          "title": "colorspace, display and view",
+          "subtitle": "create_skeleton_instance · core",
+          "status": "pass",
+          "now": "Copies colorspace, the scene display and view (sceneDisplay / sceneView, else colorspaceDisplay / colorspaceView) and sourceDisplay / sourceView, when present, into the publish job metadata JSON.",
+          "keys": [
+            "cs",
+            "old",
+            "scn",
+            "src"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "create_instances_for_aov · core",
+          "status": "ok",
+          "now": "Each AOV representation gets colorspace (the colorspace of its render product) and config (path and template). Display and view are added only from sourceDisplay / sourceView, which Houdini does not set. An AOV whose product has no colorspace gets no colorspaceData.",
+          "keys": [
+            "rp",
+            "cfg",
+            "src",
+            "rcs",
+            "rcfg",
+            "rdv"
+          ]
+        },
+        {
+          "phase": "Farm publish job (ayon-core)"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "CollectRenderedFiles · -0.2",
+          "status": "pass",
+          "now": "Representations, including colorspaceData, are loaded from the metadata JSON.",
+          "keys": [
+            "rcs",
+            "rcfg"
+          ]
+        },
+        {
+          "phase": "Extract and integrate in the farm job (ayon-core)"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (read)",
+          "subtitle": "ExtractOIIOTranscode · +0.019",
+          "status": "pass",
+          "now": "Source = {colorspace: scene_linear colorspace, config}. Runs only when a transcode profile matches the instance (default: no profiles). A target display and view left empty in the profile falls back to the scene display and view.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "rdv",
+            "scn",
+            "old"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (new repre)",
+          "subtitle": "ExtractOIIOTranscode · +0.019",
+          "status": "warn",
+          "now": "The new representation is a copy of the source with only the target keys overwritten. A Use Colorspace target keeps the display and view of the source, if it had any. A Use Display&View target keeps the colorspace key of the source next to the new display and view, so colorspace still names the source colorspace and not the colorspace of the pair.",
+          "expected": "Only the target state: colorspace, or display and view.",
+          "keys": [
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (review out)",
+          "subtitle": "ExtractReview · +0.02",
+          "status": "warn",
+          "now": "colorspaceData is copied from the input representation. With the default output definitions the media is encoded with FFmpeg arguments -apply_trc gamma22 and BT.709 flags, so the copied colorspace describes the source image, not the encoded media. It runs for instances with the review family, on representations tagged review.",
+          "expected": "Colorspace of the encoded media (for example Rec.709).",
+          "keys": [
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "ExtractColorspaceData · +0.49",
+          "status": "pass",
+          "now": "Skipped for representations that already have colorspaceData.",
+          "keys": [
+            "rcs",
+            "cs"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (read)",
+          "subtitle": "ExtractThumbnail · +0.49",
+          "status": "pass",
+          "now": "Converts from the representation colorspace (or its display and view). The target is the display and view of the representation when it has them; otherwise the OIIO defaults of the thumbnail profile (default: colorspace color_picking). Without colorspaceData FFmpeg is used. This plugin and Extract Colorspace data share the order value +0.49, so their sequence is not defined.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "published colorspaceData",
+          "subtitle": "IntegrateAsset · Integrator",
+          "status": "ok",
+          "now": "Stores colorspaceData in the data of the published representation. The colorspace name, with spaces replaced by underscores, fills the {colorspace} template key.",
+          "keys": [
+            "pub",
+            "rcs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "local",
+      "label": "Render on this machine",
+      "steps": [
+        {
+          "phase": "Collect (ayon-houdini): render ROPs"
+        },
+        {
+          "lane": 0,
+          "title": "colorspaceConfig",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "ok",
+          "now": "hou.Color.ocio_configPath(): the OCIO config of the session. The plugin does nothing when the instance has no expected files.",
+          "keys": [
+            "cfg"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "colorspace",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "warn",
+          "now": "Name of the scene_linear role colorspace, for every output. A renderer-specific output colorspace (for example in Karma) is not read.",
+          "expected": "The colorspace the renderer writes.",
+          "keys": [
+            "cs"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "renderProducts",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "warn",
+          "now": "Every AOV gets the scene_linear colorspace, including non-color AOVs.",
+          "expected": "Per-AOV colorspace: scene_linear for color AOVs, data for non-color AOVs.",
+          "keys": [
+            "rp"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "colorspaceDisplay / View",
+          "subtitle": "CollectHoudiniRenderColorspace · +0.15",
+          "status": "warn",
+          "now": "Default display and view of the session (hou.Color.ocio_defaultDisplay and ocio_defaultView), written under the older key names. Not baked into the pixels.",
+          "expected": "Written as sceneDisplay / sceneView, the names core reads first.",
+          "keys": [
+            "old",
+            "scn"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "AOV instance keys",
+          "subtitle": "CollectLocalRenderInstances · +0.151",
+          "status": "ok",
+          "now": "Copies colorspaceConfig, colorspace, colorspaceDisplay and colorspaceView from the render instance to each AOV instance.",
+          "keys": [
+            "cfg",
+            "cs",
+            "old"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "CollectLocalRenderInstances · +0.151",
+          "status": "ok",
+          "now": "Sets {colorspace: scene_linear colorspace, config} on each AOV representation. The config is the one resolved for the publish context, not the colorspaceConfig of the instance.",
+          "keys": [
+            "rcs",
+            "rcfg"
+          ]
+        },
+        {
+          "phase": "Extract and integrate (ayon-core)"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (read)",
+          "subtitle": "ExtractOIIOTranscode · +0.019",
+          "status": "pass",
+          "now": "Source = {colorspace: scene_linear colorspace, config}. Runs only when a transcode profile matches the instance (default: no profiles). A target display and view left empty in the profile falls back to the scene display and view.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "rdv",
+            "scn",
+            "old"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (new repre)",
+          "subtitle": "ExtractOIIOTranscode · +0.019",
+          "status": "warn",
+          "now": "The new representation is a copy of the source with only the target keys overwritten. A Use Colorspace target keeps the display and view of the source, if it had any. A Use Display&View target keeps the colorspace key of the source next to the new display and view, so colorspace still names the source colorspace and not the colorspace of the pair.",
+          "expected": "Only the target state: colorspace, or display and view.",
+          "keys": [
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (review out)",
+          "subtitle": "ExtractReview · +0.02",
+          "status": "warn",
+          "now": "colorspaceData is copied from the input representation. With the default output definitions the media is encoded with FFmpeg arguments -apply_trc gamma22 and BT.709 flags, so the copied colorspace describes the source image, not the encoded media. It runs for instances with the review family, on representations tagged review.",
+          "expected": "Colorspace of the encoded media (for example Rec.709).",
+          "keys": [
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "ExtractColorspaceData · +0.49",
+          "status": "pass",
+          "now": "Skipped for representations that already have colorspaceData.",
+          "keys": [
+            "rcs",
+            "cs"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (read)",
+          "subtitle": "ExtractThumbnail · +0.49",
+          "status": "pass",
+          "now": "Converts from the representation colorspace (or its display and view). The target is the display and view of the representation when it has them; otherwise the OIIO defaults of the thumbnail profile (default: colorspace color_picking). Without colorspaceData FFmpeg is used. This plugin and Extract Colorspace data share the order value +0.49, so their sequence is not defined.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "published colorspaceData",
+          "subtitle": "IntegrateAsset · Integrator",
+          "status": "ok",
+          "now": "Stores colorspaceData in the data of the published representation. The colorspace name, with spaces replaced by underscores, fills the {colorspace} template key.",
+          "keys": [
+            "pub",
+            "rcs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cop",
+      "label": "Image sequence (COP)",
+      "steps": [
+        {
+          "phase": "Extract (ayon-houdini)"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (EXR)",
+          "subtitle": "ExtractComposite · +0",
+          "status": "warn",
+          "now": "Sets {colorspace: scene_linear, config}: the role name is stored, not the resolved colorspace name (for example ACEScg).",
+          "expected": "The resolved colorspace name.",
+          "keys": [
+            "rcs",
+            "rcfg"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (png, jpg)",
+          "subtitle": "ExtractComposite · +0",
+          "status": "gap",
+          "now": "Not set by the extractor.",
+          "expected": "The colorspace the COP wrote.",
+          "keys": [
+            "rcs"
+          ]
+        },
+        {
+          "phase": "Extract and integrate (ayon-core)"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (read)",
+          "subtitle": "ExtractOIIOTranscode · +0.019",
+          "status": "pass",
+          "now": "Source = {colorspace: scene_linear} (EXR only). Runs only when a transcode profile matches the instance (default: no profiles). A target display and view left empty in the profile falls back to the scene display and view.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "rdv",
+            "scn",
+            "old"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (new repre)",
+          "subtitle": "ExtractOIIOTranscode · +0.019",
+          "status": "warn",
+          "now": "The new representation is a copy of the source with only the target keys overwritten. A Use Colorspace target keeps the display and view of the source, if it had any. A Use Display&View target keeps the colorspace key of the source next to the new display and view, so colorspace still names the source colorspace and not the colorspace of the pair.",
+          "expected": "Only the target state: colorspace, or display and view.",
+          "keys": [
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (review out)",
+          "subtitle": "ExtractReview · +0.02",
+          "status": "warn",
+          "now": "colorspaceData is copied from the input representation. With the default output definitions the media is encoded with FFmpeg arguments -apply_trc gamma22 and BT.709 flags, so the copied colorspace describes the source image, not the encoded media. For this product type it runs only when a transcode output adds the review tag.",
+          "expected": "Colorspace of the encoded media (for example Rec.709).",
+          "keys": [
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "ExtractColorspaceData · +0.49",
+          "status": "warn",
+          "now": "EXR representations are skipped because they already have colorspaceData. png and jpg representations get a colorspace from file rules, when a rule matches (the instance has no colorspace value).",
+          "keys": [
+            "rcs",
+            "cs"
+          ],
+          "expected": "Not needed when the extractor sets the colorspace of every representation."
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (read)",
+          "subtitle": "ExtractThumbnail · +0.49",
+          "status": "pass",
+          "now": "Converts from the representation colorspace (or its display and view). The target is the display and view of the representation when it has them; otherwise the OIIO defaults of the thumbnail profile (default: colorspace color_picking). Without colorspaceData FFmpeg is used. This plugin and Extract Colorspace data share the order value +0.49, so their sequence is not defined.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "published colorspaceData",
+          "subtitle": "IntegrateAsset · Integrator",
+          "status": "ok",
+          "now": "Stores colorspaceData in the data of the published representation. The colorspace name, with spaces replaced by underscores, fills the {colorspace} template key.",
+          "keys": [
+            "pub",
+            "rcs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "label": "Review (OpenGL / Flipbook)",
+      "steps": [
+        {
+          "phase": "Create and validate (ayon-houdini, ROP parameters)"
+        },
+        {
+          "lane": 0,
+          "title": "colorcorrect, ociocolorspace",
+          "subtitle": "CreateReview · on create",
+          "status": "ok",
+          "now": "When the OCIO environment variable is set, sets colorcorrect to OpenColorIO and ociocolorspace to the Review colorspace setting, or to the colorspace of the default display and view of the session when the setting is empty.",
+          "keys": [
+            "rop"
+          ]
+        },
+        {
+          "lane": 0,
+          "title": "colorcorrect, ociocolorspace",
+          "subtitle": "ValidateReviewColorspace · Validator +0.1",
+          "status": "warn",
+          "now": "Optional; skipped when OCIO is not set. Fails when colorcorrect is not an OCIO mode. In OpenColorIO mode it fails when ociocolorspace is neither a colorspace of the config nor an active display, or differs from the Review colorspace setting (when set). In Flipbook ocioview mode, ociodisplay and ocioview are not checked.",
+          "expected": "Also check ociodisplay and ocioview.",
+          "keys": [
+            "rop"
+          ]
+        },
+        {
+          "phase": "Extract (ayon-houdini)"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "ExtractOpenGLAndFlipbook · -0.01",
+          "status": "gap",
+          "now": "The color state of the node is not written to the representation (tags: review, and delete unless images are kept).",
+          "expected": "ocio: {colorspace: ociocolorspace}; ocioview: {display, view}; LUT or gamma: none.",
+          "keys": [
+            "rop",
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "phase": "Extract and integrate (ayon-core)"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (read)",
+          "subtitle": "ExtractOIIOTranscode · +0.019",
+          "status": "warn",
+          "now": "The representation has no colorspaceData, so it is skipped even when a transcode profile matches.",
+          "expected": "Transcode from the colorspace of the node.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData (review out)",
+          "subtitle": "ExtractReview · +0.02",
+          "status": "gap",
+          "now": "Copied from the input, which has none at this point.",
+          "expected": "Colorspace of the encoded media.",
+          "keys": [
+            "rcs",
+            "rdv"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData",
+          "subtitle": "ExtractColorspaceData · +0.49",
+          "status": "warn",
+          "now": "Fills the representations from file rules, when a rule matches; reviews carry no instance colorspace. The result depends on the file name, not on the color correction of the node.",
+          "expected": "Skipped, because the extractor already set colorspaceData.",
+          "keys": [
+            "rcs",
+            "rcfg",
+            "cs"
+          ]
+        },
+        {
+          "lane": 1,
+          "title": "published colorspaceData",
+          "subtitle": "IntegrateAsset · Integrator",
+          "status": "warn",
+          "now": "Stores the colorspaceData from the file rules, or none when no rule matches.",
+          "expected": "The colorspace, or display and view, baked by the node.",
+          "keys": [
+            "pub",
+            "rcs"
+          ]
+        }
+      ]
+    }
+  ]
+}

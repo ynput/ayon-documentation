@@ -1,0 +1,237 @@
+.trace {
+    margin: 0 0 1.5rem;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.seg {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.seg button {
+    font: inherit;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--ayon-radius);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    background: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface);
+    cursor: pointer;
+}
+
+.seg button:hover {
+    border-color: var(--md-sys-color-outline);
+}
+
+.seg button[aria-pressed="true"] {
+    background: var(--ayon-selected);
+    border-color: var(--md-sys-color-primary);
+    color: var(--md-sys-color-on-primary-container);
+}
+
+.legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-left: auto;
+}
+
+.chip {
+    display: inline-block;
+    padding: 0 0.5rem;
+    border-radius: var(--ayon-radius);
+    font-size: 0.75rem;
+    line-height: 1.5rem;
+    white-space: nowrap;
+    background: color-mix(in srgb, var(--s) 22%, transparent);
+    border: 1px solid color-mix(in srgb, var(--s) 60%, transparent);
+    color: var(--md-sys-color-on-surface);
+}
+
+.chip[data-status="ok"],
+.node[data-status="ok"] .box {
+    --s: var(--ayon-brand-mint);
+}
+
+.chip[data-status="warn"],
+.node[data-status="warn"] .box {
+    --s: var(--ayon-brand-yellow);
+}
+
+.chip[data-status="gap"],
+.node[data-status="gap"] .box {
+    --s: var(--ayon-brand-red);
+}
+
+.chip[data-status="pass"],
+.node[data-status="pass"] .box {
+    --s: var(--md-sys-color-outline);
+}
+
+.chip[data-status="info"],
+.node[data-status="info"] .box {
+    --s: var(--ayon-brand-blue);
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* The docs column is narrow: the chart takes the full width, the detail box sticks
+   above it while the chart scrolls, and the glossary follows below. */
+.side {
+    display: contents;
+}
+
+.chart,
+.detail,
+.keysBox {
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--ayon-radius-large);
+    background: var(--md-sys-color-surface-container);
+    min-width: 0;
+}
+
+.chart {
+    padding: 0.5rem;
+}
+
+.chart svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.node {
+    cursor: pointer;
+}
+
+.box {
+    fill: color-mix(in srgb, var(--s) 18%, var(--md-sys-color-surface-container));
+    stroke: color-mix(in srgb, var(--s) 70%, transparent);
+    stroke-width: 1;
+}
+
+.node:hover .box {
+    stroke-width: 2;
+}
+
+.node.sel .box {
+    stroke: var(--md-sys-color-primary);
+    stroke-width: 2.5;
+}
+
+.node:focus-visible {
+    outline: 2px solid var(--md-sys-color-primary);
+    outline-offset: 2px;
+}
+
+.title {
+    font-family: var(--ifm-font-family-monospace);
+    font-size: 13px;
+    font-weight: 600;
+    fill: var(--md-sys-color-on-surface);
+}
+
+.subtitle {
+    font-size: 11px;
+    fill: var(--md-sys-color-on-surface-variant);
+}
+
+.detail {
+    order: -1;
+    position: sticky;
+    top: 5.25rem;
+    z-index: 2;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+    min-height: 5rem;
+    box-shadow: 0 6px 12px -8px rgba(0, 0, 0, 0.6);
+}
+
+.keysBox {
+    order: 1;
+    font-size: 0.85rem;
+    overflow: hidden;
+}
+
+.detail div + div {
+    margin-top: 0.25rem;
+}
+
+.keysHead {
+    padding: 0.5rem 1rem 0.25rem;
+    color: var(--md-sys-color-on-surface-variant);
+    font-size: 0.8rem;
+}
+
+.keys {
+    max-height: 22rem;
+    overflow: auto;
+    padding: 0 0.5rem 0.75rem;
+}
+
+.key {
+    padding: 0.4rem 0.6rem;
+    margin-top: 0.25rem;
+    border-left: 3px solid var(--md-sys-color-outline);
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.key[data-group="a"] {
+    border-left-color: var(--ayon-brand-blue);
+}
+
+.key[data-group="b"] {
+    border-left-color: var(--ayon-brand-mint);
+}
+
+.key[data-group="c"] {
+    border-left-color: var(--ayon-brand-yellow);
+}
+
+.key[data-group="d"] {
+    border-left-color: var(--ayon-brand-red);
+}
+
+.group {
+    margin-left: 0.5rem;
+    font-size: 0.7rem;
+    opacity: 0.8;
+}
+
+.dim {
+    opacity: 0.4;
+}
+
+.hi {
+    opacity: 1;
+    background: var(--ayon-selected);
+}
+
+.plain {
+    margin-top: 0.75rem;
+}
+
+.plain summary {
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+@media (max-width: 900px) {
+    .legend {
+        margin-left: 0;
+    }
+}
