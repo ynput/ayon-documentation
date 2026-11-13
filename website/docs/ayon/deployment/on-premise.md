@@ -212,7 +212,7 @@ This is where the server keeps the installed addons, as `addons/<addon name>/<ad
 
 - Removing an addon version from this directory removes it from the server. Removing it on the [Addons](../web-ui/studio/addons.md) page of the web UI is safer, because the web UI does not remove a version that a bundle uses.
 - Adding an addon version requires the contents of the **addon's release `.zip` package, not the repository,** in a folder named after the version.
-- A clone of an addon repository in this directory is used for development, see [Developer mode](../../developer/developer-mode.md#addon-code-on-the-server).
+- A clone of an addon repository in this directory is used for development, see [Developer mode](../../developer/developer-mode.md#addon-code-inside-the-server).
 
 ### Storage directory
 

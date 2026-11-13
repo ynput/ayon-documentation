@@ -1,59 +1,57 @@
 ---
 title: AYON server repositories and stack
 sidebar_label: Introduction
-description: "The two code bases of the AYON server, ayon-backend (Python, FastAPI, Strawberry GraphQL, PostgreSQL, Redis) and ayon-frontend (React, TypeScript, Vite, Redux Toolkit with RTK Query), running them together with ayon-docker, the frontend environment variables and recommended VS Code extensions, and the AYON React Component Library."
+description: "The two code bases of the AYON server, ayon-backend (FastAPI, Strawberry GraphQL, PostgreSQL, Redis) and ayon-frontend (React, TypeScript, Vite, RTK Query, with the shared package), running them for development with ayon-docker and yarn dev, the frontend environment file, recommended VS Code extensions, and the AYON React Component Library."
+verified: 2026-11-13
+sources:
+  - https://github.com/ynput/ayon-backend/blob/develop/pyproject.toml
+  - https://github.com/ynput/ayon-backend/blob/develop/start.sh
+  - https://github.com/ynput/ayon-frontend/blob/develop/package.json
+  - https://github.com/ynput/ayon-frontend/blob/develop/vite.config.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/README.md
+  - https://github.com/ynput/ayon-docker/blob/main/docker-compose.yml
 ---
 
-## Getting Started
+# AYON server repositories and stack
 
-AYON Server is made up of two main repos, [ayon-backend](https://github.com/ynput/ayon-backend) and [ayon-frontend](https://github.com/ynput/ayon-frontend).
+The AYON server is made of two code bases, [ayon-backend](https://github.com/ynput/ayon-backend) and [ayon-frontend](https://github.com/ynput/ayon-frontend). They are deployed together as one Docker image, built by [ayon-docker](https://github.com/ynput/ayon-docker), which the AYON launcher and the web app connect to. The tools each part needs are listed in [Requirements](../requirements.md).
 
-The fastest and easiest way to start testing both together is through docker using [ayon-docker](https://github.com/ynput/ayon-docker).
+![Diagram of the AYON server: the backend and frontend in one Docker container, connected to the AYON launcher on workstations](../assets/server/ayon_server_diagram.png)
 
-Once the server is running it can be accessed through the frontend UI using `http://localhost:5000`.
+## Backend
 
-:::tip
-Running the docker container is also a great way to start developing on the frontend. Set env variable `SERVER_URL=http://localhost:5000`.
-:::
+| Part | Used for |
+|---|---|
+| FastAPI | The REST API |
+| Strawberry | The GraphQL API |
+| PostgreSQL, through asyncpg | The database |
+| Redis | Caching and messaging |
+| gunicorn, or granian | The web server, chosen with `AYON_SERVER_TYPE` (gunicorn by default) |
 
-## AYON Overview
+For backend development, ayon-docker's `docker-compose.yml` has a commented line that mounts a local `./backend` folder into the server container. The backend's own tests are in its `tests` folder (`api`, `unit` and `integration`).
 
-This is a general overview of the different parts of AYON. The server development is written in different parts and then deployed as one docker container that interacts with the AYON Launcher (client).
+## Frontend
 
-![Ayon server overview diagram](../assets/server/ayon_server_diagram.png)
+| Part | Used for |
+|---|---|
+| React, TypeScript | The web app. Part of the code is still JavaScript |
+| Vite | Development server and build |
+| Redux Toolkit with RTK Query | State and API calls, see [Frontend API layer](api-architecture.md) |
+| AYON React Component Library (ARC) | Shared components and theme, see below |
+| styled-components | Component styles |
 
-## AYON Backend
+The `shared` folder is a package of its own (`@ynput/ayon-frontend-shared`) with the generated API code, queries and containers used by the web app and by addon frontends.
 
--   Python 3.12
--   FastAPI, Strawberry (GraphQL)
--   PostgreSQL (asyncpg), Redis (aioredis)
--   gunicorn/uvicorn server (option to use granian)
+`yarn dev` starts the frontend on port 3000 against a running server, `http://localhost:5000` by default. A different server is set with `SERVER_URL` in a `.env.local` file in the repository root.
 
-## AYON Frontend
+### Recommended VS Code extensions
 
--   Yarn, Nodejs 20+, Vite
--   ReactJs
--   Typescript (migration in progress)
--   Redux toolkit with RTK Query
--   AYON React Component Library (ARC)
--   Styled Components
-
-### **Env variables**
-
-Create a `env.local` file in the root directory.
-
-`SERVER_URL=http://localhost:5000` - URL of the backend server
-
-### **Recommended VSCode Extensions**
-
--   CSS Variable Autocomplete
--   GitHub Pull Requests
--   vscode-styled-components
--   GraphQL: Language Feature Support
--   GraphQL: Syntax Highlighting
+- CSS Variable Autocomplete
+- GitHub Pull Requests
+- vscode-styled-components
+- GraphQL: Language Feature Support
+- GraphQL: Syntax Highlighting
 
 ## AYON React Component Library (ARC)
 
-The frontend uses a custom component library for colors, fonts and reusable React components. The components are separated so that AYON addons can also utilize them for their UIs. Any component that could be useful for an addon and is not too specific should be created in ARC.
-
-Read more about the style theme of AYON here: [AYON frontend theme](theme.md)
+The frontend uses its own component library, [ayon-react-components](https://github.com/ynput/ayon-react-components), for colors, fonts and reusable React components. The components are kept separate so that addon frontends can use them too: a component that could be useful to an addon, and is not too specific, belongs in ARC. See [Frontend React components](../api/react-components.md) and [AYON frontend theme](theme.md).

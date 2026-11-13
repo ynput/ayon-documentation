@@ -21,7 +21,7 @@ Every endpoint of the AYON server, also under REST API in the top bar.
 <Columns widths="65 35">
 <Column>
 
-Every AYON server also has its own reference, which includes the endpoints that its addons add (see [Addon development](../addon-development/creation.md#end-points)):
+Every AYON server also has its own reference, which includes the endpoints that its addons add (see [Endpoints](../addon-development/server.md#endpoints)):
 
 - **Where:** `<your-ayon-server-url>/docs`, or **REST API** in the Help menu of the web app, which shows it at `/doc/api`.
 - **Who:** managers and admins, by default.

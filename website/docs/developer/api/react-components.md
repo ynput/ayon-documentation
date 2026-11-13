@@ -10,7 +10,7 @@ It can be used to create consistent and accessible AYON addons.
 
 ## Get Started
 
-You can find examples for creating a Frontend React App for addons in [Addon Frontend Dev](../addon-development/creation.md#react-app).
+You can find examples for creating a Frontend React App for addons in [Frontend](../addon-development/frontend.md).
 Once set up, you can try different AYON components.
 
 :::tip

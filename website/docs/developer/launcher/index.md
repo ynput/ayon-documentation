@@ -42,7 +42,7 @@ ayon [arguments] addon <addon name> <command> [options]
 
 - [**Arguments**](../../pipeline/launcher-administration.md#arguments), such as `--use-dev` or `--bundle`, are read by the launcher in `start.py` and removed before the rest is passed on.
 - [**Commands**](../../pipeline/launcher-administration.md#commands), such as `tray` or `publish`, come from the command line of the Core addon, which the launcher starts after the bootstrap.
-- [**Addon commands**](../../pipeline/launcher-administration.md#addon-commands) are reached with `addon <addon name> <command>`. An addon adds them in its `cli()` method, see [CLI interface](../addon-development/creation.md#cli-interface).
+- [**Addon commands**](../../pipeline/launcher-administration.md#addon-commands) are reached with `addon <addon name> <command>`. An addon adds them in its `cli()` method, see [Command line](../addon-development/client.md#command-line).
 
 `--help` lists the commands, `<command> --help` the options of a command, and `addon <addon name> --help` the commands of an addon. The full lists are in [Launcher administration](../../pipeline/launcher-administration.md).
 

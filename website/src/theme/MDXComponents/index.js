@@ -10,6 +10,7 @@ import TableFilter from "@site/src/components/TableFilter";
 import TemplateExplorer from "@site/src/components/TemplateExplorer";
 import ZoomableImage from "@site/src/components/ZoomableImage";
 import { Column, Columns } from "@site/src/components/Columns";
+import { Swatches, TypeScale } from "@site/src/components/ThemeSwatches";
 
 // External links in page content open in a new tab; internal links are unchanged.
 function Anchor(props) {
@@ -36,6 +37,8 @@ export default {
     FlowTrace,
     Gallery,
     PageInfo,
+    Swatches,
     TableFilter,
     TemplateExplorer,
+    TypeScale,
 };

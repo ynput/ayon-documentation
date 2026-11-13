@@ -1,120 +1,97 @@
 ---
 title: Developer mode
 sidebar_label: Developer mode
-description: "Developer mode in AYON: enabling it, dev bundles next to the production and staging bundles, and running pipeline code from a local repository through custom addon paths, without packaging and uploading every change."
+description: "Developer mode in AYON: dev bundles that load the client code of addons from a local folder instead of downloading it, enabling developer mode for a user, creating and assigning a dev bundle, and working with live client code, with the addon outside or inside the server's addons folder."
+verified: 2026-11-13
+sources:
+  - https://github.com/ynput/ayon-backend/blob/develop/api/bundles/bundles.py
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/entities/user.py
+  - https://github.com/ynput/ayon-launcher/blob/develop/start.py
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+# Developer mode
 
-## Introduction
-As the name suggests, the developer mode in AYON facilitates rapid propagation of code changes for developers. It is mainly 
-targeted at working with client side pipeline code live from a local repository, without having to re-package and upload changes to the
-server all the time. 
+A dev bundle is for testing the client code of addons, the pipeline code that runs on workstations, without packaging and uploading it to the server after every change. For each addon, a dev bundle can name a folder on the developer's machine, and the launcher reads the addon's client code from there instead of downloading it.
 
-This is achieved by incorporating special bundles. By default, bundles on the AYON server are categorized as Production or Staging. However, in developer mode, it is possible to also create a Dev bundles.
+A dev bundle only changes where the client code comes from. The addon's settings still come from the addon installed on the server, so a change to the settings that the client code reads needs the addon updated on the server. Working on the rest of an addon is part of a full development environment, see [Addon development](addon-development/overview.md).
 
-## Pre-requisites
-- AYON server - 0.5.0
-- AYON launcher - 1.0.0-beta.6
-- openpype addon - 3.17.3
+The steps:
 
-To make use of the developer mode in the AYON, the user must be configured as a developer and enable it in the WebUI.
+1. [Enable developer mode](#enable-developer-mode-for-a-user) for the user.
+2. [Create a dev bundle](#create-a-dev-bundle-and-assign-it) and assign it to the user.
+3. [Point the addons to their client code](#addon-client-code) on the developer's machine.
+4. Start the launcher with `--use-dev`.
 
-:::important
-Developer mode only affects the user that has activated it and no-one else. 
+## Enable developer mode for a user
+
+1. An admin turns on **Developer** for the user on the [Users](../ayon/web-ui/studio/users.md) page. Only admins can set it, and only for users with the **Admin** access level.
+2. The user picks **Developer** in **Set bundle mode** at the top right of the web app, see [Navigation bar](../ayon/web-ui/navigation-bar.md). Once switched, the selector reads **Developer Mode**, dev bundles are visible on the Bundles page and the web actions icon turns purple.
+
+Developer mode only affects the user who turned it on. A user with **Staging access** can pick **Staging** in the same selector instead, to test staging bundles before they go to production.
+
+<Gallery columns={2}>
+
+![The bundle mode selector open, with Production, Staging and Developer](assets/server/set-bundle-mode.png "The bundle mode selector")
+
+![The top bar in developer mode, with the Developer Mode selector in purple](assets/server/bundle-mode-developer.png "Developer mode")
+
+</Gallery>
+
+## Create a dev bundle and assign it
+
+On the [Bundles](../ayon/web-ui/studio/bundles.md) page, in developer mode:
+
+1. Create a bundle, or duplicate one, and turn on **Dev bundle**.
+2. Assign a developer with **Assigned dev**, or **Assign to me**.
+3. Choose the addons and their versions.
+
+![A dev bundle on the Bundles page: the bundle list with the Dev badge, the addons with their versions and addon directories, and the assigned developer](assets/dev-bundle.png "A dev bundle")
+
+A dev bundle has one assigned developer, and a developer has one dev bundle: assigning a developer to a bundle takes them off the dev bundle they had. Unlike production and staging bundles, a dev bundle can change its addon versions after it is created.
+
+The launcher uses the dev bundle of the logged-in user when it starts with `--use-dev`. Another dev bundle can be used with `--use-dev --bundle <bundle name>`. See [Launcher administration](../pipeline/launcher-administration.md#arguments).
+
+## Addon client code
+
+In a dev bundle, each addon has an addon directory: a switch and a path. With the switch on, the launcher reads the addon's client code from that path, for example the `client` folder of the addon's repository, instead of downloading it. The code is read live:
+
+- **Python modules** that are already imported are not reloaded. A change takes effect after the launcher, or the application, is restarted, or after reloading the module manually.
+- **Publish plugins** are loaded again each time the publisher is refreshed.
+
+Addons whose package script prepares the client code in a more complex way can point the path to the folder that the script produces.
+
+### Addon code outside the server
+
+The usual setup: the addon's repository is anywhere on the developer's machine, and the addon is installed on the server as a package. The client code is live through the addon directory. A change to the server code or to the settings models needs a new package uploaded to the server. A task in the code editor that packages and uploads the addon makes that a single step.
+
+### Addon code inside the server
+
+:::danger Live addon code
+The server reads an addon in this folder live, its settings and the other parts of the addon included. When the version in its `package.py` changes, the server sees the old version as uninstalled and the new one as installed. Every bundle that used the addon, dev, staging or production, breaks: the addon's version shows empty until the bundle is set to the new version. The settings overrides stay with the old version and have to be copied to the new one with **Copy settings from**. This is why it is not meant for a production server.
 :::
 
-### Enabling developer mode
-1. Log in to AYON server as admin user.
-2. In user settings select your user, enable `Developer` checkbox and save changes.
-   ![dev_user_settings](assets/ayon_user_developer.png)
-3. `Developer mode` checkbox will appear in the top right corner (you may need to refresh page).
-   ![dev_user_settings](assets/ayon_developer_mode.png)
-4. Enable the checkbox.
+On a self-hosted development server, an addon can also live in the server's `addons` folder, without packaging and uploading. It is the folder where the server installs addons, one folder per addon with one folder per version. In [ayon-docker](https://github.com/ynput/ayon-docker), it is the `addons` folder of the repository, mounted into the server container.
 
-
-## Dev bundle
-Dev bundles have almost the same data as standard bundles with a few key differences.
-
-- they cannot be marked as `Production` or `Staging`. 
-- It is possible to assign them to a specific user.
-- It is possible to change versions of addons or enable/disable them without re-creating the bundle.
-- You can define custom path to client side addon code for AYON launcher.
-
-:::note
-Custom paths to addons only affects AYON launcher code and has no effect for server side code.
-:::
-
-Configuration of custom addon paths have checkbox and path input. If checkbox is disabled the path is ignored and if is enabled then path is used, even if not filled. Point the path to the client code inside repository to be able to have git controlled changes that are directly propagated.
-
-:::note
-Some addons have more complicated preparation of code for AYON launcher, in that case it is recommended to modify addon's create package script to extract client code to predefined directory. With that it is still possible to use advantage of developer mode to some degree.
-:::
-
-### How to create dev bundle
-1. Make sure developer mode is enabled.
-2. Go to Bundles page (in Studio settings).
-3. Click on `Add new bundle`. You will see `Dev bundle` checkbox and `Assigned dev` field in the form.
-4. Make sure `Dev bundle` is enabled.
-5. Assign yourself to the bundle. Only one user can be assigned to dev bundle.
-6. Choose addons and their versions.
-7. Confirm creation of the new bundle.
-   ![dev_user_settings](assets/ayon_develop_bundle.png)
-
-## Working in developer mode
-
-Assuming you have turned on developer mode, created a dev bundle and assigned it to yourself, you can start working with 
-live code from AYON addons. The addon you want to work with must also be available on server, so AYON can source settings
-for it when working with the pipeline. Therefore you can't do live updates to settings models and have them show up on the server automatically, but if you point for example `maya` addon to you local maya addon folder, you can change all the maya pipeline code and it will be picked up on the fly. 
-
-### Example of custom addon path
-Small example how this could be used with [ayon-third-party](https://github.com/ynput/ayon-third-party) addon.
-
-1. Define local directory with code
-In this example will be used `C:/code/addons`.
-```shell
-cd C:/code/addons
-```
-2. Clone addon repository
-```shell
-git clone https://github.com/ynput/ayon-third-party
-```
-3. Create addon package
-If addon is already available on server skip to step 5.
-```shell
-python ./create_package.py
-```
-4. Upload addon to server
-Open AYON server in browser. Go to `Studio settings` and select `Bundles` tab. Click to `Install addon` and upload zip from `C:/code/addons/ayon-third-party/package/`. 
-5. Define custom path
-Select or create dev bundle. Enable `ayon-third-party` addon. Enable custom path and fill the path to `C:/code/addons/ayon-third-party/client`.
-6. **Run AYON launcher**
-Start AYON launcher with `--use-dev` argument. This will automatically pick the dev bundle assigned to you.
-```shell
-"C:/Users/MyUser/AppData/Local/Ynput/AYON/app/AYON 1.0.0-beta.6/ayon.exe" --use-dev
+```text
+addons/
+├── core/
+│   ├── 1.10.7/     installed by the server, named after the version in package.py
+│   └── dev/        a clone of ayon-core, shown as 1.10.7+git
+└── maya/
+    └── 0.5.2/
 ```
 
-AYON launcher will then use code from the location we've defined, rather than downloading it from the server installed version. Try to do changes in the addon locally, restart AYON launcher and validate if changes are propagated.
-
-:::note
-It is possible to use dev bundle even if it is not assigned to the user. In that case replace argument `--use-dev` with `--bundle <deb bundle name>`.
-:::
-
-## Addon code on the server
-
-On a self-hosted server, an addon can also be developed directly in the server's `addons` directory, without creating and uploading a package:
+The server reads the version of each folder from its `package.py`, so a clone for development can have any folder name. When the folder contains `.git`, the server replaces any suffix of the version with `+git`, so the clone shows in bundles as, for example, `1.10.7+git` (`AYON_USE_GIT_SUFFIX_FOR_ADDONS` turns the suffix off). The addon's folder usually exists already, created when the addon was installed:
 
 ```shell
-mkdir addons/core
-cd addons/core
+cd <ayon-docker>/addons/core
 git clone https://github.com/ynput/ayon-core dev
 ```
 
-The folder is named after the addon's name in `package.py`, and the clone goes in a version folder, here `dev`. After a server restart, the addon appears in bundles with the suffix `+git`, because the folder contains `.git` (`AYON_USE_GIT_SUFFIX_FOR_ADDONS` turns the suffix off). The server-side code of the addon is then live after each restart. The client-side code still needs its path set in a dev bundle, as described above.
+After a server restart, the server code and the settings of the clone are live, and the client code still comes through the addon directory of a dev bundle.
 
-Because the server reads addons live, a change of the version string in `package.py` registers as a new version: the old version disappears from the bundles that used it, and the bundles have to be pointed to the new one. The settings of the old version stay stored and can be copied with **Copy settings from**.
+## Related
 
-:::danger
-An addon developed this way on a server whose production or staging bundles use it breaks those bundles as soon as its version changes.
-:::
+- [Bundles](../ayon/how-ayon-works/bundles.md)
+- [Launcher administration](../pipeline/launcher-administration.md)
+- [Addon development](addon-development/overview.md)

@@ -94,7 +94,7 @@ The entities sit among the other parts of AYON that describe, organize and prote
 | Users and teams | Who works on the tasks. Teams group the users of a project. | [User](#user), [Users](../../web-ui/studio/users.md), [Teams](../../web-ui/project/teams.md) |
 | Access groups | What a user may read and change in each project. | [Permissions](../../how-ayon-works/permissions.md) |
 | Addons and bundles | The code that defines attributes and settings and runs the pipeline, and the set of addon versions in use. | [Bundles](../../how-ayon-works/bundles.md), [Addons](../../web-ui/studio/addons.md) |
-| Events | The record of every change to an entity, which services and addons react to. | [Event Viewer](../../web-ui/event-viewer.md), [Event system](../../../developer/event-system.md) |
+| Events | The record of every change to an entity, which services and addons react to. | [Event Viewer](../../web-ui/event-viewer.md), [Event system](../../../developer/server/event-system.md) |
 | Services | Programs next to the server that act on events, such as the sync with a tracker. | [Services](../../web-ui/services.md), [AYON Service Host](../../deployment/ash.md) |
 
 ## What entities hold

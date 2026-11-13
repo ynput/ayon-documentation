@@ -1,54 +1,74 @@
 ---
 title: AYON frontend end-to-end tests
 sidebar_label: Frontend E2E tests
-description: "End-to-end tests of the AYON web app with Playwright: setting up and running the tests, spec and fixture files, test isolation and cleanup, and recording tests with the Playwright code generator. The testing strategy is still being decided."
+description: "Playwright tests of the AYON web app (ayon-frontend): the unit and chromium projects, configuring the test server and admin user, running all tests or one spec, where specs and page objects live, the shared @ynput/ayon-e2e package, and recording steps with the code generator."
+verified: 2026-11-13
+sources:
+  - https://github.com/ynput/ayon-frontend/blob/develop/package.json
+  - https://github.com/ynput/ayon-frontend/blob/develop/playwright.config.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/tests/AGENTS.md
+  - https://github.com/ynput/ayon-frontend/blob/develop/e2e/AGENTS.md
 ---
 
+The frontend is tested with [Playwright](https://playwright.dev). It is already set up in `playwright.config.ts`.
 
-:::note Work In Progress
-Frontend E2E testing strategy is still under debate, current tests and their implementation details may change significantly in the near future.
+| Project | Folder | What it tests |
+| --- | --- | --- |
+| `unit` | `tests/unit` | Pure logic. No browser, no server. |
+| `chromium` | `tests/e2e` | The app against a real AYON server, signed in as an admin. |
+
+:::caution Test data
+The e2e tests write to the server. Use a server that can be filled with test data, for example a local docker server.
 :::
 
-## Introduction
-End-to-end testing is a crucial part of the software development lifecycle, ensuring applications work as expected. We've embarked on the process of implementing E2E tests for AYON Server, our ultimate goal being the complete test coverage and consistent positive results across the multiple supported browsers.
+## Configuration
 
-## Setting up and running tests
-For the frontend E2E tests we're using [Playwright](https://playwright.dev) which proves to be useful and easy to use toolset for developers and even less technical users. In order to run tests locally you will need to install playwright and follow the installation instructions (defaults are safe choices):
-```
-yarn create playwright
-```
+The test settings go in `.env.test.local` in the repository root (gitignored):
 
-You'll also need to update your local ENV file by adding the following required variables (URLS & ports may vary for each setup):
-```
-LOCAL_SERVER_URL=http://localhost:3000
-TEST_SERVER_URL=https://localhost:5000
-NAME=admin #authentication user
-PASSWORD=pass #authentication password
+```shell
+TEST_BACKEND_URL=http://localhost:5000
+TEST_USER_NAME=admin
+TEST_USER_PASSWORD=...
 ```
 
-Once installed you can run the existing tests either using the console - ```yarn test``` - or the test UI if you prefer so - ```yarn test-ui```
+- The user must be an admin. Without these values, `NAME` and `PASSWORD` from `.env.local` are used.
+- Playwright builds the frontend and serves it on port 3100, proxied to `TEST_BACKEND_URL`.
+- `TEST_SERVER_URL` points the tests at an already running frontend. Nothing is built or started then.
 
-## How to add new tests
-In order to add new tests of update existing ones we recommend following the existing files structure found in the ```tests``` folder.
+## Running
 
-### Spec files
-Tests are grouped by entity type, i.e. project level tests are written in the projects.spec.js, folders level tests in the folders.spec.js file and so on.
+| Script | What it does |
+| --- | --- |
+| `yarn test` | All tests. |
+| `yarn test:unit` | Unit tests only. |
+| `yarn test:e2e` | E2e tests only (`chromium` project). |
+| `yarn test-ui` | Playwright UI mode. |
+| `yarn test-report` | Opens the last HTML report. |
+| `yarn test-codegen` | Playwright code generator on `http://localhost:3100`, signed in with the saved admin session. |
 
-### Fixture files
-Most tests will need parent entities to be created - i.e. a folder can't exist outside a project. To ease test creation, we're using *fixtures* helpers. These allow you to easily create and destroy required entities with one-line calls, so you can focus on the task at hand.
+By default tests run on 2 workers and retry once (twice on CI). A test that passes on retry is reported as flaky.
 
+One area or spec, without retries and with one worker:
 
-### Test Isolation
-Current configuration runs the tests in parallel, which might cause issues if specs are not properly written. In order to avoid any race issues, we recommend to follow a safe entity naming strategy, i.e. prefix entity names with unique identifiers (see existing tests for examples).
+```shell
+npx playwright test --project=chromium --no-deps --workers=1 --retries=0 tests/e2e/<area>
+```
 
-### Tests cleanup
-Testing entities that depend on others will require the creation of parent entities. Make sure that they are properly destroyed after testing is done to avoid pollution of future test runs. For example, when testing folders or tasks, the easiest cleanup method would be to delete the parent project, which will, in turn, delete all the related records.
+`--no-deps` skips the sign-in setup. It works once `playwright/.auth/admin.json` exists from an earlier run.
 
-## Generate tests on the fly
-As mentioned previously we chose [Playwright](https://playwright.dev) for its versatility and ease of use.
+## Writing tests
 
-One powerful tool that comes with it is code generation mode, which can translate a point and click interaction to actual spec statements, be it selecting specific UI elements, or making assertions.
+- Specs are TypeScript files in `tests/e2e/<area>/`, named `*.spec.ts`.
+- Locators and multi-step flows go into page objects in `tests/e2e/pages/`.
+- Fixtures, the REST client and UI helpers come from the `@ynput/ayon-e2e` package in `e2e/`. Addon test suites use the same package.
+- Each test gets its own project from the `projectName` fixture. Setup goes through the API, the tested behaviour through the UI.
+- Names come from `uniqueName()`, so parallel tests and runs do not collide. The global teardown removes leftovers of a run.
 
-In order to use the code generation tool run ```yarn test-codegen``` which will run playwright in codegeneration mode. Once started, just interact with the embedded browser window while keeping an eye on the secondary window. All interactions will be recorded in the secondary window, you can quickly generate the basis of your test, which can be then copied over to the actual spec file - see the example below:
+`yarn test-codegen` records clicks and typing as Playwright code. The recorded steps are a starting point for a spec, then moved into page objects.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/O-uS5wKKB30?si=9ikavCUIMXzhNmjA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+## Rules and gotchas
+
+The full rules are kept next to the code:
+
+- [tests/AGENTS.md](https://github.com/ynput/ayon-frontend/blob/develop/tests/AGENTS.md): when to add a test, what lives where, gotchas of the frontend suite.
+- [e2e/AGENTS.md](https://github.com/ynput/ayon-frontend/blob/develop/e2e/AGENTS.md): the `@ynput/ayon-e2e` package, its fixtures and helpers, the servers Playwright starts, and the rules every suite follows.

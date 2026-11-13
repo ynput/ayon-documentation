@@ -1,47 +1,61 @@
 ---
 title: Contribute to AYON development
 sidebar_label: Contribute
-description: "How to contribute to AYON: checking with the community first, proposing a new feature, reporting a bug, submitting a patch, and the contribution guidelines with the branching strategy."
+description: "How to contribute to AYON: where to start a discussion or report a bug, and the branch, pull request and commit conventions of the addon repositories and of the server repositories."
+verified: 2026-11-13
+sources:
+  - https://github.com/ynput/ayon-core/blob/develop/.pre-commit-config.yaml
+  - https://github.com/ynput/ayon-core/blob/develop/.github/pull_request_template.md
+  - https://github.com/ynput/ayon-core/blob/develop/.github/pr-branch-labeler.yml
+  - https://github.com/ynput/ayon-core/blob/develop/.github/workflows/validate_pr_labels.yml
+  - https://github.com/ynput/ayon-core/blob/develop/.github/workflows/pr_linting.yml
+  - https://github.com/ynput/ayon-core/blob/develop/AGENTS.md
+  - https://github.com/ynput/ops-repo-automation/blob/main/.github/workflows/validate_pr_labels.yml
+  - https://github.com/ynput/ayon-backend/blob/develop/CONTRIBUTING.md
+  - https://github.com/ynput/ayon-backend/blob/develop/.github/pull_request_template.md
+  - https://github.com/ynput/ayon-frontend/blob/develop/CONTRIBUTING.md
 ---
 
-Thanks for taking the time and effort to contribute back to AYON!
+# Contribute to AYON development
 
-We follow a set of rules to ensure the project is in a healthy state and avoid duplicating efforts or avoid unnecessary development, in oreder to achieve that if you **found a bug** or are thinking on **developing** a new feature it's highly encouraged that you check with the community first:
- - [Ynput Community](https://community.ynput.io/): Open forums where all things AYON are discussed, best place to propose new features or ask questions about the project.
- - [Discord](https://discord.gg/ynput): Discord Server for a more asyncronous conversation and memes.
+AYON is split into many repositories under [github.com/ynput](https://github.com/ynput). The conventions differ between the addon repositories and the server repositories.
 
-After checking with the above, situations that might arise:
+## Where to start
 
-## You want to extend AYON with a new feature
-- Open a new thread in the [Ynput Community](https://community.ynput.io/)
-- Do not open issue until the suggestion is discussed. We will convert accepted suggestions into backlog and point them to the relevant discussion thread to keep the context. Then depending on the outcome of the conversations you can then:
-    - Open a [Github Issue](#you-found-a-bug)
-    - Open a [Github Pull Request](#you-wrote-a-patch-that-fixes-a-bug)
+| Goal | Where |
+|---|---|
+| Discuss an idea or ask a question | The [community forum](https://community.ynput.io/) or the [Discord server](https://discord.gg/ynput) |
+| Request a feature | The [feedback portal](https://feedback.ayon.app/) |
+| Report a bug | The GitHub issues of the relevant repository, for example [ayon-core](https://github.com/ynput/ayon-core/issues) or [ayon-maya](https://github.com/ynput/ayon-maya/issues). Search the existing issues first |
+| Send a fix or a change | A pull request on the relevant repository |
 
-## You found a bug
-1. Check in the [Github Issues](https://github.com/ynput/OpenPype/issues) to make sure it wasn't reported already.
-2. If it is a bug, you'll be asked to Create a new [Github Issue](https://github.com/ynput/OpenPype/issues/new/choose).
-3. Bonus: Make a [Pull Request? :)](#you-wrote-a-patch-that-fixes-a-bug)
+For a larger change, a discussion on the forum first avoids duplicate work.
 
+## Addon repositories
 
-## You wrote a patch that fixes a bug
-1. Open a new [GitHub Pull Request](https://github.com/ynput/OpenPype/compare) with the patch against the `develop` branch .
-2. Ensure the PR description clearly describes the problem and solution and instructions to test the patch. Include the relevant issue number if applicable.
+These rules apply to ayon-core and the addon repositories (`ayon-maya`, `ayon-deadline`, ...). ayon-core has no `CONTRIBUTING.md`; its [AGENTS.md](https://github.com/ynput/ayon-core/blob/develop/AGENTS.md) summarizes the rules.
 
-We might also change the target of you PR to and intermediate branch, rather than `develop` if we feel it requires some extra work on our end. That way, we preserve all your commits so you don't lose out on the contribution credits.
+| Topic | Rule |
+|---|---|
+| Target branch | `develop` |
+| Branch name (ayon-core) | `<type>/<name>`, where type is `release`, `enhancement`, `feature`, `bugfix`, `documentation`, `tests`, `local` or `chore`. A pre-commit hook rejects commits on other branch names |
+| Pull request description | The ayon-core template has the sections **Changelog Description**, **Additional info** and **Testing notes** |
+| Labels | The `validate_pr_labels.yml` workflow fails without a label starting with `type: `. In ayon-core, branches named `feature/`, `enhancement/` and `bugfix/` get `type: feature`, `type: enhancement` and `type: bug` automatically |
+| Linting | The `pr_linting.yml` workflow runs ruff on pull requests to `develop`, see [Code style](requirements.md#code-style) |
+| Tests | ayon-core runs its unit tests on pull requests, see [Pipeline testing](pipeline-testing.md#addon-unit-tests) |
 
+:::tip Pre-commit hooks
+In ayon-core, `./tools/manage.sh create-env` creates the environment and installs the pre-commit hooks (`uv run pre-commit install`), which check the branch name, codespell and ruff before each commit.
+:::
 
-## Contribution Guidelines
+## Server repositories
 
-### Branching Strategy
-AYON loosely follows Git Flow for branching, and there are three important (protected) branches:
-- `main` - Production branch with the latest stable realase. Each release being a new tag.
-- `develop` - Development branch, all Pull Requests target this branch.
-- `release/3.x.x` - Testing branch for a release, once a release branch is created, no new features are accepted for the given release.
+[ayon-backend](https://github.com/ynput/ayon-backend) and [ayon-frontend](https://github.com/ynput/ayon-frontend) follow their `CONTRIBUTING.md`: [backend](https://github.com/ynput/ayon-backend/blob/develop/CONTRIBUTING.md), [frontend](https://github.com/ynput/ayon-frontend/blob/develop/CONTRIBUTING.md). Both target `develop`.
 
-When creating new branches from `develop` follow these naming:
- - `feature/{Issue#}-{Issue_name}` - Development of new features
- - `bugfix/{Issue#}-{Issue_name}`- Striclty for bugfixes.
- - `hotfix/{Issue#}-{Issue_name}`- Production critical hotfixes (always branched from `main`).
+| Topic | Rule |
+|---|---|
+| Branch name | The issue number and a short name, lowercase and hyphen-separated, as suggested by the GitHub "create branch" button, for example `1234-fix-bug`. No prefixes such as `feature/` or `bugfix/`. Branches without an issue use a descriptive name, for example `fix-bug-in-auth` |
+| Commits | Semantic commits: `<type>(<scope>): <summary>`, with type `build`, `ci`, `docs`, `feat`, `fix`, `perf`, `refactor` or `test`, for example `fix(auth): fix session expiration` |
+| Pull request description | The ayon-backend template has a checklist (description, linked issue) and the sections **Description of changes**, **Technical details** and **Additional context** |
 
-
+The frontend `CONTRIBUTING.md` also asks to keep a pull request as a draft while work is in progress and has UI rules. [ayon-docker](https://github.com/ynput/ayon-docker), which builds the server image, uses `main` as its default branch.

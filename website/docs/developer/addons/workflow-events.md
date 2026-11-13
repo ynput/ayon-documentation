@@ -140,7 +140,7 @@ it. You can register a workflow in two ways:
 - **From the Workflow editor**, as shown in
   [Example workflow graph automations - User Docs](https://help.ayon.app/en/help/articles/1804107-workflows-and-automations#cczii712qik).
 - **Through the API**, with the `api/addons/workflow/{version}/upload`
-  endpoint, where `{version}` is the addon version (for example, `0.4.3`).
+  endpoint, where `{version}` is the addon version (for example, `0.4.4`).
 
 To list registered workflows, check the Workflow editor or use the
 `api/addons/workflow/{version}/registered_workflows` endpoint.
@@ -188,7 +188,7 @@ subclassing one of these:
 
 Trigger nodes are custom nodes like any other, so make them available to the
 Workflow addon the same way. See
-[Extending Workflow Nodes (Custom Plugins)](https://docs.ayon.dev/docs/dev_addon_workflow#extending-workflow-nodes-custom-plugins).
+[Extending Workflow Nodes (Custom Plugins)](workflow-scripting.md#extending-workflow-nodes-custom-plugins).
 
 ### Example 1: A schedule node that returns the current time and timezone
 

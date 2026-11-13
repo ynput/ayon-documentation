@@ -1,12 +1,17 @@
 ---
-title: AYON Workflow Addon Developer Documentation
-sidebar_label: Workflow
-description: AYON Workflow Addon Developer Documentation
+title: Workflow scripting and custom nodes
+sidebar_label: Scripting and custom nodes
+description: "Developing with the AYON Workflow addon: a first workflow in Python, saving and loading workflows, running them in memory or on a render farm with task chunking, the command line, and writing custom nodes with examples."
+verified: 2026-11-13
+sources:
+  - https://github.com/ynput/ayon-workflow/blob/develop/client/ayon_workflow/workflow_editor/workflow.py
+  - https://github.com/ynput/ayon-workflow/blob/develop/client/ayon_workflow/workflow_execution/__init__.py
+  - https://github.com/ynput/ayon-workflow/blob/develop/client/ayon_workflow/workflow_execution/renderfarm/__init__.py
+  - https://github.com/ynput/ayon-workflow/blob/develop/client/ayon_workflow/workflow_editor/dispatch_node.py
+  - https://github.com/ynput/ayon-workflow/blob/develop/client/ayon_workflow/utils.py
 toc_max_heading_level: 5
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Overview
 
@@ -21,22 +26,23 @@ AYON tray:
 
 ```python
 from ayon_workflow.workflow_editor import Workflow
-from ayon_workflow.workflow_execution import execute_workflow
+from ayon_workflow.workflow_execution import execute_in_memory
 from ayon_workflow.plugin_system import register_all_plugins
 
 # Discover all available node types
 register_all_plugins()
 
 # Create a new workflow
-my_workflow = Workflow(name="My First Workflow", description="An optional description here")
+my_workflow = Workflow()
 graph = my_workflow.execution_graph
+graph.name = "My First Workflow"
 
 # Create a node from the NoOp (No Operation) node type
 node = graph.create_node("NoOp")
 node["input_data"] = "hello world"
 
 # Run the workflow in the current session
-result = execute_workflow(my_workflow)
+result = execute_in_memory(my_workflow)
 print(result)  # Output: {'NoOp1.output_data': 'hello world'}
 ```
 
@@ -80,18 +86,19 @@ AYON Workflow supports three execution modes:
 
 ```python
 from ayon_workflow.workflow_execution import (
-    execute_workflow,
+    execute_in_memory,
     submit_workflow_to_farm,
 )
 
 # Run the whole workflow locally, in memory
-execute_workflow(my_workflow)               # from a Workflow object
-execute_workflow("/path/to/workflow.json")  # from a workflow file
+execute_in_memory(my_workflow)               # from a Workflow object
+execute_in_memory("/path/to/workflow.json")  # from a workflow file
 
 # Optional arguments
-execute_workflow(
+execute_in_memory(
     my_workflow,
-    inputs_data={"NoOp1.input_data": "custom_value"},  # override inputs (dict, str, or None)
+    inputs_data={"NoOp1.input_data": "custom_value"},  # override inputs (dict, path to a JSON file, or None)
+    project="my_project_name",            # resolves root paths in a workflow file
     log=log,                              # custom logging.Logger
     flow_notifier=my_flow_tracking_func,  # callable, notified on flow updates
     task_notifier=my_task_tracking_func,  # callable, notified on task updates
@@ -99,30 +106,13 @@ execute_workflow(
 
 # Submit to the render farm
 submit_workflow_to_farm(
-    "/path/to/workflow.json",
+    "/path/to/workflow.json",        # or a Workflow object
     "/path/to/shared/farm/backend",  # must exist and be reachable from the farm
-    project_name="my_project_name",  # required, used to resolve roots on each platform
+    project="my_project_name",       # used to resolve roots on each platform
+    inputs_data=None,                # optional input overrides
+    dispatch_graph_name=None,        # optional, the dispatch graph to use
 )
 ```
-<!-- ```
-# Persistent backend execution for individual slices/sub-graphs
-from ayon_workflow.workflow_execution import execute_from_backend
-from ayon_workflow.workflow_execution.from_backend.job_description import to_job_description
-
-job_description = to_job_description(
-    my_workflow,
-    backend_dir="/path/to/shared/farm/backend"
-)
-for step in job_description.steps:
-    args = step.script.args
-    result = addon.execute_from_backend(
-        # Get command line to run.
-        args[5],  # execution graph path,
-        args[7],  # backend directory
-        args[9],  # slice flow id
-        args[11], # full flow id
-    )
-``` -->
 
 ### Farm Example with Task Chunking
 
@@ -147,7 +137,7 @@ dispatch_group.node_names = [node.name for node in my_workflow.execution_graph.a
 dispatch_group.job_name = "Render and Publish from a Blender File"
 dispatch_group.pool = "rendering-pool"
 dispatch_group.group = "render-group"
-dispatch_group.limit_groups = "blender"
+dispatch_group.limit_groups = ["blender"]
 dispatch_group.priority = 50
 
 # Split the frame range into chunks
@@ -164,83 +154,16 @@ my_workflow.export_to_file("/path/to/workflow.json")
 submit_workflow_to_farm(
     "/path/to/workflow.json",
     backend_dir,
-    project_name="my_project_name",
+    project="my_project_name",
 )
 ```
 
 ### Command-Line Interface (CLI)
 
-<Tabs>
-
-<TabItem value="windows" label=<span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> default>
-
-```bash
-cd <ayon-launcher-installation-location>
-
-# Run in memory
-./ayon_console.exe addon workflow execute --workflow-path /path/to/workflow.json
-
-# Run in memory, with inputs from a JSON file
-./ayon_console.exe addon workflow execute --workflow-path /path/to/workflow.json --inputs-path /path/to/input.json
-
-# Submit to the render farm
-./ayon_console.exe addon workflow submit --workflow-path /path/to/workflow.json --backend-dir /path/to/shared/farm/backend
-
-# Run a single slice flow on a farm worker
-./ayon_console.exe addon workflow execute-slice-flow --backend-dir /shared/farm/backend --slice-flow-id <flow_uuid> --full-flow_id <full_flow_id>
-```
-
-</TabItem>
-
-<TabItem value="linux&mac" label=<div><span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> & <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span></div> >
-
-```bash
-cd <ayon-launcher-installation-location>
-
-# Run in memory
-ayon addon workflow execute --workflow-path /path/to/workflow.json
-
-# Run in memory, with inputs from a JSON file
-ayon addon workflow execute --workflow-path /path/to/workflow.json --inputs-path /path/to/input.json
-
-# Submit to the render farm
-ayon addon workflow submit --workflow-path /path/to/workflow.json --backend-dir /path/to/shared/farm/backend
-
-# Run a single slice flow on a farm worker
-ayon addon workflow execute-slice-flow --backend-dir /shared/farm/backend --slice-flow-id <flow_uuid> --full-flow_id <full_flow_id>
-```
-
-</TabItem>
-
-</Tabs>
-
-For all supported commands and options, use the `--help` flag:
-
-<Tabs>
-
-<TabItem value="windows" label=<span style={{color:'#1c2026',backgroundColor:'#00a2ed', borderRadius: '4px', padding: '2px 4px'}}>Windows</span> default>
-
-```bash
-cd <ayon-launcher-installation-location>
-./ayon_console.exe addon workflow --help
-```
-
-</TabItem>
-
-<TabItem value="linux&mac" label=<div><span style={{color:'#1c2026',backgroundColor:'#f47421', borderRadius: '4px', padding: '2px 4px'}}>Linux</span> & <span style={{color:'#1c2026',backgroundColor:'#e9eff5', borderRadius: '4px', padding: '2px 4px'}}>MacOS</span></div> >
-
-```bash
-cd <ayon-launcher-installation-location>
-ayon addon workflow --help
-```
-
-</TabItem>
-
-</Tabs>
+The addon's commands, such as `execute`, `submit` and `execute-slice-flow`, are listed in [Command line](../../addons/automation/workflow/index.md#command-line) on the Workflow addon page. `addon workflow --help` lists them with their options, see [Addon commands](../../pipeline/launcher-administration.md#addon-commands).
 
 :::tip Verbose output
-For full diagnostic output from CLI commands, set the environment variable
-`AYON_WORKFLOW_VERBOSE=1` before running them.
+For full diagnostic output, set `AYON_WORKFLOW_DEBUG=1`, or `AYON_DEBUG=1`, before running a command.
 :::
 
 ## Extending Workflow Nodes (Custom Plugins)
@@ -301,7 +224,7 @@ Every custom node class inherits from one of these base classes:
   downstream.
 - `EventTrigger` or `OnSchedule`: nodes that start a workflow from an AYON event
   or a cron schedule. See
-  [Reference: creating your own EventTrigger or OnSchedule input node](https://docs.ayon.dev/docs/dev_addon_workflow_event#reference-creating-your-own-eventtrigger-or-onschedule-input-node).
+  [Reference: creating your own EventTrigger or OnSchedule input node](workflow-events.md#reference-creating-your-own-eventtrigger-or-onschedule-input-node).
 
 The input and output types, and the input default values, are read from the
 type hints and defaults in the `execute()` method signature. For structured
@@ -488,7 +411,7 @@ def get_plugins() -> list[type[WorkflowTaskNode]]:
 ## Further Reading
 
 - **User and admin documentation:** [Workflow Addon - AYON Help Center](https://help.ayon.app/en/help/collections/6014460-workflow)
-- **Event-triggered workflows:** [Event-triggered workflows developer documentation](https://docs.ayon.dev/docs/dev_addon_workflow_event)
+- **Event-triggered workflows:** [Event-triggered workflows developer documentation](workflow-events.md)
 - **Node conventions:** [Node Authoring Guide](https://github.com/ynput/ayon-workflow-nodes/blob/develop/docs/node_authoring.md)
 - **API documentation:** [AYON Workflow Addon API Reference](https://docs.ayon.dev/ayon-workflow-docs/latest/)
 - **Demo workflows:** Available in the [`ayon-workflow-nodes` repository](https://github.com/ynput/ayon-workflow-nodes/tree/develop/demo).They also ship with the addon. By default, you can find them at:

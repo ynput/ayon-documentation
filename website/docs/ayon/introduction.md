@@ -1,9 +1,12 @@
 ---
 title: Introduction to AYON
 sidebar_label: Introduction
-description: "What AYON is, what studios use it for, how it can be used partly or fully, its main components, the studio sizes it suits and the ways it can be set up and hosted."
-verified: 2026-10-14
+description: "What AYON is, what studios use it for, how it can be used partly or fully, its main components, the studio sizes it suits, the ways it can be set up and hosted, and the projects it grew from: Pyblish, Avalon and OpenPype."
+verified: 2026-11-13
 sources:
+  - https://github.com/pyblish/pyblish
+  - https://getavalon.github.io/2.0/overview/
+  - https://github.com/ynput/OpenPype
   - https://help.ayon.app/en/help/articles/2243459-ayon-introduction
   - https://help.ayon.app/en/help/articles/3030530-ayon-glossary
   - https://help.ayon.app/en/help/articles/3889290-create-versions-without-a-pipeline
@@ -154,3 +157,14 @@ More detail is in the server deployment pages, [cloud](deployment/cloud.md) and 
 - **Compliance:** Ynput reports SOC 2 Type 2, ISO 27001 and GDPR compliance. The [Ynput Security Trust Center](https://trust.inc/ynput) shows the current compliance and security posture.
 - **Access and isolation:** Single sign-on is available, and cloud deployments are isolated per customer.
 - **Status:** [AYON status](https://status.ayon.app/) shows live status and uptime for Ynput Cloud and the AYON download server.
+
+## History
+
+AYON grew out of a line of open-source pipeline projects, each built on the one before:
+
+| Project | What it added |
+|---|---|
+| [Pyblish](https://github.com/pyblish/pyblish) | Publishing as a series of plugins that collect, validate, extract and integrate work. AYON's publishing is still built on it. |
+| [Avalon](https://getavalon.github.io/2.0/overview/) | A pipeline on top of Pyblish, with artist tools (launcher, creator, loader, publisher, workfiles), integrations for more applications, and a MongoDB database for the published data. |
+| [OpenPype](https://github.com/ynput/OpenPype) | Built on Avalon and Pyblish, with settings that are easier to configure, more application integrations and more tools, such as the look assigner. |
+| [AYON](https://ayon.app/) | The successor of OpenPype: the settings moved to a web server, the code was split into separate addons, and production management joined the pipeline. |

@@ -71,50 +71,7 @@ Selecting a row opens its details in the right panel. The close button returns t
 
 ## Event topics
 
-Topics are dotted names. The server dispatches a standard set and addons register their own, so topics other than the ones below can appear.
-
-### Entity topics
-
-`entity.<type>.<change>`, where `<type>` is an entity type such as `project`, `folder`, `task`, `product`, `version`, `representation`, `workfile` or `user`. Not every change exists for every type.
-
-| Topic | Raised when |
-|---|---|
-| `entity.<type>.created`, `entity.<type>.deleted` | An entity is created or deleted. |
-| `entity.<type>.renamed` | The name changes. |
-| `entity.<type>.status_changed` | The status changes. |
-| `entity.<type>.tags_changed` | Tags change. |
-| `entity.<type>.attrib_changed` | Attributes change. |
-| `entity.<type>.data_changed` | The `data` dictionary changes. |
-| `entity.<type>.label_changed` | The label changes. |
-| `entity.<type>.thumbnail_changed` | The thumbnail changes. |
-| `entity.<type>.active_changed` | The active flag changes. |
-| `entity.folder.type_changed`, `entity.task.type_changed` | Folder type or task type changes. |
-| `entity.product.product_type_changed` | Product type changes. |
-| `entity.task.assignees_changed` | Task assignees change. |
-| `entity.folder.parent_changed`, `entity.task.folder_changed`, `entity.product.folder_changed`, `entity.version.product_changed`, `entity.representation.version_changed` | An entity is moved to a different parent. |
-| `entity.project.changed` | A project is modified. |
-
-### Other topics
-
-| Topic | Meaning |
-|---|---|
-| `server.started`, `server.restart_required`, `server.restart_requested`, `server.log_collector_started` | Server lifecycle. |
-| `heartbeat` | Periodic server heartbeat. |
-| `settings.changed` | Studio or project settings changed. |
-| `activity.created`, `activity.updated`, `activity.deleted` | Comments and other activities. |
-| `addon.install`, `addon.install_from_url` | Addon package installation. |
-| `dependency_package.install_from_url`, `installer.install_from_url` | Dependency package or installer download. |
-| `bundle.created`, `bundle.updated`, `bundle.status_changed` | Bundle changes. |
-| `entity_list.created`, `entity_list.changed`, `entity_list.deleted` | Entity list changes. |
-| `link.created`, `link.deleted` | Entity link changes. |
-| `action.launcher` | A launcher action was triggered. |
-| `access_group.updated`, `access_group.deleted` | Access group changes. |
-| `auth.login`, `auth.logout`, `user.log_fail` | Sign-in, sign-out and failed sign-in. |
-| `inbox.message` | An inbox notification. |
-| `reviewable.created` | A reviewable was added to a version. |
-| `thumbnail.updated` | A thumbnail was uploaded. |
-| `database_import`, `maintenance` | Data import and maintenance jobs. |
-| `log.info`, `log.warning`, `log.error` | Server log entries, shown when **Show With Logs** is on. |
+Topics are dotted names, such as `entity.task.created` or `settings.changed`. The server dispatches a standard set and addons add their own. The topics, and when each one is raised, are listed in [Well known topics](../../developer/server/event-system.md#well-known-event-topics) on the Event system page.
 
 ## Event statuses
 
