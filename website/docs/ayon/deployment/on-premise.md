@@ -213,13 +213,12 @@ This is where the server keeps the installed addons, as `addons/<addon name>/<ad
 - Removing an addon version from this directory removes it from the server. Removing it on the [Addons](../web-ui/studio/addons.md) page of the web UI is safer, because the web UI does not remove a version that a bundle uses.
 - Adding an addon version requires the contents of the **addon's release `.zip` package, not the repository,** in a folder named after the version.
 - A clone of an addon repository in this directory is used for development, see [Developer mode](../../developer/developer-mode.md#addon-code-inside-the-server).
-
 ### Storage directory
 
 ```text
 storage/
   ├── addons
-  │     └── <addon name>           addon data, e.g. Slater templates
+  │     └── <addon name>           files uploaded to an addon, e.g. Slater templates, registered workflows
   ├── desktop
   │     ├── dependency_packages
   │     └── installers             AYON launcher installers
@@ -231,7 +230,7 @@ storage/
   │                 └── uploads    reviewables, comment attachments
   └── static
 ```
-This is where the server keeps addon data (e.g. registered files), uploaded launcher installers, dependency packages, and project thumbnails and reviewables.
+This is where the server keeps files uploaded to addons, which every version of the addon uses, uploaded launcher installers, dependency packages, and project thumbnails and reviewables.
 
 - The server manages this folder. Manual changes here can break the server.
 - Files in `server` are only copied, for backup and restore. Everything else goes through the web app or the API.

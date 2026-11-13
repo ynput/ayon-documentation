@@ -14,7 +14,7 @@ sources:
 
 # Addon overview and packaging
 
-An addon extends AYON. Every integration, such as Maya or Deadline, and most features are addons. This page describes what an addon is made of, the `package.py` file that describes it, and how it is packaged and installed. The [server side](server.md), [client side](client.md), [host integration](host-integration.md), [frontend](frontend.md), [services](services.md) and [private and public files](files.md) pages cover each part in detail.
+An addon extends AYON. Every integration, such as Maya or Deadline, and most features are addons. This page describes what an addon is made of, the `package.py` file that describes it, and how it is packaged and installed. The [server side](server.md), [client side](client.md), [host integration](host-integration.md), [frontend](frontend.md), [services](services.md) and [files](files.md) pages cover each part in detail.
 
 ## Parts of an addon
 
@@ -26,7 +26,7 @@ An addon has up to five parts. Only the server code is required.
 | Client code | `client/` | On workstations, in the launcher and in applications: tools, pipeline plugins, host integrations | [Client side](client.md), [Host integration](host-integration.md) |
 | Frontend | `frontend/` | In the web app, as a page of its own | [Frontend](frontend.md) |
 | Services | `services/`, by convention | In Docker, run by the [AYON Service Host](../../ayon/deployment/ash.md), for background work such as syncing with another tracker | [Services](services.md) |
-| Files | `private/`, `public/` | Served by the server: `private` to signed-in users, `public` to anyone | [Private and public files](files.md) |
+| Files | `private/`, `public/` | Served by the server: `private` to signed-in users, `public` to anyone | [Files](files.md) |
 
 How the parts reach the places they run:
 
@@ -144,7 +144,7 @@ The tools for developing an addon are listed in [Requirements](../requirements.m
 - [Host integration](host-integration.md)
 - [Frontend](frontend.md)
 - [Services](services.md)
-- [Private and public files](files.md)
+- [Files](files.md)
 - [Developer mode](../developer-mode.md)
 - [Requirements](../requirements.md)
 - [Bundles](../../ayon/how-ayon-works/bundles.md)

@@ -28,7 +28,7 @@ sources:
 
 # Addon server side
 
-The server code of an addon runs inside the AYON server. It defines the addon's settings, and can add REST endpoints, web actions and event handlers, which this page describes. The [frontend](frontend.md), [services](services.md) and [private and public files](files.md) have pages of their own. The repository layout and `package.py` are described in [Overview and packaging](overview.md).
+The server code of an addon runs inside the AYON server. It defines the addon's settings, and can add REST endpoints, web actions and event handlers, which this page describes. The [frontend](frontend.md), [services](services.md) and [files](files.md) have pages of their own. The repository layout and `package.py` are described in [Overview and packaging](overview.md).
 
 ## The server addon class
 
@@ -277,7 +277,7 @@ class MyAddon(BaseServerAddon):
 |---|---|
 | `identifier` | Unique ID, passed back to `execute_action`. |
 | `label`, `description`, `group_label`, `category`, `order` | How the action is shown and sorted. |
-| `icon` | `{"type": "material-symbols", "name": ...}` with an optional `color`, or `{"type": "url", "url": ...}`. In a URL, `{addon_url}` is replaced with `/addons/{name}/{version}`, so `"{addon_url}/public/icons/my.svg"` points to a [public file](files.md). |
+| `icon` | `{"type": "material-symbols", "name": ...}` with an optional `color`, or `{"type": "url", "url": ...}`. In a URL, `{addon_url}` is replaced with `/addons/{name}/{version}`, so `"{addon_url}/public/icons/my.svg"` points to a [public file](files.md#private-and-public-files). |
 | `entity_type` | `project`, `list`, `folder`, `task`, `product`, `version`, `representation` or `workfile`. `None` for actions outside a project. |
 | `entity_subtypes` | Folder types, task types and so on that the action is limited to. |
 | `allow_multiselection` | Show the action when several entities are selected. |
@@ -333,7 +333,7 @@ The older `on_settings_changed(old_settings, new_settings, ...)` hook is still c
 - [Host integration](host-integration.md)
 - [Frontend](frontend.md)
 - [Services](services.md)
-- [Private and public files](files.md)
+- [Files](files.md)
 - [Settings scopes and storage](../../ayon/backend/settings/index.md)
 - [Event system](../server/event-system.md)
 - [Developer mode](../developer-mode.md)
