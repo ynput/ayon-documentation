@@ -9,7 +9,7 @@ sources:
 
 # How AYON works
 
-This section explains what happens inside AYON when people use it: which parts take part in a process, what is created or changed, and in which order. It is written for administrators and leads who set AYON up and need to understand the consequences of their choices, and for anyone who wants the full picture of a typical day. The reference pages of the other sections describe each page, tool and setting; this section connects them.
+This section explains what happens inside AYON when people use it: which parts take part in a process, what is created or changed, and in which order. It is written for administrators and leads who set AYON up and need to understand the consequences of their choices, and for anyone who wants the full picture of the daily work. The reference pages of the other sections describe each page, tool and setting; this section connects them.
 
 ## Processes
 

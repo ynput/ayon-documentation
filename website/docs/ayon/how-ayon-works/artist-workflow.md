@@ -1,7 +1,7 @@
 ---
 title: Artist workflow
-description: "A typical day of an artist working with the AYON pipeline, followed through a modeling task: signing in to the launcher, opening the task in a DCC application, workfiles, loading and managing published products, publishing, and what happens in the web app afterwards."
-verified: 2026-10-19
+description: "The typical workflow of an artist with the AYON pipeline, followed through a modeling task: signing in to the launcher, opening the task in a DCC application, workfiles, loading and managing published products, publishing, and what happens in the web app afterwards."
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/articles/0358916-ayon-on-cloud-a-complete-studio-walkthrough
   - https://help.ayon.app/en/articles/6207691-launcher
@@ -11,11 +11,11 @@ sources:
 
 # Artist workflow
 
-This page follows one artist through a typical piece of work with the AYON pipeline: a modeler who has been assigned the **modeling** task of a chair asset. It shows what happens, in which order, and in which part of AYON, from signing in on the workstation to a reviewed and approved model. Other disciplines follow the same pattern with other applications and other [product types](../../pipeline/product-types.md). The tools themselves are described on their reference pages, linked in each section.
+This page follows one artist through a typical piece of work with the AYON pipeline: a modeler who has been assigned the **modeling** task of a chair asset. It shows what happens, in which order, and in which part of AYON, from signing in on the workstation to a reviewed and approved model. Other disciplines follow the same pattern with other applications and other [product types](../../pipeline/product-types.md). The tools themselves are described on their reference pages, linked in each section. More on the pipeline tools is in the [Pipeline](../../pipeline/index.md) section.
 
 The scenario assumes that the studio has prepared the pipeline: a production bundle with the integration of the artist's application, application paths, project roots and the project's folders and tasks. See [Production workflow](production-workflow.md) for the producer's side.
 
-## The day at a glance
+## The pipeline at a glance
 
 ```mermaid
 flowchart LR
@@ -25,7 +25,7 @@ flowchart LR
   D --> E[Load products]
   E --> F[Work and save]
   F --> G[Publish]
-  G --> H[Review in web app]
+  G --> H[Review]
   H -->|changes requested| D
   H -->|approved| I[Done]
 ```
@@ -39,7 +39,7 @@ The same flow as a list:
 5. The artist loads published products from other departments and keeps them up to date.
 6. The artist works and saves new workfile versions.
 7. The Publisher checks the work and publishes it as a new version of a product.
-8. The version appears in the web app, where it is reviewed and commented on.
+8. The version is reviewed and commented on.
 9. On requested changes the artist returns to the workfile and publishes the next version; on approval the task is done.
 
 ## Who does what
@@ -60,7 +60,7 @@ The launcher is the desktop application that connects a workstation to the AYON 
 |---|---|
 | First start | The **Login to server** dialog asks for the server **URL** and a username and password, or signs in through the web browser with **Login with AYON server**. |
 | Every start | The launcher reads the bundle of its mode (production by default), downloads the addons and dependency packages that the bundle needs, and starts the tray. |
-| While running | The tray icon gives access to the **Launcher** window, the **Browser** and other tools. When the studio switches to a new production bundle, the tray offers **Restart && Update**. |
+| While running | The tray icon gives access to the **Launcher** window, the **Browser** and other tools. When the studio switches to a new production bundle, the tray offers **Restart & Update**. |
 
 See [Launcher](../../pipeline/launcher.md) for the pipeline modes and the tray menu.
 
@@ -140,21 +140,6 @@ The first publish creates `v001` of `modelMain`, stored for example at `.../chai
 
 ## 7. What the artist sees afterwards
 
-```mermaid
-sequenceDiagram
-  participant A as Artist
-  participant P as Publisher
-  participant S as AYON server
-  participant W as Web app
-  A->>P: Publish
-  P->>S: Register version and files
-  S->>W: Version in Products and feeds
-  S->>W: Inbox messages to watchers
-  W->>A: Comments and statuses
-```
-
-In words:
-
 1. The Publisher registers the version and its files on the AYON server.
 2. The version appears on the project's **Products** page and as a published version in the activity feed of the task.
 3. Watchers of the task, such as the supervisor, get a message in their inbox.
@@ -179,6 +164,7 @@ When the supervisor approves the version, the task is usually set to **Approved*
 
 ## Related
 
+- [Pipeline](../../pipeline/index.md)
 - [Launcher](../../pipeline/launcher.md)
 - [Workfiles](../../pipeline/workfiles.md)
 - [Browser](../../pipeline/browser.md) and [Loader](../../pipeline/loader.md)

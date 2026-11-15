@@ -52,7 +52,7 @@ Columns can be sorted from their header, resized, reordered, and shown or hidden
 | **Code** | Yes | The project code. |
 | **Active** | Yes | Off for archived projects. |
 | **Library** | Yes | On for library projects. |
-| **State** | Yes | **Production**, or **Planning** for a planning project without a hierarchy. See [Planning projects](../../how-ayon-works/creating-a-project.md#planning-projects). |
+| **State** | Yes | **Production**, or **Planning** for a planning project without a hierarchy. See [Planning projects](../../how-ayon-works/creating-a-project.md#types-of-projects). |
 | **Created at**, **Updated at** | **Created at** only | Dates of the project record. |
 | Project attributes | **End date** only | One column per attribute with the project scope, such as **Start date**, **End date** or **Priority**. |
 

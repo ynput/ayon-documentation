@@ -1,7 +1,7 @@
 ---
 title: Production workflow
 description: "A typical production in AYON from the producer's side: setting up the project and its hierarchy, assigning people and statuses, planning, tracking progress, receiving versions with or without the pipeline, running reviews, giving feedback, and delivering, with the plan or addon each part needs."
-verified: 2026-10-19
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/articles/0358916-ayon-on-cloud-a-complete-studio-walkthrough
   - https://help.ayon.app/en/articles/3889290-create-versions-without-a-pipeline
@@ -12,7 +12,7 @@ sources:
 
 # Production workflow
 
-This page follows a producer or production manager through a typical project in AYON: from an empty project to delivered work. It shows what happens in which order, who does it, and where in the web app it happens. Every step links to the page that describes the tool in full. The artist's side of the same project is on [Artist workflow](artist-workflow.md).
+This page follows a producer or production manager through a typical project in AYON: from an empty project to delivered work. It shows what happens in which order, who does it, and where in the web app it happens. Every step links to the page that describes the tool in full. More on tracking, reviewing and delivering work is in the [Production tracking](../../production-tracking/index.md) section. The artist's side of the same project is on [Artist workflow](artist-workflow.md).
 
 Much of this works with the AYON server alone, without the desktop pipeline: a studio can track and review work that artists make in any application and upload to the web app. The pipeline adds published files on studio storage, loading between departments and delivery of the published files.
 
@@ -45,8 +45,8 @@ The same flow as a list:
 | Step | Where | Community | AYON Pro | AYON Studio |
 |---|---|---|---|---|
 | Projects, hierarchy, tasks, statuses, assignees | **Projects**, **Overview** | Included | Included | Included |
-| Task and folder templates | **Overview** | No | Included | Included |
-| Table grouping, complex filters and slicer | **Overview**, **Products** | No | Included | Included |
+| Entity templates of folders and tasks | **Overview** | No | Included | Included |
+| Group settings, advanced filters and slice types other than the hierarchy | **Overview**, **Products** | No | Included | Included |
 | Task progress, Tasks home, lists, inbox | Web app | Included | Included | Included |
 | Planning and scheduling | **Plan**, **Schedule** ([Planner](../../addons/production-tracking/planner/index.md)) | No | Paid addon | Included |
 | Reporting dashboards | **Reports** ([Reports](../../addons/production-tracking/reports/index.md)) | No | Paid addon | Included |
@@ -71,17 +71,17 @@ The full comparison is on [AYON plans](../plans.md).
 
 The project is created on the **Projects** tab of Home with **Create new project**, available to managers, administrators and users with the permission to create projects. Its name, code, anatomy preset and attributes such as frame rate, resolution and dates are described on [Creating a project](creating-a-project.md).
 
-Users with the user role see a project only when they have an access group in it. Access is granted in **Projects Settings** (`p+p`), on the **Project access** tab: each user gets one or more access groups, which decide what they can see, edit and publish in the project. Managers and administrators have access to every project. See [Users](../web-ui/studio/users.md).
+Users with the user role see a project only when they have an access group in it. Access is granted in **Projects Settings** (`p+p`), on the [Project access](../web-ui/project/project-access.md) tab: each user gets one or more access groups, which decide what they can see, edit and publish in the project. Managers and administrators have access to every project. See [Permissions](permissions.md).
 
 ## 2. Build the folder hierarchy and tasks
 
-The project's **Overview** page is the spreadsheet where the hierarchy is built and maintained. See [Project overview](../web-ui/production-tracking/overview.md).
+The project's **Overview** page is the spreadsheet where the hierarchy is built and maintained. See [Project overview](../web-ui/production-tracking/overview.md). The hierarchy can also come from a production tracker or from editorial publishing, see [Ways to build it](creating-a-project.md#ways-to-build-it).
 
 | Method | What it creates |
 |---|---|
 | **Create** menu (`N`, `M`, `T`) | One folder, a numbered sequence of folders (for example `sh010` to `sh200`), or a task in the selected folder. Names are generated from the labels by the project's naming rules. |
-| **Import CSV** | A whole hierarchy of folders and tasks from a spreadsheet, with folder types and task types per row. See [Data import](../web-ui/dialogs/import-csv.md). |
-| Entity templates | A stored set of folders and tasks, for example all the tasks of a character asset, reused for every new asset. See [hierarchy templates](../../addons/production-tracking/power-pack/index.md#hierarchy-templates) of the Power Features addon. |
+| **Import** (under **Import / Export**) | A whole hierarchy of folders and tasks from a CSV or Excel file, with folder types and task types per row. See [Import CSV](../web-ui/dialogs/import-csv.md). |
+| Entity templates | A stored set of folders and tasks, for example all the tasks of a character asset, reused for every new asset. A Power feature, see [Entity templates](creating-a-project.md#entity-templates). |
 
 Folder types (asset, sequence, shot, and others) and task types (modeling, animation, compositing, and others) come from the project anatomy. Attributes such as frame range or resolution are inherited from the parent folder unless a folder or task has its own value, which the Overview shows in gray when inherited.
 
@@ -137,21 +137,6 @@ Uploading in the web app is the way to run AYON as a tracking and review platfor
 
 ## 7. Review
 
-```mermaid
-sequenceDiagram
-  participant A as Artist
-  participant S as AYON server
-  participant R as Reviewer
-  A->>S: New version with reviewable
-  S->>R: Inbox message
-  R->>S: Comment, annotation, status
-  S->>A: Inbox message
-  A->>S: Next version
-  R->>S: Approved
-```
-
-In words:
-
 1. The artist publishes or uploads a version with a reviewable.
 2. The reviewer is notified in the inbox.
 3. The reviewer comments, annotates and changes the status.
@@ -162,7 +147,7 @@ There are two ways to review.
 
 | Way | Where | Suited to |
 |---|---|---|
-| Single review | The viewer, opened with `Space` or from a thumbnail on Tasks home, Task progress, **Overview**, **Products** or **Lists**. It plays the reviewables of a version next to its activity feed, switches between versions of the product and compares them at the same frame. See [Reviewables](../../production-tracking/reviewables.md). | A supervisor checking one submission |
+| Single review | The viewer, opened with `Spacebar` or from a thumbnail on Tasks home, Task progress, **Overview**, **Products** or **Lists**. It plays the reviewables of a version next to its activity feed, switches between versions of the product and compares them at the same frame. See [Reviewables](../../production-tracking/reviewables.md). | A supervisor checking one submission |
 | Review session | The **Review** tab, with the [Review addon](../../addons/production-tracking/review/index.md). A session is a playlist of versions, made from a selection of folders, tasks or versions, or from a list. | Dailies, team reviews, client reviews |
 
 A review session can be played by one person or synchronized between several people, with one presenter controlling playback for everyone. Temporary sessions are discarded after an hour; saved sessions are kept as lists of the project. External people take part as guests:
@@ -186,7 +171,7 @@ Feedback lives in the [activity feed](../web-ui/details-panel.md) of the version
 | Mention | `@` notifies a user or a team, `@@` links a version, `@@@` links a task. |
 | Frame link and annotation | Ties a note to a frame or a frame range; annotations draw on the frame. |
 | Checklist | A to-do list inside a comment, which the artist ticks off. |
-| Comment category | Limits who sees a comment, for example notes meant for the internal team only. Needs the [Power Pack addon](../../addons/production-tracking/power-pack/index.md). |
+| Comment category | Limits who sees a comment, for example notes meant for the internal team only. A [Power feature](../../production-tracking/power-features.md). |
 | Status | The version and the task each have a status. Setting the version to **Approved** or back to **In progress**, and the task to **Approved** or a status for more work, is how the decision is recorded. |
 
 Lists help to organize the feedback rounds: a list of the shots for tomorrow's dailies, a list of client picks, or a list of versions to deliver. A list can be turned into a review session.
@@ -202,6 +187,7 @@ Delivery packages approved work for a client or a vendor. It works on versions p
 
 ## Related
 
+- [Production tracking](../../production-tracking/index.md)
 - [Upload version](../web-ui/dialogs/upload-version.md)
 - [Creating a project](creating-a-project.md)
 - [Project overview](../web-ui/production-tracking/overview.md)

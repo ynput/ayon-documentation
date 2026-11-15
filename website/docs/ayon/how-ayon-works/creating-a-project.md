@@ -1,156 +1,122 @@
 ---
 title: Creating a project
-description: "What happens on the AYON server when a project is created: the anatomy preset that is copied into the project, the records and types that are created, the users who get access, and what to configure afterward."
-verified: 2026-10-19
+description: "Projects in AYON: the project types (production, planning, library), creating a project and its name, code and label, the anatomy and anatomy presets, the project attributes, building the project hierarchy (in the web app, with Import CSV, by syncing a production tracker, or by editorial publishing from the Tray Publisher, Hiero, Resolve or Flame), web actions on projects, folders and tasks, what to configure afterward, and entity templates with the Power Pack."
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/help/articles/4902206-managing-projects
   - https://help.ayon.app/en/help/articles/3815114-project-anatomy
   - https://help.ayon.app/en/help/articles/2635883-user-permissions-and-project-access-groups
-  - https://help.ayon.app/en/help/articles/0358916-ayon-on-cloud-a-complete-studio-walkthrough
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectManagerPage/NewProjectDialog/NewProject.jsx
+  - https://github.com/ynput/ayon-backend/blob/develop/api/projects/projects.py
 ---
 
 # Creating a project
 
-All production data in AYON lives in a project. Creating one does more than add a row to the project list: the server copies an anatomy into the project, creates the project's own database tables and type lists, fills its attributes, and gives access to the users who have default access groups. This page describes that process, what exists when it is done, and what is usually configured next. The dialog itself and the pages mentioned here are described in their reference pages, linked below.
+All production data in AYON lives in a project: its folders and tasks, everything published to it, its own anatomy and its own settings. This page explains the kinds of projects, how a project is created and set up, and the ways its folders and tasks are filled in. The dialog and the pages mentioned here are described on their reference pages, linked below.
 
-## The sequence
+## Types of projects
 
-```mermaid
-sequenceDiagram
-    participant U as Admin
-    participant W as Web app
-    participant S as AYON server
-    participant D as Database
-    U->>W: Create new project
-    W->>S: Load anatomy preset
-    S-->>W: Preset values
-    U->>W: Name, code, anatomy edits
-    W->>S: Create project request
-    S->>S: Check permission and unique name
-    S->>D: Project record and tables
-    S->>D: Types, statuses, tags, link types
-    S->>D: Access groups for default users
-    S-->>W: Created
-    S->>S: entity.project.created event
-    W->>U: Opens project anatomy
-```
-
-Plain-text equivalent:
-
-1. **Create new project** on the **Projects** tab of the home page (`/dashboard/projects`), or the add button of a project list, opens the dialog **Create a new project**.
-2. The web app selects the primary anatomy preset (or **AYON default** when no preset is primary) and loads its values into the anatomy editor of the dialog.
-3. The admin enters the project label, name and code, can switch to another preset and can edit any anatomy value for this project.
-4. **Create Project** (or `Ctrl+Enter` / `Shift+Enter`) sends the name, code, label, library flag and the complete edited anatomy to the server.
-5. The server checks that the user may create projects and that no project already uses the name or the code.
-6. In one database transaction the server creates the project record, the project's own database schema, the folder types, task types, statuses, tags and link types, and assigns the project to every user with default access groups.
-7. The server emits the `entity.project.created` event, which services and addons can react to (see [Event Viewer](../web-ui/event-viewer.md)).
-8. The web app opens the **Anatomy** page of the new project (`/manageProjects/anatomy?project=...`).
-
-## Who can create a project
-
-| User | Can create projects |
-|---|---|
-| Admin, manager, service user | Yes |
-| User | Only when one of the user's **Default projects access** groups has **Create projects** in its studio permissions |
-| Guest | No |
-
-The **Create new project** button is shown only to users who can create projects. The server repeats the check on the request. See [Permissions](permissions.md) for why the default access groups decide studio-level permissions.
-
-## Name, code and label
-
-| Value | Rules in the dialog | Rules on the server | Used for |
-|---|---|---|---|
-| **Project label** | Required. Typing the label suggests the name. | Optional. No single quote or semicolon. | Display in the web app. |
-| **Project name** | Required, at least 3 characters, letters, digits and `_`, not starting or ending with `_`. Spaces typed in the field become `_`. | Letters, digits and `_`. Unique, ignoring upper and lower case. | The identifier of the project in the API, in the database schema name (`project_` followed by the name) and in the `{project[name]}` template key, which the default work and publish directories start with. |
-| **Project code** | Required, at most 10 characters, same character rules as the name. Suggested from the name. | Letters, digits and `_`. Unique among projects, ignoring upper and lower case. | The `{project[code]}` template key, which the default work and publish file names start with. |
-
-The code suggestion uses the regular expression **Project Code Regex** in the **Project Options** of the **Global** server settings (default `^.{0,3}`, the first three characters of the name). The tooltip of the code field shows the expression. A code typed by hand is kept when the name changes.
-
-## The anatomy preset becomes the project's own anatomy
-
-An anatomy preset is a template stored in **Studio settings / Anatomy presets**. The dialog lists **AYON default** (the built-in anatomy), every stored preset and marks the primary one with `(primary)`. What the server receives is not the preset name but the full anatomy as shown in the editor, including the edits made in the dialog.
-
-The server converts that anatomy into project data and stores it on the project. From then on the project has its own copy:
-
-- Later changes to the preset do not reach the project. Changing the primary preset does not change existing projects either.
-- Changes to the project anatomy (on the project's **Anatomy** page) do not change the preset.
-- Two projects created from the same preset are independent of each other.
-
-A request through the API can also name a preset (`anatomyPreset`) or send no anatomy at all; the server then uses the named preset or the primary preset.
-
-## What is created
-
-| Item | Where it comes from | Where it is seen afterward |
+| Type | What it is for | Set with |
 |---|---|---|
-| Project record | Name, code, label, library flag, color | **Projects** tab, project details panel |
-| Project database schema | Created empty, with the tables for folders, tasks, products, versions, representations, workfiles, thumbnails, activities and the project's access group overrides | Not visible; the schema is named `project_` followed by the project name |
-| Roots | **Roots** of the anatomy, one path per platform | Project **Anatomy** page; the **Roots** page of the project for per-site paths |
-| Templates | **Templates** of the anatomy: work, publish, hero, delivery, staging and others, plus version and frame padding and formats | Project **Anatomy** page |
-| Entity naming | **Entity Naming** of the anatomy | Name suggestions when folders and tasks are created |
-| Folder types, task types, statuses, tags | The anatomy lists. The project must have at least one folder type, one task type and one status. | Project **Anatomy** page, and the type and status pickers of the project |
-| Link types | The anatomy list. Default link types missing from it (`generative` and `reference` between versions, `breakdown` and `template` between folders) are added. | Project **Anatomy** page, links manager |
-| Product types | **Product Types** of the anatomy (the differences from the defaults) | Project **Anatomy** page |
-| Project attributes | The **Attributes** section of the anatomy | Project details panel on the **Projects** tab |
-| Access for users | **Default projects access** of active users with the **User** level | **Project access** page |
+| Production | A normal project with a folder hierarchy, tasks and published data. The default. | **Project state** **Production** in the create dialog |
+| Planning | A project that is not started yet: it appears in the project lists with the state **Planning** and can carry attributes and a thumbnail, but it has no anatomy editor and holds no hierarchy. Creating a production project with the same name later turns it into a full project. | **Project state** **Planning** |
+| Library | A production project that stores reusable data, such as assets, which other projects load from. | The **Library project** switch, offered for production projects |
 
-### Project attributes
+## Creating a project
 
-The **Attributes** section of the anatomy editor lists every attribute whose scope includes projects, such as `fps`, `resolutionWidth`, `frameStart` or `startDate`, with the defaults of the attribute definitions (see [Attributes](../web-ui/studio/attributes.md)). The values in the dialog become the project's own attribute values. Because folders and tasks inherit missing values from the project, these values apply to the whole hierarchy until a folder or task sets its own (see [AYON entities](entities.md)). After creation, project attributes are edited in the project details panel; the **Attributes** section of the project anatomy edits the same values.
+**Create new project** on the [Projects](../web-ui/home/projects.md) tab of Home, or the add button of a project list, opens the **Create a new project** dialog.
 
-### Access for users with default access groups
+1. Enter the **Project label**; the name and code are suggested from it.
+2. Check the **Project name** and **Project code**.
+3. Choose the anatomy preset, and change any value of the anatomy for this project, see [Project configuration](#project-configuration).
+4. **Create Project**, or `Enter`, creates the project and opens its **Anatomy** page. `Shift+Enter` creates it and keeps the dialog open for the next one.
 
-While the project is created, the server looks up every active user whose **Default projects access** is not empty. For each user with the **User** level, it adds the new project with those access groups to the user's project access and updates the user's open sessions, so the project appears without signing in again. Admins, managers and service users are skipped because they see every project anyway. Inactive users are skipped.
+| Value | Rules | Used for |
+|---|---|---|
+| **Project label** | Required in the dialog. No single quote or semicolon. | The name shown in the web app. |
+| **Project name** | At least 3 characters: letters, digits and `_`, not starting or ending with `_`; spaces become `_`. Unique, ignoring upper and lower case. | The identifier of the project, and the `{project[name]}` key that the default work and publish directories start with. |
+| **Project code** | At most 10 characters, with the same rules. Unique among projects. Suggested from the name with the **Project Code Regex** of the [Global](../web-ui/studio/global.md) settings (by default the first three characters). | The `{project[code]}` key that the default file names start with. |
 
-Default access groups are applied only at this moment. Changing a user's **Default projects access** later does not change existing projects, and a user created later gets no access to existing projects. API calls can turn the assignment off with `assignUsers: false`.
+Admins, managers and service users can create projects. A user with the **User** access level can when one of their **Default projects access** groups has **Create projects**; the button is shown only to those who can. See [Permissions](permissions.md).
 
-## What is not created
+A new project starts empty: no folders, no tasks and nothing on disk. Users with the **User** level get access to it when they have **Default projects access** groups: those groups are assigned in the new project at the moment it is created, and are not applied to existing projects later. Other users are added on the [Project access](../web-ui/project/project-access.md) page.
 
-| Not created | Consequence |
-|---|---|
-| Folders, tasks and other entities | The project starts empty. The hierarchy is built in the web app, imported, created by editorial publishing, or synced by a production tracker addon. |
-| Directories on disk | Nothing is written to the studio storage. Work directories are created when an application is launched in a task, publish directories when files are published, and an optional skeleton by the web action **Create Project Folder Structure** from the Core setting **Project folder structure** (see [Storage](storage.md)). |
-| Project bundle | The project uses the studio Production and Staging bundles (see [Bundles](bundles.md)). |
-| Project addon settings | The project has no overrides and reads the studio settings of the addon versions in the active bundle. |
-| Project access group overrides | The project uses the studio definitions of the access groups. |
-| Site root paths | Every workstation uses the root paths of the anatomy until a per-site path is set on the project's **Roots** page. |
+## Project configuration
 
-## Planning projects
+The structure and conventions of a project are its anatomy: roots, path templates, folder types, task types, statuses, tags, link types, entity naming and product types. A new project takes its anatomy from an **anatomy preset**, a template kept on the [Anatomy presets](../web-ui/studio/anatomy-presets.md) tab of the studio settings. The dialog starts with the primary preset, marked `(primary)`, or the built-in **AYON default**.
 
-The dialog has a **Project state** of **Production** (the default) or **Planning**. A planning project is a project record without the project's database tables: it appears in project lists with the state **Planning**, can carry attributes and a thumbnail, and gets the access groups of default users, but it holds no hierarchy. The dialog shows no anatomy editor for it, so the server stores the primary preset (or the built-in anatomy) with the record. The **Library project** switch is offered for production projects only.
+The preset is copied into the project, including the changes made in the dialog. From then on the project has its own anatomy:
 
-When a project with the same name is created again in the **Production** state, the server turns the planning project into a full project: it creates the database tables and the type lists, applies the anatomy sent with the request, and emits `entity.project.created`.
+- later changes to the preset, or a new primary preset, do not reach existing projects;
+- changes on the project's [Anatomy](../web-ui/project/anatomy.md) page do not change the preset;
+- two projects made from the same preset are independent.
+
+:::caution Changing the anatomy during production
+Roots, templates and entity naming decide where files go and how entities are named, so they are best set before production starts. Changing them later applies to new work files and publishes only; existing files are not moved or renamed. Published versions often keep working, because their records store rootless paths and the template data they were made with, but that is not guaranteed for every tool and workflow.
+:::
+
+Addon settings are not part of the anatomy. A new project reads the studio settings of the addons until it gets its own overrides on the [Project settings](../web-ui/project/project-settings.md) tab, see [Settings](settings.md).
+
+## Project attributes
+
+The **Attributes** section of the anatomy editor holds the project's values of every attribute that exists on projects, such as `fps`, `resolutionWidth`, `frameStart` or `startDate`, starting from the defaults of the [attribute definitions](../web-ui/studio/attributes.md). Folders and tasks take a value from the project when they have none of their own, so these values apply to the whole hierarchy until a folder or task sets its own, see [Attributes and inheritance](entities.md#attributes-and-inheritance). After creation they are edited in the project's details on the Projects tab, or in the **Attributes** section of the project anatomy.
+
+## Project hierarchy
+
+### Ways to build it
+
+The folders and tasks of a project are created in one or more of these ways:
+
+| Way | How | Described in |
+|---|---|---|
+| In the web app | **Create** on the project's **Overview** page adds folders and tasks, one by one or several at once. | [Project overview](../web-ui/production-tracking/overview.md) |
+| From a spreadsheet | **Import** under **Import / Export** on the Overview reads a CSV or Excel file of folders and tasks. | [Import CSV](../web-ui/dialogs/import-csv.md) |
+| From a production tracker | The ftrack, Flow (ShotGrid), Kitsu and Airtable addons sync the hierarchy of a project in that tracker into AYON. | [ftrack](../../addons/third-party-trackers/ftrack/index.md), [Flow (ShotGrid)](../../addons/third-party-trackers/flow-shotgrid/index.md), [Kitsu](../../addons/third-party-trackers/kitsu/index.md), [Airtable](../../addons/third-party-trackers/airtable/index.md) |
+| From an edit | Editorial publishing creates the shots of an edit, with their plates, as it publishes: from an edit file with the Tray Publisher, or from a timeline in Hiero, Resolve or Flame. | [Tray Publisher](../../addons/essentials/traypublisher/index.md), [Hiero](../../addons/compositing-editorial-applications/hiero/index.md), [Resolve](../../addons/compositing-editorial-applications/resolve/index.md), [Flame](../../addons/compositing-editorial-applications/flame/index.md) |
+
+### Actions on projects, folders and tasks
+
+Addons add [web actions](../../developer/addon-development/server.md#web-actions) to the project, its folders and its tasks, shown in the details panel for the selected entities. For example, the Core addon's **Create Project Folder Structure** creates the directories of the Core setting **Project folder structure** under the project root on disk, through the AYON launcher of the user who runs it; see [Storage](storage.md#when-directories-and-files-are-written).
 
 ## What to configure afterward
 
 | Area | Where | Why |
 |---|---|---|
-| Roots | Project **Anatomy**, **Roots** | The default root `work` points to example paths (`C:/projects`, `/mnt/share/projects`, `/Volumes/projects`). Every workstation needs paths that reach the studio storage. Change roots before production starts: existing work files and publishes are found through them. |
-| Templates, types, statuses | Project **Anatomy** | Adjust the copy taken from the preset. A template name selected in project settings must exist in this anatomy. |
-| Project attributes | Project details panel | Frame range, resolution, frame rate, dates. |
-| Project settings | **Project settings** (`/manageProjects/projectSettings`) | Project overrides of addon settings, such as Core profiles or application variants (see [Settings](settings.md)). |
-| Access | **Project access** (`/manageProjects/projectAccess`) | Users who did not receive access through default access groups. |
-| Access group overrides | **Project permissions** (`/manageProjects/permissions`) | Project-specific changes to an access group. |
-| Project bundle | Lock button of **Project settings** | Only when the project must stay on fixed addon versions (see [Project bundles](../web-ui/project/project-bundle.md)). |
-| Folders on disk | Web action **Create Project Folder Structure** | Creates the directories defined in the Core setting **Project folder structure** under the project root. |
+| Roots | Project **Anatomy**, **Roots** | The default root `work` points to example paths. Every workstation needs paths that reach the studio storage. Change roots before production starts, because existing files are found through them. |
+| Templates, types, statuses | Project **Anatomy** | Adjust the copy taken from the preset. |
+| Project attributes | Project details on the Projects tab | Frame range, resolution, frame rate, dates. |
+| Project settings | [Project settings](../web-ui/project/project-settings.md) | Project overrides of addon settings, such as Core profiles or application variants. |
+| Access | [Project access](../web-ui/project/project-access.md) | Users who did not get access through default access groups. |
+| Access group overrides | [Project permissions](../web-ui/project/project-permissions.md) | Project-specific changes to an access group. |
+| Folders on disk | Web action **Create Project Folder Structure** | Creates the skeleton of directories under the project root. |
+
+A new project works with the studio's Production bundle, and most projects stay on it. A [project bundle](../web-ui/project/project-bundle.md) is a later choice, not a setup step: for example, when a long-running production runs next to smaller ones and the studio is about to update its bundle, locking the long-running project first keeps it on the versions it was tested with.
+
+## Power features
+
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+
+### Entity templates
+
+An entity template is a stored tree of folders and tasks, for the studio or for one project, that is applied to build or extend a hierarchy at once. **Apply template** on the project or on folders creates the tree, with options for which fields to apply and what to do with entities that already exist. **Create template** saves selected folders as a new template. See [Hierarchy templates](../../addons/production-tracking/power-pack/index.md#hierarchy-templates).
 
 ## Where to look
 
 | Question | Place |
 |---|---|
-| Did the creation run, and who created the project? | **Event Viewer**, topic `entity.project.created` |
+| Who created the project, and when? | **Event Viewer**, topic `entity.project.created` |
 | Which anatomy does the project use? | The project's **Anatomy** page (its own copy, not the preset) |
 | Which users got access? | **Project access** page of the project |
-| Why can a user not see the new project? | The user has the **User** level and no access group in the project. Default access groups were empty, the user was inactive, or the user was created after the project. |
+| Why can a user not see the new project? | The user has the **User** level and no access group in the project: their default access groups were empty, the user was inactive, or the user was created after the project. |
 | Why can a user not create projects? | None of the user's **Default projects access** groups has **Create projects**. |
 
 ## Related
 
-- [Users](../web-ui/studio/users.md)
+- [Projects](../web-ui/home/projects.md)
+- [Anatomy](../web-ui/project/anatomy.md)
+- [Anatomy presets](../web-ui/studio/anatomy-presets.md)
+- [AYON entities](entities.md)
 - [Permissions](permissions.md)
 - [Storage](storage.md)
-- [Bundles](bundles.md)
-- [Attributes](../web-ui/studio/attributes.md)
-- [AYON entities](entities.md)
-- [Naming conventions](../../pipeline/naming-conventions.md)
 - [Settings](settings.md)
-- [Project bundles](../web-ui/project/project-bundle.md)
+- [Naming conventions](../../pipeline/naming-conventions.md)

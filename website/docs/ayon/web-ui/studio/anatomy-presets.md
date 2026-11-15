@@ -22,7 +22,7 @@ sources:
 
 ![The Anatomy presets tab: the preset list with AYON default (read only), the primary preset My Default and SG, the toolbar, and the Statuses section of the anatomy editor expanded](../../assets/web-ui/studio-anatomy-presets/page.webp)
 
-An anatomy preset is a stored template of a project anatomy: roots, path templates, entity naming, project attributes, and the lists of folder types, task types, link types, statuses, tags and product type appearance. The **Anatomy presets** tab manages these templates. A new project copies a preset into its own anatomy; after that, the project and the preset are independent (see [Creating a project](../../how-ayon-works/creating-a-project.md#the-anatomy-preset-becomes-the-projects-own-anatomy)). Each project then edits its own copy on its [Anatomy](../project/anatomy.md) tab. The bare path `/settings` also opens this tab.
+An anatomy preset is a stored template of a project anatomy: roots, path templates, entity naming, project attributes, and the lists of folder types, task types, link types, statuses, tags and product type appearance. The **Anatomy presets** tab manages these templates. A new project copies a preset into its own anatomy; after that, the project and the preset are independent (see [Creating a project](../../how-ayon-works/creating-a-project.md#project-configuration)). Each project then edits its own copy on its [Anatomy](../project/anatomy.md) tab. The bare path `/settings` also opens this tab.
 
 ## Presets and editor
 

@@ -65,7 +65,7 @@ When **Login Page Message**, **Login Background** or **Studio Logo** is empty, t
 
 | Field | Default | What it does |
 |---|---|---|
-| **Project Code Regex** | `^.{0,3}` | Regular expression that creates the suggested project code from the project name in the **Create a new project** dialog. The default takes the first three characters. Any signed-in user can read it. See [Creating a project](../../how-ayon-works/creating-a-project.md#name-code-and-label). |
+| **Project Code Regex** | `^.{0,3}` | Regular expression that creates the suggested project code from the project name in the **Create a new project** dialog. The default takes the first three characters. Any signed-in user can read it. See [Creating a project](../../how-ayon-works/creating-a-project.md#creating-a-project). |
 
 ### Changelog settings
 
