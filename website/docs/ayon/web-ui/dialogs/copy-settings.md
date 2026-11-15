@@ -29,7 +29,7 @@ sources:
 
 ![The Copy production settings from... dialog on Studio settings, with the staging bundle as source, and the changes of 3rd Party Distribution and Applications listed with their current and new values](../../assets/web-ui/copy-settings/settings-copy.webp)
 
-Addon settings are stored per addon version and variant, so a new addon version does not see the values of the previous one (see [Settings scopes and storage](../../backend/settings/index.md)). The web app has two dialogs that copy values across addon versions, variants, bundles and projects: the [settings copy dialog](#settings-copy-dialog) of [Studio settings](../studio/studio-settings.md) and [Project settings](../project/project-settings.md) compares the values one by one and loads the chosen ones into the editor, and the [bundle dialog](#bundle-state-dialog) of [Bundles](../studio/bundles.md) copies all settings of the shared addons from one bundle to another at once.
+Addon settings are stored per addon version and variant, so a new addon version does not see the values of the previous one (see [Settings](../../how-ayon-works/settings.md)). The web app has two dialogs that copy values across addon versions, variants, bundles and projects: the [settings copy dialog](#settings-copy-dialog) of [Studio settings](../studio/studio-settings.md) and [Project settings](../project/project-settings.md) compares the values one by one and loads the chosen ones into the editor, and the [bundle dialog](#bundle-state-dialog) of [Bundles](../studio/bundles.md) copies all settings of the shared addons from one bundle to another at once.
 
 ## Dialogs
 
@@ -62,7 +62,7 @@ Toolbar:
 | **Current value** | The value in the editor now. |
 | **New value** | The value that would be copied. |
 
-Values are colored by the override level they come from (see [Override states in the editor](../../backend/settings/index.md#override-states-in-the-editor)). Booleans read `true` or `false`, simple lists `[ a, b ]`, and lists of named items show their names. Other values read **no value**, **empty list**, **[ complex list ]** or **[ complex object ]**; hovering a complex value shows it as JSON.
+Values are colored by the override level they come from (see [Override states in the editor](../../how-ayon-works/settings.md#override-states-in-the-editor)). Booleans read `true` or `false`, simple lists `[ a, b ]`, and lists of named items show their names. Other values read **no value**, **empty list**, **[ complex list ]** or **[ complex object ]**; hovering a complex value shows it as JSON.
 
 **Copy selected settings** loads the switched-on changes into the editor as unsaved changes, closes the dialog and shows **Settings copied**. It is disabled when no change is switched on. Nothing is stored until **Save Changes**; **Clear Changes** discards the copy. Where the copied value comes from a lower level (a default copied into a studio field, or a studio or default value copied into a project field), the target override is removed on save, and the changes list marks the path `(unpin)`.
 
@@ -166,7 +166,7 @@ The settings copy dialog only fills the editor; saving needs the right to save t
 
 ## Related
 
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Studio settings](../studio/studio-settings.md)
 - [Project settings](../project/project-settings.md)
 - [Bundles](../studio/bundles.md)

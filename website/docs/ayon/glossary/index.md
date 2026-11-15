@@ -8,7 +8,7 @@ sources:
 
 # Glossary
 
-The terms below are written as the AYON web app and the AYON server use them. Entity terms (project, folder, task, product, version, representation, workfile) are explained with their relations on the [data model](../backend/data-model/index.md) page.
+The terms below are written as the AYON web app and the AYON server use them. Entity terms (project, folder, task, product, version, representation, workfile) are explained with their relations on the [data model](../how-ayon-works/entities.md) page.
 
 | Term | Definition |
 |---|---|
@@ -49,7 +49,7 @@ The terms below are written as the AYON web app and the AYON server use them. En
 | **Product type** | The type stored on a product. It equals the product base type unless a studio defines its own type for a base type. It does not decide the file format. See [Product types](../../pipeline/product-types.md). |
 | **Production** | The bundle state of the stable bundle for daily work, and the default pipeline mode of the launcher. |
 | **Project** | The top entity of a production. It owns the folder hierarchy, the tasks, products and versions, the anatomy and the project settings. |
-| **Project bundle** | A bundle frozen for one project, with its own launcher version, dependency packages and addon versions. See [Project bundles](../web-ui/project/project-settings.md). |
+| **Project bundle** | A bundle frozen for one project, with its own launcher version, dependency packages and addon versions. See [Project bundles](../web-ui/project/project-bundle.md). |
 | **Publish** | Exporting data from a work scene into products with versioned, immutable files that other users can load. See [Publishing](../../pipeline/publishing.md). |
 | **Publish instance** | One entry that defines a publish output of a workfile. Instances are stored in the workfile, so later publishes produce consistent outputs. |
 | **Publisher** | The tool in which creators are used to define instances and in which a publish runs. See [Publisher](../../pipeline/publisher.md). |
@@ -76,7 +76,7 @@ The terms below are written as the AYON web app and the AYON server use them. En
 
 ## Related
 
-- [Data model](../backend/data-model/index.md)
+- [AYON entities](../how-ayon-works/entities.md)
 - [Product types](../../pipeline/product-types.md)
 - [Naming conventions](../../pipeline/naming-conventions.md)
 - [AYON plans](../plans.md)

@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Nuke addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The settings model is large: lists of profiles are described by the structure of one entry, and the knob structure that several of them share is described once in [Knob definitions](#knob-definitions).
+The settings of the [Nuke addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The settings model is large: lists of profiles are described by the structure of one entry, and the knob structure that several of them share is described once in [Knob definitions](#knob-definitions).
 
 ## General
 

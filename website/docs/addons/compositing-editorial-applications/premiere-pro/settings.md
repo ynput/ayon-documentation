@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Premiere Pro addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The addon has a single setting.
+The settings of the [Premiere Pro addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The addon has a single setting.
 
 ## Extension installation
 

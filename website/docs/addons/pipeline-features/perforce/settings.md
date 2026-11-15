@@ -16,7 +16,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Perforce addon](index.md), with the default values the addon ships with. The addon has not been released yet; the values are those of the default branch. All settings are studio settings that can be overridden per project. The addon has no site settings: the Perforce user name and password are entered in the AYON tray on each machine. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Perforce addon](index.md), with the default values the addon ships with. The addon has not been released yet; the values are those of the default branch. All settings are studio settings that can be overridden per project. The addon has no site settings: the Perforce user name and password are entered in the AYON tray on each machine. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 The addon is disabled by default.
 

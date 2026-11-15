@@ -68,5 +68,5 @@ The [project list](../project-list.md) on the left selects the project the tabs 
 - [Project list](../project-list.md)
 - [Creating a project](../../how-ayon-works/creating-a-project.md)
 - [Permissions (how AYON works)](../../how-ayon-works/permissions.md)
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Studio configuration](../studio/index.md)

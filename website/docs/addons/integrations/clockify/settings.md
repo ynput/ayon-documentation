@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Clockify addon](index.md). The addon has one setting, available at studio scope only. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Clockify addon](index.md). The addon has one setting, available at studio scope only. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 ## Workspace
 

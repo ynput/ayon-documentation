@@ -61,7 +61,7 @@ The anatomy holds named templates in groups (**Work**, **Publish**, **Hero**, **
 | Hero versions | **Tools / Publish / Hero template name profiles** | Same as above | **Hero** | `default` |
 | Temporary publish files | **Tools / Publish / Custom Staging Dir Profiles** | Hosts, task types, task names, product base types, product names | **Staging directories** | A temporary directory |
 
-Profiles are addon settings, so they follow the settings scopes: studio values, project overrides and the addon version of the active bundle (see [Settings scopes and storage](../backend/settings/index.md)). Templates are part of the project anatomy. A profile that names a template missing from the project anatomy makes the save or publish fail for that context. Because the studio settings are edited against the primary anatomy preset and project settings against the project anatomy, a template name has to exist in the anatomy of every project that uses the profile.
+Profiles are addon settings, so they follow the settings scopes: studio values, project overrides and the addon version of the active bundle (see [Settings](settings.md)). Templates are part of the project anatomy. A profile that names a template missing from the project anatomy makes the save or publish fail for that context. Because the studio settings are edited against the primary anatomy preset and project settings against the project anatomy, a template name has to exist in the anatomy of every project that uses the profile.
 
 The profiles are described in [Core addon settings](../../addons/essentials/core/settings.md); the default templates and every key in [Naming conventions](../../pipeline/naming-conventions.md).
 
@@ -111,7 +111,7 @@ Without the SiteSync addon, every workstation reads and writes the same storage 
 - [SiteSync addon](../../addons/pipeline-features/sitesync/index.md)
 - [On-premise deployment](../deployment/on-premise.md)
 - [Creating a project](creating-a-project.md)
-- [Settings scopes and storage](../backend/settings/index.md)
-- [Data model](../backend/data-model/index.md)
+- [Settings](settings.md)
+- [AYON entities](entities.md)
 - [Publishing](../../pipeline/publishing.md)
 - [Workfiles](../../pipeline/workfiles.md)

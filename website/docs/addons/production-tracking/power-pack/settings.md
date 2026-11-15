@@ -18,7 +18,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Power Features addon](index.md), with the default values it ships with. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). Most areas are studio settings that can be overridden per project; the exceptions are noted in the tables.
+The settings of the [Power Features addon](index.md), with the default values it ships with. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). Most areas are studio settings that can be overridden per project; the exceptions are noted in the tables.
 
 ## Comment categories
 

@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Motionbuilder addon](index.md). The addon has a single settings area. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Motionbuilder addon](index.md). The addon has a single settings area. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 The addon has no validator or extractor settings. Behaviour such as validators is controlled by the settings of the core addon.
 

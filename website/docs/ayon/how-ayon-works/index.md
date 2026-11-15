@@ -15,6 +15,9 @@ This section explains what happens inside AYON when people use it: which parts t
 
 | Page | What it explains |
 |---|---|
+| [AYON entities](entities.md) | The entities on the server, from projects and folders to versions and representations, how they relate and are linked, and how attributes are inherited. |
+| [Settings](settings.md) | The settings scopes of addons, how they override each other, and how settings are stored per addon version and variant. |
+| [Site IDs](site-ids.md) | The ID of a workstation that ties site settings to a machine: how the launcher creates it and the server registers it. |
 | [Bundles](bundles.md) | What a bundle sets on the server and on workstations, the production, staging and dev variants, and the usual way an addon reaches production. |
 | [Addon services](services.md) | How the Services page, the AYON server and the AYON Service Host (ASH) start addon services as containers, and what happens when they stop. |
 | [Creating a project](creating-a-project.md) | What a new project receives from the anatomy preset, the access groups and the project attributes, and what to adjust afterwards. |
@@ -27,12 +30,10 @@ This section explains what happens inside AYON when people use it: which parts t
 |---|---|
 | [Artist workflow](artist-workflow.md) | From opening the AYON launcher to publishing a new version and receiving feedback. |
 | [Production workflow](production-workflow.md) | Setting up a project, planning and assigning work, tracking progress, reviewing and delivering. |
-| [Task pages](task-pages.md) | Home tasks, Task progress and the Overview: the question each one answers and which one to open. |
 
 ## Related
 
 - [Introduction to AYON](../introduction.md)
 - [Artist workstation setup](../workstation-setup.md)
-- [Data model](../backend/data-model/index.md) and [settings scopes](../backend/settings/index.md)
 - [Quick navigation and server layout](../web-ui/quick-navigation.md)
 - [Glossary](../glossary/index.md)

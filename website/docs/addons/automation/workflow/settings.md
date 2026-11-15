@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Workflow addon](index.md), with the default values it ships with. The simple actions are read from the project settings when the action is started in a project, and from the studio settings otherwise. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Workflow addon](index.md), with the default values it ships with. The simple actions are read from the project settings when the action is started in a project, and from the studio settings otherwise. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 ## Dispatch directory
 

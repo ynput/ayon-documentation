@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [SSO addon](index.md), with the default values the addon ships with. There is one section per provider, and each has an **Enabled** switch (default off). They are studio settings. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The server must be restarted after changing them.
+The settings of the [SSO addon](index.md), with the default values the addon ships with. There is one section per provider, and each has an **Enabled** switch (default off). They are studio settings. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The server must be restarted after changing them.
 
 Fields named **Client ID**, **Client Secret** and **Directory ID** hold the name of an AYON secret, not the value itself.
 

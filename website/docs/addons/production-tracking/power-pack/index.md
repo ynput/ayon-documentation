@@ -110,4 +110,4 @@ Pipeline release access, single sign-on and the reviewables transcoder are deliv
 ## Related
 
 - [Power Features settings](settings.md)
-- [Settings and scopes](../../../ayon/backend/settings/index.md) (planned)
+- [Settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned)

@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Slack addon](index.md), with the default values the addon ships with. They are read from the project settings during publishing, so the token and the profiles can differ per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Slack addon](index.md), with the default values the addon ships with. They are read from the project settings during publishing, so the token and the profiles can differ per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 ## Authentication
 

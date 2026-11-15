@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [SyncSketch addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The processor service reads the server configuration from the addon version it runs for, and the push action reads the sync options from the project settings.
+The settings of the [SyncSketch addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The processor service reads the server configuration from the addon version it runs for, and the push action reads the sync options from the project settings.
 
 ## SyncSketch server config
 

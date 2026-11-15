@@ -16,7 +16,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [AWS Deadline Cloud addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The addon has a single settings area and no site settings.
+The settings of the [AWS Deadline Cloud addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The addon has a single settings area and no site settings.
 
 ## Settings
 

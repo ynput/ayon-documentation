@@ -95,7 +95,7 @@ A request through the API can also name a preset (`anatomyPreset`) or send no an
 
 ### Project attributes
 
-The **Attributes** section of the anatomy editor lists every attribute whose scope includes projects, such as `fps`, `resolutionWidth`, `frameStart` or `startDate`, with the defaults of the attribute definitions (see [Attributes](../web-ui/studio/attributes.md)). The values in the dialog become the project's own attribute values. Because folders and tasks inherit missing values from the project, these values apply to the whole hierarchy until a folder or task sets its own (see [Data model](../backend/data-model/index.md)). After creation, project attributes are edited in the project details panel; the **Attributes** section of the project anatomy edits the same values.
+The **Attributes** section of the anatomy editor lists every attribute whose scope includes projects, such as `fps`, `resolutionWidth`, `frameStart` or `startDate`, with the defaults of the attribute definitions (see [Attributes](../web-ui/studio/attributes.md)). The values in the dialog become the project's own attribute values. Because folders and tasks inherit missing values from the project, these values apply to the whole hierarchy until a folder or task sets its own (see [AYON entities](entities.md)). After creation, project attributes are edited in the project details panel; the **Attributes** section of the project anatomy edits the same values.
 
 ### Access for users with default access groups
 
@@ -127,10 +127,10 @@ When a project with the same name is created again in the **Production** state, 
 | Roots | Project **Anatomy**, **Roots** | The default root `work` points to example paths (`C:/projects`, `/mnt/share/projects`, `/Volumes/projects`). Every workstation needs paths that reach the studio storage. Change roots before production starts: existing work files and publishes are found through them. |
 | Templates, types, statuses | Project **Anatomy** | Adjust the copy taken from the preset. A template name selected in project settings must exist in this anatomy. |
 | Project attributes | Project details panel | Frame range, resolution, frame rate, dates. |
-| Project settings | **Project settings** (`/manageProjects/projectSettings`) | Project overrides of addon settings, such as Core profiles or application variants (see [Settings scopes and storage](../backend/settings/index.md)). |
+| Project settings | **Project settings** (`/manageProjects/projectSettings`) | Project overrides of addon settings, such as Core profiles or application variants (see [Settings](settings.md)). |
 | Access | **Project access** (`/manageProjects/projectAccess`) | Users who did not receive access through default access groups. |
 | Access group overrides | **Project permissions** (`/manageProjects/permissions`) | Project-specific changes to an access group. |
-| Project bundle | Lock button of **Project settings** | Only when the project must stay on fixed addon versions (see [Project bundles](../web-ui/project/project-settings.md)). |
+| Project bundle | Lock button of **Project settings** | Only when the project must stay on fixed addon versions (see [Project bundles](../web-ui/project/project-bundle.md)). |
 | Folders on disk | Web action **Create Project Folder Structure** | Creates the directories defined in the Core setting **Project folder structure** under the project root. |
 
 ## Where to look
@@ -150,7 +150,7 @@ When a project with the same name is created again in the **Production** state, 
 - [Pipeline storage](pipeline-storage.md)
 - [Bundles](bundles.md)
 - [Attributes](../web-ui/studio/attributes.md)
-- [Data model](../backend/data-model/index.md)
+- [AYON entities](entities.md)
 - [Naming conventions](../../pipeline/naming-conventions.md)
-- [Settings scopes and storage](../backend/settings/index.md)
-- [Project bundles](../web-ui/project/project-settings.md)
+- [Settings](settings.md)
+- [Project bundles](../web-ui/project/project-bundle.md)

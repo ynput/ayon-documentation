@@ -21,7 +21,7 @@ sources:
 
 ![The Site settings tab for wing_it: the project list, the addon list with Deadline 0.7.3 selected, the site list below it showing No sites found, the empty editor with the search field, and the changes list with Clear Changes and Save Changes](../../assets/web-ui/site-settings/page.webp)
 
-The **Site settings** tab of the [Projects Manager](index.md) edits project site settings: overrides of an addon's settings for one workstation (site), one user and one project. Only fields the addon marks as site-capable appear, and their values apply on top of the studio and [project](project-settings.md) values. This tab is not the same as the studio-level [Site settings](../studio/site-settings.md) page, which edits a separate set of fields for every project; neither reads the other. Root paths per workstation are set on the [Roots](roots.md) tab. See [Settings scopes and storage](../../backend/settings/index.md#the-four-scopes) and [Site IDs](../../backend/settings/index.md#site-ids).
+The **Site settings** tab of the [Projects Manager](index.md) edits project site settings: overrides of an addon's settings for one workstation (site), one user and one project. Only fields the addon marks as site-capable appear, and their values apply on top of the studio and [project](project-settings.md) values. This tab is not the same as the studio-level [Site settings](../studio/site-settings.md) page, which edits a separate set of fields for every project; neither reads the other. Root paths per workstation are set on the [Roots](roots.md) tab. See [Settings](../../how-ayon-works/settings.md#the-four-scopes) and [Site IDs](../../how-ayon-works/site-ids.md).
 
 ## Site settings editor
 
@@ -29,7 +29,7 @@ The page has the [project list](../project-list.md) on the left, the addon list 
 
 | Area | Content |
 |---|---|
-| Addon list | Columns **Addon** and **Version**: the addons that have project site settings. There is no variant selector, bundle field or copy button on this tab. A coloured bar marks addons with overrides (see [override states](../../backend/settings/index.md#override-states-in-the-editor)). |
+| Addon list | Columns **Addon** and **Version**: the addons that have project site settings. There is no variant selector, bundle field or copy button on this tab. A coloured bar marks addons with overrides (see [override states](../../how-ayon-works/settings.md#override-states-in-the-editor)). |
 | Site list | Columns **Site ID** and **Platform**: the sites registered to the signed-in user. Several sites can be selected. **No sites found** when the user has no registered site. |
 | Editor | One panel per selected addon and selected site, with badges for the project, the site ID and the variant. Nothing is shown until a site is selected. |
 | Changes list | Unsaved changes with **Clear Changes** and **Save Changes**, as on the [Project settings](project-settings.md#changes-and-saving) tab. |
@@ -52,7 +52,7 @@ The first selected site is remembered in the browser and selected again the next
 
 ## Related
 
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Site settings (studio)](../studio/site-settings.md)
 - [Project settings](project-settings.md)
 - [Roots](roots.md)

@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Flow (ShotGrid) addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The settings page appears under the name **Shotgrid**.
+The settings of the [Flow (ShotGrid) addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The settings page appears under the name **Shotgrid**.
 
 ## Connection
 

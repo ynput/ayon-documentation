@@ -28,6 +28,9 @@ module.exports = {
             collapsed: true,
             link: { type: "doc", id: "ayon/how-ayon-works/index" },
             items: [
+                "ayon/how-ayon-works/entities",
+                "ayon/how-ayon-works/settings",
+                "ayon/how-ayon-works/site-ids",
                 "ayon/how-ayon-works/bundles",
                 "ayon/how-ayon-works/services",
                 "ayon/how-ayon-works/creating-a-project",
@@ -35,7 +38,6 @@ module.exports = {
                 "ayon/how-ayon-works/permissions",
                 "ayon/how-ayon-works/artist-workflow",
                 "ayon/how-ayon-works/production-workflow",
-                "ayon/how-ayon-works/task-pages",
             ],
         },
         // Web UI mirrors the web app 1:1: one page per tab, grouped as the app groups them,
@@ -98,6 +100,7 @@ module.exports = {
                     items: [
                         { type: "doc", id: "ayon/web-ui/project/anatomy", label: "Anatomy" },
                         { type: "doc", id: "ayon/web-ui/project/project-settings", label: "Project settings" },
+                        { type: "doc", id: "ayon/web-ui/project/project-bundle", label: "Project bundle" },
                         { type: "doc", id: "ayon/web-ui/project/project-permissions", label: "Project permissions" },
                         { type: "doc", id: "ayon/web-ui/project/project-access", label: "Project access" },
                         { type: "doc", id: "ayon/web-ui/project/site-settings", label: "Site settings" },
@@ -160,12 +163,6 @@ module.exports = {
             ],
         },
         "ayon/glossary/index",
-        {
-            type: "category",
-            label: "Backend",
-            collapsed: false,
-            items: ["ayon/backend/data-model/index", "ayon/backend/settings/index"],
-        },
         { type: "doc", id: "ayon/migrating-openpype-projects", className: "addon-archived" },
     ],
     ProductionTracking: [

@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Applications addon](index.md), with the default values the addon ships with. The settings have two parts. **Definitions** (applications and tools) are studio settings. **Filters** decide which applications and tools are available in a context and can be set per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Applications addon](index.md), with the default values the addon ships with. The settings have two parts. **Definitions** (applications and tools) are studio settings. **Filters** decide which applications and tools are available in a context and can be set per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 Environment fields hold a JSON object. Values can be lists and can be split per platform with the keys `windows`, `linux` and `darwin`.
 

@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [BatchIngest addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [BatchIngest addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 The addon has one setting, **Presets** (`presets`, URI `ayon+settings://batchingest/presets`). Each preset is a named rule set that the **Batch Ingest** creator offers in its **Preset** field. The default list has one preset named `default`. A preset holds its own representation and product rules, so different kinds of deliveries can use different presets.
 

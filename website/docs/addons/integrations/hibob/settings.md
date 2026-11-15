@@ -16,7 +16,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [HiBob addon](index.md), with the default values the addon ships with. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [HiBob addon](index.md), with the default values the addon ships with. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 ## Service Credentials
 

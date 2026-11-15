@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Mocha Pro addon](index.md) configure the creators that appear in the Publisher. All of them sit under **Creator Plugins** (`ayon+settings://mocha/create`). See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Mocha Pro addon](index.md) configure the creators that appear in the Publisher. All of them sit under **Creator Plugins** (`ayon+settings://mocha/create`). See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 ## Create Tracking Points
 

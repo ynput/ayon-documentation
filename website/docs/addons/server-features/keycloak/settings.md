@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Keycloak addon](index.md), with the default values the addon ships with. They are studio settings. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The addon reads the connection and button settings when the server starts, so changing them needs a server restart.
+The settings of the [Keycloak addon](index.md), with the default values the addon ships with. They are studio settings. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The addon reads the connection and button settings when the server starts, so changing them needs a server restart.
 
 ## Connection
 

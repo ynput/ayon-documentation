@@ -15,7 +15,7 @@ verified: 2026-10-15
 
 <AddonInfo />
 
-The settings of the [Review Desktop addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The addon has one settings group, **Actions**, which controls the **Open session on desktop app** action.
+The settings of the [Review Desktop addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The addon has one settings group, **Actions**, which controls the **Open session on desktop app** action.
 
 ## Actions
 

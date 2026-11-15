@@ -25,7 +25,7 @@ sources:
 
 ![The Tasks page as a board, with one column per task status and the project list on the left](../../assets/web-ui/home-tasks/board.webp)
 
-The page shows the tasks assigned to the signed-in user, or to selected users, as a board (kanban) or as a list. The [project list](../project-list.md) on the left chooses the projects, and the toolbar above the tasks sorts, groups and filters them. Only assigned tasks are shown, so the page has no option for unassigned tasks. Unassigned tasks are found on the [Project overview](../production-tracking/overview.md) page, with the **Assignee** filter set to no value. How the page differs from Task progress and the Overview is described in [Task pages](../../how-ayon-works/task-pages.md).
+The page shows the tasks assigned to the signed-in user, or to selected users, as a board (kanban) or as a list. The [project list](../project-list.md) on the left chooses the projects, and the toolbar above the tasks sorts, groups and filters them. Only assigned tasks are shown, so the page has no option for unassigned tasks. Unassigned tasks are found on the [Project overview](../production-tracking/overview.md) page, with the **Assignee** filter set to no value. Other pages that show tasks are [Task progress](../production-tracking/task-progress.md), with the tasks of one project by folder and task type, and the [Project overview](../production-tracking/overview.md), with all folders and tasks of a project.
 
 ## Board and list
 

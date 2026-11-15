@@ -123,4 +123,4 @@ Saved changes take effect at once, without a server restart. Only admins can sav
 - [Users](users.md)
 - [Anatomy presets](anatomy-presets.md)
 - [Details panel](../details-panel.md)
-- [Data model](../../backend/data-model/index.md)
+- [AYON entities](../../how-ayon-works/entities.md)

@@ -43,28 +43,15 @@ Staging is chosen explicitly on each machine; it is never derived from a bundle 
 The launcher resolves its bundle every time it starts, before any addon code runs.
 
 ```mermaid
-flowchart TD
-    A[Launcher starts] --> B[Sign in to the AYON server]
-    B --> C{Bundle name given}
-    C -->|yes| D[Use that bundle]
-    C -->|no| E{Mode}
-    E -->|dev| F[Dev bundle of the user]
-    E -->|staging| G[Staging bundle]
-    E -->|default| H[Production bundle]
-    D --> I{Project with project bundle}
-    F --> K[Distribution]
-    G --> I
-    H --> I
-    I -->|yes| J[Use project bundle]
-    I -->|no| K
-    J --> K
-    K --> L{Launcher version matches}
-    L -->|no| M[Download launcher, restart with it]
-    L -->|yes| N[Download missing addons and dependency package]
-    N --> O[Start AYON with the bundle's settings]
+flowchart LR
+    S["Start the AYON launcher"] --> A["Sign in"]
+    A --> B["Pick a bundle<br/>Production, Staging or Dev"]
+    B --> C["Use the project bundle<br/>if the project has one"]
+    C --> D["Download what is missing"]
+    D --> E["Load the bundle's addons"]
 ```
 
-Plain-text equivalent:
+In detail:
 
 1. The launcher signs in to the AYON server and reads the list of bundles.
 2. A bundle name given with `--bundle` (or `AYON_STUDIO_BUNDLE_NAME`) is used as is. Otherwise the mode decides: dev uses the Dev bundle assigned to the signed-in user, staging uses the Staging bundle, and the default is the Production bundle.
@@ -100,7 +87,7 @@ Settings for the new bundle come from one of these:
 | **Do not copy** | Addon versions that already have values in the variant keep them. New versions use their defaults. |
 | Changing the version of a server addon inside the Production bundle | That addon's production settings are migrated to the new version automatically. |
 
-The rules of storage per addon version and variant are explained in [Settings scopes and storage](../backend/settings/index.md).
+The rules of storage per addon version and variant are explained in [Settings](settings.md).
 
 On a server connected to Ynput Cloud, addons that the subscription requires are added to the Production bundle at server start once they are installed, with the settings of the previous version migrated.
 
@@ -132,7 +119,7 @@ A server addon that has no client part can also be updated in place: its version
 
 ## Project bundles
 
-A project bundle is a bundle tied to one project and one variant (production or staging), named `__project__` followed by the project name and the variant. It fixes the launcher version, the dependency packages and the versions of the addons that allow project overrides, while the other addons inherit the studio bundle. The launcher uses it whenever it works for that project in that mode, and the project's settings are frozen for the fixed addon versions. A new project has no project bundle. See [Project bundles](../web-ui/project/project-settings.md).
+A project bundle is a bundle tied to one project and one variant (production or staging), named `__project__` followed by the project name and the variant. It fixes the launcher version, the dependency packages and the versions of the addons that allow project overrides, while the other addons inherit the studio bundle. The launcher uses it whenever it works for that project in that mode, and the project's settings are frozen for the fixed addon versions. A new project has no project bundle. See [Project bundles](../web-ui/project/project-bundle.md).
 
 ## Where to look
 
@@ -147,8 +134,8 @@ A project bundle is a bundle tied to one project and one variant (production or 
 ## Related
 
 - [Bundles](../web-ui/studio/bundles.md)
-- [Project bundles](../web-ui/project/project-settings.md)
-- [Settings scopes and storage](../backend/settings/index.md)
+- [Project bundles](../web-ui/project/project-bundle.md)
+- [Settings](settings.md)
 - [Market](../web-ui/market.md)
 - [Services](../web-ui/services.md)
 - [Pipeline storage](pipeline-storage.md)

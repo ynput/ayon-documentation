@@ -16,7 +16,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [xStudio addon](index.md), with the default values on the default branch. The addon has not been released yet, so they may change. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [xStudio addon](index.md), with the default values on the default branch. The addon has not been released yet, so they may change. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 ## General
 

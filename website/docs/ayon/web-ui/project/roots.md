@@ -24,7 +24,7 @@ The **Roots** tab of the [Projects Manager](index.md) sets root paths for the se
 
 ## Site roots
 
-The page has the [project list](../project-list.md) on the left and one panel per site on the right. The panels list the sites registered to the signed-in user, that is, the workstations where the user has used the AYON launcher (see [Site IDs](../../backend/settings/index.md#site-ids)). **No sites were found** is shown when there is none, as in the screenshot above.
+The page has the [project list](../project-list.md) on the left and one panel per site on the right. The panels list the sites registered to the signed-in user, that is, the workstations where the user has used the AYON launcher (see [Site IDs](../../how-ayon-works/site-ids.md)). **No sites were found** is shown when there is none, as in the screenshot above.
 
 | Element | Content |
 |---|---|
@@ -53,5 +53,5 @@ Everyone can open the tab. Managers and admins can view and save the roots of ev
 - [Pipeline storage](../../how-ayon-works/pipeline-storage.md)
 - [Anatomy](anatomy.md)
 - [Site settings (project)](site-settings.md)
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Project configuration](index.md)

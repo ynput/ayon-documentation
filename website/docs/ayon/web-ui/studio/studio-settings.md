@@ -29,7 +29,7 @@ sources:
 
 ![The Studio settings tab: the Production and Staging buttons, the bundle dropdown and the addon list on the left, the Core addon panel in the middle with Update check interval changed to 10, and the change listed in the column on the right](../../assets/web-ui/studio-studio-settings/page.webp)
 
-The **Studio settings** tab edits the settings of the server's addons at studio level. The values saved here apply to every project and every workstation unless a project or a site overrides them. Values are stored per addon version and per variant (production, staging or a Dev bundle), not per bundle. How levels, overrides and variants work is explained in [Settings scopes and storage](../../backend/settings/index.md); this page describes the controls. Project-level values are edited in [Project settings](../project/project-settings.md), workstation values in [Site settings](site-settings.md).
+The **Studio settings** tab edits the settings of the server's addons at studio level. The values saved here apply to every project and every workstation unless a project or a site overrides them. Values are stored per addon version and per variant (production, staging or a Dev bundle), not per bundle. How levels, overrides and variants work is explained in [Settings](../../how-ayon-works/settings.md); this page describes the controls. Project-level values are edited in [Project settings](../project/project-settings.md), workstation values in [Site settings](site-settings.md).
 
 ## Settings editor
 
@@ -78,7 +78,7 @@ Choosing a bundle lists its addon versions and keeps the chosen variant, so the 
 |---|---|
 | **Search and filter settings** | Shows only the fields that match the text, as a case-insensitive regular expression. When nothing matches, the panel shows **No settings found for the current search**. |
 | Help button (tooltip **Show help descriptions**) | Shows or hides the descriptions of the fields. |
-| Addon panels | One panel per selected addon, titled with the addon title, version and a badge with the variant. Fields show their override state with colored marks, see [Override states in the editor](../../backend/settings/index.md#override-states-in-the-editor). |
+| Addon panels | One panel per selected addon, titled with the addon title, version and a badge with the variant. Fields show their override state with colored marks, see [Override states in the editor](../../how-ayon-works/settings.md#override-states-in-the-editor). |
 
 Clicking a field selects it, and the [URI bar](../app-header.md#uri-bar) shows its path, such as `Studio Settings / core / update_check_interval`. The copy button there copies it as an `ayon+settings://` URI.
 
@@ -154,7 +154,7 @@ The low-level editor shows the stored studio overrides of one addon version and 
 
 ## Related
 
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Project settings](../project/project-settings.md)
 - [Site settings](site-settings.md)
 - [Bundles](bundles.md)

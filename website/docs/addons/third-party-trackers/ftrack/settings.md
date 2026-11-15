@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [ftrack addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [ftrack addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 Actions share a **Roles for action** list: the ftrack roles that may see and run the action. An empty list is listed as "none" below. Role names are matched as written, so `Project manager` and `Project Manager` are different values; the defaults contain both spellings.
 

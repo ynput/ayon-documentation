@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Wrap addon](index.md), with their default values. The addon has not been released yet. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Wrap addon](index.md), with their default values. The addon has not been released yet. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 Template files are not shared by site sync, so the paths must be reachable from every artist machine. Each path is set for Windows, Linux and macOS.
 

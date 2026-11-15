@@ -278,6 +278,8 @@ const config = {
             {
                 redirects: [
                         { from: "/docs/ayon/web-ui/navigation-bar", to: "/docs/ayon/web-ui/app-header" },
+                        { from: "/docs/ayon/backend/data-model", to: "/docs/ayon/how-ayon-works/entities" },
+                        { from: "/docs/ayon/backend/settings", to: "/docs/ayon/how-ayon-works/settings" },
                         { from: "/docs/dev_introduction", to: "/docs/developer" },
                         { from: "/docs/developer/resources", to: "/docs/developer" },
                         { from: "/docs/developer/api", to: "/docs/developer" },

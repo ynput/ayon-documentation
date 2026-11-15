@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-This page lists the addon project settings by area. What the creators and plugins do is described on the [overview page](index.md). See also settings and scopes (planned): [settings](../../../ayon/backend/settings/index.md).
+This page lists the addon project settings by area. What the creators and plugins do is described on the [overview page](index.md). See also settings and scopes (planned): [settings](../../../ayon/how-ayon-works/settings.md).
 
 Top-level groups: **Color Management (ImageIO)**, **Simple Create Plugins**, **Editorial Creators**, **Create** and **Publish Plugins**.
 

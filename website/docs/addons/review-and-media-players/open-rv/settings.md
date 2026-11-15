@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Open RV addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The executables of Open RV are not set here: they are defined for the `openrv` application group in the Applications addon.
+The settings of the [Open RV addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The executables of Open RV are not set here: they are defined for the `openrv` application group in the Applications addon.
 
 ## General
 

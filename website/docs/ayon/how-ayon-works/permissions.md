@@ -17,27 +17,17 @@ Permissions cover AYON data and actions only. They do not change who can read or
 ## Decision flow
 
 ```mermaid
-flowchart TD
-    A[Request] --> B{Admin-only action}
-    B -->|yes| C{Admin or service}
-    C -->|yes| OK[Allowed]
-    C -->|no| NO[Refused]
-    B -->|no| D{Manager, admin or service}
-    D -->|yes| OK
-    D -->|no| E{Guest}
-    E -->|yes| G[Only content shared with the guest]
-    E -->|no| F{Inside a project}
-    F -->|no| H[Combine default access groups]
-    H --> P[Check studio permission]
-    F -->|yes| I{Access group in this project}
-    I -->|no| NO
-    I -->|yes| J[Combine the project's groups]
-    J --> K[Check project permission or restriction]
-    P --> R[Allowed or refused]
-    K --> R
+flowchart LR
+    A["Request"] --> B{"Layer 1<br/>Access level"}
+    B -->|"Admin, Manager,<br/>Service user"| OK["Allowed"]
+    B -->|"User"| C{"Layer 2<br/>Access groups"}
+    C --> R["Allowed or refused"]
+    B -->|"Guest"| G["Shared content only"]
 ```
 
-Plain-text equivalent:
+Managers do not pass actions reserved for admins; service users do, see step 1.
+
+In detail:
 
 1. If the action is reserved for admins (for example bundles, addons, the Market, the **Global** server settings, secret values and the **Developer** switch), only admins and service users pass.
 2. Otherwise, admins, managers and service users pass without any access group being read.
@@ -141,6 +131,6 @@ The folder restrictions take a list of **Assigned**, **Hierarchy** and **Childre
 - [Users](../web-ui/studio/users.md)
 - [Creating a project](creating-a-project.md)
 - [Attributes](../web-ui/studio/attributes.md)
-- [Data model](../backend/data-model/index.md)
-- [Settings scopes and storage](../backend/settings/index.md)
+- [AYON entities](entities.md)
+- [Settings](settings.md)
 - [Bundles](bundles.md)

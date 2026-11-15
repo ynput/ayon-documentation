@@ -1,5 +1,5 @@
 ---
-title: Data model
+title: AYON entities
 description: "How AYON entities are structured and relate: the six base entities from folder to representation with an example shot, the project hierarchy, the concepts around the entities, what each entity holds, where attributes live and how folders and tasks inherit them, types, statuses, links, lists and identifiers."
 verified: 2026-10-30
 sources:
@@ -13,7 +13,7 @@ sources:
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/settings/anatomy/link_types.py
 ---
 
-# Data model
+# AYON entities
 
 AYON stores the work of a production as entities that belong to each other. A project owns folders, a folder owns tasks and products, a product owns versions and a version owns representations. Every entity has a parent, and the parent decides where the entity appears in the web app, which values it inherits and what is removed with it. This page describes the entities, what they hold and how they relate. Database tables and endpoints are not covered.
 
@@ -87,15 +87,15 @@ The entities sit among the other parts of AYON that describe, organize and prote
 
 | Concept | What it does for the entities | Described on |
 |---|---|---|
-| Attributes | Typed values such as `fps` or frame ranges, set on the entities and inherited down the hierarchy. Studios can add custom attributes. | [Attributes and inheritance](#attributes-and-inheritance), [Attributes](../../web-ui/studio/attributes.md) |
+| Attributes | Typed values such as `fps` or frame ranges, set on the entities and inherited down the hierarchy. Studios can add custom attributes. | [Attributes and inheritance](#attributes-and-inheritance), [Attributes](../web-ui/studio/attributes.md) |
 | Statuses and tags | The progress state of an entity and free labels, defined per project. | [Statuses, types and tags](#statuses-types-and-tags) |
 | Links | Stored relationships between two entities, such as an asset used in a shot. | [Links](#links) |
-| Comments | Activities on folders, tasks and versions: comments, status changes and publishes. | [Activities](#activities), [Activity feed](../../web-ui/details-panel.md#activity-feed) |
-| Users and teams | Who works on the tasks. Teams group the users of a project. | [User](#user), [Users](../../web-ui/studio/users.md), [Teams](../../web-ui/project/teams.md) |
-| Access groups | What a user may read and change in each project. | [Permissions](../../how-ayon-works/permissions.md) |
-| Addons and bundles | The code that defines attributes and settings and runs the pipeline, and the set of addon versions in use. | [Bundles](../../how-ayon-works/bundles.md), [Addons](../../web-ui/studio/addons.md) |
-| Events | The record of every change to an entity, which services and addons react to. | [Event Viewer](../../web-ui/event-viewer.md), [Event system](../../../developer/server/event-system.md) |
-| Services | Programs next to the server that act on events, such as the sync with a tracker. | [Services](../../web-ui/services.md), [AYON Service Host](../../deployment/ash.md) |
+| Comments | Activities on folders, tasks and versions: comments, status changes and publishes. | [Activities](#activities), [Activity feed](../web-ui/details-panel.md#activity-feed) |
+| Users and teams | Who works on the tasks. Teams group the users of a project. | [User](#user), [Users](../web-ui/studio/users.md), [Teams](../web-ui/project/teams.md) |
+| Access groups | What a user may read and change in each project. | [Permissions](permissions.md) |
+| Addons and bundles | The code that defines attributes and settings and runs the pipeline, and the set of addon versions in use. | [Bundles](bundles.md), [Addons](../web-ui/studio/addons.md) |
+| Events | The record of every change to an entity, which services and addons react to. | [Event Viewer](../web-ui/event-viewer.md), [Event system](../../developer/server/event-system.md) |
+| Services | Programs next to the server that act on events, such as the sync with a tracker. | [Services](../web-ui/services.md), [AYON Service Host](../deployment/ash.md) |
 
 ## What entities hold
 
@@ -130,11 +130,11 @@ A task has a name, an optional label, a task type, a status, tags, attributes an
 
 ### Product
 
-A product belongs to a folder and has no task; the task is recorded on each of its versions. A product has a name, a product type, a product base type, a status, tags and attributes. The product type is the type stored on the product; the product base type is the technical type that creators and settings work with. The base type is filled with the product type when it is not given. Both are described in [Product types](../../../pipeline/product-types.md). The product attribute `productGroup` groups products in the web app.
+A product belongs to a folder and has no task; the task is recorded on each of its versions. A product has a name, a product type, a product base type, a status, tags and attributes. The product type is the type stored on the product; the product base type is the technical type that creators and settings work with. The base type is filled with the product type when it is not given. Both are described in [Product types](../../pipeline/product-types.md). The product attribute `productGroup` groups products in the web app.
 
 ### Version
 
-A version is identified by its number within the product and is shown as `v001`. The number is an integer; a version with a negative number is the hero version of the product, shown as `HERO`. A product has at most one hero version. A version has an author, can refer to the task it was made in, and holds the attributes of the publish, such as `comment`, `intent`, `source` and `families`. See [Publishing](../../../pipeline/publishing.md).
+A version is identified by its number within the product and is shown as `v001`. The number is an integer; a version with a negative number is the hero version of the product, shown as `HERO`. A product has at most one hero version. A version has an author, can refer to the task it was made in, and holds the attributes of the publish, such as `comment`, `intent`, `source` and `families`. See [Publishing](../../pipeline/publishing.md).
 
 ### Representation
 
@@ -150,13 +150,13 @@ A user has a name, an active flag and attributes such as `fullName` and `email`.
 
 ### Activities
 
-An activity is an entry of the feed of an entity: a comment, a reviewable, a status change, an assignee change, an attribute change, a tag change, a published version or a review. An activity references the entity it belongs to, and can reference users and other entities through mentions. Activities are stored per project. They belong to folders, tasks and versions in the web app. See [Activity feed](../../web-ui/details-panel.md#activity-feed).
+An activity is an entry of the feed of an entity: a comment, a reviewable, a status change, an assignee change, an attribute change, a tag change, a published version or a review. An activity references the entity it belongs to, and can reference users and other entities through mentions. Activities are stored per project. They belong to folders, tasks and versions in the web app. See [Activity feed](../web-ui/details-panel.md#activity-feed).
 
 ## Attributes and inheritance
 
 ### Where attributes live
 
-An attribute is defined once for the AYON server. The definition has a name, a type and the entity types it exists on (its scope), and an **Inherit** switch. The value belongs to the entity: each entity stores the values it owns. An entity owns a value when it was set on that entity, and has no value of its own otherwise. See [Attributes](../../web-ui/studio/attributes.md) for the definitions.
+An attribute is defined once for the AYON server. The definition has a name, a type and the entity types it exists on (its scope), and an **Inherit** switch. The value belongs to the entity: each entity stores the values it owns. An entity owns a value when it was set on that entity, and has no value of its own otherwise. See [Attributes](../web-ui/studio/attributes.md) for the definitions.
 
 Only attributes whose scope contains the entity type exist on that entity. For example `frameStart` exists on projects, folders, tasks, versions and representations, and `productGroup` only on products.
 
@@ -246,7 +246,7 @@ Every entity below the project has a path built from the names of its parents.
 | Version | `/assets/characters/bob/modelMain/v003` |
 | Representation | `/assets/characters/bob/modelMain/v003/abc` |
 
-The path changes when a parent folder is renamed or moved. These paths identify entities in the AYON server and are separate from the file paths of work files and published files, which come from the anatomy templates and roots. See [Naming conventions](../../../pipeline/naming-conventions.md) for how product names, versions and file paths are built.
+The path changes when a parent folder is renamed or moved. These paths identify entities in the AYON server and are separate from the file paths of work files and published files, which come from the anatomy templates and roots. See [Naming conventions](../../pipeline/naming-conventions.md) for how product names, versions and file paths are built.
 
 ## Links
 
@@ -261,7 +261,7 @@ A link type is defined in the project anatomy by its name and the entity types o
 | Deleting a link type | Removes all links of that type. |
 | Display | The links manager lists the links of an entity in each direction. |
 
-See [Links manager](../../web-ui/links-manager.md).
+See [Links manager](../web-ui/links-manager.md).
 
 ### Links created by publishing
 
@@ -299,7 +299,7 @@ A list collects entities of one type from anywhere in a project, without changin
 | Folder | An optional list folder that groups lists. |
 | Owner, active, tags | The user who owns the list, whether it is active, and its tags. |
 
-An item refers to an entity and does not copy it. Deleting a list removes only the list. See [Lists](../../web-ui/production-tracking/lists.md).
+An item refers to an entity and does not copy it. Deleting a list removes only the list. See [Lists](../web-ui/production-tracking/lists.md).
 
 ## Identifiers
 
@@ -322,9 +322,9 @@ Deleting an entity removes everything below it: a task takes its workfiles, a pr
 
 ## Related
 
-- [Attributes](../../web-ui/studio/attributes.md)
-- [Glossary](../../glossary/index.md)
-- [Product types](../../../pipeline/product-types.md)
-- [Naming conventions](../../../pipeline/naming-conventions.md)
-- [Links manager](../../web-ui/links-manager.md)
-- [Lists](../../web-ui/production-tracking/lists.md)
+- [Attributes](../web-ui/studio/attributes.md)
+- [Glossary](../glossary/index.md)
+- [Product types](../../pipeline/product-types.md)
+- [Naming conventions](../../pipeline/naming-conventions.md)
+- [Links manager](../web-ui/links-manager.md)
+- [Lists](../web-ui/production-tracking/lists.md)

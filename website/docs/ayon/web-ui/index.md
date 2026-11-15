@@ -23,7 +23,7 @@ The section covers the native features of the AYON server, the ones every editio
 |---|---|
 | Screens, tabs, buttons and controls of the native web app | This section |
 | How things work: bundles, projects, permissions, storage, daily work | [How AYON works](../how-ayon-works/index.md) |
-| Entities, attributes and settings scopes | [Backend](../backend/data-model/index.md) |
+| Entities, attributes and settings scopes | [Backend](../how-ayon-works/entities.md) |
 | Production tracking features explained, and the features added by plans and addons, such as review sessions, the Planner and its **Schedule** tab, **Reports** and the Power features | [Production tracking](../../production-tracking/index.md) and [Addons](../../addons/index.md) |
 | What each plan includes | [Plans](../plans.md) |
 

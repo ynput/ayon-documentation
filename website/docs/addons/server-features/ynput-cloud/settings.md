@@ -15,7 +15,7 @@ verified: 2026-10-19
 
 <AddonInfo />
 
-The settings of the [Ynput Cloud addon](index.md), with the default values the addon ships with. The addon is a system addon, so its settings are only visible to administrators. The settings are read at the studio level. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Ynput Cloud addon](index.md), with the default values the addon ships with. The addon is a system addon, so its settings are only visible to administrators. The settings are read at the studio level. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 | Setting | Default | Description |
 |---|---|---|

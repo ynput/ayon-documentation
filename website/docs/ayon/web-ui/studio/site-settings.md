@@ -21,7 +21,7 @@ sources:
 
 ![The Site settings tab with the Deadline addon selected in the addon list, No sites found in the site list below it, and Select a site to edit settings in the editor](../../assets/web-ui/studio-site-settings/page.webp)
 
-The **Site settings** tab edits the studio-level site settings: values for one workstation (site) of one user, in every project. They are a separate set of fields that each addon defines, with no variant and no inheritance from the studio or project settings. For users without the manager role, it is the only tab of the Studio Settings: **Site Settings** replaces **Studio Settings** in the [App menu](../app-header.md#app-menu), and `s+s` opens it. What a site ID is and how the site levels differ is explained in [Settings scopes and storage](../../backend/settings/index.md#site-ids).
+The **Site settings** tab edits the studio-level site settings: values for one workstation (site) of one user, in every project. They are a separate set of fields that each addon defines, with no variant and no inheritance from the studio or project settings. For users without the manager role, it is the only tab of the Studio Settings: **Site Settings** replaces **Studio Settings** in the [App menu](../app-header.md#app-menu), and `s+s` opens it. What a site ID is and how the site levels differ is explained in [Settings](../../how-ayon-works/site-ids.md).
 
 ## Addons, sites and editor
 
@@ -46,7 +46,7 @@ The project-level counterpart, overrides of the normal addon settings for one si
 
 ## Related
 
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Studio settings](studio-settings.md)
 - [Project site settings](../project/site-settings.md)
 - [Pipeline storage](../../how-ayon-works/pipeline-storage.md)

@@ -68,7 +68,7 @@ A version whose `pre_setup` or `setup` raises an error is unloaded. Calling `sel
 
 ## Settings
 
-Settings are [Pydantic](https://docs.pydantic.dev/) models built from `BaseSettingsModel` and `SettingsField`. The server builds the settings forms of the web app from them. What the scopes are and how overrides and variants work is described in [Settings scopes and storage](../../ayon/backend/settings/index.md).
+Settings are [Pydantic](https://docs.pydantic.dev/) models built from `BaseSettingsModel` and `SettingsField`. The server builds the settings forms of the web app from them. What the scopes are and how overrides and variants work is described in [Settings](../../ayon/how-ayon-works/settings.md).
 
 ```python title="server/settings.py"
 from ayon_server.settings import BaseSettingsModel, SettingsField, task_types_enum
@@ -334,7 +334,7 @@ The older `on_settings_changed(old_settings, new_settings, ...)` hook is still c
 - [Frontend](frontend.md)
 - [Services](services.md)
 - [Files](files.md)
-- [Settings scopes and storage](../../ayon/backend/settings/index.md)
+- [Settings](../../ayon/how-ayon-works/settings.md)
 - [Event system](../server/event-system.md)
 - [Developer mode](../developer-mode.md)
 - [Example addon](https://github.com/ynput/ayon-example-addon)

@@ -1,6 +1,6 @@
 ---
 title: Project settings
-description: "The Project settings tab of the AYON Projects Manager: editing addon settings for one project per variant (Production, Staging, Dev), the addon list and its markers, the settings editor with search, help descriptions and override menus, the list of unsaved changes, copying settings from another bundle, the low-level editor, and freezing a project bundle with its own launcher, dependency packages and addon versions."
+description: "The Project settings tab of the AYON Projects Manager: editing addon settings for one project per variant (Production, Staging, Dev), the addon list and its markers, the settings editor with search, help descriptions and override menus, the list of unsaved changes, copying settings from another bundle, the low-level editor, and the lock button that opens the project bundle dialog."
 verified: 2026-11-15
 ui_purpose: "Edits the addon settings of one project, on top of the studio settings."
 ui_location: "App menu > Projects Settings > Project settings"
@@ -30,7 +30,7 @@ sources:
 
 ![The Project settings tab for wing_it: the project list, the Production and Staging buttons with the lock and copy buttons, the bundle 2026.06.0-2026-09-22, the addon list with Core selected, the Core settings panel with the wing_it and production badges, and the empty changes list on the right](../../assets/web-ui/project-settings/page.webp)
 
-The **Project settings** tab of the [Projects Manager](index.md) edits the addon settings of the selected project. Values set here are project overrides: they apply to this project only and are stored on top of the studio settings of the same addon version and variant. Fields without a project override keep following the [Studio settings](../studio/studio-settings.md), and [Site settings](site-settings.md) can override some fields again per workstation. Scopes, override layers and storage are explained in [Settings scopes and storage](../../backend/settings/index.md).
+The **Project settings** tab of the [Projects Manager](index.md) edits the addon settings of the selected project. Values set here are project overrides: they apply to this project only and are stored on top of the studio settings of the same addon version and variant. Fields without a project override keep following the [Studio settings](../studio/studio-settings.md), and [Site settings](site-settings.md) can override some fields again per workstation. Scopes, override layers and storage are explained in [Settings](../../how-ayon-works/settings.md).
 
 ## Settings editor
 
@@ -51,7 +51,7 @@ The list has the columns **Addon** and **Version** and shows the addons of that 
 
 | Marker | Meaning |
 |---|---|
-| Coloured bar on the left of a row | The addon has overrides at the studio, project or site level, or unsaved changes. The colours follow the [override states](../../backend/settings/index.md#override-states-in-the-editor). |
+| Coloured bar on the left of a row | The addon has overrides at the studio, project or site level, or unsaved changes. The colours follow the [override states](../../how-ayon-works/settings.md#override-states-in-the-editor). |
 | **(Inherited)** after the version | The project has a project bundle and the addon follows the studio bundle. |
 | **WARNING: No bundle set to &lt;variant&gt;** | No bundle has the selected variant. |
 
@@ -86,62 +86,11 @@ Without view rights for the selected project, the page shows **You don't have pe
 </Column>
 </Columns>
 
-Managers and admins can view and save the settings of every project. Users need **Read only** (view) or **Read & Write** (view and save) on **Project addon settings** in the project; without write rights **Save Changes** is disabled with the tooltip **You don't have edit permissions**. The full list of who may change which scope is in [Settings scopes and storage](../../backend/settings/index.md#permissions).
+Managers and admins can view and save the settings of every project. Users need **Read only** (view) or **Read & Write** (view and save) on **Project addon settings** in the project; without write rights **Save Changes** is disabled with the tooltip **You don't have edit permissions**. The full list of who may change which scope is in [Settings](../../how-ayon-works/settings.md#permissions).
 
 ### Project bundles
 
-A project bundle is a bundle assigned to one project. It lets the project run on its own launcher version, dependency packages and addon versions while the studio Production or Staging bundle moves on, which protects long-running projects from changes to the studio bundles. A project bundle is frozen, not locked: single addon versions can be changed later.
-
-The lock button in the addon list toolbar opens the dialog. Its tooltip reads **Freeze production bundle for this project** (or staging), and it is highlighted when the project already uses a project bundle for the selected variant. It works for the Production and Staging variants only; for any other variant, including Dev, it is disabled with the tooltip **Variant must be production or staging to freeze.** Opening the dialog, freezing, updating and unfreezing need the manager or admin role.
-
-<Columns widths="55 45">
-<Column>
-
-The dialog is titled **Freeze &lt;variant&gt; bundle for &lt;project&gt;**.
-
-| Section | Options |
-|---|---|
-| **Launcher Version** | The launcher versions uploaded to the server |
-| **Dependency Packages** | One dropdown per platform (**Windows**, **Linux**, **Darwin**) with **None** and the packages uploaded for it |
-| **Addons** | One dropdown per addon that allows project-level version overrides |
-
-Each addon offers:
-
-- **Inherit (&lt;version&gt;)**: follows the studio bundle of the variant, also when its version changes. The label shows the current studio version, or `DISABLED`.
-- **Disable**: the addon is turned off for the project.
-- An explicit version: stays at that version whatever the studio bundle does. Versions that cannot be used in project bundles are listed but disabled, with **This version cannot be used in project bundles.**
-
-Without a project bundle, the dialog starts from the studio bundle of the variant: its launcher, dependency packages and each addon at the studio version. An addon whose studio version cannot be used in project bundles starts at **Inherit**, and an addon missing from the studio bundle at **Disable**.
-
-| Button | Shown | What it does |
-|---|---|---|
-| **Freeze** | No project bundle yet | Creates the project bundle |
-| **Update Freeze** | A project bundle exists | Saves the dialog values to it |
-| **Unfreeze** | A project bundle exists | Removes it |
-
-Errors from the server appear at the bottom of the dialog.
-
-</Column>
-<Column>
-
-![The Freeze production bundle for wing_it dialog with Launcher Version 1.6.1, the Windows dependency package, None for Linux and Darwin, and a version dropdown per addon, some set to Disable, and the Freeze button](../../assets/web-ui/project-settings/freeze-dialog.png "Freeze dialog")
-
-</Column>
-</Columns>
-
-Addons that do not allow project-level version overrides are not in the dialog and cannot be disabled there. They always follow the studio bundle of the same variant, and appear in the project bundle on the [Bundles](../studio/bundles.md) page with a lock icon, the studio version and **(cannot override)**.
-
-| Topic | Behavior |
-|---|---|
-| Name | `__project__<project name>__<variant>`, where the variant is `production` or `staging`. |
-| Bundle field | Shows the project bundle name when the project uses one. |
-| Bundles page | Project bundles are listed when the **Project** switch is on, with a **Project** badge, for admins. Overridable addons come first; overrides are shown in orange and inherited values with a lock. |
-| Freeze or update | For every addon with an explicit version, the project's complete settings (studio values plus project overrides) are written as project overrides for that version. Later changes to the studio settings of those fields no longer reach the project. |
-| Unfreeze | The project bundle is deleted. For the addons that had explicit versions, fields that are not project-scoped are removed from the project overrides, and the overrides move to the version the studio bundle uses. Project overrides are not lost. |
-| State | A project bundle cannot be set to Production, Staging or Dev. |
-| Compatibility check | Not run when a project bundle is created or updated. Inherited and non-overridable addons follow the studio bundle, so check their compatibility when it changes. |
-
-A project keeps its own overrides whether it uses a studio bundle or a project bundle; the project bundle fixes the code. See [Project bundles and settings](../../backend/settings/index.md#project-bundles-and-settings).
+The lock button in the addon list toolbar opens the freeze dialog, which locks the launcher version, the dependency packages and the addon versions of the project in a project bundle. Its tooltip reads **Freeze production bundle for this project** (or staging), and it is highlighted when the project already has one. When the project uses a project bundle, the bundle field shows its name with a **Project** badge, and addons that follow the studio bundle show **(Inherited)** after their version. See [Project bundle](project-bundle.md).
 
 ## Controls and interactions
 
@@ -156,7 +105,7 @@ Right-clicking a field or a group offers:
 | **Remove all project overrides** | On the root of an addon panel: removes all project overrides of the addon for this project and variant, after a confirmation. |
 | **Copy**, **Paste** | Copy the value as JSON, or paste JSON into it as an unsaved change. A pasted value must have the same structure. |
 
-See also [Right-click menu on fields](../../backend/settings/index.md#right-click-menu-on-fields).
+See also [Right-click menu on fields](../../how-ayon-works/settings.md#right-click-menu-on-fields).
 
 ### Addon menu
 
@@ -164,7 +113,7 @@ Right-clicking an addon in the list offers **Copy settings from...**, which load
 
 ## Related
 
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Studio settings](../studio/studio-settings.md)
 - [Site settings (project)](site-settings.md)
 - [Copy settings](../dialogs/copy-settings.md)

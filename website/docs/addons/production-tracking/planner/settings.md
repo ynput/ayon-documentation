@@ -18,7 +18,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Planner addon](index.md) are in **Studio settings > Planner**. They hold the event access rules, the default durations of new events, six color presets and a list of tags. Resources, resource types, booking statuses and attributes are not addon settings; they are data edited on the **Resources** page. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Planner addon](index.md) are in **Studio settings > Planner**. They hold the event access rules, the default durations of new events, six color presets and a list of tags. Resources, resource types, booking statuses and attributes are not addon settings; they are data edited on the **Resources** page. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 | Group | Scope |
 |---|---|

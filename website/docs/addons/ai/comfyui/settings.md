@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [ComfyUI addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The launch settings are organized as lists of named profiles; the **ComfyUI profile** dialog at launch offers one of them. By default both lists are empty, so at least one profile has to be added before ComfyUI can be launched or connected.
+The settings of the [ComfyUI addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The launch settings are organized as lists of named profiles; the **ComfyUI profile** dialog at launch offers one of them. By default both lists are empty, so at least one profile has to be added before ComfyUI can be launched or connected.
 
 All string settings that hold paths, directories and launch arguments accept anatomy template keys such as `{roots[work]}/{project[name]}`.
 

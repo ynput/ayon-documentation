@@ -37,7 +37,7 @@ A bundle is a named set of addon versions, together with a launcher version and 
 The list on the left has one row per bundle, with **Name** and **Status**. The status shows the badges **Production**, **Staging**, **Dev** (with the assigned developer's name) and **Project**. Archived bundles are listed last, dimmed and marked `(archived)`.
 
 - **Archived** in the toolbar shows or hides archived bundles. It is on by default.
-- **Project** shows or hides [project bundles](../project/project-settings.md#project-bundles). It is off by default.
+- **Project** shows or hides [project bundles](../project/project-bundle.md). It is off by default.
 - Dev bundles are listed only when the user's **Developer** mode is on.
 
 On opening, the Production bundle is selected.
@@ -189,7 +189,7 @@ The query parameter `?bundle=<name>` selects a bundle when the page opens; `late
 
 - [Addons](addons.md)
 - [Bundles in How AYON works](../../how-ayon-works/bundles.md)
-- [Project bundles](../project/project-settings.md#project-bundles)
+- [Project bundles](../project/project-bundle.md)
 - [Copy settings](../dialogs/copy-settings.md)
 - [Install pipeline release](../dialogs/install-pipeline-release.md)
 - [Market](../market.md)

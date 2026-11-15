@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [SiteSync addon](index.md), with the default values the addon ships with. Most are studio settings that can be overridden per project. The **Local setting** group is only available as a site setting, so each user and workstation can have its own values. Some provider fields are also available at site scope, for personal credentials. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [SiteSync addon](index.md), with the default values the addon ships with. Most are studio settings that can be overridden per project. The **Local setting** group is only available as a site setting, so each user and workstation can have its own values. Some provider fields are also available at site scope, for personal credentials. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 The addon is disabled by default. The main switch next to the addon name enables Site Sync (default: off). Sites must be defined in the studio settings and are then available to projects.
 

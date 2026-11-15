@@ -20,7 +20,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Version Control addon](index.md), with the default values the addon ships with. Most are studio settings that can be overridden per project. The **Local setting** group is a site setting, so each artist machine has its own values. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Version Control addon](index.md), with the default values the addon ships with. Most are studio settings that can be overridden per project. The **Local setting** group is a site setting, so each artist machine has its own values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 The addon is disabled by default. The main switch next to the addon name turns it on.
 

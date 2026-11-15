@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Premium burnins addon](index.md) are project settings with studio defaults, all under **Publish**; the settings path is `premium_burnins/publish/PremiumExtractBurnin`. See also [settings and scopes (planned)](../../../ayon/backend/settings/index.md).
+The settings of the [Premium burnins addon](index.md) are project settings with studio defaults, all under **Publish**; the settings path is `premium_burnins/publish/PremiumExtractBurnin`. See also [settings and scopes (planned)](../../../ayon/how-ayon-works/settings.md).
 
 ## Premium Extract Burnin
 

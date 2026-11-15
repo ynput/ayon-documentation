@@ -18,7 +18,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [core addon](index.md), with the default values the addon ships with. They are studio settings that projects can override. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned). The model is large, so this page groups it by area. Most lists are **profile lists**: each profile has filters (such as **Host names**, **Task types**, **Task names**, **Product base types**, **Product names**) and values. The first profile that matches the context is used, and an empty filter matches everything. A profile without filters acts as the default.
+The settings of the [core addon](index.md), with the default values the addon ships with. They are studio settings that projects can override. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The model is large, so this page groups it by area. Most lists are **profile lists**: each profile has filters (such as **Host names**, **Task types**, **Task names**, **Product base types**, **Product names**) and values. The first profile that matches the context is used, and an empty filter matches everything. A profile without filters acts as the default.
 
 Plugins that can be switched share three options: **Enabled** (the plugin runs), **Optional** (the artist can skip it in the Publisher) and **Active** (it is selected by default).
 

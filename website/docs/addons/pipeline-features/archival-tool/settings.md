@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [ArchivalTool addon](index.md), with the default values the addon ships with. They are lists of profiles; an analysis copies them into the report it creates, so later changes to the settings do not alter existing reports. They can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [ArchivalTool addon](index.md), with the default values the addon ships with. They are lists of profiles; an analysis copies them into the report it creates, so later changes to the settings do not alter existing reports. They can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 The defaults delete: each list has one profile named `default` that matches every product or task, and its deleting switches are on. Review the profiles before running an analysis and a delete run.
 

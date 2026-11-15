@@ -28,7 +28,7 @@ The **Global** tab edits the server configuration: values that belong to the AYO
 
 ## Server configuration
 
-The form is one centered column. **Studio Name** and **Server URL** stand on their own; the other fields are grouped in collapsible panels. The server stores only the values that differ from the defaults, and those fields carry the green studio override marker (see [Override states in the editor](../../backend/settings/index.md#override-states-in-the-editor)).
+The form is one centered column. **Studio Name** and **Server URL** stand on their own; the other fields are grouped in collapsible panels. The server stores only the values that differ from the defaults, and those fields carry the green studio override marker (see [Override states in the editor](../../how-ayon-works/settings.md#override-states-in-the-editor)).
 
 ### Studio name and server URL
 
@@ -90,4 +90,4 @@ When **Login Page Message**, **Login Background** or **Studio Logo** is empty, t
 - [Studio configuration](index.md)
 - [Users](users.md)
 - [Creating a project](../../how-ayon-works/creating-a-project.md)
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)

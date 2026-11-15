@@ -30,7 +30,7 @@ The **Anatomy** tab of the [Projects Manager](index.md) edits the anatomy of the
 
 ## Anatomy editor
 
-The editor fills the page to the right of the [project list](../project-list.md). Each section is a collapsible panel with a short description on the right. How roots and templates decide file paths is explained in [Pipeline storage](../../how-ayon-works/pipeline-storage.md); types, statuses, tags and links in [Data model](../../backend/data-model/index.md#statuses-types-and-tags).
+The editor fills the page to the right of the [project list](../project-list.md). Each section is a collapsible panel with a short description on the right. How roots and templates decide file paths is explained in [Pipeline storage](../../how-ayon-works/pipeline-storage.md); types, statuses, tags and links in [AYON entities](../../how-ayon-works/entities.md#statuses-types-and-tags).
 
 ### Sections
 
@@ -112,4 +112,4 @@ Right-clicking a field or a section offers **Copy** and **Paste**: they copy tha
 - [Roots](roots.md)
 - [Creating a project](../../how-ayon-works/creating-a-project.md)
 - [Pipeline storage](../../how-ayon-works/pipeline-storage.md)
-- [Data model](../../backend/data-model/index.md)
+- [AYON entities](../../how-ayon-works/entities.md)

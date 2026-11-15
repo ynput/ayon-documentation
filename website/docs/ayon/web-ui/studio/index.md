@@ -53,5 +53,5 @@ An addon can add its own tab by shipping a web page for the studio settings. Its
 
 - [App header](../app-header.md)
 - [Project settings](../project/index.md)
-- [Settings scopes and storage](../../backend/settings/index.md)
+- [Settings](../../how-ayon-works/settings.md)
 - [Keyboard shortcuts](../quick-navigation.md#keyboard-shortcuts)

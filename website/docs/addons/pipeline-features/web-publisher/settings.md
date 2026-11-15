@@ -17,7 +17,7 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Web Publisher addon](index.md), with the default values the addon ships with. Retention time is a studio-only setting; the others can be overridden per project. See [settings and scopes](../../../ayon/backend/settings/index.md) (planned).
+The settings of the [Web Publisher addon](index.md), with the default values the addon ships with. Retention time is a studio-only setting; the others can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
 
 ## General
 

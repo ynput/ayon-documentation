@@ -16,7 +16,7 @@ sources:
 
 <AddonInfo />
 
-The addon has two settings groups, one per tool set. Both have the same shape. How they are applied is described on the [overview page](index.md). See also settings and scopes (planned): [settings](../../../ayon/backend/settings/index.md).
+The addon has two settings groups, one per tool set. Both have the same shape. How they are applied is described on the [overview page](index.md). See also settings and scopes (planned): [settings](../../../ayon/how-ayon-works/settings.md).
 
 ## FFmpeg
 

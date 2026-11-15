@@ -99,4 +99,4 @@ The addon registers endpoints on the AYON server for the registered workflows: l
 
 - [Workflow nodes](nodes.md)
 - [Workflow settings](settings.md)
-- [Settings and scopes](../../../ayon/backend/settings/index.md) (planned)
+- [Settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned)
