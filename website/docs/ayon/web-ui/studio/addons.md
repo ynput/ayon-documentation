@@ -1,86 +1,93 @@
 ---
 title: Addons
-description: "The Addons tab of the AYON Studio Settings: the installed addons, their versions and the bundles that use them, status dots, uninstalling versions, and how a new addon version is installed and put into use."
-verified: 2026-10-15
-ui_purpose: "Shows which addon versions are installed on the server and which bundles use them."
+description: "The Addons tab of the AYON Studio Settings: the three linked tables of installed addons, their versions and the bundles that use them, the status dots, uploading addons, opening the Market, uninstalling versions, archiving bundles, the API documentation of an addon version, and how a new addon version is put into use."
+verified: 2026-11-15
+ui_purpose: "Shows which addon versions are installed on the server and which bundles use them, and removes versions that are no longer used."
 ui_location: "Studio Settings > Addons"
-ui_url: "/settings/addons"
-ui_access: "Admins"
+ui_url: /settings/addons
+ui_access: Admins
 sources:
-  - https://help.ayon.app/en/help/articles/4644998-bundles-and-addons
-  - https://help.ayon.app/en/help/articles/5135604-how-to-update-an-addon
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/AddonsManager/AddonsManager.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/AddonsManager/AddonsManagerTable.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/AddonsManager/helpers.js
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/AddonsManager/BundleStatus/BundleStatus.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/SettingsPage.jsx
 ---
 
 # Addons
 
 <PageInfo />
 
-An addon is a package of code and settings that extends the AYON server and the pipeline. The **Addons** tab of the Studio Settings shows which addon versions are installed on the server and which bundles use them. Installing an addon only places it on the server: an addon version is used once it is part of a bundle that has a state, which is set on the [Bundles](bundles.md) tab.
+![The Addons tab with the core addon selected in the Addons table, version 1.9.6 selected in the Versions table, and the two bundles that use it in the Bundles table](../../assets/web-ui/studio-addons/page.webp)
 
-| Term | Meaning |
-|---|---|
-| Addon | A package with a server part, a client (pipeline) part, or both, plus settings. Installed on the server as a `.zip` package, one folder per addon version. |
-| Server addon | An addon of type `server`. Runs on the server only and does not change what the launcher runs. |
-| Pipeline addon | An addon of type `pipeline`. Ships client code that the launcher loads. |
+An addon is a package of code and settings that extends the AYON server and the pipeline. The **Addons** tab shows which addon versions are installed on the server and which bundles use them. Installing an addon only places it on the server: a version is used once it is part of a bundle that has a state, which is set on the [Bundles](bundles.md) tab. How bundles put addons into use, and the steps to roll out a new addon version, are explained in [Adding an addon to production](../../how-ayon-works/bundles.md#adding-an-addon-to-production).
 
-## Where it appears
+## Addons, versions and bundles
 
-Managers and users are redirected to the start page when they open the path.
+The tab has three tables side by side. Selecting rows in one table fills the next one, so the tables answer "which versions of this addon are installed" and "which bundles use this version".
 
-## Layout
-
-The tab has three linked tables, from left to right. Selecting rows in one table filters the next.
-
-| Table | Rows | Selection effect |
+| Table | Rows | Selecting rows |
 |---|---|---|
-| **Addons** | Every installed addon. | Lists the versions of the selected addons. |
-| **Versions** | `<addon> <version>` of the selected addons. | Lists the bundles that contain the selected versions. |
-| **Bundles** | Bundles that contain the selected versions (archived bundles excluded). | None. |
+| **Addons** | Every installed addon, by name. | Lists the versions of the selected addons. |
+| **Versions** | `<addon> <version>` for the selected addons, newest first. | Lists the bundles that contain the selected versions. |
+| **Bundles** | The bundles that contain the selected versions. Archived bundles are not listed. | Nothing. |
 
-Each table has a **Status** column with colored dots:
+Several rows can be selected in each table. Each table can be sorted by its name or by **Status**.
 
-| Dot | Meaning |
+### Status dots
+
+The **Status** column shows one colored dot per state. Hovering a dot lists the states by name.
+
+| State | Meaning |
 |---|---|
-| Production, Staging, Dev | The row is part of a bundle with that state. |
-| Active | The row is part of a bundle without a state. |
-| Error | A version is broken (`(broken)` suffix: the addon failed to load; details are in the server log), or was removed and waits for a restart (`(deleted)` suffix). |
+| `production`, `staging`, `dev` | The addon or version is part of a bundle with that state; for the Bundles table, the bundle has that state. |
+| `active` | The addon or version is part of a bundle without a state. Not used in the Bundles table. |
+| `error` | The version could not be loaded and shows `(broken)` (hover it for **Addon failed to load. Check logs for details**), or it was uninstalled and shows `(deleted)` until the server restarts. |
 
-### Controls
+An addon or version without a dot is installed but not part of any bundle.
 
-| Control | Where | What it does |
-|---|---|---|
-| **Upload Addons** (`a`) | Above the Addons table | Opens the addon upload dialog, described on the [Bundles](bundles.md#launchers-and-dependency-package-uploads) tab. |
-| **Addon Market** | Above the Addons table | Opens the [Market](../market.md). |
-| **Uninstall Versions** | Above the Versions table, context menu **Uninstall** | Removes the selected addon versions from the server after confirmation, then offers a server restart. Disabled when a selected version is used by any bundle. |
-| **Archive Bundles** | Above the Bundles table, context menu **Archive** | Archives the selected bundles. Skips bundles with a Production, Staging or Dev state. Disabled for those rows. |
-| **View in Market** | Context menu of addons and versions | Opens the Market on the addon. |
-| **API Docs** | Context menu of versions | Shows the addon version's REST API documentation in a dialog with **Open in new tab**. Reports an error when the version has no API documentation. |
-| **View bundle** | Context menu of bundles | Opens the Bundles page with that bundle selected. |
+## Controls and interactions
 
-## Updating an addon
+### Toolbar
 
-Updating is separated into installing a new version and putting it into use.
-
-| Capability | Description |
+| Control | What it does |
 |---|---|
-| Install from the Market | Official addon releases are downloaded from the [Market](../market.md) by an admin on a server connected to Ynput Cloud. The server restarts to load the new version. |
-| Install from a package | The upload dialog installs an addon from a `.zip` file. |
-| Use in a server addon | A new version of a server addon can be selected directly in the Production bundle. |
-| Use in a pipeline addon | A new version of a pipeline addon requires a new bundle, created with **Duplicate and edit** or from a pipeline release. |
-| Roll out | Setting the new bundle to Staging and then Production switches the studio over. Settings can be copied at that moment. |
+| **Upload Addons** (`a`) | Opens the upload dialog for addon `.zip` packages, the same as on the [Bundles](bundles.md#launchers-and-dependency-package-uploads) tab. |
+| **Addon Market** | Opens the [Market](../market.md). |
+| **Uninstall Versions** | Removes the selected versions from the server after a confirmation, then offers to restart the server. Disabled while a selected version is part of any bundle. |
+| **Archive Bundles** | Archives the selected bundles after a confirmation. Disabled while a selected bundle has a state. |
 
-Pipeline releases, which install a tested set of addons at once, and copying settings between bundles are described on the [Bundles](bundles.md#pipeline-releases) tab.
+To clean up old versions, select the versions without a status dot and uninstall them. Archived bundles are ignored here, so a version that only old bundles use can be freed by archiving those bundles first with **Archive Bundles**; the archived bundles then refer to a version that is no longer installed.
 
-## Permissions
+### Right-click menus
 
-| Action | Required role |
+<Columns widths="60 40">
+<Column>
+
+Right-clicking a row acts on the selected rows, or only on the clicked row when it is not selected.
+
+| Table | Entries |
 |---|---|
-| View the Addons tab, install, upload and uninstall addons | Admin |
-| Read the addon list through the API | Any signed-in user |
+| **Addons** | **View in Market** |
+| **Versions** | **Uninstall**, **View in Market**, **API Docs** |
+| **Bundles** | **Archive**, **View bundle** |
+
+- **View in Market** opens the [Market](../market.md) on the addon.
+- **API Docs** shows the REST API documentation of the addon version in a dialog, with **Open in new tab**. A version without its own API shows **This addon version has no API documentation**.
+- **View bundle** opens the [Bundles](bundles.md) tab with that bundle selected.
+
+</Column>
+<Column>
+
+![The right-click menu of version core 1.9.6, with Uninstall disabled, View in Market and API Docs](../../assets/web-ui/studio-addons/version-menu.png "Version right-click menu")
+
+</Column>
+</Columns>
 
 ## Related
 
 - [Bundles](bundles.md)
 - [Market](../market.md)
 - [Services](../services.md)
+- [Bundles in How AYON works](../../how-ayon-works/bundles.md)
 - [Addons catalogue](../../../addons/index.md)

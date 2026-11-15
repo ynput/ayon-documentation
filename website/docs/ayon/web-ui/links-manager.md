@@ -1,104 +1,157 @@
 ---
 title: Links manager
-description: "Links are typed, static relationships between entities of a project; the links manager shows and edits them from the link columns of project tables."
-verified: 2026-10-15
-ui_purpose: "Lists and edits the links of one entity for one link type, such as the assets of a shot breakdown."
-ui_location: "Link columns of the Overview, Products and Lists tables"
-ui_access: "Users who can open the project"
+description: "Links are typed relationships between entities of an AYON project, such as a breakdown from an asset to a shot; the links manager is the popover that lists and edits the links of one entity for one link type, opened from the link columns of the Overview and list tables: link types, the link columns, the popover, adding links by search or picker, removing and counting links, copy and paste, and who may create links."
+verified: 2026-11-15
+ui_purpose: "Lists and edits the links of one entity for one link type, such as the assets used in a shot or environment."
+ui_location: "Link columns of the Overview table and of list tables, such as Breakdown (in) and Breakdown (out)"
+ui_access: "Users who can open the project; creating links can be limited per link type by the access group"
 sources:
   - https://help.ayon.app/en/articles/1802697-links-manager
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/LinksManager/LinksManager.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/LinksManager/AddNewLinks.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/LinksManager/LinkManagerItem.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/LinksManager/CellEditingDialog.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/LinksManager/hooks/useKeyboardNavigation.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/LinksManager/hooks/useUpdateLinks.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/ProjectTreeTable/widgets/LinksWidget.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/ProjectTreeTable/buildTreeTableColumns.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/ProjectTreeTable/context/clipboard-context/ClipboardContext.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/EntityPickerDialog/EntityPickerDialog.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/EntityLinksSlot/EntityLinksSlot.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/VersionsProductsPage/components/VPTable/VPTable.tsx
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/settings/anatomy/link_types.py
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/access/permissions.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/links/links.py
 ---
 
 # Links manager
 
 <PageInfo />
 
-A link is a stored relationship between two entities of the same project, for example a breakdown from a shot folder to an asset folder or a reference between two versions. Links are permanent data, so they can be analyzed, displayed and used by pipeline automation, unlike relationships derived from events. The links manager is the popover of the web app that lists the links of one entity for one link type and edits them.
+![The Overview of the AY_CG_demo project scrolled to the Breakdown (in) and Breakdown (out) columns, with the links manager open for the street environment: Breakdown links (in) lists terrain and many props, each with a count, and the Add new link section with a search field and Pick folders](../assets/web-ui/links-manager/page.webp)
 
-## Link types
+A link is a stored relationship between two entities of the same project, for example a breakdown link from a prop asset to the environment or shot that uses it. Links are data on the server, so pipeline tools and addons can read them and act on them. The links manager is the popover that lists the links of one entity for one link type and adds or removes them. It opens from the link columns of the [Overview](production-tracking/overview.md) and [Lists](production-tracking/lists.md) tables.
 
-Every project defines its own link types in its anatomy (the project anatomy). A link type has:
+## Links and the links manager
 
-| Field | Meaning |
-|---|---|
-| Link type | The name of the relationship, for example `breakdown`. |
-| Input type | The entity type the link starts at (folder, task, product, version, representation or workfile). |
-| Output type | The entity type the link points to. |
-| Color | Color used when links are visualized. |
-| Style | `solid` or `dashed`. |
+### Link types
 
-The full name of a link type is `link type|input type|output type`, for example `breakdown|folder|folder`. Several link types can share the same name with different entity types.
+Each project defines its link types in its [anatomy](project/anatomy.md). A link type has a name, an input entity type (where the link starts), an output entity type (where it points), a color and a style (`solid` or `dashed`). Its full name is `name|input|output`, for example `breakdown|folder|folder`. The entity types are folder, task, product, version, representation and workfile.
 
-New projects contain these link types, which cannot be deleted:
+Every project has these link types, which cannot be deleted:
 
 | Link type | Input | Output |
 |---|---|---|
-| `generative` | version | version |
 | `breakdown` | folder | folder |
-| `reference` | version | version |
 | `template` | folder | folder |
+| `generative` | version | version |
+| `reference` | version | version |
 
 An entity cannot be linked to itself.
 
-## Where it appears
+### Link columns
 
-Each link type adds two columns, labeled with the capitalized link type and the direction, to the task, folder, product and version tables of the [project overview](production-tracking/overview.md), the [products and versions](production-tracking/products.md) page and [lists](production-tracking/lists.md):
+<Columns widths="55 45">
+<Column>
+
+Each link type adds two columns, named after the link type and the direction:
 
 | Column | Shows |
 |---|---|
-| **Breakdown (in)** | Links that point to the entity (the entity is the output). The icon is the input entity type. |
-| **Breakdown (out)** | Links that start at the entity (the entity is the input). The icon is the output entity type. |
+| **Breakdown (in)** | Links that point to the entity (the entity is the output). |
+| **Breakdown (out)** | Links that start at the entity (the entity is the input). |
 
-Cells show the linked entities as chips. Opening a cell opens the links manager for that entity and link type. The columns can be shown, hidden and reordered like other columns (see [Views](views.md)).
+The columns are hidden by default. They are turned on in the column menu (the **+** at the end of the column headers) under **Links**, and are kept in the page's [view](views.md).
 
-## Layout
+- The Overview offers the link types whose input or output is a folder or a task. A list offers the link types of its entity type, so version links appear in version lists.
+- The [Products](production-tracking/products.md) page has no link columns.
+- A cell shows the linked entities as chips, for example **terrain** and **+45** for the others, or a **+** when empty. A cell of an entity of the wrong type is disabled.
 
-| Region | Content |
+</Column>
+<Column>
+
+![The column menu of the Overview with the Links submenu open, listing Breakdown (in), Breakdown (out), PipelineFlow (in) and (out), TaskFlow (in) and (out), and Template (in) and (out), with both Breakdown columns checked](../assets/web-ui/links-manager/link-columns-menu.png)
+
+</Column>
+</Columns>
+
+### The popover
+
+<Columns widths="55 45">
+<Column>
+
+Double-clicking a link cell opens the links manager for that entity and link type.
+
+| Part | Content |
 |---|---|
-| Header | The link type and direction, for example **Breakdown links (in)**, and a close button (**Escape**). |
-| Link list | One row per linked entity: icon, folder path and name, and the entity subtype. A row of an entity the user cannot read shows **Access Restricted**; for managers and administrators it shows **Unknown**. |
-| **Add new link** | A search field (**Search &lt;entity type&gt;s...**) and a **Pick &lt;entity type&gt;s** button that opens an entity picker with multi-selection. |
+| Header | The link type and direction, for example **Breakdown links (in)**, and a close button. |
+| Link list | One row per linked entity: its icon, path and name, and a count such as **x1**. Several links to the same entity share one row. Without links: **No links yet**. |
+| **Add new link** | A search field (**Search folders...**, **Search tasks...**, ...) and a **Pick folders** (or tasks, ...) button. |
 
-## Controls
+A row of an entity the user cannot read shows **Access Restricted**; managers and admins see **Unknown** for a linked entity that no longer exists.
+
+</Column>
+<Column>
+
+![The links manager popover with the header Breakdown links (in), rows such as assets / environments / terrain and assets / props / airConditionerA each with x1, Add new link, the Search folders field and the Pick folders button](../assets/web-ui/links-manager/links-manager.png)
+
+</Column>
+</Columns>
+
+An access group can limit the link types its users may create, with the **Restrict entity links creation** permission (see [Permissions](studio/permissions.md)); managers and admins are not limited. Defining or deleting link types needs write access to the project anatomy.
+
+## Controls and interactions
+
+<Columns widths="55 45">
+<Column>
 
 | Control | What it does |
 |---|---|
-| Row click | Opens the linked entity when the page supports it. |
-| Unlink icon | Removes the link. On a grouped row it removes all links to that entity (**Remove all N links**). Not shown for restricted entities unless the user is a manager or administrator. |
-| Count badge (**x5**) | Shown when several links connect the same two entities. Selecting it opens an input; entering a number creates or removes links until the count matches. |
-| Search field | Finds entities of the target type by name; arrow keys and `Enter` select a result. |
-| **Pick** button | Opens the entity picker, which starts on the current folder. |
+| Click a row | Opens the linked folder, task, version or representation in the [details panel](details-panel.md). |
+| Unlink button (on hover) | Removes the link, or all links to that entity (**Remove all N links**). |
+| Count (**x1**, **x3**, ...) | Click to type a number: links are added or removed until the count matches. The lowest number is 1; the unlink button removes the rest. |
+| Search field | Finds entities of the target type by name. `ArrowUp` and `ArrowDown` move through the results, `Enter` or a click adds the link. |
+| **Pick** button | Opens a picker that starts at the current folder, to select one or more entities. |
+| `Escape`, or a click outside | Closes the popover. |
 
-Multiple links between the same pair of entities are grouped into one row.
+Adding and removing links can be undone with the table's undo.
 
-## Copy and paste
+</Column>
+<Column>
 
-Selected link cells can be copied and pasted between entities in the tables.
+![The search field of Add new link with the text tree, showing two results, assets / environments / street and assets / props / treeA, each marked Asset](../assets/web-ui/links-manager/add-link-search.png)
+
+</Column>
+</Columns>
+
+### Copy and paste
+
+Selected link cells can be copied and pasted between entities in the table.
 
 | Shortcut | Action |
 |---|---|
-| `Ctrl/Cmd + C` | Copy the links of the selected cells. |
-| `Ctrl/Cmd + V` | Paste and replace the existing links of the target cell with the copied ones. |
-| `Shift + Ctrl/Cmd + V` | Paste and add the copied links to the existing ones, skipping duplicates. |
+| `Ctrl`/`Cmd` + `C` | Copies the links of the selected cells. |
+| `Ctrl`/`Cmd` + `V` | Replaces the links of the target cell with the copied ones. |
+| `Shift` + `Ctrl`/`Cmd` + `V` | Adds the copied links to the existing ones. |
 
-A paste that would link an entity to itself is rejected.
+A paste that would link an entity to itself is refused with **You can't link an entity to itself**.
 
-## Other ways links are created
+### Other ways to create links
 
-| Source | Description |
-|---|---|
-| Publishing | The pipeline creates links from workfile scenes and published products. |
-| REST API | A link is created with the `input` and `output` entity ids and a `linkType`, and optionally a `name` and `data`. Bulk creation accepts many links in one transaction. |
-| Addons and services | Addons can create and read links, for example a `taskFlow` link type from tasks to tasks created when tasks are created, or status changes derived from links at publish. |
+Addons and the REST API create links as well. The API takes the `input` and `output` entity ids and a `linkType`; many links can be created in one request.
 
-## Permissions
+## Power features
 
-- Creating links requires an access group that allows the link type: the **Restrict entity links creation** permission whitelists the link types a user can create. Managers and administrators are not restricted.
-- Defining or deleting link types requires write access to the project anatomy.
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+
+### Links dialog
+
+Pressing `G` with an entity selected opens a graph of its links, and `L` opens its links in columns, where they can also be edited. Pressing the same key again closes the dialog; the other key switches between the two. Without the Power Pack, the keys open the Power Pack dialog.
 
 ## Related
 
-- [Project overview](production-tracking/overview.md)
+- [Overview](production-tracking/overview.md)
 - [Lists](production-tracking/lists.md)
-- [Users](studio/users.md)
 - [Details panel](details-panel.md)
+- [Project anatomy](project/anatomy.md)
+- [Permissions](studio/permissions.md)

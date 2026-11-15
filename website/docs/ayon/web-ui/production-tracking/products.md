@@ -1,130 +1,146 @@
 ---
 title: Products and versions
 sidebar_label: Products
-description: "The Products page lists the products and versions published in a project as a table or as thumbnail cards, with slicing, filtering, grouping and saved views."
-verified: 2026-10-15
-ui_purpose: "Browses everything published in a project, as versions or products, in a table or as cards."
+description: "The Products page of a project: the published versions or products shown as a table or as thumbnail cards, grouping by product or a version field, the versions panel, featured versions, hero versions, the slicer, search filters, the Customize panel with columns, sorting, featured version order, row height, grid size and Latest per folder, keyboard navigation, the context menus and saved views."
+verified: 2026-11-15
+ui_purpose: "Browses everything published in a project, as versions or as products, in a table or as cards."
 ui_location: "Project tab row > Products"
 ui_url: "/projects/<project>/products"
+ui_shortcut: "T shows the table, C the cards"
 ui_access: "Users with access to the project"
 sources:
   - https://help.ayon.app/en/articles/1183758-products-and-versions-page
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/VersionsProductsPage/VersionsProductsPage.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/VersionsProductsPage/components/VPToolbar/VPToolbar.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/VersionsProductsPage/components/VPTableSettings/VPTableSettings.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/VersionsProductsPage/context/vp-selection/VPSelectionContext.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/VersionsProductsPage/hooks/useVPContextMenu.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/VersionsProductsPage/hooks/useGridKeyboardNavigation.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/TableGridSwitch/TableGridSwitch.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Slicer/context/slicer/SlicerContextInstance.ts
 ---
 
 # Products and versions
 
 <PageInfo />
 
-The **Products** page is the central place for browsing everything published in a project. It lists **versions** (the default) or **products** with their versions, as a table or as cards with thumbnails, and lets users filter, group, sort, preview media and edit version fields in place. It replaces the deprecated [Browser page](browser.md).
+![The Products page of wing_it as cards: the versions of the 020_tryout shots with thumbnails, the selected renderLightingMain v007 card and its details panel on the right](../../assets/web-ui/products/page.webp)
 
-## Layout
+The Products page lists everything published in a project. It shows **versions** (the default) or **products** with their versions, as a table or as cards with thumbnails, and lets users filter, group, sort, play media and edit version fields in place. The [slicer](../slicer.md) on the left limits the page to a folder, a list or a field value, and the [details panel](../details-panel.md) on the right shows the selected version or product. The page replaces the deprecated [Browser](browser.md).
 
-| Region | Content |
-|---|---|
-| Slicer (left) | Quick filtering by hierarchy and common fields. See [Slicer](#slicer). |
-| Toolbar (top) | Search filter, sync button, **Group by** dropdown, table/card switch, **Customize** button. |
-| Main area | The table or the grid of cards. |
-| Versions panel | A narrow list of the versions of the selected product. Shown when products are listed (grouped by product). |
-| Details panel (right) | Details of the selected product or version, see [Details panel](../details-panel.md). |
-| Settings panel (right) | Opened by **Customize**. Columns, sorting, grouping, featured version, row height and grid size. |
-
-## Slicer
-
-The slicer filters the main area by one field at a time. The field is chosen from a dropdown at the top of the panel.
-
-| Slicer field | Filters by |
-|---|---|
-| Hierarchy | Folders of the project. Selecting a folder limits the page to the products and versions inside it. |
-| Task assignee | Assignees of the task linked to the version. |
-| Version status | Status of the version. |
-| Version author | User who published the version. |
-| Product type | Type of the product the version belongs to, for example model, render or plate. |
-| Task type | Type of the task linked to the version. |
-| Lists | Lists of the project. Selecting a list limits the page to the entities of that list. |
-
-## Toolbar
-
-| Control | What it does |
-|---|---|
-| Search filter | Builds filters from attributes of versions, products, tasks and folders. Fields in the dropdown are grouped by the entity they belong to (**Folder**, **Product**, **Version**, **Task**). Several filters can be active at once. |
-| Sync button | Reloads the data after new versions or products are created. |
-| **Group by** | Groups the main area by **Product** or by a version field such as status. Each option has an ascending/descending order toggle (the toggle applies to the sorting when grouped by product). Clearing the selection shows a flat list of versions. |
-| Table / card switch | Switches between table (shortcut `T`) and cards (shortcut `G`). |
-| **Customize** | Opens the settings panel. |
-
-### Filtering rules
-
-- Filters can use attributes of the product, of the version, of the parent folder and of the linked task.
-- Grouped by product, a version filter keeps a product when at least one of its versions matches. For example, a version status filter of Approved lists only products with an approved version.
-- The version filter offers special values, such as **Latest Done**, which matches the highest version of each product that has a status of the done state type.
-- Folder type and task type filters apply to the flat and field-grouped version lists, not to the product list.
-
-## Ways to view the data
+## Versions and products
 
 ### Versions
 
-The default. Each row or card is one version. Table cells such as **Status** can be edited in place. Versions can be grouped by a version field, and the groups are ordered ascending or descending.
+Each row or card is one version: by default a flat list of all versions. Table cells such as **Status** can be edited in place. **Group by** a version field, such as **Status**, **Author** or **Task type**, puts the versions into groups, ordered ascending or descending.
 
 ### Products
 
-With **Group by** set to **Product**, each row or card is a product.
+**Group by** > **Product** shows one row or card per product.
 
-- In the table, a row expands to show the versions of the product.
-- In the grid, the card shows the thumbnail, status and other fields of the product's **featured version**. The versions panel lists all versions of the selected product.
-- Filters match a product by its own attributes or by attributes of its versions.
+- In the table, the arrow on a product row expands it to its versions.
+- On the cards, each product shows its **featured version**: its thumbnail, version and status. Selecting a product opens the **Versions** panel next to the cards, with all its versions; selecting one there opens it in the details panel.
+- A version filter keeps a product when at least one of its versions matches. For example, a status filter of Approved lists only products with an approved version.
 
-### Table
+<Gallery columns={2} rows={1} more="show-all">
 
-A spreadsheet-like view. Columns can be shown, hidden, reordered and pinned from **Customize**. Clicking a column header sorts by it. Double-clicking a **Folder** or **Task** cell opens that entity in the details panel without leaving the page.
+![The table grouped by product, with the renderLightingMain product of 020_0030 expanded to its seven versions](../../assets/web-ui/products/products-table.webp "Table grouped by product")
 
-### Cards
+![The cards grouped by product, with the Versions panel listing v001 to v007 of the selected product](../../assets/web-ui/products/products-grid.webp "Cards with the Versions panel")
 
-Each card shows a thumbnail, title, path and status. Cards of versions show the author, cards of products show their versions. A play indicator marks cards with playable media. The card size is set with **Grid size**.
+</Gallery>
 
-## Hero versions
+### Table and cards
 
-A star marks a hero version, on products and on versions, in the table and in the grid.
+The two buttons next to **Group by** switch between the **Table** (`T`) and the **Cards** (`C`).
 
-## Customize panel
+- **Table:** a spreadsheet with one column per field. Clicking a header sorts by it. Columns are shown, hidden, ordered and pinned in **Customize**.
+- **Cards:** each card shows the folder, the product name with its type icon, the thumbnail, the version and the status icon. A play button marks versions with reviewables. The card size is set with **Grid size** in **Customize**.
+
+A hero version is marked with a star after its version name, in both views.
+
+### Featured version
+
+The featured version is the version a product stands for on the cards and in the player. **Customize** > **Featured version** sets the order of the rules that choose it: **Hero**, **Latest Done** and **Latest**. The first rule a product matches wins.
+
+## Controls and interactions
+
+### Toolbar
+
+| Control | What it does |
+|---|---|
+| Search filter | Filters on the attributes of the version, the product, the folder and the task. **Latest Done** among the version values matches the highest version of each product with a status of the done state. More filter options need the Power Pack, see [Power features](#power-features) |
+| Sync button | Reloads the page after new versions or products are published |
+| **Group by** | Groups by **Product** or by a version field. The arrow on the chosen option switches ascending and descending. The `×` clears it, back to a flat list of versions |
+| **Table** / **Cards** | Switch the view, shortcuts `T` and `C` |
+| **Export** | Needs the Power Pack, see [Power features](#power-features) |
+| **Customize** | Opens the settings panel |
+
+### Customize panel
+
+<Columns widths="60 40">
+<Column>
 
 | Setting | What it does |
 |---|---|
-| Columns | Show, hide, reorder and pin columns. Besides the version attributes, columns exist for the parent folder (status, type, tags, created and updated dates), the task (type, status), the product base type, **Author** and **Version**. |
-| Sort by | Sort order of the table and the grid. |
-| Group by | Grouping field and order. |
-| **Featured version** | Ordered list of rules that choose the version a product represents: **Hero**, **Latest Done**, **Latest**. The order is configurable. |
-| Row height | Height of table rows. |
-| **Grid size** | Size of the cards, from 90 to 300. |
-| **Latest per folder** | Shows only the latest published version of each folder (one version per folder). Combines with other filters. Disabled when grouped by product. |
+| **Columns** | Show, hide, order and pin columns |
+| **Sort** | The sort order of the table and the cards |
+| **Group** | The grouping, as in the toolbar. Needs the Power Pack, see [Power features](#power-features) |
+| **Featured version** | The order of **Hero**, **Latest Done** and **Latest** |
+| **Row height** | The height of table rows |
+| **Grid size** | The size of the cards, from 90 to 300 |
+| **Latest per folder** | Shows only the latest published version of each folder. Disabled when grouped by product |
 
-## Previewing and keyboard
+</Column>
+<Column>
 
-Selecting an item and pressing `Space` opens its media in the player. For a product, the featured version is played. While the player is open, `Ctrl`+`Left`/`Right` (`Cmd` on Mac) moves to the previous or next item of the list.
+![The Customize panel with Columns, Sort, Group, Featured version, Row height, Grid size and Latest per folder](../../assets/web-ui/products/customize.png "Customize")
 
-In the cards view the arrow keys move the selection, `Home` and `End` jump to the first and last card, and `Enter` opens the selected item.
+![The Featured version settings: Hero, Latest Done and Latest, in a draggable order](../../assets/web-ui/products/featured-version.png "Featured version")
 
-## Context menu
+</Column>
+</Columns>
 
-| Entry | Applies to | What it does |
-|---|---|---|
-| **Show details** | Single item | Opens the details panel (also double-click). |
-| **Open in viewer** | Version, or product with a featured version | Opens the player. |
-| **Upload version** | Single product or version | Opens the version upload dialog. See [Versions without a pipeline](../../../production-tracking/versions-without-a-pipeline.md). |
-| **Add to list** | Versions, or products through their featured version | Adds the versions to a list. See [Lists](lists.md). Review entries appear when the Review addon is available. |
-| **Product data** | Products | Shows the raw data of the product. |
-| **Version data** | Versions | Shows the raw data of the version. |
-| **Delete version** / **Delete product** | Versions or products, on the name column | Deletes the selection after confirmation. |
+These settings, the filters and the view mode are part of the page's view, see [Views](../views.md).
 
-## Views
+### Interactions
 
-Filters, sorting, grouping, columns, view mode (table or cards), featured version order, grid size and row height are part of the page's view settings. They can be saved as a view and shared with users or the whole project. See [Views](../views.md).
+<Columns widths="55 45">
+<Column>
+
+- **Open details panel:** click a row or card; double-click, or **Show details**, also opens a closed panel.
+- **Play:** `Spacebar` opens the selected version in the [web viewer](../web-viewer.md); for a product, its featured version.
+- **Cards from the keyboard:** the arrow keys move the selection, with `Shift` they extend it; `Home` and `End` jump to the first and last card. With a product selected, `Tab` moves to the Versions panel.
+- **Right-click menu:** **Show details**, **Open in viewer**, **Upload version** (see [Upload version](../dialogs/upload-version.md)), **Add to list** (see [Lists](lists.md)), **Review** (review session actions), **Product data** or **Version data** (the raw data), and, on the name, **Delete product** or **Delete version**.
+
+</Column>
+<Column>
+
+![The right-click menu of a product card: Show details, Open in viewer, Upload version, Add to list (v007), Review, Product data and Delete product (renderLightingMain)](../../assets/web-ui/products/context-menu.png "Right-click menu")
+
+</Column>
+</Columns>
+
+## Power features
+
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+
+The page has the same Power features as the [Overview](overview.md#power-features):
+
+- **Advanced filters:** **Exclude**, **Match all**, testing a field for a value, and preset date ranges in the search filter, see [Advanced filters](overview.md#advanced-filters).
+- **Group settings:** **Customize** > **Group**, with **Show empty groups** and the group order, see [Group settings](overview.md#group-settings). The **Group by** button in the toolbar works without the Power Pack.
+- **Column summaries:** a summary footer for the table. Grouped by product, it counts products and versions. See [Column summaries](overview.md#column-summaries).
+- **Export** of the table, or the selected rows, to Excel or CSV, see [Export](overview.md#export).
+- **Slicer:** slice types other than **Hierarchy**, and split panels, see [Slicer](../slicer.md#power-features).
+- **Saved and shared views**, see [Views](../views.md#power-features).
 
 ## Related
 
-- [Upload version](../dialogs/upload-version.md)
-- [Browser page](browser.md) (deprecated)
-- [Lists](lists.md)
+- [Slicer](../slicer.md)
 - [Details panel](../details-panel.md)
-- [Reviewables](../../../production-tracking/reviewables.md)
+- [Upload version](../dialogs/upload-version.md)
+- [Lists](lists.md)
+- [Views](../views.md)
+- [Browser](browser.md) (deprecated)
 - [Versions without a pipeline](../../../production-tracking/versions-without-a-pipeline.md)
-- [Project overview](overview.md)
+- [Reviewables](../../../production-tracking/reviewables.md)

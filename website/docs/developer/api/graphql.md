@@ -35,23 +35,7 @@ The whole schema in one file, for tools and AI assistants.
 
 The [GraphQL Explorer of the AYON playground](https://playground.ayon.app/explorer) runs queries against a demo server. Log in to the playground to try it. Every AYON server has the same explorer, under **GraphQL Explorer** in the Help menu of the web app; its controls are described in [GraphQL Explorer](../../ayon/web-ui/graphql-explorer.md).
 
-Two panels of the explorer help with writing queries:
-
-<Columns widths="50 50">
-<Column>
-
-![The Docs panel showing the Query type with its fields project and projects and their arguments](../assets/apis_and_resources/graphql_docs_query.png "Docs: the schema reference")
-
-</Column>
-<Column>
-
-![The Explorer panel with the fields of the query tree, where ticking a field adds it to the query](../assets/apis_and_resources/graphql_explorer_panel.png "Explorer: the query builder")
-
-</Column>
-</Columns>
-
-- **Docs**, at the top right: the reference of the schema, with every type, field and argument and its description, and a search.
-- **Explorer**, in the toolbar: a query builder. Ticking fields and arguments in the tree writes the query.
+The explorer's **Docs** panel is the schema reference with search, and its **Explorer** panel builds a query from ticked fields; see [Panes](../../ayon/web-ui/graphql-explorer.md#panes) and [Build a query by ticking fields](../../ayon/web-ui/graphql-explorer.md#build-a-query-by-ticking-fields).
 
 ## Your first query
 

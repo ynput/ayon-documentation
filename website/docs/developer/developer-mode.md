@@ -25,7 +25,7 @@ The steps:
 ## Enable developer mode for a user
 
 1. An admin turns on **Developer** for the user on the [Users](../ayon/web-ui/studio/users.md) page. Only admins can set it, and only for users with the **Admin** access level.
-2. The user picks **Developer** in **Set bundle mode** at the top right of the web app, see [Navigation bar](../ayon/web-ui/navigation-bar.md). Once switched, the selector reads **Developer Mode**, dev bundles are visible on the Bundles page and the web actions icon turns purple.
+2. The user picks **Developer** in **Set bundle mode** at the top right of the web app, see [App header](../ayon/web-ui/app-header.md). Once switched, the selector reads **Developer Mode**, dev bundles are visible on the Bundles page and the web actions icon turns purple.
 
 Developer mode only affects the user who turned it on. A user with **Staging access** can pick **Staging** in the same selector instead, to test staging bundles before they go to production.
 

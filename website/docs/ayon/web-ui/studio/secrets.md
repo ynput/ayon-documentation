@@ -1,59 +1,49 @@
 ---
 title: Secrets
-description: "The Secrets page of the AYON server studio settings: storing named key-value pairs such as API keys and referencing them from addon settings."
-verified: 2026-10-15
+description: "The Secrets tab of the AYON Studio Settings: storing named secrets such as API keys and passwords, adding, changing, copying and deleting them, the names that are hidden, how addon settings refer to secrets by name, and who can read the values."
+verified: 2026-11-15
 ui_purpose: "Stores API keys and passwords that addon settings refer to by name."
 ui_location: "Studio Settings > Secrets"
-ui_url: "/settings/secrets"
-ui_access: "Managers and admins; only admins read values and make changes"
+ui_url: /settings/secrets
+ui_access: "Managers and admins; only admins see values and make changes"
 sources:
-  - https://help.ayon.app/en/help/articles/3701069-ayon-server-secrets
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/Secrets.jsx
+  - https://github.com/ynput/ayon-backend/blob/develop/api/system/secrets.py
 ---
 
 # Secrets
 
 <PageInfo />
 
-Secrets are named key-value pairs stored on the AYON server, typically API keys and passwords that addons need. Addon settings reference a secret by its name, so the value does not have to be written into the settings.
+![The Secrets tab: the New secret row with Secret name, Secret value and Add, and the Stored secrets list with masked values and copy, save and delete buttons on each row](../../assets/web-ui/studio-secrets/page.webp)
 
-## Layout
+A secret is a named value stored on the AYON server, typically an API key or a password that an addon needs, such as the credentials of a production tracker. Addon settings on the [Studio settings](studio-settings.md) tab refer to a secret by its name, so the value itself is not written into the settings and the people who edit settings, including managers, never see it.
 
-The page is one centered column with two groups.
+## Secrets
 
-| Group | Content |
+The tab is one centered column with two parts:
+
+- **New secret**: one row with **Secret name**, **Secret value** and **Add**.
+- **Stored secrets**: one row per stored secret, with its name, its value masked, and buttons to copy, save and delete.
+
+A name has no spaces, uses letters, digits, `_`, `.` and `-`, and starts and ends with a letter, digit or `_`. The secret `ynput_cloud_key`, which holds the [Ynput Cloud](../../../ynput-cloud/index.md) connection, and secrets whose names start with `_` are internal and not listed.
+
+Managers see the names only, with empty values, and cannot change anything. Users without the manager role cannot open the tab.
+
+## Controls and interactions
+
+| Control | What it does |
 |---|---|
-| **New secret** | One row with the **Secret name** input, the **Secret value** input and the **Add** button. |
-| **Stored secrets** | One row per stored secret, ordered as the server returns them. |
+| **Add** | Saves the new secret. Active when both name and value are filled. A name that already exists has its value replaced. |
+| Eye button | Shows or hides the value in the field. |
+| Copy button | Copies the value to the clipboard. |
+| Check button | Saves a changed value. Stored names cannot be changed. |
+| Delete button | Deletes the secret after a confirmation. |
 
-## Controls
-
-| Control | Where | What it does |
-|---|---|---|
-| **Secret name** | New and stored rows | Name of the secret. Editable only while creating; stored names are read-only. A name uses letters, digits, `_`, `.` and `-`, starts and ends with a letter, digit or `_`, and has no spaces. |
-| **Secret value** | New and stored rows | Value of the secret, masked as a password. The eye button inside the input shows or hides it. |
-| Copy button | Stored rows | Copies the value to the clipboard. |
-| **Add** | New row | Saves the secret. Active when both name and value are filled. Saving with an existing name replaces its value. |
-| Check button | Stored rows | Saves a changed value. |
-| Delete button | Stored rows | Removes the secret after a confirmation. |
-
-The secret `ynput_cloud_key`, which stores the Ynput Cloud connection, is not listed. Secrets whose names start with `_` are internal and are not listed either.
-
-## Using secrets
-
-Addon settings that accept a secret show a selection of the stored secret names. The addon reads the value on the server, so users who can edit settings, including managers, only handle names.
-
-## Permissions
-
-| Role | List names | Read values | Create, change, delete |
-|---|---|---|---|
-| Admin | Yes | Yes | Yes |
-| Manager | Yes | No (values stay empty) | No |
-| User, guest | No | No | No |
-
-Service users with the admin role can use the same API (`/api/secrets`) as admins.
+`Enter` in a row does the same as its **Add** or check button.
 
 ## Related
 
+- [Studio settings](studio-settings.md)
 - [Users](users.md)
-- [Bundles](bundles.md)
 - [Services](../services.md)

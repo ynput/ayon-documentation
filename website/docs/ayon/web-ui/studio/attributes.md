@@ -1,163 +1,126 @@
 ---
 title: Attributes
-description: "The Attributes page of the AYON web app: the attribute table, scopes, data types, the attribute editor, dynamic enums, and attribute permissions."
-verified: 2026-10-15
+description: "The Attributes tab of the AYON Studio Settings: the table of attribute definitions with built-in, custom and addon attributes, scopes and data types, the attribute editor with its fields per type, custom and dynamic enums with preview and debug, reordering, filtering, saving, and who may change attributes."
+verified: 2026-11-15
 ui_purpose: "Lists and edits the attribute definitions of the server, such as fps or frameStart."
 ui_location: "Studio Settings > Attributes"
-ui_url: "/settings/attributes"
+ui_url: /settings/attributes
 ui_access: "Managers and admins; only admins save changes"
 sources:
-  - https://help.ayon.app/en/help/articles/4636995-attributes
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/SettingsPage/Attributes.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/AttributeEditor/AttributeEditor.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/AttributeEditor/attributeTypeMap.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/AttributeEditor/components/EnumSourceField.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/components/AttributeEditor/components/EnumDebugDialog.tsx
+  - https://github.com/ynput/ayon-backend/blob/develop/api/attributes/attributes.py
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/enum/resolvers/enum_users.py
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/enum/resolvers/enum_projects.py
 ---
 
 # Attributes
 
 <PageInfo />
 
-Attributes are the named, typed properties of AYON entities, such as `frameStart`, `fps` or `priority`. An attribute is defined once for the whole AYON server (its name, scopes, type and validation rules) and then exists on every entity of its scopes. The **Attributes** page lists all definitions and edits them. Attribute values are not edited here; they belong to the individual entities.
+![The Attributes tab: the toolbar with Add Attribute, Delete attribute and Filter attributes, and the table of attributes from priority and fps to description, most of them marked built-in](../../assets/web-ui/studio-attributes/page.webp)
 
-## Where it appears
+Attributes are the named, typed properties of AYON entities, such as `frameStart`, `fps` or `priority`. An attribute is defined once for the whole server (its name, the entity types it exists on, its type and its rules) and then exists on every entity of those types. The **Attributes** tab lists all definitions and edits them. The values themselves belong to the entities and are edited elsewhere, for example in the [details panel](../details-panel.md). There are no per-project attribute definitions.
 
-Attributes are defined for the AYON server as a whole. There is no per-project attribute definition.
+## Attribute table
 
-## Layout
-
-A toolbar sits above a table of attributes. A change in the table is local until it is saved.
-
-### Toolbar
-
-| Control | What it does |
+| Column | Content |
 |---|---|
-| **Add Attribute** | Opens the attribute editor for a new attribute. |
-| **Delete attribute** | Removes the selected attribute from the table. Disabled for built-in attributes. |
-| **Filter attributes...** | Filters the table by name, title, scope and type. |
-| **Unsaved Changes** | Label shown while the table differs from the saved state. |
-| **Clear changes** | Discards all unsaved changes. |
-| **Save attributes changes** | Saves the table to the AYON server. Deleted custom attributes are removed from the server at this point. |
-
-### Table columns
-
-| Column | Meaning |
-|---|---|
-| Drag handle | Reorders rows. The order is stored as the attribute position. |
+| Drag handle | Drag a row to reorder the attributes. The order is saved as the position of each attribute. |
 | **Name** | Internal name. |
 | **Title** | Label shown in the web app. |
-| (unnamed) | Shows `built-in` for built-in attributes. |
-| **Scopes** | Entity types the attribute exists on. |
-| **Type** | Data type as shown in the editor, for example **Text**, **Select**, **Number**, **Checkbox**, **Date and time**, or **Select (multiple)**. |
-| **Example** | Example value. |
-| **Description** | Description. |
-| **Inherit** | Whether child entities inherit the value. |
+| (no title) | `built-in` for built-in attributes. |
+| **Scopes** | The entity types the attribute exists on. |
+| **Type** | **Text**, **Select**, **Select (multiple)**, **Number**, **Checkbox** or **Date and time**. Other stored types show their raw name. |
+| **Example**, **Description** | Example value and description. |
+| **Inherit** | Whether child entities take the value of their parent. |
 
-A double click on a row opens it in the attribute editor. The context menu has **Edit** and **Delete**; **Delete** is disabled for built-in attributes.
+Every column can be sorted.
 
-## Sources of attributes
+Which attribute values a user with the **User** level may read or change is set per access group, with **Restrict attribute read** and **Restrict attribute update** on the [Permissions](permissions.md#restrictions) tab. Admins and managers are never restricted.
+
+### Where attributes come from
 
 | Source | Description |
 |---|---|
-| Built-in | Defined by the AYON server and required by it, for example `priority`, `fps`, `resolutionWidth`, `resolutionHeight`, `pixelAspect`, `clipIn`, `clipOut`, `frameStart`, `frameEnd`, `handleStart`, `handleEnd`, `fullName`, `email`, `startDate`, `endDate`, `description`. They are marked `built-in` and cannot be deleted. Their scope, type and multi-select setting are locked; other settings can be changed, which can break features that depend on them. |
-| Custom | Created on this page by an admin. |
-| Addon | Registered by an addon when it is used on the AYON server, for example the tracker addons add identifiers such as `ftrackId`. Changing them can break the addon. |
+| Built-in | Defined by the server and needed by it, such as `priority`, `fps`, `resolutionWidth`, `frameStart`, `frameEnd`, `fullName`, `email`, `startDate` and `description`. Marked `built-in` and cannot be deleted. Their scope, type, widget and multi-select setting are locked; other settings can be changed, which can break features that depend on them. |
+| Custom | Created on this tab by an admin. |
+| Addon | Added by an addon, for example the identifiers of production tracker addons such as `ftrackId`. Changing them can break the addon. |
 
-An attribute has to be defined on the AYON server before pipeline code, publish plugins or sync tools can read or store it.
+An attribute has to exist on the server before pipeline code, publish plugins or sync tools can read or store it.
 
-## Scopes
+### Scopes
 
-The **Scope** of an attribute lists the entity types it exists on. The scope can contain several entries.
-
-| Scope | Entity |
-|---|---|
-| Project | Projects |
-| Folder | Folders |
-| Task | Tasks |
-| Product | Products |
-| Version | Versions |
-| Representation | Representations |
-| User | Users |
-| List | Entity lists |
-
-The scope of a built-in attribute cannot be changed.
+The scope of an attribute lists the entity types it exists on: **Project**, **Folder**, **Task**, **Product**, **Version**, **Representation**, **User** and **List** (entity lists). Some built-in attributes also exist on workfiles, which cannot be chosen in the editor.
 
 ## Attribute editor
 
-The editor is a dialog. Its header shows the title of the attribute (or **New attribute**). The button is **Create Attribute** for a new attribute and **Save Attribute** for an existing one; `Ctrl+Enter` (`Cmd+Enter` on macOS) also confirms. Confirming applies the change to the table only; **Save attributes changes** sends it to the AYON server.
+![The attribute editor of Priority: Title, Name, Scope, Type Select, Multi-select, Description, Example, Default, Inherit and the custom enum items Urgent, High, Normal and Low, with Save Attribute](../../assets/web-ui/studio-attributes/editor.png)
 
-### Common fields
+The editor is a dialog titled with the attribute title, or **New attribute**. **Create Attribute** (new) or **Save Attribute** (existing) applies the change to the table only; `Ctrl`/`Cmd` + `Enter` does the same. The table is sent to the server with **Save attributes changes**.
 
-| Field | Description |
+### Fields
+
+| Field | What it does |
 |---|---|
-| **Title** | Label of the attribute. For a new attribute, the **Name** is generated from the title in camel case. |
-| **Name** | Internal name, 2 to 64 letters and digits, no spaces or symbols. Must be unique. Fixed once the attribute exists. |
-| **Scope** | Multi-select of the [scopes](#scopes). |
-| **Type** | Data type, see [Data types](#data-types). Fixed once the attribute exists. |
-| **Description** | Description. |
-| **Example** | Example value. Not offered for **Checkbox**. |
-| **Default** | Default value. Offered when the scope contains Project. A switch for **Checkbox**. |
-| **Inherit** | Switch. A child entity takes the value of its parent when it has none of its own. Offered when the scope contains Project, Folder, Task, Product, Version, Representation or User. |
+| **Title** | Label of the attribute. For a new attribute, **Name** is filled in from it in camel case. |
+| **Name** | Internal name: 2 to 64 letters and digits, unique. Fixed once the attribute exists. |
+| **Scope** | The [entity types](#scopes) the attribute exists on. |
+| **Type** | The data type, see below. Fixed once the attribute exists. |
+| **Description**, **Example** | Description and example value. **Example** is not offered for **Checkbox**. |
+| **Default** | Default value. Offered when the scope contains Project. |
+| **Inherit** | A child entity takes the value of its parent when it has none of its own. Offered when the scope contains any entity type other than List. |
 
-### Data types
+### Types
 
 | Type | Stored as | Extra fields |
 |---|---|---|
-| **Text** | `string` | **MinLength**, **MaxLength**, **Regex** (the value must match). A second dropdown selects the widget: **Short text** (single line) or **Long text** (multi-line with Markdown). |
-| **Select** | `string`, or `list_of_strings` with **Multi-select** | **Multi-select**, **Enum**, and for multi-select **MinItems** and **MaxItems**. |
-| **Number** | `integer`, or `float` with **Decimal** | **Decimal**, **Min**, **Max**. For decimal numbers a button beside each limit switches between inclusive (`≥`, `≤`) and strict (`>`, `<`) comparison; integer limits are always inclusive. |
+| **Text** | `string` | **MinLength**, **MaxLength**, **Regex** (the value must match). A second dropdown chooses **Short text** (one line) or **Long text** (several lines with Markdown). |
+| **Select** | `string`, or `list_of_strings` with **Multi-select** | **Multi-select** and **Enum**. **Multi-select** is fixed once the attribute exists. |
+| **Number** | `integer`, or `float` with **Decimal** | **Decimal**, **Min**, **Max**. For decimal numbers, a button next to each limit switches between inclusive (`≥`, `≤`) and strict (`>`, `<`). **Decimal** is fixed once the attribute exists. |
 | **Checkbox** | `boolean` | None. |
-| **Date and time** | `datetime` (UTC) | None. |
+| **Date and time** | `datetime` | None. |
 
-### Enum source
+### Enum
 
 The **Enum** field of a **Select** attribute chooses where the options come from.
 
-| Source | Description |
+- **Custom**: a list defined in the editor. Each item has a label, value, icon and color. **Add new item** adds one; items can be reordered by dragging.
+- A dynamic enum: options generated from AYON data each time the attribute is used, so the list stays current.
+
+| Dynamic enum | Options | Settings |
+|---|---|---|
+| **Actions** | Actions of the installed addons. | |
+| **Folder Types**, **Task Types**, **Statuses**, **Tags**, **Link Types** | The entries of the project anatomy, so they depend on the project. | |
+| **Projects** | The projects the user has access to. | **Include inactive projects**, **Include library projects**, **Include skeleton projects** |
+| **Users and teams** | Users, teams or both. | **Hide inactive users**, **Mode** (**Users**, **Teams**, **Users and teams**) |
+| **Attribute enumerator** | The options of another attribute. | The attribute |
+
+Addons can add more dynamic enums to the same list. With a dynamic enum chosen, the editor shows its description, a note when the options depend on the project or the current user, its settings, a preview of the first five options with a **+N more** button, and a **Debug** button. **Debug** opens a dialog that resolves the options for a chosen project and user and lists them with a search.
+
+## Controls and interactions
+
+| Control | What it does |
 |---|---|
-| **Custom** | A list defined in the editor. Each item has **Label**, **Value**, **Icon** and **Color**. **Add new item** appends an item; items can be duplicated and removed. |
-| A dynamic enum | Options generated from AYON data when the attribute is used, so the list stays current. |
+| **Add Attribute** | Opens the editor for a new attribute. |
+| **Delete attribute** | Removes the selected attribute from the table. Disabled for built-in attributes. |
+| **Filter attributes...** | Shows only the attributes whose name, title, scope or type matches. |
+| **Unsaved Changes** | Shown while the table differs from the saved definitions. |
+| **Clear changes** | Discards all unsaved changes. |
+| **Save attributes changes** | Sends the table to the server. Custom attributes removed from the table are deleted at this point. |
 
-Dynamic enums provided by the AYON server:
+- Double-click a row to open it in the editor.
+- Right-click a row for **Edit** and **Delete**; **Delete** is disabled for built-in attributes.
 
-| Enum | Options |
-|---|---|
-| **Actions** | Actions of installed addons. |
-| **Folder Types**, **Task Types**, **Statuses**, **Tags**, **Link Types** | The corresponding entries of the project anatomy. They depend on the project the attribute is used in. |
-| **Users and teams** | Users and teams. Settings: **Hide inactive users** and **Mode** (**Users**, **Teams** or **Users and teams**). |
-| **Attribute enumerator** | The enum options of another attribute, selected by attribute name. |
-
-Addons can register further dynamic enums, which appear in the same dropdown.
-
-When a dynamic enum is chosen, the editor shows its description, a note when the options depend on the project or the current user, its settings form, a preview of the first five options (with a count of the rest) and a **Debug** button. The **Debug** dialog has these sections:
-
-| Section | Content |
-|---|---|
-| **Context Params** | Values such as `project_name` and `user` used to resolve the options. |
-| **Form** | The settings of the enum. |
-| **Enum Resolver Data** | The definition of the enum and the parameters it accepts. |
-| Item list | The resulting options, with **Search items...**. |
-
-## Restart
-
-Saving attribute changes marks the AYON server as needing a restart. The AYON menu shows **Restart Required** until it is restarted, and the new definitions take effect after the restart.
-
-## Permissions
-
-| Action | Required |
-|---|---|
-| View the page | Manager or admin |
-| Read attribute definitions (API) | Any signed-in user |
-| Create, edit, delete and save | Admin |
-| Change only descriptive metadata of an attribute (API) | Manager |
-
-Which attribute values a user may read or change is set per access group, in the **Permissions** of the group:
-
-| Setting | Effect |
-|---|---|
-| **Restrict attribute read** | Allows reading only the listed attributes. |
-| **Restrict attribute update** | Allows changing only the listed attributes. It also covers fields such as **Name**, **Label** and **Status** and moving folders and tasks. Because it limits fields that are not shown in the interface, it can affect automated pipeline operations. |
-
-The settings apply to users through their access groups; admins and managers have unrestricted access.
+Saved changes take effect at once, without a server restart. Only admins can save; managers can open the tab, and through the API they can change only the descriptive parts of an attribute, such as its title and description.
 
 ## Related
 
+- [Permissions](permissions.md)
 - [Users](users.md)
-- [Bundles](bundles.md)
-- [Navigation bar](../navigation-bar.md)
+- [Anatomy presets](anatomy-presets.md)
+- [Details panel](../details-panel.md)
+- [Data model](../../backend/data-model/index.md)

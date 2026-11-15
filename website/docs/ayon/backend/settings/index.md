@@ -43,7 +43,7 @@ The addon list of the **Studio settings** and **Project settings** pages marks a
 | Project settings | **Projects Settings** in the app menu, then the **Project settings** tab | Managers and admins; users with read or write access to **Project addon settings** in a project's access group |
 | Site settings (project) | **Projects Settings** in the app menu, then the **Site settings** tab | Everyone |
 
-For users with the user role, the `s+s` entry opens **Site Settings** instead of **Studio Settings**. See [Navigation bar](../../web-ui/navigation-bar.md) for the menu and tabs.
+For users with the user role, the `s+s` entry opens **Site Settings** instead of **Studio Settings**. See [App header](../../web-ui/app-header.md) for the menu and tabs.
 
 ## How overrides work
 
@@ -231,7 +231,7 @@ Access groups are described in [Users](../../web-ui/studio/users.md). Each save 
 
 - [Bundles](../../web-ui/studio/bundles.md)
 - [Project bundles](../../web-ui/project/project-settings.md)
-- [Navigation bar](../../web-ui/navigation-bar.md)
+- [App header](../../web-ui/app-header.md)
 - [Users](../../web-ui/studio/users.md)
 - [Core addon settings](../../../addons/essentials/core/settings.md)
 - [Addons](../../../addons/index.md)

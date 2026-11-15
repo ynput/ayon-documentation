@@ -1,135 +1,165 @@
 ---
 title: Views
-description: "Views save the layout of a web app page (filters, sorting, grouping, columns) as a working view, saved views with sharing, and studio or project default views."
-verified: 2026-10-15
-ui_purpose: "Saves a page's layout of filters, sorting, grouping and columns under a name, to share or set as the default."
-ui_location: "Views button in the toolbar of the pages that support views"
-ui_access: "Everyone; sharing and defaults depend on the user's role"
+description: "Views in the AYON web app save the layout of a page (filters, sorting, grouping, columns and other display settings): the pages that have views, the views button and menu, the Working view and its reset, saved views with their scope and sharing, the access levels, studio and project default views, the settings each page stores, and what needs the Power Pack."
+verified: 2026-11-15
+ui_purpose: "Saves the layout of a page under a name, to switch between layouts, share them with other users, or set the default layout of a project or the studio."
+ui_location: "Views button on the page tab of the project pages, and on the Projects page of Home, the Inbox and the Event Viewer"
+ui_access: "Everyone; saved views and sharing need the Power Pack; default views are managed by admins"
 sources:
   - https://help.ayon.app/en/articles/4664475-views
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/Views.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/ViewsButton/ViewsButton.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/ViewsMenu/ViewsMenu.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/ViewItem/ViewItem.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/hooks/useBuildViewMenuItems.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/hooks/useViewsShortcuts.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/hooks/useViewsMutations.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/utils/viewUpdateHelper.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/api/viewSettings.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectPage/ProjectPage.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardPage.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/InboxPage.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/EventsPage/components/EventsViews.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ImportDialog/ImportDialog.tsx
+  - https://github.com/ynput/ayon-backend/blob/develop/api/views/views.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/views/default_views.py
 ---
 
 # Views
 
 <PageInfo />
 
-A **view** stores the layout of a page of the AYON web app: filters, sorting, grouping, columns and the other display settings of that page. Every user has a private **Working view** per page that records the current layout. Saved views keep a layout under a name, can be shared with other users, groups and teams, and can be set as the default layout of a project or of the whole AYON server.
+![The Overview of wing_it with the views menu open from the button on the Overview tab: Working view with its reset button, a shared view named Sequence 020 lighting, the Studio and Project default view buttons, and Create new view](../assets/web-ui/views/page.webp)
 
-The Working view and the studio default view are available without a license. Saved views, sharing and project default views are Power Features and are marked with a lightning symbol. See [Power features](../../production-tracking/power-features.md).
+A view stores the layout of a page: its filters, sorting, grouping, columns and other display settings. Every user has a private **Working view** on each page that records the current layout. Saved views keep a layout under a name, can be shared with other users, and can be made the default layout of a project or of the whole studio. Views are stored on the server, so they follow the user to other computers. Each page has its own views: a view saved on the Overview is not offered on Task progress.
 
-## Where it appears
+## Views menu
 
-The views button is in the toolbar of each page that supports views. Its menu lists the views of that page.
+### Pages with views
 
-| Page | View type |
+On the project pages, the views button is the small layout icon on the tab of the open page, next to its name. Its tooltip names the loaded view: **Working view**, or `view:` and the name of a saved view.
+
+| Page | Notes |
 |---|---|
-| [Tasks home](home/tasks.md) | One set per home page tab |
-| [Project overview](production-tracking/overview.md) | `overview` |
-| [Task progress](production-tracking/task-progress.md) | `taskProgress` |
-| [Products and versions](production-tracking/products.md) | `versions` |
-| [Lists](production-tracking/lists.md) | `lists` |
-| [Review sessions](../../addons/production-tracking/review/index.md) | `reviews` |
-| [Reports](../../addons/production-tracking/reports/index.md) | `reports` |
-| [Planner](../../addons/production-tracking/planner/index.md) | `scheduler` |
-| [Inbox](inbox/index.md) | One set per tab (Important, Other, Cleared) |
-| CSV import dialog | `import.<context>`, shown as **Mapping presets** (see [Import CSV](dialogs/import-csv.md)) |
+| [Overview](production-tracking/overview.md), [Task progress](production-tracking/task-progress.md), [Products](production-tracking/products.md), [Lists](production-tracking/lists.md) | One set of views per page |
+| **Review**, **Schedule** and **Reports** tabs | Pages of the [Review](../../addons/production-tracking/review/index.md), [Planner](../../addons/production-tracking/planner/index.md) and [Reports](../../addons/production-tracking/reports/index.md) addons |
+| [Projects](home/projects.md) on Home | Not project specific |
+| [Inbox](inbox/index.md) | One set per tab: Important, Other, Cleared |
+| [Event Viewer](event-viewer.md) | A **Views** button in the toolbar |
+| [Import CSV](dialogs/import-csv.md) dialog | Called **Mapping presets**; stores the column mapping |
 
-Each page has its own set of views. A view saved on the Project overview page is not offered on Task progress or any other page. The data of a view is stored on the AYON server, so views follow the user between machines.
+[Home tasks](home/tasks.md) has no views. Addon pages can have views of their own.
 
-## Menu
+### Menu
 
-The views menu contains the following sections. Sections without items are hidden, and without a Power license only the Working view is listed.
+<Columns widths="60 40">
+<Column>
 
 | Entry | Description |
 |---|---|
-| **Working view** | The private working layout of the user. Has a reset button (**Reset to Default**, shortcut `Shift+Ctrl+0`, `Shift+Cmd+0` on macOS) that clears filters and column settings. |
-| **My views** | Saved views the user owns. |
-| **Shared views** | Saved views owned by others that are shared with the user. |
-| **All private views** | Private views owned by other users. Administrators only. |
-| **Default view** | Studio and Project buttons that set, load or remove a default view. Shown to administrators only. |
-| **Create new view** | Opens the **Create new view** dialog with the current layout. Shows a lightning symbol without a Power license. |
+| **Working view** | The user's own working layout. Without the Power Pack it is called **Personal view** and is the only entry. The reset button (tooltip **Reset to Default**) replaces it with the project default view, otherwise the studio default view, otherwise an empty layout. |
+| **My views** | Saved views the user owns that are shared with nobody. |
+| **Shared views** | Saved views shared with the user, including the user's own views that are shared with others. |
+| **Default view** | The **Studio** and **Project** buttons, see [Default views](#default-views). Shown to admins. |
+| **Create new view** | Opens the **Create new view** dialog with the current layout, see [View dialog](#view-dialog). Needs the Power Pack. |
 
-Each saved view row has two buttons that appear with the row:
+Sections without views are hidden and can be collapsed. A saved view row shows two buttons on hover: a save button (tooltip **Save view settings from current view**) that overwrites the view with the layout on screen after a **Confirm save** dialog, and `...` (tooltip **Edit view**) that opens the view dialog. They are shown to users who may edit the view.
 
-| Button | Description |
-|---|---|
-| Save icon | Overwrites the saved view with the current layout of the Working view. A **Confirm save** dialog asks first. Shown while another view is selected and the user can edit it. |
-| More icon (**Edit view**) | Opens the **Edit view** dialog. |
+</Column>
+<Column>
 
-## Working view
+![The views menu with Working view and its reset button, Shared views with Sequence 020 lighting, the Default view section with Studio and Project, and Create new view (shared views and the Project default are Power features)](../assets/web-ui/views/views-menu.png)
 
-Changes to filters, sorting, grouping or columns are applied to the Working view. Saved views are never changed automatically: changing the layout while a saved view is loaded switches the page back to the Working view, which carries the modified layout. A saved view changes only when it is saved explicitly or edited in the dialog.
+</Column>
+</Columns>
 
-The Working view is always private and belongs to one page and one project.
+### Working view
 
-## View dialog
+Changes to filters, sorting, grouping or columns always go to the Working view. A saved view never changes by itself: changing the layout while a saved view is loaded switches the page back to the Working view, which carries the changed layout. A saved view changes only when it is saved or edited on purpose.
 
-**Create new view** and **Edit view** open the same dialog. A new view is created from the layout currently on screen.
+The Working view is private and belongs to one page and one project. Pages that are not about one project, such as the Inbox, have one Working view for the whole studio.
 
-| Field | Description |
-|---|---|
-| **View name** | Name shown in the menu. Required. |
-| **Scope** | **Project - &lt;project name&gt;** makes the view available in the current project only. **All projects** makes it available in every project. The scope cannot be changed after creation. Not shown on pages that are not project specific. |
-| Access | Who can use the view and with which access level. Subjects are **Everyone**, individual users, groups and teams. |
+### Default views
 
-| Button | Description |
-|---|---|
-| **Create** / **Save** | Creates the view or saves the changes. `Ctrl+Enter` in the dialog also submits it. |
-| **Duplicate** | Creates a new view from the loaded view. Shown when editing. |
-| **Delete** | Deletes the view. Shown when editing, for users with the Admin access level. |
-| **Cancel** | Closes the dialog. |
-
-### Access levels
-
-| Level | Description |
-|---|---|
-| Viewer | Can load and use the view. Cannot change its layout or settings. |
-| Editor | Can change the name, scope and layout of the view. Cannot manage access or delete it. |
-| Admin | Full control, including access and deletion. The owner of a view has this level. |
-
-A view is private while it is shared with nobody. The owner of a view can be changed only by an administrator of the AYON server.
-
-## Default views
-
-A default view is a saved layout offered as the standard starting layout. The default view is never applied automatically to a user who opens a page for the first time; it is loaded into the Working view on request. The **Default view** section of the menu is shown to administrators.
+A default view is the standard layout of a page. The **Default view** section of the menu is shown to admins.
 
 | Scope | Description |
 |---|---|
-| Studio | Applies to all projects and users. Used as the fallback when no project default exists. Available without a Power license. |
-| Project | Applies to one project and overrides the studio default there. Requires a Power license. |
+| **Studio** | For all projects and users. A user who has no Working view on a page yet starts with it. |
+| **Project** | For one project. Used by **Reset to Default** before the studio default. Needs the Power Pack. |
 
-The **Studio** and **Project** buttons behave as follows:
-
-| State of the button | Click action |
+| Button state | Click |
 |---|---|
-| No default view exists (plus icon) | Saves the current Working view layout as the default view of that scope. |
-| A default view exists (close icon on the button) | The button loads the default layout into the Working view. The close icon removes the default view after a confirmation (**Remove Default View**). |
+| Plus icon: no default yet | Saves the current layout as the default view of that scope. |
+| Close icon: a default exists | The button loads the default layout into the Working view. The close icon removes the default after a confirmation (**Remove Default View**). |
 
-## Settings stored per page
+## Controls and interactions
+
+| Control | Action |
+|---|---|
+| Click a view | Loads it. |
+| Reset button of **Working view**, or `Shift` + `Ctrl`/`Cmd` + `0` | Resets the Working view to the default layout, see [Menu](#menu). |
+| Save button of a view row | Overwrites the view with the current layout. |
+| `...` of a view row | Opens **Edit view**. |
+
+### Settings stored per page
 
 | Page | Stored in a view |
 |---|---|
-| Project overview | Hierarchy visibility, row height, grouping and group order, empty groups, sorting, filters, folder filter, slicer type, columns |
+| Overview | Hierarchy, row height, grouping, empty groups, sorting, filters, folder filter, slicer type, columns |
 | Task progress | Filters, slicer type, columns |
-| Products and versions | Product visibility, row height, grid display and height, featured version order, slicer type, grouping and group order, empty groups, latest per folder, sorting, filters, columns |
+| Products | Products shown, row height, grid display and height, featured version order, slicer type, grouping, empty groups, latest per folder, sorting, filters, columns |
 | Lists | Row height, sorting, filters, columns |
-| Review sessions | Row height, sorting, filters, columns, grid height, display style (cards, table, playlist) |
+| Review | Row height, sorting, filters, columns, grid height, display style (cards, table, playlist) |
+| Projects on Home | Filters, columns, grouping, sorting |
+| Inbox | Filter, unread only |
+| Event Viewer | Filters, layout (table or timeline) |
 
 Columns are stored with their visibility, pinning and width.
 
-## Permissions
+## Power features
 
-| Action | Who |
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+
+Saved views, sharing and project default views need the Power Pack. Without it, only the **Personal view** and the studio default view are available, and **Create new view** and the **Project** button show a lightning icon and open the Power Pack dialog.
+
+### View dialog
+
+<Columns widths="55 45">
+<Column>
+
+**Create new view** and **Edit view** open the same dialog. A new view takes the layout currently on screen.
+
+| Field | Description |
 |---|---|
-| Use the Working view, load the studio default view | All users |
-| Create, share and load saved views; project default views | Users on an AYON server with the Power Features addon and a Power license |
-| See and manage the **Default view** section | Administrators |
-| Create a default view on the AYON server | Managers and administrators |
-| Delete a view | Its owner, users with the Admin level and administrators |
+| **view name** | The name shown in the menu. Required. |
+| **Scope** | **Project -** and the project name: only in this project. **All projects**: in every project. Cannot be changed later. Not shown on pages that are not project specific. |
+| **People with access** | **Add people or access groups** adds users, access groups and teams. The owner is listed with **Owner**. **Everyone** stands for all users with access to the project. Each entry gets an access level. |
+
+**Create** (or **Save** when editing) saves the view; `Ctrl`/`Cmd` + `Enter` does the same. When editing, **Delete** removes the view.
+
+</Column>
+<Column>
+
+![The Create new view dialog with the view name Sequence 020 lighting, the scope Project - wing_it, Borislava Buchma as owner and Everyone set to Viewer, and the Create button](../assets/web-ui/views/view-dialog.png)
+
+</Column>
+</Columns>
+
+### Access levels
+
+| Level | Can |
+|---|---|
+| **No access** | Nothing. A view that gives nobody access is private. |
+| **Viewer** | Load and use the view. |
+| **Editor** | Also change its name and layout. |
+| **Admin** | Also see the **Delete** button. |
+
+Only the owner of a view and admins of the server can change who has access, delete a view, or change its owner. Managers have full access to every shared view.
 
 ## Related
 
+- [Slicer](slicer.md)
 - [Power features](../../production-tracking/power-features.md)
-- [Power Features addon](../../addons/production-tracking/power-pack/index.md)
-- [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
-- [Navigation bar](navigation-bar.md)
+- [Power Pack](../../addons/production-tracking/power-pack/index.md)
+- [Overview](production-tracking/overview.md)

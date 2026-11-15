@@ -1,152 +1,167 @@
 ---
 title: Lists
 sidebar_label: Lists
-description: "Lists collect folders, tasks or versions from anywhere in a project into one view, with list folders, list attributes and access levels."
-verified: 2026-10-15
-ui_purpose: "Groups folders, tasks or versions from anywhere in a project into lists, for reviews, tracking or personal to-dos."
+description: "The Lists page of a project: lists of folders, tasks or versions collected from anywhere in the project, the lists table with list folders, creating, duplicating and importing lists, the list items table with editing, list values and comparing with the entities or another list, list attributes, list details and sharing with access levels, the toolbar, context menus and shortcuts."
+verified: 2026-11-15
+ui_purpose: "Groups folders, tasks or versions from anywhere in a project into lists, for reviews, deliveries, tracking or personal to-dos."
 ui_location: "Project tab row > Lists"
 ui_url: "/projects/<project>/lists"
-ui_access: "Users with access to the project"
+ui_shortcut: "N creates a list, F a list folder, R renames"
+ui_access: "Users with access to the project; each list can limit who sees and edits it"
 sources:
   - https://help.ayon.app/en/articles/7382645-lists
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectListsPage/ProjectListsPage.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectListsPage/components/ListsTable/ListsTableHeader.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectListsPage/hooks/useListContextMenu.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectListsPage/hooks/useReplaceListItem.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectListsPage/hooks/useCompareLists.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectListsPage/listValues/AGENTS.md
 ---
 
 # Lists
 
 <PageInfo />
 
-**Lists** group folders, tasks or versions from anywhere in a project into one table, outside the folder and task hierarchy. A list can hold shots to review, tasks to track, versions to compare or a personal to-do collection. There is no limit on the number of lists or of items per list.
+![The Lists page of wing_it: the lists table on the left with the Trailer list selected, its eleven shots in the items table with status, tags, priority and description, and the list details on the right; the Compare with button and the summary footer are Power features](../../assets/web-ui/lists/page.webp)
 
-## Where it appears
+A list collects folders, tasks or versions from anywhere in a project into one table, outside the folder hierarchy: shots for a trailer, versions for dailies, tasks to chase, or a personal to-do list. The lists table on the left chooses the list, the items table in the middle shows and edits its items, and the panel on the right shows the list details or the selected item in the [details panel](../details-panel.md). Items are added from other pages with **Add to list**, for example from [Task progress](task-progress.md), [Products](products.md) or the [Project overview](overview.md). Lists of the review session type are shown by the [Review addon](../../../addons/production-tracking/review/index.md) instead.
 
-The page shows lists of the generic type. Lists of the review-session type belong to the Review addon.
+## Lists and items
 
-## Layout
+### Lists table
 
-| Region | Content |
-|---|---|
-| Left | The lists table: lists and list folders, a header with search, create and filter controls. |
-| Toolbar | Controls for the selected list, see [List toolbar](#list-toolbar). |
-| Main area | The items of the selected list as a spreadsheet-style table. |
-| Details panel (right) | Details of the selected item, see [Details panel](../details-panel.md). |
-| Settings panel (right) | Opened by **Customize**: columns, sorting and list attributes. |
+Each row is a list, with an icon for its entity type and the number of items. A list holds one entity type, chosen when it is created: **Folder**, **Task** or **Version**. Products cannot be added; **Add to list** on a product adds its featured version.
 
-## List types
-
-A list holds one entity type. The type is chosen when the list is created and cannot be mixed.
-
-| Entity type | Items |
-|---|---|
-| Folder | Folders |
-| Version | Versions |
-| Task | Tasks |
-
-Products cannot be added to a list. From a product, the **Add to list** entry adds its featured version.
-
-## Lists table
-
-### Header
+<Columns widths="55 45">
+<Column>
 
 | Control | What it does |
 |---|---|
-| Search | Filters the lists by name. |
-| Create list (`N`) | Creates a list. The dialog asks for the **List label** and the **Entity type**. |
-| Create folder (`F`) | Creates a list folder. Power feature. |
-| Menu: **Select all lists** | Selects every list. |
-| Menu: **Show archived** | Includes archived lists. |
-| Menu: **Filter lists** | Opens a filter bar above the table. |
-| Menu: **Delete selection** | Deletes the selected lists or folders. |
+| `+` (**Create list**, `N`) | Creates a list. The dialog asks for the **List label** and the **Entity type** |
+| Folder button (**Create folder**, `F`) | Creates a list folder, see [List folders](#list-folders). Without the Power Pack, it opens the Power Pack dialog |
+| Search button | Filters the lists by name |
+| `...` menu | **Search**, **Select all lists**, **Create list**, **Create folder**, **Duplicate selection**, **Create list from CSV**, **Show archived**, **Filter lists**, **Sort lists** and **Delete selection** |
 
-### Filter bar
+**Filter lists** filters by **Entity Type**, **Tags** and the attributes of lists. **Create list from CSV** creates a list from a CSV file, see [Import CSV](../dialogs/import-csv.md).
 
-Lists can be filtered by **Entity Type**, **Tags** and by any attribute scoped to lists.
+</Column>
+<Column>
 
-### Context menu
+![The lists menu with Search, Select all lists, Create list, Create folder, Duplicate selection, Create list from CSV, Show archived, Filter lists, Sort lists and Delete selection](../../assets/web-ui/lists/lists-menu.png "Lists menu")
+
+</Column>
+</Columns>
+
+### Items table
+
+The items of the selected list, one row per item. It works like the [Project overview](overview.md) table: filters, columns, sorting and editing in cells. List attributes, list values and comparing need the Power Pack, see [Power features](#power-features). Items can be reordered by dragging. Columns that cannot be edited on a list, for example most columns of a version list, are read-only and show a lock icon.
+
+### Details and sharing
+
+The panel on the right shows the selected list with two tabs.
+
+- **Details:** the list attributes (**Label**, **Tags**, **List category**, **Active**) and read-only details: ID, entity type, list type, item count, owner, and who created and last updated it, and when.
+- **Share:** the owner, **Everyone** with its access level, and **Copy link**. Without the Power Pack, a **Manage list access** button opens the Power Pack dialog, and everyone has full control of every list; see [List access](#list-access).
+
+## Controls and interactions
+
+### Toolbar
+
+| Control | What it does |
+|---|---|
+| **Create review** | Opens the list in a review session of the Review addon. Disabled for an empty list |
+| Undo, redo, remove | Undo and redo edits; remove the selected items from the list |
+| Search filter | Filters the items |
+| **Compare with** | See [Compare](#compare). Without the Power Pack, a **Compare** button with a lightning symbol opens the Power Pack dialog |
+| Sync button | Reloads the items |
+| **Import / Export** | **Import** loads values into the list items from a file, see [Import CSV](../dialogs/import-csv.md). **Export** needs the Power Pack, see [Export](overview.md#export) |
+| Actions | Addon actions that run on the list |
+| **Customize** | **Columns**, **Sort**, **Row height**, **Compare** and **List attributes**. **Compare** and **List attributes** need the Power Pack |
+
+![The Customize panel of a list with Columns, Sort, Row height, Compare and List attributes (Compare and List attributes are Power features)](../../assets/web-ui/lists/customize.png)
+
+### Context menus
+
+<Gallery columns={2} rows={1} more="show-all">
+
+![The right-click menu of a list with Rename list, Create review, Duplicate, Create folder, Details and Delete](../../assets/web-ui/lists/list-context-menu.png "Right-click a list")
+
+![The right-click menu of a list item with Copy, Show details, Open in viewer, Export, Add to list, Review, Replace folder, View data and Remove from list](../../assets/web-ui/lists/item-context-menu.png "Right-click an item")
+
+</Gallery>
+
+A list, in the lists table:
 
 | Entry | What it does |
 |---|---|
-| **Rename list** / **Rename folder** (`R`) | Renames the entry. Double-clicking the name does the same. |
-| **Details** (double-click) | Opens the list details. |
-| **Create review** | Creates a review session from the list. Shown when the Review addon is installed. |
-| **Create list** (`N`) | On a folder: creates a list inside it. |
-| **Create folder** / **Create subfolder** (`F`) | Creates a list folder, or a subfolder of the selected folder. |
-| **Edit folder** | Edits label, scope, icon and color of a folder. |
-| **Move list** / **Move folder** | Opens a folder picker. The picker also unsets the folder of a list. |
-| **Make root folder** (`Shift`+`Alt`+`F`) | Moves a subfolder to the top level. |
-| **Select all lists** | On a folder: selects the lists it contains. |
-| **Delete** | Deletes the list or the folder only (the lists inside a deleted folder remain). Holding `Ctrl` or `Cmd` skips the confirmation. |
+| **Rename list** / **Rename folder** (`R`) | Renames it |
+| **Create review** | Creates a review session from the list |
+| **Duplicate** | Copies the list |
+| **Edit folder** | Changes the label, scope, icon and color of a folder |
+| **Create list** (`N`), **Create list from CSV** | On a folder: creates a list in it |
+| **Create folder** (`F`) / **Create subfolder** | Creates a folder with the selected lists, or a subfolder |
+| **Move list** / **Move folder** | Opens a folder picker, which can also take a list out of its folder. Shown with the Power Pack |
+| **Make root folder** (`Shift`+`Alt`+`F`) | Moves a subfolder to the top level |
+| **Select all lists** | On a folder: selects its lists |
+| **Details** (double-click) | Opens the list details |
+| **Delete** | Deletes the lists, or a folder only (its lists stay). `Ctrl`/`Cmd` + click skips the confirmation |
 
-`Shift`+`F` removes the selected lists or folders from their parent folder.
+An item, in the items table: **Copy** (`Ctrl`+`C`), **Paste** (`Ctrl`+`V`), **Show details** (double-click), **Open in viewer** (`Spacebar`), **Export**, **Add to list**, **Review**, **Replace** (folder, task or version: swaps the item for another entity of the same type), **View data** and **Remove from list** (`Ctrl`+`Backspace`, can be undone).
 
-## List folders
+## Power features
 
-List folders organize lists in a hierarchy. A folder contains lists and other folders. List folders are a [power feature](../../../production-tracking/power-features.md).
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
 
-| Field | Meaning |
+### List folders
+
+List folders sort lists into a hierarchy; a folder holds lists and other folders. A folder has a **Label**, a **Scope** (**Lists**, **Review Sessions** or both), and an optional icon and color. `F` depends on the selection: with nothing selected it creates an empty folder, with lists selected a folder that contains them, with a folder selected a subfolder. Users who are not admins or managers can edit and delete only the folders they own.
+
+### List attributes and list values
+
+List attributes are extra fields defined on one list, shown as extra columns with a value for each item. They are not shared between lists. Examples: an approval checkbox per director, a delivery date, the vendor of outsourced work, or a flag per cut. They are added, renamed and deleted in **Customize** > **List attributes**. Without the Power Pack, its **Add attribute** button opens the Power Pack dialog.
+
+An item can also hold its own value for any attribute of the entity, a list value, without changing the entity itself. A value the item does not set is shown greyed, inherited from the entity. Fields that only the entity has, such as status or assignees, still edit the entity; their column headers show the entity type icon.
+
+### Compare
+
+**Compare with** in the toolbar adds a compare column next to each attribute column: **Entities** compares the list values with the entities' own values, **Choose a list...** with the values of the same items in another list of the same entity type. Two lists can also be compared from the lists table: **Compare lists** when two lists are selected, or **Compare with current list** on the right-click menu of another list. **Customize** > **Compare** sets what is highlighted (**Highlight**), the highlight **Color**, and **Show entities from both lists**, which adds the items found only in the compared list as read-only rows.
+
+### List access
+
+With the Power Pack, the **Share** tab has **People with access**, where users and access groups are added with an access level, and **Save access**.
+
+<Columns widths="55 45">
+<Column>
+
+| Level | Can |
 |---|---|
-| **Label** | Required name. |
-| **Scope** | Where the folder appears: **Lists**, **Review Sessions**, or both. |
-| Icon and color | Optional visual markers. |
+| None | Not see the list |
+| Viewer | View the list and its items |
+| Editor | Also add and remove items |
+| Admin | Everything: rename, delete, change list attributes and manage access |
 
-`F` is context aware: with nothing selected it creates an empty folder, with lists selected it creates a folder containing them, with a folder selected it creates a subfolder. Users who are not administrators or managers can edit and delete only folders they own.
+Admins and managers always have full control. A list without access settings is open to everyone.
 
-## List items
+</Column>
+<Column>
 
-### List toolbar
+![The Share tab of the Trailer list: the owner milan, Everyone with the Admin level, Copy link and Save access](../../assets/web-ui/lists/share.png "Share")
 
-| Control | What it does |
-|---|---|
-| Open review session button | Opens the list in a review session. Disabled for an empty list. |
-| Undo, redo, remove from list | Edit actions. |
-| Filter | Filters the items of the list. |
-| Sync button | Reloads the items. |
-| Import | Imports data into the list items, see [Import CSV](../dialogs/import-csv.md). |
-| Actions | Actions that run on the list. Addons, for example studio addons, can contribute list actions. |
-| **Customize** | Opens the settings panel. |
+</Column>
+</Columns>
 
-### Editing items
+### Other Power features
 
-- The table supports the same filtering, column customization and in-cell editing as the [Project overview](overview.md).
-- Items can be reordered by dragging.
-- Items are removed with the **Remove from list** action or `Ctrl`/`Cmd`+`Backspace`. The action can be undone.
-- Items are added from other pages through the **Add to list** context menu entry, which opens a dialog to choose the lists or to create a new list.
-- Columns that cannot be edited on a list, especially on version lists, are read-only and marked with a lock icon.
-
-## List attributes
-
-List attributes are custom fields defined per list. They appear as extra columns and hold a value for each list item. Attributes are not shared between lists. List attributes are a [power feature](../../../production-tracking/power-features.md).
-
-Typical uses: an approval checkbox per director, delivery dates or editorial notes, the vendor and deadline of outsourced work, or per-cut inclusion flags and output formats.
-
-Attributes are managed in the **List attributes** section of the settings panel (**Customize**), where attributes can be added, renamed and deleted.
-
-## Details and sharing
-
-The list details panel has two tabs.
-
-| Tab | Content |
-|---|---|
-| **Details** | List attributes of the list (label, tags and others) and metadata such as ID, entity type, item count and owner. |
-| **Share** | Access control of the list and a link to copy. Power feature. |
-
-## Access levels
-
-Access can be granted to users and to groups.
-
-| Level | Meaning |
-|---|---|
-| None | The list is not visible. |
-| Viewer | Can view the list and its items. |
-| Editor | Can also add items to and remove items from the list. |
-| Admin | Full control: rename, delete, change list attributes and manage access. |
-
-Administrators and managers always have full control. Lists without explicit access settings are open: everyone has full control. Setting access levels requires the Power Pack. Without it, everyone keeps full control of every list.
+- **Advanced filters**, **column summaries** and **saved and shared views** work as on the [Overview](overview.md#power-features).
+- **Export** of the items to Excel or CSV, see [Export](overview.md#export).
+- **Import** into lists can keep separate values per list, see [List values](../dialogs/import-csv.md#list-values) in Import CSV.
 
 ## Related
 
 - [Review sessions](../../../addons/production-tracking/review/index.md)
 - [Project overview](overview.md)
 - [Products and versions](products.md)
+- [Import CSV](../dialogs/import-csv.md)
 - [Views](../views.md)
-- [Power features](../../../production-tracking/power-features.md)
 - [Details panel](../details-panel.md)
+- [Power features](../../../production-tracking/power-features.md)

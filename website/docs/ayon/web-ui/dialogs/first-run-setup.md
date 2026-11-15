@@ -1,10 +1,10 @@
 ---
 title: First-run setup
-description: "The first-run setup of a new AYON server: when it appears, creating the first admin, connecting to Ynput Cloud, installing a pipeline release and how the setup ends, plus Launch Bootstrap Setup."
-verified: 2026-10-25
+description: "The first-run setup of a new AYON server: when it appears, its steps from connecting to Ynput Cloud and creating the first admin to picking a release, addons and launcher platforms, the installation progress, what the setup creates, how it ends or is skipped, Launch Bootstrap Setup, and who can use each step."
+verified: 2026-11-15
 ui_purpose: "Creates the first admin account of a new server and can install a pipeline release from Ynput Cloud."
-ui_location: "Shown on the first visit to a new server, before the web app"
-ui_url: "/onboarding"
+ui_location: "Shown on the first visit to a new server, before the web app; App menu > Launch Bootstrap Setup"
+ui_url: /onboarding
 ui_access: "Everyone on a server without an admin; then admins until the setup is finished"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/OnBoarding/OnBoardingPage.jsx
@@ -32,38 +32,26 @@ sources:
 
 <PageInfo />
 
-The first-run setup (also called onboarding or bootstrap setup) is the full-screen flow that a new AYON server shows before the regular web app. It creates the first admin account and can install a pipeline release from Ynput Cloud: addons, AYON launchers and dependency packages, plus a bundle that uses them. Setting up a server is described in [On-premise deployment](../../deployment/on-premise.md); releases and bundles in [Install pipeline release](install-pipeline-release.md) and [Bundles](../studio/bundles.md).
+The first-run setup (also called onboarding or bootstrap setup) is the full-screen flow that a new AYON server shows before the regular web app. It creates the first admin account and can install a pipeline release from Ynput Cloud: addons, AYON launchers and dependency packages, plus a bundle that uses them. After it, the server opens on the normal web app. Setting up a server is described in [On-premise deployment](../../deployment/on-premise.md); installing a release later, on a running server, in [Install pipeline release](install-pipeline-release.md).
 
-## Where it opens
+:::note No screenshots
+The setup only appears on a server without an admin account, or after **Launch Bootstrap Setup**, which changes the server state. This page is written from the code; it has no screenshots.
+:::
 
-| Opens from | Control | Shortcut | Who sees it |
-|---|---|---|---|
-| Any page of a server without an admin account | Shown instead of the login page, at `/onboarding` | none | Everyone who opens the web app |
-| Any page, after signing in, while the setup is not finished | Shown instead of the web app, at `/onboarding` | none | Admins (not service users) |
-| App menu | **Launch Bootstrap Setup** | none | Users with **Developer mode** on |
-
-A server has no admin account when no user has the admin access level. A server with an active `ynputcloud` addon counts as having one.
-
-The setup counts as finished once it has been completed or skipped. Until then every admin who signs in sees it again.
-
-**Launch Bootstrap Setup** marks the setup as not finished and reloads the page, so the setup starts again at **Configure your server**. The server accepts this from admins only; for other users the menu entry shows **Failed to launch bootstrap setup**.
-
-## Layout and controls
+## Setup steps
 
 The setup is a sequence of panels on the login background of the server. A server without an admin account starts at the first step; a server with an admin account starts at **Configure your server**.
-
-### Steps
 
 | Step | Heading | Content and controls |
 |---|---|---|
 | 1 | **Lets get things set up for you.** | A Ynput Cloud button that connects the server to a Ynput Cloud account. **Read more or skip** shows **What is Ynput Cloud?** with an explanation and **I know what I am doing, skip bootstrap.**, which goes to **Create Admin** without connecting. |
 | 2 | **Connected!** | Shown after connecting: **Your Ynput Community account is now linked to the server.**, the account details, and **Only admins can see this information and you can disconnect later.** **Continue** goes on. |
-| 3 | **Create Admin** | The form for the first admin account (see below). **Create Admin** creates it and signs in. |
+| 3 | **Create Admin** | The form for the first admin account, see [Create Admin form](#create-admin-form). **Create Admin** creates it and signs in. |
 | 4 | **Configure your server** | Explains the bootstrap setup. With a Ynput Cloud connection, a **Bootstrap Setup** button goes to the release selection; without one, the Ynput Cloud button connects first and then shows **Connected!** with **Continue**. **I know what I am doing, skip bootstrap.** ends the setup without installing anything. |
 | 5 | **Select a Release Package** | One card per available release with its icon, label and description. The first release is preselected. The selected card shows **Release: Ynput - &lt;name&gt; - &lt;date&gt;**; clicking the date switches between a relative and an exact date. **Continue** goes on. |
 | 6 | **Pick your Addons** | A grid of the optional addons of the release, all selected. Clicking a card deselects or selects it. Mandatory addons of the release are not shown and are always installed. **Back** and **Next**. |
 | 7 | **Pick your Platforms** | One card per platform the release has a launcher for: **Windows**, **Linux**, **macOS**. The operating system of the browser is preselected. **Confirm** starts the installation and is disabled until a platform is selected. **Back** returns to the addons. |
-| 8 | **Getting Everything Installed...** | One card per download with its progress (see below). The heading changes to **Finished Installation!** when all downloads have ended. **Finish Setup** becomes active then. |
+| 8 | **Getting Everything Installed...** | One card per download with its progress, see [Installation progress](#installation-progress). The heading changes to **Finished Installation!** when all downloads have ended, and **Finish Setup** becomes active. |
 
 While the server connects to Ynput Cloud, **Connecting Ynput Account...** is shown. After 10 seconds without a connection the message **Connection timed out** appears.
 
@@ -77,9 +65,7 @@ While the server connects to Ynput Cloud, **Connecting Ynput Account...** is sho
 | **Email (optional)** | Must contain `@` when filled. Prefilled from the Ynput Cloud account. |
 | **Full Name (optional)** | Free text. |
 
-Errors appear under the form, for example **Username is missing**, **Password and Confirm Password do not match**, **Email must be valid** or **Unable to create admin**. The server refuses the form once an admin exists.
-
-After the account is created, the web app signs in as the new admin and the setup continues with **Configure your server**.
+Errors appear under the form, for example **Username is missing**, **Password and Confirm Password do not match**, **Email must be valid** or **Unable to create admin**. The server refuses the form once an admin exists. After the account is created, the web app signs in as the new admin and the setup continues with **Configure your server**.
 
 ### Installation progress
 
@@ -92,7 +78,7 @@ After the account is created, the web app signs in as the new admin and the setu
 
 Addons are listed after the launchers and dependency packages. Each card is named after the addon or the file.
 
-## What the setup creates
+### What the setup creates
 
 | Step | Creates |
 |---|---|
@@ -103,14 +89,26 @@ Addons are listed after the launchers and dependency packages. Each card is name
 
 During the restart the screen reads **Almost there! Restarting server to apply setup...**. The web app opens when the server is back. When the bundle cannot be created, the message **Please create your production bundle manually after restarting the server.** appears and the setup still finishes.
 
-## Skipping the setup
+## Controls and interactions
+
+### When it appears
+
+| Situation | What is shown | To whom |
+|---|---|---|
+| Any page of a server without an admin account | The setup instead of the login page, at `/onboarding` | Everyone who opens the web app |
+| Any page, after signing in, while the setup is not finished | The setup instead of the web app, at `/onboarding` | Admins (not service users) |
+| App menu, **Launch Bootstrap Setup** | The setup again, at **Configure your server** | Users with **Developer mode** on |
+
+A server has no admin account when no user has the admin access level; a server with an active `ynputcloud` addon counts as having one. The setup counts as finished once it has been completed or skipped. Until then every admin who signs in sees it again.
+
+### Skipping the setup
 
 | Skip | Result |
 |---|---|
 | **I know what I am doing, skip bootstrap.** in step 1 | Goes to **Create Admin**. Ynput Cloud is not connected. |
 | **I know what I am doing, skip bootstrap.** in **Configure your server** | Marks the setup finished without a restart. Nothing is downloaded and no bundle is created. Addons, launchers and dependency packages can be uploaded later on the [Bundles](../studio/bundles.md) page, or installed with [Install pipeline release](install-pipeline-release.md). |
 
-## Permissions
+### Sign-in for each step
 
 | Action | Required |
 |---|---|
@@ -119,11 +117,15 @@ During the restart the screen reads **Almost there! Restarting server to apply s
 | See the setup after signing in, install a release, finish or skip the setup | Admin |
 | **Launch Bootstrap Setup** | Shown with **Developer mode**; accepted for admins only |
 
+### Run the setup again
+
+**Launch Bootstrap Setup** in the App menu marks the setup as not finished and reloads the page, so the setup starts again at **Configure your server**, for example to install a release on a server that skipped it. The server accepts this from admins only; for other users the menu entry shows **Failed to launch bootstrap setup**. Every admin then sees the setup at sign-in until it is finished or skipped again.
+
 ## Related
 
 - [Install pipeline release](install-pipeline-release.md)
 - [Bundles](../studio/bundles.md)
 - [Market](../market.md)
-- [Navigation bar](../navigation-bar.md)
+- [App header](../app-header.md)
 - [On-premise deployment](../../deployment/on-premise.md)
 - [Users](../studio/users.md)

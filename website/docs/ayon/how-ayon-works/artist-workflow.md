@@ -54,7 +54,7 @@ The same flow as a list:
 
 ## 1. Sign in to the launcher
 
-The launcher is the desktop application that connects a workstation to the AYON server. Its installer is offered in the web app under **Download Launcher** in the **User** menu, and as a download prompt in the top bar when the server hosts an installer for the platform.
+The launcher is the desktop application that connects a workstation to the AYON server. Its installer is offered in the web app under **Download Launcher** in the **User** menu, and as a download prompt in the App header when the server hosts an installer for the platform.
 
 | Moment | What happens |
 |---|---|

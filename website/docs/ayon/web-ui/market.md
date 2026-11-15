@@ -1,160 +1,141 @@
 ---
 title: Market
-description: "The Market page of the AYON web app: browsing, installing and updating addons and pipeline release bundles from Ynput Cloud."
-verified: 2026-10-15
-ui_purpose: "The catalog of addons and pipeline releases from Ynput, where admins install and update them on the server."
-ui_location: "App menu (nine dots, top right) > Market"
-ui_url: "/market"
-ui_shortcut: "m+m"
+description: "The Market page of the AYON web app: the catalog of addons and pipeline release bundles from Ynput Cloud, the Addons and Release Bundles filters, addon cards and their download states, the addon details with versions, production usage and links, Update All, release details with Install release bundle, subscriptions, and the Ynput Cloud connection."
+verified: 2026-11-15
+ui_purpose: "The catalog of addons and pipeline releases published by Ynput, where admins download addons and updates to the server and start the installation of a release."
+ui_location: "App menu > Market"
+ui_url: /market
+ui_shortcut: m+m
 ui_access: "Admins; needs a connection to Ynput Cloud"
 sources:
-  - https://help.ayon.app/en/help/articles/7317917-ayon-market
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/MarketPage/MarketPage.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/MarketPage/MarketFiltersHelpers.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/MarketPage/MarketAddonsList.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/MarketPage/MarketDetails/AddonDetails.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/MarketPage/MarketDetails/ReleaseDetails.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/MarketPage/helpers/transformReleasesToTable.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/MarketPage/ConnectDialog/ConnectDialog.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/components/YnputCloud/YnputCloudButton.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/components/YnputCloud/YnputConnector.jsx
+  - https://github.com/ynput/ayon-backend/blob/develop/api/market/addons.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/market/releases.py
 ---
 
 # Market
 
 <PageInfo />
 
-The Market is the catalog of addons and pipeline release bundles that Ynput publishes for AYON servers. The page lists them, shows their installation state on the current server, and downloads them to the server directly from Ynput Cloud. Administrators use it to add addons, update installed addons and install tested sets of addons, launchers and dependency packages.
+![The Market with the Addons filters on the left, the list of official addons with Update buttons in the middle, and the details of the Blender addon on the right: Download v1.1.11, downloaded versions, production usage with Use 1.1.7, author, latest version and links](../assets/web-ui/market/page.webp)
 
-## Where it appears
+The Market is the catalog of addons and pipeline release bundles that Ynput publishes for AYON servers. It shows which addons and versions are already on the server, downloads new addons and updates straight from Ynput Cloud, and starts the installation of a tested release. A downloaded addon is not used until a bundle includes it, so the Market works together with [Bundles](studio/bundles.md) and the [Install pipeline release](dialogs/install-pipeline-release.md) dialog. Uploading an addon from a file is done on [Addons](studio/addons.md) instead.
 
-The Market needs a connected Ynput Cloud account but no paid plan. Addons flagged as requiring a subscription are listed but cannot be downloaded without one. An AYON server in offline mode cannot reach the Market and reports that the marketplace is not available.
+## Addons and releases
 
-## Layout
-
-The page has three columns.
-
-| Column | Content |
-|---|---|
-| Filters (left) | Two filter groups, **Addons** and **Release Bundles**, and the Ynput Cloud connection control |
-| List (center) | Search field, **Update All** button (when updates exist) and the list of addon cards or release groups |
-| Details (right) | Details of the selected addon or release. Empty when nothing is selected. |
+The page has three columns: the filters with the Ynput Cloud connection on the left, the list in the middle, and the details of the selected item on the right.
 
 ### Filters
 
-**Addons**
+| Group | Filter | Shows |
+|---|---|---|
+| **Addons** | **All** | Every addon, downloaded or not. |
+| | **Free** | Addons free to download, without a subscription. |
+| | **Updates Available** | Downloaded addons with a newer version. |
+| | **In Production** | Downloaded addons used by the production bundle. |
+| | **Production Outdated** | Addons whose version in the production bundle is outdated. |
+| | **Downloads Available** | Addons not downloaded yet. |
+| **Release Bundles** | **Latest** | The latest pipeline release. |
+| | **All** | Every pipeline release. |
 
-| Filter | Shows |
+The chosen filter and the selected item are kept in the address, for example `/market?selected=blender`, so a link opens the same addon.
+
+### Addon list
+
+Each card shows the addon icon, title and publisher, a badge for official addons (published by Ynput) and verified publishers, and an action button. Downloaded addons come first, then addons with updates, then official ones, then the rest by name. Addons flagged as cloud-only appear only on servers managed by Ynput Cloud.
+
+| Button | Meaning |
 |---|---|
-| **All** | Every addon in the Market, downloaded or not |
-| **Free** | Addons that are not flagged as licensed |
-| **Updates Available** | Downloaded addons with a newer version available |
-| **In Production** | Downloaded addons used by the production bundle |
-| **Production Outdated** | Downloaded addons flagged as using an outdated version in the production bundle |
-| **Downloads Available** | Addons not yet downloaded to the server |
+| **Install** | Not downloaded. Downloads the addon. |
+| **Update** | Downloaded, a newer version exists. Downloads it. |
+| **Downloaded** | Downloaded and up to date. |
+| **Pending** | Waiting for **Update All** to reach it. |
+| **Downloading**, **Updating** | Download in progress. |
+| **Finished** | Downloaded in this session. |
+| **Failed** | The download failed; the details show the error. |
+| **Subscribe** | The addon needs a subscription that the connected account does not have. |
 
-**Release Bundles**
+Downloads run on the server as events (see [Event Viewer](event-viewer.md)), so their progress is the same in every browser. When a download finishes, the app asks to restart the server, which loads addons at start.
 
-| Filter | Shows |
+### Addon details
+
+| Part | Content |
 |---|---|
-| **Latest** | Only the latest pipeline release |
-| **All** | Every pipeline release |
+| Header | Icon, title and **Official**, **Verified** or **Unverified**. |
+| Tags | **Subscription** for licensed addons (marked as included in a plan when it is a Power feature) and **Early preview** for beta addons. |
+| Description | The publisher's description. |
+| **Downloaded Versions** | A downloaded version, with **+n more** for the others, or **Not downloaded**. |
+| **Production Usage** | The version in the production bundle, or **Not used in Production**. See the actions below. |
+| **Author**, **Latest Version** | The publisher, and the newest version that works with this server, with a note when newer versions need a server update. |
+| Links | The publisher's links by type, such as **Github** and **Documentation**. |
 
-The selected filter and type are stored in the URL.
+The action button at the top right depends on the state:
 
-### Controls of the list
+| Button | When | What it does |
+|---|---|---|
+| **Download v&lt;version&gt;** | Not downloaded, or an update exists | Downloads the newest compatible version. |
+| **v&lt;version&gt; (server update required)** | The newest version needs a newer server | Disabled. |
+| **Downloading...**, **Downloaded !**, **Pending...** | During a download, after it, or during **Update All** | Disabled. |
+| **Uninstall** | Downloaded and up to date | Opens [Addons](studio/addons.md) with the addon selected, where it can be removed. |
+| **Subscribe** | A subscription is needed | Opens the subscription page. |
+| **Report** | The download failed | Opens a bug report form. |
+
+The arrow next to the button lists all versions: downloaded ones have a check mark, versions that need a newer server are disabled. Choosing one downloads it. Under **Production Usage**, **Use &lt;version&gt;** opens [Bundles](studio/bundles.md) with a copy of the production bundle that uses the newest downloaded version; when production is current, **Bundle** opens the production bundle at this addon.
+
+### Release bundles
+
+![The Release Bundles list with the 2026.09.0 - Latest group expanded and its release selected, and the release details: Full suite - Standalone, the description, one tag per addon, Install release bundle, the author and the release date](../assets/web-ui/market/releases.webp)
+
+A pipeline release is a tested set of addons, launcher installers and dependency packages. The list groups the releases by version (the part of the name before the first `-`); the newest group reads **Latest**. Expanding a group shows its releases, for example a full suite and a smaller variant.
+
+| Part | Content |
+|---|---|
+| Header | Icon, label and **Official**. |
+| Description | What the release contains. |
+| Addons | One tag per addon. Clicking one opens it in the addon list. |
+| **Install release bundle** | Opens the [Install pipeline release](dialogs/install-pipeline-release.md) dialog for this release. |
+| **Author**, **Released** | Ynput, and the release date. |
+
+The latest release is available to every connected server. Installing earlier releases needs the Power Pack, see [Release history](#release-history).
+
+## Controls and interactions
 
 | Control | What it does |
 |---|---|
-| Search | Filters the list by name. For releases, the group title also matches. |
-| **Update All** | Downloads the newest version of every downloaded addon that has an update. Shown only while at least one addon is outdated. The label changes to **Updating...** during the download and **All Updated** when it ends. |
-| Group header (releases) | Expands or collapses the releases of one release name |
-| Card | Selects the item and opens its details |
-| Card action button | Downloads (**Install**) or updates (**Update**) the item. See [card states](#addon-card-states). |
+| **Search** | Filters the list by name. For releases, the group title matches too. |
+| **Update All** | Downloads the newest version of every downloaded addon that has an update. It reads **Updating...** while it runs and **All Updated** when done. |
+| Group arrow | Expands or collapses a release group. |
+| Card | Selects the item and opens its details. |
+| Card button | Downloads or updates the addon, see [Addon list](#addon-list). |
 
-Addons are sorted with downloaded addons first, then outdated ones, then official ones, then alphabetically. Addons flagged `cloud-only` appear only on servers managed by Ynput Cloud.
+### Connecting to Ynput Cloud
 
-### Addon card
+The Market needs the server to be connected to a Ynput Cloud account, but no paid plan. The box at the bottom of the filters reads **connected** or **link an account**. When connected, its dropdown shows the instance and the organization, with **Disconnect**. Actions that need the connection open the **Connect to Ynput Cloud** dialog, which lists **Addon Market Access**, **Official Release Bundles** and **Automated Bootstrapping** and returns to the Market after signing in. A server in offline mode cannot reach the Market.
 
-Each addon card shows the addon icon, title, author (the publishing organization), a badge and the action button.
+The menu entry is shown to admins, and the server returns the catalog only to admins. See [Ynput Cloud](../../ynput-cloud/index.md).
 
-| Badge | Meaning |
-|---|---|
-| Ynput logo | Official addon published by Ynput |
-| Verified icon | Addon from a verified publisher (shown when the Market marks the publisher as verified) |
-| none | Unverified publisher. The details panel labels it **Unverified**. |
+## Power features
 
-### Addon card states
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
 
-| State | Shown when | Action button |
-|---|---|---|
-| Install | Not downloaded | **Install** |
-| Downloaded | Downloaded and up to date | **Downloaded** (no action) |
-| Update | Downloaded, newer version available | **Update** |
-| Pending | Waiting for **Update All** to reach it | **Pending** (disabled) |
-| Downloading / Updating | Download in progress | **Downloading** or **Updating** with a spinning icon |
-| Finished | Download completed in this session | **Finished** |
-| Failed | Download failed | **Failed**. The details panel shows the error. |
-| Subscribe | Addon requires a subscription the connected account does not have | **Subscribe** |
+### Release history
 
-Download progress is tracked through server events, so the state is shared across browser sessions. When a download finishes the app asks for a server restart, because the server loads addons at start.
-
-## Addon details
-
-| Element | Content |
-|---|---|
-| Header | Icon, title and publisher status: **Official**, **Verified** or **Unverified** |
-| Tags | **Subscription** chip for licensed addons (marked as included with the plan when it is a power feature) and **Early preview** for beta addons |
-| Description | Markdown description from the publisher |
-| Download area | Primary action button and a version dropdown |
-| **Downloaded Versions** | The newest downloaded version, with **+N more** to list the others, or **Not downloaded** |
-| **Production Usage** | The addon version used by the production bundle, or **Not used in Production** |
-| **Author** | Publisher name |
-| **Latest Version** | The newest version compatible with this server, with a note when newer versions exist that need a server update |
-| Links | Publisher links grouped by type: homepage, GitHub, documentation, license |
-
-### Details actions
-
-| Action | When | What it does |
-|---|---|---|
-| **Download v\&lt;version\&gt;** | Not downloaded, or an update exists | Downloads the newest compatible version |
-| **v\&lt;version\&gt; (server update required)** | The newest version needs a newer AYON server | Disabled |
-| **Downloading...** | Download in progress | Disabled progress state |
-| **Downloaded !** | Download finished | Disabled confirmation |
-| **Pending...** | **Update All** is running | Disabled |
-| **Uninstall** | Downloaded and up to date | Opens **Studio settings > Addons** with the addon selected, where it can be removed |
-| **Subscribe** | A subscription is required and not active | Opens the subscription page |
-| Version dropdown | Any addon with versions | Downloads the chosen version. Versions that need a newer server are disabled and marked **(server update required)**. Downloaded versions show a check mark. |
-| **Use \&lt;version\&gt;** | Production version is older than the installed one | Opens **Bundles** with a duplicate of the production bundle that uses the newest installed version |
-| **Bundle** | Production version is current | Opens the production bundle at this addon |
-| **Report** | Download failed | Opens a bug report form |
-
-Downloading an addon makes it available to the server. It is used only once a [bundle](studio/bundles.md) references it.
-
-## Release bundles
-
-A pipeline release is a tested set of compatible addons, launcher installers and dependency packages published by Ynput. Releases are grouped by release name (the part of the name before the first `-`). The first group header carries **Latest** for the newest release.
-
-| Element | Content |
-|---|---|
-| Header | Icon, label, and **Official** status |
-| Description | Markdown description |
-| Addon links | One link per addon in the release. Selecting one opens that addon in the **Addons** view. |
-| **Install release bundle** | Opens the **Install pipeline release** dialog |
-| **Author** | Ynput |
-| **Released** | Release date |
-
-The latest release is available to every connected server. Earlier releases require an active subscription and show a subscription prompt in place of the install button.
-
-### Install pipeline release dialog
-
-**Install release bundle** opens the [Install pipeline release](dialogs/install-pipeline-release.md) dialog for the selected release, with every addon of the release preselected. It downloads the selected addons, launchers and dependency packages and creates a new bundle from them. If the server is not connected to Ynput Cloud, a **Connect to Ynput Cloud** prompt appears instead.
-
-## Connecting to Ynput Cloud
-
-The connection control at the bottom of the filter column shows **link an account** or **connected**. When connected, a dropdown shows the plan name, the instance name and the organization, with a **Disconnect** button. Actions that need the connection open the **Connect to Ynput Cloud** dialog, which lists Addon Market Access, Official Release Bundles and Automated Bootstrapping as the benefits, and returns to the Market after the sign-in.
-
-## Permissions
-
-| Role | Access |
-|---|---|
-| Administrator | Full access to the page and downloads |
-| Manager and below | No menu entry. The catalog endpoints return a forbidden error. |
+Every pipeline release in the list can be installed, not only the latest. Without the Power Pack, **Install release bundle** of an earlier release is a Power Pack button that opens the Power Pack dialog.
 
 ## Related
+
 - [Bundles](studio/bundles.md)
-- [Navigation bar](navigation-bar.md)
-- [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
+- [Addons](studio/addons.md)
+- [Install pipeline release](dialogs/install-pipeline-release.md)
 - [Services](services.md)
-- [Addons](../../addons/index.md)
+- [App header](app-header.md)
+- [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
+- [Addons catalog](../../addons/index.md)

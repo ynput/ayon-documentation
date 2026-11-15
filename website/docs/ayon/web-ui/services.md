@@ -1,133 +1,125 @@
 ---
 title: Services
-description: "The Services page of the AYON web app: the table of addon services, the New service dialog, the context menu, statuses and the service details panel."
-verified: 2026-10-15
-ui_purpose: "Creates, starts, stops and deletes the addon services that ASH workers run next to the server."
-ui_location: "App menu (nine dots, top right) > Services"
-ui_url: "/services"
-ui_shortcut: "v+v"
-ui_access: "Managers and admins"
+description: "The Services page of the AYON web app: the table of addon services and their statuses, the service details panel, starting, stopping, editing and deleting services from the right-click menu, and the Spawn a new service and Edit service dialogs with the host, addon, settings variant, storages, ports, environment and registry login fields."
+verified: 2026-11-15
+ui_purpose: "Lists the addon services registered on the server and creates, starts, stops, edits and deletes them. ASH workers run the services."
+ui_location: "App menu > Services"
+ui_url: /services
+ui_shortcut: v+v
+ui_access: "Managers and admins can open the page; only admins see and change services"
 sources:
-  - https://help.ayon.app/en/help/articles/2668013-ayon-services
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ServicesPage/ServicesPage.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ServicesPage/NewServiceDialog.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ServicesPage/ServiceDetailsPanel.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AddonSettings/VariantSelector.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/util/dialogKeyDown.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AppRoutes.tsx
+  - https://github.com/ynput/ayon-backend/blob/develop/api/services/services.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/services/hosts.py
 ---
 
 # Services
 
 <PageInfo />
 
-The **Services** page lists the addon services registered on the AYON server and manages them: it creates, starts, stops, edits and deletes services and shows their state. An addon service is a containerized program that an addon runs next to the AYON server. The page only records what should run; the container itself is started by an AYON Service Host (ASH) worker. How services run is described in [Addon services](../how-ayon-works/services.md), and how to run ASH on the [ASH page](../deployment/ash.md).
+![The Services page with the New service button and a table of one service, workfloweventprocessor of the workflow addon on the host worker, with the status Disabled](../assets/web-ui/services/page.webp)
 
-## Where it appears
+The **Services** page lists the addon services registered on the AYON server and manages them. An addon service is a program in a container that an addon runs next to the server, for example a processor that syncs with a production tracker. The page only records which services should run and how; an AYON Service Host (ASH) worker starts and stops the containers. How services work is described in [Addon services](../how-ayon-works/services.md), and how to run ASH in [AYON Service Host](../deployment/ash.md). The jobs that services process show up in the [Event Viewer](event-viewer.md). The page is shown to managers and admins, but the server lists services only to admins, so a manager sees an empty table, and only admins can create, start, stop, edit or delete services. An ASH worker connects with the API key of a service user.
 
-The browser tab title is **Services • AYON**, or **Services • &lt;addon name&gt; • AYON** while a service is selected.
+## Services table
 
-## Layout
+The table has one row per service and refreshes every 2 seconds. All columns can be sorted, and several rows can be selected.
 
-The page has a toolbar with the **New service** button, a table of services and, on the right, a details panel. The details panel appears when a service is selected and closes when the selection is cleared. The table refreshes automatically every 2 seconds.
-
-### Table columns
-
-All columns are sortable. Several rows can be selected.
-
-| Column | Meaning |
+| Column | Content |
 |---|---|
-| **Service name** | Name of this service instance. |
-| **Addon name** | Addon that provides the service. |
-| **Addon version** | Version of that addon. |
-| **Service** | Name of the service as defined by the addon. |
-| **Host** | Name of the ASH worker that runs the service. |
-| **Settings variant** | Settings variant (bundle) whose addon settings the service reads. Empty for the `production` variant. |
-| **Status** | State of the service, see [Statuses](#statuses). |
+| **Service name** | The name of this service, unique on the server. |
+| **Addon name**, **Addon version** | The addon that provides the service, and its version. |
+| **Service** | The name of the service as the addon defines it. An addon can define several. |
+| **Host** | The ASH worker that runs the service. |
+| **Settings variant** | The settings variant the service reads its addon settings from. Empty for `production`. |
+| **Status** | See [Statuses](#statuses). |
 
-## Controls
+The browser tab reads **Services • AYON**, or **Services • &lt;addon name&gt; • AYON** while a service is selected.
 
-| Control | Where | What it does |
-|---|---|---|
-| **New service** | Toolbar | Opens the **Spawn a new service** dialog. |
-| **Start selected** | Context menu | Marks the selected services as to be running. The ASH worker starts them. |
-| **Stop selected** | Context menu | Marks the selected services as to be stopped. |
-| **Edit service** | Context menu | Opens the **Edit service** dialog. Enabled for a single selected service only. |
-| **Delete selected** | Context menu | Deletes the selected services after a confirmation. |
-| Pencil icon | Details panel header | Same as **Edit service** for the shown service. |
-| Close icon | Details panel header | Clears the selection and closes the panel. |
-
-The context menu opens with a right click on a row. Right-clicking a row outside the current selection selects that row alone; right-clicking inside the selection acts on the whole selection.
-
-**Edit service** requires a stopped service. For a service that is marked as running, a dialog titled **Stop Service** asks to stop it first (**Yes, stop service** or **No, cancel**). After a successful edit of a stopped service, a dialog titled **Start Service** asks whether to start it now (**Yes, start service** or **No, keep stopped**).
-
-## Spawn a new service dialog
-
-The dialog is titled **Spawn a new service**. Its button is **Spawn**, and **Cancel** closes it. **Spawn** is active when host, addon, addon version, service and service name are set (and, if registry login is on, user name and password).
-
-| Field | Description |
-|---|---|
-| **Host** | Dropdown of the registered ASH workers. A worker registers itself when it first contacts the AYON server. |
-| **Addon name** | Dropdown of addons that provide services. Changing it clears the version, service and name. |
-| **Addon version** | Versions of the chosen addon that define at least one service, newest first. The version has to match the addon version in the production bundle. |
-| **Service** | Services defined by the chosen addon version. Choosing one fills **Service name** with the service name. |
-| **Service name** | Name of the instance, unique on the server. Lowercase letters, digits, dots and hyphens only (other characters are removed while typing), 3 to 63 characters, beginning and ending with a letter or digit, no two adjacent dots, not formatted like an IP address. |
-
-### Advanced settings
-
-| Field | Description |
-|---|---|
-| **Settings variant** | Variant of the addon settings the service uses (a bundle name). Defaults to `production`. For any other variant the service receives the environment variable `AYON_DEFAULT_SETTINGS_VARIANT`. |
-| **Storages** | Volumes mounted into the container, one per line, in the form `/local/path:/container/path`. |
-| **Ports** | Ports published by the container, one per line, in the form `8080:8080`. |
-| **Environment** | Environment variables for the container, one `KEY=value` per line. |
-
-### Registry settings
-
-| Field | Description |
-|---|---|
-| **Registry login** | Switch. Turns on credentials for the image registry. Needed only for services whose image is private. |
-| **Registry username**, **Registry password** | Credentials for the registry. The password field is masked. Both are required while **Registry login** is on. |
-
-## Edit service dialog
-
-The dialog is titled **Edit service** and its button is **Update**. It shows **Host**, the read-only **Service name**, the advanced settings and the registry settings. The addon, addon version and service of an existing service cannot be changed.
-
-## Statuses
-
-The **Status** column shows one badge per service.
+### Statuses
 
 | Status | Meaning |
 |---|---|
-| **Unknown** | The server has never seen the service (no last-seen time). |
-| **Worker unreachable** | The service was last seen more than 10000 seconds ago. |
-| **Error** | The service has an error message, shown as a tooltip on the badge. The server sets one, for example, when the addon, version, service or image of a service no longer exists, and also marks the service as not to be run. The message is cleared once the service runs. |
-| **Running** | The service is marked to run and its container is running. |
-| **Not running** | The service is marked to run but its container is not running yet. |
-| **Stopping** | The service is marked to stop but its container is still running. |
-| **Disabled** | The service is marked to stop and its container is not running. |
+| **Running** | The service should run and its container is running. |
+| **Not running** | The service should run but its container is not running (yet). |
+| **Stopping** | The service should stop but its container is still running. |
+| **Disabled** | The service should not run and its container is not running. |
+| **Error** | The service has an error message, shown when hovering the badge. The server sets one, for example, when the addon version, the service or its image no longer exists, and then stops the service. |
+| **Worker unreachable** | The worker last reported the service more than 10,000 seconds (about 2.8 hours) ago. |
+| **Unknown** | No worker has reported the service yet. |
 
-## Service details panel
+### Service details
 
-The panel header shows the service name with the edit and close buttons.
+Selecting a service opens its details on the right: **Host**, **Addon**, **Addon Version**, **Service Type**, **Should Run** and **Is Running** (`Yes` or `No`), **Last Seen** (the last report from the worker), and **Service Data**, the stored configuration as JSON: image, volumes, ports, environment, memory limit, user, registry login and error. The pencil button edits the service; the close button clears the selection.
 
-| Field | Meaning |
+:::caution Registry password in clear text
+**Service Data** shows the registry user name and password of a service as plain text. Keep this in mind before sharing a screenshot of the panel.
+:::
+
+## Controls and interactions
+
+### Right-click menu
+
+Right-clicking a row opens the menu. When the row is part of the selection, the entries act on all selected services; otherwise the row alone is selected.
+
+| Entry | What it does |
 |---|---|
-| **Host** | The ASH worker. |
-| **Addon** | Addon name. |
-| **Addon Version** | Addon version. |
-| **Service Type** | Name of the service in the addon. |
-| **Should Run** | `Yes` when the service is marked to run, otherwise `No`. |
-| **Is Running** | `Yes` when its container is running, otherwise `No`. |
-| **Last Seen** | Time of the last report from the worker. Shown only when known. |
-| **Service Data** | The stored service configuration as JSON: image, volumes, ports, environment, memory limit, user and, when set, registry credentials, and the error message. |
+| **Start selected** | Marks the services to run. The worker starts them. |
+| **Stop selected** | Marks the services to stop. |
+| **Edit service** | Opens the [Edit service](#edit-service) dialog. Only with one service selected. |
+| **Delete selected** | Deletes the services after a confirmation. |
 
-## Permissions
+### Spawn a new service
 
-The menu entry and the page are available to managers and admins. The server returns services only to admins, and only admins can create, start, stop, edit or delete them, so a manager sees an empty table and cannot change anything. The list of hosts is available to every signed-in user.
+**New service** in the toolbar opens the **Spawn a new service** dialog. **Spawn** creates the service; it is enabled once the first five fields are set (and the user name and password while **Registry login** is on). `Enter` in a field does the same as **Spawn**, and `Escape` closes the dialog.
 
-Running services needs an ASH worker that connects with the API key of a service user. See the [ASH page](../deployment/ash.md) for its requirements.
+<Columns widths="55 45">
+<Column>
+
+| Field | Description |
+|---|---|
+| **Host** | The ASH worker. A worker appears here after it first connects to the server. |
+| **Addon name** | The installed addons that define services. Changing it clears the fields below. |
+| **Addon version** | The versions of the addon that define at least one service, newest first. |
+| **Service** | The services of that version. Choosing one fills **Service name**. |
+| **Service name** | 3 to 63 characters: lowercase letters, digits, dots and hyphens, starting and ending with a letter or digit, without two dots in a row and not shaped like an IP address. Other characters are removed while typing. |
+
+</Column>
+<Column>
+
+![The Spawn a new service dialog with Host, Addon name, Addon version, Service and Service name, the advanced settings with Settings variant, Storages, Ports and Environment, and the Registry login switch](../assets/web-ui/services/new-service.png "Spawn a new service")
+
+</Column>
+</Columns>
+
+**Advanced settings**:
+
+| Field | Description |
+|---|---|
+| **Settings variant** | **Production** (default) or **Staging**: which addon settings the service reads. For staging, the service gets the environment variable `AYON_DEFAULT_SETTINGS_VARIANT`. |
+| **Storages** | Folders mounted into the container, one per line, as `/local/path:/container/path`. |
+| **Ports** | Ports published by the container, one per line, as `8080:8080`. |
+| **Environment** | Environment variables, one `KEY=value` per line. |
+
+### Registry settings
+
+**Registry login** turns on **Registry username** and **Registry password**, the login for an image registry. It is needed only for services whose image is private.
+
+### Edit service
+
+**Edit service** opens the same dialog, titled **Edit service**, with **Update** instead of **Spawn**. The addon, version and service cannot be changed, and the service name is read-only. A service must be stopped to be edited: for a running service, **Stop Service** asks first (**Yes, stop service** or **No, cancel**). After the update of a stopped service, **Start Service** asks whether to start it now (**Yes, start service** or **No, keep stopped**).
 
 ## Related
 
 - [AYON Service Host (ASH)](../deployment/ash.md)
-- [Bundles](studio/bundles.md)
-- [Users](studio/users.md)
+- [Addon services](../how-ayon-works/services.md)
 - [Event Viewer](event-viewer.md)
-- [Navigation bar](navigation-bar.md)
+- [Bundles](studio/bundles.md)
+- [App header](app-header.md)
 - [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
 - [Addons](../../addons/index.md)

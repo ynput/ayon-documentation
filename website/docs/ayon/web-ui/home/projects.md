@@ -1,149 +1,174 @@
 ---
-title: Projects
-description: "The Projects tab of the AYON web app's Home space: the table of all projects with thumbnails, activity heartbeat, state and attributes, filters and grouping, project folders, the project details panel, Create new project and the project context menu."
-verified: 2026-10-25
-ui_purpose: "All projects of the server in one table, where producers and managers create, archive, delete and organize projects."
+title: Home projects
+sidebar_label: Projects
+description: "The Projects page of the AYON web app's Home: the table of all projects with thumbnail, activity heartbeat, code, active and library state, dates and project attributes, search and filters, grouping by project folder or attribute, the project details panel with dates, attributes and teams, creating projects and project folders, and the right-click menu to open, manage, move, archive and delete projects."
+verified: 2026-11-15
+ui_purpose: "All projects of the server in one table, where producers and managers get an overview of the productions, create, archive and delete projects and organize them into folders."
 ui_location: "Home > Projects"
-ui_url: "/dashboard/projects"
-ui_access: "Everyone except guests"
+ui_url: /dashboard/projects
+ui_access: "Everyone except guests; creating, editing and deleting projects needs the manager role or the Create projects permission"
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/UserDashboardPage/UserDashboardPage.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/ProjectsPage.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/constants.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/hooks/useProjectColumns.tsx
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/hooks/useProjectTableRows.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/hooks/useProjectGrouping.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/hooks/useBuildProjectFilterOptions.ts
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/hooks/useGetProjectsData.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/utils/filterProjects.ts
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/components/ProjectsPageTableSettings.tsx
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/components/ProjectThumbnailUploader/ProjectThumbnailUploader.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/components/ProjectDetailsPanel/ProjectDetailsPanel.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/components/ProjectDetailsPanel/components/ProjectInfoTab.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/components/ProjectDetailsPanel/components/ProjectTeamsTab.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/components/ProjectDetailsPanel/components/ProjectTimeline.tsx
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/ProjectsPage/components/ProjectDetailsPanel/components/ProjectHeartbeat.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ProjectsList/hooks/useProjectMenuController.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/ProjectsList/hooks/useProjectsListMenuItems.ts
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/hooks/useUserProjectPermissions.ts
-  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/api/queries/project/getProject.ts
   - https://github.com/ynput/ayon-backend/blob/develop/api/projects/list_projects.py
-  - https://github.com/ynput/ayon-backend/blob/develop/api/projects/projects.py
-  - https://github.com/ynput/ayon-backend/blob/develop/api/project_folders/project_folders.py
   - https://github.com/ynput/ayon-backend/blob/develop/api/project_dashboard/dashboard.py
-  - https://github.com/ynput/ayon-backend/blob/develop/api/thumbnails/thumbnails.py
-  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/access/permissions.py
 ---
 
-# Projects
+# Home projects
 
 <PageInfo />
 
-The **Projects** tab of Home lists the projects of the server in one table, with their thumbnail, recent activity, state and project attributes. It is where producers and managers get an overview of all productions, create new projects, archive or delete old ones and organize projects into folders. Selecting a project opens a details panel with its dates, attributes and teams; opening a project leads to its project pages.
+![The Projects page: the toolbar with Create new project, Create folder, the search bar, Group by and Customize, the table of projects with archived projects dimmed, and the details panel of the selected wing_it project on the right](../../assets/web-ui/home-projects/page.webp)
 
-## Projects listed
+The page lists the projects of the server in one table, with their thumbnail, recent activity, state and project attributes. Producers and managers use it to get an overview of all productions, to create new projects, to archive or delete old ones and to organize projects into folders. Selecting a project opens its details panel on the right; double-clicking it opens the project's own pages, such as the [Overview](../production-tracking/overview.md). The [Tasks](tasks.md) page next to it shows the work inside the projects.
 
-Which projects are listed depends on the user:
+Admins, managers and users with the **Create projects** studio permission see all projects. Other users see the projects where they have an access group.
 
-| User | Projects listed |
-|---|---|
-| Admin, manager | All projects |
-| User with the **Create projects** studio permission | All projects |
-| Other users | Projects where they have an access group |
+## Projects table
 
-When the server has no projects, the tab shows **No Projects** (see [Home](index.md#a-server-without-projects)).
-
-## Layout and controls
-
-| Region | Content |
-|---|---|
-| Toolbar | **Create new project**, **Create folder**, the search and filter bar, **Group by**, **Customize** and the views button. |
-| Table | One row per project, or project rows inside groups. Archived projects are dimmed. |
-| Details panel | Right side, for the selected project. |
-| Settings panel | Right edge, opened with **Customize**. |
-
-### Toolbar
-
-| Control | What it does |
-|---|---|
-| **Create new project** | Opens the **Create a new project** dialog. Shown only to users who can create projects (see [Permissions](#permissions)). After creation the new project appears in the table; the page does not change. The dialog is described in [Creating a project](../../how-ayon-works/creating-a-project.md). |
-| **Create folder** | Opens the dialog for a new project folder. Project folders are a [Power feature](../../../production-tracking/power-features.md); without a Power license the button is marked with a lightning symbol and shows what the feature provides. |
-| Search and filter bar | Typed text matches the project name, label, code and description. Filters: **Archived** (Archived or Active), **Library** (Library or Not library), **State** (Production or Planning), and every project attribute that is a boolean, a date or has a list of values. Date filters offer preset ranges and a custom range. With a Power license, attribute filters can also match "has a value", "has no value" and exclusions. |
-| **Group by** | Groups the rows. Options: **Folder**, **Archived**, **Library**, **State**, and every project attribute that is a boolean or has a list of values. Several levels can be combined, in ascending or descending order. Grouping by **Folder** shows the folder tree, including empty folders. |
-| **Customize** | Opens the settings panel with **Columns** (visibility and order), **Sort** and **Group by**. |
-| Views button | The working view and saved views of the page. Filters, sorting, grouping and columns are stored in the view. See [Views](../views.md). |
-
-The table loads up to 20,000 projects. Beyond that a warning shows "Showing &lt;count&gt; projects. Some projects are not listed."
+One row per project, or project rows inside groups when **Group by** is set. Archived projects are dimmed. The table loads up to 20,000 projects; beyond that a warning reads "Showing &lt;count&gt; projects. Some projects are not listed." With no projects on the server, the page shows **No Projects**, see [Home](index.md#a-server-without-projects).
 
 ### Columns
 
-Columns can be sorted from their header, resized and reordered.
+Columns can be sorted from their header, resized, reordered, and shown or hidden in **Customize**. The cells are read-only: values are edited in the [details panel](#details-panel).
 
 | Column | Shown by default | Content |
 |---|---|---|
-| **Thumbnail** | Yes | The project thumbnail. An image dropped on it, or **Upload thumbnail** in its context menu, uploads a new one. |
+| **Thumbnail** | Yes | The project thumbnail. Dropping an image on it, or **Upload thumbnail** in its right-click menu, uploads a new one. Needs write access to the project's anatomy. |
 | **Label / Name** | Yes | The project label, or the name when there is no label. |
 | **Name** | No | The project name. |
-| **Heartbeat** | Yes | A line of the project's activity: the number of entity events per day over the last 30 days, scaled. Sorting by it orders projects by their activity, with recent days weighted more. |
+| **Heartbeat** | Yes | A line of the project's activity: the number of entity events per day over the last 30 days. Sorting by it puts the most active projects first, with recent days weighted more. |
 | **Code** | Yes | The project code. |
 | **Active** | Yes | Off for archived projects. |
 | **Library** | Yes | On for library projects. |
 | **State** | Yes | **Production**, or **Planning** for a planning project without a hierarchy. See [Planning projects](../../how-ayon-works/creating-a-project.md#planning-projects). |
 | **Created at**, **Updated at** | **Created at** only | Dates of the project record. |
-| Project attributes | **End date** only | One column per attribute with the project scope, such as **Start date**, **End date** or **Description**. |
+| Project attributes | **End date** only | One column per attribute with the project scope, such as **Start date**, **End date** or **Priority**. |
 
-The cells of the table are read-only. Values are edited in the details panel.
+### Details panel
 
-### Selection and shortcuts
+<Columns widths="60 40">
+<Column>
+
+Clicking a project opens its details panel on the right. With several projects selected, the panel shows the first one.
+
+- **Timeline:** **Set start date** and **Set end date** at the top, with a bar between them. With both dates set, the bar shows the days passed, **&lt;days&gt; Left** and a **Day &lt;n&gt;** marker for today. A start date after the end date is refused.
+- **Header:** the thumbnail, the project name and its heartbeat. Dropping an image on the header uploads a new thumbnail.
+- **Details** tab: the **Description**, then **Attributes**: **Label**, **Code**, every project attribute, **Active** and **Library**, followed by the read-only **Name**, **Created at** and **Updated at**. Changes are saved as soon as they are made. Only admins and managers can save them.
+- **Teams** tab: the project's teams with their leaders (or **No leaders**) and members, and **Manage teams**. A team opens on the project's [Teams](../project/teams.md) page; with no teams the tab reads **No teams created yet**.
+
+</Column>
+<Column>
+
+![The details panel of the wing_it project: Set start date and Set end date at the top, the thumbnail and name, and the Details tab with the description and the attributes Code, Priority, FPS, Width, Height and more](../../assets/web-ui/home-projects/details-tab.png "Details panel")
+
+</Column>
+</Columns>
+
+## Controls and interactions
+
+### Toolbar
+
+| Control | What it does | Shown to |
+|---|---|---|
+| **Create new project** | Opens the **Create a new project** dialog. The new project appears in the table; the page does not change. See [Creating a project](../../how-ayon-works/creating-a-project.md). | Admins, managers, and users whose **Default projects access** includes an access group with the **Create projects** studio permission, see [Permissions](../studio/permissions.md#studio-permissions) |
+| **Create folder** | Creates a project folder at the top level, see [Project folders](#project-folders). Without the Power Pack, it is marked with a lightning symbol and opens the Power Pack dialog. | Everyone |
+| **Search and filter** | Typed text matches the project name, label, code and description. Filters are described below. | Everyone |
+| **Group by** | Groups the rows by **Folder**, **Archived**, **Library**, **State**, or any project attribute that is a boolean or has a list of values. Several levels can be combined, ascending or descending. | Everyone |
+| **Customize** | Opens the **Settings** panel with **Columns** (visibility and order), **Sort** and **Group by**. | Everyone |
+| Views button | The button on the **Projects** tab itself. It holds the working view and saved views; the filters, sorting, grouping and columns are stored in the view. See [Views](../views.md). | Everyone |
+
+### Filters
+
+<Columns widths="55 45">
+<Column>
+
+Clicking the search bar lists the filters:
+
+- **Archived** (Archived or Active), **Library** (Library or Not library) and **State** (Production or Planning).
+- Every project attribute that is a boolean, a date or has a list of values, such as **Priority**, **Start date** and **End date**. Date filters offer preset ranges and a custom range.
+- More filter options need the Power Pack, see [Advanced filters](#advanced-filters).
+
+</Column>
+<Column>
+
+![The filter list below the search bar: Archived, Library, State, Priority, Start date, End date and the boolean and list attributes of the server](../../assets/web-ui/home-projects/filter-menu.png "Filters")
+
+</Column>
+</Columns>
+
+### Interactions
 
 | Gesture | Effect |
 |---|---|
-| Click on a row | Selects the project and shows its details panel. `Ctrl` and `Shift` add rows to the selection. |
-| Double click on a row | Opens the project's pages, on the project tab used last. |
-| `Esc` | Clears the selection and closes the details panel. |
-| Right click on a row | Opens the context menu. |
+| Click a row | Selects the project and opens its details panel. `Ctrl` and `Shift` add rows to the selection. |
+| Double-click a row | Opens the project's pages, on the project tab used last. |
+| `Escape` | Clears the selection and closes the details panel. |
+| Right-click a row | Opens the right-click menu for the selected rows. |
 
-## Context menu
+### Right-click menu
 
-The menu acts on the selected rows. Entries that do not apply to the selection are hidden.
+<Columns widths="60 40">
+<Column>
 
-| Entry | Applies to | What it does |
+Entries that do not apply to the selection are hidden.
+
+| Entry | What it does | Shown to |
 |---|---|---|
-| **Open** | One project | Opens the project's pages. |
-| **Manage** | One project | Opens the project's **Anatomy** page in Projects Settings. |
-| **Edit folder** | A folder row | Edits the folder's label, icon and color. |
-| **Create folder** / **Create subfolder** | Projects or a folder | Creates a project folder, for the selected projects or inside the selected folder. Power feature. |
-| **Move project** / **Move folder** | Projects or folders | Submenu with the folder tree. **Unset folder** takes projects out of their folder; **Make root folder** moves a folder to the top level. Power feature. |
-| **Archive** / **Activate** | One project | Sets the project inactive, or active again. Admins and managers only. |
-| **Archive to delete** / **Delete** | One project | Deletion works on archived projects only: an active project shows the disabled **Archive to delete**. **Delete** asks for confirmation and removes the project with all its data. Admins and managers only. |
-| **Delete (only folder)** | Folders | Deletes the folder. Its projects are not deleted. |
+| **Open** | Opens the project's pages. One project. | Everyone except guests |
+| **Manage** | Opens the project's **Anatomy** page in [Project settings](../project/index.md). One project. | Everyone except guests |
+| **Create folder** (`F`) | Creates a folder for the selected projects, see [Project folders](#project-folders). Without the Power Pack, it opens the Power Pack dialog. | Admins and managers |
+| **Archive** / **Activate** | Sets one project inactive, or active again. | Admins and managers |
+| **Archive to delete** / **Delete** | Only archived projects can be deleted: an active project shows **Archive to delete**, disabled. **Delete** asks for confirmation and removes the project with all its data. | Admins and managers |
 
-## Details panel
+</Column>
+<Column>
 
-The panel shows the first selected project.
+![The right-click menu of the wing_it row with Open, Manage, Create folder with the F shortcut, Move project (shown with the Power Pack), Archive and the disabled Archive to delete](../../assets/web-ui/home-projects/context-menu.png "Right-click menu")
 
-| Part | Content |
+</Column>
+</Columns>
+
+## Power features
+
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+
+### Project folders
+
+Project folders group projects in the table and in the [project list](../project-list.md) on other pages, for example by client or by type of production. **Group by** **Folder** shows the folder tree, with the number of projects in each folder; projects without a folder are listed below it. Empty folders are shown too.
+
+![The projects grouped by folder: the Advertising, Development and Films folders expanded with one project each, the empty Demos folder collapsed, and the projects without a folder below](../../assets/web-ui/home-projects/group-by-folder.webp)
+
+Creating, editing, moving and deleting folders is for admins and managers. Folder entries of the right-click menu:
+
+| Entry | What it does |
 |---|---|
-| Timeline | **Set start date** and **Set end date** buttons with a bar between them. With both dates set, the bar shows the days passed and **&lt;days&gt; Left**, and a **Day &lt;n&gt;** marker for today. A start date after the end date is refused. |
-| Header | Thumbnail, display name and heartbeat. An image dropped on the header uploads a new thumbnail. The close button closes the panel. |
-| **Details** tab | Description, then the editable fields **Label**, **Code**, every project attribute, **Active** and **Library**, then the read-only **Name**, **Created at** and **Updated at**. Changes are saved as soon as they are made. |
-| **Teams** tab | The project's teams with their leaders (or **No leaders**) and member avatars, and **Manage teams**. A team card opens that team on the project's [Teams](../project/teams.md) page; with no teams the tab shows **No teams created yet**. |
+| **Edit folder** | Edits the label, icon and color of a folder row. |
+| **Create folder** (`F`) / **Create subfolder** | Creates a folder for the selected projects, or inside the selected folder. |
+| **Move project** / **Move folder** | A submenu with the folder tree. **Unset folder** takes projects out of their folder; **Make root folder** moves a folder to the top level. |
+| **Delete (only folder)** | Deletes the selected folders. Their projects stay. |
 
-## Permissions
+### Advanced filters
 
-| Action | Who can do it |
-|---|---|
-| See the tab | Everyone except guests |
-| **Create new project** | Admins, managers, and users whose **Default projects access** includes an access group with the **Create projects** studio permission. See [Permissions](../studio/permissions.md#studio-permissions). |
-| Edit project fields in the details panel, archive, activate, delete | Admins and managers. The server refuses project changes from other users. |
-| Create, edit, move and delete project folders | Admins and managers, with a Power license |
-| Upload a thumbnail | Users with write access to the project's anatomy |
+Attribute filters can also match a value or no value, and exclude values. Filters on attributes with a list of values can switch their operator, for example to match all values. Without the Power Pack, these options are not offered.
 
 ## Related
 
 - [Home](index.md)
-- [Tasks](tasks.md)
+- [Home tasks](tasks.md)
 - [Creating a project](../../how-ayon-works/creating-a-project.md)
+- [Project list](../project-list.md)
 - [Teams](../project/teams.md)
 - [Views](../views.md)
 - [Power features](../../../production-tracking/power-features.md)

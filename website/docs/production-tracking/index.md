@@ -27,7 +27,7 @@ The section describes what exists: where a page opens, its layout, its controls 
 |---|---|
 | Planner, Reports, Node Graph and Review sessions, the web app features that are separate addons | [Production tracking addons](../addons/production-tracking/planner/index.md) in the Addons section |
 | The screens and controls of the native web app, one page per tab: Home, the [project pages](../ayon/web-ui/production-tracking/index.md) (Overview, Task progress, Products, Lists, Workfiles), the Inbox, Studio Settings, the Projects Manager (with Teams), Market, Services, Event Viewer and Account | [Web UI](../ayon/web-ui/index.md) in the AYON section |
-| Menus, shortcuts and navigation of the web app | [Navigation bar](../ayon/web-ui/navigation-bar.md) and [keyboard shortcuts](../ayon/web-ui/quick-navigation.md#keyboard-shortcuts) |
+| Menus, shortcuts and navigation of the web app | [App header](../ayon/web-ui/app-header.md) and [keyboard shortcuts](../ayon/web-ui/quick-navigation.md#keyboard-shortcuts) |
 | Which features each plan includes | [AYON plans](../ayon/plans.md) |
 | Integrations with third-party trackers such as ftrack, Kitsu and Flow | [Third-party trackers](../addons/index.md#third-party-project-management) in the Addons section |
 | How published data is produced by the pipeline | [Pipeline](../pipeline/index.md) |

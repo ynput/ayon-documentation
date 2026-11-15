@@ -126,7 +126,7 @@ The package contains `package.py`, `server/`, `frontend/dist/`, `private/` (with
 | Web app | **Upload Addons** on the [Addons](../../ayon/web-ui/studio/addons.md) or [Bundles](../../ayon/web-ui/studio/bundles.md) tab of Studio settings. |
 | Script | `ayon_api.upload_addon_zip(<path to the zip>)` with the [Python API](../api/python.md), then `ayon_api.trigger_server_restart()`. |
 
-The server installs the package into its `addons` folder as `<name>/<version>/` and needs a restart to load it: after an upload, the app menu shows **Restart Required**, see [Navigation bar](../../ayon/web-ui/navigation-bar.md). A bundle then puts the new version into use.
+The server installs the package into its `addons` folder as `<name>/<version>/` and needs a restart to load it: after an upload, the app menu shows **Restart Required**, see [App header](../../ayon/web-ui/app-header.md). A bundle then puts the new version into use.
 
 ## Develop an addon
 

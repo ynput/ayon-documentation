@@ -1,13 +1,13 @@
 ---
 title: Inbox and notifications
 sidebar_label: Inbox
-description: "The AYON inbox lists the activity that concerns the current user across projects in three tabs, Important, Other and Cleared, with filters, read and clear actions, watchers and real-time notifications."
-verified: 2026-10-25
-ui_purpose: "The activity that concerns the user across all projects, as a list of items still needing attention."
-ui_location: "Inbox icon in the top bar"
-ui_url: "/inbox/important"
-ui_shortcut: "i+i"
-ui_access: "Everyone"
+description: "The AYON inbox: the activity that concerns the signed-in user across projects, in the Important, Other and Cleared tabs; the message list with grouping, unread counts and day dividers; the details panel; project mode and filters; clearing and marking messages read; keyboard shortcuts; watchers; and real-time notifications with toasts, desktop notifications and a chime."
+verified: 2026-11-15
+ui_purpose: "The activity that concerns the user across all projects, as a list of items still needing attention: mentions, assignments, publishes, reviews and status changes on their work."
+ui_location: "Inbox button in the App header"
+ui_url: /inbox/important
+ui_shortcut: i+i
+ui_access: "Everyone except guests"
 sources:
   - https://help.ayon.app/en/articles/7870202-inbox-and-notifications
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/InboxPage.tsx
@@ -16,170 +16,166 @@ sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/hooks/useGroupMessages.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/hooks/useKeydown.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/components/InboxSearchFilter.tsx
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/util/inboxFilter.ts
   - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/InboxPage/InboxDetailsPanel.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/header/InboxNotification.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/context/notifications/NotificationsContext.tsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/components/EnableNotifications.jsx
-  - https://github.com/ynput/ayon-frontend/blob/develop/src/services/inbox/getInbox.ts
-  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Feed/helpers/buildBackendFilter.ts
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/graphql/resolvers/inbox.py
-  - https://github.com/ynput/ayon-backend/blob/develop/schemas/schema.public.sql
   - https://github.com/ynput/ayon-backend/blob/develop/api/inbox/inbox.py
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/activities/create_activity.py
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/activities/event_hook.py
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/activities/references.py
-  - https://github.com/ynput/ayon-backend/blob/develop/api/activities/activity.py
-  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/reviewables/create_reviewable.py
 ---
 
 # Inbox and notifications
 
 <PageInfo />
 
-The **inbox** lists the activity that concerns the current user across all projects: comments that mention them, activity on entities they watch, assignments, publishes, reviews and status changes. Each activity reaches a user at most once, through one reference: a mention, watching the entity, or a relation to it (assignee or author). The reference and the activity type decide whether the message lands in **Important** or **Other**. Messages can be marked read and cleared, which moves them to **Cleared**, so the inbox works as a list of items still needing attention.
+![The Inbox on the Important tab: the project list on the left, the toolbar with the search bar, Unread, Enable notifications, Clear read, Clear all and Refresh, one selected message about an assignment to the 060_0060 lighting task, and the details panel of that task on the right](../../assets/web-ui/inbox/page.webp)
 
-Activity created by the user is never shown in their own inbox.
+The Inbox lists the activity that concerns the signed-in user across all projects: comments that mention them, assignments, publishes, reviews and status changes on the work they follow. Messages can be marked read and cleared, so the Inbox works as a list of items that still need attention. Selecting a message opens its task, version or folder in the [details panel](../details-panel.md), where the user can reply. The **Inbox** button in the [App header](../app-header.md) opens it, as does `i+i`; the button carries a dot while **Important** has unread messages.
 
-## Where it appears
-
-| Tab | Menu entry | Shortcut | URL path | Who sees it |
-|---|---|---|---|---|
-| [Important](important.md) (default) | Inbox icon in the header | `i+i` | `/inbox/important` | Everyone |
-| [Other](other.md) | **Other** tab of the inbox | | `/inbox/other` | Everyone |
-| [Cleared](cleared.md) | **Cleared** tab of the inbox | | `/inbox/cleared` | Everyone |
-
-`/inbox` redirects to `/inbox/important`. The inbox icon in the header carries a dot when there are unread messages in **Important**; unread messages in **Other** do not set it. Users with the legacy guest flag get an empty inbox.
-
-## Tabs
+Each activity reaches a user at most once, through one reference: a mention, watching the entity, or a relation to it (assignee or author). The reference and the activity type decide the tab. Activity created by the user never appears in their own Inbox.
 
 | Tab | Content | Unread count on the tab |
 |---|---|---|
-| **Important** | Activity where the user is mentioned or watches the entity, except status changes. See [Important](important.md). | Yes, up to **99+** |
-| **Other** | Activity where the user is only related to the entity (assignee or author), and all status changes. See [Other](other.md). | Yes, up to **99+** |
-| **Cleared** | Cleared messages of both tabs. See [Cleared](cleared.md). | No |
+| [Important](important.md) (default) | Mentions and activity on watched entities, except status changes. The only tab that notifies. | Yes, up to **99+** |
+| [Other](other.md) | Status changes, and activity on entities the user is only related to. | Yes, up to **99+** |
+| [Cleared](cleared.md) | Cleared messages of both tabs, which can be restored. | No |
 
-Each tab has its own set of [views](../views.md), which store the filter and the **Unread** toggle.
+`/inbox` opens `/inbox/important`. Each tab has its own [views](../views.md), which store the filter and the **Unread** toggle.
 
-## Layout and controls
+## Messages
 
-| Region | Content |
+### Message list
+
+Messages come from the projects where the user has an access group; managers and admins get messages from all projects. Users who are not managers do not see, and are not notified about, activity with a comment category they cannot access. Guests get no messages.
+
+Messages are listed newest first, 100 at a time; scrolling to the end loads more (**Load more**). On **Important** and **Other**, day dividers separate the days. With nothing to show, the list reads **All caught up! No messages to show.** Unread messages are highlighted.
+
+![A message row: the task thumbnail, the path 060_0060 - lighting, the assignment icon and text, the author's avatar, and the Clear button with its C shortcut shown on hover](../../assets/web-ui/inbox/message-hover.png)
+
+| Part | What it shows |
 |---|---|
-| Tab bar | **Important**, **Other**, **Cleared**, the views of the current tab, and the help button. |
-| Projects panel (left) | The projects the user can access. Selecting a project switches to project mode; selecting it again returns to the cross-project inbox. Not shown to guests. |
-| Toolbar | Filter bar, **Unread**, **Enable notifications**, **Clear read**, **Clear all**, **Refresh**. **Unread**, **Clear read** and **Clear all** are not on **Cleared**. |
-| Messages list | Messages, newest first, 100 at a time; more load when scrolling to the end (**Load more**). On **Important** and **Other**, day dividers (**Today**, **Yesterday**, then the date) separate the days. With nothing to show: **All caught up! No messages to show.** |
-| Details panel (right) | The entity of the selected message with its [activity feed](../details-panel.md). See [Details panel](../details-panel.md). |
-
-The selected project is kept in the `inboxProject` URL query parameter.
-
-### Toolbar
-
-| Control | Shortcut | What it does |
-|---|---|---|
-| Filter bar | | Filters messages. Works in project mode only; without a project the bar is disabled with the tooltip **Select a project to enable filtering**. See [Filters](#filters). |
-| **Unread** | | Shows only unread messages. Stored in the view of the tab. |
-| **Enable notifications** | | Asks the browser for permission to show desktop notifications and turns on **Desktop Notifications** in the profile. Hidden once the browser permission is granted. Disabled unless the page is served over HTTPS or from `localhost`. |
-| **Clear read** | | Clears the read messages; unread ones stay. Disabled when the list has no read message. With filters active, clears only the matching read messages loaded in the list. |
-| **Clear all** | `Shift`+`C` | Clears every message of the tab in all projects, or in the selected project in project mode. With filters or **Unread** active, clears only the matching messages loaded in the list. Disabled when the list is empty. |
-| **Refresh** | `R` | Reloads the messages and the unread counts. |
-
-### Messages
-
-| Element | What it shows |
-|---|---|
-| Thumbnail | Thumbnail or icon of the entity. The tooltip gives the entity type and its subtype. |
-| Path | Parents and name of the entity, separated by ` - `. |
-| Unread count | Number of unread messages in a group, when there are two or more. |
-| Type icon | Activity type, with a tooltip such as **Comment**, **Version published**, **Reviewable uploaded**, **Approved**, **Changes requested**, **Assigned**, **Unassigned** or **Reassigned**. Approvals and change requests have colored icons. |
-| Category dots | Comment categories of the messages. |
-| Body | Author and text of the newest message; comments are cut after 75 characters. For status changes, the first and last status of the group instead. |
-| Author, date | Avatar of the author and the date: relative for today, otherwise month, day and time. |
-| **Clear** / **Unclear** | Appears on hover. On a row of a multiple selection: **Clear selection** / **Unclear selection**. |
-
-Unread messages are highlighted. Selecting a message opens its entity in the details panel, marks the message (or the whole group) read, and, for comments, highlights them in the activity feed. Selecting the selected message again deselects it and closes the panel.
+| Thumbnail | The thumbnail or icon of the entity. The tooltip gives the entity type and its subtype. |
+| Path | The parents and name of the entity, separated by ` - `, for example `060_0060 - lighting`. |
+| Unread count | The number of unread messages in a group, when there are two or more. |
+| Type icon | The activity type, with a tooltip such as **Comment**, **Version published**, **Reviewable uploaded**, **Approved**, **Changes requested**, **Assigned**, **Unassigned** or **Reassigned**. |
+| Category dots | The comment categories of the messages. |
+| Text | The author and text of the newest message; comments are cut after 75 characters. For status changes, the first and last status of the group. |
+| Author, date | The author's avatar and the date: relative for today, otherwise month, day and time. |
+| **Clear** / **Unclear** | Shown on hover and on the selected row. With several rows selected: **Clear selection** / **Unclear selection**. |
 
 ### Grouping
 
-| Activity | Grouped when |
-|---|---|
-| Version publishes and reviewables | When the list holds more than one: grouped per parent folder within 5-minute windows. The row shows the folder and a summary of the publish: the product names for up to four versions, otherwise the number of versions and products. |
-| Assignee changes | Additions and removals on the same task within 5 seconds are combined into one **Assigned**, **Unassigned** or **Reassigned** row that names the users. |
-| Other activity | Same activity type on the same entity on the same day. |
+Related messages are shown as one row:
 
-## Filters
+- **Version publishes and reviewables:** when the list holds more than one, they are grouped per parent folder within 5-minute windows. The row names the products for up to four versions, otherwise the number of versions and products.
+- **Assignee changes:** additions and removals on the same task within 5 seconds become one **Assigned**, **Unassigned** or **Reassigned** row that names the users.
+- **Other activity:** the same activity type on the same entity on the same day.
 
-The filter bar is available in project mode. It combines filter chips with free text.
+### Details panel
 
-| Filter | Values |
-|---|---|
-| **Comments** | Comments. |
-| **Versions** | Version publishes and reviewables. |
-| **Reviews** | **All reviews**, **Approved**, **Requested changes**. |
-| **Updates** | Status changes, assignee changes, tag changes and type changes. |
-| **Checklists** | Comments containing a checklist. |
-| **Attachments** | Activity with attached files. |
-| **Category** | Comment categories of the project, and **No category**. Shown when the project has categories. |
-| **Reason** | **Mentioned** (comments that mention the user), **Watching**, **Related**. On **Important** only **Mentioned** and **Watching**. |
-| **Entity type** | **Task**, **Version**, **Folder**. |
-| **User** | The author of the activity, or the assignee of an assignment change. |
-| **Posted date** | Date ranges, including a custom range. |
+Selecting a message opens its entity in the [details panel](../details-panel.md) with its [activity feed](../details-panel.md#activity-feed), marks the message (or the whole group) read, and, for comments, highlights them in the feed. Selecting the selected message again closes the panel.
 
-Free text matches the body, the name and label of the entity, and the names of its parents. The filter is stored in the view of the tab.
+### Watchers
 
-## Actions on messages
+A watcher receives the activity on an entity in **Important** (status changes go to **Other**). Users become watchers automatically when they:
 
-| Action | Shortcut | What it does |
-|---|---|---|
-| **Clear** / **Unclear** | `C` | On **Important** and **Other**, moves the message to **Cleared** and marks it read. On **Cleared**, moves it back as unread. |
-| **Mark as read** / **Mark as unread** | `X` | Toggles the read state. Not available on **Cleared**. |
-
-The actions are on the context menu of a message. With several messages selected, the context menu acts on all of them (**Clear** followed by the number of messages, and **Mark as read** when any is unread). `C` acts on the hovered message, or on the selection when the hovered message is part of it. `X` acts on the selection when several messages are selected, otherwise on the hovered message.
-
-## Keyboard shortcuts
-
-| Key | What it does |
-|---|---|
-| `Up`, `Down`, `Tab`, `Shift`+`Tab` | Select the previous or next message. |
-| `Shift`+`Up` / `Shift`+`Down`, `Shift`+click | Extend the selection as a range. |
-| `Ctrl`/`Cmd`+click | Add a message to the selection or remove it. |
-| `C` | Clear or unclear. |
-| `X` | Mark read or unread. Not on **Cleared**. |
-| `Shift`+`C` | **Clear all**. |
-| `R` | **Refresh**. |
-
-## Watchers
-
-A watcher receives activity on an entity in **Important** (status changes go to **Other**). Users become watchers automatically when they:
-
-- post a comment or another activity on the entity (service users and guests excepted),
+- post a comment or other activity on the entity (service users and guests excepted),
 - upload a reviewable to a version,
 - publish a version; the author of the version watches it too,
 - are assigned to a task.
 
-Removing an assignee removes them as watcher. When a version is published for a task, the watchers of the task become watchers of the version.
+Removing an assignee removes them as watcher. When a version is published for a task, the watchers of the task become watchers of the version. The **Watchers** button of the [details panel](../details-panel.md#watchers) lists the watchers of an entity and adds or removes them, for example to follow a shot without being assigned to it.
 
-The **Watchers** selector in the toolbar of the [details panel](../details-panel.md#watchers) lists the watchers of the entity and lets users add or remove them. Adding yourself from the inbox shows the toast "All future updates for" followed by the entity name and "will appear in your important inbox."
+### Real-time notifications
 
-## Real-time notifications
-
-New messages appear in the inbox and update the unread counts without a reload. For a new message in **Important**:
+New messages appear and the unread counts update without a reload. For a new message in **Important**:
 
 | Condition | Result |
 |---|---|
-| **Desktop Notifications** on, page focused | A toast with the first line of the message. Selecting it opens **Important**. |
-| **Desktop Notifications** on, page not focused, browser permission granted | A desktop notification "New AYON message". Selecting it focuses the page and opens **Important**. |
-| **Notification Sound** on, page not focused | A chime. |
+| **Desktop notifications** on, page focused | A toast with the first line of the message. Selecting it opens **Important**. |
+| **Desktop notifications** on, page not focused, browser permission granted | A desktop notification "New AYON message". Selecting it focuses the page and opens **Important**. |
+| **Notification sound** on, page not focused | A chime. |
 
-Messages for **Other** do not notify. **Desktop Notifications** and **Notification Sound** are set on the account profile page and work independently of each other. **Desktop Notifications** can only be turned on over HTTPS or from `localhost`.
+Messages for **Other** do not notify. Both switches are on the [Profile](../account/profile.md) page and work independently.
 
-## Permissions
+## Controls and interactions
 
-| Rule | Effect |
+### Toolbar
+
+| Control | What it does | On tabs |
+|---|---|---|
+| **Search and filter** | Filters the messages, see [Filters](#filters). Without a selected project the bar is disabled, with the tooltip **Select a project to enable filtering**. | All |
+| **Unread** | Shows only unread messages. Stored in the view of the tab. | Important, Other |
+| **Enable notifications** | Asks the browser for permission to show desktop notifications and turns on **Desktop notifications** in the [profile](../account/profile.md). Hidden once the permission is granted. Disabled unless the server is reached over HTTPS or as `localhost`, with the tooltip **Browser notifications only work over HTTPS**. | All |
+| **Clear read** | Clears the read messages; unread ones stay. With filters, clears only the matching read messages loaded in the list. | Important, Other |
+| **Clear all** (`Shift`+`C`) | Clears every message of the tab, in all projects or in the selected project. With filters or **Unread**, clears only the matching messages loaded in the list. | Important, Other |
+| **Refresh** (`R`) | Reloads the messages and the unread counts. | All |
+
+### Projects and filters
+
+The project list on the left chooses between all projects and one project. Selecting a project shows only its messages and enables the filters; selecting it again returns to all projects. The selected project is kept in the `inboxProject` URL parameter.
+
+<Columns widths="55 45">
+<Column>
+
+#### Filters
+
+| Filter | Values |
 |---|---|
-| Project access | Messages come from the projects the user has an access group in; managers and admins get messages from all projects. |
-| Comment categories | Users who are not managers do not see, and are not notified about, activity with a comment category they cannot access. |
-| Guests | Legacy guest accounts get no messages and no project mode. |
+| **Comments** | Comments |
+| **Versions** | Version publishes and reviewables |
+| **Reviews** | **All reviews**, **Approved**, **Requested changes** |
+| **Updates** | Status, assignee, tag and type changes |
+| **Checklists** | Comments with a checklist |
+| **Attachments** | Activity with attached files |
+| **Category** | The comment categories of the project, and **No category** |
+| **Reason** | **Mentioned**, **Watching**, **Related** (only the first two on **Important**) |
+| **Entity type** | **Task**, **Version**, **Folder** |
+| **User** | The author, or the assignee of an assignment change |
+| **Posted date** | Date ranges, and **Custom range** |
+
+Typed text matches the message text, the name and label of the entity, and the names of its parents.
+
+</Column>
+<Column>
+
+![The filter list of the Inbox with Comments, Versions, Reviews, Updates, Checklists, Attachments, Category, Reason, Entity type and User](../../assets/web-ui/inbox/filter-menu.png "Filters")
+
+</Column>
+</Columns>
+
+### Actions on messages
+
+<Columns widths="60 40">
+<Column>
+
+- **Clear** (`C`) moves a message to **Cleared** and marks it read. On **Cleared** the same button reads **Unclear** and moves it back as unread.
+- **Mark as read** / **Mark as unread** (`X`) toggles the read state. Not available on **Cleared**.
+- **Right-click** a message for the same actions. With several messages selected, the menu acts on all of them, for example **Clear** followed by the number of messages.
+- `C` acts on the hovered message, or on the selection when the hovered message is part of it. `X` acts on the selection when several messages are selected, otherwise on the hovered message.
+
+</Column>
+<Column>
+
+![The right-click menu of a message with Clear and Mark as read and their C and X shortcuts](../../assets/web-ui/inbox/context-menu.png "Right-click menu")
+
+</Column>
+</Columns>
+
+### Keyboard shortcuts
+
+| Key | What it does |
+|---|---|
+| `ArrowUp`, `ArrowDown`, `Tab`, `Shift`+`Tab` | Select the previous or next message. |
+| `Shift`+`ArrowUp` / `Shift`+`ArrowDown`, `Shift`+click | Extend the selection. |
+| `Ctrl`/`Cmd`+click | Add a message to the selection or remove it. |
+| `C` | Clear or unclear. |
+| `X` | Mark read or unread. |
+| `Shift`+`C` | **Clear all**. |
+| `R` | **Refresh**. |
 
 ## Related
 
@@ -187,7 +183,6 @@ Messages for **Other** do not notify. **Desktop Notifications** and **Notificati
 - [Other](other.md)
 - [Cleared](cleared.md)
 - [Details panel](../details-panel.md)
-- [Activity feed](../details-panel.md#activity-feed)
 - [Views](../views.md)
+- [Profile](../account/profile.md)
 - [Keyboard shortcuts](../quick-navigation.md#keyboard-shortcuts)
-- [Navigation bar](../navigation-bar.md)

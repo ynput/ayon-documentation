@@ -2,19 +2,23 @@
 title: Quick navigation and server layout
 sidebar_label: Quick navigation and server layout
 description: "A map of the AYON web app: its main areas and who uses them, every keyboard shortcut, how to reach a project, task, product or version quickly, and the details panel as the common view of an entity."
-verified: 2026-10-15
+verified: 2026-11-15
 ui_purpose: "A map of the web app for new users: which area is for what, every keyboard shortcut, and how to reach an entity quickly."
 sources:
   - https://help.ayon.app/en/articles/0358916-ayon-on-cloud-a-complete-studio-walkthrough
   - https://help.ayon.app/en/articles/5961925-navigating-ayon-server
   - https://help.ayon.app/en/articles/9085225-ayon-web-app-keyboard-shortcuts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/context/shortcuts/ShortcutsContext.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Views/hooks/useViewsShortcuts.ts
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/pages/EventsPage/components/EventsTimeline/EventsTimeline.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AppRoutes.tsx
 ---
 
 # Quick navigation and server layout
 
 <PageInfo />
 
-The AYON web app has a handful of areas that people return to every day: their own tasks, the pages of a project, the inbox, and the settings. This page is a map of those areas for someone new to AYON. It explains which area is for what, lists every keyboard shortcut, and shows how to reach a single project, task, product or version quickly. The pages of the Web UI section follow the layout of the web app: one page per tab, grouped as the app groups them. The top bar and its menus are described on the [Navigation bar](navigation-bar.md) page.
+The AYON web app has a handful of areas that people return to every day: their own tasks, the pages of a project, the inbox, and the settings. This page is a map of those areas for someone new to AYON. It explains which area is for what, lists every keyboard shortcut, and shows how to reach a single project, task, product or version quickly. The pages of the Web UI section follow the layout of the web app: one page per tab, grouped as the app groups them. The App header at the top of every page and its menus are described on the [App header](app-header.md) page.
 
 ## The main areas
 
@@ -95,7 +99,7 @@ The web app has keyboard shortcuts for moving between pages, toggling menus and 
 | `m+m` | Market | `/market` |
 | `i+i` | Inbox | `/inbox/important` |
 
-`p+p` and `a+a` keep the current query parameters, so the selected project stays selected. Pages are subject to the user's role: a user who cannot open a page is redirected. See [Navigation bar](navigation-bar.md).
+`p+p` and `a+a` keep the current query parameters, so the selected project stays selected. Pages are subject to the user's role: a user who cannot open a page is redirected. See [App header](app-header.md).
 
 ### Menus
 
@@ -122,7 +126,7 @@ These apply to the tree table on the **Overview** page and to the same table com
 | `Tab` / `Shift+Tab` | Next or previous cell, wrapping across rows |
 | `Enter` | On the name column of a folder or task, open the details panel. On other columns, edit the cell (toggles checkboxes) |
 | `Esc` | Clear the selection, stop editing, drop the focused cell |
-| `Space` | Open the selected item in the viewer |
+| `Spacebar` | Open the selected item in the viewer |
 | Double click | Show the details panel for the selected item |
 | `Ctrl+C` | Copy selected cells |
 | `Ctrl+V` | Paste into selected cells |
@@ -132,7 +136,7 @@ These apply to the tree table on the **Overview** page and to the same table com
 | `Ctrl+click` | Add or remove a single row from the selection |
 | `Shift+click` | Select a continuous range |
 | `Alt+click` on the expand arrow | Expand or collapse all children |
-| `Shift+Ctrl+0` | Reset the working view to its default (clears filters and column settings) |
+| `Shift+Ctrl+0` | Reset the working view: loads the project's default view, else the studio default, else empty settings. Works on every page with [views](views.md), including the Event Viewer. |
 | `Shift+R` | Sync the table with server updates (where a sync button is shown) |
 
 In cell editors: `Enter` confirms, `Esc` cancels. In markdown cells `Ctrl+Enter` also confirms.
@@ -163,7 +167,7 @@ In cell editors: `Enter` confirms, `Esc` cancels. In markdown cells `Ctrl+Enter`
 | Shortcut | Where | Action |
 |---|---|---|
 | `c` (hover) | Home task list | Collapse or expand the hovered group |
-| `Space` | Home, task progress | Open the reviewables of the selected task in the viewer |
+| `Spacebar` | Home, task progress | Open the reviewables of the selected task in the viewer |
 | `Ctrl+click`, `Shift+click` | Home | Add tasks to the selection |
 | Arrow keys | Home | Move across the board or list |
 | Double click | Home, task progress | Show the details panel |
@@ -175,7 +179,20 @@ In cell editors: `Enter` confirms, `Esc` cancels. In markdown cells `Ctrl+Enter`
 | Shortcut | Action |
 |---|---|
 | `c` (hover) | Collapse or expand the hovered product group (grid view) |
-| `Space` | Open the selected item in the viewer |
+| `Spacebar` | Open the selected item in the viewer |
+
+### Event Viewer
+
+| Shortcut | Where | Action |
+|---|---|---|
+| `Escape` | Table, timeline | Clear the selected event |
+| `ArrowLeft` / `ArrowRight` | Timeline | Select the older or newer event |
+| `ArrowUp` / `ArrowDown` | Timeline | Select the nearest event in the lane above or below |
+| `Shift` + `ArrowLeft` / `ArrowRight` | Timeline | Pan |
+| `+` / `-` | Timeline | Zoom in or out |
+| `N` or `End` | Timeline | Jump to now and follow new events |
+
+See [Event Viewer](event-viewer.md#keyboard-and-mouse) for the mouse controls.
 
 ### Inbox
 
@@ -205,7 +222,7 @@ See [Web viewer](web-viewer.md) for the whole web viewer.
 
 | Shortcut | Action |
 |---|---|
-| `Space` or `k` | Play or pause |
+| `Spacebar` or `k` | Play or pause |
 | `ArrowLeft` or `3` | Back one frame |
 | `ArrowRight` or `4` | Forward one frame |
 | `j`, `1` or `Shift+ArrowLeft` | Back five frames |
@@ -277,6 +294,7 @@ There is no single search across the whole server. Searching happens where the t
 | A product or version | The filter bar and slicer of the **Products** page. Filters can combine folder, product, version and task fields. |
 | A message | The filter bar of the inbox, in project mode. |
 | An activity on an entity | The search bar at the top of the activity feed in the details panel. |
+| An event on the server | The search and filter bar and the filters panel of the [Event Viewer](event-viewer.md). |
 
 ## Reaching things quickly
 
@@ -285,12 +303,12 @@ There is no single search across the whole server. Searching happens where the t
 | A project | `1`, type part of the name, `Enter`. Pinned projects stay at the top of the project menu. A project opens on the tab used last (the **Overview** the first time), and switching projects while on a project page keeps the current tab. |
 | My next task | `h+h`. The task's card opens the details panel with a double click, and `Ctrl` or `Cmd` with a double click opens it on the project **Overview**. |
 | Any task or folder | The **Overview** of the project, narrowed with the hierarchy slicer or the search bar. |
-| The latest version of a task | `Space` on the task, on Tasks home or Task progress, plays its reviewables in the viewer. |
+| The latest version of a task | `Spacebar` on the task, on Tasks home or Task progress, plays its reviewables in the viewer. |
 | A product or version | The **Products** page, with the hierarchy slicer on the folder and **Group by** set to **Product**. |
 | Something a colleague pointed to | A link from **Share** in the details panel's **More actions** menu, or a link in an inbox message. Opening it shows the entity in the details panel. |
 | The web page of a launcher context | **Show in AYON** in the desktop [Launcher](../../pipeline/launcher.md) opens the project overview on the selected folder or task. |
 
-The center of the top bar shows the current location as breadcrumbs. On project pages with a selected entity it holds the entity's AYON URI, in the form `ayon+entity://project/folder/path?task=name`, and a copy button next to it copies the URI.
+The [URI bar](app-header.md#uri-bar) in the middle of the App header shows the current location. On project pages with a selected entity it holds the entity's AYON URI, in the form `ayon+entity://project/folder/path?task=name`, and a copy button next to it copies the URI.
 
 ## The details panel
 
@@ -308,7 +326,7 @@ Every page that lists folders, tasks, versions or representations opens them in 
 |---|---|
 | Double click on a row or card | Opens the details panel. |
 | `Escape` | Closes it. |
-| `Space` | Opens the selected entity in the viewer. |
+| `Spacebar` | Opens the selected entity in the viewer. |
 | A mention or linked version inside the panel | Opens a second panel next to the first. |
 
 ## What depends on the role
@@ -324,7 +342,7 @@ Which projects and which folders a user sees follows the access groups assigned 
 
 ## Related
 
-- [Navigation bar](navigation-bar.md)
+- [App header](app-header.md)
 - [Home tasks](home/tasks.md)
 - [Project overview](production-tracking/overview.md)
 - [Details panel](details-panel.md)

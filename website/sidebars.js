@@ -47,7 +47,7 @@ module.exports = {
             link: { type: "doc", id: "ayon/web-ui/index" },
             items: [
                 { type: "doc", id: "ayon/web-ui/quick-navigation", label: "Quick navigation and server layout" },
-                { type: "doc", id: "ayon/web-ui/navigation-bar", label: "Navigation bar" },
+                { type: "doc", id: "ayon/web-ui/app-header", label: "App header" },
                 {
                     type: "category",
                     label: "Home",

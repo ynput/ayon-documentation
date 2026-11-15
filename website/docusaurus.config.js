@@ -277,6 +277,7 @@ const config = {
             "@docusaurus/plugin-client-redirects",
             {
                 redirects: [
+                        { from: "/docs/ayon/web-ui/navigation-bar", to: "/docs/ayon/web-ui/app-header" },
                         { from: "/docs/dev_introduction", to: "/docs/developer" },
                         { from: "/docs/developer/resources", to: "/docs/developer" },
                         { from: "/docs/developer/api", to: "/docs/developer" },

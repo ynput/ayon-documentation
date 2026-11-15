@@ -121,7 +121,7 @@ Two specific colors are used to specify the difference between "production" and 
     { name: "--color-hl-staging-container", hex: "#622809", source: "hsl(21, 83%, 21%)" },
 ]} />
 
-Production and staging bundles carry badges in these colors on the Bundles page. Besides developer mode, there is a staging mode: a user with staging access can pick **Staging** in the bundle mode selector at the top right, which then reads **Staging Mode** in the staging color. See [Navigation bar](../../ayon/web-ui/navigation-bar.md).
+Production and staging bundles carry badges in these colors on the Bundles page. Besides developer mode, there is a staging mode: a user with staging access can pick **Staging** in the bundle mode selector at the top right, which then reads **Staging Mode** in the staging color. See [App header](../../ayon/web-ui/app-header.md).
 
 <Gallery columns={2}>
 

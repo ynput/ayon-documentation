@@ -24,14 +24,14 @@ Every endpoint of the AYON server, also under REST API in the top bar.
 Every AYON server also has its own reference, which includes the endpoints that its addons add (see [Endpoints](../addon-development/server.md#endpoints)):
 
 - **Where:** `<your-ayon-server-url>/docs`, or **REST API** in the Help menu of the web app, which shows it at `/doc/api`.
-- **Who:** managers and admins, by default.
+- **Who:** see [Environment variables](../../ayon/web-ui/rest-api.md#environment-variables).
 
 See [REST API](../../ayon/web-ui/rest-api.md) in the Web UI section.
 
 </Column>
 <Column>
 
-![](../assets/apis_and_resources/rest_api_docs.png)
+![The Help menu of the web app with the REST API entry highlighted, between Dev Portal and GraphQL Explorer](../assets/apis_and_resources/rest_api_docs.png)
 
 </Column>
 </Columns>

@@ -2,7 +2,7 @@
 title: Web UI
 sidebar_label: Web UI
 description: "The Web UI section of AYONpedia: a reference of the AYON server web app that mirrors it one page per tab, covering the native features available in every edition without a subscription, and where the explanations and the features of plans and addons are described."
-verified: 2026-10-25
+verified: 2026-11-15
 ui_purpose: "A reference of the AYON web app, one page per tab, grouped the way the app groups them."
 sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/containers/AppRoutes.tsx
@@ -24,7 +24,7 @@ The section covers the native features of the AYON server, the ones every editio
 | Screens, tabs, buttons and controls of the native web app | This section |
 | How things work: bundles, projects, permissions, storage, daily work | [How AYON works](../how-ayon-works/index.md) |
 | Entities, attributes and settings scopes | [Backend](../backend/data-model/index.md) |
-| Production tracking features explained, and the features added by plans and addons, such as review sessions, the Planner and its **Schedule** tab, **Reports** and the power features | [Production tracking](../../production-tracking/index.md) and [Addons](../../addons/index.md) |
+| Production tracking features explained, and the features added by plans and addons, such as review sessions, the Planner and its **Schedule** tab, **Reports** and the Power features | [Production tracking](../../production-tracking/index.md) and [Addons](../../addons/index.md) |
 | What each plan includes | [Plans](../plans.md) |
 
 Some screens show a control only when an addon is installed or the server has a plan that includes it. Those controls are named where they appear, and the feature itself is described with its addon or in the Production tracking section.
@@ -42,15 +42,17 @@ Some screens show a control only when an addon is installed or the server has a 
 | [Account](account/index.md) | User menu, `0` | [Profile](account/profile.md), [Sessions](account/sessions.md), [Launchers](account/launchers.md) |
 | Single pages | App menu and Help menu | [Market](market.md), [Services](services.md), [Event Viewer](event-viewer.md), [GraphQL Explorer](graphql-explorer.md), [REST API](rest-api.md) |
 
-The top bar and its menus are described on the [Navigation bar](navigation-bar.md) page, the side panel that opens for a selected entity on almost every page on [Details panel](details-panel.md), the player of versions and reviewables on [Web viewer](web-viewer.md), the saved layouts of the pages on [Views](views.md), the link columns and their editor on [Links manager](links-manager.md), and the quickest ways around the app, with every keyboard shortcut, on [Quick navigation and server layout](quick-navigation.md).
+The App header at the top of every page and its menus are described on the [App header](app-header.md) page, the side panel that opens for a selected entity on almost every page on [Details panel](details-panel.md), the project list on the left of Home and the settings pages on [Project list](project-list.md), the folder hierarchy and filters on the left of the project pages on [Slicer](slicer.md), the player of versions and reviewables on [Web viewer](web-viewer.md), the saved layouts of the pages on [Views](views.md), the link columns and their editor on [Links manager](links-manager.md), and the quickest ways around the app, with every keyboard shortcut, on [Quick navigation and server layout](quick-navigation.md).
 
 ## Related
 
 - [Quick navigation and server layout](quick-navigation.md)
-- [Navigation bar](navigation-bar.md)
+- [App header](app-header.md)
 - [Details panel](details-panel.md)
 - [Web viewer](web-viewer.md)
 - [Views](views.md)
 - [Links manager](links-manager.md)
+- [Project list](project-list.md)
+- [Slicer](slicer.md)
 - [How AYON works](../how-ayon-works/index.md)
 - [Production tracking](../../production-tracking/index.md)

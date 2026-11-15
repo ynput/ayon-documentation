@@ -142,13 +142,15 @@ The mouse and keyboard interactions with the tasks on this page.
 
 ## Power features
 
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+
 ### Related panel
 
 ![The Related panel open below the board, showing the lighting tasks of the previous and next shots](../../assets/web-ui/home-tasks/related-panel.webp)
 
 The Related panel shows the selected task next to the tasks around it, for example the previous and next shots. It is a bar at the bottom of the page; expanded, it shows thumbnails of the selected task and up to five related tasks. The two buttons at its top left switch between two modes, **Timeline** and **Workflow**.
 
-The Related panel needs a Pro or Studio plan, see [Power features](../../../production-tracking/power-features.md). Without it, the panel is not shown.
+Without the Power Pack, the panel is not shown.
 
 - **Timeline**, the default, shows the tasks of the same task type in the sibling folders, such as the lighting tasks of the previous and next shots. It helps to check continuity across a sequence.
 - **Workflow** shows the other tasks of the same folder, ordered as in the project anatomy. It helps to check the upstream and downstream work of a shot, such as layout before lighting.
