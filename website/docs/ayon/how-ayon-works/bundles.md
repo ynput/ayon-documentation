@@ -151,5 +151,5 @@ The freeze dialog and how a frozen project looks in the web app are described in
 - [Market](../web-ui/market.md)
 - [Addon services](services.md)
 - [Developer mode](../../developer/developer-mode.md)
-- [Pipeline storage](pipeline-storage.md)
+- [Storage](storage.md)
 - [Launcher](../../pipeline/launcher.md)

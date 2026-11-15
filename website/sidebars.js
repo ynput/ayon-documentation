@@ -34,7 +34,7 @@ module.exports = {
                 "ayon/how-ayon-works/bundles",
                 "ayon/how-ayon-works/services",
                 "ayon/how-ayon-works/creating-a-project",
-                "ayon/how-ayon-works/pipeline-storage",
+                "ayon/how-ayon-works/storage",
                 "ayon/how-ayon-works/permissions",
                 "ayon/how-ayon-works/artist-workflow",
                 "ayon/how-ayon-works/production-workflow",

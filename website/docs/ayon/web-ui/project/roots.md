@@ -20,7 +20,7 @@ sources:
 
 ![The Roots tab for wing_it, signed in as a user with no registered workstation: the project list on the left and the message No sites were found](../../assets/web-ui/roots/page.webp)
 
-The **Roots** tab of the [Projects Manager](index.md) sets root paths for the selected project per site. A path saved here replaces the root path of the project anatomy for the signed-in user on that workstation, for example when the storage is mounted under another drive letter or mount point. The anatomy roots themselves are edited on the [Anatomy](anatomy.md) tab. The order in which root paths are resolved, including Site Sync, is described in [Pipeline storage](../../how-ayon-works/pipeline-storage.md#roots).
+The **Roots** tab of the [Projects Manager](index.md) sets root paths for the selected project per site. A path saved here replaces the root path of the project anatomy for the signed-in user on that workstation, for example when the storage is mounted under another drive letter or mount point. The anatomy roots themselves are edited on the [Anatomy](anatomy.md) tab. The order in which root paths are resolved, including Site Sync, is described in [Storage](../../how-ayon-works/storage.md#roots).
 
 ## Site roots
 
@@ -50,7 +50,7 @@ Everyone can open the tab. Managers and admins can view and save the roots of ev
 
 ## Related
 
-- [Pipeline storage](../../how-ayon-works/pipeline-storage.md)
+- [Storage](../../how-ayon-works/storage.md)
 - [Anatomy](anatomy.md)
 - [Site settings (project)](site-settings.md)
 - [Settings](../../how-ayon-works/settings.md)

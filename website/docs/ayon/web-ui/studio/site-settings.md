@@ -49,5 +49,5 @@ The project-level counterpart, overrides of the normal addon settings for one si
 - [Settings](../../how-ayon-works/settings.md)
 - [Studio settings](studio-settings.md)
 - [Project site settings](../project/site-settings.md)
-- [Pipeline storage](../../how-ayon-works/pipeline-storage.md)
+- [Storage](../../how-ayon-works/storage.md)
 - [Studio configuration](index.md)

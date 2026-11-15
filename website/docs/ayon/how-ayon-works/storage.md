@@ -1,17 +1,28 @@
 ---
-title: Pipeline storage
-description: "Where AYON pipeline files are stored and how their paths are decided: roots per platform and site, the templates of the project anatomy, the Core profiles that pick a template, the context data that fills it, and what the AYON server itself stores."
-verified: 2026-10-19
+title: Storage
+description: "Where AYON keeps files: the studio storage for work files and published files, and how their paths are decided (roots per platform and site, the templates of the project anatomy, the Core profiles that pick a template, the context data that fills it, and when files are written); the server storage for records, thumbnails, reviewables, installers, addons and addon data; and Site Sync, which synchronizes published files between sites."
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/help/articles/3815114-project-anatomy
   - https://help.ayon.app/en/help/articles/0358916-ayon-on-cloud-a-complete-studio-walkthrough
 ---
 
-# Pipeline storage
+# Storage
 
-Work files and published files are written by the workstations to the studio's own storage: a local disk, a network share or a synced location. The AYON server does not hold these files. It holds the records that describe them (products, versions, representations and their file lists) and the rules that produce their paths. Every path is computed on the workstation, at the moment a file is saved or published, from three pieces: the roots and templates of the project anatomy, the template profiles of the Core addon settings, and the context of the current task. This page explains that chain. The template keys and the default templates are listed in [Naming conventions](../../pipeline/naming-conventions.md).
+AYON keeps files in two separate places:
 
-## The chain
+| Place | Holds | Written by |
+|---|---|---|
+| [Studio storage](#studio-storage) | The pipeline files: work files and published files | The workstations and farm machines that run the pipeline |
+| [Server storage](#server-storage) | The records that describe those files, and the server's own files: thumbnails, reviewables, installers, addons and addon data | The AYON server |
+
+The AYON server never holds the work files and published files. It holds the records that describe them (products, versions, representations and their file lists) and the rules that produce their paths. With the SiteSync addon, published files can also be kept on several sites, see [Site Sync](#site-sync).
+
+## Studio storage
+
+The studio storage is the studio's own storage: a local disk, a network share or a synced location. Every path on it is computed on the workstation, at the moment a file is saved or published, from three pieces: the roots and templates of the project anatomy, the template profiles of the Core addon settings, and the context of the current task. The template keys and the default templates are listed in [Naming conventions](../../pipeline/naming-conventions.md).
+
+### How a path is decided
 
 ```mermaid
 flowchart LR
@@ -24,7 +35,7 @@ flowchart LR
     G[Product, version, file] --> F
 ```
 
-Plain-text equivalent:
+In detail:
 
 | Step | Input | Source | Result |
 |---|---|---|---|
@@ -34,7 +45,7 @@ Plain-text equivalent:
 | 4 | The templates | Project anatomy: **Roots**, resolved for the current platform and site | The `{root[...]}` part of the path |
 | 5 | The templates | Context data: project name and code, folder path, task, user, product, version, representation, frame | The filled directory and file name |
 
-## Roots
+### Roots
 
 A root is a named base path with one value per platform (Windows, Linux, macOS). Templates start with `{root[name]}`, so the same template works on every platform. The values live in the project anatomy; a new project takes them from its anatomy preset (see [Creating a project](creating-a-project.md)).
 
@@ -50,7 +61,7 @@ The **Roots** page lists the sites registered to the signed-in user, with one fi
 
 Published file records store paths with the root replaced by its key, for example `{root[work]}/my_project/shots/sq01/sh010/publish/...`. Each workstation resolves the key with its own root path, so one record works on every platform and site. A publish whose destination is not inside one of the project roots fails.
 
-## Templates and profiles
+### Templates and profiles
 
 The anatomy holds named templates in groups (**Work**, **Publish**, **Hero**, **Delivery**, **Staging directories**, **Others**). A template is chosen by name, and the name comes from profiles in the Core addon settings. Profiles are filters: each has lists of hosts, task types, task names or product base types (empty means any), and the most specific matching profile wins.
 
@@ -65,7 +76,7 @@ Profiles are addon settings, so they follow the settings scopes: studio values, 
 
 The profiles are described in [Core addon settings](../../addons/essentials/core/settings.md); the default templates and every key in [Naming conventions](../../pipeline/naming-conventions.md).
 
-## When directories and files are written
+### When directories and files are written
 
 | Moment | What happens | Written by |
 |---|---|---|
@@ -78,7 +89,7 @@ The profiles are described in [Core addon settings](../../addons/essentials/core
 
 Because the files are written by the machines that run the pipeline, these machines need write access to the studio storage under the root paths. AYON permissions do not grant or limit file system access.
 
-## What the AYON server stores
+## Server storage
 
 | Data | Stored on the server | Notes |
 |---|---|---|
@@ -91,9 +102,13 @@ Because the files are written by the machines that run the pipeline, these machi
 
 The project file storage is a directory on the server (`/storage/server/projects` by default) or an S3 bucket. For a self-hosted server these locations are described in [On-premise deployment](../deployment/on-premise.md). Deleting a project removes its records and its server-side files; it does not delete anything on the studio storage.
 
-## Site sync
+Addons that let users upload files, such as slate templates or workflows, usually keep them in `/storage/addons/<addon name>/` on the server, see [Addon data](../../developer/addon-development/files.md#addon-data).
+
+## Site Sync
 
 Without the SiteSync addon, every workstation reads and writes the same storage through its root paths, and that location is the `studio` site. With the SiteSync addon enabled for a project, each workstation has an active site, which can be its own local disk or a remote storage provider. Publishes go to the active site, the server keeps the sync state of every representation per site, and the sync service copies the files between sites. The root paths of the active site come from the addon's site settings and replace the anatomy roots. Only published files are synchronized, not work files. See the [SiteSync addon](../../addons/pipeline-features/sitesync/index.md).
+
+The Site Sync root overrides come first when a workstation resolves its roots, see [Roots](#roots).
 
 ## Where to look
 

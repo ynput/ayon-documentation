@@ -108,7 +108,7 @@ Default access groups are applied only at this moment. Changing a user's **Defau
 | Not created | Consequence |
 |---|---|
 | Folders, tasks and other entities | The project starts empty. The hierarchy is built in the web app, imported, created by editorial publishing, or synced by a production tracker addon. |
-| Directories on disk | Nothing is written to the studio storage. Work directories are created when an application is launched in a task, publish directories when files are published, and an optional skeleton by the web action **Create Project Folder Structure** from the Core setting **Project folder structure** (see [Pipeline storage](pipeline-storage.md)). |
+| Directories on disk | Nothing is written to the studio storage. Work directories are created when an application is launched in a task, publish directories when files are published, and an optional skeleton by the web action **Create Project Folder Structure** from the Core setting **Project folder structure** (see [Storage](storage.md)). |
 | Project bundle | The project uses the studio Production and Staging bundles (see [Bundles](bundles.md)). |
 | Project addon settings | The project has no overrides and reads the studio settings of the addon versions in the active bundle. |
 | Project access group overrides | The project uses the studio definitions of the access groups. |
@@ -147,7 +147,7 @@ When a project with the same name is created again in the **Production** state, 
 
 - [Users](../web-ui/studio/users.md)
 - [Permissions](permissions.md)
-- [Pipeline storage](pipeline-storage.md)
+- [Storage](storage.md)
 - [Bundles](bundles.md)
 - [Attributes](../web-ui/studio/attributes.md)
 - [AYON entities](entities.md)

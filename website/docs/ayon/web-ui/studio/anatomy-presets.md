@@ -46,7 +46,7 @@ The editor shows the anatomy of the selected preset in collapsible sections, in 
 | **Tags** | Tags with their colors. |
 | **Product Types** | **Default appearance** (color and icon) and **Appearance overrides** of product base types in the web app. |
 
-Names in **Roots**, **Folder types**, **Task types**, **Statuses** and **Tags** must be unique within their list; saving a preset with duplicates fails. Roots, templates and entity naming are described in [Naming conventions](../../../pipeline/naming-conventions.md#project-anatomy) and [Pipeline storage](../../how-ayon-works/pipeline-storage.md); types, statuses and tags in [AYON entities](../../how-ayon-works/entities.md#statuses-types-and-tags).
+Names in **Roots**, **Folder types**, **Task types**, **Statuses** and **Tags** must be unique within their list; saving a preset with duplicates fails. Roots, templates and entity naming are described in [Naming conventions](../../../pipeline/naming-conventions.md#project-anatomy) and [Storage](../../how-ayon-works/storage.md); types, statuses and tags in [AYON entities](../../how-ayon-works/entities.md#statuses-types-and-tags).
 
 ### The primary preset
 
@@ -100,7 +100,7 @@ Right-clicking a field or a section in the editor offers **Copy** and **Paste** 
 
 - [Creating a project](../../how-ayon-works/creating-a-project.md)
 - [Project anatomy](../project/anatomy.md)
-- [Pipeline storage](../../how-ayon-works/pipeline-storage.md)
+- [Storage](../../how-ayon-works/storage.md)
 - [Naming conventions](../../../pipeline/naming-conventions.md)
 - [AYON entities](../../how-ayon-works/entities.md)
 - [Attributes](attributes.md)
