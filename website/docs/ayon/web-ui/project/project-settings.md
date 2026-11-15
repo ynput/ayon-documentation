@@ -86,7 +86,7 @@ Without view rights for the selected project, the page shows **You don't have pe
 </Column>
 </Columns>
 
-Managers and admins can view and save the settings of every project. Users need **Read only** (view) or **Read & Write** (view and save) on **Project addon settings** in the project; without write rights **Save Changes** is disabled with the tooltip **You don't have edit permissions**. The full list of who may change which scope is in [Settings](../../how-ayon-works/settings.md#permissions).
+Managers and admins can view and save the settings of every project. Users need **Read only** (view) or **Read & Write** (view and save) on **Project addon settings** in the project; without write rights **Save Changes** is disabled with the tooltip **You don't have edit permissions**. Who may change which scope is listed in [Settings](../../how-ayon-works/settings.md#the-four-scopes).
 
 ### Project bundles
 
@@ -104,8 +104,6 @@ Right-clicking a field or a group offers:
 | **Remove project override from &lt;field&gt;** | Removes the project override after a confirmation, so the field follows the studio value again. Takes effect at once. |
 | **Remove all project overrides** | On the root of an addon panel: removes all project overrides of the addon for this project and variant, after a confirmation. |
 | **Copy**, **Paste** | Copy the value as JSON, or paste JSON into it as an unsaved change. A pasted value must have the same structure. |
-
-See also [Right-click menu on fields](../../how-ayon-works/settings.md#right-click-menu-on-fields).
 
 ### Addon menu
 

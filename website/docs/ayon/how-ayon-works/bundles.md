@@ -1,7 +1,7 @@
 ---
 title: Bundles
-description: "How bundles affect the AYON server and the pipeline: what a bundle holds, which users and machines use the Production, Staging and Dev bundles, how a workstation picks and downloads its bundle, what changes when a bundle becomes Production, and the usual way to roll out an addon."
-verified: 2026-10-19
+description: "How bundles affect the AYON server and the pipeline: what a bundle holds, the bundle modes (Production, Staging, Developer) and how they decide what the web app and the launcher use, how a workstation picks and downloads its bundle, what changes when a bundle becomes Production, the usual way to roll out an addon, and project bundles that lock a bundle for one production."
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/help/articles/4644998-bundles-and-addons
   - https://help.ayon.app/en/help/articles/0782429-project-bundles
@@ -24,19 +24,21 @@ A bundle is the release unit of an AYON setup. It names one version of each addo
 
 System addons that a bundle does not list are added at their latest installed version when the bundle is created.
 
-## Which bundle is used by whom
+## Bundle modes
 
 There is one Production bundle, one Staging bundle (they can be the same bundle) and one Dev bundle per developer. A bundle without a state is stored but not used unless a workstation asks for it by name.
 
+The bundle mode decides which of them is used. In the web app, each user picks it with the bundle mode selector of the [App header](../web-ui/app-header.md#right-region): Production is the default, **Staging** needs **Staging access** on the user account, and **Developer** needs developer mode. On a workstation, the launcher's mode is chosen when it starts. The two are separate: switching the mode in the web app does not change what a launcher runs.
+
 | Bundle | Used by the launcher when | Used by the web app when | Settings variant |
 |---|---|---|---|
-| Production | No other mode is requested. The default for every workstation and farm machine. | Always, for the addon pages, single sign-on options and web actions | `production` |
-| Staging | The launcher is started with `--use-staging` or with `AYON_USE_STAGING=1` | The user has **Staging access** and turns on **Staging Mode** in the header, for web actions | `staging` |
-| Dev | The launcher is started with `--use-dev` (or `AYON_USE_DEV=1`) and the signed-in user is the developer assigned to a Dev bundle, or with `--bundle` and the name of a Dev bundle | The user has **Developer** and turns on **Developer Mode** | The bundle name |
+| Production | No other mode is requested. The default for every workstation and farm machine. | The default bundle mode. Single sign-on options and the addon pages of Studio settings always use it, whatever the user's mode. | `production` |
+| Staging | The launcher is started with `--use-staging` or with `AYON_USE_STAGING=1` | The user picks **Staging** as bundle mode: web actions, and the addon pages of projects and Home, come from the Staging bundle | `staging` |
+| Dev | The launcher is started with `--use-dev` (or `AYON_USE_DEV=1`) and the signed-in user is the developer assigned to a Dev bundle, or with `--bundle` and the name of a Dev bundle | The user picks **Developer** as bundle mode: web actions and addon pages come from the user's Dev bundle | The bundle name |
 | A named bundle | The launcher is started with `--bundle` and the bundle name (or `AYON_STUDIO_BUNDLE_NAME`) | | The variant of the bundle's state |
 | Project bundle | The launcher works for a project that has a project bundle for its mode | | `production` or `staging` |
 
-Staging is chosen explicitly on each machine; it is never derived from a bundle name. **Staging access** on the user account only controls the switch in the web app; the launcher does not check it.
+Staging is chosen explicitly on each machine; it is never derived from a bundle name. **Staging access** on the user account only controls the bundle mode selector in the web app; the launcher does not check it. Developers are described in [Developer mode](../../developer/developer-mode.md).
 
 ## How a workstation picks and installs its bundle
 
@@ -104,14 +106,14 @@ flowchart LR
     E --> F[Workstations restart and download]
 ```
 
-Plain-text equivalent:
+In detail:
 
 | Step | Action | Effect |
 |---|---|---|
 | 1 | Install the addon from the [Market](../web-ui/market.md) or upload its package | The addon version is placed on the server and is loaded after a server restart. Nothing changes for users yet. |
 | 2 | **Duplicate and edit** the Production bundle and select the new version, or create a bundle from a pipeline release | A new bundle without a state. The compatibility check runs. |
 | 3 | **Set Staging** on the new bundle, with **Copy all settings** from the Production bundle | The new addon versions receive the production values as their staging values. The Production bundle is unchanged. |
-| 4 | Configure the new addon in the staging variant of the studio settings and test with launchers started in staging mode, and in the web app's **Staging Mode** for web actions | Only staging machines and users see the change. |
+| 4 | Configure the new addon in the staging variant of the studio settings and test with launchers started in staging mode, and in the web app with the **Staging** bundle mode | Only staging machines and users see the change. |
 | 5 | **Set Production** on the bundle, copying settings from the staging variant | The bundle becomes Production for everyone. |
 | 6 | Users restart from the tray prompt or at their next start | Workstations download the new client code. |
 
@@ -119,7 +121,17 @@ A server addon that has no client part can also be updated in place: its version
 
 ## Project bundles
 
-A project bundle is a bundle tied to one project and one variant (production or staging), named `__project__` followed by the project name and the variant. It fixes the launcher version, the dependency packages and the versions of the addons that allow project overrides, while the other addons inherit the studio bundle. The launcher uses it whenever it works for that project in that mode, and the project's settings are frozen for the fixed addon versions. A new project has no project bundle. See [Project bundles](../web-ui/project/project-bundle.md).
+A project bundle locks a bundle for one production. It sets the launcher version, the dependency packages and the addon versions of one project, so a long-running production is not changed when the studio's Production or Staging bundle moves on. It is frozen, not locked: single addon versions can still be changed later, after checking that they work with the project.
+
+| Topic | Behavior |
+|---|---|
+| Scope | One project and one mode, production or staging, named `__project__<project name>__<mode>`. Not available in developer mode. A new project has none. |
+| Addons | Each addon that allows project overrides is set to an explicit version, disabled, or left to **Inherit** the studio bundle. Addons that do not allow project overrides always follow the studio bundle. |
+| Launcher | Uses the project bundle instead of the studio bundle whenever it works for that project in that mode. |
+| Settings | The project keeps its own overrides; freezing writes the project's settings as overrides of the pinned addon versions. See [Project bundles and settings](settings.md#project-bundles-and-settings). |
+| Compatibility | Not checked. Inherited addons follow the studio bundle, so check them when it changes. |
+
+The freeze dialog and how a frozen project looks in the web app are described in [Project bundle](../web-ui/project/project-bundle.md).
 
 ## Where to look
 
@@ -134,9 +146,10 @@ A project bundle is a bundle tied to one project and one variant (production or 
 ## Related
 
 - [Bundles](../web-ui/studio/bundles.md)
-- [Project bundles](../web-ui/project/project-bundle.md)
+- [Project bundle](../web-ui/project/project-bundle.md)
 - [Settings](settings.md)
 - [Market](../web-ui/market.md)
-- [Services](../web-ui/services.md)
+- [Addon services](services.md)
+- [Developer mode](../../developer/developer-mode.md)
 - [Pipeline storage](pipeline-storage.md)
 - [Launcher](../../pipeline/launcher.md)

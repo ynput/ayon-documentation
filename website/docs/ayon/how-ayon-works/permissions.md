@@ -1,16 +1,20 @@
 ---
 title: Permissions
-description: "How the AYON server decides what a user may do: the access level of the account, the access groups assigned per project, how several groups combine, how default access groups and project overrides work, and where to check the result."
-verified: 2026-10-19
+description: "How the AYON server decides what a user may do: the access level of the account (admin, manager, user, service, guest) and how a manager differs from an admin, the access groups that apply to the User level only, assigned per project, how several groups combine, how default access groups and project overrides work, and where to check the result."
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/help/articles/2635883-user-permissions-and-project-access-groups
   - https://help.ayon.app/en/help/articles/6698141-user-management
   - https://help.ayon.app/en/help/articles/4902206-managing-projects
+  - https://github.com/ynput/ayon-backend/blob/develop/api/attributes/attributes.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/system/secrets.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/services/services.py
+  - https://github.com/ynput/ayon-backend/blob/develop/api/addons/studio_settings.py
 ---
 
 # Permissions
 
-AYON decides what a request may do in two layers. The first layer is the access level of the account: admin, manager, user, service or guest. It decides what kind of account it is, and admins, managers and services stop there, with access to every project. The second layer applies to accounts with the **User** level only: access groups, assigned per project, define what the user can see and change inside that project. This page explains how the two layers are evaluated on every request. Each control of the **Users**, **Permissions**, **Project permissions** and **Project access** pages is described in [Users](../web-ui/studio/users.md).
+AYON decides what a request may do in two layers. The first layer is the access level of the account: admin, manager, user, service or guest. It decides what kind of account it is, and admins, managers and services stop there, with access to every project. The second layer applies to accounts with the **User** level only: access groups, assigned per project, define what the user can see and change inside that project. Managers and admins are not limited by access groups, as the [Permissions](../web-ui/studio/permissions.md) page of the studio settings also says. This page explains how the two layers are evaluated on every request. The pages where levels and groups are set are described in [Users](../web-ui/studio/users.md), [Permissions](../web-ui/studio/permissions.md), [Project permissions](../web-ui/project/project-permissions.md) and [Project access](../web-ui/project/project-access.md).
 
 Permissions cover AYON data and actions only. They do not change who can read or write files on the studio storage.
 
@@ -48,7 +52,24 @@ The access level is stored on the user account. It is set on the **Users** page.
 | User | No project access by default. Everything inside a project comes from access groups. |
 | Guest | No stored account and no access groups. A guest signs in through a link sent by email and gets a session that reaches only the review content shared with the guest, such as a list or review session the guest was invited to. |
 
-Two account switches sit next to the level. **Developer** (admins only) allows developer mode and Dev bundles. **Staging access** shows the staging mode switch in the web app. Neither changes project permissions.
+Two account switches sit next to the level. **Developer** (set by admins only) allows developer mode and Dev bundles. **Staging access** allows the **Staging** bundle mode in the web app. Neither changes project permissions.
+
+### Managers and admins
+
+Managers and admins both work in every project without access groups. The difference is the studio administration: managers run the production, admins also run the server.
+
+| Area | Manager | Admin |
+|---|---|---|
+| Projects | Create, edit and delete projects, and work in all of them | The same |
+| Studio and project settings, anatomy presets | View and change | The same |
+| Users and access groups | Manage users and access groups, but not admin accounts, and cannot grant the admin level | Everything |
+| Attributes | View | View and change |
+| Secrets | Names only | Values, add, change and delete |
+| Services | The page is shown, but the list stays empty | Create, start, stop, edit and delete |
+| Addons, bundles, launchers, dependency packages, the Market | No | Yes |
+| **Global** server settings, Ynput Cloud connection, restarting the server | No | Yes |
+| Low-level settings editor, copying settings between bundles | No | Yes |
+| Deleting sites, API keys of other users, the **Developer** switch | No | Yes |
 
 ## Layer 2: access groups
 

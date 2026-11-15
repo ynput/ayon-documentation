@@ -1,7 +1,7 @@
 ---
 title: Settings
-description: "The four settings scopes of AYON addons (studio, project, studio site, project site), how overrides work, what a site ID is, and why settings belong to an addon version and variant rather than to a bundle."
-verified: 2026-10-19
+description: "The four settings scopes of AYON addons (studio, project, studio site, project site), who edits each, how overrides are layered and shown in the editor, why settings belong to an addon version and variant rather than to a bundle, what happens to settings when addon versions change, copying settings, and project bundles."
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/help/articles/8317800-working-with-settings
   - https://help.ayon.app/en/help/articles/4644998-bundles-and-addons
@@ -29,20 +29,10 @@ Notes on the table:
 - Studio, project and project site settings exist per variant (see [Variants](#variants)). Studio site settings have no variant: one set of values per addon version, site and user.
 - An addon decides which of its fields belong to which scope. A field can be limited to studio, project, site or a combination. By default a field is available at the studio and project levels. A field that is not in the scope of the open page is not shown on that page. An addon only appears in the addon list of a page when it has at least one field in that scope.
 - Studio site settings appear for the addons of the Production bundle only.
+- Users with the **User** access level see **Site Settings** instead of **Studio Settings** in the App menu. Project settings are shown to them when an access group of the project grants read or write access to **Project addon settings**; see [Permissions](permissions.md).
 - In a project that uses a project bundle, addons with an explicit version also show their studio-scope fields on the **Project settings** tab.
 
 The addon list of the **Studio settings** and **Project settings** pages marks an addon row when the addon has overrides at the studio, project or site level for the selection. In a project that uses a project bundle, addons that follow the studio bundle show **(Inherited)** after the version.
-
-### Where the pages are
-
-| Page | Menu entry | Shown to |
-|---|---|---|
-| Studio settings | **Studio Settings** in the app menu, or the **Studio settings** tab of Settings | Managers and admins |
-| Site settings (studio) | **Site Settings** in the app menu (users), or the **Site settings** tab of Settings | Everyone with the menu |
-| Project settings | **Projects Settings** in the app menu, then the **Project settings** tab | Managers and admins; users with read or write access to **Project addon settings** in a project's access group |
-| Site settings (project) | **Projects Settings** in the app menu, then the **Site settings** tab | Everyone |
-
-For users with the user role, the `s+s` entry opens **Site Settings** instead of **Studio Settings**. See [App header](../web-ui/app-header.md) for the menu and tabs.
 
 ## How overrides work
 
@@ -78,17 +68,7 @@ Every field and group in the editor carries a marker: a colored left edge on gro
 
 The header of each addon panel shows badges for the project name, the site ID and the variant that the panel is editing.
 
-### Right-click menu on fields
-
-| Entry | What it does |
-|---|---|
-| **Add current &lt;field&gt; value as &lt;level&gt; override** | Marks the current value as an override at the level of the open page (studio, project or site), even when it equals the inherited value. Asks for confirmation (**Pin override**) and stores the override at once, without **Save Changes**. Disabled when the field already has an override at this level |
-| **Remove &lt;level&gt; override from &lt;field&gt;** | Deletes the override at the level of the open page after a confirmation. The field falls back to the layer above. Takes effect immediately. Disabled when the field has no override at this level |
-| **Remove all &lt;level&gt; overrides** | On the root of an addon panel. Deletes every override of the addon at this level, for the open variant |
-| **Copy** | Copies the value as JSON to the clipboard |
-| **Paste** | Pastes JSON into the field. The structure must match the field |
-
-The addon list has a context menu with **Copy settings from...** (see [Copying settings](#copying-settings)) and, for admins, **Low-level editor**, which edits the stored override document of one addon directly without validation.
+The right-click menu of a field pins or removes an override at the level of the open page, and copies or pastes its value; the editor and its menus are described in [Studio settings](../web-ui/studio/studio-settings.md#field-right-click-menu). Admins also have a **Low-level editor**, which edits the stored overrides of one addon directly, without validation.
 
 ## Site IDs
 
@@ -185,6 +165,8 @@ Only some bundle edits are possible after a bundle is created (see [Bundles](../
 
 Copies made in the editor change nothing until **Save Changes** is used. **Clear Changes** discards them.
 
+Each save of studio or project settings creates a `settings.changed` event in the [Event Viewer](../web-ui/event-viewer.md).
+
 ## Project bundles and settings
 
 A project bundle locks the launcher version, the dependency packages and the addon versions of one project (see [Project bundle](../web-ui/project/project-bundle.md)). It does not hold settings. The same storage model applies, with these effects:
@@ -199,26 +181,13 @@ A project bundle locks the launcher version, the dependency packages and the add
 
 Project bundles exist for the Production and Staging variants only, one per variant and project. They are not available for Dev variants.
 
-## Permissions
-
-| Action | Required |
-|---|---|
-| Edit studio settings | Manager or admin |
-| Edit project settings | Manager or admin, or write access to **Project addon settings** in the user's access group for that project |
-| View project settings in the web app | Read or write access to **Project addon settings**, or manager or admin |
-| Edit site settings (both scopes) | Any signed-in user, for their own user name and a site registered to them |
-| Low-level editor (raw overrides) | Admin |
-| Copy settings between bundles, migrate addon settings, promote a bundle | Admin |
-| Delete a site | Admin |
-
-Access groups are described in [Users](../web-ui/studio/users.md). Each save of studio or project settings creates a `settings.changed` event (see [Event Viewer](../web-ui/event-viewer.md)).
-
 ## Related
 
-- [Bundles](../web-ui/studio/bundles.md)
-- [Project bundles](../web-ui/project/project-bundle.md)
+- [Bundles](bundles.md)
+- [Project bundle](../web-ui/project/project-bundle.md)
+- [Studio settings](../web-ui/studio/studio-settings.md)
 - [App header](../web-ui/app-header.md)
-- [Users](../web-ui/studio/users.md)
+- [Permissions](permissions.md)
 - [Core addon settings](../../addons/essentials/core/settings.md)
 - [Addons](../../addons/index.md)
 - [Self-hosting](../deployment/on-premise.md)

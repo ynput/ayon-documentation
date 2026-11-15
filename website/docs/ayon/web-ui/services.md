@@ -78,6 +78,10 @@ Right-clicking a row opens the menu. When the row is part of the selection, the 
 
 **New service** in the toolbar opens the **Spawn a new service** dialog. **Spawn** creates the service; it is enabled once the first five fields are set (and the user name and password while **Registry login** is on). `Enter` in a field does the same as **Spawn**, and `Escape` closes the dialog.
 
+:::caution Services follow one addon version
+A service is tied to the addon version it was created for, which should be the version in the bundle it works for. It does not follow the bundle: when the bundle is updated to a new version of the addon, stop the service and create a new one for the new version. See [Matching the bundle](../how-ayon-works/services.md#matching-the-bundle).
+:::
+
 <Columns widths="55 45">
 <Column>
 
