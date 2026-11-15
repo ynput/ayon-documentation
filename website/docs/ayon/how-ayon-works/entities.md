@@ -1,7 +1,7 @@
 ---
 title: AYON entities
 description: "How AYON entities are structured and relate: the six base entities from folder to representation with an example shot, the project hierarchy, the concepts around the entities, what each entity holds, where attributes live and how folders and tasks inherit them, types, statuses, links, lists and identifiers."
-verified: 2026-10-30
+verified: 2026-11-15
 sources:
   - https://help.ayon.app/en/help/articles/3030530-ayon-glossary
   - https://help.ayon.app/en/help/articles/4636995-attributes
@@ -11,6 +11,8 @@ sources:
   - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/integrate.py
   - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/integrate_inputlinks.py
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/settings/anatomy/link_types.py
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/types.py
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/entity_lists/models.py
 ---
 
 # AYON entities
@@ -45,7 +47,7 @@ The diagram in words, with an example shot:
 
 The solid arrows are ownership: each entity belongs to the one before it. The dashed arrows are references. A version refers to its task by ID, and it is still owned by its product. The task of a version is a task of the product's folder; the server does not check this, but a publish takes the folder and the task from the same context. The workfile is recorded only as a path in the `source` attribute: the workfile of a scene publish, or the published file or the publisher's name for publishes made without a scene, such as from the Tray Publisher. It is not a stored relation between the two entities.
 
-The task is recorded on each version, not on the product. Versions of one product can therefore come from different tasks, for example a model updated first in modeling and later in a fix task. Publishing without a task is possible, and the version then has no task, but a task is recommended: it tells in which step of the work the version was made, and the web app finds the versions of a task through it, for example when `Space` on a task plays its latest version.
+The task is recorded on each version, not on the product. Versions of one product can therefore come from different tasks, for example a model updated first in modeling and later in a fix task. Publishing without a task is possible, and the version then has no task, but a task is recommended: it tells in which step of the work the version was made, and the web app finds the versions of a task through it, for example when `Spacebar` on a task plays its latest version.
 
 ## Entity hierarchy
 
@@ -90,12 +92,12 @@ The entities sit among the other parts of AYON that describe, organize and prote
 | Attributes | Typed values such as `fps` or frame ranges, set on the entities and inherited down the hierarchy. Studios can add custom attributes. | [Attributes and inheritance](#attributes-and-inheritance), [Attributes](../web-ui/studio/attributes.md) |
 | Statuses and tags | The progress state of an entity and free labels, defined per project. | [Statuses, types and tags](#statuses-types-and-tags) |
 | Links | Stored relationships between two entities, such as an asset used in a shot. | [Links](#links) |
-| Comments | Activities on folders, tasks and versions: comments, status changes and publishes. | [Activities](#activities), [Activity feed](../web-ui/details-panel.md#activity-feed) |
+| Activities | The feed of folders, tasks and versions: comments, status changes and publishes. | [Activities](#activities), [Activity feed](../web-ui/details-panel.md#activity-feed) |
 | Users and teams | Who works on the tasks. Teams group the users of a project. | [User](#user), [Users](../web-ui/studio/users.md), [Teams](../web-ui/project/teams.md) |
 | Access groups | What a user may read and change in each project. | [Permissions](permissions.md) |
 | Addons and bundles | The code that defines attributes and settings and runs the pipeline, and the set of addon versions in use. | [Bundles](bundles.md), [Addons](../web-ui/studio/addons.md) |
 | Events | The record of every change to an entity, which services and addons react to. | [Event Viewer](../web-ui/event-viewer.md), [Event system](../../developer/server/event-system.md) |
-| Services | Programs next to the server that act on events, such as the sync with a tracker. | [Services](../web-ui/services.md), [AYON Service Host](../deployment/ash.md) |
+| Services | Programs next to the server that act on events, such as the sync with a tracker. | [Addon services](services.md) |
 
 ## What entities hold
 
@@ -146,7 +148,7 @@ A workfile is identified by its path. Its name is the file name of that path. It
 
 ### User
 
-A user has a name, an active flag and attributes such as `fullName` and `email`. The role of a user (administrator, manager, guest, service account or developer) and the access groups are stored in the user data. A user is not a child of any project.
+A user has a name, an active flag and attributes such as `fullName` and `email`. Its access level (admin, manager, user, service or guest), its developer flag and its access groups are stored in the user data; see [Permissions](permissions.md). A user is not a child of any project.
 
 ### Activities
 
@@ -295,11 +297,11 @@ A list collects entities of one type from anywhere in a project, without changin
 | List type | `generic` for lists of the **Lists** page, or `review-session` for review sessions. |
 | Items | References to entities, in an order. Each item can carry its own attribute values, tags and a label that apply to the list only. |
 | Attributes | Values of the list itself, such as its category. |
-| Access | A level for each user or team: read, update or manage. |
+| Access | A level for each user and access group the list is shared with: read, update or manage, shown in the web app as **Viewer**, **Editor** and **Admin**. Without the Power Pack, lists are not shared and every user has full control. |
 | Folder | An optional list folder that groups lists. |
 | Owner, active, tags | The user who owns the list, whether it is active, and its tags. |
 
-An item refers to an entity and does not copy it. Deleting a list removes only the list. See [Lists](../web-ui/production-tracking/lists.md).
+An item refers to an entity and does not copy it. Deleting a list removes only the list. In the web app, list folders, per-user access and the values of items are [Power features](../../production-tracking/power-features.md). See [Lists](../web-ui/production-tracking/lists.md).
 
 ## Identifiers
 
