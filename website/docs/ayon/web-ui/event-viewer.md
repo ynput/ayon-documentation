@@ -156,7 +156,7 @@ The address of the page holds the filters, the layout and the selected event, fo
 
 ## Power features
 
-These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Saved and shared views
 

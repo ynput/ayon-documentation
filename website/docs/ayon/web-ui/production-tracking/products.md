@@ -123,7 +123,7 @@ These settings, the filters and the view mode are part of the page's view, see [
 
 ## Power features
 
-These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license.
 
 The page has the same Power features as the [Overview](overview.md#power-features):
 

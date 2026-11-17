@@ -110,7 +110,7 @@ An item, in the items table: **Copy** (`Ctrl`+`C`), **Paste** (`Ctrl`+`V`), **Sh
 
 ## Power features
 
-These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### List folders
 
@@ -164,4 +164,4 @@ Admins and managers always have full control. A list without access settings is 
 - [Import CSV](../dialogs/import-csv.md)
 - [Views](../views.md)
 - [Details panel](../details-panel.md)
-- [Power features](../../../production-tracking/power-features.md)
+- [Power Pack](../../../addons/production-tracking/power-pack/index.md)

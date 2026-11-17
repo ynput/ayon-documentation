@@ -100,7 +100,7 @@ The read restrictions of the user's access group limit which folders and tasks a
 
 ## Power features
 
-These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license.
 
 - **Slicer:** slice types other than **Hierarchy**, and split panels, see [Slicer](../slicer.md#power-features).
 - **Saved and shared views**, see [Views](../views.md#power-features).

@@ -64,7 +64,7 @@ The AYON server inspects each uploaded file and assigns an availability.
 | Video | H.264 or VP9 in an MP4 container (`mp42` or `isom` brand), encoded with I-frames only. |
 | Image | PNG, JPEG, WebP. |
 
-Recommended encoding for videos: MP4, `yuv420p`, H.264, `qtfaststart` flag enabled, I-frames only. Reviewables that need conversion are converted by a transcoding service when one is installed (see [Power features](power-features.md)).
+Recommended encoding for videos: MP4, `yuv420p`, H.264, `qtfaststart` flag enabled, I-frames only. Reviewables that need conversion are converted by a transcoding service when one is installed (see [Power features](../addons/production-tracking/power-pack/index.md)).
 
 ## Viewer
 
@@ -117,4 +117,4 @@ Uploading reviewables is controlled by the **Upload reviewables** activity permi
 - [Review sessions](../addons/production-tracking/review/index.md)
 - [Activity feed](../ayon/web-ui/details-panel.md#activity-feed)
 - [Review addon](../addons/production-tracking/review/index.md)
-- [Power features](power-features.md)
+- [Power Pack](../addons/production-tracking/power-pack/index.md)

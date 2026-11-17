@@ -142,7 +142,7 @@ Entries that do not apply to the selection are hidden.
 
 ## Power features
 
-These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Project folders
 
@@ -171,4 +171,4 @@ Attribute filters can also match a value or no value, and exclude values. Filter
 - [Project list](../project-list.md)
 - [Teams](../project/teams.md)
 - [Views](../views.md)
-- [Power features](../../../production-tracking/power-features.md)
+- [Power Pack](../../../addons/production-tracking/power-pack/index.md)

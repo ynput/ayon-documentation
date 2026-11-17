@@ -195,7 +195,7 @@ The **+** button below the reviewable cards, or dropping files on a version with
 
 ## Power features
 
-These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Annotations
 
@@ -220,4 +220,4 @@ Without the Power Pack, the tools are shown disabled with a Power Pack button.
 - [Reviewables](../../production-tracking/reviewables.md)
 - [Upload version](dialogs/upload-version.md)
 - [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
-- [Power features](../../production-tracking/power-features.md)
+- [Power Pack](../../addons/production-tracking/power-pack/index.md)

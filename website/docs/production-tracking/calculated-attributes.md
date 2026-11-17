@@ -10,7 +10,7 @@ sources:
 
 A **calculated attribute** is an existing attribute whose value is computed by a formula instead of being typed in. The formula can use the other attributes of the entity and, for folders, the tasks and folders below it. A frame length attribute can, for example, be computed from the start frame, end frame and handles, and a folder description can show the progress of the tasks below the folder. Calculated values appear in tables, the [details panel](../ayon/web-ui/details-panel.md) and filters like any other attribute value.
 
-Calculated attributes are a Power Features addon function. Requirements, licensing and the addon settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md); the overview of Power Features is in [Power features](power-features.md).
+Calculated attributes are a Power Features addon function. Requirements, licensing and the addon settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md); the overview of Power Features is in [Power features](../addons/production-tracking/power-pack/index.md).
 
 ## Where it appears
 
@@ -111,6 +111,6 @@ The actions are server actions in the actions menu. They send an empty update fo
 ## Related
 
 - [Power Features addon](../addons/production-tracking/power-pack/index.md)
-- [Power features](power-features.md)
+- [Power Pack](../addons/production-tracking/power-pack/index.md)
 - [Attributes](../ayon/web-ui/studio/attributes.md)
 - [Project overview](../ayon/web-ui/production-tracking/overview.md)

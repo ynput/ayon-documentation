@@ -119,7 +119,7 @@ Columns are stored with their visibility, pinning and width.
 
 ## Power features
 
-These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license.
 
 Saved views, sharing and project default views need the Power Pack. Without it, only the **Personal view** and the studio default view are available, and **Create new view** and the **Project** button show a lightning icon and open the Power Pack dialog.
 
@@ -160,6 +160,6 @@ Only the owner of a view and admins of the server can change who has access, del
 ## Related
 
 - [Slicer](slicer.md)
-- [Power features](../../production-tracking/power-features.md)
+- [Power Pack](../../addons/production-tracking/power-pack/index.md)
 - [Power Pack](../../addons/production-tracking/power-pack/index.md)
 - [Overview](production-tracking/overview.md)

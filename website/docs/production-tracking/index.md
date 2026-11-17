@@ -19,7 +19,7 @@ The section describes what exists: where a page opens, its layout, its controls 
 |---|---|---|
 | Entity features | [Subtasks](subtasks.md), [Reviewables](reviewables.md), [Versions without a pipeline](versions-without-a-pipeline.md) | Lightweight work items in a task, the media of a version and creating versions by uploading files. Links between entities are edited in the [links manager](../ayon/web-ui/links-manager.md). |
 | Working with data | [Calculated attributes](calculated-attributes.md) | Attributes computed by formulas. Saved page layouts are described with the [Views](../ayon/web-ui/views.md) menu. Importing CSV data is described with the [Import CSV](../ayon/web-ui/dialogs/import-csv.md) dialog. |
-| Licensed functions | [Power features](power-features.md) | The functions of the web app and server that need a Pro or Studio plan. |
+| Planning | [Planning](planning.md) | Planning people and their capacity, booking them on projects, scheduling the tasks of each project against the studio plan, and scenarios, with the Planner addon. |
 
 ## Related sections
 

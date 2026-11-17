@@ -301,7 +301,7 @@ A list collects entities of one type from anywhere in a project, without changin
 | Folder | An optional list folder that groups lists. |
 | Owner, active, tags | The user who owns the list, whether it is active, and its tags. |
 
-An item refers to an entity and does not copy it. Deleting a list removes only the list. In the web app, list folders, per-user access and the values of items are [Power features](../../production-tracking/power-features.md). See [Lists](../web-ui/production-tracking/lists.md).
+An item refers to an entity and does not copy it. Deleting a list removes only the list. In the web app, list folders, per-user access and the values of items are [Power features](../../addons/production-tracking/power-pack/index.md). See [Lists](../web-ui/production-tracking/lists.md).
 
 ## Identifiers
 

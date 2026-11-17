@@ -226,27 +226,147 @@ Key value mapping has three entries, each with an enabled switch and a template:
 
 ### Extract Review Intermediates
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Enable the plugin. |
-| Viewer lut raw | Off | Do not apply the viewer LUT. |
-| Baking streams | One stream, `baking` | A list of output definitions. |
+<SettingLocation uri="ayon+settings://nuke/publish/ExtractReviewIntermediates" scope="Studio, with project overrides" />
 
-One baking stream has the following settings. The default stream `baking` uses the defaults in the table.
+Bakes review videos or image sequences from rendered frames, with a thumbnail, for review and transcoding. Each baking stream is one output, so a studio can produce, for example, a ProRes for editorial and an H.264 for the client from the same render.
 
-| Setting | Default | Description |
-|---|---|---|
-| Output name | `baking` | Name of the output. |
-| Publish | Off | Publish the output as its own product. |
-| Filter | Empty lists | **Task types**, **Sync workfile versions for product base types** (`render`, `prerender`, `image`) and **Product names**. Empty lists match everything. |
-| Input read node RAW switch | Off | Set the input read node to raw. |
-| Write Knobs | `mov`, knobs `mov64_codec` `ap4h` and `mov64_write_timecode` on | **File type** and **Additional Knobs** of the output write node. |
-| Bake viewer process | On | Bake the viewer process into the output. |
-| Target baking colorspace override | Disabled | Overrides the [baking target](#baking-target-colorspace): **Enabled**, **Target baking type**, **Colorspace**, **Display & View**. |
-| Bake viewer input process node (LUT) | On | Bake the viewer input process node. |
-| Reformat Nodes | Disabled | **Enabled** and a list of **Reposition knobs**, each with a **Node class** and **Node knobs**. They are applied in order. The default list has one `Reformat` entry (type `to format`, format `HD_1080`, filter `Lanczos6`, `black_outside` on, `pbb` off). |
-| Custom tags | None | Tags added to the representation. |
-| Handle missing frames | `0` | **Fail on missing** (`0`), **Generate blank frame** (`1`), **Use checkerboard** (`2`) or **Use closest existing** (`3`). |
+![The Extract Review Intermediates settings: the plugin switch, Viewer lut raw, and the Baking streams list with the default stream baking](assets/settings-extract-review-intermediates.png)
+
+<Settings prefix="extract-review-intermediates">
+<Setting name="Enabled" default="On">
+
+Run the plugin.
+
+</Setting>
+<Setting name="Viewer lut raw" default="Off">
+
+Do not apply the viewer LUT.
+
+</Setting>
+<Setting name="Baking streams" default="One stream, baking">
+
+The outputs to bake. See [Baking stream](#baking-stream).
+
+</Setting>
+</Settings>
+
+#### Baking stream
+
+<SettingLocation uri="ayon+settings://nuke/publish/ExtractReviewIntermediates/outputs" />
+
+One output of the plugin. The default stream `baking` uses the defaults below.
+
+<Settings prefix="baking-stream">
+<Setting name="Output name" default="baking">
+
+Name of the output.
+
+</Setting>
+<Setting name="Publish" default="Off">
+
+Publish the output as its own product.
+
+</Setting>
+<Setting name="Filter">
+
+Limits the stream to some instances. Empty lists match everything.
+
+<Settings>
+<Setting name="Task types" default="Empty list" />
+<Setting name="Sync workfile versions for product base types" default="Empty list">
+
+`render`, `prerender` or `image`.
+
+</Setting>
+<Setting name="Product names" default="Empty list" />
+</Settings>
+
+</Setting>
+<Setting name="Input read node RAW switch" default="Off">
+
+Set the input read node to raw.
+
+</Setting>
+<Setting name="Write Knobs">
+
+The output write node.
+
+<Settings>
+<Setting name="File type" default="mov" />
+<Setting name="Additional Knobs" default="mov64_codec ap4h, mov64_write_timecode on">
+
+Knobs set on the write node; see [Knob definitions](#knob-definitions).
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Bake viewer process" default="On">
+
+Bake the viewer process into the output.
+
+</Setting>
+<Setting name="Target baking colorspace override">
+
+Overrides the [baking target](#baking-target-colorspace) for this stream.
+
+<Settings>
+<Setting name="Enabled" default="Off" />
+<Setting name="Target baking type" default="colorspace">
+
+**Use Colorspace** (`colorspace`) or **Use Display & View** (`display_view`).
+
+</Setting>
+<Setting name="Colorspace" default="Empty">
+
+Colorspace name. Anatomy context tokens are allowed.
+
+</Setting>
+<Setting name="Display & View" default="Empty">
+
+**Display** and **View**.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Bake viewer input process node (LUT)" default="On">
+
+Bake the viewer input process node.
+
+</Setting>
+<Setting name="Reformat Nodes">
+
+Reformat nodes added before the output, applied in order. Only reposition nodes are supported.
+
+<Settings>
+<Setting name="Enabled" default="Off" />
+<Setting name="Reposition knobs" default="One Reformat node">
+
+<Settings>
+<Setting name="Node class" default="Reformat" />
+<Setting name="Node knobs" default="type to format, format HD_1080, filter Lanczos6, black_outside on, pbb off">
+
+See [Knob definitions](#knob-definitions).
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Custom tags" default="Empty list">
+
+Tags added to the representation.
+
+</Setting>
+<Setting name="Handle missing frames" default="Fail on missing">
+
+What to do about frames missing from the frame range of the entity, used to fill gaps with custom frames: **Fail on missing**, **Generate blank frame**, **Use checkerboard** or **Use closest existing**.
+
+</Setting>
+</Settings>
 
 ### Integrators
 

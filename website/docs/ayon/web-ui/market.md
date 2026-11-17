@@ -124,7 +124,7 @@ The menu entry is shown to admins, and the server returns the catalog only to ad
 
 ## Power features
 
-These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Release history
 

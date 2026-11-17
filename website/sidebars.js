@@ -167,10 +167,10 @@ module.exports = {
     ],
     ProductionTracking: [
         "production-tracking/index",
+        "production-tracking/planning",
         "production-tracking/subtasks",
         "production-tracking/reviewables",
         "production-tracking/calculated-attributes",
-        "production-tracking/power-features",
         "production-tracking/versions-without-a-pipeline",
     ],
     Pipeline: [

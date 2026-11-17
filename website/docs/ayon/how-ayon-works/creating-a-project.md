@@ -94,7 +94,7 @@ A new project works with the studio's Production bundle, and most projects stay 
 
 ## Power features
 
-These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Entity templates
 

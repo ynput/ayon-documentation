@@ -122,7 +122,7 @@ The entries depend on the cell and the selection:
 
 ## Power features
 
-These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Advanced filters
 

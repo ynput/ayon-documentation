@@ -1,0 +1,78 @@
+.location {
+    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.label {
+    font-weight: 600;
+}
+
+/* a group of settings sits on its own panel, so it is not read as part of the surrounding text */
+.settings {
+    margin: 0 0 var(--ifm-leading);
+    padding: 0.1rem 1rem;
+    --settings-panel: color-mix(in srgb, var(--md-sys-color-surface-container) 55%, var(--md-sys-color-surface-container-low));
+    background: var(--settings-panel);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--ayon-radius-large);
+}
+
+/* nested settings: the fields of a list item, indented with a guide line on a darker band */
+.description .settings {
+    margin: 0.5rem 0 0;
+    padding: 0 0.75rem 0 1rem;
+    background: var(--md-sys-color-surface-container-low);
+    border: 0;
+    border-left: 2px solid var(--md-sys-color-outline-variant);
+    border-radius: 0 var(--ayon-radius) var(--ayon-radius) 0;
+}
+
+/* a third level goes back to the panel color, so each level differs from the one around it */
+.description .description .settings {
+    background: var(--settings-panel);
+}
+
+.setting {
+    padding: 0.6rem 0;
+    border-top: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.settings > .setting:first-child {
+    border-top: 0;
+}
+
+.term {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 0.75rem;
+    margin: 0;
+    scroll-margin-top: calc(var(--ifm-navbar-height) + 0.5rem);
+}
+
+.name {
+    font-weight: 700;
+    color: inherit;
+}
+
+.name:hover {
+    text-decoration: underline;
+}
+
+.default {
+    font-size: 0.8rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.default code {
+    font-size: 0.8rem;
+    background: var(--md-sys-color-surface-container-lowest);
+}
+
+.description {
+    margin: 0.2rem 0 0;
+}
+
+.description > :last-child {
+    margin-bottom: 0;
+}

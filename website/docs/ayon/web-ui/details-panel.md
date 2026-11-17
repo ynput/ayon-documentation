@@ -284,7 +284,7 @@ Opening an entity from inside the panel, such as a published version in the feed
 
 ## Power features
 
-These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../production-tracking/power-features.md).
+These features need the [Power Pack](../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Comment categories
 

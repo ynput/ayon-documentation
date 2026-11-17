@@ -234,7 +234,7 @@ The close button at the top right closes the dialog at any stage before the impo
 
 ## Power features
 
-These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license, see [Power features](../../../production-tracking/power-features.md).
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license.
 
 ### Mapping presets
 
@@ -261,4 +261,4 @@ With the Power Pack, a list import writes its values to the list items, so each 
 - [Users](../studio/users.md)
 - [Attributes](../studio/attributes.md)
 - [Views](../views.md)
-- [Power features](../../../production-tracking/power-features.md)
+- [Power Pack](../../../addons/production-tracking/power-pack/index.md)

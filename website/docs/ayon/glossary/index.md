@@ -53,7 +53,7 @@ The terms below are written as the AYON web app and the AYON server use them. En
 | **Market** | The page for installing addons, launchers and releases from Ynput. See [Market](../web-ui/market.md). |
 | **Pipeline addon** | An addon of type `pipeline`. Its client code is loaded by the launcher. A server addon runs only on the AYON server. |
 | **Pipeline release** | A tested set of addons, launchers and dependency packages published by Ynput, installed as a new bundle. See [Install pipeline release](../web-ui/dialogs/install-pipeline-release.md). |
-| **Power features** | Licensed features of the web app and server delivered by the Power Pack, marked with a lightning symbol. See [Power features](../../production-tracking/power-features.md). |
+| **Power features** | Licensed features of the web app and server delivered by the Power Pack, marked with a lightning symbol. See [Power features](../../addons/production-tracking/power-pack/index.md). |
 | **Product** | A named, typed set of published versions that belongs to a folder, for example `modelMain`. Publishing creates products and their versions. See [Product types](../../pipeline/product-types.md). |
 | **Product base type** | The generic, technical type of a product, for example `model` or `render`. Creators, plugins and settings profiles work with it. |
 | **Product name** | The name of a product, built from a template, the product type, the variant and the context. See [Naming conventions](../../pipeline/naming-conventions.md). |

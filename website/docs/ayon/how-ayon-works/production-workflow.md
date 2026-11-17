@@ -171,7 +171,7 @@ Feedback lives in the [activity feed](../web-ui/details-panel.md) of the version
 | Mention | `@` notifies a user or a team, `@@` links a version, `@@@` links a task. |
 | Frame link and annotation | Ties a note to a frame or a frame range; annotations draw on the frame. |
 | Checklist | A to-do list inside a comment, which the artist ticks off. |
-| Comment category | Limits who sees a comment, for example notes meant for the internal team only. A [Power feature](../../production-tracking/power-features.md). |
+| Comment category | Limits who sees a comment, for example notes meant for the internal team only. A [Power feature](../../addons/production-tracking/power-pack/index.md). |
 | Status | The version and the task each have a status. Setting the version to **Approved** or back to **In progress**, and the task to **Approved** or a status for more work, is how the decision is recorded. |
 
 Lists help to organize the feedback rounds: a list of the shots for tomorrow's dailies, a list of client picks, or a list of versions to deliver. A list can be turned into a review session.
