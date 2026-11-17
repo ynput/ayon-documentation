@@ -318,7 +318,7 @@ Every page that lists folders, tasks, versions or representations opens them in 
 |---|---|
 | Header | Thumbnail, name, status, assignees, priority, and web actions such as launching an application through the desktop launcher. |
 | Activity feed | Comments, status changes and published versions on the entity. See [Activity feed](details-panel.md#activity-feed). |
-| Version files | For versions, the reviewables and representations. See [Reviewables](../../production-tracking/reviewables.md). |
+| Version files | For versions, the reviewables and representations. See [Reviewables](details-panel.md#version-files-tab). |
 | Details | Description and all attributes, editable where permissions allow. |
 | **More actions** | **Open in viewer**, **Picture in picture** (keeps the panel floating while moving to other pages), **Upload version**, **Add to list**, **Share** and more. |
 

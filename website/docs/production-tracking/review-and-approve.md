@@ -15,12 +15,12 @@ Review is where a production decides whether work is done. In AYON every version
 
 <!-- screenshot: Version files tab of a wing_it version with three reviewables (beauty, close-up, turntable) -->
 
-A version holds its media as [reviewables](reviewables.md): videos or images that play in the browser. A version can have several, for example a beauty render and a close-up of a detail, so a reviewer sees everything the artist wants to show in one place.
+A version holds its media as [reviewables](../ayon/web-ui/details-panel.md#version-files-tab): videos or images that play in the browser. A version can have several, for example a beauty render and a close-up of a detail, so a reviewer sees everything the artist wants to show in one place.
 
 Reviewables come from two sources:
 
 - **The pipeline:** with the [pipeline](pipeline.md), publishing makes the review media. A movie is encoded from the rendered or exported files, optionally with burnins, and uploaded to the version as a reviewable, so artists do not export and upload previews by hand. See [Review media](../pipeline/color-management-in-publishing.md#review-media). Pipeline uploads the reviewable and it's processed and saved on the sever and it's separate from the file in the pipeline.
-- **An upload:** without the pipeline, an artist drops a movie or images on the task in the web app, which creates a version with that media. See [Versions without a pipeline](versions-without-a-pipeline.md).
+- **An upload:** without the pipeline, an artist drops a movie or images on the task in the web app, which creates a version with that media. See [Versions without a pipeline](track-work-without-a-pipeline.md).
 
 ## Check one submission
 
@@ -50,7 +50,7 @@ Comments and annotations made in a session are written to the activity feed of e
 
 Some reviews need the full quality of the published files and the color tools of a desktop player. The [Review Desktop addon](../addons/production-tracking/review-desktop/index.md), a beta that needs the Review addon, opens a list of versions or a review session in OpenRV on the reviewer's workstation, with the published files instead of the web media. An AYON activity panel inside the player shows the feedback of each version, and the reviewer can comment, draw annotations and change the version status there. The notes reach the same activity feed as notes from the web app, so artists find all of them in one place.
 
-## Record the decision
+## Approve or send back
 
 <!-- screenshot: details panel of a wing_it version with the status menu open on Approved, and the task's activity feed showing the comment -->
 
@@ -62,7 +62,7 @@ An approved version is easy to find later: the viewer's **Approved** button (`e`
 
 ## Related
 
-- [Reviewables](reviewables.md)
+- [Reviewables](../ayon/web-ui/details-panel.md#version-files-tab)
 - [Web viewer](../ayon/web-ui/web-viewer.md)
 - [Review addon](../addons/production-tracking/review/index.md)
 - [Review Desktop addon](../addons/production-tracking/review-desktop/index.md)

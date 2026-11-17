@@ -65,12 +65,25 @@ With the Power Pack, the Overview also exports to Excel or CSV: the whole table 
 
 Some figures a producer reports on are not stored anywhere, such as the share of finished tasks in each sequence or the frame length with handles. With the Power Pack, [calculated attributes](../addons/production-tracking/power-pack/calculated-attributes.md) compute such values with formulas from the other attributes of an entity and, for folders, from the tasks and folders below it. The value is stored as the attribute's value, so it can be shown as a column, filtered, grouped, summed in the Overview footer and used as a grouping field in Reports charts.
 
-## Ask about the project in a chat
+## Ask an AI assistant connected to AYON
 
-The [AYON MCP server addon](../addons/production-tracking/mcp/index.md), an experimental addon, lets an AI assistant such as Claude read the project: its folders, tasks, versions and events. A producer can ask questions in plain language, such as which tasks of a sequence are still open, and get the answer from the project data.
+<Columns widths="45 55">
+<Column>
+
+The [AYON MCP server addon](../addons/production-tracking/mcp/index.md), an experimental addon, lets an AI assistant such as Claude read the project with the permissions of the person asking: its folders, tasks, versions and events. A producer can ask in plain language, such as "how is wing_it doing?" or "which shots are waiting for review?", and get the answer from the project data.
+
+The assistant gathers the data with the addon's tools and presents it in its own way, as text, a table or a chart it draws itself. The example on the right was made by Claude from twelve calls to the addon: the task count and done share, the tasks per status and task type, and the open tasks of each artist. Another assistant, or another question, gives another layout.
+
+</Column>
+<Column>
+
+![A project overview of wing_it drawn by Claude from AYON data: 265 tasks, 45% done, a status bar, task types by status and the open tasks of the ten busiest artists](assets/reporting/assistant-insights.png "Drawn by Claude from the data of the AYON MCP server addon")
+
+</Column>
+</Columns>
 
 :::note In development
-Interactive cards that show project insights in the chat, such as the task count per status or the open tasks per assignee, are being developed as a proof of concept. They are not released yet.
+Insight cards served by AYON itself, the same in every chat app that supports them, and cards that propose a change and wait for a person to approve it, are being developed as a proof of concept. They are not released yet.
 :::
 
 ## Related

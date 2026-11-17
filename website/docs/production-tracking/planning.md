@@ -91,7 +91,7 @@ In the Schedule, only the live scenario changes the real task dates, so a scenar
 ## Related
 
 - [Planner addon](../addons/production-tracking/planner/index.md)
-- [Subtasks](subtasks.md)
+- [Subtasks](split-work-into-small-steps.md)
 - [Production workflow](../ayon/how-ayon-works/production-workflow.md#4-plan)
 - [Project overview](../ayon/web-ui/production-tracking/overview.md)
 - [Home](../ayon/web-ui/home/index.md)

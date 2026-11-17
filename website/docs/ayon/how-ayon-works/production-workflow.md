@@ -131,7 +131,7 @@ Work reaches AYON as versions of products. How it arrives decides what can be do
 | Pipeline publish | The artist publishes from the DCC application with the [Publisher](../../pipeline/publisher.md), or a render farm job publishes the renders. | The publish folders of the project anatomy, on studio storage | Yes |
 | Tray Publisher | Files such as plates, references or edits are published from the desktop without an application. See [Tray Publisher](../../addons/essentials/traypublisher/index.md). | The publish folders | Yes |
 | Web Publisher | Files are uploaded in the web app and published by a service. See [Web Publisher](../../addons/pipeline-features/web-publisher/index.md). | The publish folders | Yes |
-| Upload in the web app | Media files are dropped on the details panel of a folder, task or version, or uploaded with **Upload Version** in the **Overview** or **Products** context menu. See [Versions without a pipeline](../../production-tracking/versions-without-a-pipeline.md). | The AYON server's own storage | No. The version holds reviewables only. |
+| Upload in the web app | Media files are dropped on the details panel of a folder, task or version, or uploaded with **Upload Version** in the **Overview** or **Products** context menu. See [Versions without a pipeline](../../production-tracking/track-work-without-a-pipeline.md). | The AYON server's own storage | No. The version holds reviewables only. |
 
 Uploading in the web app is the way to run AYON as a tracking and review platform without the pipeline: an artist uploads a movie or images to the task, and sets the task to **Pending review**. In both cases the new version appears in the task's activity feed, on the **Products** page, and in the inbox of the task's watchers.
 
@@ -147,7 +147,7 @@ There are two ways to review.
 
 | Way | Where | Suited to |
 |---|---|---|
-| Single review | The viewer, opened with `Spacebar` or from a thumbnail on Tasks home, Task progress, **Overview**, **Products** or **Lists**. It plays the reviewables of a version next to its activity feed, switches between versions of the product and compares them at the same frame. See [Reviewables](../../production-tracking/reviewables.md). | A supervisor checking one submission |
+| Single review | The viewer, opened with `Spacebar` or from a thumbnail on Tasks home, Task progress, **Overview**, **Products** or **Lists**. It plays the reviewables of a version next to its activity feed, switches between versions of the product and compares them at the same frame. See [Reviewables](../web-ui/details-panel.md#version-files-tab). | A supervisor checking one submission |
 | Review session | The **Review** tab, with the [Review addon](../../addons/production-tracking/review/index.md). A session is a playlist of versions, made from a selection of folders, tasks or versions, or from a list. | Dailies, team reviews, client reviews |
 
 A review session can be played by one person or synchronized between several people, with one presenter controlling playback for everyone. Temporary sessions are discarded after an hour; saved sessions are kept as lists of the project. External people take part as guests:
@@ -194,7 +194,7 @@ Delivery packages approved work for a client or a vendor. It works on versions p
 - [Task progress](../web-ui/production-tracking/task-progress.md)
 - [Home tasks](../web-ui/home/tasks.md)
 - [Lists](../web-ui/production-tracking/lists.md)
-- [Versions without a pipeline](../../production-tracking/versions-without-a-pipeline.md)
+- [Versions without a pipeline](../../production-tracking/track-work-without-a-pipeline.md)
 - [Planner addon](../../addons/production-tracking/planner/index.md)
 - [Reports addon](../../addons/production-tracking/reports/index.md)
 - [Review addon](../../addons/production-tracking/review/index.md)

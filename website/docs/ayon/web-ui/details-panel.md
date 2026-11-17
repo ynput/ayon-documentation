@@ -80,9 +80,9 @@ Files dropped on the header can be used as a new thumbnail (**Upload thumbnail**
 | Tab | Button | Shown for | Content |
 |---|---|---|---|
 | Activity feed | Speech bubble icon, tooltip **Activity Feed** | Folders, tasks, versions | Comments and activity, see [Activity feed](#activity-feed). |
-| Subtasks | Checklist icon, tooltip **Subtasks** | Tasks | The task's subtasks, see [Subtasks](../../production-tracking/subtasks.md). |
+| Subtasks | Checklist icon, tooltip **Subtasks** | Tasks | The task's subtasks, see [Subtasks](../../addons/production-tracking/planner/subtasks.md). |
 | Addon tabs | The addon's icon | Entity types the addon chooses | Content added by an addon. |
-| Version files | Playlist icon, tooltip **Version files** | Versions | **Reviewables** and **Representations** of the version, see [Reviewables](../../production-tracking/reviewables.md). |
+| Version files | Playlist icon, tooltip **Version files** | Versions | **Reviewables** and **Representations** of the version, see [Version files tab](#version-files-tab). |
 | **Details** | Text button | All | Description and attributes, see [Details tab](#details-tab). |
 
 When the next selected entity does not have the open tab, the panel switches to the activity feed, or to **Details** for a representation.
@@ -197,6 +197,36 @@ The edit button and the `...` button appear when hovering a comment.
 - For versions, only the status, the tags and attributes that are not built in can be changed.
 - Attributes the user's access group cannot read are hidden; attributes it cannot write are read-only (see [Users](studio/users.md)).
 
+### Version files tab
+
+A reviewable is a video or image file attached to a version for review in the browser. A version can have any number of them, for example a model under several lighting setups or an animation from several angles. The tab lists the reviewables and the representations of a version.
+
+The **Reviewables** part of the tab shows one card per reviewable with a thumbnail, the file name or label and its state. An upload area at the end of the list reads **Drop or click to upload**.
+
+| Item | Description |
+|---|---|
+| Upload area | Takes any number of video or image files, by dropping them on the tab or by choosing them with a file picker. A full-tab drop zone (**Upload reviewable**) appears while files are dragged over the panel. |
+| Reviewable card | Click opens the reviewable in the viewer. Cards can be dragged to change the order of the reviewables of the version. |
+| Edit button on a card | Opens the **Editing label** dialog (**Enter a new label**, **Save**, **Cancel**) to give the reviewable a label. |
+| Card menu | **Download original** downloads the uploaded file. **Delete** removes the reviewable after a confirmation. The menu also shows the author of the reviewable. |
+
+Files dropped before the version exists are held as waiting cards and uploaded as soon as the version is created, for example in the [Upload version](dialogs/upload-version.md) dialog.
+
+The server accepts files whose content type is a video type, an image type or `application/mxf`. Other types are rejected.
+
+#### Progress states
+
+| Message on the card | Meaning |
+|---|---|
+| Waiting for upload | The file is held until the version exists. |
+| Uploading | The file is being sent to the AYON server. |
+| Importing, Validating | The file is being processed after the upload. |
+| Queued - waiting to be transcoded | The file waits for a transcoding service. |
+| Transcoding | A transcoding service is converting the file. |
+| Unsupported - conversion required | The browser cannot play the file and no converted file exists. |
+
+Uploaded files are not transcoded or converted by the AYON server itself.
+
 ### Watchers
 
 The bell button at the top of the panel, tooltip **Watchers**, lists the users who get notifications for the entity. Users can be added or removed for all selected entities at once; each entity keeps its other watchers. Guests cannot change watchers. How watching and notifications work is described in [Inbox](inbox/index.md).
@@ -298,6 +328,5 @@ A comment category limits who can see a comment. The **Category** selector in th
 - [Web viewer](web-viewer.md)
 - [Upload version](dialogs/upload-version.md)
 - [Inbox](inbox/index.md)
-- [Subtasks](../../production-tracking/subtasks.md)
-- [Reviewables](../../production-tracking/reviewables.md)
+- [Subtasks](../../addons/production-tracking/planner/subtasks.md)
 - [Links manager](links-manager.md)

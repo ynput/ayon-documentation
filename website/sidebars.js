@@ -184,8 +184,8 @@ module.exports = {
             collapsed: false,
             items: [
                 "production-tracking/tracking-progress",
-                "production-tracking/subtasks",
-                "production-tracking/versions-without-a-pipeline",
+                "production-tracking/split-work-into-small-steps",
+                "production-tracking/track-work-without-a-pipeline",
             ],
         },
         {
@@ -196,7 +196,6 @@ module.exports = {
                 "production-tracking/review-and-approve",
                 "production-tracking/client-review",
                 "production-tracking/conversations",
-                "production-tracking/reviewables",
             ],
         },
         {
@@ -274,6 +273,7 @@ module.exports = {
                     collapsed: true,
                     link: { type: "doc", id: "addons/production-tracking/planner/index" },
                     items: [
+                        "addons/production-tracking/planner/subtasks",
                         "addons/production-tracking/planner/settings",
                     ],
                 },

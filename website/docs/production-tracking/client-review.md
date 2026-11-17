@@ -46,7 +46,7 @@ That lets the team discuss a shot in the same feed during a client session witho
 
 Guests have **Approve** and **Request changes** buttons. Their decision is posted to the activity feed of the version as **approved this** or **requested changes**, together with the comment being written, and the clip card in the session shows the result. The team finds client decisions in the feed, with the **Review session** filter of the [activity feed](../ayon/web-ui/details-panel.md#feed-filter), and in the inbox of the people who watch the version, with the **Reviews** filter.
 
-A guest's decision does not change the version status. The producer or supervisor reads it and sets the status, so the client's approval and the studio's approval stay two separate steps; see [Review and approve](review-and-approve.md#record-the-decision).
+A guest's decision does not change the version status. The producer or supervisor reads it and sets the status, so the client's approval and the studio's approval stay two separate steps; see [Review and approve](review-and-approve.md#approve-or-send-back).
 
 ## Review live with the client
 

@@ -148,7 +148,7 @@ The first publish creates `v001` of `modelMain`, stored for example at `.../chai
 | Result | Where it shows |
 |---|---|
 | New version | The **Products** page of the project, and the task's details panel. See [Products and versions](../web-ui/production-tracking/products.md). |
-| Reviewable | When the publish produced a review movie or image, it is uploaded as a reviewable of the version and plays in the viewer. See [Reviewables](../../production-tracking/reviewables.md). |
+| Reviewable | When the publish produced a review movie or image, it is uploaded as a reviewable of the version and plays in the viewer. See [Reviewables](../web-ui/details-panel.md#version-files-tab). |
 | Activity | A published version entry in the activity feed of the version and of the task. See [Activity feed](../web-ui/details-panel.md#activity-feed). |
 | Watchers | The artist becomes a watcher of the new version; watchers of the task also follow it. |
 | Version status | Set at publish only when the studio enables a version status option in the Publisher; otherwise the version gets the project's default version status. |

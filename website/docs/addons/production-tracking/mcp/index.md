@@ -40,6 +40,41 @@ The AYON MCP server addon (addon name `mcp`) exposes an AYON server to AI assist
 | Service user | The API key of the service must belong to an AYON service user (tunnel mode) |
 | Redis | The server addon routes tunnel traffic between server workers through Redis |
 
+## Setup
+
+Setting up the addon takes three parts: the service on the AYON server, an API key for each person who connects, and the server address in the AI assistant.
+
+### On the AYON server
+
+1. Install the addon, from the [Market](../../../ayon/web-ui/market.md) or by uploading its package, and add it to the production [bundle](../../../ayon/web-ui/studio/bundles.md).
+2. On the [Services](../../../ayon/web-ui/services.md) page, add a service: choose the AYON Service Host, the **AYON MCP Server** addon and its version. A service run by the Service Host uses [tunnel mode](#tunnel-mode), so it opens no port of its own.
+3. Assistants then connect to the AYON server itself, at `https://<ayon-server>/api/mcp`. This stable address needs AYON server 1.16.9 or newer; on older servers, use the versioned address in [Endpoint](#endpoint).
+
+### For each person who connects
+
+Each person connects with their own AYON API key, so the assistant acts with that person's permissions.
+
+- With the [Power Pack](../power-pack/index.md), a key is created on the Profile page, in [Personal API keys](../../../ayon/web-ui/account/profile.md#personal-api-keys).
+- Without it, a key is created through the REST API (`POST /api/users/<user>/apikeys`), which needs AYON server 1.17.3 or newer. The steps are in the README of the [ayon-mcp repository](https://github.com/ynput/ayon-mcp#getting-your-api-key).
+
+A restricted key, such as one of a user with a read-only access group, limits what the assistant can change; see the caution at the top of this page.
+
+:::note In development
+Signing in without an API key, by approving the assistant in AYON through OAuth, is being developed. It is not released yet. Until then, assistants that can only sign in with OAuth and cannot send an API key cannot connect.
+:::
+
+### In the AI assistant
+
+The assistant needs the address and the API key, sent in the `x-api-key` header.
+
+| Assistant | Configuration |
+|---|---|
+| Claude Code | `claude mcp add --transport http ayon https://<ayon-server>/api/mcp --header "x-api-key: <key>"` |
+| VS Code and editors based on it | An `http` server in `mcp.json`, with the address as `url` and `x-api-key` in `headers`. |
+| Claude Desktop | Configured in `claude_desktop_config.json` with a local (stdio) server: the assistant starts the MCP server from a copy of the repository on the workstation, with `AYON_SERVER_URL` and `AYON_API_KEY`. See the [README](https://github.com/ynput/ayon-mcp#claude-desktop). |
+
+The exact configuration files for each assistant, and running the server locally, are described in the README of the [ayon-mcp repository](https://github.com/ynput/ayon-mcp).
+
 ## Architecture
 
 | Part | What it does |

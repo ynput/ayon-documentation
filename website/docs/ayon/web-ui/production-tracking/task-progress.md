@@ -112,4 +112,4 @@ These features need the [Power Pack](../../../addons/production-tracking/power-p
 - [Slicer](../slicer.md)
 - [Details panel](../details-panel.md)
 - [Lists](lists.md)
-- [Reviewables](../../../production-tracking/reviewables.md)
+- [Reviewables](../details-panel.md#version-files-tab)

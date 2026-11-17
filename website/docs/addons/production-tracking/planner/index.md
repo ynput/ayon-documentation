@@ -27,7 +27,7 @@ The Planner addon adds resource planning and task scheduling to the AYON web app
 - **[Scenarios](#scenarios):** separate versions of the studio plan and of each project's schedule, one of them live.
 - **[Resources](#resources):** a page to manage resources, resource types, booking statuses and custom attributes, with access per attribute.
 - **[Schedule](#schedule):** a timeline of a project's tasks with their dates and assignees, with the studio plan shown above it, kept in sync with the tasks.
-- **[Subtasks](#subtasks):** tasks split into dated subtasks, also shown in the details panel and task tables.
+- **[Subtasks](subtasks.md):** tasks split into dated subtasks, also shown in the details panel and task tables.
 - **[Views and export](#controls-and-interactions):** saved timeline views, and export of bookings as CSV or ICS.
 - **[Event access](#access-and-permissions):** who can see and edit events, for the studio and per project.
 
@@ -227,7 +227,7 @@ Tags on Schedule events are separate from the tags of AYON tasks. They are store
 
 ### Subtasks
 
-Subtasks are stored in the task data (`subtasks`). The addon provides the Subtasks manager to the AYON web app: the **Subtasks** tab of the details panel and the **Subtasks** column of task tables, see [Subtasks](../../../production-tracking/subtasks.md). The Schedule uses it as well. Subtask events are created from subtasks that have a start and an end date.
+Subtasks are stored in the task data (`subtasks`). The addon provides the Subtasks manager to the AYON web app: the **Subtasks** tab of the details panel and the **Subtasks** column of task tables, see [Subtasks](subtasks.md). The Schedule uses it as well. Subtask events are created from subtasks that have a start and an end date.
 
 ## Controls and interactions
 
@@ -358,6 +358,6 @@ The legacy `events`, `tracks` and `setup` (root) routes are marked deprecated.
 
 - [Settings](settings.md)
 - [Views](../../../ayon/web-ui/views.md)
-- [Subtasks](../../../production-tracking/subtasks.md)
+- [Subtasks](../../../production-tracking/split-work-into-small-steps.md)
 - [Teams](../../../ayon/web-ui/project/teams.md)
 - [Users](../../../ayon/web-ui/studio/users.md)

@@ -142,5 +142,5 @@ The page has the same Power features as the [Overview](overview.md#power-feature
 - [Lists](lists.md)
 - [Views](../views.md)
 - [Browser](browser.md) (deprecated)
-- [Versions without a pipeline](../../../production-tracking/versions-without-a-pipeline.md)
-- [Reviewables](../../../production-tracking/reviewables.md)
+- [Versions without a pipeline](../../../production-tracking/track-work-without-a-pipeline.md)
+- [Reviewables](../details-panel.md#version-files-tab)

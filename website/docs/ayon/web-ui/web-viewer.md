@@ -39,7 +39,7 @@ sources:
 
 ![The web viewer open over the Overview of wing_it, playing v005 of renderLightingMain for shot 020_0040: the version toolbar at the top left, the video paused at frame 34 with the player controls below it, the reviewables column and annotation tools to its right, and the details panel of the version with a comment linked to frame 34](../assets/web-ui/web-viewer/page.webp)
 
-The web viewer, also called the player or review player, plays the [reviewables](../../production-tracking/reviewables.md) of a version: videos with a frame-accurate player, and images. It opens over the current page, with the [details panel](details-panel.md) of the version next to the player, so a version can be watched, compared with other versions and commented on in one place. Closing it returns to the page it was opened from. It is not related to [views](views.md), the saved layouts of the table pages.
+The web viewer, also called the player or review player, plays the [reviewables](details-panel.md#version-files-tab) of a version: videos with a frame-accurate player, and images. It opens over the current page, with the [details panel](details-panel.md) of the version next to the player, so a version can be watched, compared with other versions and commented on in one place. Closing it returns to the page it was opened from. It is not related to [views](views.md), the saved layouts of the table pages.
 
 ## Player and versions
 
@@ -59,7 +59,7 @@ Messages in the player area:
 |---|---|
 | **This task has published no versions.** | Nothing to show for the task or folder. The details panel is hidden. |
 | **This version has no online reviewables.** | The version has no reviewables. The area takes dropped files (**Drop or click to upload**) and uploads them to the version. |
-| **File not supported and needs conversion** | The browser cannot play the reviewables of the version; see [Supported formats](../../production-tracking/reviewables.md#supported-formats). |
+| **File not supported and needs conversion** | The browser cannot play the reviewables of the version; see [Supported formats](#supported-formats). |
 
 ### Version toolbar
 
@@ -127,6 +127,24 @@ Comments are written in the activity feed of the details panel, see [Activity fe
 
 </Column>
 </Columns>
+
+### Supported formats
+
+The AYON server inspects each uploaded file and assigns an availability.
+
+| Availability | Meaning |
+|---|---|
+| `ready` | Plays in the viewer. |
+| `conversionRecommended` | Plays, but playback can be unreliable. Applies to QuickTime (`.mov`) files and to H.264 or VP9 videos that are not encoded with I-frames only. |
+| `conversionRequired` | Cannot be played. Applies to other codecs and containers. |
+| `unknown` | The file has no video track that could be inspected. |
+
+| Kind | Played without conversion |
+|---|---|
+| Video | H.264 or VP9 in an MP4 container (`mp42` or `isom` brand), encoded with I-frames only. |
+| Image | PNG, JPEG, WebP. |
+
+Recommended encoding for videos: MP4, `yuv420p`, H.264, `qtfaststart` flag enabled, I-frames only. Reviewables that need conversion are converted by a transcoding service when one is installed.
 
 ## Controls and interactions
 
@@ -217,7 +235,7 @@ Without the Power Pack, the tools are shown disabled with a Power Pack button.
 ## Related
 
 - [Details panel](details-panel.md)
-- [Reviewables](../../production-tracking/reviewables.md)
+- [Reviewables](details-panel.md#version-files-tab)
 - [Upload version](dialogs/upload-version.md)
 - [Keyboard shortcuts](quick-navigation.md#keyboard-shortcuts)
 - [Power Pack](../../addons/production-tracking/power-pack/index.md)

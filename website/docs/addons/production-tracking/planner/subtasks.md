@@ -1,24 +1,29 @@
 ---
 title: Subtasks
-description: "Subtasks are lightweight work items stored inside a task, with a label, a done state, assignees and dates, managed in the details panel and the subtasks column."
-verified: 2026-10-15
-sources:
-  - https://help.ayon.app/en/articles/8559098-subtasks
+sidebar_label: Subtasks
+description: "Subtasks in the AYON Planner addon: small work items stored inside a task with a label, a done state, assignees and dates, where they appear, their fields, the Subtasks tab of the details panel, editing, and copying and pasting them as spreadsheet text."
+addon: planner
+addon_repo: ayon-server-production-planner
+addon_version: 2.3.6
+addon_scope: server
+addon_flags: [licensed, beta]
+addon_private: true
+verified: 2026-11-17
 ---
 
 # Subtasks
 
-A subtask is a small work item inside a task, such as "Roto" or "Cleanup" within a compositing task. Subtasks give checkpoints, assignees and dates without creating full tasks. They are stored in the task data and are not entities of their own.
+<AddonInfo />
 
-Subtasks are provided by the Planner addon. Without it, opening a subtasks view shows a notice about the Planner addon instead. See the [Planner addon](../addons/production-tracking/planner/index.md) for licensing and versions, and [Planner](../addons/production-tracking/planner/index.md) for the planning pages that schedule subtasks.
+A subtask is a small work item inside a task, such as "Roto" or "Cleanup" within a compositing task, with a done state, assignees and dates. Subtasks are stored in the task data (`subtasks`) and are not entities of their own: they have no status, versions or work files. The Planner addon provides the Subtasks manager to the AYON web app; without the addon, the subtasks views show a notice about the Planner addon. What subtasks are useful for in a production is shown in [Split work into small steps](../../../production-tracking/split-work-into-small-steps.md).
 
 ## Where it appears
 
 | Location | Description |
 |---|---|
-| Details panel | A **Subtasks** tab (checklist icon) for tasks, next to the activity feed and **Details**. See [Details panel](../ayon/web-ui/details-panel.md). |
-| Subtasks column | A **Subtasks** column in task tables of the [project overview](../ayon/web-ui/production-tracking/overview.md) and [lists](../ayon/web-ui/production-tracking/lists.md). Cells show a chip per subtask with a done checkbox. Opening a cell opens the same manager as the tab. Cells of tasks that have subtasks disabled show the notice **Subtasks are disabled for this task**. |
-| Planner schedule | Subtasks can be scheduled in the Planner schedule. |
+| Details panel | A **Subtasks** tab (checklist icon) for tasks, next to the activity feed and **Details**. See [Details panel](../../../ayon/web-ui/details-panel.md). |
+| Subtasks column | A **Subtasks** column in task tables of the [project overview](../../../ayon/web-ui/production-tracking/overview.md) and [lists](../../../ayon/web-ui/production-tracking/lists.md). Cells show a chip per subtask with a done checkbox. Opening a cell opens the same manager as the tab. Cells of tasks that have subtasks disabled show the notice **Subtasks are disabled for this task**. |
+| Schedule | Subtasks with a start and an end date are shown as bars in the project [Schedule](index.md#schedule), where a task can also be split into subtasks. |
 
 ## Fields
 
@@ -65,7 +70,7 @@ Subtasks are copied as tab-separated text, one subtask per line, so they can be 
 
 ## Related
 
-- [Details panel](../ayon/web-ui/details-panel.md)
-- [Project overview](../ayon/web-ui/production-tracking/overview.md)
-- [Planner](../addons/production-tracking/planner/index.md)
-- [Lists](../ayon/web-ui/production-tracking/lists.md)
+- [Planner addon](index.md)
+- [Details panel](../../../ayon/web-ui/details-panel.md)
+- [Project overview](../../../ayon/web-ui/production-tracking/overview.md)
+- [Lists](../../../ayon/web-ui/production-tracking/lists.md)

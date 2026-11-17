@@ -35,7 +35,7 @@ A publish does not change the task status by itself; the artist sets it, as desc
 
 <!-- screenshot: Web viewer playing a published review movie of a wing_it shot, with burnins and the activity feed next to it -->
 
-When an artist publishes, the pipeline makes the review media of the version: it converts the published frames into a movie or image the browser plays, with burnins when the studio sets them up, and uploads it as a [reviewable](reviewables.md) of the version. The version can be reviewed in the [web viewer](../ayon/web-ui/web-viewer.md) and added to a review session right away, with no one exporting and uploading a movie by hand. Every reviewable comes out with the same settings, which keeps review media consistent across artists and departments. The outputs are set in the **Extract Review** settings of the [Core addon](../addons/essentials/core/index.md). Reviewing and approving is described in [Review and approve](review-and-approve.md).
+When an artist publishes, the pipeline makes the review media of the version: it converts the published frames into a movie or image the browser plays, with burnins when the studio sets them up, and uploads it as a [reviewable](../ayon/web-ui/details-panel.md#version-files-tab) of the version. The version can be reviewed in the [web viewer](../ayon/web-ui/web-viewer.md) and added to a review session right away, with no one exporting and uploading a movie by hand. Every reviewable comes out with the same settings, which keeps review media consistent across artists and departments. The outputs are set in the **Extract Review** settings of the [Core addon](../addons/essentials/core/index.md). Reviewing and approving is described in [Review and approve](review-and-approve.md).
 
 
 ## Review in a desktop player
@@ -64,7 +64,7 @@ The full path of an artist through a task is described in [Artist workflow](../a
 
 ## Production tracking without the pipeline
 
-A studio that does not use the AYON pipeline still gets the web app: the hierarchy, tasks, assignees, statuses, planning, reports and review. Versions can be created by uploading media in the web app; see [Versions without a pipeline](versions-without-a-pipeline.md). Such versions hold only reviewables stored on the AYON server.
+A studio that does not use the AYON pipeline still gets the web app: the hierarchy, tasks, assignees, statuses, planning, reports and review. Versions can be created by uploading media in the web app; see [Versions without a pipeline](track-work-without-a-pipeline.md). Such versions hold only reviewables stored on the AYON server.
 
 What such a studio misses:
 
@@ -85,4 +85,4 @@ A studio that uses another pipeline can keep it and still track the production i
 - [Hiero](../addons/compositing-editorial-applications/hiero/index.md), [Resolve](../addons/compositing-editorial-applications/resolve/index.md) and [Flame](../addons/compositing-editorial-applications/flame/index.md)
 - [Review Desktop addon](../addons/production-tracking/review-desktop/index.md)
 - [Loader](../pipeline/loader.md) and [Browser](../pipeline/browser.md)
-- [Versions without a pipeline](versions-without-a-pipeline.md)
+- [Versions without a pipeline](track-work-without-a-pipeline.md)

@@ -27,7 +27,7 @@ sources:
 
 ![The Create new version - Task dialog for the lighting task of shot 060_0030: the product name lightingCheck with the note recommending the render prefix, the product type render, version 1, the linked task, one image waiting for upload, and Create v001](../../assets/web-ui/upload-version/dialog-new.png)
 
-The **Create new version** dialog creates a version from media files uploaded in the browser, without the pipeline tools. It creates the product when needed, then the version, and uploads the files to the version as [reviewables](../../../production-tracking/reviewables.md), which can then be played in the [web viewer](../web-viewer.md) and reviewed. It suits quick deliveries such as a reference, a client cut or a test render. How this fits into production work, and what it does not do, is explained in [Versions without a pipeline](../../../production-tracking/versions-without-a-pipeline.md).
+The **Create new version** dialog creates a version from media files uploaded in the browser, without the pipeline tools. It creates the product when needed, then the version, and uploads the files to the version as [reviewables](../details-panel.md#version-files-tab), which can then be played in the [web viewer](../web-viewer.md) and reviewed. It suits quick deliveries such as a reference, a client cut or a test render. How this fits into production work, and what it does not do, is explained in [Versions without a pipeline](../../../production-tracking/track-work-without-a-pipeline.md).
 
 ## Dialog
 
@@ -73,6 +73,15 @@ The title is **Create new version - Folder**, **Create new version - Task** or *
 | Reviewables | The waiting files are uploaded to the version. Each reviewable gets the file name without its extension as label. An image also becomes the thumbnail of the version. |
 
 After the version is created, the fields are locked and the upload area stays active: files added now go straight to the new version. The dialog closes when all uploads have finished, or right away when no files were added. A failed upload is reported in a message and leaves the dialog open. A version without files can get reviewables later in the **Files** tab of its details panel.
+
+### Where the files are stored
+
+| Topic | Behavior |
+|---|---|
+| Processing | Uploads need no local installation or addon. The files are processed and stored on the AYON server. |
+| Storage location | The files are kept in the storage of the AYON server for the project. They are not written to the local or network storage defined in the project anatomy, so pipeline tools in an application cannot load them. To keep versions in the pipeline storage, publish them with the [Tray Publisher](../../../addons/essentials/traypublisher/index.md) instead. |
+| Product types | Any product type can be chosen. The default is `review`. |
+| File types | Video or image files. For smooth playback the files must be in a format the browser plays; see [Supported formats](../web-viewer.md#supported-formats). Files are not converted on upload. |
 
 ## Controls and interactions
 
@@ -133,8 +142,8 @@ See [Users](../studio/users.md) and [Permissions](../studio/permissions.md).
 
 ## Related
 
-- [Versions without a pipeline](../../../production-tracking/versions-without-a-pipeline.md)
-- [Reviewables](../../../production-tracking/reviewables.md)
+- [Versions without a pipeline](../../../production-tracking/track-work-without-a-pipeline.md)
+- [Reviewables](../details-panel.md#version-files-tab)
 - [Details panel](../details-panel.md)
 - [Products and versions](../production-tracking/products.md)
 - [Web viewer](../web-viewer.md)
