@@ -44,7 +44,7 @@ A list of categories for comments in the activity feed. The default list has thr
 |---|---|---|
 | Attribute | empty | The attribute to calculate. The list offers attributes whose scope includes project-level entity types. |
 | Entity types | none selected | Entity types the formula applies to. |
-| Formula | empty | Jinja2 template; the variables are listed on the [overview](index.md#calculated-attributes). |
+| Formula | empty | Jinja2 template; the variables are listed on [Calculated attributes](calculated-attributes.md#variables-and-functions). |
 | Calculation mode | Automatic | Automatic, Manual or Always. |
 
 ## Hierarchy templates

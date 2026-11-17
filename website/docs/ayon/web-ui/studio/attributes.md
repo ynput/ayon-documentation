@@ -117,6 +117,14 @@ Addons can add more dynamic enums to the same list. With a dynamic enum chosen, 
 
 Saved changes take effect at once, without a server restart. Only admins can save; managers can open the tab, and through the API they can change only the descriptive parts of an attribute, such as its title and description.
 
+## Power features
+
+These features need the [Power Pack](../../../addons/production-tracking/power-pack/index.md) and a license.
+
+### Calculated attributes
+
+An attribute can get its value from a formula instead of being typed in, for example the frame length of a shot from its frame range, or the share of finished tasks in a sequence. The formulas are set in the Power Pack addon settings and use the other attributes of the entity; see [Calculated attributes](../../../addons/production-tracking/power-pack/calculated-attributes.md).
+
 ## Related
 
 - [Permissions](permissions.md)

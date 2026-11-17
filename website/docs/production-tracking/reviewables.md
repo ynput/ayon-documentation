@@ -94,9 +94,9 @@ The viewer plays reviewables with a timeline, the activity feed and the details 
 
 See [Keyboard shortcuts](../ayon/web-ui/quick-navigation.md#keyboard-shortcuts) for the complete list. The brush and eraser tools of annotations (`b`, `e`) are part of the Power Features addon.
 
-## Comparing versions
+## Switch versions
 
-A version selector in the viewer switches between the versions of the product. The viewer keeps the current frame, and when the new version has a matching reviewable it is shown at the same frame. Reviewables that have the same label in different versions are matched, so two reviewables from different versions can be compared.
+A version selector in the viewer switches between the versions of the product. The viewer keeps the current frame, and when the new version has a matching reviewable it is shown at the same frame. Reviewables that have the same label in different versions are matched, so two reviewables from different versions can be compared. For a full comparison, such as two versions shown at once or a version of another shot, use a [review session](../addons/production-tracking/review/index.md#annotations-and-comparison) of the Review addon, whose player has comparison tools beyond annotations.
 
 | Shortcut | Action |
 |---|---|

@@ -1,25 +1,32 @@
 ---
 title: Production tracking
-sidebar_label: Overview
-description: "What the Production tracking section covers: the pages and features of the AYON web app that track a production, from tasks and folders to products, versions, lists and reviewables, and where to find each."
-verified: 2026-10-16
-sources:
-  - https://help.ayon.app/en/help/collections/0376560-production-tracking
+sidebar_label: Introduction
+description: "What the Production tracking section covers: how AYON helps plan, create, review, deliver and report on a production, what the pipeline adds, and who sees what, with a page per purpose."
+verified: 2026-11-17
 ---
 
 # Production tracking
 
-AYON tracks a production in the web app: who works on which task, what status it has, which versions were published and what is waiting for review. Production tracking works with or without the pipeline tools, so a studio can use these features alone, next to its existing pipeline, or together with the AYON pipeline. This section describes the pages and features of the web app that belong to production tracking.
+AYON tracks a production in the web app: who works on which task, what status it has, which versions were published and what is waiting for review. Production tracking works with or without the pipeline tools, so a studio can use it alone, next to its existing pipeline, or together with the AYON pipeline.
 
-The section describes what exists: where a page opens, its layout, its controls and who can use it. It does not contain step-by-step instructions.
+This section shows what the features are useful for in a production, for producers, coordinators, supervisors and admins. Each page takes one purpose and links to the pages that describe the screens and settings in detail.
 
-## What it covers
+## The production, step by step
 
-| Group | Pages | What they describe |
-|---|---|---|
-| Entity features | [Subtasks](subtasks.md), [Reviewables](reviewables.md), [Versions without a pipeline](versions-without-a-pipeline.md) | Lightweight work items in a task, the media of a version and creating versions by uploading files. Links between entities are edited in the [links manager](../ayon/web-ui/links-manager.md). |
-| Working with data | [Calculated attributes](calculated-attributes.md) | Attributes computed by formulas. Saved page layouts are described with the [Views](../ayon/web-ui/views.md) menu. Importing CSV data is described with the [Import CSV](../ayon/web-ui/dialogs/import-csv.md) dialog. |
-| Planning | [Planning](planning.md) | Planning people and their capacity, booking them on projects, scheduling the tasks of each project against the studio plan, and scenarios, with the Planner addon. |
+| Step | Pages |
+|---|---|
+| **Plan** | [Set up a production](setting-up-a-production.md) · [Break down the work](breaking-down-the-work.md) · [Put the right people on it](assigning-people.md) · [Planning](planning.md) |
+| **Create** | [See where every task stands](tracking-progress.md) · [Subtasks](subtasks.md) · [Versions without a pipeline](versions-without-a-pipeline.md) |
+| **Review** | [Review and approve](review-and-approve.md) · [Bring clients into review](client-review.md) · [Keep the conversation in one place](conversations.md) · [Reviewables](reviewables.md) |
+| **Deliver** | [Prepare deliveries](deliveries.md) |
+| **Report** | [Report on the production](reporting.md) · [Know where the time goes](time-tracking.md) |
+| **People and access** | [Control who sees what](access.md) |
+
+:::tip More than publishing
+
+For producers, the pipeline does more than publish files: it can build the project from the edit, back every status with published work, generate review media, bring review to the desktop and package deliveries. See [What the pipeline brings to production tracking](pipeline.md).
+
+:::
 
 ## Related sections
 

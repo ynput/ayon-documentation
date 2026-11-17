@@ -11,7 +11,6 @@ addon_private: true
 verified: 2026-10-15
 sources:
   - https://help.ayon.app/en/articles/7017685-power-features
-  - https://help.ayon.app/en/articles/7144550-calculated-attributes
 ---
 
 # Power Features addon
@@ -56,26 +55,7 @@ The addon also replaces the server's access check for lists and shared entities.
 
 ## Calculated attributes
 
-A calculated attribute is an existing attribute whose value is computed by a Jinja2 formula for the chosen entity types. The formula result is text; the server converts it to the attribute type when possible and strips surrounding whitespace.
-
-| Formula variable | Available for | Content |
-|---|---|---|
-| `entity` | All entity types | The entity being calculated, with the fields of the REST API. |
-| `project` | All entity types | The project, including its anatomy, for example `project.statuses`. |
-| `utils` | All entity types | Helper functions, including `utils.now()` and `utils.keep()`. |
-| `operation` | All entity types | The operation that triggered the calculation. |
-| `get_tasks(recursive=False)` | Folders | The tasks of the folder, and of its sub-folders with `recursive=True`. |
-| `get_children(recursive=False)` | Folders | The child folders, and all descendants with `recursive=True`. |
-
-Other variable names are rejected when the settings are saved. `project`, `get_tasks` and `get_children` are advanced variables because they read data outside the entity.
-
-| Calculation mode | Behavior |
-|---|---|
-| Automatic (`auto`, default) | Recalculated when the entity is saved, except for formulas that use an advanced variable. Those need an action. |
-| Manual (`manual`) | Recalculated only by an action. |
-| Always (`always`) | Recalculated on every save of the entity. Complex formulas can load the server. |
-
-Actions in the actions menu: **Recalculate attributes** (project), **Recalculate folder attributes** and **Recalculate task attributes**.
+A calculated attribute gets its value from a Jinja2 formula instead of being typed in, for example the frame length of a shot from its frame range, or the share of finished tasks below a folder. Formulas are set in the [addon settings](settings.md#calculated-attributes) and recalculated when an entity is saved or by an action. See [Calculated attributes](calculated-attributes.md).
 
 ## Hierarchy templates
 

@@ -1,32 +1,29 @@
 ---
 title: Calculated attributes
-description: "Calculated attributes are attributes whose value is computed by a Jinja2 formula: formula settings, calculation modes, the variables and functions available in formulas, and the recalculate actions."
-verified: 2026-10-15
-sources:
-  - https://help.ayon.app/en/articles/7144550-calculated-attributes
+sidebar_label: Calculated attributes
+description: "Calculated attributes of the AYON Power Pack: attributes whose value is computed by a Jinja2 formula, the formula settings and calculation modes, the formula syntax, variables and functions, examples, and the recalculate actions."
+addon: powerpack
+addon_repo: ayon-power-pack
+addon_version: 1.6.7
+addon_scope: server
+addon_flags: [licensed, power-feature]
+addon_private: true
+verified: 2026-11-17
 ---
 
 # Calculated attributes
 
-A **calculated attribute** is an existing attribute whose value is computed by a formula instead of being typed in. The formula can use the other attributes of the entity and, for folders, the tasks and folders below it. A frame length attribute can, for example, be computed from the start frame, end frame and handles, and a folder description can show the progress of the tasks below the folder. Calculated values appear in tables, the [details panel](../ayon/web-ui/details-panel.md) and filters like any other attribute value.
+<AddonInfo />
 
-Calculated attributes are a Power Features addon function. Requirements, licensing and the addon settings are described in [Power Features addon](../addons/production-tracking/power-pack/index.md); the overview of Power Features is in [Power features](../addons/production-tracking/power-pack/index.md).
-
-## Where it appears
-
-| Location | Description |
-|---|---|
-| Power Features addon settings, **Calculated attributes** | Defines the formulas. |
-| Actions menu of the project, a folder or a task | **Recalculate attributes**, **Recalculate folder attributes**, **Recalculate task attributes**. |
-| Attribute columns of tables, fields of the details panel | Show the calculated value. |
+A calculated attribute is an existing attribute whose value is computed by a formula instead of being typed in. The formula can use the other attributes of the entity and, for folders, the tasks and folders below it. A frame length attribute can, for example, be computed from the start frame, end frame and handles, and a folder attribute can show the progress of the tasks below the folder. Calculated values appear in tables, the [details panel](../../../ayon/web-ui/details-panel.md) and filters like any other attribute value. What they are useful for in a production is shown in [See where every task stands](../../../production-tracking/tracking-progress.md#numbers-that-update-themselves) and [Report on the production](../../../production-tracking/reporting.md).
 
 ## Formula settings
 
-Each entry in the **Formulas** list of the addon settings has these fields.
+Each entry in the **Formulas** list of the [addon settings](settings.md#calculated-attributes) has these fields.
 
 | Field | Description |
 |---|---|
-| **Attribute** | The attribute to calculate. The attribute must already exist (see [Attributes](../ayon/web-ui/studio/attributes.md)) and be in scope for every chosen entity type. Turning off **Inherit** in the attribute definition is recommended. |
+| **Attribute** | The attribute to calculate. The attribute must already exist (see [Attributes](../../../ayon/web-ui/studio/attributes.md)) and be in scope for every chosen entity type. Turning off **Inherit** in the attribute definition is recommended. |
 | **Entity types** | Entity types the formula applies to: folders, products, versions, representations, tasks and workfiles. At least one is required. |
 | **Formula** | A Jinja2 template. |
 | **Calculation mode** | When the formula is evaluated. |
@@ -107,10 +104,3 @@ The actions are server actions in the actions menu. They send an empty update fo
 | **Recalculate attributes** | Project | Recalculates the attributes of the project entities that have formulas. Available to managers. |
 | **Recalculate folder attributes** | One or several folders | Recalculates the attributes of the selected folders. |
 | **Recalculate task attributes** | One or several tasks | Recalculates the attributes of the selected tasks. |
-
-## Related
-
-- [Power Features addon](../addons/production-tracking/power-pack/index.md)
-- [Power Pack](../addons/production-tracking/power-pack/index.md)
-- [Attributes](../ayon/web-ui/studio/attributes.md)
-- [Project overview](../ayon/web-ui/production-tracking/overview.md)

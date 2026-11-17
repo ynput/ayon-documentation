@@ -167,11 +167,55 @@ module.exports = {
     ],
     ProductionTracking: [
         "production-tracking/index",
-        "production-tracking/planning",
-        "production-tracking/subtasks",
-        "production-tracking/reviewables",
-        "production-tracking/calculated-attributes",
-        "production-tracking/versions-without-a-pipeline",
+        {
+            type: "category",
+            label: "Plan",
+            collapsed: false,
+            items: [
+                "production-tracking/setting-up-a-production",
+                "production-tracking/breaking-down-the-work",
+                "production-tracking/assigning-people",
+                "production-tracking/planning",
+            ],
+        },
+        {
+            type: "category",
+            label: "Create",
+            collapsed: false,
+            items: [
+                "production-tracking/tracking-progress",
+                "production-tracking/subtasks",
+                "production-tracking/versions-without-a-pipeline",
+            ],
+        },
+        {
+            type: "category",
+            label: "Review",
+            collapsed: false,
+            items: [
+                "production-tracking/review-and-approve",
+                "production-tracking/client-review",
+                "production-tracking/conversations",
+                "production-tracking/reviewables",
+            ],
+        },
+        {
+            type: "category",
+            label: "Deliver",
+            collapsed: false,
+            items: ["production-tracking/deliveries"],
+        },
+        {
+            type: "category",
+            label: "Report",
+            collapsed: false,
+            items: [
+                "production-tracking/reporting",
+                "production-tracking/time-tracking",
+            ],
+        },
+        "production-tracking/pipeline",
+        "production-tracking/access",
     ],
     Pipeline: [
         "pipeline/index",
@@ -239,6 +283,7 @@ module.exports = {
                     collapsed: true,
                     link: { type: "doc", id: "addons/production-tracking/power-pack/index" },
                     items: [
+                        "addons/production-tracking/power-pack/calculated-attributes",
                         "addons/production-tracking/power-pack/settings",
                     ],
                 },

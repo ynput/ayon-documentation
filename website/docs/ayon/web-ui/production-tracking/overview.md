@@ -170,7 +170,7 @@ Columns that cannot be exported, such as thumbnails, are listed as **Not exporte
 - **Slicer:** slice types other than **Hierarchy**, and split panels, see [Slicer](../slicer.md#power-features).
 - **Saved and shared views**, see [Views](../views.md#power-features).
 - **Entity templates:** stored hierarchies reused to create folders and tasks, see [hierarchy templates](../../../addons/production-tracking/power-pack/index.md#hierarchy-templates).
-- **[Calculated attributes](../../../production-tracking/calculated-attributes.md):** attributes computed from a formula on the server.
+- **[Calculated attributes](../../../addons/production-tracking/power-pack/calculated-attributes.md):** attributes computed from a formula on the server.
 
 ## Related
 

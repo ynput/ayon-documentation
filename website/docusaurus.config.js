@@ -278,6 +278,8 @@ const config = {
             {
                 redirects: [
                         { from: "/docs/ayon/web-ui/navigation-bar", to: "/docs/ayon/web-ui/app-header" },
+                        { from: "/docs/production-tracking/calculated-attributes", to: "/docs/addons/production-tracking/power-pack/calculated-attributes" },
+                        { from: "/docs/production-tracking/power-features", to: "/docs/addons/production-tracking/power-pack" },
                         { from: "/docs/ayon/backend/data-model", to: "/docs/ayon/how-ayon-works/entities" },
                         { from: "/docs/ayon/backend/settings", to: "/docs/ayon/how-ayon-works/settings" },
                         { from: "/docs/dev_introduction", to: "/docs/developer" },
