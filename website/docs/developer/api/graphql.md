@@ -19,7 +19,7 @@ The GraphQL API of the AYON server is read-only: it has queries only, no mutatio
 <Card icon="hub" title="GraphQL API reference" href="/graphql/">
 Every query, type, field and argument, also under GraphQL API in the top bar.
 </Card>
-<Card icon="description" title="schema.graphql" href="pathname:///schema.graphql">
+<Card icon="description" title="schema.graphql" href="https://playground.ayon.app/schema.graphql">
 The whole schema in one file, for tools and AI assistants.
 </Card>
 </Cards>

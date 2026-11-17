@@ -246,17 +246,18 @@ const config = {
     ],
     plugins: [
         [
-            // GraphQL API reference, generated from static/schema.graphql into ./graphql
-            // by `docusaurus graphql-to-doc` (run before start and build, see package.json).
+            // GraphQL API reference, generated into ./graphql by `docusaurus graphql-to-doc` (run before start and
+            // build, see package.json) from the playground's /schema.graphql, read at build time like the REST API
+            // reference reads /openapi.json.
             "@graphql-markdown/docusaurus",
             {
-                schema: "./static/schema.graphql",
+                schema: "https://playground.ayon.app/schema.graphql",
                 rootPath: "./graphql",
                 baseURL: ".",
                 linkRoot: "/graphql",
                 homepage: "./graphql-homepage.md",
                 loaders: {
-                    GraphQLFileLoader: "@graphql-tools/graphql-file-loader",
+                    UrlLoader: "@graphql-tools/url-loader",
                 },
                 docOptions: {
                     index: true,
