@@ -317,6 +317,20 @@ Reference keys that can be unavailable (use them inside optional parts): `output
 
 ### Profiles that pick a template
 
+The anatomy defines templates by name only; a profile matches a context and names the template to use. For example, the shipped Workfile template profile for Unreal picks the `unreal` work template:
+
+```mermaid
+flowchart TB
+    subgraph S["Core addon settings: Workfile template profiles"]
+        P["Task types: any<br/>Hosts: unreal<br/>Workfile template: unreal"]
+    end
+    subgraph A["Project anatomy: Templates / Work"]
+        T["Name: unreal<br/>Directory template:<br/>{root[work]}/{project[name]}/unreal/{task[name]}<br/>File name template:<br/>{project[code]}_{folder[name]}.{ext}"]
+    end
+    P -- "names the entry" --> T
+    T -- "filled with the context of task lighting on shot sh010" --> R["C:/projects/wing_it/unreal/lighting/wi_sh010.uproject"]
+```
+
 All profile lists use the filter rules described for product name profiles (regular expressions, empty means any, most specific match wins, earlier profile wins ties).
 
 | Setting (Core addon) | Filters | Result | Default |
@@ -328,6 +342,14 @@ All profile lists use the filter rules described for product name profiles (regu
 | **Version start** | Host names, Task types, Task names, Product base types, Product names | **Version Start** number | none; versions start at 1 |
 
 A profile that names a template which does not exist in the anatomy of the project makes the publish fail for those products (the shipped `tycache` name is not part of the shipped templates, so a studio using that profile must define it).
+
+### Unique paths
+
+The pipeline finds files by their context, so each work directory should belong to one task, and each publish directory to one version of one product.
+
+- **Work**: the smallest context is project, folder path and task. The Workfiles tool lists every file with an extension of the host in the work directory, and the next version is counted from the files there. If two tasks resolve to the same directory, each task shows the other's files, version numbers are shared, and a file name without the task can be overwritten by the other task. The default work directory ends with `{task[name]}`. Adding `{app}` gives each host its own directory when one task is worked on in several applications.
+- **Publish**: the smallest context is project, folder path, product name and version. Without the version in the directory, the files of all versions share one directory and only the file name keeps them apart. `{product[type]}` is not needed for uniqueness but groups the products on disk.
+- **Representation in the directory**: all files of a version are expected in one directory, next to its `resources` folder. The publish directory is resolved once per product, before the representations exist, so a `{representation}` key in a directory template must be an optional part. It is not recommended.
 
 ### Work files
 

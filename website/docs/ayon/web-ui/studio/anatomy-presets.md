@@ -1,6 +1,6 @@
 ---
 title: Anatomy presets
-description: "The Anatomy presets tab of the AYON Studio Settings: the preset list with the built-in AYON default and the primary preset, the anatomy editor and its sections, copying and pasting an anatomy, saving, renaming, deleting and setting presets as primary, and how presets are used when a project is created."
+description: "The Anatomy presets tab of the AYON Studio Settings: the preset list with the built-in AYON default and the primary preset, the anatomy and its sections, copying and pasting an anatomy, saving, renaming, deleting and setting presets as primary, and how presets are used when a project is created."
 verified: 2026-11-15
 ui_purpose: "Manages the anatomy templates that new projects copy."
 ui_location: "Studio Settings > Anatomy presets"
@@ -20,33 +20,21 @@ sources:
 
 <PageInfo />
 
-![The Anatomy presets tab: the preset list with AYON default (read only), the primary preset My Default and SG, the toolbar, and the Statuses section of the anatomy editor expanded](../../assets/web-ui/studio-anatomy-presets/page.webp)
+![The Anatomy presets tab: the preset list with AYON default (read only), the primary preset My Default and SG, the toolbar, and the Statuses section of the anatomy expanded](../../assets/web-ui/studio-anatomy-presets/page.webp)
 
 An anatomy preset is a stored template of a project anatomy: roots, path templates, entity naming, project attributes, and the lists of folder types, task types, link types, statuses, tags and product type appearance. The **Anatomy presets** tab manages these templates. A new project copies a preset into its own anatomy; after that, the project and the preset are independent (see [Creating a project](../../how-ayon-works/creating-a-project.md#project-configuration)). Each project then edits its own copy on its [Anatomy](../project/anatomy.md) tab. The bare path `/settings` also opens this tab.
 
-## Presets and editor
+## Presets and anatomy
 
 ### Preset list
 
 The list on the left has the columns **Name** and **Primary**. The first row is the built-in anatomy, **AYON default (read only)**, followed by the stored presets in alphabetical order. A check mark in **Primary** marks the primary preset; when no stored preset is primary, **AYON default (read only)** has it. On opening, the primary preset is selected.
 
-### Anatomy editor
+### Anatomy settings
 
-The editor shows the anatomy of the selected preset in collapsible sections, in the settings editor used across the web app.
+The anatomy of the selected preset is shown on the right, as collapsible sections, in the same form as the settings pages of the web app. A preset has the same sections and fields as the anatomy of a project: Entity Naming, Roots, Templates, Attributes, Folder types, Task types, Link types, Statuses, Tags and Product Types. Every field, its default and how it is used are described in the project [Anatomy](../project/anatomy.md) reference. In a preset, **Attributes** holds the defaults that a new project takes as its attribute values.
 
-| Section | Content |
-|---|---|
-| **Entity Naming** | Capitalization and separator used to suggest folder and task names from labels. |
-| **Roots** | Named storage locations, with one path each for **Windows**, **Linux** and **Darwin**. |
-| **Templates** | Version and frame padding, and the template groups **Work**, **Publish**, **Hero**, **Delivery**, **Staging directories** and **Others**. |
-| **Attributes** | The project attributes (every attribute whose scope includes projects), with the defaults of their definitions. They become the attribute values of a new project. |
-| **Folder types**, **Task types** | Types with short name, color and icon. |
-| **Link types** | Link types with input and output entity type, color and line style. |
-| **Statuses** | Statuses with short name, state, icon, color and the entity types they apply to. |
-| **Tags** | Tags with their colors. |
-| **Product Types** | **Default appearance** (color and icon) and **Appearance overrides** of product base types in the web app. |
-
-Names in **Roots**, **Folder types**, **Task types**, **Statuses** and **Tags** must be unique within their list; saving a preset with duplicates fails. Roots, templates and entity naming are described in [Naming conventions](../../../pipeline/naming-conventions.md#project-anatomy) and [Storage](../../how-ayon-works/storage.md); types, statuses and tags in [AYON entities](../../how-ayon-works/entities.md#statuses-types-and-tags).
+Names in **Roots**, **Folder types**, **Task types**, **Statuses** and **Tags** must be unique within their list; saving a preset with duplicates fails.
 
 ### The primary preset
 
@@ -66,14 +54,14 @@ Changing the primary preset, or editing a preset, does not change existing proje
 
 | Control | What it does |
 |---|---|
-| **Copy anatomy** | Copies the anatomy shown in the editor as JSON. |
-| **Paste anatomy** | Replaces the anatomy in the editor with JSON from the clipboard, as an unsaved change. Messages: **No content to paste**, **Invalid JSON**. |
+| **Copy anatomy** | Copies the anatomy shown on the page as JSON. |
+| **Paste anatomy** | Replaces the anatomy on the page with JSON from the clipboard, as an unsaved change. Messages: **No content to paste**, **Invalid JSON**. |
 | **Set as primary** | Makes the selected preset primary. With **AYON default (read only)** selected, it removes the primary flag, so the built-in anatomy becomes the default again. Disabled when the selected preset is already primary. |
 | **Delete preset** | Deletes the selected preset after a confirmation. Disabled for **AYON default (read only)**. |
-| **Save as a new preset** | Opens **Create New Preset** with **Preset name**, and saves the anatomy in the editor under that name. Highlighted when **AYON default (read only)** is selected. A name that already exists is overwritten. |
-| **Save Current Preset** | Saves the editor content to the selected preset. Active when the anatomy was changed and a stored preset is selected. |
+| **Save as a new preset** | Opens **Create New Preset** with **Preset name**, and saves the anatomy shown on the page under that name. Highlighted when **AYON default (read only)** is selected. A name that already exists is overwritten. |
+| **Save Current Preset** | Saves the anatomy shown on the page to the selected preset. Active when the anatomy was changed and a stored preset is selected. |
 
-The built-in anatomy can be edited in the editor, but only saved as a new preset. Selecting another preset discards unsaved edits without a warning.
+The built-in anatomy can be edited on the page, but only saved as a new preset. Selecting another preset discards unsaved edits without a warning.
 
 ### Right-click menus
 
@@ -82,7 +70,7 @@ The built-in anatomy can be edited in the editor, but only saved as a new preset
 
 Right-clicking a stored preset offers **Set as primary**, **Rename** (opens **Rename Preset** with **New preset name**) and **Delete** (after a confirmation). All three are disabled on **AYON default (read only)**, and **Set as primary** on the primary preset.
 
-Right-clicking a field or a section in the editor offers **Copy** and **Paste** for that part of the anatomy; a pasted value must have the same structure.
+Right-clicking a field or a section offers **Copy** and **Paste** for that part of the anatomy; a pasted value must have the same structure.
 
 </Column>
 <Column>
