@@ -15,3 +15,6 @@ website/debug.log
 
 website/.docusaurus
 .vscode/settings.json
+
+# GraphQL API reference, generated before start and build (see website/package.json)
+website/graphql/

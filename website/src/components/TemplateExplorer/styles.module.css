@@ -1,0 +1,172 @@
+/* Highlight colors: c0..c9 for text in results, s0..s9 for the swatch next to an input. */
+.explorer {
+    margin: 0 0 1.5rem;
+}
+
+.inputs {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .inputs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 520px) {
+    .inputs {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.group {
+    display: grid;
+    gap: 0.3rem;
+    min-width: 0;
+    margin: 0;
+    padding: 0.35rem 0.5rem 0.5rem;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--ayon-radius-large);
+    background: var(--md-sys-color-surface-container);
+}
+
+.group legend {
+    padding: 0 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.field {
+    display: grid;
+    gap: 0.15rem;
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.fieldLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.field input,
+.field select {
+    font: inherit;
+    font-size: 0.8rem;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--ayon-radius);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    background: var(--md-sys-color-surface-container-low);
+    color: var(--md-sys-color-on-surface);
+}
+
+.bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.reset {
+    font: inherit;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--ayon-radius);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    background: transparent;
+    color: var(--md-sys-color-primary);
+    cursor: pointer;
+}
+
+.reset:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.table {
+    display: table;
+    width: 100%;
+}
+
+.groupRow th {
+    text-align: left;
+    background: var(--md-sys-color-surface-container);
+}
+
+.template,
+.result {
+    display: block;
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 0.8rem;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.template {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.notes {
+    font-size: 0.85rem;
+}
+
+.selected td {
+    background: var(--md-sys-color-surface-container-high, var(--md-sys-color-surface-container));
+}
+
+.missing {
+    padding: 0 0.15rem;
+    border-radius: var(--ayon-radius);
+    border: 1px dashed currentColor;
+    color: var(--ifm-color-danger, #d9534f);
+}
+
+.missingNote {
+    color: var(--ifm-color-danger, #d9534f);
+}
+
+.explorer mark {
+    padding: 0 0.1rem;
+    border-radius: 2px;
+    color: inherit;
+}
+
+.c0 { background: hsla(210, 80%, 55%, 0.3); }
+.c1 { background: hsla(150, 80%, 55%, 0.3); }
+.c2 { background: hsla(35, 80%, 55%, 0.3); }
+.c3 { background: hsla(285, 80%, 55%, 0.3); }
+.c4 { background: hsla(0, 80%, 55%, 0.3); }
+.c5 { background: hsla(180, 80%, 55%, 0.3); }
+.c6 { background: hsla(60, 80%, 55%, 0.3); }
+.c7 { background: hsla(320, 80%, 55%, 0.3); }
+.c8 { background: hsla(100, 80%, 55%, 0.3); }
+.c9 { background: hsla(250, 80%, 55%, 0.3); }
+.s0 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(210, 80%, 55%); }
+.s1 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(150, 80%, 55%); }
+.s2 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(35, 80%, 55%); }
+.s3 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(285, 80%, 55%); }
+.s4 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(0, 80%, 55%); }
+.s5 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(180, 80%, 55%); }
+.s6 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(60, 80%, 55%); }
+.s7 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(320, 80%, 55%); }
+.s8 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(100, 80%, 55%); }
+.s9 { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 2px; background: hsl(250, 80%, 55%); }
+
+/* Keep the result column readable in the narrow docs column. */
+.table td:nth-child(2) {
+    min-width: 11rem;
+}

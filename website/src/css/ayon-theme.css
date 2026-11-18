@@ -1,0 +1,380 @@
+/**
+ * AYON theme for the docs.
+ *
+ * Tokens are copied from the AYON web app so the docs look like the
+ * product. Sources:
+ *   - ynput/ayon-react-components  src/theme/tokens.css, states.css, theme.dark.css
+ *   - ynput/ayon-frontend          src/styles/index.scss
+ * The AYON UI is dark only (its light theme is not enabled), so this site is
+ * dark only too. To follow a change in the app, update the `--md-*` values
+ * below from tokens.css; the `--ifm-*` section maps them onto Docusaurus.
+ */
+
+/* ---------- Fonts ----------
+ * Brand swatch: Geograph (primary) / Jost (open-source alternative) for headings,
+ * Inter for paragraphs. Geograph and Documan are commercial, so the docs use the
+ * open-source pair. Loaded from @fontsource-variable in docusaurus.config.js.
+ * (The web app itself uses Nunito Sans; the help center uses Inter.)
+ */
+
+/* ---------- AYON design tokens (dark) ---------- */
+:root,
+[data-theme="dark"],
+[data-theme="light"] {
+    --md-sys-color-primary: #8fceff;
+    --md-sys-color-primary-hover: hsl(206, 80%, 73%);
+    --md-sys-color-primary-active: hsl(206, 72%, 71%);
+    --md-sys-color-on-primary: #00344f;
+    --md-sys-color-primary-container: #004b70;
+    --md-sys-color-on-primary-container: #ebf5ff;
+    --md-sys-color-secondary: #b7c9d9;
+    --md-sys-color-secondary-container: #384956;
+    --md-sys-color-on-secondary-container: #d3e5f6;
+    --md-sys-color-tertiary: #23e0a9;
+    --md-sys-color-on-tertiary: #003827;
+    --md-sys-color-tertiary-container: #00513a;
+    --md-sys-color-on-tertiary-container: #52fdc3;
+    --md-sys-color-error: #ffb4ab;
+    --md-sys-color-error-container: #93000a;
+    --md-sys-color-on-error-container: #ffdad6;
+    --md-sys-color-warning: #fb9c15;
+    --md-sys-color-warning-container: hsl(25, 100%, 29%);
+    --md-sys-color-on-warning-container: hsl(25, 100%, 92%);
+    --md-sys-color-outline: #8b9198;
+    --md-sys-color-outline-variant: #41474d;
+    --md-sys-color-background: #252a31;
+    --md-sys-color-on-background: #f2f2f3;
+    --md-sys-color-surface: #252b32;
+    --md-sys-color-on-surface: #f4f5f5;
+    --md-sys-color-on-surface-variant: #c1c7ce;
+    --md-sys-color-surface-container-highest: #424a57;
+    --md-sys-color-surface-container-high: #353b46;
+    --md-sys-color-surface-container: #272d35;
+    --md-sys-color-surface-container-low: #1c2026;
+    --md-sys-color-surface-container-lowest: #16191d;
+    --md-sys-color-surface-container-high-hover: hsl(214, 12%, 26%);
+    --md-sys-color-surface-container-hover: hsl(212, 11%, 23%);
+
+    /* Brand swatch (ayon-colors.jpg): used for status accents and card icons */
+    --ayon-brand-mint: #00dcb4; /* Ynput Mint */
+    --ayon-brand-blue: #009be1; /* Code Blue */
+    --ayon-brand-black: #000000; /* Terminal Black */
+    --ayon-brand-yellow: #ffb400; /* Construct Yellow */
+    --ayon-brand-red: #ff6446; /* Error Red */
+    --ayon-brand-grey-20: #c3c8cd; /* UI Grey 20 */
+    --ayon-brand-grey-40: #737d8c; /* UI Grey 40 */
+    --ayon-brand-grey-60: #555f73; /* UI Grey 60 */
+    --ayon-brand-grey-80: #2c313a; /* UI Grey 80 */
+
+    /* Sampled from the web app: selected row / list item tint */
+    --ayon-selected: #1b4154;
+
+    --ayon-radius: 4px;
+    --ayon-radius-large: 8px;
+    --ayon-font-family: "Inter Variable", Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --ayon-font-family-heading: "Jost Variable", Jost, "Inter Variable", sans-serif;
+}
+
+/* ---------- Map tokens onto Docusaurus / Infima ---------- */
+/* `:root[data-theme]` outranks Infima's own `[data-theme=dark]:root` block. */
+:root[data-theme] {
+    color-scheme: dark;
+
+    /* brand */
+    --ifm-color-primary: var(--md-sys-color-primary);
+    --ifm-color-primary-dark: #3db4fc;
+    --ifm-color-primary-darker: #0099de;
+    --ifm-color-primary-darkest: #007eb8;
+    --ifm-color-primary-light: #cae6ff;
+    --ifm-color-primary-lighter: #e6f2ff;
+    --ifm-color-primary-lightest: #f6f9ff;
+    --ifm-color-secondary: var(--md-sys-color-secondary);
+    --ifm-color-info: var(--ayon-brand-blue);
+    --ifm-color-success: var(--ayon-brand-mint);
+    --ifm-color-warning: var(--ayon-brand-yellow);
+    --ifm-color-danger: var(--ayon-brand-red);
+
+    /* surfaces */
+    --ifm-background-color: var(--md-sys-color-surface-container-low); /* the app's dark working panel */
+    --ifm-background-surface-color: var(--md-sys-color-surface-container); /* raised: cards, admonitions */
+    --ifm-navbar-background-color: var(--md-sys-color-surface-container-low);
+    --ifm-footer-background-color: var(--md-sys-color-surface-container-lowest);
+    --ifm-footer-color: var(--md-sys-color-on-surface-variant);
+    --ifm-footer-link-color: var(--md-sys-color-on-surface-variant);
+    --ifm-footer-title-color: var(--md-sys-color-on-surface);
+    --ifm-code-background: var(--md-sys-color-surface-container-high);
+    --ifm-pre-background: var(--md-sys-color-surface-container-lowest);
+    --ifm-table-stripe-background: var(--md-sys-color-surface-container);
+    --ifm-table-head-background: var(--md-sys-color-surface-container-highest);
+    --ifm-table-border-color: var(--md-sys-color-outline-variant);
+    --ifm-toc-border-color: var(--md-sys-color-outline-variant);
+    --ifm-hr-background-color: var(--md-sys-color-outline-variant);
+    --ifm-color-emphasis-200: var(--md-sys-color-outline-variant);
+    --ifm-color-emphasis-300: var(--md-sys-color-surface-container-highest);
+
+    /* text */
+    --ifm-font-color-base: var(--md-sys-color-on-surface);
+    --ifm-font-color-secondary: var(--md-sys-color-on-surface-variant);
+    --ifm-heading-color: var(--md-sys-color-on-surface);
+    --ifm-link-color: var(--md-sys-color-primary);
+    --ifm-link-hover-color: var(--md-sys-color-primary-hover);
+    --ifm-navbar-link-color: var(--md-sys-color-on-surface);
+    --ifm-navbar-link-hover-color: var(--md-sys-color-primary);
+    --ifm-menu-color: var(--md-sys-color-on-surface-variant);
+    --ifm-menu-color-active: var(--md-sys-color-on-primary-container);
+    --ifm-menu-color-background-active: var(--ayon-selected);
+    --ifm-menu-color-background-hover: var(--md-sys-color-surface-container-high);
+    --ifm-breadcrumb-color-active: var(--md-sys-color-primary);
+    --ifm-font-family-base: var(--ayon-font-family);
+    --ifm-heading-font-family: var(--ayon-font-family-heading);
+    --ifm-heading-font-weight: 600;
+
+    /* shape */
+    --ifm-global-radius: var(--ayon-radius-large);
+    --ifm-button-border-radius: var(--ayon-radius);
+    --ifm-code-border-radius: var(--ayon-radius);
+    --ifm-pre-border-radius: var(--ayon-radius-large);
+    --ifm-card-border-radius: var(--ayon-radius-large);
+    --ifm-navbar-shadow: 0 1px 0 var(--md-sys-color-outline-variant);
+
+    /* code blocks */
+    --docusaurus-highlighted-code-line-bg: rgba(143, 206, 255, 0.12);
+
+    /* search (@easyops-cn/docusaurus-search-local) */
+    --search-local-modal-background: var(--md-sys-color-surface-container-high);
+    --search-local-hit-background: var(--md-sys-color-surface-container-high);
+    --search-local-hit-color: var(--md-sys-color-on-surface);
+    --search-local-muted-color: var(--md-sys-color-on-surface-variant);
+    --search-local-highlight-color: var(--md-sys-color-primary);
+    --search-local-hit-active-color: var(--md-sys-color-on-primary-container);
+}
+
+/* ---------- Component touches ---------- */
+body {
+    font-family: var(--ayon-font-family);
+}
+
+/* Buttons: muted like the app. Primary = blue container, secondary = grey. */
+.button--primary {
+    --ifm-button-color: var(--md-sys-color-on-primary-container);
+    --ifm-button-background-color: var(--md-sys-color-primary-container);
+    --ifm-button-border-color: var(--md-sys-color-primary-container);
+    font-weight: 600;
+}
+.button--primary:hover {
+    --ifm-button-background-color: var(--md-sys-color-primary-hover);
+    --ifm-button-border-color: var(--md-sys-color-primary-hover);
+    --ifm-button-color: var(--md-sys-color-on-primary);
+}
+.button--secondary {
+    --ifm-button-color: var(--md-sys-color-on-surface);
+    --ifm-button-background-color: var(--md-sys-color-secondary-container);
+    --ifm-button-border-color: var(--md-sys-color-secondary-container);
+}
+.button--secondary:hover {
+    --ifm-button-background-color: var(--md-sys-color-surface-container-highest);
+    --ifm-button-border-color: var(--md-sys-color-surface-container-highest);
+}
+
+/* Navbar: the group items are tabs, as in the AYON web app. The bar is darker
+   than the page; the active tab has the page color and rounded top corners, so
+   it looks attached to the content below. Sidebar and page share one color. */
+.navbar {
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+@media (min-width: 997px) {
+    :root[data-theme] {
+        --ayon-tab-height: 2.6rem;
+    }
+    .navbar {
+        background-color: var(--md-sys-color-surface-container-lowest);
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: stretch;
+    }
+    .navbar__inner {
+        align-items: stretch;
+    }
+    .navbar__items {
+        align-items: flex-end;
+    }
+    /* logo, search and other non-tab items stay centered */
+    .navbar__items > .custom-logo,
+    .navbar__items > .navbar__search,
+    .navbar__items .navbar__search {
+        align-self: center;
+    }
+    .navbar__items > .navbar__item.navbar__link {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        height: var(--ayon-tab-height);
+        margin: 0 0.1rem -1px;
+        border: 1px solid transparent;
+        border-bottom: 0;
+        border-radius: var(--ayon-radius-large) var(--ayon-radius-large) 0 0;
+        color: var(--md-sys-color-on-surface-variant);
+        font-weight: 500;
+    }
+    .navbar__items > .navbar__item.navbar__link:hover {
+        background-color: var(--md-sys-color-surface-container-low);
+        color: var(--md-sys-color-on-surface);
+    }
+    .navbar__items > .navbar__item.navbar__link--active {
+        position: relative;
+        background-color: var(--ifm-background-color);
+        border-color: var(--md-sys-color-outline-variant);
+        color: var(--md-sys-color-on-surface);
+        font-weight: 700;
+    }
+    /* the tab covers the bar's bottom border, so it joins the page */
+    .navbar__items > .navbar__item.navbar__link--active::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 3px;
+        background-color: var(--ifm-background-color);
+    }
+}
+.theme-doc-sidebar-container {
+    background-color: var(--md-sys-color-surface-container-low);
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+}
+.menu__link {
+    border-radius: var(--ayon-radius);
+}
+.menu__link--active:not(.menu__link--sublist) {
+    background-color: var(--ayon-selected);
+}
+
+/* Admonitions: raised surface with a brand-coloured edge. */
+.alert {
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-left-width: 4px;
+    color: var(--md-sys-color-on-surface);
+}
+.alert--info {
+    border-left-color: var(--ayon-brand-blue);
+}
+.alert--success {
+    border-left-color: var(--ayon-brand-mint);
+}
+.alert--warning {
+    border-left-color: var(--ayon-brand-yellow);
+}
+.alert--danger {
+    border-left-color: var(--ayon-brand-red);
+}
+
+table {
+    border-radius: var(--ayon-radius);
+}
+
+/* Thin scrollbars, as in the app. */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--md-sys-color-surface-container-highest) transparent;
+}
+
+/* Search: the plugin paints the selected hit with the highlight color. Use the
+   app's muted blue-tint selection instead. */
+:root [class*="searchBar"] [class*="dropdownMenu"] [class*="suggestion"][class*="cursor"] {
+    background-color: var(--ayon-selected);
+}
+
+/* Navbar: eight group items. Never wrap a label, and tighten the spacing on
+   medium screens (below 997px Docusaurus switches to the hamburger menu). */
+.navbar__item,
+.navbar__link {
+    white-space: nowrap;
+}
+@media (min-width: 1081px) and (max-width: 1320px) {
+    :root[data-theme] {
+        --ifm-navbar-item-padding-horizontal: 0.45rem;
+    }
+}
+@media (min-width: 997px) and (max-width: 1080px) {
+    :root[data-theme] {
+        --ifm-navbar-item-padding-horizontal: 0.25rem;
+    }
+}
+
+/* Archived addons (front matter `sidebar_class_name: addon-archived`, or className in
+   sidebars.js): greyed out in the sidebar and on the page. */
+.menu__list-item.addon-archived > .menu__link,
+.menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+article:has(dl[data-archived="true"]) h1 {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Sidebar hierarchy: top-level entries are the strongest, every nested level is lighter
+   (regular weight, smaller, muted) and sits behind a thin guide line, so an expanded
+   section can be followed with the eye. */
+.theme-doc-sidebar-menu > .menu__list-item > .menu__link,
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible > .menu__link {
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list {
+    margin-left: 0.75rem;
+    padding-left: 0.25rem;
+    border-left: 1px solid var(--md-sys-color-outline-variant);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__link {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: var(--md-sys-color-on-surface-variant);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__link--active:not(.menu__link--sublist) {
+    font-weight: 500;
+    color: var(--ifm-menu-color-active);
+}
+
+/* Second level (addons): regular weight. */
+.theme-doc-sidebar-menu .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link,
+.theme-doc-sidebar-menu .theme-doc-sidebar-item-link-level-2 > .menu__link {
+    font-weight: 400;
+}
+
+/* The addon groups: server addons blue, pipeline addons mint, third-party grey. */
+.menu__list-item.addons-server > .menu__list-item-collapsible > .menu__link,
+.menu__list-item.addons-pipeline > .menu__list-item-collapsible > .menu__link,
+.menu__list-item.addons-thirdparty > .menu__list-item-collapsible > .menu__link {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8em;
+}
+.menu__list-item.addons-server,
+.menu__list-item.addons-pipeline,
+.menu__list-item.addons-thirdparty {
+    padding-left: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+/* One shorthand per group: a longhand color rule can be merged away by the CSS minifier. */
+.menu__list-item.addons-server { border-left: 3px solid var(--ayon-brand-blue); }
+.menu__list-item.addons-pipeline { border-left: 3px solid var(--ayon-brand-mint); }
+.menu__list-item.addons-thirdparty { border-left: 3px solid var(--md-sys-color-outline); }
+
+/* Archived and legacy entries stay grey at every level (beats the nested-level color above). */
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__link,
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+
+/* Legacy and archived entries are grey at the top level of a sidebar too. */
+.theme-doc-sidebar-menu > .menu__list-item.addon-archived > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+
+/* Material Symbols in Mermaid node labels (the icons of the AYON web app). Global on
+   purpose: Mermaid measures labels in a temporary element outside the diagram container. */
+foreignObject .material-symbols-outlined {
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--ayon-brand-blue);
+}

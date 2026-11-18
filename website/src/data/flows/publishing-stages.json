@@ -1,0 +1,73 @@
+{
+  "lanes": [
+    {
+      "id": "publish",
+      "label": "One publish"
+    }
+  ],
+  "statuses": {
+    "ok": "result stays",
+    "info": "runs on every publish"
+  },
+  "nowLabel": "What it does",
+  "expectedLabel": "What remains",
+  "scenarios": [
+    {
+      "id": "stages",
+      "label": "Publish stages",
+      "steps": [
+        {
+          "phase": "Phase 1: Create"
+        },
+        {
+          "lane": 0,
+          "title": "Create",
+          "subtitle": "Defines what to publish",
+          "status": "ok",
+          "now": "The artist picks what to share (a selection, a node, a clip or the whole scene) and the product type. AYON stores a publish instance for it. Nothing is exported yet, and the scene content is not changed.",
+          "expected": "The instance stays in the scene (or in the publisher session) and is reused by every later publish until it is edited or removed.",
+          "note": "Rerun: not every time. An instance is created once and edited when needed."
+        },
+        {
+          "phase": "Phase 2: Publish"
+        },
+        {
+          "lane": 0,
+          "title": "Collect",
+          "subtitle": "Gathers data",
+          "status": "info",
+          "now": "Reads what the later stages need from the host, the AYON server and the instances: the project, folder and task, the version number, frame ranges and the staging directory.",
+          "expected": "Nothing is stored. The collected data exists only during the publish.",
+          "note": "Rerun: on every publish."
+        },
+        {
+          "lane": 0,
+          "title": "Validate",
+          "subtitle": "Checks the work",
+          "status": "info",
+          "now": "Checks the data and the content against the studio's rules. Errors stop the publish before anything is exported. Some checks offer a repair action.",
+          "expected": "Nothing, unless a repair action changes the scene. After a problem is fixed the publish is reset and runs again from the start.",
+          "note": "Rerun: on every publish, and again after each fix."
+        },
+        {
+          "lane": 0,
+          "title": "Extract",
+          "subtitle": "Exports files",
+          "status": "info",
+          "now": "Exports each instance to files in a temporary staging directory, and makes reviewables and thumbnails.",
+          "expected": "The files in the staging directory. They are copied by the next stage and then deleted, unless the staging folder is set to persist.",
+          "note": "Rerun: on every publish."
+        },
+        {
+          "lane": 0,
+          "title": "Integrate",
+          "subtitle": "Publishes the result",
+          "status": "ok",
+          "now": "Copies the files to the project's publish folder, registers the product, version and representations on the AYON server, uploads thumbnails and reviewables, and updates the hero version when it is enabled.",
+          "expected": "A new version: files in the publish folder and records on the server. They are permanent and are not modified afterwards.",
+          "note": "Rerun: every publish creates a new version."
+        }
+      ]
+    }
+  ]
+}

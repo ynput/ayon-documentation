@@ -21,13 +21,21 @@ If you spot something incorrect or just think a page could do with some improvem
 1. Make the changes to the relevant markdown file.
 2. Make a PR documenting the changes.
 
-## Running documentation live
+## Running the documentation
 
 - Install Node.js https://nodejs.org/en/download
 - `npm install -g yarn`
 - `cd {ayon-doc-repo}/website`
 - `yarn install`
-- `yarn run start`
+
+Then run it in one of two ways:
+
+| Mode | Commands | Use it for |
+|---|---|---|
+| Live | `yarn start` | Writing: changes show immediately. The search does not work. |
+| Local build | `yarn build` then `yarn serve` | Checking what gets published: build errors, broken links, diagrams and search. Rebuild after every change. |
+
+`yarn build` writes the site to `website/build`, and `yarn serve` serves it on http://localhost:3000 (`yarn serve --port 3100` for another port). If something looks stale, run `yarn clear` first.
 
 For additional info, refer to the [Official Docusaurus Documentation](https://docusaurus.io/docs/installation#running-the-development-server).
 
