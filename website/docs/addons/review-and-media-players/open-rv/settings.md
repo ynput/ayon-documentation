@@ -7,38 +7,77 @@ addon_repo: ayon-openrv
 addon_version: 1.2.4
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
   - https://github.com/ynput/ayon-openrv/tree/1.2.4/server
-  - https://help.ayon.app/en/help/articles/6197405-openrv-addon-settings
 ---
 
 # Open RV addon settings
 
 <AddonInfo />
 
-The settings of the [Open RV addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The executables of Open RV are not set here: they are defined for the `openrv` application group in the Applications addon.
+The settings of the [Open RV addon](index.md) are in **Studio settings > OpenRV**, with overrides in **Project settings > OpenRV**. Pasting a location below into the URI bar of the web app opens that setting. The executables of Open RV and their arguments, such as the `-network` flag the loaders need, are not set here: they are defined for the `openrv` application group in the [Applications addon](../../essentials/applications/settings.md).
 
 ## General
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Turns the addon on or off. |
+<SettingLocation uri="ayon+settings://openrv/enabled" scope="Studio, with project overrides" />
 
-## Network settings
+<!-- screenshot: settings editor, Enabled -->
 
-The connection used by the **Open in RV** and **Open in Existing RV** loaders to talk to a running Open RV on the local machine.
+<Settings>
+<Setting name="Enabled" default="Enabled">
 
-| Setting | Default | Description |
-|---|---|---|
-| Connection Name | `ayon-rv-connect` | The name the connection identifies itself with. |
-| Connection Port | 45124 | The port of Open RV's network interface. |
-| Timeout in Seconds | 20 | How long the connection is retried before it fails. |
+Turns the addon on or off.
 
-## Color management (imageio)
+</Setting>
+</Settings>
 
-| Setting | Default | Description |
-|---|---|---|
-| Enable Color Management | On | Read by the core addon as the switch that activates color management for this host. |
+## Network Settings
 
-The settings module also defines a model with **Override global OCIO config** and **Config path**, but it is not part of the addon settings in this version.
+<SettingLocation uri="ayon+settings://openrv/network" scope="Studio, with project overrides" />
+
+The connection used by the **Open in RV** and **Open in Existing RV** loaders to talk to a running Open RV on the local machine; see [From other applications and the tray](index.md#from-other-applications-and-the-tray).
+
+<!-- screenshot: settings editor, Network Settings -->
+
+<Settings>
+<Setting name="Connection Name" default="ayon-rv-connect">
+
+The name the connection identifies itself with to Open RV.
+
+</Setting>
+<Setting name="Connection Port" default="45124">
+
+The port of the network interface of Open RV.
+
+</Setting>
+<Setting name="Timeout in Seconds" default="20">
+
+How long the connection is retried before it fails.
+
+</Setting>
+</Settings>
+
+## Color Management (imageio)
+
+<SettingLocation uri="ayon+settings://openrv/imageio" scope="Studio, with project overrides" />
+
+Whether color management is applied for Open RV. How AYON resolves the OCIO config when a host starts is described in [Color management on launch](../../../pipeline/color-management-on-launch.md).
+
+<!-- screenshot: settings editor, Color Management (imageio) -->
+
+<Settings>
+<Setting name="Enable Color Management" default="Enabled">
+
+Read by the core addon as the switch that activates color management for this host.
+
+</Setting>
+</Settings>
+
+The settings module also defines **Override global OCIO config** and **Config path** fields, but they are not part of the addon settings in this version.
+
+## Related
+
+- [Open RV addon](index.md)
+- [Color management on launch](../../../pipeline/color-management-on-launch.md)
+- [Settings and scopes](../../../ayon/how-ayon-works/settings.md)

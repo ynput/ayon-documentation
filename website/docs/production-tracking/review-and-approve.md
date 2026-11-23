@@ -7,15 +7,24 @@ verified: 2026-11-17
 
 # Review and approve
 
-<!-- screenshot: web viewer on wing_it playing a lighting version of 020_0040, with a frame comment in the activity feed next to the player -->
+![The web viewer on wing_it playing renderLightingMain v005 of 020_0040 at frame 1034, with a comment linked to that frame about a shadow flicker in the activity feed next to the player](assets/review-and-approve/viewer-frame-comment.webp)
 
 Review is where a production decides whether work is done. In AYON every version can carry media to watch, the notes are written next to it, and the decision is recorded as a status, so the next person sees what was asked and what was approved without searching emails or meeting notes. Supervisors can review one submission at a time in the web app, run dailies in a review session, or watch at full quality in a desktop player. The [Production workflow](../ayon/how-ayon-works/production-workflow.md#7-review) shows where review fits in the whole production.
 
 ## Something to watch on every version
 
-<!-- screenshot: Version files tab of a wing_it version with three reviewables (beauty, close-up, turntable) -->
+<Columns widths="45 55">
+<Column>
 
 A version holds its media as [reviewables](../ayon/web-ui/details-panel.md#version-files-tab): videos or images that play in the browser. A version can have several, for example a beauty render and a close-up of a detail, so a reviewer sees everything the artist wants to show in one place.
+
+</Column>
+<Column>
+
+![The Version files tab of renderLightingMain v007 on wing_it 020_0040 with two reviewables: the lighting movie and an animation reference](assets/review-and-approve/version-files.png "Version files tab")
+
+</Column>
+</Columns>
 
 Reviewables come from two sources:
 
@@ -24,7 +33,7 @@ Reviewables come from two sources:
 
 ## Check one submission
 
-<!-- screenshot: web viewer version toolbar on wing_it showing Viewing v005, Latest v006 and Approved v004 -->
+![The version toolbar of the web viewer on wing_it 020_0040: the previous version v004 marked A for approved, Viewing v005, the next version v006, Latest v007 and Approved v004](assets/review-and-approve/viewer-version-toolbar.png "Version toolbar of the web viewer")
 
 The [web viewer](../ayon/web-ui/web-viewer.md) opens over the page the reviewer is on, with `Spacebar` or from a thumbnail, on the Overview, Task progress, Products, Lists or Home tasks. It plays the reviewables of a version next to its activity feed, so watching and commenting happen in one place, without leaving the list of work to review.
 
@@ -32,7 +41,7 @@ Switching to another version of the product keeps the current frame, so the new 
 
 ## Review together
 
-<!-- screenshot: wing_it review session with the playlist of 020 sequence shots, a synced presenter and the Feedback tab open -->
+![The wing_it review session 020_tryout - ANIM: the playlist of 19 animation versions of 020_tryout shots, the player on 020_0050 v004, the clips on the timeline below and the Feedback tab with the activity of the version](assets/review-and-approve/review-session.webp)
 
 Dailies, team reviews and client reviews need a playlist that several people watch together. Review sessions provide it. They come from the [Review addon](../addons/production-tracking/review/index.md), a paid addon on AYON Pro and included in AYON Studio (see [AYON plans](../ayon/plans.md)).
 
@@ -52,13 +61,22 @@ Some reviews need the full quality of the published files and the color tools of
 
 ## Approve or send back
 
-<!-- screenshot: details panel of a wing_it version with the status menu open on Approved, and the task's activity feed showing the comment -->
+<Columns widths="45 55">
+<Column>
 
 The outcome of a review is a status: the version is set to **Approved**, or back to a status that asks for more work, and the task status is set to match. Notes and statuses reach the artist in the [inbox](../ayon/web-ui/inbox/index.md), the next version arrives, and the loop repeats until the work is approved. Because statuses count by state, approved work shows up right away in the progress figures; see [See where every task stands](tracking-progress.md).
 
+</Column>
+<Column>
+
+![The details panel of renderLightingMain v005 on wing_it 020_0040 with the status menu open on Approved, above the version's activity feed with the reviewer's frame comment](assets/review-and-approve/approve-status-menu.png "Setting the version status")
+
+</Column>
+</Columns>
+
 With the Power Pack, [status sync](../addons/production-tracking/power-pack/index.md#status-sync) can change the task status when a version status changes, for example approving the task when its version is approved, so reviewers set one status instead of two. The rules are off by default.
 
-An approved version is easy to find later: the viewer's **Approved** button (`e`) jumps to the latest version with a done status, and the [Products](../ayon/web-ui/production-tracking/products.md) page can filter on **Latest Done**. That is where deliveries start; see [Prepare deliveries](deliveries.md).
+An approved version is easy to find later: the viewer's **Approved** button (`e`) jumps to the latest version with a done status, and the [Products](../ayon/web-ui/production-tracking/products.md) page can filter on **Product Version: Latest Done**, the highest version of each product with a done status. That is where deliveries start; see [Prepare deliveries](deliveries.md).
 
 ## Related
 

@@ -160,7 +160,7 @@ submit_workflow_to_farm(
 
 ### Command-Line Interface (CLI)
 
-The addon's commands, such as `execute`, `submit` and `execute-slice-flow`, are listed in [Command line](../../addons/automation/workflow/index.md#command-line) on the Workflow addon page. `addon workflow --help` lists them with their options, see [Addon commands](../../pipeline/launcher-administration.md#addon-commands).
+The addon's commands, such as `execute`, `submit` and `execute-slice-flow`, are listed in [Command line](../../addons/automation/workflow/index.md#command-line) on the Workflow addon page. `addon workflow --help` lists them with their options, see [Addon commands](../../pipeline/launcher-command-line.md#addon-commands).
 
 :::tip Verbose output
 For full diagnostic output, set `AYON_WORKFLOW_DEBUG=1`, or `AYON_DEBUG=1`, before running a command.

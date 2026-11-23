@@ -3,11 +3,13 @@
  *
  * Tokens are copied from the AYON web app so the docs look like the
  * product. Sources:
- *   - ynput/ayon-react-components  src/theme/tokens.css, states.css, theme.dark.css
+ *   - ynput/ayon-react-components  src/theme/tokens.css, states.css,
+ *                                  theme.dark.css, theme.light.css
  *   - ynput/ayon-frontend          src/styles/index.scss
- * The AYON UI is dark only (its light theme is not enabled), so this site is
- * dark only too. To follow a change in the app, update the `--md-*` values
- * below from tokens.css; the `--ifm-*` section maps them onto Docusaurus.
+ * Like the app, the site has a dark theme (the default) and a light theme, picked
+ * with Dark, Light or System in the navbar (src/theme/Navbar/ColorModeToggle).
+ * To follow a change in the app, update the `--md-*` values below from tokens.css
+ * (the `-dark` and `-light` values); the `--ifm-*` section maps them onto Docusaurus.
  */
 
 /* ---------- Fonts ----------
@@ -17,10 +19,10 @@
  * (The web app itself uses Nunito Sans; the help center uses Inter.)
  */
 
-/* ---------- AYON design tokens (dark) ---------- */
+/* ---------- AYON design tokens (dark, the default) ---------- */
 :root,
-[data-theme="dark"],
-[data-theme="light"] {
+[data-theme="dark"] {
+    color-scheme: dark;
     --md-sys-color-primary: #8fceff;
     --md-sys-color-primary-hover: hsl(206, 80%, 73%);
     --md-sys-color-primary-active: hsl(206, 72%, 71%);
@@ -40,7 +42,7 @@
     --md-sys-color-warning: #fb9c15;
     --md-sys-color-warning-container: hsl(25, 100%, 29%);
     --md-sys-color-on-warning-container: hsl(25, 100%, 92%);
-    --md-sys-color-outline: #8b9198;
+    --md-sys-color-outline: #9aa0a7;
     --md-sys-color-outline-variant: #41474d;
     --md-sys-color-background: #252a31;
     --md-sys-color-on-background: #f2f2f3;
@@ -69,25 +71,92 @@
     /* Sampled from the web app: selected row / list item tint */
     --ayon-selected: #1b4154;
 
+    /* menus and dropdowns, raised by a lighter surface */
+    --ayon-overlay: var(--md-sys-color-surface-container-high);
+    --ayon-overlay-hover: var(--md-sys-color-surface-container-highest);
+    --ayon-overlay-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+    /* Infima's shades of the primary color (button hover, active links) */
+    --ayon-primary-dark: #3db4fc;
+    --ayon-primary-darker: #0099de;
+    --ayon-primary-darkest: #007eb8;
+    --ayon-primary-light: #cae6ff;
+    --ayon-primary-lighter: #e6f2ff;
+    --ayon-primary-lightest: #f6f9ff;
+    --ayon-code-line-highlight: rgba(143, 206, 255, 0.12);
+
     --ayon-radius: 4px;
     --ayon-radius-large: 8px;
     --ayon-font-family: "Inter Variable", Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
     --ayon-font-family-heading: "Jost Variable", Jost, "Inter Variable", sans-serif;
 }
 
+/* ---------- AYON design tokens (light) ----------
+ * The `-light` values of tokens.css and states.css. The brand swatch stays the same. */
+[data-theme="light"] {
+    color-scheme: light;
+    --md-sys-color-primary: #0b76ba;
+    --md-sys-color-primary-hover: #0a69a6;
+    --md-sys-color-primary-active: #095d93;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #d5eafa;
+    --md-sys-color-on-primary-container: #08304d;
+    --md-sys-color-secondary: #50606e;
+    --md-sys-color-secondary-container: #dde5ee;
+    --md-sys-color-on-secondary-container: #1e2a36;
+    --md-sys-color-tertiary: #00845e;
+    --md-sys-color-on-tertiary: #ffffff;
+    --md-sys-color-tertiary-container: #c9f2e0;
+    --md-sys-color-on-tertiary-container: #00402c;
+    --md-sys-color-error: #c5281c;
+    --md-sys-color-error-container: #fbddd8;
+    --md-sys-color-on-error-container: #7a1309;
+    --md-sys-color-warning: #b45309;
+    --md-sys-color-warning-container: #fde6cc;
+    --md-sys-color-on-warning-container: #6b3005;
+    --md-sys-color-outline: #545d68;
+    --md-sys-color-outline-variant: #ccd3db;
+    --md-sys-color-background: #e9ecf0;
+    --md-sys-color-on-background: #1a1e23;
+    --md-sys-color-surface: #f8f9fb;
+    --md-sys-color-on-surface: #1a1e23;
+    --md-sys-color-on-surface-variant: #47505a;
+    --md-sys-color-surface-container-highest: #d8dde4;
+    --md-sys-color-surface-container-high: #e4e8ed;
+    --md-sys-color-surface-container: #eef1f4;
+    --md-sys-color-surface-container-low: #f8f9fb;
+    --md-sys-color-surface-container-lowest: #ffffff;
+    --md-sys-color-surface-container-high-hover: #dae0e6;
+    --md-sys-color-surface-container-hover: #e6e9ee;
+
+    /* the app selects with the primary container on the light theme */
+    --ayon-selected: var(--md-sys-color-primary-container);
+
+    /* a light surface can't be raised by making it lighter: white with a shadow and a hairline */
+    --ayon-overlay: var(--md-sys-color-surface-container-lowest);
+    --ayon-overlay-hover: var(--md-sys-color-surface-container);
+    --ayon-overlay-shadow: 0 8px 24px rgba(16, 24, 40, 0.14), 0 0 0 1px var(--md-sys-color-outline-variant);
+
+    --ayon-primary-dark: #0a6aa7;
+    --ayon-primary-darker: #0a649e;
+    --ayon-primary-darkest: #085282;
+    --ayon-primary-light: #0c82cd;
+    --ayon-primary-lighter: #0d88d5;
+    --ayon-primary-lightest: #2196e6;
+    --ayon-code-line-highlight: rgba(11, 118, 186, 0.1);
+}
+
 /* ---------- Map tokens onto Docusaurus / Infima ---------- */
 /* `:root[data-theme]` outranks Infima's own `[data-theme=dark]:root` block. */
 :root[data-theme] {
-    color-scheme: dark;
-
     /* brand */
     --ifm-color-primary: var(--md-sys-color-primary);
-    --ifm-color-primary-dark: #3db4fc;
-    --ifm-color-primary-darker: #0099de;
-    --ifm-color-primary-darkest: #007eb8;
-    --ifm-color-primary-light: #cae6ff;
-    --ifm-color-primary-lighter: #e6f2ff;
-    --ifm-color-primary-lightest: #f6f9ff;
+    --ifm-color-primary-dark: var(--ayon-primary-dark);
+    --ifm-color-primary-darker: var(--ayon-primary-darker);
+    --ifm-color-primary-darkest: var(--ayon-primary-darkest);
+    --ifm-color-primary-light: var(--ayon-primary-light);
+    --ifm-color-primary-lighter: var(--ayon-primary-lighter);
+    --ifm-color-primary-lightest: var(--ayon-primary-lightest);
     --ifm-color-secondary: var(--md-sys-color-secondary);
     --ifm-color-info: var(--ayon-brand-blue);
     --ifm-color-success: var(--ayon-brand-mint);
@@ -138,7 +207,12 @@
     --ifm-navbar-shadow: 0 1px 0 var(--md-sys-color-outline-variant);
 
     /* code blocks */
-    --docusaurus-highlighted-code-line-bg: rgba(143, 206, 255, 0.12);
+    --docusaurus-highlighted-code-line-bg: var(--ayon-code-line-highlight);
+
+    /* navbar search field: a raised surface on both themes, like the app's inputs */
+    --ifm-navbar-search-input-background-color: var(--md-sys-color-surface-container-high);
+    --ifm-navbar-search-input-color: var(--md-sys-color-on-surface);
+    --ifm-navbar-search-input-placeholder-color: var(--md-sys-color-on-surface-variant);
 
     /* search (@easyops-cn/docusaurus-search-local) */
     --search-local-modal-background: var(--md-sys-color-surface-container-high);
@@ -147,6 +221,16 @@
     --search-local-muted-color: var(--md-sys-color-on-surface-variant);
     --search-local-highlight-color: var(--md-sys-color-primary);
     --search-local-hit-active-color: var(--md-sys-color-on-primary-container);
+}
+
+/* Navbar search icon: Infima draws it as a background image with fill="currentColor", which a background
+   image can't resolve, so it was black on both themes. Same Infima magnifier with the placeholder grey
+   (--md-sys-color-on-surface-variant) as a literal hex, since CSS variables don't reach into a data URI. */
+:root[data-theme="dark"] {
+    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%23c1c7ce" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+}
+:root[data-theme="light"] {
+    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%2347505a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
 }
 
 /* ---------- Component touches ---------- */
@@ -377,4 +461,96 @@ foreignObject .material-symbols-outlined {
     font-size: 28px;
     line-height: 1.2;
     color: var(--ayon-brand-blue);
+}
+
+/* Code blocks on the light theme: the GitHub colors on the app's light surface, with a
+   hairline so the block stands off the page. The Prism theme sets the background inline. */
+[data-theme="light"] [class*="codeBlockContainer"] {
+    --prism-background-color: var(--md-sys-color-surface-container) !important;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    box-shadow: none;
+}
+
+/* Ynput bar above the navbar: the logo with dark letters on the light theme. */
+[data-theme="light"] #brand-logo {
+    content: url("/img/ynput_logo_small_BG.svg");
+}
+
+/* Badges (the GraphQL reference marks fields as scalar, list, non-null...): the chip
+   colors of the app. Infima's secondary badge puts dark text on the secondary color. */
+.badge--secondary {
+    --ifm-badge-background-color: var(--md-sys-color-secondary-container);
+    --ifm-badge-border-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+
+/* REST API reference (redoc) on the light theme. Redoc builds its right panel for a dark
+   background, with fixed colors, and its theme can't differ between the color modes, so
+   the light panel and samples are set here, like the light code blocks. Redoc has few
+   stable classes: the panel is the last child of an operation, the full-height strip
+   behind the panels is the last child of .redoc-wrap. */
+[data-theme="light"] .redoc-wrap > div:last-child,
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child {
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface);
+}
+
+/* redocusaurus colors the panel headings with a long selector, hence the !important */
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child h3 {
+    color: var(--md-sys-color-on-surface) !important;
+}
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child .react-tabs__tab-panel,
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child .react-tabs__tab-panel :not(.token):not(a) {
+    color: var(--md-sys-color-on-surface);
+}
+
+/* the endpoint bar, the sample panels and the content type and schema boxes */
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child > div:first-child > button,
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child .react-tabs__tab-panel {
+    background-color: var(--md-sys-color-surface-container-lowest);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface);
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel span + div,
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel div:has(> select.dropdown-select) {
+    background-color: var(--md-sys-color-surface-container);
+}
+
+/* response code tabs: the selected one stays white, the others sit on the panel */
+[data-theme="light"] .redoc-wrap .react-tabs__tab-list > li {
+    border-color: var(--md-sys-color-outline-variant);
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-list > li:not(.react-tabs__tab--selected) {
+    background-color: var(--md-sys-color-surface-container-high);
+}
+
+/* sample JSON and code: GitHub colors, as in the light code blocks */
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel code,
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel pre {
+    text-shadow: none;
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .collapser {
+    color: var(--md-sys-color-on-surface-variant);
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token.property.string { color: #0550ae; }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token.string { color: #0a3069; }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token:is(.number, .boolean, .keyword, .constant) { color: #cf222e; }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token.punctuation { color: var(--md-sys-color-on-surface-variant); }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel a { color: var(--md-sys-color-primary); }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .hovered { background-color: var(--ayon-code-line-highlight); }
+
+/* Launcher tray icons: a grey tile, like a taskbar, so the white development icon shows.
+   The same fixed grey in both themes, so the icons don't change when the theme switches.
+   The build inlines these small images, so the alt text is the hook. */
+.markdown img[alt*="tray icon:"] {
+    padding: 3px;
+    border-radius: var(--ayon-radius);
+    background-color: #545d68;
+}
+
+/* Naming conventions graph: the roots feed every template. Mermaid places a node right of whatever
+   points into it, so these links are written two-headed (template <--> Roots) to keep Roots on the
+   right, and the arrowhead at the Roots end is hidden here, leaving the arrow into the template. */
+.docusaurus-mermaid-container path[id$="-namingRoot-0"] {
+    marker-end: none !important;
 }

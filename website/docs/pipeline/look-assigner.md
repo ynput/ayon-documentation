@@ -1,27 +1,49 @@
 ---
 title: Look Assigner
 description: "The Look Assigner (Look Manager) of the Maya integration: the window that finds the assets in a Maya scene and assigns the latest published look to their nodes."
-verified: 2026-10-16
+verified: 2026-11-23
+ui_purpose: "Finds the assets in a Maya scene and assigns the latest published look of each to its nodes."
+ui_location: "Maya: AYON menu > Look assigner..., or the Look Manager button in the Maya toolbox"
 sources:
-  - https://help.ayon.app/en/articles/6062888-look-assigner
+  - https://github.com/ynput/ayon-maya/blob/develop/client/ayon_maya/tools/mayalookassigner/app.py
+  - https://github.com/ynput/ayon-maya/blob/develop/client/ayon_maya/tools/mayalookassigner/widgets.py
+  - https://github.com/ynput/ayon-maya/blob/develop/client/ayon_maya/tools/mayalookassigner/models.py
+  - https://github.com/ynput/ayon-maya/blob/develop/client/ayon_maya/tools/mayalookassigner/commands.py
+  - https://github.com/ynput/ayon-maya/blob/develop/client/ayon_maya/tools/mayalookassigner/lib.py
+  - https://github.com/ynput/ayon-maya/blob/develop/client/ayon_maya/api/menu.py
+  - https://github.com/ynput/ayon-maya/blob/develop/client/ayon_maya/api/customize.py
 ---
 
 # Look Assigner
 
-The Look Assigner applies published looks to the models in a Maya scene. A published look stores two things: the shading networks and the information about which shading network belongs to which model, and the render attributes that sit on the meshes. The tool reads the AYON folder id stored on the scene nodes, finds the look products published for those folders, and re-applies the latest published version of the chosen look to the matching nodes. The window title reads `Look Manager`, the menu entry reads **Look assigner...**. It is a Maya-specific tool and is part of the Maya addon, not of the core addon.
+<PageInfo />
+
+:::caution Part of the traditional Maya workflow
+The Look Assigner belongs to the `cbId` workflow of the Maya addon: it finds assets through the `cbId` attribute on the nodes, so it needs **Use cbId workflow** on in the [Maya addon settings](../addons/3d-applications/maya/settings.md#general) (on by default). It fits pipelines that exchange geometry as Maya references and Alembic caches. In the [OpenUSD contribution workflow](openusd.md#the-contribution-workflow), each look product carries its own assignments and is layered over the model, so no separate assignment step is needed.
+:::
+
+The Look Assigner connects the lookdev department to everyone downstream. A look artist publishes shaders once; lighting, animation or layout scenes that contain the model, often as a reference or a cache, get those shaders back with a few clicks instead of rebuilding or importing shading networks by hand. Because the assignment is driven by the ids that AYON stores on the published geometry, it keeps working when the geometry comes from a cache, a proxy or another namespace, and a new look version is picked up by assigning again.
+
+A published look product holds two things: the Maya file with the shading networks, and a JSON file with the relationships, meaning which shading group belongs to which node and which render attributes sit on the meshes. The tool reads the AYON folder id stored on the scene nodes (the `cbId` attribute), finds the look products published for those folders, and re-applies the latest version of the chosen look to the matching nodes. It is a Maya-only tool, part of the [Maya addon](../addons/3d-applications/maya/index.md), not of the core addon. The window title reads `Look Manager`, the menu entry **Look assigner...**.
 
 ## Where it appears
 
-| Location | Entry |
-|---|---|
-| AYON menu in Maya | **Look assigner...** |
-| Maya toolbox | A **Look Manager** button, added to the toolbox by the AYON integration (it replaces Maya's web button). |
+- **AYON menu in Maya:** **Look assigner...**
+- **Maya toolbox:** a **Look Manager** button that the AYON integration adds to the toolbox in place of Maya's web button.
 
 The window is created once per Maya session and reused. Its title is `Look Manager 1.4.0 - [<workfile name>]`, where the name is the open scene file or `untitled`.
+
+A typical use:
+
+1. Click **Get All Assets** (or select geometry and click **Get Assets From Selection**).
+2. Select one or more assets, or a namespace under an asset, in the **Assets** panel.
+3. In the **Looks** panel, right-click the look to apply and choose **Assign looks..**.
 
 ## Layout
 
 The window is 750 by 500 pixels and is split into two panels, with a footer.
+
+![The Look Manager window for the workfile cg_sh010_lighting_v003.ma: the Assets panel with Get All Assets and Get Assets From Selection above a tree of assets such as airConditionerA and brickPileA, and the Looks panel with the look Main matching one asset, the Assign to selected only checkbox and the Remove Unused Looks button](assets/look-assigner/look-manager.png "Look Manager")
 
 | Region | Content |
 |---|---|
@@ -70,13 +92,16 @@ The table is sorted by label. Entries can be selected with the extended selectio
 | Special nodes | VRayProxy nodes are handled when the V-Ray plug-in is loaded, and Arnold stand-ins when the Arnold plug-in is loaded; GPU cache nodes are included only when the current renderer is Arnold. Without the plug-in the status bar says the assignment to those node types was not possible. |
 | Result | The status bar shows the progress per asset and `Finished assigning..` with the elapsed time. |
 
-## Permissions and settings
+## Requirements
 
-The tool has no permission gate and no settings of its own. It needs a project context on the Maya session and read access to the project's products and published files. The look products it lists are those published by the Maya look publish plugins; the product type must be `look`.
+The tool has no permission gate and no settings of its own. It needs a project context on the Maya session and read access to the project's products and published files. It lists products of the product type `look`, which the Maya look creator and publish plugins produce (see [Maya addon](../addons/3d-applications/maya/index.md)), and relies on the `cbId` workflow described above.
+
+The [Templated workfile builder](template-builder.md) in Maya offers an **Assign Look** placeholder that applies a look product to the containers loaded by other placeholders, the same kind of assignment without opening the tool.
 
 ## Related
 
+- [Maya addon](../addons/3d-applications/maya/index.md): the AYON menu, the look creator and the look validators.
+- [Maya rendering and renderers](../addons/3d-applications/maya/rendering.md): Arnold standins and V-Ray proxies that can take looks.
 - [Publisher](publisher.md): publishes the look products.
-- [Loader](loader.md) and [Scene inventory](scene-inventory.md): load and manage published products in a scene. Loaded looks appear as containers.
+- [Loader](loader.md) and [Scene Inventory](scene-inventory.md): load and manage published products in a scene. Loaded looks appear as containers.
 - [Product types](product-types.md): the `look` product type.
-- [Workfiles](workfiles.md)

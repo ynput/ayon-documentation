@@ -1,16 +1,28 @@
 ---
 title: Scene Inventory
 description: "The Scene Inventory tool of AYON integrations: listing the loaded products of the open scene, their versions and statuses, and updating, switching, locking and removing them."
-verified: 2026-10-16
+verified: 2026-11-23
+ui_purpose: "Lists the loaded content of the open scene and updates, switches, locks or removes it."
+ui_location: "AYON menu of the host application > Manage..."
 sources:
-  - https://help.ayon.app/en/articles/9770233-scene-inventory
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/sceneinventory/window.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/sceneinventory/view.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/sceneinventory/model.py
+  - https://github.com/ynput/ayon-core/tree/develop/client/ayon_core/tools/sceneinventory/switch_dialog
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/sceneinventory/select_version_dialog.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/inventory/remove_and_load.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/validate_containers.py
 ---
 
 # Scene Inventory
 
+<PageInfo />
+
+A scene in production is assembled from other departments' work: a rig, a set, a camera, an animation cache, each published and loaded at some version. Those versions keep moving while the artist works. The Scene Inventory is the manager for that: it shows what is loaded, which of it is outdated, and lets the artist update to the latest or to an approved version, step back to an older one, swap one asset or representation for another, or remove it, without reloading and rewiring by hand. For a TD it is also the quickest way to see what a scene depends on.
+
 The Scene Inventory lists what was loaded into the open scene with the [Loader](loader.md) and manages it. Every loaded item is a container that records the representation it came from. The tool compares each container with the published versions of its product, marks outdated ones, and changes the version, the folder, the product or the representation of the containers, or removes them. It is also known as the manager and in some integrations as **Inventory**.
 
-## Where it appears
+## Where it opens
 
 | Item | Value |
 |---|---|
@@ -28,7 +40,7 @@ A toolbar sits above the container tree.
 | Control | What it does |
 |---|---|
 | **Search** input | Filters the tree by name (placeholder **Filter by name...**). Matches are case-insensitive substrings of the name; a group stays visible when its name or the name of one of its containers matches. |
-| **Filter to outdated** checkbox | Shows only groups whose loaded version is not the latest (tooltip "Show outdated files only"). |
+| **Filter to outdated** checkbox | Shows only groups whose loaded version is not the latest (tooltip "Show outdated files only"). It is off each time the window is created. |
 | Update arrow button | Updates all outdated containers to the latest version (tooltip "Update all outdated to latest version"). Hero versions are skipped. |
 | Refresh button | Reloads the containers and versions (tooltip "Refresh"). |
 
@@ -69,6 +81,7 @@ A right click opens the menu for the selected rows. An entry used on a group row
 | **Update to latest** | A selected container is outdated or uses a hero version | Updates to the latest numbered version. |
 | **Change to hero** | A hero version exists for a selected product | Switches to the hero version. |
 | **Set version** | A container is the active row | Opens **Select version**: **Set version number to** and a drop-down with the versions of the selected products (hero versions in brackets). Statuses are shown when the selection holds one product. **OK** and **Cancel**. |
+| **Version up**, **Version down** | The selection has containers whose entities exist | Moves each container one existing version up or down from its own current version, so a selection with mixed versions can be stepped together. A hero version steps from the version it was made from. Containers already on the first or last version stay as they are. |
 | **Switch Folder** | The selection has containers whose entities exist | Opens the switch dialog. |
 | **Remove items** | Always | Asks **Are you sure?** and removes the containers from the scene. |
 | **Download**, **Upload** | Site Sync is enabled | Resynchronizes the representations to the active site or the remote site. |
@@ -76,6 +89,8 @@ A right click opens the menu for the selected rows. An entry used on a group row
 | **Actions** | An inventory action matches | Submenu with the inventory actions that integrations and addons register for the selected containers, for example **Select in scene** or **Import Reference**, and **Remove and load** from the core addon. |
 | **Cherry-Pick (Hierarchy)** | Rows are selected | Shows only the selected containers. The border of the tree turns orange. A cherry-pick can be narrowed again. |
 | **Back to Full-View** | Cherry-pick is active | Returns to the full list. |
+
+Keyboard shortcuts in the tree: `Ctrl+Up` and `Ctrl+Down` step the selected containers one version up or down, and `Ctrl+Shift+Up` updates them to the latest version. The shortcuts are shown next to the menu entries. Like all updates, they skip locked containers.
 
 Updates run per container. When one fails, the dialog **Update failed** shows the error, and its **Switch Folder** button opens the switch dialog for the container. The list refreshes after every change.
 
@@ -94,17 +109,18 @@ Under each column a label shows the target value, or **\*No changes** when the c
 
 Possible changes include a new representation only (for example from `ma` to `abc`), a new product, and a new folder, each with or without keeping the other fields where the target has them.
 
-## Permissions and settings
+## Tool settings
 
-| Item | Effect |
-|---|---|
-| Integration | Lists and edits containers through the host. The loaders and inventory actions available depend on the integration and its addon settings. |
-| Core addon setting group **Publish** > **Validate Outdated Containers** | Profiles by **Host names** with **Enabled**, **Optional** and **Active**. Controls whether publishing fails on outdated containers. See [Core addon settings](../addons/essentials/core/settings.md). |
-| Site Sync addon | Adds the site columns and the **Download** and **Upload** entries. |
-| Project statuses | Status names, colors and icons, and which statuses belong to the done state (used by **Update to last approved**). |
+Tool settings are set in the studio settings and can be overridden per project.
+
+- The integration lists and edits the containers. Which loaders and inventory actions are available depends on the integration and its addon settings.
+- The core publish validator **Validate Outdated Containers** decides per host whether publishing fails on outdated containers; see [Validators](../addons/essentials/core/settings.md#validators). Its failure offers the action **Show Inventory**.
+- The project statuses give the status names, colors and icons, and which statuses belong to the done state (used by **Update to last approved**).
+- The Site Sync addon adds the site columns and the **Download** and **Upload** entries.
 
 ## Related
 
-- [Loader](loader.md) and [Browser](browser.md): create the containers.
+- [Loader](loader.md): creates the containers.
 - [Workfiles](workfiles.md) and [Publisher](publisher.md): the other tools of the integration menu.
 - [Product types](product-types.md).
+- [Pipeline tools](pipeline-tools.md): overview of all desktop tools.

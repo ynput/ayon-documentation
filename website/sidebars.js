@@ -210,7 +210,6 @@ module.exports = {
             collapsed: false,
             items: [
                 "production-tracking/reporting",
-                "production-tracking/time-tracking",
             ],
         },
         "production-tracking/pipeline",
@@ -218,29 +217,20 @@ module.exports = {
     ],
     Pipeline: [
         "pipeline/index",
-        "pipeline/publishing",
-        "pipeline/product-types",
-        "pipeline/naming-conventions",
         {
             type: "category",
-            label: "Color management",
-            collapsed: false,
-            items: [
-                "pipeline/color-management-on-launch",
-                "pipeline/color-management-in-publishing",
-            ],
+            label: "AYON launcher",
+            link: { type: "doc", id: "pipeline/launcher" },
+            items: ["pipeline/launcher-command-line"],
         },
-        "pipeline/template-builder",
         {
             type: "category",
             label: "Pipeline tools",
-            collapsed: false,
+            link: { type: "doc", id: "pipeline/pipeline-tools" },
             items: [
-                "pipeline/launcher",
-                "pipeline/launcher-administration",
+                "pipeline/tray-and-launcher-window",
                 "pipeline/workfiles",
                 "pipeline/loader",
-                "pipeline/browser",
                 "pipeline/publisher",
                 "pipeline/scene-inventory",
                 "pipeline/look-assigner",
@@ -248,6 +238,33 @@ module.exports = {
                 "pipeline/experimental-tools",
             ],
         },
+        {
+            type: "category",
+            label: "Publishing",
+            link: { type: "doc", id: "pipeline/publishing" },
+            items: ["pipeline/product-types"],
+        },
+        "pipeline/naming-conventions",
+        {
+            type: "category",
+            label: "Color management",
+            items: [
+                "pipeline/color-management-on-launch",
+                "pipeline/color-management-in-publishing",
+            ],
+        },
+        {
+            type: "category",
+            label: "Workflows",
+            items: [
+                "pipeline/template-builder",
+                "pipeline/editorial-publishing",
+                "pipeline/openusd",
+            ],
+        },
+        "pipeline/farm",
+        "pipeline/automations",
+        "pipeline/ai-assistants",
     ],
     YnputCloud: ["ynput-cloud/index"],
     // Labels and descriptions of the addon categories and addons are written only here;
@@ -489,16 +506,7 @@ module.exports = {
                                 "addons/pipeline-features/web-publisher/settings",
                             ],
                         },
-                        {
-                            type: "category",
-                            label: "Version Control (archived)",
-                            className: "addon-archived",
-                            collapsed: true,
-                            link: { type: "doc", id: "addons/pipeline-features/version-control/index" },
-                            items: [
-                                { type: "doc", id: "addons/pipeline-features/version-control/settings", className: "addon-archived" },
-                            ],
-                        },
+                        { type: "doc", id: "addons/pipeline-features/version-control/index", className: "addon-archived" },
                     ],
                 },
                 {
@@ -1033,16 +1041,7 @@ module.exports = {
                                 "addons/integrations/timers-manager/settings",
                             ],
                         },
-                        {
-                            type: "category",
-                            label: "Jira (archived)",
-                            className: "addon-archived",
-                            collapsed: true,
-                            link: { type: "doc", id: "addons/integrations/jira/index" },
-                            items: [
-                                { type: "doc", id: "addons/integrations/jira/settings", className: "addon-archived" },
-                            ],
-                        },
+                        { type: "doc", id: "addons/integrations/jira/index", className: "addon-archived" },
                     ],
                 },
             ],

@@ -182,7 +182,7 @@ Delivery packages approved work for a client or a vendor. It works on versions p
 
 | Tool | Where | What it does |
 |---|---|---|
-| **Deliver Versions** | An action of the desktop [Browser](../../pipeline/browser.md), opened from the tray without an application | Copies the files of the selected versions to a delivery location and renames them by the delivery templates of the project anatomy, on the workstation. |
+| **Deliver Versions** | An action of the desktop [Browser](../../pipeline/loader.md), opened from the tray without an application | Copies the files of the selected versions to a delivery location and renames them by the delivery templates of the project anatomy, on the workstation. |
 | [Batch delivery](../../addons/pipeline-features/batch-delivery/index.md) | **Batch Delivery Submit** and **Batch Transcode Submit** actions on versions in the web app | Sends the selected versions to a Deadline render farm, where Nuke re-processes them by a delivery preset (for example a color transform, a resize or a new file format) and publishes the result as a delivery version or as extra representations. |
 
 ## Related

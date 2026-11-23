@@ -4,62 +4,146 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Cinema4D addon with their default values: color management, creator plugins and publish validators."
 addon: cinema4d
 addon_repo: ayon-cinema4d
-addon_version: 0.2.0
+addon_version: 0.2.1
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
-  - https://github.com/ynput/ayon-cinema4d/tree/0.2.0/server
-  - https://help.ayon.app/en/articles/4858866-configure-cinema4d-addon
+  - https://github.com/ynput/ayon-cinema4d/tree/0.2.1/server
 ---
 
 # Cinema4D addon settings
 
 <AddonInfo />
 
-The settings of the [Cinema4D addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
+The settings of the [Cinema4D addon](index.md) are in **Studio settings > Cinema4D**, and can be overridden in **Project settings**. Pasting a location below into the URI bar of the web app opens that setting. The OCIO config itself is not set here: it comes from the color management settings of the core addon; see [Color management on launch](../../../pipeline/color-management-on-launch.md).
 
 ## Color management (ImageIO)
 
-| Setting | Default | Description |
-|---|---|---|
-| Enable Color Management | On | Cinema 4D follows the global color management, using the OCIO files set in the core addon. A master switch for the whole section. |
+<SettingLocation uri="ayon+settings://cinema4d/imageio" scope="Studio, with project overrides" />
 
-### File rules
+How Cinema 4D follows the AYON color management. **Reset Colorspace** in the AYON menu switches the document to OCIO with the config from the core addon and, when **Workfile color management** is enabled, applies its values to the document and to the Redshift render settings.
 
-| Setting | Default | Description |
-|---|---|---|
-| Activate Host Rules | Off | Turn on the file rules of this host. |
-| Rules | None | Rules that assign a colorspace to files. Each has a **Rule name**, a **Regex pattern**, a **Colorspace name** and a **File extension**. |
+<!-- screenshot: settings editor, Color Management (ImageIO) -->
 
-### Workfile color management
+<Settings>
+<Setting name="Enable Color Management" default="Enabled">
 
-Sets the OCIO values of the workfile. They are used by **Reset Colorspace** in the AYON menu.
+Master switch for the whole section: Cinema 4D follows the global color management.
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | Off | Apply the values below. |
-| Default render space | `ACES` | The role of the working space, for example `scene_linear`. Behaves like the `OCIO_RENDER_SPACE` environment variable. |
-| Default active displays | `ACES` | Colon-separated list of displays, for example `ACES:P3`. Behaves like `OCIO_ACTIVE_DISPLAYS`. |
-| Default active views | `sRGB` | Colon-separated list of views, for example `sRGB:DCDM`. Behaves like `OCIO_ACTIVE_VIEWS`. |
-| Thumbnails | `sRGB` | The thumbnail colorspace. |
+</Setting>
+<Setting name="File Rules">
+
+Rules that assign a colorspace to files by their path.
+
+<Settings>
+<Setting name="Activate Host Rules" default="Disabled">
+
+Use the rules below instead of the global file rules of the core addon.
+
+</Setting>
+<Setting name="Rules" default="Empty list">
+
+Each rule has a unique name.
+
+<Settings>
+<Setting name="Rule name" />
+<Setting name="Regex pattern">
+
+Regular expression matched against the file path.
+
+</Setting>
+<Setting name="Colorspace name">
+
+Colorspace given to matching files.
+
+</Setting>
+<Setting name="File extension" />
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Workfile Color Management">
+
+The OCIO values that **Reset Colorspace** sets in the document. Empty values are skipped.
+
+<Settings>
+<Setting name="Enabled" default="Disabled">
+
+Apply the values below.
+
+</Setting>
+<Setting name="Default render space" default="ACES">
+
+The role of the working space, for example `scene_linear`. Behaves like the `OCIO_RENDER_SPACE` environment variable.
+
+</Setting>
+<Setting name="Default active displays" default="ACES">
+
+Colon-separated list of displays, for example `ACES:P3`. Behaves like the `OCIO_ACTIVE_DISPLAYS` environment variable.
+
+</Setting>
+<Setting name="Default active views" default="sRGB">
+
+Colon-separated list of views, for example `sRGB:DCDM`. Behaves like the `OCIO_ACTIVE_VIEWS` environment variable.
+
+</Setting>
+<Setting name="Thumbnails" default="sRGB">
+
+Colorspace of the thumbnails in the document.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Create plugins
 
-One entry for each creator: Create Render, Create Camera, Create Pointcache, Create Redshift Proxy and Create Review. The Workfile creator has no settings. Each entry has the same settings.
+<SettingLocation uri="ayon+settings://cinema4d/create" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Turn the creator on or off. |
-| Product type items | None | Optional list of product types the creator can create. Each item has a **Product type** (the name) and a **Label** (how the UI shows it). |
+Turns creators on or off and limits the product types they offer. Every creator has the same two fields:
+
+- **Enabled** (default: enabled): the creator is available in the Publisher.
+- **Product type items** (default: empty list): optional list of product types the creator can create. Each item has a **Product type** (the name) and a **Label** (how the UI shows it).
+
+The Workfile creator has no settings.
+
+<!-- screenshot: settings editor, Create plugins -->
+
+<Settings>
+<Setting name="Create Render" default="Enabled" />
+<Setting name="Create Camera" default="Enabled" />
+<Setting name="Create Pointcache" default="Enabled" />
+<Setting name="Create Redshift Proxy" default="Enabled" />
+<Setting name="Create Review" default="Enabled" />
+</Settings>
 
 ## Publish plugins
 
-Validators share three switches: **Enabled** (the plugin runs), **Optional** (the artist can skip it in the Publisher) and **Active** (it is selected by default in the Publisher).
+<SettingLocation uri="ayon+settings://cinema4d/publish" scope="Studio, with project overrides" />
 
-| Validator | Enabled | Optional | Active | Description |
-|---|---|---|---|---|
-| Validate Frame Range | On | On | On | The publish frame range matches the AYON task. |
-| Validate Resolution | On | On | On | The publish resolution matches the AYON task. |
+The validators that can be configured. Each has three switches: **Enabled** (the plugin runs), **Optional** (the artist can turn it off in the Publisher) and **Active** (it is on by default in the Publisher). Validate Render Relative Paths and the other publish plugins have no settings.
 
-Validate Render Relative Paths and the other publish plugins have no settings.
+<!-- screenshot: settings editor, Publish plugins -->
+
+<Settings>
+<Setting name="Validate Frame Range" default="Enabled, optional, active">
+
+Checks that the publish frame range matches the frame range of the AYON task.
+
+</Setting>
+<Setting name="Validate Resolution." default="Enabled, optional, active">
+
+Checks that the publish resolution matches the resolution of the AYON task. The settings editor shows the label with a trailing period.
+
+</Setting>
+</Settings>
+
+## Related
+
+- [Cinema4D addon](index.md)
+- [Color management on launch](../../../pipeline/color-management-on-launch.md)
+- [Settings and scopes](../../../ayon/how-ayon-works/settings.md)

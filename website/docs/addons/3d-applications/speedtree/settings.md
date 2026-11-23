@@ -7,31 +7,79 @@ addon_repo: ayon-speedtree
 addon_version: 0.2.1
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
   - https://github.com/ynput/ayon-speedtree/tree/0.2.1/server
-  - https://help.ayon.app/en/articles/9963950-configure-speedtree-addon
 ---
 
 # SpeedTree addon settings
 
 <AddonInfo />
 
-The settings of the [SpeedTree addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
+The settings of the [SpeedTree addon](index.md) are in **Studio settings > SpeedTree**, and can be overridden per project in **Project settings > SpeedTree**. Pasting a location below into the URI bar of the web app opens that setting. How studio values, project overrides and addon versions combine is described in [Settings](../../../ayon/how-ayon-works/settings.md). The SpeedTree executables are defined in the Applications addon, not here.
 
 ## General
 
-| Setting | Default | Description |
-|---|---|---|
-| Pipeline SDK directory | `/path/to/bindings/python/python3.9` | The folder of the SpeedTree Pipeline SDK Python bindings, used by the integration. The default is a placeholder and must be replaced. |
-| Custom Template Path | Empty | An `.spm` file used as the new project when SpeedTree is launched without a workfile. When empty, or when the file does not exist, the `Blank.spm` of the SpeedTree installation (`tree_templates/Games`) is used. |
+<SettingLocation uri="ayon+settings://speedtree/sdk_directory" scope="Studio, with project overrides" />
 
-The launch hook adds the **Pipeline SDK directory** to Python's site directories and imports `speedtree.SpeedTree` from it, so the folder must be the one that contains the `speedtree` package, that is `bindings/python/python3.9` of the SDK.
+The two paths that the launch hooks use when the AYON Launcher starts SpeedTree. The custom template is at `ayon+settings://speedtree/template_path`.
+
+<!-- screenshot: settings editor, SpeedTree general settings -->
+
+<Settings>
+<Setting name="Pipeline SDK directory" default="/path/to/bindings/python/python3.9">
+
+The folder of the Python bindings of the SpeedTree Pipeline SDK, the one that contains the `speedtree` package (`bindings/python/python3.9` in the SDK). The default is a placeholder and must be replaced.
+
+At launch, a hook reads the SDK version from this folder, copies the folder into the addon (under `api/sdk/speedtree/<version>`, updating it when it is out of date) and adds that copy to `PYTHONPATH`. When the Perforce addon is installed, the folder is synced from Perforce first.
+
+</Setting>
+<Setting name="Custom Template Path">
+
+An `.spm` file copied as the new project when SpeedTree is launched without a workfile. When it is empty, or the file does not exist, the `tree_templates/Games/Blank.spm` of the SpeedTree installation is used.
+
+</Setting>
+</Settings>
 
 ## Create plugins
 
-### Create Model
+<SettingLocation uri="ayon+settings://speedtree/create" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Product type items | Empty list | Optional list of product types that the Model creator can create. Each item has a **Product type** (the product type name) and a **Label** (the name shown in the UI; default empty). |
+Settings of the creators.
+
+<!-- screenshot: settings editor, Create Plugins -->
+
+<Settings>
+<Setting name="Create Model">
+
+Creator of `model` products.
+
+<Settings>
+<Setting name="Product type items" default="Empty list">
+
+Product types the creator can make on top of its product base type, each shown as its own entry in the Publisher's create list. See [Product type, variant and product name](../../../pipeline/product-types.md#product-type-variant-and-product-name).
+
+<Settings>
+<Setting name="Product type">
+
+Name of the product type.
+
+</Setting>
+<Setting name="Label">
+
+How the Publisher shows the product type.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+## Related
+
+- [SpeedTree addon](index.md)
+- [Product types](../../../pipeline/product-types.md)
+- [Settings](../../../ayon/how-ayon-works/settings.md)

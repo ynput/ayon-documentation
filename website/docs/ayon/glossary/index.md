@@ -44,7 +44,7 @@ The terms below are written as the AYON web app and the AYON server use them. En
 | **Installer** | A launcher build for one platform, stored on the AYON server so users can download it and bundles can reference it. |
 | **Instance** | See Publish instance. |
 | **Label** | An optional display name of an entity. Folders, tasks, projects and lists have a label next to the name. |
-| **Launcher** | The AYON desktop application that starts DCC applications in a context and runs the pipeline of a bundle. Platform builds of it are uploaded to the AYON server as installers. See [Launcher](../../pipeline/launcher.md). |
+| **Launcher** | The AYON desktop application that starts DCC applications in a context and runs the pipeline of a bundle. Platform builds of it are uploaded to the AYON server as installers. See [AYON launcher](../../pipeline/launcher.md). |
 | **Library project** | A project marked **Library** that stores reusable data, such as assets, which other projects can load. |
 | **Link** | A stored, typed relationship between two entities of one project. See [Links manager](../web-ui/links-manager.md). |
 | **Link type** | The definition of a kind of link in the project anatomy: a name, an input entity type and an output entity type. The defaults are `generative`, `breakdown`, `reference` and `template`. |
@@ -93,6 +93,7 @@ The terms below are written as the AYON web app and the AYON server use them. En
 | **Web action** | An action an addon adds to the web app for the selected entities, for example in the details panel. The addon runs it on the server, and can ask the AYON launcher on the workstation to do part of it. See [Web actions](../../developer/addon-development/server.md#web-actions). |
 | **Web viewer** | The player of the web app for the reviewables of versions, with annotations and frame comments. See [Web viewer](../web-ui/web-viewer.md). |
 | **Workfile** | A scene file an artist works in within a task. Workfiles are saved and opened with the Workfiles tool and belong to the task. See [Workfiles](../../pipeline/workfiles.md). |
+| **Workflow** | Two different things in AYON. A **pipeline workflow** is a way of working that runs through several pipeline tools, such as the templated workfile builder, editorial publishing or OpenUSD, see [Workflows](../../pipeline/index.md#workflows). A **workflow graph** is a graph of nodes of the [Workflow addon](../../addons/automation/workflow/index.md), edited in its browser editor and run on a workstation, on the farm or by an event. |
 
 ## Related
 

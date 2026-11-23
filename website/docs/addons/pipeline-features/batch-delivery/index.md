@@ -8,7 +8,7 @@ addon_version: 0.4.5
 addon_scope: pipeline-server
 addon_flags: [licensed, power-feature]
 addon_private: true
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://help.ayon.app/en/articles/1653353-introduction-ayon-batch-delivery
   - https://help.ayon.app/en/articles/0910045-batch-delivery-user-guide
@@ -136,6 +136,14 @@ The delivery anatomy template itself is defined in the project anatomy, not in t
 ## ftrack
 
 When the `ftrack` addon is used, the addon ships an ftrack event handler package (served from the addon's private files) that adds a **Batch Delivery Submit** action to ftrack. It is offered for asset versions, review sessions and asset version lists. The **Ftrack delivery action** settings define which note label marks a client comment and how ftrack labels map to the `intent` value that is available to templates.
+
+## Command line
+
+The addon adds the command group `addon batchdelivery` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `offload-process` | Processes an offloaded delivery or transcode job. Options: `--event-id` and `--event-created-at` (both required). The Deadline job that the `DeadlineSubmitter` service submits runs it on a farm worker; it is not meant for direct use. |
 
 ## Related
 

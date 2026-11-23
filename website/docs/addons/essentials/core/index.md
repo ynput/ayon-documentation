@@ -60,7 +60,7 @@ The tools are Qt windows. Application integrations open them from the AYON menu,
 | Browser | A table view of project content whose right-click menu offers loader actions. |
 | Publish report viewer | Opens a saved publish report. |
 | AYON Console | Shows console output and offers an interpreter. |
-| Experimental tools | A dialog that enables **New publisher** for some hosts (CelAction, Flame, Harmony, Hiero, Resolve) and the **Pyblish Debug Stepper**. |
+| Experimental tools | A window that lists experimental tools; today the **Pyblish Debug Stepper**. See [Experimental tools](../../../pipeline/experimental-tools.md). |
 | Workfile template build | The windows for building a workfile from a template and managing its placeholders. |
 
 The tray application and the web server of the AYON Launcher also live in the addon.

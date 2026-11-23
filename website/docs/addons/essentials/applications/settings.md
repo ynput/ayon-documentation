@@ -1,169 +1,537 @@
 ---
 title: Applications addon settings
 sidebar_label: Settings
-description: "Reference of the settings of the AYON Applications addon with their default values: application definitions, additional applications, tool definitions and the application and tool filters."
+description: "The Applications addon settings: application and tool definitions, their environment values with the farm and standard groups, and the application and tool filters, with their defaults and scopes."
 addon: applications
 addon_repo: ayon-applications
-addon_version: 1.4.7
+addon_version: 1.4.9
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
-  - https://github.com/ynput/ayon-applications/tree/1.4.7/server
-  - https://help.ayon.app/en/help/articles/3945756-applications-and-tools
+  - https://github.com/ynput/ayon-applications/tree/1.4.9/server
 ---
 
 # Applications addon settings
 
 <AddonInfo />
 
-The settings of the [Applications addon](index.md), with the default values the addon ships with. The settings have two parts. **Definitions** (applications and tools) are studio settings. **Filters** decide which applications and tools are available in a context and can be set per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
+The settings of the [Applications addon](index.md) are in **Studio settings > Applications**, with project overrides for the filters in **Project settings > Applications**. Pasting a location below into the URI bar of the web app opens that setting. The settings have two parts: the **definitions** of applications and tools are studio settings, and the **filters**, which decide the applications and tools available in a context, can be overridden per project. Environment variables for all applications of a project are not set here but in **Project environments** of the [Core settings](../core/settings.md#project-project-environments).
 
-Environment fields hold a JSON object. Values can be lists and can be split per platform with the keys `windows`, `linux` and `darwin`.
+## Environment values
+
+Every **Environment** and **Environments** field on this page holds a JSON object of environment variables. A value can be:
+
+- a string;
+- a list of strings, joined with the path separator of the platform (`;` on Windows, `:` on Linux and macOS);
+- an object with the platform keys `windows`, `linux` and `darwin`, each holding a string or a list; a platform without a key does not get the variable;
+- an object with **environment group** keys, each holding any of the values above. An object is read as groups when none of its keys is a platform key.
+
+```json
+{
+    "ARNOLD_LICENSE_ORDER": {
+        "standard": "network",
+        "farm": "none"
+    },
+    "RENDER_ONLY_SETTING": {
+        "farm": "1"
+    },
+    "MY_PLUGIN_PATH": {
+        "standard": {
+            "windows": ["P:/plugins/win", "{MY_PLUGIN_PATH}"],
+            "linux": "/mnt/plugins/linux"
+        },
+        "farm": "/opt/plugins"
+    }
+}
+```
+
+The environment group decides which value a launch uses:
+
+- **`standard`** is used for every launch that does not ask for another group: applications started from the launcher, the web app actions and the `launch` commands, and the environment of the publish job on the farm, which the publish command computes without a group.
+- **`farm`** is requested by the farm addons when they compute the environment of a render job on the render node: the Deadline `GlobalJobPreLoad.py` and the Royal Render `ayon_inject_envvar.py` call the `extractenvironments` command with `--envgroup farm`. Typical uses are license servers, plugin paths or switches that differ on the render nodes. See [Farm rendering](../../../pipeline/farm.md).
+
+A variable that is split into groups and has no value for the requested group is left out: in the example, `RENDER_ONLY_SETTING` exists only in farm render jobs. A variable that is not split is used by every group. Other group names work too: `extractenvironments --envgroup <name>` selects them, but no AYON addon requests another group. The same rules apply to **Project environments** in the Core settings.
+
+At launch the values are merged in this order, a later value replacing an earlier one: the application group, the application variant, then for each selected tool group (sorted by name) the tool group and its selected tool variants. A reference such as `{MY_PLUGIN_PATH}` is filled in with the value set before it, or with the environment of the process that launches the application.
 
 ## Applications Definitions
 
-One group per application. Every group has the same fields.
+<SettingLocation uri="ayon+settings://applications/applications" scope="Studio only" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Whether the application group is available. |
-| Host name | See [default applications](#default-applications) | Name of the pipeline integration that the application uses, for example `maya`. Keep the default for integrated applications. |
-| Environment | Mostly `{}` | Environment variables applied to every variant of the group. |
-| Variants | See below | The versions of the application. |
+The applications AYON can launch: one group per application, each with its versions (variants), their executables, launch arguments and environment. Each group can be opened directly, for example `ayon+settings://applications/applications/maya`. Change it to point the executables at the installations of the studio, to add or remove versions, or to disable applications the studio does not use.
 
-Default group environments that are not empty: Maya (Autodesk variables), Flame (script directories), Nuke Studio and Hiero (workfile and tag startup switches), and Fusion and Resolve (Python and utility script paths).
+<!-- screenshot: settings editor, Applications Definitions -->
+
+Every application group has the same fields:
+
+<Settings prefix="group">
+<Setting name="Enabled" default="Enabled">
+
+Whether the applications of the group can be launched and appear in the [filters](#applications-filters).
+
+</Setting>
+<Setting name="Host name">
+
+Name of the AYON integration the application uses, for example `maya`. Keep the default for integrated applications; the [default applications](#default-applications) list it per group. It must match the host name of the integration addon (see [Host integration](../../../developer/addon-development/host-integration.md)). An application with a host name needs a folder and a task to be launched.
+
+</Setting>
+<Setting name="Environment" default="{}">
+
+Environment variables for every variant of the group. See [Environment values](#environment-values).
+
+</Setting>
+<Setting name="Variants">
+
+The versions of the application, each with the fields of a [variant](#variant). Variant names are unique within a group.
+
+</Setting>
+</Settings>
 
 ### Variant
 
-| Setting | Default | Description |
-|---|---|---|
-| Name | Per variant | Name of the variant, used in the full application name `<group>/<variant>`. By convention lowercase letters, digits and hyphens. |
-| Label | Empty | Label shown in the UI. The name is used when empty. |
-| Group label | Empty | Overrides the group label used to group the variant in the UI. |
-| Group in UI | On | Groups the variant under its group label in the UI. |
-| Executables | Per variant | Lists of executable paths for **Windows**, **Linux** and **MacOS**. Several paths can be given when machines differ. |
-| Arguments | Empty | Lists of launch arguments for **Windows**, **Linux** and **MacOS**. |
-| Environment | Per variant | Environment variables for this variant, usually the version variable such as `MAYA_VERSION`. |
-| Redirect output to Process Monitor | On | Sends the standard output and error of the application to the AYON Process Monitor. When off, output is lost unless the application logs itself. |
+One version of an application. The full name of a variant, used in the filters and in commands, is `<group>/<variant>`, for example `maya/2026`.
+
+<Settings prefix="variant">
+<Setting name="Name">
+
+Name of the variant. It is required and cannot contain `/`.
+
+</Setting>
+<Setting name="Label">
+
+Label shown in the UI next to the group label. The name is used when empty.
+
+</Setting>
+<Setting name="Group label">
+
+Overrides the group label used to group the variant in the UI.
+
+</Setting>
+<Setting name="Group in UI" default="Enabled">
+
+Groups the variant under its group label in the UI. When disabled, the variant is shown on its own.
+
+</Setting>
+<Setting name="Executables" default="Empty lists">
+
+Paths of the executable for **Windows**, **Linux** and **MacOS**. Several paths can be listed when machines differ: the first path that exists on the machine is launched.
+
+</Setting>
+<Setting name="Arguments" default="Empty lists">
+
+Launch arguments for **Windows**, **Linux** and **MacOS**.
+
+</Setting>
+<Setting name="Environment" default="{}">
+
+Environment variables of this variant, usually the version variable such as `MAYA_VERSION`. See [Environment values](#environment-values).
+
+</Setting>
+<Setting name="Redirect output to Process Monitor" default="Enabled">
+
+Sends the standard output and error of the application to the [Process Monitor](../../../pipeline/process-monitor.md). When disabled, the output is lost unless the application logs it itself.
+
+</Setting>
+</Settings>
 
 ### Default applications
 
-The table lists the application groups defined by default, the host name of each group and the variants that exist by default.
+The application groups of the settings model with their defaults. All groups are enabled by default. Default executables are typical installation paths per platform, for example `C:\Program Files\Autodesk\Maya2026\bin\maya.exe` for Maya 2026 on Windows; some variants have a path for only some platforms. The paths need to be checked against the installations of the studio.
 
-| Application (key) | Host name | Default variants |
-|---|---|---|
-| Maya (`maya`) | `maya` | 2026, 2025, 2024, 2023 |
-| 3ds Max (`adsk_3dsmax`) | `max` | 2024, 2023 |
-| Flame (`flame`) | `flame` | 2021, 2021_1, 2024-2, 2026 |
-| Gaffer (`gaffer`) | `gaffer` | 1.5.2 |
-| Katana (`katana`) | `katana` | 9.0, 8.0 |
-| Nuke (`nuke`) | `nuke` | 17.0, 16.0, 15-0, 14-0, 13-2 |
-| Nuke Assist (`nukeassist`) | `nuke` | 15-0, 14-0, 13-2 (argument `--nukeassist`) |
-| Nuke X (`nukex`) | `nuke` | 15-0, 14-0, 13-2 (argument `--nukex`) |
-| Nuke Studio (`nukestudio`) | `hiero` | 15-0, 14-0, 13-2 (argument `--studio`) |
-| Hiero (`hiero`) | `hiero` | 15-0, 14-0, 13-2 (argument `--hiero`) |
-| Fusion (`fusion`) | `fusion` | 20, 19, 18, 17 |
-| Resolve (`resolve`) | `resolve` | stable |
-| Houdini (`houdini`) | `houdini` | 19-5, 19-0, 18-5, 20-5 |
-| Blender (`blender`) | `blender` | 3-6-5, 4-2, 4-4, 5-0 |
-| Harmony (`harmony`) | `harmony` | 22, 21 |
-| TVPaint (`tvpaint`) | `tvpaint` | animation_11-64bits, animation_11-32bits |
-| Photoshop (`photoshop`) | `photoshop` | 2023, 2024, 2025 |
-| After Effects (`aftereffects`) | `aftereffects` | 2023, 2024, 2025, 2026 |
-| Premiere (`premiere`) | `premiere` | 2023, 2024, 2025 |
-| Celaction 2D (`celaction`) | `celaction` | local |
-| Substance Painter (`substancepainter`) | `substancepainter` | stable |
-| Substance Designer (`substancedesigner`) | `substancedesigner` | 2025 |
-| Speedtree (`speedtree`) | `speedtree` | 10-0 |
-| Unreal Editor (`unreal`) | `unreal` | 5-2, 5-3, 5-4 |
-| Wrap (`wrap`) | `wrap` | 2023 |
-| OpenRV (`openrv`) | `openrv` | 1.0.0 |
-| Marvelous Designer (`marvelousdesigner`) | `marvelousdesigner` | 2025.2 |
-| CLO (`clo`) | `marvelousdesigner` | 2025.2 |
-| Zbrush (`zbrush`) | `zbrush` | 2024 |
-| 3DEqualizer (`equalizer`) | `equalizer` | 7-1v2 |
-| Motion Builder (`motionbuilder`) | `motionbuilder` | 2025, 2024 |
-| Cinema4D (`cinema4d`) | `cinema4d` | 2025, 2024, 2023 |
-| Mocha Pro (`mochapro`) | `mochapro` | 12-0-0, 11-5-0, 8-0-0 |
-| BorisFX Silhouette (`silhouette`) | `silhouette` | 2024-5 |
-| PureRef (`pureref`) | `pureref` | 2.1.3 |
-| Marmoset Toolbag (`marmoset`) | `marmoset` | 5 |
-| ShapeFX Loki (`loki`) | `loki` | 1-0-0 |
-| Terminal (`terminal`) | Empty | main (label Main; executables `cmd.exe`, a list of Linux terminal emulators and `Terminal.app`; output is not redirected to the Process Monitor) |
+<Settings>
+<Setting name="Maya">
 
-Default executable paths are typical installation folders per platform, for example `C:\Program Files\Autodesk\Maya2026\bin\maya.exe` for Maya 2026 on Windows. Some variants have a path for only some platforms. The paths need to be checked against the installations of the studio.
+Key `maya`, host name `maya`. Variants 2026, 2025, 2024 and 2023, each setting `MAYA_VERSION`. The group environment disables the Autodesk customer involvement and error reporting dialogs (`MAYA_DISABLE_CLIC_IPM`, `MAYA_DISABLE_CIP`, `MAYA_DISABLE_CER`), sets `PYMEL_SKIP_MEL_INIT` and sets `LC_ALL` to `C`.
+
+</Setting>
+<Setting name="3ds Max">
+
+Key `adsk_3dsmax`, host name `max`. Variants 2024 and 2023, each setting `3DSMAX_VERSION`.
+
+</Setting>
+<Setting name="Flame">
+
+Key `flame`, host name `flame`. Variants 2021, 2021.1, 2024.2 and 2026, each setting the Python executable, Python path and Wiretap tools of the integration. The group environment sets the script directories and the Wiretap host, volume and group.
+
+</Setting>
+<Setting name="Gaffer">
+
+Key `gaffer`, host name `gaffer`. Variant 1.5.2.
+
+</Setting>
+<Setting name="Katana">
+
+Key `katana`, host name `katana`. Variants 9.0 and 8.0.
+
+</Setting>
+<Setting name="Nuke">
+
+Key `nuke`, host name `nuke`. Variants 17.0, 16.0, 15.0, 14.0 and 13.2.
+
+</Setting>
+<Setting name="Nuke Assist">
+
+Key `nukeassist`, host name `nuke`. Variants 15.0, 14.0 and 13.2, launched with `--nukeassist` on Windows and Linux.
+
+</Setting>
+<Setting name="Nuke X">
+
+Key `nukex`, host name `nuke`. Variants 15.0, 14.0 and 13.2, launched with `--nukex` on Windows and Linux.
+
+</Setting>
+<Setting name="Nuke Studio">
+
+Key `nukestudio`, host name `hiero`. Variants 15.0, 14.0 and 13.2, launched with `--studio` on Windows and Linux. The group environment sets the workfile and tag startup switches `WORKFILES_STARTUP` and `TAG_ASSETBUILD_STARTUP`.
+
+</Setting>
+<Setting name="Hiero">
+
+Key `hiero`, host name `hiero`. Variants 15.0, 14.0 and 13.2, launched with `--hiero` on Windows and Linux. The group environment is the same as for Nuke Studio.
+
+</Setting>
+<Setting name="Fusion">
+
+Key `fusion`, host name `fusion`. Variants 20, 19, 18 and 17. The group environment sets `FUSION_PYTHON3_HOME`.
+
+</Setting>
+<Setting name="Resolve">
+
+Key `resolve`, host name `resolve`. Variant stable. The group environment sets the utility scripts folder and `RESOLVE_PYTHON3_HOME`.
+
+</Setting>
+<Setting name="Houdini">
+
+Key `houdini`, host name `houdini`. Variants 19.5, 19.0, 18.5 and 20.5.
+
+</Setting>
+<Setting name="Blender">
+
+Key `blender`, host name `blender`. Variants 3.6.5 LTS, 4.2 LTS, 4.4 and 5.0, all launched with `--python-use-system-env`; 4.4 and 5.0 also set `AYON_BLENDER_USE_SYSTEM_PATH`.
+
+</Setting>
+<Setting name="Harmony">
+
+Key `harmony`, host name `harmony`. Variants 22 and 21.
+
+</Setting>
+<Setting name="TVPaint">
+
+Key `tvpaint`, host name `tvpaint`. Variants 11 (64bits) and 11 (32bits).
+
+</Setting>
+<Setting name="Photoshop">
+
+Key `photoshop`, host name `photoshop`. Variants 2023, 2024 and 2025. The group environment sets `WORKFILES_SAVE_AS`.
+
+</Setting>
+<Setting name="After Effects">
+
+Key `aftereffects`, host name `aftereffects`. Variants 2023, 2024, 2025 and 2026. The group environment sets `WORKFILES_SAVE_AS`.
+
+</Setting>
+<Setting name="Premiere">
+
+Key `premiere`, host name `premiere`. Variants 2023, 2024 and 2025. The group environment sets `WORKFILES_SAVE_AS`.
+
+</Setting>
+<Setting name="Celaction 2D">
+
+Key `celaction`, host name `celaction`. Variant local. The group environment sets `CELACTION_TEMPLATE`.
+
+</Setting>
+<Setting name="Substance Painter">
+
+Key `substancepainter`, host name `substancepainter`. Variant Stable.
+
+</Setting>
+<Setting name="Substance Designer">
+
+Key `substancedesigner`, host name `substancedesigner`. Variant 2025.
+
+</Setting>
+<Setting name="Speedtree">
+
+Key `speedtree`, host name `speedtree`. Variant 10.0.
+
+</Setting>
+<Setting name="Unreal Editor">
+
+Key `unreal`, host name `unreal`. Variants 5.2, 5.3 and 5.4.
+
+</Setting>
+<Setting name="Wrap">
+
+Key `wrap`, host name `wrap`. Variant 2023.
+
+</Setting>
+<Setting name="OpenRV">
+
+Key `openrv`, host name `openrv`. Variant 1.0.0.
+
+</Setting>
+<Setting name="Marvelous Designer">
+
+Key `marvelousdesigner`, host name `marvelousdesigner`. Variant 2025 (name `2025.2`).
+
+</Setting>
+<Setting name="CLO">
+
+Key `clo`, host name `marvelousdesigner`. Variant 2025 (name `2025.2`).
+
+</Setting>
+<Setting name="Zbrush">
+
+Key `zbrush`, host name `zbrush`. Variant 2024.
+
+</Setting>
+<Setting name="3DEqualizer">
+
+Key `equalizer`, host name `equalizer`. Variant 7.1v2.
+
+</Setting>
+<Setting name="Motion Builder">
+
+Key `motionbuilder`, host name `motionbuilder`. Variants 2025 and 2024.
+
+</Setting>
+<Setting name="Cinema4D">
+
+Key `cinema4d`, host name `cinema4d`. Variants 2025, 2024 and 2023.
+
+</Setting>
+<Setting name="Mocha Pro">
+
+Key `mochapro`, host name `mochapro`. Variants 2025, 2024.5 and 2021 (names `12-0-0`, `11-5-0` and `8-0-0`).
+
+</Setting>
+<Setting name="BorisFX Silhouette">
+
+Key `silhouette`, host name `silhouette`. Variant 2024.5.
+
+</Setting>
+<Setting name="PureRef">
+
+Key `pureref`, host name `pureref`. Variant 2.1.3.
+
+</Setting>
+<Setting name="Marmoset Toolbag">
+
+Key `marmoset`, host name `marmoset`. Variant 5.
+
+</Setting>
+<Setting name="ShapeFX Loki">
+
+Key `loki`, host name `loki`. Variant 1.0.0.
+
+</Setting>
+<Setting name="Terminal">
+
+Key `terminal`, no host name. Variant Main (name `main`), which opens a terminal with the environment of the task: `cmd.exe` on Windows, `Terminal.app` on macOS and the first available of a list of terminal emulators on Linux. Its output is not redirected to the Process Monitor.
+
+</Setting>
+</Settings>
 
 ### Additional Applications
 
-A list of application groups for software without an AYON integration. The list is empty by default. These applications are launched but get no AYON integration.
+<SettingLocation uri="ayon+settings://applications/applications/additional_apps" scope="Studio only" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Whether the group is available. |
-| Name | Empty | Name of the group. It must not equal the name of a built-in application group. |
-| Label | Empty | Label of the group. |
-| Host name | Empty | Host name of the group. |
-| Icon | Empty | Icon of the group, chosen from the built-in icons and the uploaded custom icons. |
-| Environment | `{}` | Environment variables applied to every variant. |
-| Variants | Empty | The versions of the application. Each variant has the fields of a [variant](#variant). |
+Application groups that are not in the settings model, typically software without an AYON integration, launched with the task environment.
+
+<!-- screenshot: settings editor, Additional Applications -->
+
+<Settings>
+<Setting name="Additional Applications" id="additional-applications-list" default="Empty list">
+
+<Settings>
+<Setting name="Enabled" default="Enabled">
+
+Whether the applications of the group can be launched.
+
+</Setting>
+<Setting name="Name">
+
+Name of the group, the first part of the full application name. It is required, cannot contain `/`, must be unique in the list and must not equal the key of a group of the [default applications](#default-applications).
+
+</Setting>
+<Setting name="Label">
+
+Label of the group in the UI. The name is used when empty.
+
+</Setting>
+<Setting name="Host name">
+
+Name of the AYON integration. Leave empty for software without an integration.
+
+</Setting>
+<Setting name="Icon">
+
+Icon of the group, chosen from the custom icons uploaded to the addon, or **`< No icon >`**.
+
+</Setting>
+<Setting name="Environment" default="{}">
+
+Environment variables for every variant of the group. See [Environment values](#environment-values).
+
+</Setting>
+<Setting name="Variants" default="Empty list">
+
+The versions of the application, each with the fields of a [variant](#variant).
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Tools Definitions
 
-A list of tool groups. The environments of the selected tools are added to the environment of the launched application.
+<SettingLocation uri="ayon+settings://applications/tool_groups" scope="Studio only" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Name | Per group | Name of the tool group. |
-| Label | Per group | Label of the tool group. |
-| Environments | Per group | Environment variables applied to all variants of the tool. |
-| Variants | Per group | The versions of the tool. |
+Tools are renderers, plugins and other software that are set up through environment variables. The environment of the tools selected by the [Tool Filters](#tool-filters) is added to the environment of the launched application. Group names must be unique.
 
-Each tool variant has these fields.
+<!-- screenshot: settings editor, Tools Definitions -->
 
-| Setting | Default | Description |
-|---|---|---|
-| Name | Per variant | Name of the variant. |
-| Label | Empty | Label of the variant. |
-| Hosts | Per variant | Host names the variant applies to. |
-| Applications | Empty | Application variants the tool applies to. |
-| Environments | Per variant | Environment variables of this variant, usually the version variable. |
+<Settings prefix="tool">
+<Setting name="Name">
 
-The default tool groups are examples that need the paths of the studio: `htoa` (Arnold for Houdini), `mtoa`, `redshiftMaya`, `redshift3dsmax`, `rendermanMaya`, `mGear`, `yetiMaya`, `vrayMaya` and `vraynuke`. The `htoa` group has one example variant, `5-4-2-7`, limited to the host `houdini`.
+Name of the tool group, the first part of the full tool name `<group>/<variant>`. It is required and cannot contain `/`.
+
+</Setting>
+<Setting name="Label">
+
+Label of the tool group in the UI. The name is used when empty.
+
+</Setting>
+<Setting name="Environments" default="{}">
+
+Environment variables for every variant of the tool. See [Environment values](#environment-values).
+
+</Setting>
+<Setting name="Variants" default="Empty list">
+
+The versions of the tool. Variant names are unique within a group.
+
+<Settings>
+<Setting name="Name">
+
+Name of the variant. It is required and cannot contain `/`.
+
+</Setting>
+<Setting name="Label">
+
+Label of the variant in the UI. The name is used when empty.
+
+</Setting>
+<Setting name="Hosts" default="Empty list">
+
+Host names the variant applies to, for example `maya`. Empty applies to all.
+
+</Setting>
+<Setting name="Applications" default="Empty list">
+
+Application variants the tool variant applies to, for example **Maya 2026**. Empty applies to all. A tool variant is added only when the launched application matches both **Hosts** and **Applications**.
+
+</Setting>
+<Setting name="Environments" default="{}">
+
+Environment variables of this variant, usually the version variable. See [Environment values](#environment-values).
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+The default tool groups are examples whose paths start with a `{STUDIO_SW}` variable for the software repository of the studio, which can be set in **Project environments** of the Core settings. Their labels end in "(example)":
+
+- `htoa`, Arnold for Houdini: variant `5-4-2-7`, host `houdini`;
+- `mtoa`, Arnold for Maya: variants `5-3-1-0` and `5-3-4-1`;
+- `redshiftMaya`, Redshift for Maya: variant `3-5-23`;
+- `redshift3dsmax`, Redshift for 3dsmax: variant `3-5-19`, host `max`;
+- `rendermanMaya`, Renderman for Maya: variant 24.3 RFM (`24-3-maya`), host `maya`, application `maya/2022`;
+- `mGear`, mGear for Maya: variant `4-0-7`;
+- `yetiMaya`, Yeti for Maya: variant `4.2.11`;
+- `vrayMaya`, Vray for Maya: variant `6.10.01`, host `maya`;
+- `vraynuke`, Vray for Nuke: variant `5-20-00`, host `nuke`.
 
 ## Applications Filters
 
-Using these filters replaces the `applications` project attribute, which is to be deprecated.
+<SettingLocation uri="ayon+settings://applications/project_applications" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Profiles | One profile | Profiles that select the applications available for a context. |
+The applications offered for a task, in the launcher and in the web app actions. The addon selects applications only through these profiles; the older `applications` project attribute is not read.
 
-A profile has these fields.
+<!-- screenshot: settings editor, Applications Filters -->
 
-| Field | Default | Description |
-|---|---|---|
-| Task Types | Empty | Task types the profile applies to. Empty applies to all. |
-| Allow | `All applications` | `All applications` or `Selected`. |
-| Applications | Empty | The allowed applications when **Allow** is `Selected`. |
+<Settings>
+<Setting name="Profiles" default="One profile: any task type, All applications">
 
-The default profile has no task types and allows all applications.
+A profile listing the task type of the task is used before a profile without task types. When no profile matches, no applications are offered for the task.
+
+<Settings>
+<Setting name="Task Types" default="Empty list">
+
+Task types the profile applies to. Empty applies to all.
+
+</Setting>
+<Setting name="Allow" default="Selected">
+
+**All applications** (every enabled variant of the definitions) or **Selected**. A new profile starts with **Selected**; the default profile uses **All applications**.
+
+</Setting>
+<Setting name="Applications" default="Empty list">
+
+The application variants offered when **Allow** is **Selected**, in a sortable list.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Tool Filters
 
-Using these filters replaces the `tools` attribute of folders and tasks, which is to be deprecated.
+<SettingLocation uri="ayon+settings://applications/project_tools" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Profiles | Empty | Profiles that select the tools used for a context. |
+The tools added to the environment of applications launched in a context. The addon selects tools only through these profiles; the older `tools` attribute of folders and tasks is not read. Tools are resolved when the application starts, so switching task inside an open application does not change the loaded tools.
 
-A profile has these fields.
+<!-- screenshot: settings editor, Tool Filters -->
 
-| Field | Default | Description |
-|---|---|---|
-| Folder paths | Empty | Folder paths the profile applies to. Regular expressions are supported. |
-| Task Types | Empty | Task types the profile applies to. |
-| Task Names | Empty | Task names the profile applies to. |
-| Tools | Empty | Tools used in the matching context. |
+<Settings>
+<Setting name="Profiles" id="tool-filters-profiles" default="Empty list">
 
-Tool environments are resolved when the application starts, so switching task inside an open application does not change the loaded tools.
+The profile that matches the most filters is used. Between profiles that match as many filters, a match on the folder path counts before one on the task name, then the task type. When no profile matches, no tools are added.
+
+<Settings>
+<Setting name="Folder paths" default="Empty list">
+
+Folder paths the profile applies to. Regular expressions are supported. Empty applies to all.
+
+</Setting>
+<Setting name="Task Types" default="Empty list">
+
+Task types the profile applies to. Empty applies to all.
+
+</Setting>
+<Setting name="Task Names" default="Empty list">
+
+Task names the profile applies to. Empty applies to all.
+
+</Setting>
+<Setting name="Tools" default="Empty list">
+
+Tool variants added in the matching context. A tool variant is skipped when its **Hosts** or **Applications** do not match the launched application.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+## Related
+
+- [Applications addon](index.md)
+- [Core addon settings](../core/settings.md): project environments and the farm environment filter
+- [Farm rendering](../../../pipeline/farm.md): how render and publish jobs get their environment
+- [Process Monitor](../../../pipeline/process-monitor.md): output redirection of application variants
+- [Host integration](../../../developer/addon-development/host-integration.md): the host name of an integration

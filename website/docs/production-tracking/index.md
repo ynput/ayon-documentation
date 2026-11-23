@@ -19,7 +19,7 @@ This section shows what the features are useful for in a production, for produce
 | **Create** | [See where every task stands](tracking-progress.md) · [Split work into small steps](split-work-into-small-steps.md) · [Track work without a pipeline](track-work-without-a-pipeline.md) |
 | **Review** | [Review and approve](review-and-approve.md) · [Bring clients into review](client-review.md) · [Keep the conversation in one place](conversations.md) |
 | **Deliver** | [Prepare deliveries](deliveries.md) |
-| **Report** | [Report on the production](reporting.md) · [Know where the time goes](time-tracking.md) |
+| **Report** | [Report on the production](reporting.md) |
 | **People and access** | [Control who sees what](access.md) |
 
 :::tip More than publishing

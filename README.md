@@ -21,6 +21,14 @@ If you spot something incorrect or just think a page could do with some improvem
 1. Make the changes to the relevant markdown file.
 2. Make a PR documenting the changes.
 
+### Images
+
+- **Page images**: screenshots, diagrams and anything else used by one page or one section live in the section's `assets/<page>/` folder, next to the page, and are referenced with Markdown: `![Alt text](assets/<page>/name.png)`.
+- **Images on several pages**: a screenshot stays with the page that explains what it shows, usually the user guide (for example `production-tracking/assets/reporting/`), and the other pages, such as an addon's page, link to it with a relative path: `![Alt text](../../../production-tracking/assets/reporting/name.webp)`. Don't copy it.
+- **Brand images**: the AYON, Ynput and AYONpedia logos and the AYON icons (such as the launcher tray icons) live in `website/static/img/` and are referenced from the site root: `![Alt text](/img/name.png)`.
+- **Size the file, not the tag**: Markdown can't set a width, so save small images such as icons at the size they should show (for example 32×32).
+- **No `require()` in `<img>` tags**: in a production build the ideal-image plugin changes what `require("./image.png")` returns, so `require(...).default` gives an image without a `src`. The dev server turns that plugin off, so it only breaks in the build.
+
 ## Running the documentation
 
 - Install Node.js https://nodejs.org/en/download

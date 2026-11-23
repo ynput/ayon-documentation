@@ -36,7 +36,7 @@ sources:
 
 ![The Workfiles tab of wing_it: the shot 010_0010 selected in the hierarchy, its anim task selected in the task list, two Blender workfiles in the workfile list and the path and attributes of the selected workfile on the right](../../assets/web-ui/workfiles/page.webp)
 
-The **Workfiles** tab lists the workfile records of a project's tasks. Folders are picked in a hierarchy, tasks in the task list next to it, and the workfiles of the selected tasks appear in a third column, with the selected workfile's thumbnail, path and attributes in a detail panel on the right. The records are written by the pipeline when artists save scene files with the [Workfiles tool](../../../pipeline/workfiles.md); the tab only shows them and can delete them. It has no action that opens a workfile or starts an application: workfiles are opened from the Workfiles tool inside an application or from the [Launcher](../../../pipeline/launcher.md). What a workfile is and how it relates to tasks is described in the [data model](../../how-ayon-works/entities.md#workfile).
+The **Workfiles** tab lists the workfile records of a project's tasks. Folders are picked in a hierarchy, tasks in the task list next to it, and the workfiles of the selected tasks appear in a third column, with the selected workfile's thumbnail, path and attributes in a detail panel on the right. The records are written by the pipeline when artists save scene files with the [Workfiles tool](../../../pipeline/workfiles.md); the tab only shows them and can delete them. It has no action that opens a workfile or starts an application: workfiles are opened from the Workfiles tool inside an application or from the [Launcher window](../../../pipeline/tray-and-launcher-window.md#launcher-window). What a workfile is and how it relates to tasks is described in the [data model](../../how-ayon-works/entities.md#workfile).
 
 ## Folders, tasks and workfiles
 
@@ -139,7 +139,7 @@ Other shortcuts of the web app are listed in [Keyboard shortcuts](../quick-navig
 ## Related
 
 - [Workfiles tool](../../../pipeline/workfiles.md)
-- [Launcher](../../../pipeline/launcher.md)
+- [Tray and Launcher window](../../../pipeline/tray-and-launcher-window.md)
 - [Upload version](../dialogs/upload-version.md)
 - [AYON entities](../../how-ayon-works/entities.md#workfile)
 - [Roots](../project/roots.md)

@@ -7,7 +7,7 @@ verified: 2026-11-17
 
 # Set up a production
 
-<!-- screenshot: Anatomy tab of wing_it with the Statuses section expanded: names, short names, states, colors and scopes -->
+![The Anatomy tab of wing_it with the Statuses section expanded: Not ready, Ready to start, In progress, Pending review, Reviewed, Approved, On hold, Omitted and data, each with its short name, state, icon, color and scope](assets/setting-up-a-production/statuses.webp)
 
 A new project in AYON starts empty: no folders, no tasks and nothing on disk. Before the first shot is created, a few decisions shape how the whole production is tracked: what kinds of folders and tasks exist, which statuses work moves through, and which values every shot inherits. Most of them are made once, in the project's anatomy, and are hard to change later. This page explains what each decision is for. Creating the project and the dialog it uses are described in [Creating a project](../ayon/how-ayon-works/creating-a-project.md).
 
@@ -19,7 +19,7 @@ With the [Power Pack](../addons/production-tracking/power-pack/index.md), a proj
 
 ## Decide the structure of the project
 
-<!-- screenshot: Anatomy tab of wing_it with Folder types and Task types expanded side by side -->
+![The Anatomy tab of wing_it with the Folder types section expanded (Folder, Library, Asset, Sequence and Shot) and the Task types section below it, starting with Story, Art, Modeling, Texture, Lookdev, Rigging, Setdress, Layout and Animation](assets/setting-up-a-production/folder-task-types.webp)
 
 :::tip Order in Anatomy
 
@@ -41,13 +41,13 @@ The default lists are a working start. A studio usually adjusts them to its own 
 
 ## Set the values every shot inherits
 
-<!-- screenshot: Attributes section of the wing_it anatomy: fps, resolution, frame start, handles and the project dates -->
+![The Attributes section of the wing_it anatomy: priority, FPS 25, resolution 1920 x 1080, pixel aspect, clip in and out, start frame 1001, handles, the empty start and end dates, and the project description](assets/setting-up-a-production/attributes.webp)
 
 The project attributes, such as frame rate, resolution, frame start, handles and the start and end dates, are set in the anatomy. Every folder and task without a value of its own inherits them, so a shot created later already has the frame rate and resolution of the production. A sequence or shot that differs, such as a slow-motion sequence, sets its own value, and its children inherit that instead. See [Attributes and inheritance](../ayon/how-ayon-works/entities.md#attributes-and-inheritance).
 
 ## Keep a studio standard with anatomy presets
 
-<!-- screenshot: Anatomy presets tab with the AYON default, a studio preset marked primary, and the Statuses section of the primary preset -->
+![The Anatomy presets tab with AYON default (read only), the studio preset My Default marked as primary, and SG; the Statuses section of My Default is expanded](assets/setting-up-a-production/anatomy-presets.webp)
 
 An [anatomy preset](../ayon/web-ui/studio/anatomy-presets.md) is a stored anatomy that new projects copy. A studio that keeps its folder types, task types, statuses and naming rules in a preset, marked as primary, starts every project with the same structure. That keeps projects comparable: the same department columns, the same statuses, the same reports.
 
@@ -58,7 +58,7 @@ A preset is copied, not linked. Changing the preset later does not change projec
 
 ## Lock the pipeline versions of a production
 
-<!-- screenshot: The Freeze production bundle for wing_it dialog with the launcher version, dependency packages and addon versions -->
+![The Freeze production bundle for wing_it dialog over the Project settings tab: the launcher version, a dependency package per platform, a version dropdown for each addon, and the Freeze button](../ayon/assets/web-ui/project-bundle/page.webp)
 
 A new project uses the studio's Production bundle: the addon versions, launcher version and dependency packages that all projects share. Most projects stay on it. A [project bundle](../ayon/web-ui/project/project-bundle.md) fixes those versions for one project, so it keeps working the same way while the studio bundle is updated. A typical case is a long-running production next to smaller ones, frozen before the studio updates its bundle: it keeps the versions it was tested with until there is time to move it.
 

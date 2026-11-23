@@ -7,7 +7,7 @@ addon_repo: ayon-timers-manager
 addon_version: 0.2.0
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
   - https://github.com/ynput/ayon-timers-manager/tree/0.2.0/server/settings.py
 ---
@@ -16,13 +16,41 @@ sources:
 
 <AddonInfo />
 
-The settings of the [Timers Manager addon](index.md), with the default values the addon ships with. All of them are available at studio scope only. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
+The settings of the [Timers Manager addon](index.md) are in **Studio settings > Timers Manager**. Pasting the location below into the URI bar of the web app opens them. The time trackers the timers drive, such as [Clockify](../clockify/settings.md), have their own settings.
 
 ## Timers
 
-| Setting | Default | Description |
-|---|---|---|
-| Auto stop timer | On | Stop all timers when the user has been idle for the **Max idle time**. Has no effect on macOS and Linux, where auto stop is always off. |
-| Max idle time | 15 | Idle time in minutes after which the timers stop. A value of 0 or less turns auto stop off. |
-| When dialog will show | 0.5 | Minutes before the stop at which the inactivity dialog appears. The default is 30 seconds. The dialog appears at the maximum idle time minus this value. |
-| Disregard publishing | Off | When on, the publish plugins **Stop Timer** and **Start Timer** stop the timers while publishing and start them again afterward, so publishing time is not counted. When off, publishing does not affect running timers. |
+<SettingLocation uri="ayon+settings://timers_manager" scope="Studio only" />
+
+When running timers stop on their own because the user is idle, and whether publishing counts as working time.
+
+<!-- screenshot: settings editor, Timers Manager -->
+
+<Settings>
+<Setting name="Auto stop timer" default="Enabled">
+
+Stop all timers when the user has been idle for the **Max idle time**. Has no effect on macOS and Linux, where auto stop is always off.
+
+</Setting>
+<Setting name="Max idle time" default="15">
+
+Idle time in minutes after which the timers stop. A value of 0 or less turns auto stop off.
+
+</Setting>
+<Setting name="When dialog will show" default="0.5">
+
+Minutes before the stop at which the inactivity dialog appears. The default is 30 seconds. The dialog appears at the maximum idle time minus this value.
+
+</Setting>
+<Setting name="Disregard publishing" default="Disabled">
+
+When enabled, the publish plugins **Stop Timer** and **Start Timer** stop the timers while publishing and start them again afterward, so publishing time is not counted. When disabled, publishing does not affect running timers.
+
+</Setting>
+</Settings>
+
+## Related
+
+- [Timers Manager addon](index.md)
+- [Clockify addon settings](../clockify/settings.md)
+- [Settings and scopes](../../../ayon/how-ayon-works/settings.md)

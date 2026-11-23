@@ -8,7 +8,7 @@ addon_version: 1.0.6
 addon_scope: pipeline
 addon_flags: [licensed, power-feature]
 addon_private: true
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://help.ayon.app/en/articles/2723500-slate-editor
   - https://help.ayon.app/en/articles/7077398-using-slater-addon
@@ -35,7 +35,7 @@ The addon has no server version requirement.
 | Place | What it is |
 |---|---|
 | **Slate Editor** action | An AYON server action in the category **Desktop tools**, offered for a project, a folder or a task. It starts the AYON launcher with the addon command `slater launch` for the selected entity. |
-| Launcher command | `addon slater launch` with the options `--project`, `--entity-type` (`project`, `folder` or `task`) and `--entity-id`. The project can also come from `AYON_PROJECT_NAME`. |
+| Launcher command | `launch`, see [Command line](#command-line). |
 | **Generate slates** | A publish plugin (an extractor) that runs in every publish that loads the addon's plugin path. It is optional in the Publisher. |
 | Server endpoints | The addon stores slate templates as JSON files on the server and exposes endpoints to list, download, upload and delete them. The editor and the publish plugin use these endpoints. |
 
@@ -97,6 +97,14 @@ The **Representation Flow** of each slate decides what happens to the source rep
 | Replace Source Representation | The slated representation keeps the name of the source and the source is removed. |
 | Append new with Slate name as Suffix | A new representation is added. Its name is the representation extension, the output name when set, and the slate name, joined by underscores. |
 | Append new with Name Template | A new representation is added, named by the **Representation name template**. |
+
+## Command line
+
+The addon adds the command group `addon slater` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `launch` | Opens the Slate Editor for an entity. Options: `--project` (or the environment variable `AYON_PROJECT_NAME`), `--entity-type` (`project`, `folder` or `task`), `--entity-id`. The **Slate Editor** action starts it. |
 
 ## Related
 

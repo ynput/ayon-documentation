@@ -7,32 +7,51 @@ verified: 2026-11-17
 
 # Keep the conversation in one place
 
-<!-- screenshot: details panel of the lighting task of wing_it 020_0040 with an activity feed of comments, a checklist, a mention and published versions -->
+![The Overview of wing_it with the lighting task of 020_0040 open in the details panel: the published version v007, and a dailies note that mentions Isabel García with a checklist of three fixes, one done](assets/conversations/task-feed.webp)
 
 Notes about a shot get lost when they are spread over chat, email and meeting minutes. In AYON every folder, task and version has its own activity feed in the [details panel](../ayon/web-ui/details-panel.md), and the same panel opens on every project page, in the inbox and next to the player. The comments, the versions and the changes of a piece of work stay together, so anyone who opens the shot, months later or on their first day on the project, reads its whole story in one place.
 
 ## Notes that stay with the work
 
-<!-- screenshot: activity feed of a wing_it task showing a status change, an assignee change, a published version and a comment on that version -->
+<Columns widths="45 55">
+<Column>
 
 The [activity feed](../ayon/web-ui/details-panel.md#activity-feed) is the timeline of an entity: comments, published versions, version reviews, and changes of status, assignees, attributes and tags. It answers "what happened to this shot?" without asking around: when it went to **Pending review**, who was assigned, which version was approved.
+
+</Column>
+<Column>
+
+![The activity feed of the lighting task of wing_it 020_0040: a note with a checklist, a mention of Julia Mills and a thumbs-up reaction, a reply, the published version v006, a comment linked to frame 1034 of v005, and the published version v007](assets/conversations/feed-history.png "Activity feed of a task")
+
+</Column>
+</Columns>
 
 A comment on a version also shows in the feed of its task, so the artist and the lead read all the notes of a task in one feed, across its versions.
 
 ## Bring the right people in
 
-<!-- screenshot: comment editor on wing_it with the @ suggestion list showing users and the lighting team -->
+<Columns widths="45 55">
+<Column>
 
 A [mention](../ayon/web-ui/details-panel.md#mentions) puts a note in front of the people who need it:
 
 - `@` notifies a user or a whole [team](../ayon/web-ui/project/teams.md), for example asking the compositing team about a plate.
 - `@@` links a version and `@@@` links a task, so a note about a dependency also shows in the feed of the version or task it refers to.
 
+</Column>
+<Column>
+
+![The comment editor on the lighting task of wing_it 020_0040 after typing @: the Users & Teams list with the assignees Graciela Rojo, Isabel García and Victoria Bryant, the team 3D_Team, and Admin](assets/conversations/mention-suggestions.png "Mention suggestions")
+
+</Column>
+</Columns>
+
 People also follow work without being mentioned. Assignees, authors of versions and everyone who comments become watchers automatically, and anyone can be added as a [watcher](../ayon/web-ui/details-panel.md#watchers), for example a producer who wants to follow a hero shot without being assigned to it.
 
 ## Notes an artist can act on
 
-<!-- screenshot: a wing_it version comment with a frame chip, an annotation image and a checklist of three items, one checked -->
+<Columns widths="45 55">
+<Column>
 
 A good note says exactly what to fix. The comment editor helps with that:
 
@@ -40,6 +59,14 @@ A good note says exactly what to fix. The comment editor helps with that:
 - **Checklists:** a list of fixes inside a comment, which the artist ticks off. The feed shows the progress, for example `2/3`.
 - **Attachments:** reference images or files dropped into the comment.
 - **Reactions:** a thumbs up or another reaction acknowledges a note without another comment, and sends no notification.
+
+</Column>
+<Column>
+
+![A comment on renderLightingMain v007 of wing_it 020_0040, linked to frames 22-30, with a checklist of three fixes, one checked](assets/conversations/version-comment-checklist.png "A note with a frame range and a checklist")
+
+</Column>
+</Columns>
 
 ## Keep internal notes internal
 

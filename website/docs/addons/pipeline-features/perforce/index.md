@@ -35,24 +35,6 @@ The addon has not been released yet and is not in the AYON Market. This page des
 
 The addon has a server package, so it has settings. The addon is disabled by default.
 
-## Relation to the Version Control addon
-
-The older [Version Control addon](../version-control/index.md) (`version_control`, repository `ayon-version-control`, archived) also integrates Perforce. The two are separate addons: the Perforce addon has its own name (`perforce`), its own settings and its own code, and nothing in its code imports or refers to the Version Control addon. Both address the same two use cases (committing published files to Perforce, and syncing Unreal projects to a changelist for farm renders), and the Perforce addon follows the same overall approach: a local web server started by the AYON tray runs the Perforce commands, and the application side talks to it through a REST client. Their feature sets differ as far as the code shows:
-
-| Feature | Version Control addon | Perforce addon |
-|---|---|---|
-| Local web server in the tray that runs Perforce commands | Yes, on a fixed port | Yes, on a free port; the URL is stored in the `PERFORCE_WEBSERVER_URL` environment variable |
-| Creator for a `changelist_metadata` product | Yes | No creator in the code |
-| Extractor for the changelist | Writes `<changelist number>.json` as a `changelist_metadata` representation | Writes the stream and changelist into the Deadline job environment |
-| Integrator that commits published files | Yes | No integrator in the code, see [Current limitations](#current-limitations) |
-| Unreal changelist sync dialog before launch | Yes | Yes, **Changes Viewer** |
-| Workspace creation and stream switching at launch | No | Yes |
-| Perforce change-submit trigger and server endpoint | Yes | No |
-| Perforce user name and password | Site settings of the addon | Entered per machine in the tray and kept in the local secure registry |
-| Publish plugins limited to | Not limited to a host | Unreal |
-
-Settings of the same purpose exist in both (host name, port, the **Collect** profiles with a template name), but the two addons do not share settings or read each other's.
-
 ## Tray menu
 
 When the addon is enabled the AYON tray gets a **Perforce** submenu. It shows the Perforce server (`<host>:<port>`) and an entry that opens the **AYON - Perforce Login** dialog, where the artist enters a Perforce user name and password. The values are saved in the local secure registry of that machine and the `P4USER` environment variable is set. Clearing both fields removes the saved login.
@@ -99,4 +81,3 @@ These follow from the code of the default branch.
 ## Related
 
 - [Perforce addon settings](settings.md)
-- [Version Control addon](../version-control/index.md) (archived)

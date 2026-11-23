@@ -112,7 +112,7 @@ Path on macOS.
 ## Templates
 
 :::tip Templates are chosen in the Core addon settings
-The anatomy only defines templates by name. Which template a tool uses is decided by profiles in the [Core addon settings](../../../addons/essentials/core/settings.md#workfiles): each profile matches a context, such as a task type or a host, and names a template of one group. A new template is used only once a profile names it, renaming or removing a template needs the profiles that name it changed too, and a profile that names a missing template makes the save or publish fail. See [Profiles that pick a template](../../../pipeline/naming-conventions.md#profiles-that-pick-a-template).
+The anatomy only defines templates by name. Which template a tool uses is decided by profiles in the [Core addon settings](../../../addons/essentials/core/settings.md#workfiles): each profile matches a context, such as a task type or a host, and names a template of one group. A new template is used only once a profile names it, renaming or removing a template needs the profiles that name it changed too, and a profile that names a missing template makes the save or publish fail. See [How the anatomy and the Core settings work together](../../../pipeline/naming-conventions.md#how-the-anatomy-and-the-core-settings-work-together).
 :::
 
 Path templates turn the context of a work file or a publish into a directory and a file name. Templates are kept in groups, and each entry has a name. The keys, syntax and padding formats used in templates are described in [Naming conventions](../../../pipeline/naming-conventions.md#template-syntax).
@@ -152,7 +152,7 @@ Name by which settings and tools select the entry.
 </Setting>
 <Setting name="Directory template">
 
-Directory, filled with the [template keys](../../../pipeline/naming-conventions.md#template-keys). **Work**, **Publish**, **Hero** and **Delivery** entries. **Staging directories** entries have a single **Directory** field.
+Directory, filled with the [template keys](../../../pipeline/naming-conventions.md#token-reference). **Work**, **Publish**, **Hero** and **Delivery** entries. **Staging directories** entries have a single **Directory** field.
 
 </Setting>
 <Setting name="File name template">
@@ -206,7 +206,7 @@ The path of the hero version, the unversioned copy of the latest version of a pr
 
 ### Delivery
 
-Output paths of the **Deliver Versions** action of the [Browser](../../../pipeline/browser.md#delivery), chosen in its dialog. The group is empty by default. The templates are filled with the context of the delivered representation and the [datetime keys](../../../pipeline/naming-conventions.md#template-keys); a sequence needs the `frame` key.
+Output paths of the **Deliver Versions** action of the [Browser](../../../pipeline/loader.md#delivery), chosen in its dialog. The group is empty by default. The templates are filled with the context of the delivered representation and the [datetime keys](../../../pipeline/naming-conventions.md#token-reference); a sequence needs the `frame` key.
 
 ### Staging directories
 

@@ -7,47 +7,131 @@ addon_repo: ayon-marvelous-designer
 addon_version: 1.1.4
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
   - https://github.com/ynput/ayon-marvelous-designer/tree/1.1.4/server
-  - https://help.ayon.app/en/articles/2112433-marvelous-designer-configuration
 ---
 
 # Marvelous Designer addon settings
 
 <AddonInfo />
 
-The settings of the [Marvelous Designer addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
+The settings of the [Marvelous Designer addon](index.md) are in **Studio settings > Marvelous Designer**, and can be overridden per project in **Project settings > Marvelous Designer**. Pasting a location below into the URI bar of the web app opens that setting. How studio values, project overrides and addon versions combine is described in [Settings](../../../ayon/how-ayon-works/settings.md). The Marvelous Designer executables are defined in the Applications addon, not here.
 
 ## Prelaunch settings
 
-Used by the launch hooks that prepare Marvelous Designer. Each setting holds the path for one operating system only.
+<SettingLocation uri="ayon+settings://marvelous_designer/prelaunch_settings" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Qt Binding Directory | `/Users/Public/Documents/MarvelousDesigner/Configuration/python311/Lib/site-packages` | The `site-packages` directory of Marvelous Designer's Python, where PySide6 is installed. |
-| Plugins Directory | `/Users/Public/Documents/MarvelousDesigner/Configuration/Plugins` | The directory that holds `pluginSettings.json`. The AYON plugin entry is added to it. |
+Folders used by the launch hooks that prepare Marvelous Designer when the AYON Launcher starts it. Each setting holds one path, valid on one operating system, so studios with several operating systems override it per project or keep the same path on every machine. When a folder does not exist, the hook logs a warning and skips its step.
+
+<!-- screenshot: settings editor, Prelaunch Settings -->
+
+<Settings>
+<Setting name="Qt Binding Directory" default="/Users/Public/Documents/MarvelousDesigner/Configuration/python311/Lib/site-packages">
+
+The `site-packages` folder of the Python of Marvelous Designer. The hook installs PySide6 there and points `QtDir` and `QT_PLUGIN_PATH` to it.
+
+</Setting>
+<Setting name="Plugins Directory" default="/Users/Public/Documents/MarvelousDesigner/Configuration/Plugins">
+
+The folder that holds `pluginSettings.json`. The hook adds the AYON plugin entry to that file, so that **ayon_plugins** appears in the plugin system of Marvelous Designer.
+
+</Setting>
+</Settings>
 
 ## Create
 
-One entry for each of the creators Create Model, Create Point Cache and Create Zfab. The Workfile creator has no settings. Each entry has the same setting.
+<SettingLocation uri="ayon+settings://marvelous_designer/create" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Product type items | None | Optional list of product types the creator can create. Each item has a **Product type** (the name) and a **Label** (how the UI shows it). |
+One entry per creator. Each has a **Product type items** list: product types the creator can make on top of its product base type, each shown as its own entry in the Publisher's create list. See [Product type, variant and product name](../../../pipeline/product-types.md#product-type-variant-and-product-name). The workfile creator has no settings.
+
+<!-- screenshot: settings editor, Create -->
+
+<Settings>
+<Setting name="Create Model">
+
+<Settings>
+<Setting name="Product type items" default="Empty list">
+
+<Settings>
+<Setting name="Product type">
+
+Name of the product type.
+
+</Setting>
+<Setting name="Label">
+
+How the Publisher shows the product type.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Create Point Cache">
+
+<Settings>
+<Setting name="Product type items" default="Empty list">
+
+Same fields as for **Create Model**.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Create Zfab">
+
+<Settings>
+<Setting name="Product type items" default="Empty list">
+
+Same fields as for **Create Model**.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Publishers
 
-The extractors share three switches: **Enabled** (the plugin runs), **Optional** (the artist can skip it in the Publisher) and **Active** (it is selected by default in the Publisher).
+<SettingLocation uri="ayon+settings://marvelous_designer/publish" scope="Studio, with project overrides" />
 
-| Extractor | Enabled | Optional | Active |
-|---|---|---|---|
-| Extract Point Cache | On | On | On |
-| Extract OBJ | On | On | On |
-| Extract FBX | On | On | On |
+The extractors that write the published files. Each has three switches: **Enabled** (the plugin runs), **Optional** (the artist can turn it off in the Publisher) and **Active** (it is turned on by default in the Publisher).
+
+<!-- screenshot: settings editor, Publishers -->
+
+<Settings>
+<Setting name="Extract Point Cache" default="Enabled, optional, active" />
+<Setting name="Extract OBJ" default="Enabled, optional, active" />
+<Setting name="Extract FBX" default="Enabled, optional, active" />
+</Settings>
 
 ## Loaders
 
-| Setting | Default | Description |
-|---|---|---|
-| Load Point Cache: Scale | 1.0 | Scale factor applied when loading point cache data (`.abc`, `.fbx` and `.obj`). |
+<SettingLocation uri="ayon+settings://marvelous_designer/load" scope="Studio, with project overrides" />
+
+Options of the loaders.
+
+<!-- screenshot: settings editor, Loaders -->
+
+<Settings>
+<Setting name="Load Point Cache">
+
+<Settings>
+<Setting name="Scale" default="1.0">
+
+Scale factor applied when loading Alembic, FBX and OBJ point caches, for example to convert between the units of the source application and those of Marvelous Designer.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+## Related
+
+- [Marvelous Designer addon](index.md)
+- [Product types](../../../pipeline/product-types.md)
+- [Settings](../../../ayon/how-ayon-works/settings.md)

@@ -4,308 +4,856 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON ftrack addon with their default values: server and service credentials, server actions and events, status automation, application launch status, user actions, publish plugins and custom attributes."
 addon: ftrack
 addon_repo: ayon-ftrack
-addon_version: 1.6.8
+addon_version: 1.6.9
 addon_scope: pipeline-server
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
-  - https://github.com/ynput/ayon-ftrack/tree/1.6.8/server/settings
-  - https://help.ayon.app/en/articles/1229195-configure-ftrack-addon
+  - https://github.com/ynput/ayon-ftrack/tree/1.6.9/server/settings
 ---
 
 # ftrack addon settings
 
 <AddonInfo />
 
-The settings of the [ftrack addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
+The settings of the [ftrack addon](index.md) are in **Studio settings > ftrack**, and most of them can be overridden in **Project settings**; the server, the service credentials and the custom attributes are studio only. Pasting a location below into the URI bar of the web app opens that setting. The ftrack side is not configured here: the custom attributes AYON needs are created in ftrack by the **Create/Update Custom Attributes** action (see [Custom attributes](index.md#custom-attributes)), and the `leecher`, `processor` and `transmitter` services are deployed separately (see [Services](index.md#services)). How studio and project values combine is described in [Settings](../../../ayon/how-ayon-works/settings.md).
 
-Actions share a **Roles for action** list: the ftrack roles that may see and run the action. An empty list is listed as "none" below. Role names are matched as written, so `Project manager` and `Project Manager` are different values; the defaults contain both spellings.
+Actions share a **Roles for action** list: the ftrack security roles that may see and run the action. Role names are compared without regard to case, so `Project manager` and `Project Manager` are the same role. An empty list lets every user run the action.
 
 ## General
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Enables the addon. |
-| ftrack server url | Empty | The URL of the ftrack server. |
+<SettingLocation uri="ayon+settings://ftrack/ftrack_server" scope="Studio only" />
+
+The ftrack server the addon, its services and the artists' machines connect to.
+
+<!-- screenshot: settings editor, General -->
+
+<Settings prefix="general">
+<Setting name="Enabled" default="Enabled">
+
+Enables the addon.
+
+</Setting>
+<Setting name="ftrack server url" default="Empty">
+
+URL of the ftrack server, such as `https://studio.ftrackapp.com`.
+
+</Setting>
+</Settings>
 
 ## Service settings
 
-The user the `leecher`, `processor` and `transmitter` services log in with. A value can name an AYON secret, which the services resolve.
+<SettingLocation uri="ayon+settings://ftrack/service_settings" scope="Studio only" />
 
-| Setting | Default | Description |
-|---|---|---|
-| ftrack user name | Empty | ftrack user name or an AYON secret that holds it. |
-| ftrack API key | Empty | ftrack API key or an AYON secret that holds it. |
+The ftrack user the `leecher`, `processor` and `transmitter` services log in with. A dedicated ftrack user makes the changes done by the services easy to tell apart. Both fields offer the AYON secrets of the server, which the services resolve.
+
+<!-- screenshot: settings editor, Service settings -->
+
+<Settings prefix="service-settings">
+<Setting name="ftrack user name" default="Empty">
+
+ftrack user name, or an AYON secret that holds it.
+
+</Setting>
+<Setting name="ftrack API key" default="Empty">
+
+ftrack API key of that user, or an AYON secret that holds it.
+
+</Setting>
+</Settings>
 
 ## Server actions and events
 
-Handlers that run in the `processor` service. Unless noted, each has **Enabled** (on by default) and **Roles for action**.
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers" scope="Studio, with project overrides" />
 
-| Handler | Default roles | Other settings |
-|---|---|---|
-| Prepare Project | Administrator, Project manager | None. |
-| Sync to AYON | Administrator, Project manager | **Sync version statuses** (Off): synchronize version statuses from ftrack, which may slow down the synchronization. **Sync Link Type** (`< Skip >`): the AYON link type that ftrack links are synchronized to. |
-| Sync Users to AYON | Administrator, Project manager | None. |
-| Sync Hierarchical and Entity Attributes | Administrator, Project Manager | **Entity types of interest** (`Shot`, `Asset Build`); **Attributes to sync** (`frameStart`, `frameEnd`); **Enable Action** (On): also provide the user action. |
-| Clone Review Session | Administrator, Project Manager | None. |
-| Delete Folders/Products | None (the default dictionary has no entry for it) | None. |
-| Update Hierarchy thumbnails | No roles setting | **Levels** (1): how many hierarchy levels a thumbnail pushed from a version goes up through. A value below 1 skips the update. |
-| Action to transfer hierarchical attribute values | Administrator, Project manager | None. |
-| Create daily lists | Administrator, Project Manager | See below. Off by default. |
-| Calculate project component sizes | Administrator, Project Manager | None. |
+Actions and event handlers that run in the `processor` service, without AYON running on the user's machine. What each of them does is described in [Server actions](index.md#server-actions) and [Status automation](index.md#status-automation). Most of them have **Enabled** (turns the handler on) and **Roles for action**.
+
+<!-- screenshot: settings editor, Server Actions/Events -->
+
+### Prepare Project
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/prepare_project" />
+
+<Settings prefix="server-prepare-project">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Roles for action" default="Administrator, Project manager" />
+</Settings>
+
+### Sync to AYON
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/sync_from_ftrack" />
+
+The synchronization from ftrack to AYON, as an action and on ftrack events.
+
+<Settings prefix="sync-to-ayon">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Sync version statuses" default="Disabled">
+
+Also synchronizes the statuses of versions from ftrack. This can slow down the synchronization.
+
+</Setting>
+<Setting name="Sync Link Type" default="< Skip >">
+
+The AYON link type that ftrack links between entities are synchronized to. The options are `< Skip >`, which does not synchronize links, and the link types of the project anatomy that link a folder to a folder.
+
+</Setting>
+<Setting name="Roles for action" default="Administrator, Project manager" />
+</Settings>
+
+### Sync Users to AYON
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/sync_users_from_ftrack" />
+
+<Settings prefix="sync-users-to-ayon">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Roles for action" default="Administrator, Project manager" />
+</Settings>
+
+### Sync Hierarchical and Entity Attributes
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/sync_hier_entity_attributes" />
+
+Pushes attribute values, such as the frame range, between hierarchical attributes and the attributes of entities and their tasks, on events and as an action.
+
+<Settings prefix="sync-hierarchical-attributes">
+<Setting name="Enabled" default="Enabled">
+
+Turns the event handler on.
+
+</Setting>
+<Setting name="Entity types of interest" default="Shot, Asset Build">
+
+ftrack object types whose values are pushed.
+
+</Setting>
+<Setting name="Attributes to sync" default="frameStart, frameEnd">
+
+Names of the attributes to push.
+
+</Setting>
+<Setting name="Enable Action" default="Enabled">
+
+Also offers the action, to push the values of selected entities manually.
+
+</Setting>
+<Setting name="Roles for action" default="Administrator, Project Manager" />
+</Settings>
+
+### Clone Review Session
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/clone_review_session" />
+
+<Settings prefix="clone-review-session">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Roles for action" default="Administrator, Project Manager" />
+</Settings>
+
+### Delete Folders/Products
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/delete_ayon_entities" />
+
+<Settings prefix="delete-folders-products">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Roles for action" default="Empty list">
+
+The defaults of the release do not set roles for this action, so every user can run it until roles are added.
+
+</Setting>
+</Settings>
+
+### Update Hierarchy thumbnails
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/thumbnail_updates" />
+
+Pushes the thumbnail of a new version up through the hierarchy.
+
+<Settings prefix="update-hierarchy-thumbnails">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Levels" default="1">
+
+How many hierarchy levels above the version the thumbnail goes up. `0` skips the update.
+
+</Setting>
+</Settings>
 
 ### Sync status from Task to Parent
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Turns the handler on. |
-| Object types | `Shot`, `Asset Build` | Parent object types whose status is changed. |
-| Change parent if all tasks match | One item: new status `Completed` when all task statuses are `Approved` or `Omitted` | A list of items; each has a parent status (name) and the task statuses (value) that must all match. |
-| Change parent status if a single task matches | One item: new status `In Progress` for the task statuses `in progress`, `change requested`, `retake`, `pending review` | A list of items; each has a **New parent status** and **Task status** values. |
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/status_task_to_parent" />
+
+Sets the status of a parent object, such as a shot, from the statuses of its tasks.
+
+<Settings prefix="task-to-parent">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Object types" default="Shot, Asset Build">
+
+Parent object types whose status is changed.
+
+</Setting>
+<Setting name="Change parent if all tasks match" default="Completed when all tasks are Approved or Omitted">
+
+Each item sets a parent status when the statuses of all its tasks are in a list.
+
+<Settings>
+<Setting name="Name">
+
+The new parent status.
+
+</Setting>
+<Setting name="Value" default="Empty list">
+
+The task statuses that all tasks must have.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Change parent status if a single task matches" default="In Progress when a task is in progress, change requested, retake or pending review">
+
+Each item sets a parent status when one task gets one of the listed statuses.
+
+<Settings>
+<Setting name="New parent status" />
+<Setting name="Task status" default="Empty list">
+
+The task statuses that trigger the change.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ### Sync status from Task to Version
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Turns the handler on. |
-| Status mapping | Empty | Items of a version status (name) and the task statuses (value) that set it. |
-| Asset types Allow/Deny | Allow list | Whether **Asset types (short)** is an allow list or a deny list. |
-| Asset types (short) | Empty | Short names of the asset types the filter applies to. |
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/status_task_to_version" />
+
+Copies a new task status to the versions of the task.
+
+<Settings prefix="task-to-version">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Status mapping" default="Empty list">
+
+Each item has a version status (name) and the task statuses (value) that set it. A version status can appear once.
+
+</Setting>
+<Setting name="Asset types Allow/Deny" default="Allow list">
+
+**Allow list** or **Deny list**: whether **Asset types (short)** lists the asset types the handler applies to or the ones it skips.
+
+</Setting>
+<Setting name="Asset types (short)" default="Empty list">
+
+Short names of ftrack asset types, such as `img`.
+
+</Setting>
+</Settings>
 
 ### Sync status from Version to Task
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Turns the handler on. |
-| Status mapping | Empty | Items of a task status (name) and the version statuses (value) that set it. |
-| Asset types Allow/Deny | Deny list | Whether **Asset types (short)** is an allow list or a deny list. |
-| Asset types (short) | Empty | Short names of the asset types the filter applies to. |
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/status_version_to_task" />
+
+Copies a new version status to the task of the version.
+
+<Settings prefix="version-to-task">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Only for latest version" default="Disabled">
+
+Changes the task status only when the version is the latest version of its asset.
+
+</Setting>
+<Setting name="Status mapping" default="Empty list">
+
+Each item has a task status (name) and the version statuses (value) that set it. A task status can appear once.
+
+</Setting>
+<Setting name="Asset types Allow/Deny" default="Deny list">
+
+**Allow list** or **Deny list**: whether **Asset types (short)** lists the asset types the handler applies to or the ones it skips.
+
+</Setting>
+<Setting name="Asset types (short)" default="Empty list">
+
+Short names of ftrack asset types.
+
+</Setting>
+</Settings>
 
 ### Update status on next task
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Turns the handler on. |
-| Status Mappings | One item: `Not Ready` is changed to `Ready` | Items of a current status (name) and the new status (value). |
-| Ignored statuses | `Omitted` | Task statuses that are skipped. |
-| name_sorting | Off | Sort tasks of the same type by name when looking for the next task; tasks are always ordered by task type. The field has no title in the UI. |
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/next_task_update" />
+
+When a task gets a status of the **Done** state, changes the status of the next tasks of the same parent. Tasks are ordered by task type; by default all tasks of a task type must be done before the tasks of the next type change.
+
+<Settings prefix="next-task">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Status Mappings" default="Not Ready to Ready">
+
+Each item has the current status of the next task (name) and the status it gets (value). A next task whose status is not listed is left as it is.
+
+</Setting>
+<Setting name="Ignored statuses" default="Omitted">
+
+Task statuses that count as done, such as statuses that never change.
+
+</Setting>
+<Setting name="Name sorting" default="Disabled">
+
+Checks tasks one by one, sorted by task type and then by name, instead of in batches of the same task type.
+
+</Setting>
+</Settings>
+
+### Action to transfer hierarchical attribute values
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/transfer_values_of_hierarchical_attributes" />
+
+<Settings prefix="transfer-hierarchical-values">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Roles for action" default="Administrator, Project manager" />
+</Settings>
 
 ### Create daily lists
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | Off | Turns the action on. |
-| Roles for action | Administrator, Project Manager | Roles that may run the action. |
-| Create daily lists at | `00:00:00` | Time of day of the automated run. A change may take effect on the next day. |
-| Days of week | Monday to Friday | Days on which the automated run happens. |
-| Lists | One list | The lists to create; see the table below. |
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/create_daily_lists" />
 
-Each item of **Lists** has these fields. The default list has the name template `{yy}{mm}{dd}`, the category `Dailies`, automatic running on, and one filter for the status `Approved` without custom attributes.
+Creates ftrack lists of asset versions by filter, when the action is run and on a schedule.
 
-| Field | Default for a new item | Description |
-|---|---|---|
-| Name template | `{yy}{mm}{dd}` | Template of the list name. |
-| List category | `Dailies` | ftrack list category. |
-| Run automatically | Off | Create the list on the schedule above. |
-| Asset version filters | Empty | Filters; each has **Statuses** and **Custom attributes**. |
+<Settings prefix="create-daily-lists">
+<Setting name="Enabled" default="Disabled" />
+<Setting name="Create daily lists at" default="00:00:00">
 
-A custom attribute filter has **Attribute name**, **Attribute type** (default `bool_value`) and one **Expected value** field that matches the type (boolean `true`, string, integer `0`, float `0.0` or a list of enum values).
+Studio only. Time of day of the scheduled run. A change can take effect on the next day.
+
+</Setting>
+<Setting name="Days of week" default="Monday to Friday">
+
+Studio only. Days of the scheduled run: **Monday** to **Sunday**.
+
+</Setting>
+<Setting name="Lists" default="One list">
+
+The lists to create. The default list has the name template `{yy}{mm}{dd}`, the category **Dailies**, **Run automatically** on, and one filter for the status `Approved`.
+
+<Settings>
+<Setting name="Name template" default="{yy}{mm}{dd}">
+
+Template of the list name.
+
+</Setting>
+<Setting name="List category" default="Dailies">
+
+**Default**, **Clients** or **Dailies**.
+
+</Setting>
+<Setting name="Run automatically" default="Disabled">
+
+Creates the list on the schedule above.
+
+</Setting>
+<Setting name="Asset version filters" default="Empty list">
+
+A version is added when it matches one of the filters.
+
+<Settings>
+<Setting name="Statuses" default="Empty list">
+
+Version statuses.
+
+</Setting>
+<Setting name="Custom attributes" default="Empty list">
+
+Custom attribute values the version must have.
+
+<Settings>
+<Setting name="Attribute name" />
+<Setting name="Attribute type" default="Boolean">
+
+**Boolean**, **String**, **Integer**, **Float** or **Enumerator**.
+
+</Setting>
+<Setting name="Expected value">
+
+One field that matches the type: a boolean (default enabled), a string, an integer (default `0`), a float (default `0.0`) or a list of enumerator values.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Roles for action" default="Administrator, Project Manager" />
+</Settings>
+
+### Calculate project component sizes
+
+<SettingLocation uri="ayon+settings://ftrack/service_event_handlers/project_components_sizes" />
+
+<Settings prefix="component-sizes">
+<Setting name="Enabled" default="Enabled">
+
+Studio only: it cannot be turned off per project.
+
+</Setting>
+<Setting name="Roles for action" default="Administrator, Project Manager" />
+</Settings>
 
 ## Status change on application launch
 
-Changes the status of a task when an application is launched through AYON.
+<SettingLocation uri="ayon+settings://ftrack/post_launch_hook" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Turns the hook on. |
-| mapping | See below | Items of a **New status** and **From statuses** (the current statuses that trigger it). |
+Changes the status of a task when an application is launched for it through AYON. See [Launch hook](index.md#launch-hook).
 
-The special value `__any__` in **From statuses** matches every current status. The special **New status** `__ignore__` skips the change when the current status is in **From statuses**. The default mapping is:
+<!-- screenshot: settings editor, Status change on application launch -->
 
-| New status | From statuses |
-|---|---|
-| `In Progress` | `__any__` |
-| `Ready` | `Not Ready` |
-| `__ignore__` | `in progress`, `omitted`, `on hold` |
+<Settings prefix="launch-status">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Mapping" default="Three items, see below">
+
+Each item sets a new status when the current status is in its list. Items are checked in order and the first matching item is used; status names are compared without regard to case.
+
+<Settings>
+<Setting name="New status">
+
+The status to set. The special value `__ignore__` keeps the current status when it is in **From statuses**.
+
+</Setting>
+<Setting name="From statuses" default="Empty list">
+
+The current statuses that trigger the change. The special value `__any__` matches every status.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+The default mapping:
+
+- `In Progress` from `__any__`;
+- `Ready` from `Not Ready`;
+- `__ignore__` from `in progress`, `omitted` and `on hold`.
 
 ## User actions and events
 
-Actions that run in the action server of the tray, on the artist's machine.
+<SettingLocation uri="ayon+settings://ftrack/user_handlers" scope="Studio, with project overrides" />
 
-| Action | Enabled | Default roles | Other settings |
-|---|---|---|---|
-| Create/Update Custom Attributes | No switch | Administrator | None. |
-| Prepare Project | On (not shown in the UI) | Administrator, Project manager (not shown in the UI) | **Create project structure** (Off). |
-| Clean hierarchical custom attributes | On | Administrator, Project manager | None. |
-| Delete old versions | On | Project Manager, Administrator | None. The handler is not loaded in 1.6.8. |
-| Delivery action | On | Project Manager, Administrator | None. |
-| Job Killer | On | Administrator | None. |
-| Fill workfile Custom attribute | Off | None | **Custom attribute key**: a Text custom attribute on the Task entity type. The handler is not loaded in 1.6.8. |
+Actions that run in the action server of the tray, on the artist's machine. See [User actions](index.md#user-actions). Each has **Enabled** and **Roles for action** unless noted.
+
+<!-- screenshot: settings editor, User Actions/Events -->
+
+<Settings prefix="user">
+<Setting name="Create/Update Custom Attributes" default="Administrator">
+
+Only **Roles for action**; the action has no switch.
+
+</Setting>
+<Setting name="Prepare Project" default="Enabled, Administrator, Project manager">
+
+<Settings>
+<Setting name="Create project structure" default="Disabled">
+
+Checks **Create project structure** by default.
+
+</Setting>
+</Settings>
+
+No user action of the release reads these values; the **Prepare Project** action runs in the `processor` service and uses its own [settings](#prepare-project).
+
+</Setting>
+<Setting name="Clean hierarchical custom attributes" default="Enabled, Administrator, Project manager" />
+<Setting name="Delete old versions" default="Enabled, Project Manager, Administrator">
+
+The release does not load the handler of this action.
+
+</Setting>
+<Setting name="Delivery action" default="Enabled, Project Manager, Administrator" />
+<Setting name="Job Killer" default="Enabled, Administrator" />
+<Setting name="Fill workfile Custom attribute" default="Disabled, no roles">
+
+<Settings>
+<Setting name="Custom attribute key" default="Empty">
+
+A custom attribute of the type **Text** on the **Task** entity type.
+
+</Setting>
+</Settings>
+
+The release does not load the handler of this action.
+
+</Setting>
+</Settings>
 
 ## Publish plugins
 
+<SettingLocation uri="ayon+settings://ftrack/publish" scope="Studio, with project overrides" />
+
+Publish plugins that send published versions, statuses and notes to ftrack. An instance is sent to ftrack when it has the `ftrack` family. What every publish plugin does is listed in [Publishing](index.md#publishing).
+
+<!-- screenshot: settings editor, Publish plugins -->
+
 ### Collect ftrack Family
 
-Adds the `ftrack` family to instances so that they are uploaded to ftrack.
+<SettingLocation uri="ayon+settings://ftrack/publish/CollectFtrackFamily" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Runs the plugin. |
-| Profiles | 11 profiles, see below | List of profiles. |
+Adds the `ftrack` family to instances, so that they are uploaded to ftrack. The first profile that matches an instance decides; empty filters match everything.
 
-A profile has **Host names**, **Product base types**, **Task types**, **Task names**, **Add ftrack Family** (default on) and **Advanced adding if additional families present**: items of **Additional Families** and **Add ftrack Family** that override the decision when the instance has one of those families. An empty filter matches everything. The default profiles:
+<Settings prefix="collect-ftrack-family">
+<Setting name="Enabled" default="Enabled" />
+<Setting name="Profiles" default="11 profiles, see below">
 
-| Host names | Product base types | Add ftrack Family | Advanced filtering |
-|---|---|---|---|
-| `traypublisher` | All | On | None |
-| `traypublisher` | `matchmove`, `shot` | Off | None |
-| `traypublisher` | `plate`, `review`, `audio` | Off | On for the families `clip` and `review` |
-| `maya` | `model`, `setdress`, `animation`, `look`, `rig`, `camera`, `review` | On | None |
-| `blender`, `houdini`, `max` | All | Off | On for the family `review` |
-| `tvpaint` | `renderPass` | Off | None |
-| `tvpaint` | All | On | None |
-| `nuke` | `write`, `render`, `prerender` | Off | On for the family `review` |
-| `aftereffects` | `render`, `workfile` | On | None |
-| `flame` | `plate`, `take` | On | None |
-| `photoshop` | `review` | On | None |
+<Settings>
+<Setting name="Host names" default="Empty list" />
+<Setting name="Product base types" default="Empty list" />
+<Setting name="Task types" default="Empty list" />
+<Setting name="Task names" default="Empty list" />
+<Setting name="Add ftrack Family" default="Enabled">
+
+Adds the `ftrack` family to matching instances.
+
+</Setting>
+<Setting name="Advanced adding if additional families present" default="Empty list">
+
+Overrides **Add ftrack Family** when the instance has one of the listed families.
+
+<Settings>
+<Setting name="Additional Families" default="Empty list" />
+<Setting name="Add ftrack Family" default="Enabled" />
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+The default profiles, in order:
+
+- `traypublisher`, all product base types: added.
+- `traypublisher`, `matchmove` and `shot`: not added.
+- `traypublisher`, `plate`, `review` and `audio`: not added, unless the instance has the family `clip` or `review`.
+- `maya`, `model`, `setdress`, `animation`, `look`, `rig`, `camera` and `review`: added.
+- `blender`, `houdini` and `max`, all product base types: not added, unless the instance has the family `review`.
+- `tvpaint`, `renderPass`: not added.
+- `tvpaint`, all product base types: added.
+- `nuke`, `write`, `render` and `prerender`: not added, unless the instance has the family `review`.
+- `aftereffects`, `render` and `workfile`: added.
+- `flame`, `plate` and `take`: added.
+- `photoshop`, `review`: added.
 
 ### Collect Custom Attribute Data
 
-Collects ftrack custom attributes for ftrack entities, for use in templates during publishing.
+<SettingLocation uri="ayon+settings://ftrack/publish/CollectFtrackCustomAttributeData" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | Off | Runs the plugin. |
-| Custom attribute keys | Empty | Keys of the custom attributes to collect. |
+Collects the values of ftrack custom attributes of the ftrack entities, for use in templates during publishing.
+
+<Settings prefix="collect-custom-attribute-data">
+<Setting name="Enabled" default="Disabled" />
+<Setting name="Custom attribute keys" default="Empty list">
+
+Keys of the custom attributes to collect.
+
+</Setting>
+</Settings>
 
 ### Validate ftrack Attributes
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | Off | Runs the validator. |
-| Custom attributes to validate | `{}` | A JSON text of ftrack custom attribute names and the values or expressions to compare with. |
+<SettingLocation uri="ayon+settings://ftrack/publish/ValidateFtrackAttributes" />
+
+Compares ftrack custom attributes with values evaluated in the scene.
+
+<Settings prefix="validate-ftrack-attributes">
+<Setting name="Enabled" default="Disabled" />
+<Setting name="Custom attributes to validate" default="{}">
+
+A JSON object of ftrack custom attribute names and the checks to run. The value must parse as a JSON object.
+
+</Setting>
+</Settings>
 
 ### Integrate Hierarchy to ftrack
 
-Sets the status of tasks the plugin creates; without a matching profile the ftrack default status is used.
+<SettingLocation uri="ayon+settings://ftrack/publish/IntegrateHierarchyToFtrack" />
 
-| Setting | Default | Description |
-|---|---|---|
-| create_task_status_profiles | Empty | Profiles with **Task types**, **Task names** and **Status name**. |
+Sets the status of the tasks the plugin creates in ftrack. Without a matching profile, ftrack's default status is used.
+
+<Settings prefix="integrate-hierarchy">
+<Setting name="Create task status profiles" default="Empty list">
+
+<Settings>
+<Setting name="Task types" default="Empty list" />
+<Setting name="Task names" default="Empty list" />
+<Setting name="Status name" default="Empty" />
+</Settings>
+
+</Setting>
+</Settings>
 
 ### Integrate ftrack Description
 
+<SettingLocation uri="ayon+settings://ftrack/publish/IntegrateFtrackDescription" />
+
 Adds a description to the integrated asset version.
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | Off | Runs the plugin. |
-| Optional | On | The artist can skip it in the Publisher. |
-| Active | On | It is selected by default in the Publisher. |
-| Description template | `{comment}` | Template with the keys `intent` and `comment`. |
+<Settings prefix="integrate-description">
+<Setting name="Enabled" default="Disabled" />
+<Setting name="Optional" default="Enabled">
+
+The artist can turn the plugin off in the Publisher.
+
+</Setting>
+<Setting name="Active" default="Enabled">
+
+The plugin is turned on by default in the Publisher.
+
+</Setting>
+<Setting name="Description template" default="{comment}">
+
+Template with the keys `intent` and `comment`.
+
+</Setting>
+</Settings>
 
 ### Integrate ftrack Note
 
-Uses the publish comment as a note on the asset version.
+<SettingLocation uri="ayon+settings://ftrack/publish/IntegrateFtrackNote" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | Off | Runs the plugin. |
-| Note template | `{comment}` | Template with the keys `comment`, `host_name`, `app_name`, `app_label`, `published_paths` and `source`. |
-| Note labels | Empty | ftrack note labels to add. |
+Adds the publish comment as a note on the asset version.
+
+<Settings prefix="integrate-note">
+<Setting name="Enabled" default="Disabled" />
+<Setting name="Note template" default="{comment}">
+
+Template with the keys `comment`, `host_name`, `app_name`, `app_label`, `published_paths` and `source`.
+
+</Setting>
+<Setting name="Note labels" default="Empty list">
+
+ftrack note labels to add to the note.
+
+</Setting>
+</Settings>
 
 ### Integrate ftrack Component Overwrite
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Runs the plugin. |
+<SettingLocation uri="ayon+settings://ftrack/publish/IntegrateFtrackComponentOverwrite" />
+
+<Settings prefix="integrate-component-overwrite">
+<Setting name="Enabled" default="Enabled" />
+</Settings>
 
 ### Integrate ftrack Instance
 
-| Setting | Default | Description |
-|---|---|---|
-| Product base type Mapping | 32 items, see below | Items of a product base type (**Family**) and the ftrack **Asset Type** short name. |
-| Make product name as first asset name | On | Keeps the product name as the first asset name for review. |
-| AssetVersion status on publish | Empty | Profiles with **Host names**, **Product base types**, **Task types** and **Status name**. |
-| Additional metadata keys on components | Empty | Extra keys written to the component metadata. |
+<SettingLocation uri="ayon+settings://ftrack/publish/IntegrateFtrackInstance" />
 
-Default mapping of product base type to asset type:
+Prepares the ftrack asset versions and components of an instance.
 
-| Asset type | Product base types |
-|---|---|
-| `cam` | `camera` |
-| `look` | `look` |
-| `scene` | `mayaAscii`, `workfile`, `mayaScene` |
-| `geo` | `model`, `unrealStaticMesh` |
-| `rig` | `rig`, `camerarig`, `yetiRig` |
-| `setdress` | `setdress` |
-| `cache` | `pointcache`, `animation`, `ass`, `yeticache`, `vrayproxy`, `redshiftproxy` |
-| `render` | `render`, `prerender`, `render2d`, `write` |
-| `comp` | `nukescript` |
-| `mov` | `review` |
-| `img` | `plate`, `image` |
-| `audio` | `audio` |
-| `reference` | `reference` |
-| `xgen` | `xgen` |
-| `rendersetup` | `rendersetup` |
-| `assembly` | `assembly` |
-| `layout` | `layout` |
-| `usd` | `usd` |
+<Settings prefix="integrate-instance">
+<Setting name="Product base type Mapping" default="32 items, see below">
+
+The ftrack asset type used for each product base type. A product base type can appear once.
+
+<Settings>
+<Setting name="Family">
+
+The product base type.
+
+</Setting>
+<Setting name="Asset Type">
+
+Short name of the ftrack asset type.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Make product name as first asset name" default="Enabled">
+
+Keeps the product name as the first asset name for review.
+
+</Setting>
+<Setting name="AssetVersion status on publish" default="Empty list">
+
+Profiles that set the status of new asset versions.
+
+<Settings>
+<Setting name="Host names" default="Empty list" />
+<Setting name="Product base types" default="Empty list" />
+<Setting name="Task types" default="Empty list" />
+<Setting name="Status name" default="Empty" />
+</Settings>
+
+</Setting>
+<Setting name="Additional metadata keys on components" default="Empty list">
+
+Extra values written to the metadata of the components: **AYON ftrack version**, **AYON launcher version**, **Frame start**, **Frame end**, **Duration**, **Resolution width**, **Resolution height**, **FPS** and **Codec**.
+
+</Setting>
+</Settings>
+
+The default mapping of product base types to asset types:
+
+- `cam`: `camera`
+- `look`: `look`
+- `scene`: `mayaAscii`, `workfile`, `mayaScene`
+- `geo`: `model`, `unrealStaticMesh`
+- `rig`: `rig`, `camerarig`, `yetiRig`
+- `setdress`: `setdress`
+- `cache`: `pointcache`, `animation`, `ass`, `yeticache`, `vrayproxy`, `redshiftproxy`
+- `render`: `render`, `prerender`, `render2d`, `write`
+- `comp`: `nukescript`
+- `mov`: `review`
+- `img`: `plate`, `image`
+- `audio`: `audio`
+- `reference`: `reference`
+- `xgen`: `xgen`
+- `rendersetup`: `rendersetup`
+- `assembly`: `assembly`
+- `layout`: `layout`
+- `usd`: `usd`
 
 ### Integrate ftrack Farm Status
 
+<SettingLocation uri="ayon+settings://ftrack/publish/IntegrateFtrackFarmStatus" />
+
 Changes the task status when a product is submitted to a farm.
 
-| Setting | Default | Description |
-|---|---|---|
-| Farm status profiles | One profile | Profiles with **Host names**, **Task types**, **Task names**, **Product base types**, **Product names** and **Status name**. The default profile sets the status `Render` for the host `celaction` and the product base type `render`. |
+<Settings prefix="integrate-farm-status">
+<Setting name="Farm status profiles" default="One profile: Render for celaction renders">
+
+The default profile sets the status `Render` for the host `celaction` and the product base type `render`.
+
+<Settings>
+<Setting name="Host names" default="Empty list" />
+<Setting name="Task types" default="Empty list" />
+<Setting name="Task names" default="Empty list" />
+<Setting name="Product base types" default="Empty list" />
+<Setting name="Product names" default="Empty list" />
+<Setting name="Status name" default="Empty" />
+</Settings>
+
+</Setting>
+</Settings>
 
 ### ftrack Status Local Integration and ftrack Status On Farm Integration
 
-Change the task status after a local integration, and after the integration on the farm.
+<SettingLocation uri="ayon+settings://ftrack/publish/ftrack_task_status_local_publish" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Status profiles | Empty | Profiles with **Host names**, **Task types**, **Task names**, **Product base types**, **Product names** and **Status name**. |
+<SettingLocation uri="ayon+settings://ftrack/publish/ftrack_task_status_on_farm_publish" />
+
+Two groups with the same fields: the task status to set after a local integration, and after the integration of a product on the farm. The status is applied by [Integrate ftrack Task Status](#integrate-ftrack-task-status).
+
+<Settings prefix="task-status-integration">
+<Setting name="Status profiles" default="Empty list">
+
+<Settings>
+<Setting name="Host names" default="Empty list" />
+<Setting name="Task types" default="Empty list" />
+<Setting name="Task names" default="Empty list" />
+<Setting name="Product base types" default="Empty list" />
+<Setting name="Product names" default="Empty list" />
+<Setting name="Status name" default="Empty" />
+</Settings>
+
+</Setting>
+</Settings>
 
 ### Integrate ftrack Task Status
 
-| Setting | Default | Description |
-|---|---|---|
-| After version integration | On | Applies the collected task statuses after the versions are integrated. Some status automations on versions can conflict with the task status when the order is wrong. |
+<SettingLocation uri="ayon+settings://ftrack/publish/IntegrateFtrackTaskStatus" />
+
+<Settings prefix="integrate-task-status">
+<Setting name="After version integration" default="Enabled">
+
+Applies the collected task statuses after the versions are integrated instead of before. Status automations on versions can conflict with the task status when the order is wrong.
+
+</Setting>
+</Settings>
 
 ## Custom attributes
 
+<SettingLocation uri="ayon+settings://ftrack/custom_attributes" scope="Studio only" />
+
+The custom attributes AYON uses in ftrack: the security roles of the mandatory attributes, and which ftrack attributes AYON attributes are synchronized with. See [Custom attributes](index.md#custom-attributes).
+
+<!-- screenshot: settings editor, Custom Attributes -->
+
 ### Mandatory custom attributes
+
+<SettingLocation uri="ayon+settings://ftrack/custom_attributes/mandatory_attributes" />
 
 Read and write security roles of the attributes AYON needs in ftrack. Each attribute has **Write roles** and **Read roles**.
 
-| Attribute | Default write roles | Default read roles |
-|---|---|---|
-| `ayon_id` | None | None |
-| `ayon_path` | None | None |
-| `ayon_list_type` | None | None |
-| `ayon_sync_failed` | API, Administrator | API, Administrator |
-| `auto_sync_enabled` | API, Administrator | API, Administrator |
+<Settings prefix="mandatory">
+<Setting name="AYON ID" default="No roles">
+
+The `ayon_id` attribute.
+
+</Setting>
+<Setting name="AYON path" default="No roles">
+
+The `ayon_path` attribute.
+
+</Setting>
+<Setting name="AYON list type" default="No roles">
+
+The `ayon_list_type` attribute.
+
+</Setting>
+<Setting name="AYON sync failed" default="API, Administrator">
+
+The `ayon_sync_failed` attribute; the default is the same for both roles lists.
+
+</Setting>
+<Setting name="AYON auto-sync" default="API, Administrator">
+
+The `auto_sync_enabled` attribute; the default is the same for both roles lists.
+
+</Setting>
+</Settings>
 
 ### Attributes mapping
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Use the custom attributes mapping. |
-| Attributes mapping | 10 items, see below | Items that map an AYON attribute to ftrack custom attributes. |
+<SettingLocation uri="ayon+settings://ftrack/custom_attributes/attributes_mapping" />
 
-An item has the **AYON attribute**, an **Attribute type** (`hierarchical` or `standard`), the **ftrack attribute name** used for a hierarchical attribute and the **ftrack attribute names** used for standard attributes. In the default items the attribute type is `standard` and the hierarchical name equals the AYON attribute name.
+<Settings prefix="attributes-mapping">
+<Setting name="Enabled" default="Enabled">
 
-| AYON attribute | ftrack attribute name | ftrack attribute names (standard) |
-|---|---|---|
-| `resolutionWidth` | `resolutionWidth` | None |
-| `resolutionHeight` | `resolutionHeight` | None |
-| `pixelAspect` | `pixelAspect` | None |
-| `fps` | `fps` | `fps` |
-| `frameStart` | `frameStart` | `fstart` |
-| `frameEnd` | `frameEnd` | `fend` |
-| `handleStart` | `handleStart` | None |
-| `handleEnd` | `handleEnd` | None |
-| `clipIn` | `clipIn` | None |
-| `clipOut` | `clipOut` | None |
+Uses the mapping below.
+
+</Setting>
+<Setting name="Attributes mapping" default="10 items, see below">
+
+Maps AYON attributes to ftrack custom attributes.
+
+<Settings>
+<Setting name="AYON attribute" />
+<Setting name="Attribute type" default="Hierarchical">
+
+**Hierarchical** or **Standard**. The field below it changes with the type.
+
+</Setting>
+<Setting name="ftrack attribute name">
+
+For **Hierarchical**: the hierarchical ftrack attribute.
+
+</Setting>
+<Setting name="ftrack attribute names" default="Empty list">
+
+For **Standard**: the ftrack attributes of the entity types.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+In the default items the attribute type is **Standard** and the hierarchical name is the AYON attribute name. Only three default items have standard ftrack attributes: `fps` uses `fps`, `frameStart` uses `fstart` and `frameEnd` uses `fend`. The other items are `resolutionWidth`, `resolutionHeight`, `pixelAspect`, `handleStart`, `handleEnd`, `clipIn` and `clipOut`.
+
+## Related
+
+- [ftrack addon](index.md)
+- [Settings](../../../ayon/how-ayon-works/settings.md)

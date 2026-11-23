@@ -57,7 +57,7 @@ The rest of this page explains each step.
 
 Every machine that runs the AYON Launcher, an artist workstation or a render node, gets a **site ID**: three random words such as `military-mouse-of-jest`, created at the first start. Its purpose is to match settings that differ per machine, the *site settings*, such as root paths, to the machine they belong to.
 
-The site ID is stored in the launcher's local folder, which belongs to the operating system user. Two operating system users on one machine therefore get two site IDs, while AYON users who log in under the same operating system user share one. The `AYON_SITE_ID` environment variable overrides the stored value. See [Site IDs](how-ayon-works/site-ids.md) and the [launcher](../pipeline/launcher.md#site-id).
+The site ID is stored in the launcher's local folder, which belongs to the operating system user. Two operating system users on one machine therefore get two site IDs, while AYON users who log in under the same operating system user share one. The `AYON_SITE_ID` environment variable overrides the stored value. See [Site IDs](how-ayon-works/site-ids.md).
 
 ## Studio storage
 
@@ -133,7 +133,7 @@ An artist who works outside the studio network, without access to the studio sto
 ## Related
 
 - [Introduction](introduction.md#studio-setups)
-- [AYON Launcher](../pipeline/launcher.md)
+- [AYON launcher](../pipeline/launcher.md)
 - [Roots](web-ui/project/roots.md)
 - [Creating a project](how-ayon-works/creating-a-project.md)
 - [Site Sync addon](../addons/pipeline-features/sitesync/index.md)

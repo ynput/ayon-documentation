@@ -7,13 +7,13 @@ verified: 2026-11-17
 
 # Control who sees what
 
-<!-- screenshot: the Project access tab with wing_it selected, the users with their access groups, and the artist and freelancer panels -->
+![The Project access tab with wing_it selected and the users filtered to the demo accounts, each with the access groups they have in the project, most of them artist; on the right the access group panels, artist collapsed and Client_A, freelancer and supervisor without users](assets/access/project-access.webp)
 
 A production has people with different needs: producers who see everything, artists who need their own tasks, freelancers who must not see the rest of the project, and clients who only watch the shots sent to them. AYON controls this in two layers: the access level of each account, and access groups that apply inside each project. The rules are explained in [Permissions](../ayon/how-ayon-works/permissions.md); this page explains what they are useful for in a production. Permissions cover AYON data and actions only, not the files on the studio storage.
 
 ## Decide who runs the production
 
-<!-- screenshot: the Users tab with the Access level column showing User, Manager and Admin accounts -->
+![The Users page sorted by Access level: two Admin accounts, two Manager accounts and User accounts below them, with their default projects access](assets/access/users-access-level.webp)
 
 Every account has an access level, set on the [Users](../ayon/web-ui/studio/users.md) page:
 
@@ -25,7 +25,7 @@ Producers and coordinators who set up projects and staff them are usually manage
 
 ## Limit what artists can see and change
 
-<!-- screenshot: the Permissions tab with the freelancer access group selected, Restrict folder read set to Assigned -->
+![The Permissions page with the freelancer access group selected: folder creation, read, update, publishing and delete restricted, and Restrict folder read expanded with an access list entry of type Assigned](assets/access/freelancer-group.webp)
 
 An [access group](../ayon/web-ui/studio/permissions.md) is a set of rules for users with the **User** level. Its restrictions decide, per project, which folders a user can read, create in, change, publish to or delete in, which attributes they can read or change, whether they can comment or upload reviewables, and which actions and link types they can use. A new server has three groups:
 
@@ -39,7 +39,7 @@ A project with stricter rules, for example to meet the security requirements of 
 
 ## Give people access, project by project
 
-<!-- screenshot: the Add access dialog for one artist with the artist group checked, with several projects selected -->
+![The Project access tab with AY_CG_demo, Quantum_Demo and wing_it selected and the Add access dialog open for one user, with the artist access group checked](assets/access/add-access.webp)
 
 A user sees a project only once an access group is assigned to them in it, on the [Project access](../ayon/web-ui/project/project-access.md) tab. The same user can be a supervisor on one show and an artist on another. Several projects can be selected at once, for example to give a new artist access to every running show in one step, and removing the last group takes the project away from the user.
 
@@ -51,7 +51,8 @@ Clients and other external people do not need an account: with the [Review addon
 
 ## Keep some conversations and items private
 
-<!-- screenshot: the activity feed of a wing_it shot with a comment in the Director category, and the category selector open -->
+<Columns widths="45 55">
+<Column>
 
 With the [Power Pack](../addons/production-tracking/power-pack/index.md), access can be set on single items as well:
 
@@ -59,15 +60,32 @@ With the [Power Pack](../addons/production-tracking/power-pack/index.md), access
 - **Lists** get their own access, so a list of shots for one vendor or one delivery can be shown only to the people who need it. See [List access](../ayon/web-ui/production-tracking/lists.md#list-access).
 - **Views** are shared with chosen users, access groups or teams, with a level for each. See [Views](../ayon/web-ui/views.md#access-levels).
 
+</Column>
+<Column>
+
+![The activity feed of the lighting task of wing_it shot 020_0040 with a comment in the Director category, and the category selector of a new comment open with No category, Guest, Director and Private](assets/access/director-category.png "Comment categories")
+
+</Column>
+</Columns>
+
 ## Control access in the Planner
 
-<!-- screenshot: the Event access settings of the Planner with an Editor rule for a producers access group and a Viewer rule for Everyone -->
+<Columns widths="45 55">
+<Column>
 
 The plan of a studio holds information not everyone should see or change, such as who is booked on an unannounced project or what a person costs. In the [Planner](../addons/production-tracking/planner/index.md), **event access** decides who sees the details of bookings and who can edit them, for the studio and per project, and each custom attribute of bookings and resources, such as a day rate, has its own access. Editing task dates on the Schedule follows the access groups of the project instead. See [Access and permissions](../addons/production-tracking/planner/index.md#access-and-permissions).
 
+</Column>
+<Column>
+
+![The Edit Access dialog of the Planner's studio event access setting, with a Viewer rule for Everyone and an Editor rule for the supervisor access group](assets/access/planner-event-access.png "Event access")
+
+</Column>
+</Columns>
+
 ## What managers see that artists do not
 
-<!-- screenshot: Home tasks with the Assignees dropdown open and All Users selected -->
+![Home tasks of wing_it as a board with All Users selected in the assignees dropdown, which is open with every user checked, and the tasks of all artists grouped by status](assets/access/home-tasks-all-users.webp)
 
 Managers and admins are never limited by access groups, so their pages show the whole project. For users with the **User** level, the pages follow their access groups:
 

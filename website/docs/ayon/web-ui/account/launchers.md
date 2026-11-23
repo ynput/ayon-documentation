@@ -22,7 +22,7 @@ sources:
 
 ![The Launchers page: the Windows Installer card highlighted with the AYON-1.6.1-win-setup.exe button, the macOS and Linux Installer cards showing None available, and All Versions listing AYON-1.6.4-dev and AYON-1.6.1 with a Windows button each](../../assets/web-ui/account/launchers.webp)
 
-The Launchers page offers the AYON launcher installers hosted on the server for download. The launcher is the desktop application that artists install on their workstation to run the pipeline, see [Launcher](../../../pipeline/launcher.md). The page puts the installer of the production bundle first, for each platform, and lists every other version below. Admins upload the installers on the [Bundles](../studio/bundles.md#launchers-and-dependency-package-uploads) page, which also sets the launcher version of each bundle.
+The Launchers page offers the AYON launcher installers hosted on the server for download. The launcher is the desktop application that artists install on their workstation to run the pipeline, see [AYON launcher](../../../pipeline/launcher.md). The page puts the installer of the production bundle first, for each platform, and lists every other version below. Admins upload the installers on the [Bundles](../studio/bundles.md#launchers-and-dependency-package-uploads) page, which also sets the launcher version of each bundle.
 
 ## Installers
 
@@ -42,5 +42,5 @@ When the production bundle has no launcher version, or no installer exists for t
 
 - [Account](index.md)
 - [Bundles](../studio/bundles.md)
-- [Launcher](../../../pipeline/launcher.md)
+- [AYON launcher](../../../pipeline/launcher.md)
 - [Bundles and how a workstation picks one](../../how-ayon-works/bundles.md)

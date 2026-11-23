@@ -7,12 +7,15 @@ addon_repo: ayon-sitesync
 addon_version: 1.3.2
 addon_scope: pipeline-server
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://github.com/ynput/ayon-sitesync/tree/1.3.2
   - https://github.com/ynput/ayon-sitesync/releases
   - https://help.ayon.app/en/articles/3882937-site-sync
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # SiteSync addon
 
@@ -86,15 +89,36 @@ The page lists representations of a project with the columns folder, product, ve
 
 The sync server runs inside the AYON tray. For a site where no artist is working (for example synchronising `studio` with a cloud site), it can run without the tray with the launcher command:
 
+<Tabs groupId="os">
+<TabItem value="windows" label="Windows" default>
+
+```powershell
+ayon_console.exe addon sitesync syncservice --active_site <site name>
 ```
-ayon_console addon sitesync syncservice --active_site <site name>
+
+</TabItem>
+<TabItem value="unix" label="Linux & macOS">
+
+```bash
+ayon addon sitesync syncservice --active_site <site name>
 ```
+
+</TabItem>
+</Tabs>
 
 `--active_site` (`-a`) is required. The sites that must eventually receive every published file are listed in **Always accessible on sites** in the settings. The service reads the active and remote site from the settings (project and site settings) of that site.
 
 ### Copy last published workfile
 
 When an application starts for a task and no workfile exists in the work area, the hook downloads the last published workfile from the active site, copies it into the work area with the version number incremented and opens it. It does nothing when an explicit workfile path was given, or when Site Sync is not enabled for the project. The hook applies to these application groups: Blender, Photoshop, TVPaint, After Effects, Nuke, NukeAssist, NukeX, Nuke Studio and Hiero, Maya, Harmony, CelAction, Flame, Fusion and Houdini.
+
+## Command line
+
+The addon adds the command group `addon sitesync` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `syncservice` | Runs the sync server without the tray, for a site where no artist works. Option: `--active_site` (`-a`, required). See [Background sync service](#background-sync-service). |
 
 ## Related
 

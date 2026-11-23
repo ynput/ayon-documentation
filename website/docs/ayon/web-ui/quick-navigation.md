@@ -306,7 +306,7 @@ There is no single search across the whole server. Searching happens where the t
 | The latest version of a task | `Spacebar` on the task, on Tasks home or Task progress, plays its reviewables in the viewer. |
 | A product or version | The **Products** page, with the hierarchy slicer on the folder and **Group by** set to **Product**. |
 | Something a colleague pointed to | A link from **Share** in the details panel's **More actions** menu, or a link in an inbox message. Opening it shows the entity in the details panel. |
-| The web page of a launcher context | **Show in AYON** in the desktop [Launcher](../../pipeline/launcher.md) opens the project overview on the selected folder or task. |
+| The web page of a launcher context | **Show in AYON** in the desktop [Launcher window](../../pipeline/tray-and-launcher-window.md#core-local-actions) opens the project overview on the selected folder or task. |
 
 The [URI bar](app-header.md#uri-bar) in the middle of the App header shows the current location. On project pages with a selected entity it holds the entity's AYON URI, in the form `ayon+entity://project/folder/path?task=name`, and a copy button next to it copies the URI.
 

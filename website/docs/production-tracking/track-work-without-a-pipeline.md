@@ -7,13 +7,22 @@ verified: 2026-11-17
 
 # Track work without a pipeline
 
-<!-- screenshot: the Create new version dialog on a wing_it shot, with a product name, version 3 taken from the file name and a movie being uploaded -->
+<Columns widths="45 55">
+<Column>
 
 Not every piece of work reaches AYON through the pipeline. A vendor sends a movie, a freelancer works outside the studio, or the studio runs another pipeline and uses AYON only to track the production. The web app can turn any movie or still into a version of a shot or task, so it can be reviewed, commented on and approved like published work. How the upload works is described in [Upload version](../ayon/web-ui/dialogs/upload-version.md).
 
+</Column>
+<Column>
+
+![The Create new version - Product dialog opened from renderLightingMain of wing_it 020_0040: version 7, the lighting task, and a vendor movie waiting for upload, with Create v007](assets/track-work-without-a-pipeline/upload-version.png "Create new version")
+
+</Column>
+</Columns>
+
 ## Review work that comes from outside
 
-<!-- screenshot: the Products page of a wing_it shot with an uploaded vendor version next to published versions, sharing one numbering -->
+![The Products page filtered to wing_it 020_0040: the published versions 1 to 5 of renderLightingMain, then versions 6 and 7 uploaded in the web app in the same numbering, with v007 selected and the details panel showing who uploaded it](assets/track-work-without-a-pipeline/products-uploaded.webp)
 
 A coordinator can upload a vendor delivery or a freelancer's movie straight onto the shot or task it belongs to. It becomes a version with its own number, next to the studio's own versions, and plays in the [web viewer](../ayon/web-ui/web-viewer.md) and in [review sessions](review-and-approve.md). Uploaded and published versions share one numbering, so a shot's history stays in order whichever way each version arrived. A version number in the file name, such as `_v003`, is taken over for a new product.
 

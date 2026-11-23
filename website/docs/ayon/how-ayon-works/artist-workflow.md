@@ -62,7 +62,7 @@ The launcher is the desktop application that connects a workstation to the AYON 
 | Every start | The launcher reads the bundle of its mode (production by default), downloads the addons and dependency packages that the bundle needs, and starts the tray. |
 | While running | The tray icon gives access to the **Launcher** window, the **Browser** and other tools. When the studio switches to a new production bundle, the tray offers **Restart & Update**. |
 
-See [Launcher](../../pipeline/launcher.md) for the pipeline modes and the tray menu.
+See [AYON launcher](../../pipeline/launcher.md) for the pipeline modes and updates, and [Tray and Launcher window](../../pipeline/tray-and-launcher-window.md) for the tray menu.
 
 ## 2. See the task and pick the context
 
@@ -105,7 +105,7 @@ Each save is a new file with a higher version, and the AYON server keeps a workf
 
 ## 5. Load what others published
 
-A modeler often starts from published material: a concept image, a scan, a reference model from a library project. **Load...** in the AYON menu opens the loading tool, by default in the [Browser](../../pipeline/browser.md) interface (or the [Loader](../../pipeline/loader.md) when the studio uses the legacy one). It lists the products of the current project and of library projects, with their versions, statuses and representations. A load action (load, reference, import, depending on the integration) brings the chosen representation into the scene as a container that remembers where it came from.
+A modeler often starts from published material: a concept image, a scan, a reference model from a library project. **Load...** in the AYON menu opens the [Loader](../../pipeline/loader.md). It lists the products of the current project and of library projects, with their versions, statuses and representations. A load action (load, reference, import, depending on the integration) brings the chosen representation into the scene as a container that remembers where it came from.
 
 Afterwards, **Manage...** opens the [Scene Inventory](../../pipeline/scene-inventory.md), which lists the containers of the scene:
 
@@ -165,9 +165,10 @@ When the supervisor approves the version, the task is usually set to **Approved*
 ## Related
 
 - [Pipeline](../../pipeline/index.md)
-- [Launcher](../../pipeline/launcher.md)
+- [AYON launcher](../../pipeline/launcher.md)
+- [Tray and Launcher window](../../pipeline/tray-and-launcher-window.md)
 - [Workfiles](../../pipeline/workfiles.md)
-- [Browser](../../pipeline/browser.md) and [Loader](../../pipeline/loader.md)
+- [Loader](../../pipeline/loader.md)
 - [Scene Inventory](../../pipeline/scene-inventory.md)
 - [Publisher](../../pipeline/publisher.md) and [Publishing](../../pipeline/publishing.md)
 - [Product types](../../pipeline/product-types.md) and [Naming conventions](../../pipeline/naming-conventions.md)

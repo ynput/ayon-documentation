@@ -7,24 +7,39 @@ addon_repo: ayon-clockify
 addon_version: 0.2.2
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
   - https://github.com/ynput/ayon-clockify/tree/0.2.2/server/settings.py
-  - https://help.ayon.app/en/articles/0909886-clockify
 ---
 
 # Clockify addon settings
 
 <AddonInfo />
 
-The settings of the [Clockify addon](index.md). The addon has one setting, available at studio scope only. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned).
+The setting of the [Clockify addon](index.md) is in **Studio settings > Clockify**. Pasting the location below into the URI bar of the web app opens it. The Clockify API key is not an addon setting: see [the API key](#not-a-server-setting-the-api-key) below.
 
 ## Workspace
 
-| Setting | Default | Description |
-|---|---|---|
-| Workspace name | empty | Name of the Clockify workspace the addon uses. Clockify workspaces are looked up by exact name. While it is empty the addon is disabled. |
+<SettingLocation uri="ayon+settings://clockify/workspace_name" scope="Studio only" />
+
+The Clockify workspace the addon tracks time in.
+
+<!-- screenshot: settings editor, Workspace name -->
+
+<Settings>
+<Setting name="Workspace name" default="Empty">
+
+Name of the Clockify workspace. Workspaces are looked up by exact name. While it is empty, the addon is disabled on the machines and logs a warning. The value is also passed to processes as the `CLOCKIFY_WORKSPACE` environment variable.
+
+</Setting>
+</Settings>
 
 ## Not a server setting: the API key
 
 The Clockify API key is not stored in AYON settings. Each user enters their own key in the tray (**Clockify** > **Settings**), and it is kept in the AYON secure registry on their machine. The ftrack server action takes it from the `CLOCKIFY_API_KEY` environment variable instead.
+
+## Related
+
+- [Clockify addon](index.md)
+- [Timers Manager addon settings](../timers-manager/settings.md)
+- [Settings and scopes](../../../ayon/how-ayon-works/settings.md)

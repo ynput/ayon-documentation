@@ -7,13 +7,13 @@ verified: 2026-11-17
 
 # Put the right people on it
 
-<!-- screenshot: Task progress of wing_it with the lighting tasks of the 020_tryout sequence selected and the assignee menu open -->
+![Task progress of the wing_it sequence 020_tryout with three In progress lighting tasks, of 020_0015, 020_0020 and 020_0040, selected and the assignee menu open, their current assignees at the top of the list](assets/assigning-people/task-progress-assign.webp)
 
 A task with no assignee is work nobody is doing. Assigning people turns the breakdown into a plan of who does what: it fills each artist's task list, tells them about new work, and lets producers see the load of each person. In AYON a task can have several assignees, and an assignment can be changed at any time, so work moves between people as the production needs. How much each person can take on, and when, is planned with the Planner; see [Planning](planning.md).
 
 ## Give people access to the project
 
-<!-- screenshot: Project access tab with wing_it selected, the All users pane and the artist access group panel -->
+![The Project access tab with wing_it selected and the All users pane, listing each user with the access groups they have in the project, most of them artist](assets/assigning-people/project-access.webp)
 
 Only people who can open a project can be assigned to its tasks. Admins and managers can open every project. Other users can open a project once they have an access group in it, given on the [Project access](../ayon/web-ui/project/project-access.md) tab, and only they appear in the assignee menus of that project, together with admins and managers. The access group also decides what each person can see and change in the project, for example only the folders that hold tasks assigned to them. See [Control who sees what](access.md) and [Permissions](../ayon/how-ayon-works/permissions.md).
 
@@ -21,7 +21,7 @@ Access groups can be given in several projects in one step, for example to put a
 
 ## Organize people into teams
 
-<!-- screenshot: Teams tab of wing_it with the lighting team selected: its members, their roles and the leader shown in green -->
+![The Teams tab of wing_it with 3D_Team selected: its members with their roles, such as Modeler, Look Dev, Rigger and Lighter, the two leaders shown with the team name in green, and the team's roles in Team Settings](assets/assigning-people/teams.webp)
 
 [Teams](../ayon/web-ui/project/teams.md) group the people of a project, for example by department or by vendor. Each member can have roles, such as `lighter` or `supervisor`, and a team can have one or more leaders. Teams make the structure of the crew visible: the project's details on Home list each team with its leaders and members, so anyone can see who leads lighting on a show.
 
@@ -34,7 +34,7 @@ Roles and leaders describe people; they grant no permissions. Tasks are assigned
 
 ## Assign tasks
 
-<!-- screenshot: Overview of wing_it filtered to unassigned compositing tasks, with several Assignees cells selected and the assignee menu open -->
+![The Overview of wing_it filtered to tasks with no assignee in the 030_launch sequence, with the Assignees cells of two matte tasks selected and the assignee menu open for both](assets/assigning-people/overview-unassigned.webp)
 
 Assignees can be set wherever tasks are listed: in the cells of the [Project overview](../ayon/web-ui/production-tracking/overview.md), on the cards of [Task progress](../ayon/web-ui/production-tracking/task-progress.md) and in the [details panel](../ayon/web-ui/details-panel.md). With several tasks selected, one change applies to all of them. This makes assignment a bulk task rather than a task-by-task one:
 
@@ -45,19 +45,19 @@ Assignees can also be part of a [hierarchy template](../addons/production-tracki
 
 ## How artists see their work
 
-<!-- screenshot: Home tasks of one wing_it artist as a board by status, with a new assignment in Ready to start -->
+![Home tasks of one artist as a board by status: wing_it tasks in Not ready, Ready to start, In progress, Approved and Omitted, with three tasks in Ready to start](assets/assigning-people/home-tasks-board.webp)
 
 An assigned artist finds the task in three places:
 
 - **Home tasks:** the landing page of the web app shows the tasks assigned to the user across projects, as a board by status or as a list. See [Home tasks](../ayon/web-ui/home/tasks.md).
 - **Inbox:** an assignment, and a removal from a task, sends a message to the **Important** tab of the [inbox](../ayon/web-ui/inbox/important.md), which can also notify with a desktop notification or a sound.
-- **Launcher:** with the pipeline, the my tasks filter of the [Launcher](../pipeline/launcher.md) shows only the tasks assigned to the artist, ready to open in an application.
+- **Launcher:** with the pipeline, the my tasks filter of the [Launcher window](../pipeline/tray-and-launcher-window.md#selection-pages) shows only the tasks assigned to the artist, ready to open in an application.
 
 An assigned artist also becomes a watcher of the task, so comments, reviews and published versions on it reach their inbox from then on. See [Watchers](../ayon/web-ui/inbox/index.md#watchers).
 
 ## Hand work over
 
-<!-- screenshot: Home tasks showing the boards of two wing_it artists side by side, grouped by assignee -->
+![Home tasks showing the tasks of two artists on one board by status, grouped by assignee, so the tasks they share and those each has alone show in separate groups](assets/assigning-people/home-tasks-two-users.webp)
 
 People leave a show, go on holiday or get overloaded, and their work has to move to someone else. Producers and coordinators can open Home tasks for other users, or for all users, and see each person's tasks by status, to find someone with too much in progress or the open tasks of someone who is leaving. Changing the assignee of those tasks, one by one or in bulk, moves them to the new person's board and sends them the assignment message.
 

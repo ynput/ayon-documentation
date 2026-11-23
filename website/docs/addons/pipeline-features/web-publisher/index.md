@@ -8,7 +8,7 @@ addon_version: 1.2.5
 addon_scope: pipeline-server
 addon_flags: [licensed]
 addon_private: true
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://help.ayon.app/en/articles/4834329-web-publisher
 ---
@@ -39,7 +39,7 @@ The service needs direct access to the studio storage that holds the project roo
 | **Web Publisher** project page | A page in the project view of the AYON web interface, available to every user. It has a batch form and a list of batches with their upload and processing status. |
 | **Publish to Web Publisher** action | A server action in the category `server`, offered for one task. It opens the page with that task selected. |
 | Service | The `Webpublisher` service listens for new uploads and processes them. |
-| Launcher commands | `addon webpublisher` with the commands `listen` (what the service runs), `publish` and `publishfromapp` (internal, start a publish) and a batch statistics command (`batches_stats`) that writes a CSV file. |
+| Launcher commands | `listen` (what the service runs), `publish`, `publishfromapp` and `batches-stats`, see [Command line](#command-line). |
 
 ## Batches
 
@@ -85,6 +85,17 @@ The service also cleans up: uploaded files and batch records older than the **Re
 | Extract TVPaint Sequences | Extractor | Renders TVPaint layers to image sequences for the review, render pass and render layer instances. Target `tvpaint_worker`. |
 | Validate Workfile Data | Validator | Fails when the TVPaint mark in/out range does not equal the expected frame count (frame range plus handles). Target `tvpaint_worker`. |
 | Clean Up Job Root | Integrator, optional, active | Removes the job's staging folder after a successful publish. |
+
+## Command line
+
+The addon adds the command group `addon webpublisher` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `listen` | Listens for uploads and processes them; this is what the `Webpublisher` service runs. Options: `--upload_dir` (`-u`), `--topics` (`-to`, repeatable). |
+| `publish <path>` | Publishes a batch. Options: `--project`, `--user`, `--targets`. `listen` starts it for each upload; it is not meant for direct use. |
+| `publishfromapp <path>` | Publishes a batch through an application. Options: `--project`, `--host`, `--user`, `--targets`. Internal, not meant for direct use. |
+| `batches-stats <path>` | Writes a CSV file with statistics per batch: number of files, size, and upload and processing durations. |
 
 ## Related
 

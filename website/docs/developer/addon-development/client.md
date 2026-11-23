@@ -129,7 +129,7 @@ def get_launch_hook_paths(self, app):
 
 ## Command line
 
-The `cli` method adds commands under the launcher's `addon` command. It gets a click group and adds the addon's own group to it. Usage of addon commands is described in [Addon commands](../../pipeline/launcher-administration.md#addon-commands).
+The `cli` method adds commands under the launcher's `addon` command. It gets a click group and adds the addon's own group to it. Usage of addon commands is described in [Addon commands](../../pipeline/launcher-command-line.md#addon-commands).
 
 `ayon_core.addon.click_wrap` defines the commands with the same API as `click`, without importing `click` in the addon: the `click` version of AYON is not compatible with the one in some applications. `to_click_obj()` turns the group into a click object.
 
@@ -261,4 +261,4 @@ The tray then shows **My Tool** in its menu. More complete examples are the clie
 - [Server side](server.md)
 - [Host integration](host-integration.md)
 - [Developer mode](../developer-mode.md)
-- [Launcher administration](../../pipeline/launcher-administration.md)
+- [Launcher command line](../../pipeline/launcher-command-line.md)

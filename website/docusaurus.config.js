@@ -64,8 +64,9 @@ const config = {
                 ],
                 // Theme Options for modifying how redoc renders them
                 theme: {
-                    // Change with your site colors
-                    primaryColor: "#8fceff",
+                    // links and buttons: the light and dark primary of the AYON theme
+                    primaryColor: "#0b76ba",
+                    primaryColorDark: "#8fceff",
                 },
             },
         ],
@@ -150,7 +151,8 @@ const config = {
                     },
                 ],
             },
-            // Diagrams use the AYON theme colors (the docs are dark only).
+            // Diagrams use the AYON theme colors. These are the dark ones; the light theme
+            // overrides them in src/theme/Mermaid/index.js.
             mermaid: {
                 theme: { light: "base", dark: "base" },
                 options: {
@@ -215,10 +217,17 @@ const config = {
                     },
                 },
             },
+            // Code blocks: palenight on the dark theme (as before), GitHub's light colors on the
+            // light theme; the light background follows the AYON tokens (ayon-theme.css).
+            prism: {
+                theme: require("prism-react-renderer/themes/github"),
+                darkTheme: require("prism-react-renderer/themes/palenight"),
+            },
             colorMode: {
-                // AYON's UI is dark only, so the docs are too.
+                // Dark by default, like the AYON web app. The navbar picker
+                // (src/theme/Navbar/ColorModeToggle) offers Dark, Light and System.
                 defaultMode: "dark",
-                disableSwitch: true,
+                disableSwitch: false,
                 respectPrefersColorScheme: false,
             },
         }),
@@ -278,6 +287,10 @@ const config = {
             "@docusaurus/plugin-client-redirects",
             {
                 redirects: [
+                        { from: "/docs/pipeline/ayon-launcher", to: "/docs/pipeline/launcher" },
+                        { from: "/docs/pipeline/launcher-administration", to: "/docs/pipeline/launcher-command-line" },
+                        { from: "/docs/pipeline/addons-in-the-pipeline", to: "/docs/pipeline" },
+                        { from: "/docs/pipeline/browser", to: "/docs/pipeline/loader" },
                         { from: "/docs/ayon/web-ui/navigation-bar", to: "/docs/ayon/web-ui/app-header" },
                         { from: "/docs/production-tracking/calculated-attributes", to: "/docs/addons/production-tracking/power-pack/calculated-attributes" },
                         { from: "/docs/production-tracking/power-features", to: "/docs/addons/production-tracking/power-pack" },

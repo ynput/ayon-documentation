@@ -12,6 +12,9 @@
  * Mermaid 9.x draws a subgraph title on the top edge of its box without making
  * room for it, so the boxes inside touch the title. After rendering, each
  * subgraph box is grown upward to give its title a row of its own.
+ *
+ * The theme variables in docusaurus.config.js are the dark AYON colors; on the light
+ * theme the light ones below replace them (the `-light` tokens of the web app).
  */
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import BrowserOnly from "@docusaurus/BrowserOnly";
@@ -20,7 +23,29 @@ import {
     MermaidContainerClassName,
     useMermaidConfig,
 } from "@docusaurus/theme-mermaid/client";
+import { useColorMode } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
+
+const LIGHT_THEME_VARIABLES = {
+    darkMode: false,
+    background: "#f8f9fb",
+    primaryColor: "#ffffff",
+    primaryTextColor: "#1a1e23",
+    primaryBorderColor: "#0b76ba",
+    secondaryColor: "#eef1f4",
+    secondaryTextColor: "#1a1e23",
+    secondaryBorderColor: "#ccd3db",
+    tertiaryColor: "#eef1f4",
+    tertiaryTextColor: "#1a1e23",
+    tertiaryBorderColor: "#ccd3db",
+    lineColor: "#545d68",
+    textColor: "#1a1e23",
+    mainBkg: "#ffffff",
+    nodeBorder: "#0b76ba",
+    clusterBkg: "#eef1f4",
+    clusterBorder: "#ccd3db",
+    edgeLabelBackground: "#f8f9fb",
+};
 
 const TITLE_GAP = 8;
 const TRANSLATE = /translate\(\s*([-\d.e]+)[\s,]+([-\d.e]+)\s*\)/;
@@ -107,7 +132,18 @@ function spaceSubgraphTitles(svg) {
 }
 
 function MermaidDiagram({ value }) {
-    const config = useMermaidConfig();
+    const baseConfig = useMermaidConfig();
+    const { colorMode } = useColorMode();
+    const config = React.useMemo(
+        () =>
+            colorMode === "light"
+                ? {
+                      ...baseConfig,
+                      themeVariables: { ...baseConfig.themeVariables, ...LIGHT_THEME_VARIABLES },
+                  }
+                : baseConfig,
+        [baseConfig, colorMode],
+    );
     const [svg, setSvg] = useState("");
     const [error, setError] = useState(null);
     const containerRef = useRef(null);
@@ -120,7 +156,9 @@ function MermaidDiagram({ value }) {
     useEffect(() => {
         let cancelled = false;
         const id = `mermaid-svg-${Math.round(Math.random() * 10000000)}`;
-        mermaid.mermaidAPI.initialize(config);
+        // initialize() writes the derived theme variables (text colors and others) back into the
+        // object it gets, so a shared config would keep the first theme's colors after a switch
+        mermaid.mermaidAPI.initialize(JSON.parse(JSON.stringify(config)));
         // Mermaid measures labels when it draws, so an icon font that is still
         // loading is measured as its ligature name ("folder"); wait for it first.
         const fontReady = value.includes("material-symbols")

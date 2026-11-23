@@ -1,10 +1,15 @@
 ---
 title: Color management in publishing
-description: "How color data is detected, stored and converted while publishing: colorspaceData on representations, file rules, OIIO transcoding, review and thumbnail extraction, burnins, upload of reviewables, and the limits of each step."
-verified: 2026-10-16
+description: "How color data is detected, stored and converted while publishing: colorspaceData on representations, file rules, OIIO transcoding, review and thumbnail extraction, upload of reviewables, loading, and the limits of each step."
+verified: 2026-11-18
 sources:
-  - https://help.ayon.app/en/articles/5123607-ayon-review-processing
-  - https://help.ayon.app/en/articles/1279384-colorspace-settings
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/pipeline/colorspace.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/extract_colorspace_data.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/extract_color_transcode.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/extract_oiio_postprocess.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/extract_review.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/extract_thumbnail.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/plugins/publish/integrate_review.py
 ---
 
 import trace from "@site/src/data/flows/color-data-flow.json";
@@ -17,29 +22,30 @@ Publishing carries color information with the images it produces. The colorspace
 
 ```mermaid
 flowchart TD
-  A[Scene colorspace from DCC] --> C[Representation colorspaceData]
+  A[Scene colorspace from DCC] --> C[Source representation colorspaceData]
   B[File rules by file name] --> C
   C --> D{Transcode profile matches}
   D -- yes --> E[OIIO transcode]
-  D -- no --> F[Representation unchanged]
-  E --> G[New representation with target transform]
-  G --> H[Extract Review with FFmpeg]
-  F --> H
-  C --> T[Extract Thumbnail]
+  D -- no --> F[Source representation unchanged]
+  E --> G[New representation, colorspaceData of the target]
+  G --> R[Representations to publish]
+  F --> R
+  R --> H[Extract Review with FFmpeg]
+  R --> T[Extract Thumbnail]
+  R --> V[Integrate stores colorspaceData of each representation]
   H --> I[Review media tagged webreview]
   I --> U[Upload to AYON server]
-  C --> V[Integrate stores colorspaceData]
 ```
 
 Plain-text equivalent:
 
 1. The host integration reads the colorspace of the rendered or exported images from the scene (render settings, write nodes, render products, document profile) and sets it on the representation. Where the host cannot tell, file rules assign a colorspace by file name.
 2. The result is stored on each image representation as `colorspaceData`: the colorspace name and the OCIO config (path and template).
-3. If an OIIO transcode profile matches the instance, **Extract OIIO Transcode** converts the representation to a target colorspace or display and view, and creates one new representation per output definition. Otherwise the representation is not changed.
+3. If an OIIO transcode profile matches the instance, **Extract OIIO Transcode** converts the representation to a target colorspace or display and view, and creates one new representation per output definition, whose `colorspaceData` holds the target colorspace, or display and view. With the `review` tag on an output definition, the review moves to the new representation. Otherwise the representation is not changed.
 4. **Extract Review** encodes representations that carry the `review` tag into review media with FFmpeg. It does not apply an OCIO transform itself; the transform comes from the transcode step or from the DCC.
-5. **Extract Thumbnail** converts one image to a JPEG with `oiiotool` when the representation has `colorspaceData`, and otherwise with FFmpeg.
+5. **Extract Thumbnail** converts one image of the review representation to a JPEG: the transcoded one when the transcode moved the review to it, otherwise the source. With `colorspaceData` it uses `oiiotool` from that colorspace, and otherwise FFmpeg.
 6. Representations tagged `webreview` are uploaded to the AYON server so the web player and review sessions can show them.
-7. At integration, `colorspaceData` is stored in the data of the published representation, and the colorspace name is available as the `{colorspace}` key of publish templates.
+7. At integration, the `colorspaceData` of each representation (the source with its own colorspace, a transcoded one with the target) is stored in the data of the published representation, and the colorspace name is available as the `{colorspace}` key of publish templates.
 
 ## colorspaceData
 
@@ -59,6 +65,18 @@ Rules for setting it:
 - The colorspace is not validated against the config at this point.
 - The stored config path is used by later steps. When the path does not exist on another machine (for example on a farm worker), the template is filled with the project roots to find the local equivalent. If neither resolves, steps that need the config skip the representation.
 
+### Display and view
+
+A representation can be described by a colorspace alone, or by a colorspace plus a display and view when its images are display-referred. Display and view appear in three places.
+
+| Place | Meaning |
+|---|---|
+| Scene display and view | The display and view that the DCC is set to (for example Maya's view transform, Houdini's default display and view, Blender and 3ds Max render settings). Collected into instance values and used as the default target when a transcode output leaves its display and view empty. |
+| `colorspaceData.display` and `.view` | Marks a representation as display-referred. Written by hosts and by transcodes into a display and view. Used as the source of an inverse transform, and as the thumbnail target. |
+| Output definitions | **Target Display** and **Target View** of a transcode, **Display&View** defaults of the thumbnail. |
+
+When a host expresses display and view as one colorspace, the colorspace of a display and view pair is looked up in the config (`<USE_DISPLAY_NAME>` in a shared view resolves to the display name).
+
 ### Where the colorspace comes from
 
 The colorspace is chosen in this order:
@@ -74,19 +92,11 @@ The plugin **Extract Colorspace data** works on all instances and fills the gaps
 
 ### File rules
 
-File rules map files to colorspaces. They are the fallback for representations that no host plugin colorspace-tagged. The rule set comes from the host (if **Activate host rules** is on) or from the core settings (**Activate global file rules**), as described in [Color management on launch](color-management-on-launch.md#file-rules).
-
-| Detail | Behavior |
-|---|---|
-| What is matched | The file name of the first file of the representation (without a directory). The extension is compared case-insensitively. |
-| Pattern | Regular expression, searched anywhere in the name. |
-| Extension | A rule with an empty extension matches every file. |
-| Several matches | The last matching rule in the list wins. |
-| No match | The representation gets no `colorspaceData`. |
-
-The rule colorspace must exist in the OCIO config; it is not validated when the data is written.
+File rules are the fallback for representations that no host plugin tagged with a colorspace. The rule set (host rules or global rules) and the matching are described in [Color management on launch](color-management-on-launch.md#file-rules). When publishing, the pattern is matched against the file name of the first file of the representation, and the extension is compared case-insensitively. When no rule matches, the representation gets no `colorspaceData`. The colorspace of a rule must exist in the OCIO config; it is not validated when the data is written.
 
 ### Where `colorspaceData` is read
+
+Later steps take the colorspace from `colorspaceData` instead of detecting it again, so a wrong or missing entry carries through to every step below.
 
 | Consumer | Use |
 |---|---|
@@ -95,25 +105,25 @@ The rule colorspace must exist in the OCIO config; it is not validated when the 
 | Integration | Stored in the published representation. |
 | Loaders | Several loaders (for example for Houdini, 3ds Max, Resolve) read the stored colorspace to set the colorspace of the loaded file; representations without stored data fall back to file rules. Hosts with remapped colorspace names convert the stored OCIO name to the native name. |
 
-## Plugin order
+## Order of the color steps
 
-Plugins sort by their order number. Extractors start at 2.0 (`ExtractorOrder`); the offsets below are added to it.
+The plugins that handle color run in this order during extraction:
 
-| Offset | Plugin (label) | Color handling |
-|---|---|---|
-| -0.45 | Extract OTIO review | Sets `colorspaceData` from the instance value `reviewColorspace` when it exists. |
-| -0.00001 | Extract Thumbnail from source | Resizes a given source file. No color transform. |
-| 0 | Host extractors | Render, export and bake. Set `colorspaceData` explicitly. |
-| 0.019 | Transcode color spaces (Extract OIIO Transcode) | OCIO conversion with `oiiotool`. |
-| 0.0195 | OIIO Post Process | Free `oiiotool` arguments. No automatic color handling. |
-| 0.02 | Extract Review | FFmpeg encode. No OCIO transform. |
-| 0.03 | Extract burnins | Overlays text. No color transform. |
-| 0.031 | Review with Slate frame | Adds a slate. Encodes with BT.709 flags. Only for Nuke and shell publishing. |
-| 0.49 | Extract Colorspace data | Fills missing `colorspaceData`. |
-| 0.49 | Extract Thumbnail | JPEG thumbnail. Uses `colorspaceData` when present at that time. |
-| Integrator + 0.15 | Integrate AYON Review | Uploads `webreview` representations to the server. |
+1. Host extractors render or export the files and set `colorspaceData`.
+2. **Transcode color spaces** (Extract OIIO Transcode) converts colors with `oiiotool`.
+3. **OIIO Post Process** runs further `oiiotool` operations, without color logic.
+4. **Extract Review** and **Extract burnins** encode the review media with FFmpeg.
+5. **Extract Colorspace data** fills `colorspaceData` where it is still missing.
+6. **Extract Thumbnail** makes the thumbnail.
+7. At integration, **Integrate AYON Review** uploads the review media to the server.
 
-Because the transcode runs early, it only converts representations whose `colorspaceData` was set by the host plugin; it runs before the generic **Extract Colorspace data** plugin.
+Because the transcode runs before **Extract Colorspace data**, it converts only representations whose `colorspaceData` the host plugin set.
+
+### Follow the color data
+
+Pick a case and select a step to see what happens to the color data there. The plain-text version under the chart lists every step.
+
+<FlowTrace data={trace} />
 
 ## OIIO transcode
 
@@ -121,28 +131,21 @@ Because the transcode runs early, it only converts representations whose `colors
 
 ### When it runs
 
-| Condition | Detail |
-|---|---|
-| Profile | A profile in **Extract OIIO Transcode** matches the instance by **Product base types**, **Host names**, **Task types**, **Task names** and **Product names** (the most specific matching profile is used). |
-| Representation | Its name matches one of the profile's **Representation names** (regular expressions; empty matches all), its extension is `exr`, `jpg`, `jpeg`, `png`, `dpx`, `tif` or `tiff`, it has files, and it has `colorspaceData`. |
-| Config | The config of the representation can be located on the machine. |
-| Tool | `oiiotool` is available (the `ayon_third_party` addon or a path in `AYON_OIIO_PATHS`). Otherwise the plugin logs a warning and skips. |
-| Place | Not on instances flagged for farm processing. The farm job runs the plugins later. |
+The plugin picks the most specific matching profile of **Extract OIIO Transcode** in the [Core addon settings](../addons/essentials/core/settings.md#oiio-and-otio), by product base type, host, task and product name. Within that profile, a representation is converted when:
+
+- its name matches one of the profile's representation names (regular expressions; empty matches all);
+- its extension is `exr`, `jpg`, `jpeg`, `png`, `dpx`, `tif` or `tiff`, and it has files;
+- it has `colorspaceData`, and the config stored there can be located on the machine;
+- `oiiotool` is available (from the `ayon_third_party` addon or a path in `AYON_OIIO_PATHS`); otherwise the plugin logs a warning and skips;
+- the instance is not flagged for farm processing; the farm job runs the plugins later.
 
 ### Output definitions
 
-Each profile has **Delete Original Representation** (on by default in the model) and a list of output definitions. Every definition produces a new representation.
+A profile has a list of output definitions, and every definition produces one new representation. A definition sets the name and extension of the new representation (the special name `passthrough` keeps the source name, an empty extension keeps the source extension), a target, extra `oiiotool` arguments (for example the bit depth of a DPX), and tags. The target is either a colorspace (**Use Colorspace**) or a display and view (**Use Display&View**). An empty display or view falls back to the display and view of the scene, collected by the host as the instance values `sceneDisplay` and `sceneView` (or the older `colorspaceDisplay` and `colorspaceView`). The `review` tag makes the review be built from the converted file instead of the original; custom tags can be used by review output definitions as filters.
 
-| Field | Effect |
-|---|---|
-| **Name** | Name of the new representation. The special name `passthrough` keeps the name of the source. |
-| **Extension** | Target extension. Empty keeps the source extension. |
-| **Transcoding type** | **Use Colorspace** or **Use Display&View**; only one per definition. |
-| **Target Colorspace** | Target for **Use Colorspace**. |
-| **Target Display**, **Target View** | Target for **Use Display&View**. Empty values fall back to the display and view of the scene (instance values `sceneDisplay` and `sceneView`, or the older `colorspaceDisplay` and `colorspaceView`). |
-| **OIIOtool arguments** | Extra `oiiotool` arguments, for example the bit depth of a DPX. |
-| **Tags** | Added to the new representation. `review` makes the review be built from this converted file instead of the original. |
-| **Custom Tags** | Added as custom tags, which review output definitions can filter by. |
+:::caution EXRs with baked-in display colors
+The transcode does not restrict its output: an output definition can write any format `oiiotool` writes, in any colorspace or display and view of the config. It can therefore write EXRs with display-referred values, for example converted to sRGB or Rec.709 for review. EXR is by convention a scene-linear format, and other tools and studios usually read EXRs as linear, so such files are easily misread. Keep EXR outputs in a scene-linear colorspace, such as ACEScg or ACES2065-1, and write display-referred outputs to formats like PNG, JPEG or DPX.
+:::
 
 How the conversion is built:
 
@@ -153,13 +156,7 @@ How the conversion is built:
 | Display and view | Colorspace | The display and view is inverted into `scene_linear`, then converted to the target colorspace. |
 | Display and view | Another display and view | Inverted, then re-applied with the target pair. Identical source and target pairs need no conversion. |
 
-After conversion, the new representation's `colorspaceData` is updated with the target colorspace, display and view.
-
-### Effects on other representations
-
-- With **Delete Original Representation** on, the source representation gets the `delete` tag and is dropped before integration (unless it is needed for thumbnails). When a new representation carries the `review` tag, the `review` tag is removed from the source.
-- When a definition adds the `review` tag and the instance is not a review instance, the family `review` is added so that **Extract Review** processes the new representation.
-- Only the RGBA channels (or the reviewable layer chosen by **Default reviewable layers**) are converted and written. Other channels are not carried to the transcoded file.
+After conversion, the new representation's `colorspaceData` is updated with the target colorspace, display and view. Only the RGBA channels (or the reviewable layer chosen by **Default reviewable layers**) are converted and written. Other channels are not carried to the transcoded file.
 
 ### Limits
 
@@ -172,7 +169,15 @@ After conversion, the new representation's `colorspaceData` is updated with the 
 
 ### OIIO post process
 
-**Extract OIIO Post Process** runs `oiiotool` with arguments typed in the profile: for conversion to scanline EXR, resizing or flattening. It has the same representation tags and `review` behavior as the transcode but no color logic. **Input arguments** and **Output arguments** are inserted before the input file and before the output option. Its profiles also filter by **Representation extensions**.
+**Extract OIIO Post Process** runs `oiiotool` with arguments typed in the profile: for conversion to scanline EXR, resizing or flattening. It has no color logic; its new representations are tagged like those of the transcode, see [Tags on the new representations](#tags-on-the-new-representations). **Input arguments** and **Output arguments** are inserted before the input file and before the output option. Its profiles also filter by **Representation extensions**.
+
+## Tags on the new representations
+
+**Transcode color spaces** and **OIIO Post Process** handle the representations they create in the same way:
+
+- **Review moves to the new representation.** When an output definition has the `review` tag, or the source representation had it, the new representation gets it and the source loses it, so the review is built once, from the converted files. The transcode also adds the `review` family to an instance that lacks it, so that **Extract Review** processes the new representation.
+- **Delete Original Representation.** When it is on in the profile, the source representation gets the `delete` tag and is removed before integration, unless it is the thumbnail representation.
+- **Custom tags** of an output definition are copied to the new representation, where review output definitions can use them as filters.
 
 ## Review media
 
@@ -181,7 +186,7 @@ Review media is made by **Extract Review** from representations that have the ta
 | Aspect | Behavior |
 |---|---|
 | Input representations | Tag `review` present; not tagged `thumbnail` or `passing`; extension in `exr`, `jpg`, `jpeg`, `png`, `dpx`, `tga`, `tiff`, `tif`, `psd`, `mov`, `mp4`. |
-| Profile | Matched by host name, product base type and task type. |
+| Profile | Matched by host name, product base type and task type ([Core addon settings](../addons/essentials/core/settings.md#extract-review)). |
 | Outputs | One new representation per output definition that passes its filters (families, product names, custom tags of the representation, single-frame or multi-frame input). |
 | Encoding | FFmpeg, driven by the output definition: filters, input and output arguments, size, overscan, letter box, background, missing-frame handling. |
 | Color | No OCIO transform. With the default definitions, the movie output uses the FFmpeg input argument `-apply_trc gamma22` and BT.709 flags (`-color_range tv`, `-colorspace bt709`, `-color_primaries bt709`, `-color_trc bt709`); the single-image output (`png`) does no color conversion. |
@@ -189,6 +194,10 @@ Review media is made by **Extract Review** from representations that have the ta
 | Outputs inherit | The new representations are copies of the input, so `colorspaceData` is the input's, and tags of the output definition are added. The `delete` tag of the source is not copied. |
 | Burnins | Output definitions tagged `burnin` are passed on to **Extract burnins**. |
 | LUT baking | With the instance value `lutPath` and the representation tag `bake-lut`, a `lut3d` filter is added. Farm submitters pass `lutPath` on for review instances. |
+
+:::caution Color changes in Extract Review are not tracked
+Extract Review copies the `colorspaceData` of its input unchanged, so a color change made here, with FFmpeg arguments such as `-apply_trc gamma22` or with LUT baking, is not recorded: the review files claim the colorspace of their source. Convert colors with **Transcode color spaces** before the review instead, so the converted files carry their real colorspace.
+:::
 
 ### How the review gets its color transform
 
@@ -204,7 +213,7 @@ An image encoded without one of these routes shows the scene-referred values as 
 
 ## Thumbnails
 
-**Extract Thumbnail** creates a JPEG thumbnail from one image of the instance. Settings: **Extract Thumbnail** profiles.
+**Extract Thumbnail** creates a JPEG thumbnail from one image of the instance. Its profiles are in the [Core addon settings](../addons/essentials/core/settings.md#extract-thumbnail-and-thumbnail-from-source).
 
 | Aspect | Behavior |
 |---|---|
@@ -217,18 +226,6 @@ An image encoded without one of these routes shows the scene-referred values as 
 | Result | A representation named `thumbnail` (tag `thumbnail`). With **Integrate Thumbnail Representation** off it is tagged `delete` and not integrated as a representation, but is still used for the version thumbnail. |
 
 **Extract Thumbnail from source** creates a thumbnail from the file in the instance value `thumbnailSource` (default size 300 by 170). It does not apply color management.
-
-## Display and view
-
-Display and view appear in three places.
-
-| Place | Meaning |
-|---|---|
-| Scene display and view | The display and view that the DCC is set to (for example Maya's view transform, Houdini's default display and view, Blender and 3ds Max render settings). Collected into instance values and used as the default target when a transcode output leaves its display and view empty. |
-| `colorspaceData.display` and `.view` | Marks a representation as display-referred. Written by hosts and by transcodes into a display and view. Used as the source of an inverse transform, and as the thumbnail target. |
-| Output definitions | **Target Display** and **Target View** of a transcode, **Display&View** defaults of the thumbnail. |
-
-When a host expresses display and view as one colorspace, the colorspace of a display and view pair is looked up in the config (`<USE_DISPLAY_NAME>` in a shared view resolves to the display name).
 
 ## Uploading and storing
 
@@ -258,12 +255,6 @@ When a host expresses display and view as one colorspace, the colorspace of a di
 - OIIO conversions use only the channels chosen for review; additional passes are not carried into the converted file.
 - Farm publishing: the transcode is skipped on the submitting machine and runs in the farm job; the farm job depends on the `colorspaceConfig`, display and view collected at submission.
 - Nuke baking (see above) and other host-specific plugins have their own settings; those are described in the host addon documentation.
-
-## Follow the color data
-
-Pick a case and select a step to see what happens to the color data there. The plain-text version under the chart lists every step.
-
-<FlowTrace data={trace} />
 
 ## Related
 

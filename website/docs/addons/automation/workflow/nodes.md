@@ -4,11 +4,11 @@ sidebar_label: Nodes
 description: "Reference of the built-in nodes of the AYON Workflow addon: context, flow control, event trigger, application and publish nodes, with their inputs, outputs and what each does."
 addon: workflow
 addon_repo: ayon-workflow
-addon_version: 0.4.4
+addon_version: 0.4.6
 addon_scope: pipeline-server
 addon_flags: [licensed, studio-only]
 addon_private: true
-verified: 2026-10-15
+verified: 2026-11-20
 sources:
   - https://help.ayon.app/en/articles/3023198-workflow-nodes-reference
 ---
@@ -33,7 +33,9 @@ The nodes marked "Workstation" are only available when the workflow runs in a fu
 | `Video` | `path`, `frame_range` | `video` | Defines a video file path, existing or not. |
 | `ImageSequence` | `directory`, `head`, `tail`, `frame_range`, `padding` | `image_sequence` | Defines an image sequence, existing or not. `head` and `tail` are the text before and after the frame number, such as `img.` and `.jpg`. The padding defaults to 4. A temporary directory is used when no directory is given. |
 | `MergeSequence` | `image_sequences` (accepts several connections) | `merged_sequence` | Merges image sequences with the same pattern into one that covers the lowest first frame to the highest last frame. Fails when the patterns differ. |
+| `GetVersionTask` | `version_item`, `ensure_exists` | `task_context` | Returns the task a version was published from. With `ensure_exists` (default on) it fails for a version without a task; otherwise it returns nothing. |
 | `SetEntityWatchers` | `input_entity`, `watchers`, `edit_mode` | `edited_entity` | Changes the watchers of an entity and returns the entity. `edit_mode` is `add` (default), `remove`, `replace` or `toggle`. |
+| `SetStatus` | `input_entity`, `status` | `edited_entity` | Sets the status of a folder, task, product or version and returns the entity. The status must be one of the project statuses for that entity type; the name is not case sensitive. When the workflow fails later, the previous status is restored. |
 | `UITest` | Sample inputs of every widget type | None | Shows every input widget of the editor. It does nothing and exists for editor development. |
 
 ## Flow control nodes
@@ -77,19 +79,8 @@ Workstation only.
 
 The `Publish` node relies on the publish plugin `Collect From Provided Files`, which the addon adds for the host `workflow`.
 
-## Demo workflows
-
-The nodes repository ships demo workflows. The event-driven ones are these files in `demo/workflow_from_events`:
-
-| Demo | Trigger |
-|---|---|
-| `on_task_assignees_changed_watch_parent_folder.json` | `OnTaskAssigneesChanged` |
-| `trigger_from_cron.json` | `OnSchedule` |
-| `trigger_from_simple_action_folder.json` | `OnActionFromFolder` |
-| `trigger_from_simple_action_version.json` | `OnActionFromVersion` |
-| `trigger_from_version_created_event.json` | `OnVersionCreated` |
-
 ## Related
 
 - [Workflow overview](index.md)
+- [Demo workflows](index.md#demo-workflows)
 - [Workflow settings](settings.md)

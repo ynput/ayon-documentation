@@ -88,7 +88,31 @@ These features need the [Power Pack](../../../addons/production-tracking/power-p
 
 ### Personal API keys
 
-The **Personal API keys** card lets users create API keys of their own, for example for a script. Without the Power Pack, the card shows a preview with **Create API key**, which explains the feature. When the Power Pack is licensed but too old to provide the keys, the card reads "Update Power Pack to use personal API keys." Guests do not see it.
+The **Personal API keys** card lets users create API keys of their own, for example for a script or an AI assistant. A key works as the user, with the user's access. Without the Power Pack, the card shows a preview with **Create API key**, which explains the feature. When the Power Pack is licensed but too old to provide the keys, the card reads "Update Power Pack to use personal API keys." Guests do not see it.
+
+![The Personal API keys card with no keys yet: the text You have no personal API keys, the Name field with the placeholder What the key is for, the Expires date and the Create key button, and the note Keys expire within 90 days at most](../../assets/web-ui/account/personal-api-keys.webp)
+
+| Element | What it does |
+|---|---|
+| **Name** | What the key is for, up to 100 characters. Two keys of one user cannot have the same name. |
+| **Expires** | The day the key stops working: from tomorrow up to the maximum lifetime, 90 days unless the studio changed it in the [Power Pack settings](../../../addons/production-tracking/power-pack/settings.md#personal-api-keys). The default is 30 days from today, or the maximum lifetime when it is shorter. |
+| **Create key** | Creates the key and shows it once. |
+| Key rows | The keys of the user, each with its name, a masked preview (`8df2*****7f54`), the creation and expiry dates and a delete button that revokes the key at once, after a confirmation. |
+
+A new key appears in a panel above the list with the text "Copy it now: you won't be able to see it again" and a copy button. **Done** closes the panel; after that only the masked preview remains.
+
+From Power Pack 1.8.3, when the production bundle has the [AYON MCP server addon](../../../addons/production-tracking/mcp/index.md), the panel also has **Connect an MCP client...**, which lists ready-made configurations that connect an AI assistant to this server with the new key:
+
+- **Claude Code: terminal command**
+- **Claude Code: entry for a project's .mcp.json**
+- **VS Code: entry for .vscode/mcp.json**
+- **Claude Desktop: entry for claude_desktop_config.json**
+
+The chosen configuration shows with a copy button and a short instruction for where to paste it. It uses the address of the server as the browser reaches it, followed by `/api/mcp`; an assistant that reaches AYON at another address needs that address changed after pasting. On a server without HTTPS, the Claude Desktop entry allows plain HTTP and the instruction warns that the key travels unencrypted.
+
+![A new key named AYON MCP: the key with a copy button, the VS Code entry for .vscode/mcp.json chosen in Connect an MCP client, its JSON with the server address and the key and a copy button, the instruction to paste it inside servers and keep the file out of git, the Done button, and the saved key row below with its masked preview, dates and delete button](../../assets/web-ui/account/personal-api-keys-new-key.webp)
+
+When the studio turns personal API keys off in the Power Pack settings, the card reads "Creating personal API keys is turned off in this studio." Admins can also see and revoke the personal API keys of any user in the user details of [Users](../studio/users.md).
 
 ## Related
 

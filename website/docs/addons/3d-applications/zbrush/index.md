@@ -7,7 +7,7 @@ addon_repo: ayon-zbrush
 addon_version: 0.4.2
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://github.com/ynput/ayon-zbrush/tree/0.4.2
   - https://github.com/ynput/ayon-zbrush/releases
@@ -98,6 +98,14 @@ The loader imports the file with Zbrush's **Tool > Import**, so the mesh becomes
 ## Timers
 
 The optional setting [Stop timer on application exit](settings.md) stops the running time tracker through the Timers Manager when Zbrush closes.
+
+## Command line
+
+The addon adds the command group `addon zbrush` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `run-with-zscript` | Opens an AYON tool in the running ZBrush session. Option: `--launcher` (`workfiles_tool`, `loader_tool`, `publish_tool` or `scene_inventory_tool`). The entries of the [AYON menu](#ayon-menu) call it; it is not meant for direct use. |
 
 ## Related
 

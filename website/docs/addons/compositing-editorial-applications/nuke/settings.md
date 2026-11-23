@@ -7,222 +7,744 @@ addon_repo: ayon-nuke
 addon_version: 0.4.19
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
   - https://github.com/ynput/ayon-nuke/tree/0.4.19/server/settings
-  - https://help.ayon.app/en/articles/2833967-nuke-addon-settings
 ---
 
 # Nuke addon settings
 
 <AddonInfo />
 
-The settings of the [Nuke addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The settings model is large: lists of profiles are described by the structure of one entry, and the knob structure that several of them share is described once in [Knob definitions](#knob-definitions).
+The settings of the [Nuke addon](index.md) are in **Studio settings > Nuke**, and can be overridden per project in **Project settings > Nuke**. Pasting a location below into the URI bar of the web app opens that setting. How settings and their overrides work is described in [Settings](../../../ayon/how-ayon-works/settings.md). Several settings hold lists of knobs with the same structure, described once in [Knob definitions](#knob-definitions).
 
 ## General
 
-| Setting | Default | Description |
-|---|---|---|
-| Menu Shortcuts: **Create...** | `ctrl+alt+c` | Keyboard shortcut of the menu entry. |
-| Menu Shortcuts: **Publish...** | `ctrl+alt+p` | Keyboard shortcut of the menu entry. |
-| Menu Shortcuts: **Load...** | `ctrl+alt+l` | Keyboard shortcut of the menu entry. |
-| Menu Shortcuts: **Manage...** | `ctrl+alt+m` | Keyboard shortcut of the menu entry. |
-| Menu Shortcuts: **Build Workfile...** | `ctrl+alt+b` | Keyboard shortcut of the menu entry. |
-| Menu Shortcuts: **Version Up Workfile** | `alt+shift+s` | Keyboard shortcut of the menu entry. |
+<SettingLocation uri="ayon+settings://nuke/general" scope="Studio, with project overrides" />
+
+Keyboard shortcuts of the entries of the AYON menu in Nuke.
+
+<!-- screenshot: settings editor, General -->
+
+<Settings prefix="general">
+<Setting name="Menu Shortcuts">
+
+<Settings>
+<Setting name="Create..." default="ctrl+alt+c" />
+<Setting name="Publish..." default="ctrl+alt+p" />
+<Setting name="Load..." default="ctrl+alt+l" />
+<Setting name="Manage..." default="ctrl+alt+m" />
+<Setting name="Build Workfile..." default="ctrl+alt+b" />
+<Setting name="Version Up Workfile" default="alt+shift+s" />
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Workfile callbacks
 
-Two groups with the same three switches. **On Script Create** applies to a new workfile, **On Script Open** to a loaded workfile.
+<SettingLocation uri="ayon+settings://nuke/workfile_callbacks" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Resolution from Context | On | Set the script resolution from the context. |
-| Frame Range from Context | On | Set the script frame range from the context. |
-| Colorspace from Context | On | Set the script colorspace from the context. |
+Which values of the AYON context are applied to the Nuke script when a workfile is created or opened.
+
+<!-- screenshot: settings editor, Workfile Callbacks -->
+
+<Settings prefix="workfile-callbacks">
+<Setting name="On Script Create">
+
+Applied to a new workfile.
+
+<Settings>
+<Setting name="Resolution from Context" default="Enabled" />
+<Setting name="Frame Range from Context" default="Enabled" />
+<Setting name="Colorspace from Context" default="Enabled" />
+</Settings>
+
+</Setting>
+<Setting name="On Script Open">
+
+Applied to a workfile that is opened.
+
+<Settings>
+<Setting name="Resolution from Context" default="Enabled" />
+<Setting name="Frame Range from Context" default="Enabled" />
+<Setting name="Colorspace from Context" default="Enabled" />
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Color management (imageio)
 
-| Setting | Default | Description |
-|---|---|---|
-| Enable Color Management | On | Master switch of the section. |
-| File Rules: activate_host_rules | Off | Use the file rules of this host. |
-| File Rules: Rules | None | Each rule has a **Rule name**, a **Regex pattern**, a **Colorspace name** and a **File extension**. Rule names must be unique. |
-| Viewer: Display | `ACES` | Display used when a new viewer node is created. Anatomy context tokens are allowed, and a fallback can follow a `;` separator, for example `{project[code]} ; ACES`. |
-| Viewer: View | `sRGB` | View used for the viewer node. Same token and fallback rules. |
-| Monitor OUT: Display | `ACES` | Display of the monitor output of new viewer nodes, for external monitors. |
-| Monitor OUT: View | `Rec.709` | View of the monitor output. |
-| Assign colorspace to read nodes via rules: Inputs | One rule: regex `(beauty).*(?=.exr)`, colorspace `linear` | Each rule has a **Regex expression** and a **Colorspace**. |
+<SettingLocation uri="ayon+settings://nuke/imageio" scope="Studio, with project overrides" />
+
+How Nuke follows the color management of AYON: viewer and monitor processes, the baking target of review outputs, the colorspaces of the script root, the knobs of the nodes that creators build, and the rules that assign a colorspace to read nodes. See [Color management on launch](../../../pipeline/color-management-on-launch.md).
+
+<!-- screenshot: settings editor, Color Management (imageio) -->
+
+<Settings prefix="imageio">
+<Setting name="Enable Color Management" default="Enabled">
+
+Master switch of the section.
+
+</Setting>
+<Setting name="File Rules">
+
+Rules that assign a colorspace to files by their path.
+
+<Settings>
+<Setting name="Activate Host Rules" default="Disabled">
+
+Use the file rules of this host instead of the global ones.
+
+</Setting>
+<Setting name="Rules" default="Empty list">
+
+<Settings>
+<Setting name="Rule name">
+
+Unique in the list.
+
+</Setting>
+<Setting name="Regex pattern" />
+<Setting name="Colorspace name" />
+<Setting name="File extension" />
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Viewer">
+
+The viewer process set when a new viewer node is created.
+
+<Settings>
+<Setting name="Display" default="ACES">
+
+Anatomy context tokens are allowed, and a fallback can follow a `;` separator, for example `{project[code]} ; ACES`. Spaces around the separator are stripped.
+
+</Setting>
+<Setting name="View" default="sRGB">
+
+Same tokens and fallback as **Display**.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Monitor OUT">
+
+The monitor output of new viewer nodes, for external monitors.
+
+<Settings>
+<Setting name="Display" default="ACES">
+
+Same tokens and fallback as the viewer display.
+
+</Setting>
+<Setting name="View" default="Rec.709" />
+</Settings>
+
+</Setting>
+<Setting name="Baking Target Colorspace">
+
+See [Baking target colorspace](#baking-target-colorspace).
+
+</Setting>
+<Setting name="Workfile">
+
+See [Workfile](#workfile).
+
+</Setting>
+<Setting name="Nodes">
+
+See [Nodes](#nodes).
+
+</Setting>
+<Setting name="Assign colorspace to read nodes via rules">
+
+A read node whose file path matches a regex gets the colorspace of the rule.
+
+<Settings>
+<Setting name="Inputs" default="One rule">
+
+The default rule has the regex `(beauty).*(?=.exr)` and the colorspace `linear`.
+
+<Settings>
+<Setting name="Regex expression" />
+<Setting name="Colorspace" />
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ### Baking target colorspace
 
-| Setting | Default | Description |
-|---|---|---|
-| Enabled | On | Enable the baking target. |
-| Target baking type | `colorspace` | **Use Colorspace** (`colorspace`) or **Use Display & View** (`display_view`). |
-| Colorspace | `Output - Rec.709` | Colorspace name. Anatomy context tokens are allowed. |
-| Display & View | Empty | **Display** and **View**, with the token and fallback rules of the viewer settings. |
+<SettingLocation uri="ayon+settings://nuke/imageio/baking_target" />
+
+The colorspace, or display and view, that review outputs are baked into by [Extract Review Intermediates](#extract-review-intermediates). A baking stream can override it.
+
+<Settings prefix="imageio-baking-target">
+<Setting name="Enabled" default="Enabled">
+
+Enable the baking target.
+
+</Setting>
+<Setting name="Target baking type" default="Use Colorspace">
+
+**Use Colorspace** or **Use Display & View**.
+
+</Setting>
+<Setting name="Colorspace" default="Output - Rec.709">
+
+Colorspace name. Anatomy context tokens are allowed.
+
+</Setting>
+<Setting name="Display & View" default="Empty">
+
+**Display** and **View**, with the tokens and fallback of the viewer settings.
+
+</Setting>
+</Settings>
 
 ### Workfile
 
-Color management values of the Nuke script root.
+<SettingLocation uri="ayon+settings://nuke/imageio/workfile" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Color Management Workflow | `OCIO` | `Nuke` or `OCIO`. Used only when global color management is disabled, so that no global OCIO environment variable is set. |
-| Native OpenColorIO Config | `aces_1.2` | One of the OCIO configs shipped with Nuke, such as `nuke-default`, `aces_1.1`, `aces_1.2`, `studio-config-v1.0.0_aces-v1.3_ocio-v2.1` and `cg-config-v1.0.0_aces-v1.3_ocio-v2.1`. Used under the same condition, and only when the workflow is `OCIO`. |
-| Working Space | `role_scene_linear` | Working space of the script. |
-| Thumbnails | `ACES/sRGB` | Thumbnail transform. |
-| Monitor Out | `ACES/sRGB` | Monitor output transform. |
-| 8-bit Files | `role_matte_paint` | Default transform for 8-bit files. |
-| 16-bit Files | `role_texture_paint` | Default transform for 16-bit files. |
-| Log Files | `role_compositing_log` | Default transform for log files. |
-| Float Files | `role_scene_linear` | Default transform for float files. |
+Color management values of the root of the Nuke script.
+
+<Settings prefix="workfile">
+<Setting name="Color Management Workflow" default="OCIO">
+
+**Nuke** or **OCIO**. Used only when global color management is disabled, so that no global OCIO environment variable is set.
+
+</Setting>
+<Setting name="Native OpenColorIO Config" default="aces_1.2">
+
+One of the OCIO configs shipped with Nuke; the numbers in brackets are the compatible Nuke versions: **nuke-default**, **spi-vfx (11)**, **spi-anim (11)**, **aces_0.1.1 (11)**, **aces_0.7.1 (11)**, **aces_1.0.1 (11)**, **aces_1.0.3 (11, 12)**, **aces_1.1 (12, 13)**, **aces_1.2 (13, 14)**, **studio-config-v1.0.0_aces-v1.3_ocio-v2.1 (14)** or **cg-config-v1.0.0_aces-v1.3_ocio-v2.1 (14)**. Used under the same condition, and only when the workflow is **OCIO**.
+
+</Setting>
+<Setting name="Working Space" default="role_scene_linear" />
+<Setting name="Thumbnails" default="ACES/sRGB" />
+<Setting name="Monitor Out" default="ACES/sRGB" />
+<Setting name="8-bit Files" default="role_matte_paint" />
+<Setting name="16-bit Files" default="role_texture_paint" />
+<Setting name="Log Files" default="role_compositing_log" />
+<Setting name="Float Files" default="role_scene_linear" />
+</Settings>
 
 ### Nodes
 
+<SettingLocation uri="ayon+settings://nuke/imageio/nodes" />
+
 Knob values applied to the nodes that creators build.
 
-| Setting | Default | Description |
-|---|---|---|
-| Plugin required | Three entries (see below) | A list of node definitions applied to the write nodes of the creators. |
-| Plugin's node overrides | None | Same structure, plus **Product names**: overrides the required knobs for matching products. |
+<Settings prefix="nodes">
+<Setting name="Plugin required" default="Three entries">
 
-One entry has **Used in plugins** (a list of creators: `CreateWriteRender`, `CreateWritePrerender`, `CreateWriteImage`, `CreateCamera`, `CreateGizmo`, `CreateModel`, `CreateBackdrop`, `CreateSource`), a **Nuke Node Class** (`Write`, `Read`, `Group`, `Camera4`, `Camera2`, `Scene`, `BackdropNode` or `custom_class`), an optional **Custom Node Class**, and a list of **Knobs**. Knob names must be unique within an entry.
+Node definitions applied to the nodes of the creators. The default entries are all for the **Write [Image]** class:
 
-The default entries are all for the `Write` class:
+- **Render (write)**: `file_type` `exr`, `datatype` `16 bit half`, `compression` `Zip (1 scanline)`, `autocrop` enabled, `tile_color` 186, 35, 35, `channels` `rgb`, `colorspace` `scene_linear`, `create_directories` enabled.
+- **Prerender (write)**: the same, with `tile_color` 171, 171, 10.
+- **Image (write)**: `file_type` `tiff`, `datatype` `16 bit`, `compression` `Deflate`, `tile_color` 56, 162, 7, `channels` `rgb`, `colorspace` `texture_paint`, `create_directories` enabled.
 
-| Used in plugin | Default knobs |
-|---|---|
-| `CreateWriteRender` | `file_type` `exr`, `datatype` `16 bit half`, `compression` `Zip (1 scanline)`, `autocrop` on, `tile_color` 186, 35, 35, `channels` `rgb`, `colorspace` `scene_linear`, `create_directories` on |
-| `CreateWritePrerender` | The same, with `tile_color` 171, 171, 10 |
-| `CreateWriteImage` | `file_type` `tiff`, `datatype` `16 bit`, `compression` `Deflate`, `tile_color` 56, 162, 7, `channels` `rgb`, `colorspace` `texture_paint`, `create_directories` on |
+<Settings>
+<Setting name="Used in plugins" default="Empty list">
+
+**Prerender (write)**, **Camera (3d)**, **Gizmo (group)**, **Image (write)**, **Model (3d)**, **Nukenodes (backdrop)**, **Render (write)** or **Source (read)**.
+
+</Setting>
+<Setting name="Nuke Node Class">
+
+**Write [Image]**, **Read [Image]**, **Group [Other]**, **Camera [3D]**, **Camera [3D Classic]**, **Scene [3D Classic]**, **Backdrop [Other]** or **Custom Class**.
+
+</Setting>
+<Setting name="Custom Node Class" default="Empty">
+
+A node class not listed above, for **Custom Class**.
+
+</Setting>
+<Setting name="Knobs" default="Empty list">
+
+Knob names must be unique within an entry. See [Knob definitions](#knob-definitions).
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Plugin's node overrides" default="Empty list">
+
+The same fields, plus **Product names**: the knobs override the required knobs for the matching products.
+
+</Setting>
+</Settings>
 
 ### Knob definitions
 
-Knob lists appear in several settings. Each knob has a **Type**, a **Name** and the value field of that type.
+Knob lists appear in several settings. Each knob has a **Type**, a **Name** and the value field of its type.
 
-| Type | Value field |
-|---|---|
-| `text` | **Value**, a string. |
-| `formatable` | **Template** (a string formatted with context data) and **To Knob type** (`Text` by default; also number, decimal number and 2D vector). |
-| `color_gui` | **RGB Uint8**, default 0, 0, 255. |
-| `boolean` | **Value**, default off. |
-| `number` | **Value**, an integer, default 0. |
-| `decimal_number` | **Value**, a float, default 0.0. |
-| `vector_2d` | **X** and **Y**, default 1.0. |
-| `vector_3d` | **X**, **Y** and **Z**, default 1.0. |
-| `color` | **RGBA Float**, default 0.0, 0.0, 1.0, 1.0. |
-| `box` | **X**, **Y**, **R** and **T**, default 1.0. |
-| `expression` | **Expression**, a string. |
+<Settings prefix="knob">
+<Setting name="Type">
+
+**Text**, **Formate from template**, **Color GUI**, **Boolean**, **Number**, **Decimal number**, **2D vector**, **3D vector**, **Color**, **Box** or **Expression**.
+
+</Setting>
+<Setting name="Name">
+
+Name of the knob on the node.
+
+</Setting>
+<Setting name="Value (Text)" default="Empty">
+
+A string.
+
+</Setting>
+<Setting name="Formatable (Formate from template)">
+
+**Template**, a string formatted with context data, such as `{key}` or `{key};{key}`, and **To Knob type**: **Text** (default), **Number**, **Decimal number** or **2D vector**.
+
+</Setting>
+<Setting name="RGB Uint8 (Color GUI)" default="0, 0, 255" />
+<Setting name="Value (Boolean)" default="Disabled" />
+<Setting name="Value (Number)" default="0">
+
+An integer.
+
+</Setting>
+<Setting name="Value (Decimal number)" default="0.0" />
+<Setting name="Value (2D vector)" default="1.0, 1.0">
+
+**X** and **Y**.
+
+</Setting>
+<Setting name="Value (3D vector)" default="1.0, 1.0, 1.0">
+
+**X**, **Y** and **Z**.
+
+</Setting>
+<Setting name="RGBA Float (Color)" default="0.0, 0.0, 1.0, 1.0" />
+<Setting name="Value (Box)" default="1.0, 1.0, 1.0, 1.0">
+
+**X**, **Y**, **R** and **T**.
+
+</Setting>
+<Setting name="Expression (Expression)" default="Empty">
+
+A Nuke expression, such as `parent.first`.
+
+</Setting>
+</Settings>
 
 ## Nuke directory mapping
 
-| Setting | Default | Description |
-|---|---|---|
-| enabled | Off | Rewrite file paths with the mapping. |
-| Dirmap Paths: Source Paths | None | List of source paths. |
-| Dirmap Paths: Destination Paths | None | List of destination paths. |
+<SettingLocation uri="ayon+settings://nuke/dirmap" scope="Studio, with project overrides" />
+
+Rewrites file paths in the script from source paths to destination paths, for example between studio sites.
+
+<!-- screenshot: settings editor, Nuke Directory Mapping -->
+
+<Settings prefix="dirmap">
+<Setting name="enabled" default="Disabled">
+
+Rewrite file paths with the mapping.
+
+</Setting>
+<Setting name="Dirmap Paths">
+
+The source and destination paths, matched by their position in the lists.
+
+<Settings>
+<Setting name="Source Paths" default="Empty list" />
+<Setting name="Destination Paths" default="Empty list" />
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Scripts menu definition
 
-Defines a custom menu in the Nuke menu bar.
+<SettingLocation uri="ayon+settings://nuke/scriptsmenu" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Menu Name | `Custom Tools` | Title of the menu. |
-| Definition | Three actions | A list of items. Each has a **Type**, a **Command**, a **Source Type**, a **Title** and a **Tooltip**. |
+A custom menu in the menu bar of Nuke.
 
-The default actions are **Ayon Nuke Docs** (opens the Nuke user documentation in a web browser), **Set Frame Start (Read Node)** (sets the start frame of read nodes) and **Set non publish output for Write Node** (sets up write nodes for non-publish output). Each has the source type `python`.
+<!-- screenshot: settings editor, Scripts Menu Definition -->
+
+<Settings prefix="scriptsmenu">
+<Setting name="Menu Name" default="Custom Tools">
+
+Title of the menu.
+
+</Setting>
+<Setting name="Definition" default="Three actions">
+
+The items of the menu. The defaults are **Ayon Nuke Docs** (opens the Nuke documentation in a web browser), **Set Frame Start (Read Node)** (sets the start frame of read nodes) and **Set non publish output for Write Node** (sets up write nodes for output that is not published), all of the type `action` with the source type `python`.
+
+<Settings>
+<Setting name="Type">
+
+Such as `action`.
+
+</Setting>
+<Setting name="Command">
+
+The Python code, or the path of the script.
+
+</Setting>
+<Setting name="Source Type">
+
+Such as `python` or `file`.
+
+</Setting>
+<Setting name="Title" />
+<Setting name="Tooltip" />
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Gizmo menu
 
-A list of toolbar menus for gizmos. The default is one entry.
+<SettingLocation uri="ayon+settings://nuke/gizmo" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Toolbar Menu Name | `AYON Gizmo` | Name of the toolbar menu. |
-| Toolbar Icon Path | Empty (per platform) | Icon of the menu. Empty uses the AYON icon. |
-| Gizmo Menu Options | `gizmo_definition` | **Add a Gizmo Directory Path** (`gizmo_source_dir`) or **Add Gizmos by Definitions** (`gizmo_definition`). |
-| Gizmo Directory Path | Empty lists per platform | Folders with gizmos. |
-| Gizmo Definition | One menu parent with one item | Each entry has a **Gizmo Menu Parent** (empty uses the toolbar menu name) and a **Gizmo List**. Each item has a **Label**, a **Type of usage**, a **Python command**, an **Icon Path** and a **Hotkey**. |
+Toolbar menus of gizmos, from gizmo folders or from a list of commands.
 
-The default item has the label **Gizmo Note**, type `python`, and creates a sticky note that explains how to add menus.
+<!-- screenshot: settings editor, Gizmo Menu -->
+
+<Settings prefix="gizmo">
+<Setting name="Gizmo Menu" default="One menu">
+
+The default menu is **AYON Gizmo**, defined by one item, **Gizmo Note**, which creates a sticky note that explains how to add menus.
+
+<Settings>
+<Setting name="Toolbar Menu Name">
+
+Name of the toolbar menu.
+
+</Setting>
+<Setting name="Toolbar Icon Path" default="Empty">
+
+Icon of the menu, per platform. Empty uses the AYON icon.
+
+</Setting>
+<Setting name="Gizmo Menu Options" default="Add a Gizmo Directory Path">
+
+**Add a Gizmo Directory Path** or **Add Gizmos by Definitions**. The default menu uses **Add Gizmos by Definitions**.
+
+</Setting>
+<Setting name="Gizmo Directory Path" default="Empty">
+
+Folders with gizmos, per platform.
+
+</Setting>
+<Setting name="Gizmo Definition" default="Empty list">
+
+<Settings>
+<Setting name="Gizmo Menu Parent">
+
+Parent menu of the items. Empty uses the toolbar menu name.
+
+</Setting>
+<Setting name="Gizmo List" default="Empty list">
+
+<Settings>
+<Setting name="Label" />
+<Setting name="Type of usage">
+
+Such as `python`.
+
+</Setting>
+<Setting name="Python command" />
+<Setting name="Icon Path" />
+<Setting name="Hotkey" />
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Creator plugins
 
+<SettingLocation uri="ayon+settings://nuke/create" scope="Studio, with project overrides" />
+
+The creators of the Publisher in Nuke. Every creator has these fields:
+
+<Settings prefix="creator">
+<Setting name="Enabled" default="Enabled">
+
+Make the creator available.
+
+</Setting>
+<Setting name="Order" default="100">
+
+Position in the list of creators.
+
+</Setting>
+<Setting name="Product type items" default="Empty list">
+
+Optional list of product types the creator can create, each with a **Product type** and a **Label** shown in the UI.
+
+</Setting>
+</Settings>
+
+<!-- screenshot: settings editor, Creator Plugins -->
+
 ### Write creators
 
-**Render (write)** (`CreateWriteRender`), **Prerender (write)** (`CreateWritePrerender`) and **Image (write)** (`CreateWriteImage`) share the same structure.
+**Render (write)**, **Prerender (write)** and **Image (write)** create write nodes. Besides the fields above, they share these fields:
 
-| Setting | Description |
-|---|---|
-| Enabled | Enable the creator. |
-| Order | Position in the list of creators. Default 100. |
-| Product type items | Optional list of product types the creator can create. Each has a **Product type** and a **Label**. |
-| Temporary rendering path template | Template of the path the node renders to. |
-| Default variants | Variants offered in the Publisher. |
-| Instance attributes | Features of the instance: **Reviewable**, **Farm rendering**, **Use range limit**, **Render On Farm**, **Slate Generation**, **Conditional Reviewable**. **Reviewable** and **Conditional Reviewable** cannot be selected together. Slate generation needs the Slater addon. |
-| Conditional Reviewable Profiles: Task types | Task types for which the review toggle is shown. Empty shows it for all. |
-| Render target | Default render target: **Local machine rendering** (`local`), **Use existing frames** (`frames`), **Use existing frames - farm** (`frames_farm`) or **Farm rendering** (`farm`). The farm options apply only when **Farm rendering** is an instance attribute. |
-| Write Node Exposed Knobs | Names of write node knobs that are exposed on the group. |
-| Preceding nodes | A list of nodes added before the write node. Each has a unique **Node name**, a **Node class**, an **Incoming dependency** (the name of another preceding node that comes before it) and a list of **Knobs**. |
+<Settings prefix="write-creator">
+<Setting name="Temporary rendering path template">
 
-| Setting | Render | Prerender | Image |
-|---|---|---|---|
-| Temporary rendering path template | `{work}/renders/nuke/{product[name]}/{product[name]}.{frame}.{ext}` | Same as Render | `{work}/renders/nuke/{product[name]}/{product[name]}.{ext}` |
-| Default variants | `Main`, `Mask` | `Key01`, `Bg01`, `Fg01`, `Branch01`, `Part01` | `StillFrame`, `MPFrame`, `LayoutFrame` |
-| Instance attributes | Reviewable, Farm rendering | Farm rendering, Use range limit | Use range limit |
-| Render target | `local` | `local` | `local` |
-| Write Node Exposed Knobs | None | None | None |
-| Preceding nodes | `Reformat01` (class `Reformat`, knobs `resize` `none` and `black_outside` on) | None | `FrameHold01` (class `FrameHold`, knob `first_frame` as expression `parent.first`) |
+Template of the path the node renders to.
+
+</Setting>
+<Setting name="Default variants">
+
+Variants offered in the Publisher.
+
+</Setting>
+<Setting name="Instance attributes">
+
+Features of the instance: **Reviewable** (the output is reviewable), **Farm rendering** (the artist can render on the farm), **Use range limit** (the write node renders only the frame range of the instance), **Render On Farm** (a button on the node submits the render to the farm without publishing, for test renders), **Slate Generation** (a slate frame is added before the sequence; needs the Slater addon) and **Conditional Reviewable** (reviewable only for some task types). **Reviewable** and **Conditional Reviewable** cannot be selected together.
+
+</Setting>
+<Setting name="Conditional Reviewable Profiles">
+
+**Task types** for which the review toggle is shown. Empty shows it for all.
+
+</Setting>
+<Setting name="Render target">
+
+**Local machine rendering**, **Use existing frames**, **Use existing frames - farm** or **Farm rendering**. The farm options apply only when **Farm rendering** is an instance attribute.
+
+</Setting>
+<Setting name="Write Node Exposed Knobs">
+
+Names of knobs of the write node that are exposed on the group.
+
+</Setting>
+<Setting name="Preceding nodes">
+
+Nodes added before the write node. Node names must be unique.
+
+<Settings>
+<Setting name="Node name">
+
+Used in **Incoming dependency** of other preceding nodes to connect them.
+
+</Setting>
+<Setting name="Node class" default="Empty">
+
+Nuke class of the node.
+
+</Setting>
+<Setting name="Incoming dependency" default="Empty">
+
+Name of another preceding node that comes before this one.
+
+</Setting>
+<Setting name="Knobs" default="Empty list">
+
+See [Knob definitions](#knob-definitions).
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+Their defaults:
+
+<Settings>
+<Setting name="Render (write)" default="Enabled, order 100">
+
+<Settings>
+<Setting name="Temporary rendering path template" default="{work}/renders/nuke/{product[name]}/{product[name]}.{frame}.{ext}" />
+<Setting name="Default variants" default="Main, Mask" />
+<Setting name="Instance attributes" default="Reviewable, Farm rendering" />
+<Setting name="Conditional Reviewable Profiles" default="No task types" />
+<Setting name="Render target" default="Local machine rendering" />
+<Setting name="Write Node Exposed Knobs" default="Empty list" />
+<Setting name="Preceding nodes" default="Reformat01">
+
+A node `Reformat01` of class `Reformat` with the knobs `resize` `none` and `black_outside` enabled.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Prerender (write)" default="Enabled, order 100">
+
+<Settings>
+<Setting name="Temporary rendering path template" default="{work}/renders/nuke/{product[name]}/{product[name]}.{frame}.{ext}" />
+<Setting name="Default variants" default="Key01, Bg01, Fg01, Branch01, Part01" />
+<Setting name="Instance attributes" default="Farm rendering, Use range limit" />
+<Setting name="Conditional Reviewable Profiles" default="No task types" />
+<Setting name="Render target" default="Local machine rendering" />
+<Setting name="Write Node Exposed Knobs" default="Empty list" />
+<Setting name="Preceding nodes" default="Empty list" />
+</Settings>
+
+</Setting>
+<Setting name="Image (write)" default="Enabled, order 100">
+
+<Settings>
+<Setting name="Temporary rendering path template" default="{work}/renders/nuke/{product[name]}/{product[name]}.{ext}" />
+<Setting name="Default variants" default="StillFrame, MPFrame, LayoutFrame" />
+<Setting name="Instance attributes" default="Use range limit" />
+<Setting name="Conditional Reviewable Profiles" default="No task types" />
+<Setting name="Render target" default="Local machine rendering" />
+<Setting name="Write Node Exposed Knobs" default="Empty list" />
+<Setting name="Preceding nodes" default="FrameHold01">
+
+A node `FrameHold01` of class `FrameHold` with the knob `first_frame` set by the expression `parent.first`.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ### Other creators
 
-| Creator | Enabled | Order | Notes |
-|---|---|---|---|
-| Nukenodes (backdrop) (`CreateBackdrop`) | On | 100 | Has **Product type items**. |
-| Camera (3d) (`CreateCamera`) | On | 100 | Has **Product type items**. |
-| Gizmo (group) (`CreateGizmo`) | On | 100 | Has **Product type items**. |
-| Shapes (Silhouette .fxs) (`CreateSilhouetteShapes`) | On | 100 | Exports the `.fxs` format used by Boris FX Silhouette. |
-| Model (3d) (`CreateModel`) | On | 100 | Has **Product type items**. |
-| Source (read) (`CreateSource`) | On | 100 | Has **Product type items**. |
+These creators have only the shared fields.
 
-**Create Workfile** has one setting, **Mandatory workfile** (default off): the user cannot disable the workfile in the Publisher. It requires core addon 1.4.1 or newer.
+<Settings prefix="other-creators">
+<Setting name="Nukenodes (backdrop)" default="Enabled, order 100" />
+<Setting name="Camera (3d)" default="Enabled, order 100" />
+<Setting name="Gizmo (group)" default="Enabled, order 100" />
+<Setting name="Shapes (Silhouette .fxs)" default="Enabled, order 100">
+
+Exports the `.fxs` shape format used by Boris FX Silhouette.
+
+</Setting>
+<Setting name="Model (3d)" default="Enabled, order 100" />
+<Setting name="Source (read)" default="Enabled, order 100" />
+<Setting name="Create Workfile">
+
+Has no shared fields.
+
+<Settings>
+<Setting name="Mandatory workfile" default="Disabled">
+
+The artist cannot disable the workfile instance in the Publisher. Requires core addon 1.4.1 or newer.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Publish plugins
 
+<SettingLocation uri="ayon+settings://nuke/publish" scope="Studio, with project overrides" />
+
+The publish plugins of Nuke. Plugins that can be skipped share three switches: **Enabled** (the plugin runs), **Optional** (the artist can turn it off in the Publisher) and **Active** (it is on by default in the Publisher). How validators and the Publisher work is described in [Publishing](../../../pipeline/publishing.md).
+
+<!-- screenshot: settings editor, Publish Plugins -->
+
 ### Collectors
 
-| Plugin | Setting | Default |
-|---|---|---|
-| Collect Sync Workfile Version | Product base types | `nukenodes`, `camera`, `gizmo`, `source`, `render`, `write`. The enum offers `nukenodes`, `model`, `camera`, `gizmo`, `source`, `render`, `prerender` and `image`. |
+<Settings prefix="collectors">
+<Setting name="Collect Sync Workfile Version">
+
+<Settings>
+<Setting name="Product base types" default="nukenodes, camera, gizmo, source, render, write">
+
+Product base types whose version is synced with the workfile version: **Nukenodes**, **Model**, **Camera**, **Gizmo**, **Source**, **Render**, **Prerender** or **Image**. The default `write` is not one of the options.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ### Validators
 
-| Validator | Enabled | Optional | Active |
-|---|---|---|---|
-| Validate Correct Folder Name | On | On | On |
-| Validate Output Resolution | On | On | On |
-| Validate Exposed Knobs | On | Off | On |
-| Validate Proxy Mode | On | Off | On |
-| Validate Rendered Frames | On | Off | On |
-| Validate Nuke Write Node | On | Off | On |
-| Validate Gizmo | On | On | On |
-| Validate Backdrop | On | On | On |
-| Validate workfile attributes | On | On | On |
+<Settings prefix="validators">
+<Setting name="Validate Correct Folder Name" default="Enabled, optional, active" />
+<Setting name="Validate Knobs" default="Disabled">
 
-**Validate Knobs** is off by default. Its **Knobs** setting is a JSON object keyed by product base type, whose values are the knob values to require. The default is `{"render": {"review": true}}`.
+<Settings>
+<Setting name="Enabled" default="Disabled" />
+<Setting name="Knobs" default="{&quot;render&quot;: {&quot;review&quot;: true}}">
+
+A JSON object keyed by product base type, whose values are the knob values to require.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Validate Output Resolution" default="Enabled, optional, active" />
+<Setting name="Validate Exposed Knobs" default="Enabled, not optional, active" />
+<Setting name="Validate Proxy Mode" default="Enabled, not optional, active" />
+<Setting name="Validate Rendered Frames" default="Enabled, not optional, active" />
+<Setting name="Validate Nuke Write Node" default="Enabled, not optional, active" />
+<Setting name="Validate Gizmo" default="Enabled, optional, active" />
+<Setting name="Validate Backdrop" default="Enabled, optional, active" />
+<Setting name="Validate workfile attributes" default="Enabled, optional, active" />
+</Settings>
 
 ### Extractors
 
-| Plugin | Setting | Default | Description |
-|---|---|---|---|
-| Extract Review Data | Enabled | Off | Adds a raw reviewable representation from the output of a write node, for output that is already ready for review. |
-| Extract Camera Format | Camera export format | `abc` | **Alembic** (`abc`) or **FBX** (`fbx`). |
-| Extract Slate Frame | Viewer lut raw | Off | Do not apply the viewer LUT to the slate. |
-| Extract Slate Frame | Key value mapping | See below | Templates for slate fields. |
+<Settings prefix="extractors">
+<Setting name="Extract Review Data" default="Disabled">
 
-Key value mapping has three entries, each with an enabled switch and a template: `f_submission_note` (on, `{comment}`), `f_submitting_for` (on, `{intent[value]}`) and `f_vfx_scope_of_work` (off, empty).
+Adds a raw reviewable representation from the output of a write node, for output that is already ready for review and needs no baking.
+
+<Settings>
+<Setting name="Enabled" default="Disabled" />
+</Settings>
+
+</Setting>
+<Setting name="Extract Review Intermediates" default="Enabled">
+
+See [Extract Review Intermediates](#extract-review-intermediates).
+
+</Setting>
+<Setting name="Extract Camera Format">
+
+<Settings>
+<Setting name="Camera export format" default="Alembic">
+
+**Alembic** or **FBX**.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Extract Slate Frame">
+
+<Settings>
+<Setting name="Viewer lut raw" default="Disabled">
+
+Do not apply the viewer LUT to the slate.
+
+</Setting>
+<Setting name="Key value mapping">
+
+Templates of the slate fields, each with an **enabled** switch and a **Template**.
+
+<Settings>
+<Setting name="f_submission_note" default="Enabled, {comment}" />
+<Setting name="f_submitting_for" default="Enabled, {intent[value]}" />
+<Setting name="f_vfx_scope_of_work" default="Disabled, empty" />
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ### Extract Review Intermediates
 
@@ -233,12 +755,12 @@ Bakes review videos or image sequences from rendered frames, with a thumbnail, f
 ![The Extract Review Intermediates settings: the plugin switch, Viewer lut raw, and the Baking streams list with the default stream baking](assets/settings-extract-review-intermediates.png)
 
 <Settings prefix="extract-review-intermediates">
-<Setting name="Enabled" default="On">
+<Setting name="Enabled" default="Enabled">
 
 Run the plugin.
 
 </Setting>
-<Setting name="Viewer lut raw" default="Off">
+<Setting name="Viewer lut raw" default="Disabled">
 
 Do not apply the viewer LUT.
 
@@ -262,7 +784,7 @@ One output of the plugin. The default stream `baking` uses the defaults below.
 Name of the output.
 
 </Setting>
-<Setting name="Publish" default="Off">
+<Setting name="Publish" default="Disabled">
 
 Publish the output as its own product.
 
@@ -273,7 +795,7 @@ Limits the stream to some instances. Empty lists match everything.
 
 <Settings>
 <Setting name="Task types" default="Empty list" />
-<Setting name="Sync workfile versions for product base types" default="Empty list">
+<Setting name="Sync workfile versions for product base types." default="Empty list">
 
 `render`, `prerender` or `image`.
 
@@ -282,7 +804,7 @@ Limits the stream to some instances. Empty lists match everything.
 </Settings>
 
 </Setting>
-<Setting name="Input read node RAW switch" default="Off">
+<Setting name="Input read node RAW switch" default="Disabled">
 
 Set the input read node to raw.
 
@@ -301,7 +823,7 @@ Knobs set on the write node; see [Knob definitions](#knob-definitions).
 </Settings>
 
 </Setting>
-<Setting name="Bake viewer process" default="On">
+<Setting name="Bake viewer process" default="Enabled">
 
 Bake the viewer process into the output.
 
@@ -311,7 +833,7 @@ Bake the viewer process into the output.
 Overrides the [baking target](#baking-target-colorspace) for this stream.
 
 <Settings>
-<Setting name="Enabled" default="Off" />
+<Setting name="Enabled" default="Disabled" />
 <Setting name="Target baking type" default="colorspace">
 
 **Use Colorspace** (`colorspace`) or **Use Display & View** (`display_view`).
@@ -330,7 +852,7 @@ Colorspace name. Anatomy context tokens are allowed.
 </Settings>
 
 </Setting>
-<Setting name="Bake viewer input process node (LUT)" default="On">
+<Setting name="Bake viewer input process node (LUT)" default="Enabled">
 
 Bake the viewer input process node.
 
@@ -340,7 +862,7 @@ Bake the viewer input process node.
 Reformat nodes added before the output, applied in order. Only reposition nodes are supported.
 
 <Settings>
-<Setting name="Enabled" default="Off" />
+<Setting name="Enabled" default="Disabled" />
 <Setting name="Reposition knobs" default="One Reformat node">
 
 <Settings>
@@ -370,59 +892,218 @@ What to do about frames missing from the frame range of the entity, used to fill
 
 ### Integrators
 
-| Plugin | Enabled | Optional | Active | Description |
-|---|---|---|---|---|
-| Increment Workfile Version | On | On | On | Saves the next workfile version when the plugins before it have no errors. |
-| Increment path in Write node | Off | On | On | Updates the version in the write node path with the workfile version, to have versioned intermediate `renders` folders. It depends on the core addon's custom staging directory profiles. |
+<Settings prefix="integrators">
+<Setting name="Increment Workfile Version" default="Enabled, optional, active">
+
+Saves the next workfile version when the plugins before it have no errors.
+
+</Setting>
+<Setting name="Increment path in Write node" default="Disabled, optional, active">
+
+Updates the version in the write node path with the workfile version, to have versioned intermediate `renders` folders. It depends on the custom staging directory profiles of the core addon (`ayon+settings://core/tools/publish/custom_staging_dir_profiles`).
+
+</Setting>
+</Settings>
 
 ## Loader plugins
 
-These loaders have only an **Enabled** switch, on by default: Load AlembicCamera, Load AlembicModel, Load FbxCamera, Load GeoImport, Load GeoReference, Load LinkAsGroup, Load Effects, Load Effects Input Process, Load Gizmo, Load Gizmo Input Process, Load Ocio Look Nodes, Load Matchmove, Set Frame Range, Set Frame Range With Handles and Load USD Camera.
+<SettingLocation uri="ayon+settings://nuke/load" scope="Studio, with project overrides" />
 
-| Loader | Setting | Default | Description |
-|---|---|---|---|
-| Load Backdrop Nodes | Enabled | On | Enable the loader. |
-| Load Backdrop Nodes | Remove existing AYON backdrops when removing container | Off | Also remove the backdrop when the container is removed. |
-| Load Clip | Enabled | On | Enable the loader. |
-| Load Clip | Include representations | None | Restrict the loader to these representation names. Empty allows all. |
-| Load Clip | Read node name template | `{class_name}_{ext}` | Template of the Read node name. |
-| Load Clip | Loader option defaults | See below | Defaults of the loader options. |
-| Load Image | Enabled | On | Enable the loader. |
-| Load Image | Include representations | None | Restrict the loader to these representation names. Empty allows all. |
-| Load Image | Read node name template | `{class_name}_{ext}` | Template of the Read node name. |
+Every loader has an **Enabled** switch, enabled by default, that makes it available.
 
-Loader option defaults of Load Clip:
+<!-- screenshot: settings editor, Loader Plugins -->
 
-| Setting | Default | Description |
-|---|---|---|
-| Set frame range to version frame range | On | Set the node frame range to the frame range of the version. |
-| Start at workfile's start frame | Off | Start the clip at the first frame of the script. |
-| Add retime | On | Add a retime. |
-| Read Node Type | `auto` | **Auto-detect** (`auto`), **Read** or **DeepRead**. |
+<Settings prefix="loaders">
+<Setting name="Load AlembicCamera" default="Enabled" />
+<Setting name="Load AlembicModel" default="Enabled" />
+<Setting name="Load FbxCamera" default="Enabled" />
+<Setting name="Load GeoImport" default="Enabled" />
+<Setting name="Load GeoReference" default="Enabled" />
+<Setting name="Load LinkAsGroup" default="Enabled" />
+<Setting name="Load Backdrop Nodes" default="Enabled">
+
+<Settings>
+<Setting name="Remove existing AYON backdrops when removing container" default="Disabled">
+
+Also remove the backdrop when the container is removed.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Load Clip" default="Enabled">
+
+<Settings>
+<Setting name="Include representations" default="Empty list">
+
+Restrict the loader to these representation names. Empty allows all.
+
+</Setting>
+<Setting name="Read node name template" default="{class_name}_{ext}">
+
+Template of the name of the Read node.
+
+</Setting>
+<Setting name="Loader option defaults">
+
+Defaults of the options of the loader.
+
+<Settings>
+<Setting name="Set frame range to version frame range" default="Enabled">
+
+Set the frame range of the node to the frame range of the version.
+
+</Setting>
+<Setting name="Start at workfile's start frame" default="Disabled">
+
+Start the clip at the first frame of the script.
+
+</Setting>
+<Setting name="Add retime" default="Enabled" />
+<Setting name="Read Node Type" default="Auto-detect">
+
+**Auto-detect**, **Read** or **DeepRead**.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Load Effects" default="Enabled" />
+<Setting name="Load Effects Input Process" default="Enabled" />
+<Setting name="Load Gizmo" default="Enabled" />
+<Setting name="Load Gizmo Input Process" default="Enabled" />
+<Setting name="Load Image" default="Enabled">
+
+<Settings>
+<Setting name="Include representations" default="Empty list">
+
+Restrict the loader to these representation names. Empty allows all.
+
+</Setting>
+<Setting name="Read node name template" default="{class_name}_{ext}">
+
+Template of the name of the Read node.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Load Ocio Look Nodes" default="Enabled" />
+<Setting name="Load Matchmove" default="Enabled" />
+<Setting name="Set Frame Range" default="Enabled" />
+<Setting name="Set Frame Range With Handles" default="Enabled" />
+<Setting name="Load USD Camera" default="Enabled" />
+</Settings>
 
 ## Workfile builder
 
-Deprecated; replaced by the templated workfile build.
+<SettingLocation uri="ayon+settings://nuke/workfile_builder" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Create first workfile | Off | Create the first workfile version. |
-| Custom templates | None | A list of entries with **Task types** and a platform **path**. |
-| Run Builder at first workfile | Off | Run the builder when the first workfile is created. |
-| Builder profiles | None | See below. |
+Deprecated; replaced by the [templated workfile build](#templated-workfile-build).
 
-One builder profile has **Task types** and **Task names**, and two lists, **Current context** and **Linked folders**. An item of these lists has **Product name** filters, **Product base types**, **Representations** and **Loader plugins**.
+<!-- screenshot: settings editor, Workfile Builder -->
+
+<Settings prefix="workfile-builder">
+<Setting name="Create first workfile" default="Disabled">
+
+Create the first workfile version.
+
+</Setting>
+<Setting name="Custom templates" default="Empty list">
+
+<Settings>
+<Setting name="Task types" default="Empty list" />
+<Setting name="Gizmo Directory Path">
+
+Path of the template file, per platform. The label is a leftover in the settings model.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Run Builder at first workfile" default="Disabled">
+
+Run the builder when the first workfile is created.
+
+</Setting>
+<Setting name="Builder profiles" default="Empty list">
+
+<Settings>
+<Setting name="Task types" default="Empty list" />
+<Setting name="Task names" default="Empty list" />
+<Setting name="Current context" default="Empty list">
+
+What to load from the current folder. Each item has **Product name** filters, **Product base types**, **Representations** and **Loader plugins**.
+
+</Setting>
+<Setting name="Linked folders" default="Empty list">
+
+The same, for the linked folders.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 ## Templated workfile build
 
-A list of profiles, empty by default. One profile has the following settings.
+<SettingLocation uri="ayon+settings://nuke/templated_workfile_build" scope="Studio, with project overrides" />
 
-| Setting | Default | Description |
-|---|---|---|
-| Task types | None | Task types the profile applies to. |
-| Task names | None | Task names the profile applies to. |
-| Path to template | Empty | Path of the template file. |
-| Keep placeholders | Off | Keep the placeholders after the build. |
-| Apply to New Scene | Off | Build when a new scene is created. |
-| Apply on Nuke launch | On | Build when Nuke launches. |
-| Save first workfile version | On | Save the first version of the workfile after the build. |
+Profiles that build a workfile from a template script. See [Template builder](../../../pipeline/template-builder.md).
+
+<!-- screenshot: settings editor, Templated Workfile Build -->
+
+<Settings prefix="templated-workfile-build">
+<Setting name="Profiles" default="Empty list">
+
+<Settings>
+<Setting name="Task types" default="Empty list">
+
+Task types the profile applies to.
+
+</Setting>
+<Setting name="Task names" default="Empty list">
+
+Task names the profile applies to.
+
+</Setting>
+<Setting name="Path to template">
+
+Path of the template file.
+
+</Setting>
+<Setting name="Keep placeholders" default="Disabled">
+
+Keep the placeholders after the build.
+
+</Setting>
+<Setting name="Apply to New Scene" default="Disabled">
+
+Build when a new scene is created.
+
+</Setting>
+<Setting name="Apply on Nuke launch" default="Enabled">
+
+Build when Nuke launches.
+
+</Setting>
+<Setting name="Save first workfile version" default="Enabled">
+
+Save the first version of the workfile after the build.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
+
+## Related
+
+- [Nuke addon](index.md)
+- [Color management on launch](../../../pipeline/color-management-on-launch.md)
+- [Publishing](../../../pipeline/publishing.md)
+- [Template builder](../../../pipeline/template-builder.md)

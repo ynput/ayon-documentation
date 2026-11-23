@@ -7,7 +7,7 @@ description: "Developing the AYON launcher: its command line with arguments, com
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-This page is about developing the AYON launcher itself: its command line, running it from sources, building it and uploading the installer to the server, the shim and the environment variables. Using the launcher is described in [Launcher](../../pipeline/launcher.md).
+This page is about developing the AYON launcher itself: its command line, running it from sources, building it and uploading the installer to the server, the shim and the environment variables. Using the launcher is described in [AYON launcher](../../pipeline/launcher.md).
 
 ## Command line
 
@@ -40,11 +40,11 @@ ayon [arguments] addon <addon name> <command> [options]
 </TabItem>
 </Tabs>
 
-- [**Arguments**](../../pipeline/launcher-administration.md#arguments), such as `--use-dev` or `--bundle`, are read by the launcher in `start.py` and removed before the rest is passed on.
-- [**Commands**](../../pipeline/launcher-administration.md#commands), such as `tray` or `publish`, come from the command line of the Core addon, which the launcher starts after the bootstrap.
-- [**Addon commands**](../../pipeline/launcher-administration.md#addon-commands) are reached with `addon <addon name> <command>`. An addon adds them in its `cli()` method, see [Command line](../addon-development/client.md#command-line).
+- [**Arguments**](../../pipeline/launcher-command-line.md#arguments), such as `--use-dev` or `--bundle`, are read by the launcher in `start.py` and removed before the rest is passed on.
+- [**Commands**](../../pipeline/launcher-command-line.md#commands), such as `tray` or `publish`, come from the command line of the Core addon, which the launcher starts after the bootstrap.
+- [**Addon commands**](../../pipeline/launcher-command-line.md#addon-commands) are reached with `addon <addon name> <command>`. An addon adds them in its `cli()` method, see [Command line](../addon-development/client.md#command-line).
 
-`--help` lists the commands, `<command> --help` the options of a command, and `addon <addon name> --help` the commands of an addon. The full lists are in [Launcher administration](../../pipeline/launcher-administration.md).
+`--help` lists the commands, `<command> --help` the options of a command, and `addon <addon name> --help` the commands of an addon. The full lists are in [Launcher command line](../../pipeline/launcher-command-line.md).
 
 :::caution Addon commands
 
@@ -177,6 +177,10 @@ Each official launcher release is a standalone executable that comes with its ow
 | Linux | `AYON-<version>-linux-<distribution>.tar.gz`, for Ubuntu 20.04, Debian 11, Rocky Linux 8 and Rocky Linux 9 |
 
 Linux builds are made in Docker, one per distribution: Rocky Linux is the choice for RHEL-compatible systems. The launcher follows the [VFX Reference Platform](https://vfxplatform.com/), and has no minimum hardware requirements: a computer that can run a DCC or render can run it.
+
+### Version numbers of custom builds
+
+AYON uses [semantic versioning](https://semver.org/) for the launcher and the addons. A studio that changes the source code adds its own name and number after the version instead of reusing it, for example `1.0.0+yourstudio.1` for a change to `1.0.0`.
 
 ## The shim
 

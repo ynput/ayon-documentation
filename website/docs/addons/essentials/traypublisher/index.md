@@ -7,7 +7,7 @@ addon_repo: ayon-traypublisher
 addon_version: 0.4.8
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://github.com/ynput/ayon-traypublisher/tree/0.4.8
   - https://github.com/ynput/ayon-traypublisher/releases
@@ -35,10 +35,7 @@ The addon version can be set per project (`project_can_override_addon_version` i
 | Entry point | Description |
 |---|---|
 | Tray menu entry **Publisher** | Opens a **Choose project for Tray Publisher** window. After a project is chosen, the Tray Publisher starts as a separate process for that project. |
-| `addon traypublisher launch` | Launcher command that starts the Tray Publisher UI directly. The options `--project` (environment variable `AYON_PROJECT_NAME`), `--folder-path` (`AYON_FOLDER_PATH`) and `--task-name` (`AYON_TASK_NAME`, requires `--folder-path`) pre-select the context. |
-| `addon traypublisher ingestcsv` | Headless [CSV ingest](#csv-ingest): creates and publishes the instances described in a CSV file with no UI. |
-
-The `ingestcsv` command takes `--filepath` (required), `--project` (required), `--folder-path` (required), `--preset` (default `Default`), `--task` (optional) and `--ignore-validators`, which leaves out the plugins that only run for the `local` target. When `AYON_USERNAME` is set and the connection uses a service user, that name is used as the publishing user.
+| Launcher commands | `launch` starts the Tray Publisher directly, `ingestcsv` runs a [CSV ingest](#csv-ingest) without a UI. See [Command line](#command-line). |
 
 ## Products it can create
 
@@ -145,6 +142,17 @@ CSV Ingest creates and publishes many products from one `.csv` file. The columns
 | Validate Existing Version | Instances with a version | The chosen version is higher than the latest published version of the product. Has a repair action that switches the instance back to the next version. Optional. |
 | Validate Frame Range | `render`, `plate` | For image sequence representations (`exr`, `dpx`, `jpg`, `jpeg`, `png`, `tiff`, `tga`, `gif`, `svg`, `sxr`) the number of files equals the frame range of the task (or folder) plus handles. Skipped for instances that create new folders. Optional. |
 | Validate Existing Online Files | `online` | No product with the same name exists yet in the folder. Optional. |
+
+## Command line
+
+The addon adds the command group `addon traypublisher` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `launch` | Starts the Tray Publisher with a context selected. Options: `--project` (environment variable `AYON_PROJECT_NAME`), `--folder-path` (`AYON_FOLDER_PATH`), `--task-name` (`AYON_TASK_NAME`, needs `--folder-path`). The **Tray Publisher** action in the web app (category **Desktop tools**, on a project, folder or task) starts it. |
+| `ingestcsv` | Publishes the instances described in a CSV file, without a UI. See [CSV ingest](#csv-ingest). Options: `--filepath`, `--project` and `--folder-path` (required), `--preset` (default `Default`), `--task`, and `--ignore-validators`, which leaves out the plugins that only run for the `local` target. |
+
+When `AYON_USERNAME` is set and the connection uses a service user, `ingestcsv` publishes as that user.
 
 ## Related
 

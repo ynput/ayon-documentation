@@ -1,26 +1,41 @@
 ---
 title: Publisher
 description: "The AYON Publisher: the window with the Create, Publish, Report and Details tabs that defines products in a scene, edits their options, runs validation and publishing, and shows the publish report."
-verified: 2026-10-16
+verified: 2026-11-23
+ui_purpose: "Marks scene content as products to publish, edits their publish options, then validates and publishes them and shows the report."
+ui_location: "AYON menu of the host application > Create... or Publish...; outside a host, the Tray Publisher"
 sources:
-  - https://help.ayon.app/en/articles/1075843-creator-publisher
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/publisher/window.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/publisher/widgets/overview_widget.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/publisher/widgets/create_widget.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/publisher/widgets/product_context.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/publisher/widgets/publish_frame.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/publisher/widgets/report_page.py
+  - https://github.com/ynput/ayon-core/blob/develop/client/ayon_core/tools/publisher/publish_report_viewer/widgets.py
+  - https://github.com/ynput/ayon-core/blob/develop/server/settings/tools.py
 ---
 
 # Publisher
 
-The Publisher is the artist tool of the core addon that combines two jobs in one window: defining what is published (the Create part, formerly a separate Creator tool) and running the publish (the Publish part). It works on the scene of the host application it was opened from. It does not change content in the scene; it creates the metadata that marks content as publishable, stores that metadata in the workfile, and runs the publish plugins over it. The stages a publish goes through (collect, validate, extract, integrate) are described on the [Publishing](publishing.md) page; the names of the resulting products are described on the [Product types](product-types.md) and [Naming conventions](naming-conventions.md) pages.
+<PageInfo />
+
+The Publisher is where work leaves the artist's scene and becomes something the rest of the pipeline can use. Anything another department loads, reviews, renders on the farm or tracks in production goes through it: the modeler's mesh, the animator's cache, the lighter's render. It is the creator and the publisher in one window. The **Create** tab marks content of the open scene as a product to publish (in Maya a set with publish attributes, in Nuke a publishable write node) and the **Publish** tab runs the publish plugins over those products. The Publisher does not change the content itself: it stores the product definitions, called instances, as metadata in the workfile, so the next publish of the same scene starts from the same list.
+
+This page describes the window. How a publish runs (the collect, validate, extract and integrate stages and their plugins) is described on the [Publishing](publishing.md) page; the names of the resulting products on [Product types](product-types.md) and [Naming conventions](naming-conventions.md).
 
 ## Where it appears
 
-| Item | Value |
-|---|---|
-| Host applications | A menu entry of the AYON menu in the DCC integration. The Maya, Nuke and Blender integrations add **Create...** (opens the **Create** tab) and **Publish...** (opens the **Publish** tab). Integrations call the same window with the tab to show. |
-| Window title | `AYON Publisher`, followed by a context subtitle when the host provides one. |
-| Instances of the window | One window per host session. It is created on first use and reused. |
-| Standalone | The Tray Publisher addon opens the same window outside of a DCC, see [Tray Publisher](../addons/essentials/traypublisher/index.md). |
-| Experimental entry | In the Experimental tools dialog the **New publisher** button exists for the hosts `celaction`, `flame`, `harmony`, `hiero` and `resolve`. See [Experimental tools](experimental-tools.md). |
+- **In a host application:** the AYON menu of the integration. The Maya, Nuke and Blender integrations add **Create...** (opens the **Create** tab) and **Publish...** (opens the **Publish** tab); other integrations call the same window with the tab to show. The window title is `AYON Publisher`, followed by a context subtitle when the host provides one. There is one window per host session, created on first use and reused.
+- **Outside a host application:** the Tray Publisher addon opens the same window for files from disk, see [Tray Publisher](../addons/essentials/traypublisher/index.md).
 
 Each time the window is shown it resets: the create context is rebuilt from the scene, the publish state is cleared and the plugins are discovered again. On the first reset after opening it shows the **Create** tab, unless the caller asked for a specific tab.
+
+A typical session from an artist's point of view:
+
+1. Select what to publish in the scene.
+2. On the **Create** tab, pick the publish type, check the folder and task, type a variant (every folder usually has a `Main` variant; other variants are named freely) and click **Create**.
+3. On the **Publish** tab, check which products are active and adjust their publish options.
+4. Type a comment and click **Publish** (or **Validate** first). When a validator fails, the **Report** tab explains the problem and often offers a repair action.
 
 ## Layout
 
@@ -65,7 +80,7 @@ Buttons below the list:
 |---|---|
 | Add button (tooltip "Create new instance") | Switches to the **Create** tab. |
 | Delete button (tooltip "Remove selected instances") | Removes the selected instances after the confirmation "Do you really want to remove the instance?" (or the count when several). Disabled while nothing is selected. |
-| View button | Cycles through three views: cards, list, and list grouped by parent. Tooltips name the view the click changes to. |
+| View buttons | Three buttons at the right switch the view: **Card view**, **List view** and **Parent grouping view** (a list grouped by parent instance). |
 
 The default view is the card view. When an instance is added in the card view and the count reaches 10, the window switches to a list view on its own. The selection is kept when the view changes.
 
@@ -82,6 +97,8 @@ Selection and keyboard in the views:
 The toggle keys are ignored while a publish is running. The toggles of all instances are disabled during a publish and enabled again on reset.
 
 ## Create tab
+
+<!-- screenshot: the Create tab of the Publisher with a creator selected, its options and the product name (current release shows "Product base type") -->
 
 ### Create context panel
 
@@ -116,6 +133,8 @@ The **Variant** field is colored by its state: empty, existing (the product name
 **Create** is also disabled, with a tooltip, when no creator is available ("Creator is not selected") or no folder is selected ("Context is not selected"), and when the variant is empty.
 
 ## Publish tab (Publish options)
+
+<!-- screenshot: the Publish tab of the Publisher with a product selected and its publish options -->
 
 Selecting instances in the list fills the **Publish options** panel on the right. For several selected instances, values that differ are shown as `< Multiselection >` and changes are applied to all selected instances. Changes to attributes are saved into the workfile with the other instance data.
 
@@ -193,6 +212,8 @@ Validation errors are grouped by the title that the validator gives its error. E
 
 ## Details tab
 
+![The Details tab of the AYON Publisher in Maya: the Context instance on the left with Hide removed instances on, the plugin list with Hide skipped plugins on, and the Logs sub-tab with the log levels drop-down, the search field and Show timestamps, above the comment field and the footer buttons](assets/publisher/publisher-details.webp "Details tab")
+
 The **Details** tab embeds the publish report viewer, the same viewer the tray offers as **Publish report viewer** in its Admin submenu.
 
 | Region | Content |
@@ -219,28 +240,26 @@ If plugins fail to import and the **Validate plugins discovery** setting is on, 
 
 The **?** button in the header opens a **Help dialog** to the right of the window. It shows the detailed description of the selected creator, rendered from Markdown. Creators without a detailed description show "We didn't prepare help for this part...".
 
-## Permissions and settings
+## Tool settings
 
-The Publisher has no permission gate of its own: it works for any user who can run the host application. What a user can publish depends on the project and task context and on the permissions on the server (publishing writes to the project).
+Tool settings are set in the studio settings and can be overridden per project.
 
-Settings that influence it are in the Core addon settings, **Tools** group (see [Core addon settings](../addons/essentials/core/settings.md)):
+The Publisher has no permission gate of its own: it works for any user who can run the host application, and what a user can publish depends on the permissions on the server, since publishing writes to the project.
 
-| Setting group | Setting | Effect on the Publisher |
-|---|---|---|
-| **Creator** | **Product name profiles** | Templates that calculate the **Product** preview and the final product name from product base type, product type, host, task type and task name. |
-| **Creator** | **Filter creator profiles** | Limits the creators in **Choose publish type** for matching host, task type and task name; entries are creator labels, regular expressions allowed. Without a matching profile all creators are listed. |
-| **Creator** | **Use legacy product names for renders** | While on, render products ignore render templates in the product name profiles. |
-| **Publish** | **Publish comment minimum required characters** | Validate and Publish refuse to start while the comment is shorter; the comment field is outlined in red and a message "Please enter a comment of at least N characters" appears. Default 0. |
-| **Publish** | **Validate plugins discovery** | Strict mode: when a publish plugin file fails to import, publishing is blocked and the crashed plugin report is shown. |
-| **Publish** | **Template name profiles**, **Hero template name profiles**, **Custom Staging Dir Profiles** | Used by the publish plugins, not by the window. See [Publishing](publishing.md). |
+The Publisher reads these Core addon settings:
 
-The attributes in **Creator attributes** and **Publish plugin attributes** come from the creators and publish plugins; their defaults come from the addon settings of the plugin owner (for example the host addon settings).
+- [Tools > Creator](../addons/essentials/core/settings.md#creator): which creators are listed in **Choose publish type** (creator filter profiles), and the product name profiles behind the **Product** preview. How product names are built is described in [Naming conventions: product names](naming-conventions.md#product-naming).
+- [Tools > Publish](../addons/essentials/core/settings.md#publish-tool): the minimum comment length (Validate and Publish refuse to start while the comment is shorter, with the message "Please enter a comment of at least N characters"), and **Validate plugins discovery**, the strict mode described under [Details tab](#details-tab).
+
+The defaults of **Creator attributes** and **Publish plugin attributes** come from the settings of the addon that owns the creator or plugin, usually the host addon.
 
 ## Related
 
 - [Publishing](publishing.md): the stages of a publish and the plugins that run.
 - [Product types](product-types.md) and [Naming conventions](naming-conventions.md): what a product is and how names are built.
 - [Workfiles](workfiles.md): the scene file the instance data is saved in.
-- [Loader](loader.md) and [Scene inventory](scene-inventory.md): the tools that consume published products.
+- [Loader](loader.md) and [Scene Inventory](scene-inventory.md): the tools that consume published products.
 - [Experimental tools](experimental-tools.md): includes the Pyblish Debug Stepper, which pauses a publish plugin by plugin.
+- [Process Monitor](process-monitor.md): the console output of an application, useful when a publish crash is logged there.
 - [Tray Publisher](../addons/essentials/traypublisher/index.md): the same window outside a host application.
+- [Core addon settings](../addons/essentials/core/settings.md): the Creator and Publish tool settings.

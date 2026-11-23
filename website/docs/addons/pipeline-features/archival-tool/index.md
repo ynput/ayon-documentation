@@ -8,7 +8,7 @@ addon_version: 0.1.2
 addon_scope: pipeline-server
 addon_flags: [licensed, power-feature]
 addon_private: true
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://help.ayon.app/en/articles/7924402-project-archival-tool
 ---
@@ -37,7 +37,7 @@ The addon has no service. The launcher commands are started from the AYON server
 |---|---|
 | **Analyse in Archival Tool** action | A server action in the category `server`, offered for one folder and visible to administrators only. It starts the launcher with `addon archival_tool analyse` for the selected folder. |
 | **Archival Tool** project page | A page in the project view, restricted to administrators. It lists the reports with their status and opens a detail page per report. |
-| Launcher commands | `addon archival_tool analyse --project <name> --input <folder ids>` and `addon archival_tool delete --project <name> --report_id <id>`. |
+| Launcher commands | `analyse` and `delete`, see [Command line](#command-line). |
 | Reports | Stored per project in the table `archival_tool_reports`, which the server addon creates when needed. |
 
 The tool is run on demand. It has no scheduler.
@@ -84,6 +84,15 @@ For each profile of the report, in this order:
 | Copy the kept files to a directory, keeping the path under the project root | Published | **Copy kept files** is on and a directory is set |
 
 The delete run also records its result in the report.
+
+## Command line
+
+The addon adds the command group `addon archival_tool` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `analyse` | Analyses folders and saves a report of the files that can be deleted. Options: `--project`, `--input` (folder ids, separated by commas). The **Analyse in Archival Tool** action starts it. |
+| `delete` | Applies a report: deletes the files it lists. Options: `--project`, `--report_id`. **Run** on the report page starts it. |
 
 ## Related
 

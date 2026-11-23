@@ -177,6 +177,35 @@ In the second column, "Yes" means the validator has settings in the addon (see t
 
 Collectors gather the current file, the frame range of the ROP, the frames that will be written, output node paths, render products per ROP type (Arnold, Karma, Mantra, Redshift, V-Ray, USD), the render colorspace, review data, reviewable instances, task handles, USD layers, USD value clips, USD look assets and their file transfers, the frames to fix, and the source inputs (containers) used. **Collect Frames to Fix** adds a text field for frames to re-render and an optional **Rewrite latest version** toggle. **Collect Local Render Instances** creates one instance per AOV for local renders.
 
+### Render products and AOV names
+
+Each render instance is published as one product per AOV, named by the render product name template, by default `{product[type]}{Task[name]}{Variant}<_{Aov}>` (see [Product naming](../../../pipeline/naming-conventions.md#product-naming)). An AOV with an empty name drops the `<_{Aov}>` part, so the product is named without a suffix, for example `renderLightingMain` instead of `renderLightingMain_Beauty`. Local renders are split by **Collect Local Render Instances**, farm renders by the Deadline publish job; both use the same naming.
+
+The AOV name of the beauty depends on the ROP:
+
+| ROP | Beauty AOV name | Beauty without a suffix |
+|---|---|---|
+| Arnold, V-Ray | Empty | Already the case |
+| Redshift | The ROP's **Beauty AOV suffix** (`RS_outputBeautyAOVSuffix`, set to `beauty` by the creator) | Clear the parameter; the suffix is then also left out of the file name. In full multilayer EXR mode the suffix is ignored and the name is always empty |
+| Karma ROP, Mantra | Always `beauty` | Not possible |
+| USD Render | Resolved per render product, see below | Set `ayon:aov_identifier` to an empty string, or use one multilayer product |
+
+For a USD Render ROP, the AOV name ends up in a product name for two reasons:
+
+1. The render product name template has `<_{Aov}>`. That part is filled whenever the AOV name isn't empty, and `{Aov}` capitalizes it, so `beauty` becomes `_Beauty`.
+2. The render product has no `ayon:aov_identifier` attribute, so the name of its render var is used as a fallback. That fallback only happens when the product has exactly one render var, such as a separate beauty product with a `beauty` var. Products with several vars, like a multilayer main product, get an empty name and no suffix (`renderLightingMain`). A product made only of cryptomatte vars gets their common prefix instead.
+
+When the string attribute `ayon:aov_identifier` exists on the RenderProduct prim, its value is used as it is, including an empty string: `s@ayon:aov_identifier = "beauty_dcm";` in a wrangle on the render product gives `_Beauty_dcm`.
+
+So the suffix can be removed for a product in either of two ways:
+
+- Set `s@ayon:aov_identifier = "";` on that render product.
+- Remove `<_{Aov}>` from the render product name template. That removes the suffix for every AOV, and gives all AOVs of a render the same product name, so it doesn't fit a convention where only the beauty has no suffix.
+
+Only one render product of a ROP can resolve to a given AOV name, including the empty one. When two products resolve to the same name, for example a multilayer product and a beauty product with `ayon:aov_identifier` set to `""`, the publish logs *Multiple render products are identified as the same AOV* and only one of the two products is published.
+
+Reviews are chosen by the **AOV regex** of [Collect Local Render Instances](settings.md#collect-local-render-instances) for local renders (default `.*([Bb]eauty).*`), or by the Deadline filter when **Use Deadline AOV Filter** is on and for farm renders. The patterns are matched against the rendered file name, not the product name: a beauty written without `beauty` in its file name needs a pattern that matches it. Multipart EXR renders are always reviewable.
+
 ## Loading
 
 | Loader | Loads | Formats |

@@ -44,6 +44,7 @@ The server features are activated only when this addon version is part of the pr
 | Hierarchy templates | Actions menu | Creates and applies folder and task templates. |
 | Status sync | Server events | Changes statuses between tasks, folders and versions. |
 | Pinned project settings | New projects | Copies chosen studio settings into a new project as overrides. |
+| Personal API keys | Profile page; user details in Users | Users create and revoke API keys of their own, with an expiry date and, with the MCP addon, ready-made configurations for AI assistants. Admins see and revoke the keys of any user. |
 
 The front-end modules the addon publishes to the web app are `annotations`, `slicer`, `license` and `views`. The web app decides which pages show them; the addon supplies the components.
 

@@ -7,15 +7,33 @@ verified: 2026-11-17
 
 # Split work into small steps
 
-<!-- screenshot: Subtasks tab of the details panel for a wing_it compositing task: Roto, Cleanup and Grading, two of them done, with assignees and dates -->
+<Columns widths="45 55">
+<Column>
 
 A task such as the compositing of a shot is often several smaller jobs: roto, cleanup, keying, grading. Making each of them a task of its own adds work files, statuses and review steps that nobody needs. Subtasks keep them inside the task as a checklist with assignees and dates, so the task stays one piece of work in the pipeline and in the schedule, while the steps inside it can be followed. Subtasks are provided by the [Planner addon](../addons/production-tracking/planner/index.md); their fields and controls are described in [Subtasks](../addons/production-tracking/planner/subtasks.md).
 
+</Column>
+<Column>
+
+![The Subtasks tab of the details panel for the comp task of wing_it 040_0010: Roto and Cleanup done and crossed out, Grading open, each with its dates, and 2/3 done in the header](assets/split-work-into-small-steps/subtasks-tab.png "Subtasks of a compositing task")
+
+</Column>
+</Columns>
+
 ## Checkpoints inside a task
 
-<!-- screenshot: Subtasks tab with a batch of subtasks just created from "Roto, Cleanup, Grading" -->
+<Columns widths="45 55">
+<Column>
 
 A subtask is a label and a done checkbox, optionally with a description. Typing several labels at once, such as `Roto, Cleanup, Grading`, creates one subtask for each, so a checklist is set up in seconds. Artists tick subtasks off as they go, and the task keeps one status for the work as a whole. A subtask has no status, versions or work files of its own: publishing still happens on the task.
+
+</Column>
+<Column>
+
+![The Subtasks tab of the same task right after typing Roto, Cleanup, Grading: three new subtasks, none done yet](assets/split-work-into-small-steps/subtasks-created.png "Subtasks created in one step")
+
+</Column>
+</Columns>
 
 ## Share a task between people
 
@@ -23,7 +41,7 @@ A subtask has its own assignees. A senior artist can own the task while a junior
 
 ## See how far a task is
 
-<!-- screenshot: Overview of a wing_it sequence with the Subtasks column, one chip per subtask with its done checkbox -->
+![The Overview of the wing_it sequence 040_downward with the Subtasks column pinned on the left: the comp tasks of 040_0010 and 040_0020 show one chip per subtask, Roto, Cleanup and Grading, with their done state, and the other tasks a + button to add one](assets/split-work-into-small-steps/overview-subtasks.webp)
 
 The **Subtasks** column of the [Project overview](../ayon/web-ui/production-tracking/overview.md) and of [lists](../ayon/web-ui/production-tracking/lists.md) shows the subtasks of each task as chips with their done state. A coordinator sees at a glance which shots are half way through their compositing and which have not started, without opening each task.
 

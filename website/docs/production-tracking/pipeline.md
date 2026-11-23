@@ -7,9 +7,18 @@ verified: 2026-11-17
 
 # What the pipeline brings to production tracking
 
-<!-- screenshot: Details panel of a wing_it compositing task: the activity feed with a published version, its reviewable thumbnail and a status change below it -->
+<Columns widths="45 55">
+<Column>
 
 Production tracking in AYON works on its own: folders, tasks, statuses, assignees and review all live in the web app. The [pipeline](../pipeline/index.md) is the set of desktop tools and application integrations that artists use to open, save and publish their work. It is often seen as a publishing tool for artists, but much of what it does lands in production tracking: it can build the project from the edit, it fills tasks with real versions and files, it makes the media for review, and it delivers. This page explains what that brings to producers, coordinators and admins. The tools are described in the [Pipeline](../pipeline/index.md) section and on the addon pages linked below.
+
+</Column>
+<Column>
+
+![Details panel of the lighting task of wing_it shot 020_0030, Pending review: the activity feed with review notes and the published version renderLightingMain v007 with its status and reviewable thumbnail](assets/pipeline/task-feed-publish.png "A published version in the task feed")
+
+</Column>
+</Columns>
 
 ## Build the project from the edit
 
@@ -25,7 +34,7 @@ When the edit changes, publishing the updated cut updates the frame range and ot
 
 ## Statuses backed by real work
 
-<!-- screenshot: Products page of wing_it filtered to one shot: versions of the plate, render and review products, each with its task, author and status -->
+![Products page of wing_it with shot 020_0010 selected: the versions of its plate, render and review products, each with its status and the task it was published from (layout, anim, storyboard, lighting)](assets/pipeline/products-one-shot.webp)
 
 Without the pipeline, a status is what someone set. With the pipeline, each publish creates a new version that is linked to the task it was made in, holds the published files, and shows in the activity feed of the task. A task set to **Pending review** then has the version that is waiting for review next to it, and the version holds the files that the next department loads. Versions are never overwritten, so the history of a shot stays visible version by version. See [Publishing](../pipeline/publishing.md).
 
@@ -33,7 +42,7 @@ A publish does not change the task status by itself; the artist sets it, as desc
 
 ## Review media made at publish
 
-<!-- screenshot: Web viewer playing a published review movie of a wing_it shot, with burnins and the activity feed next to it -->
+![Web viewer showing the review movie of renderLightingMain v007 of wing_it shot 020_0040, with burnins for the date, version, artist, shot and task and frame number, and the activity feed of the version next to it](assets/pipeline/viewer-review-movie.webp)
 
 When an artist publishes, the pipeline makes the review media of the version: it converts the published frames into a movie or image the browser plays, with burnins when the studio sets them up, and uploads it as a [reviewable](../ayon/web-ui/details-panel.md#version-files-tab) of the version. The version can be reviewed in the [web viewer](../ayon/web-ui/web-viewer.md) and added to a review session right away, with no one exporting and uploading a movie by hand. Every reviewable comes out with the same settings, which keeps review media consistent across artists and departments. The outputs are set in the **Extract Review** settings of the [Core addon](../addons/essentials/core/index.md). Reviewing and approving is described in [Review and approve](review-and-approve.md).
 
@@ -54,7 +63,7 @@ Because published versions hold their files, the pipeline can also hand them off
 
 <!-- screenshot: The Launcher window with the wing_it project, a shot and its compositing task selected, My tasks on, and the application actions -->
 
-An artist starts work from a task: the [Launcher](../pipeline/launcher.md) shows the tasks assigned to them and opens the application in the context of the selected task. Work files and published files are then named and placed by the rules of the project anatomy, not by each artist; see [Naming conventions](../pipeline/naming-conventions.md). For production tracking this means:
+An artist starts work from a task: the [AYON launcher](../pipeline/launcher.md#launching-in-context) shows the tasks assigned to them and opens the application in the context of the selected task. Work files and published files are then named and placed by the rules of the project anatomy, not by each artist; see [Naming conventions](../pipeline/naming-conventions.md). For production tracking this means:
 
 - Everything an artist saves and publishes belongs to a known folder and task, so nothing has to be matched up afterwards.
 - Files are found where the anatomy says they are, also after an artist leaves the project. See [Naming conventions](../pipeline/naming-conventions.md)
@@ -84,5 +93,5 @@ A studio that uses another pipeline can keep it and still track the production i
 - [Tray Publisher](../addons/essentials/traypublisher/index.md)
 - [Hiero](../addons/compositing-editorial-applications/hiero/index.md), [Resolve](../addons/compositing-editorial-applications/resolve/index.md) and [Flame](../addons/compositing-editorial-applications/flame/index.md)
 - [Review Desktop addon](../addons/production-tracking/review-desktop/index.md)
-- [Loader](../pipeline/loader.md) and [Browser](../pipeline/browser.md)
+- [Loader](../pipeline/loader.md), opened from the tray as the Browser
 - [Versions without a pipeline](track-work-without-a-pipeline.md)

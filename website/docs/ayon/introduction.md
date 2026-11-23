@@ -132,7 +132,7 @@ flowchart LR
 
 The table above is the text version of this diagram.
 
-Where to read more: [how AYON works](how-ayon-works/index.md) (bundles, addons, project anatomy), [pipeline tools](../pipeline/launcher.md), the [web UI](web-ui/app-header.md), [ASH](deployment/ash.md) and the [addons](../addons/index.md).
+Where to read more: [how AYON works](how-ayon-works/index.md) (bundles, addons, project anatomy), [pipeline](../pipeline/index.md), the [web UI](web-ui/app-header.md), [ASH](deployment/ash.md) and the [addons](../addons/index.md).
 
 ## Studio setups
 

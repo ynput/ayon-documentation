@@ -52,15 +52,35 @@ Setting up the addon takes three parts: the service on the AYON server, an API k
 
 ### For each person who connects
 
-Each person connects with their own AYON API key, so the assistant acts with that person's permissions.
+Each person connects with their own AYON credentials, so the assistant acts with that person's permissions. How a person gets them depends on the [plan](../../../ayon/plans.md):
 
-- With the [Power Pack](../power-pack/index.md), a key is created on the Profile page, in [Personal API keys](../../../ayon/web-ui/account/profile.md#personal-api-keys).
-- Without it, a key is created through the REST API (`POST /api/users/<user>/apikeys`), which needs AYON server 1.17.3 or newer. The steps are in the README of the [ayon-mcp repository](https://github.com/ynput/ayon-mcp#getting-your-api-key).
+| Plan | How a person connects |
+|---|---|
+| Community | With an API key created through the REST API (`POST /api/users/<user>/apikeys`, AYON server 1.17.3 or newer). It works, but each person manages their own key by hand, see [Creating a key through the REST API](#creating-a-key-through-the-rest-api). |
+| AYON Pro | With an API key created on the Profile page, in [Personal API keys](../../../ayon/web-ui/account/profile.md#personal-api-keys), part of the [Power Pack](../power-pack/index.md). A new key comes with ready-made configurations for Claude Code, VS Code and Claude Desktop, filled in with the key and this server's address. |
+| AYON Studio | With a personal API key, as in AYON Pro, which Studio includes. Later also by approving the assistant in AYON through OAuth, without creating a key, which suits larger studios. OAuth is not released yet, see below. |
 
 A restricted key, such as one of a user with a read-only access group, limits what the assistant can change; see the caution at the top of this page.
 
+#### Creating a key through the REST API
+
+Without the Power Pack, a person creates a key of their own with two requests: signing in returns a session token, the same kind the launcher gets when it signs in, and that token, sent as `Authorization: Bearer`, creates the key. The key is chosen by the person (here a random hex string) and is then what the assistant sends as `x-api-key`; the session token is not used by the assistant. It needs AYON server 1.17.3 or newer, and `curl`, `jq` and `openssl` on the machine. Replace the server address, the user name and the password:
+
+```bash
+AYON=https://ayon.example.com
+TOKEN=$(curl -s -X POST "$AYON/api/auth/login" -H 'content-type: application/json' \
+  -d '{"name": "<you>", "password": "<password>"}' | jq -r .token)
+KEY=$(openssl rand -hex 16)
+curl -X POST "$AYON/api/users/<you>/apikeys" \
+  -H "Authorization: Bearer $TOKEN" -H 'content-type: application/json' \
+  -d "{\"label\": \"mcp-laptop\", \"key\": \"$KEY\", \"expires\": $(( $(date +%s) + 90 * 86400 ))}"
+echo "$KEY"
+```
+
+The key expires after the time set in `expires`, here 90 days. It is shown only by the last command, because AYON stores only its hash. To revoke it, `DELETE $AYON/api/users/<you>/apikeys/<id>`, with the id listed by `GET $AYON/api/users/<you>/apikeys`. The same steps are in the README of the [ayon-mcp repository](https://github.com/ynput/ayon-mcp#getting-your-api-key).
+
 :::note In development
-Signing in without an API key, by approving the assistant in AYON through OAuth, is being developed. It is not released yet. Until then, assistants that can only sign in with OAuth and cannot send an API key cannot connect.
+Signing in through OAuth comes with a separate AYON OAuth addon, an authorization server for applications that connect to AYON, which is being developed for AYON Studio. It is not released yet. Until then, assistants that can only sign in with OAuth and cannot send an API key cannot connect.
 :::
 
 ### In the AI assistant

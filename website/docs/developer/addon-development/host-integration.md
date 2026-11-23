@@ -497,7 +497,7 @@ Writing the container is host-specific. Maya's `containerise()` in [api/pipeline
 
 ### Load workflow
 
-1. The [Loader](../../pipeline/loader.md) (or [Browser](../../pipeline/browser.md)) discovers the loader plugins and offers those compatible with the selected representation: matching product type, representation name and extension.
+1. The [Loader](../../pipeline/loader.md) discovers the loader plugins and offers those compatible with the selected representation: matching product type, representation name and extension.
 2. The chosen loader's `load()` receives the representation context. The product name is used as `name` when none is given.
 3. The loader adds the content to the scene and writes the container metadata.
 4. The Scene Inventory lists `host.get_containers()` and compares each container's representation with the latest version.

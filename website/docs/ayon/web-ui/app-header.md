@@ -1,7 +1,7 @@
 ---
 title: App header
-description: "The App header of the AYON web app, at the top of every page: the project menu, Home, the URI bar, the launcher and pipeline prompts, the bundle mode selector, items added by addons, the Help, Inbox, App and User buttons and menus, the page tabs below it, the keyboard shortcuts, and opening ayon+entity and ayon+settings URIs from the URI bar."
-verified: 2026-11-15
+description: "The App header of the AYON web app, at the top of every page: the project menu, Home, the URI bar, the launcher and pipeline prompts, the bundle mode selector, items added by addons, the Help, Inbox, App and User buttons and menus, the dark, light and system themes, the page tabs below it, the keyboard shortcuts, and opening ayon+entity and ayon+settings URIs from the URI bar."
+verified: 2026-11-21
 ui_purpose: "The header at the top of every page: opens projects, Home, the menus and the inbox, and shows where the user is as a URI that can be copied or typed."
 ui_location: "At the top of every page of the web app"
 ui_access: "Everyone; the entries depend on the user's role"
@@ -14,6 +14,8 @@ sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/src/components/Menu/Menus/AppMenu.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/components/Menu/Menus/HelpMenu.jsx
   - https://github.com/ynput/ayon-frontend/blob/develop/src/components/Menu/Menus/UserMenu/UserMenu.jsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/components/Menu/Menus/UserMenu/ThemeSwitcher.tsx
+  - https://github.com/ynput/ayon-frontend/blob/develop/src/hooks/useAppTheme.ts
 ---
 
 # App header
@@ -116,9 +118,15 @@ The top of the menu shows the user's name and full name, or a **Set Full Name** 
 |---|---|
 | **Account** | The user's [account](account/index.md): profile, sessions and launchers |
 | **Download Launcher** | The launcher installers on this server |
+| **Theme** | Switches the web app between **Dark**, **Light** and **System** |
 | **Sign out** | Signs the user out |
 
-Guests see only **Sign out**.
+Guests see only **Theme** and **Sign out**.
+
+The web app is dark until another theme is picked. **System** follows the light or dark setting of the operating system, and changes with it. The choice is saved with the user's preferences on the server, so it follows the user to other browsers and computers; a guest's choice stays in that browser. The review player and its annotation tools stay dark on the light theme, so media is judged against the same background.
+
+<!-- screenshot: the User menu with the Theme row (Dark, Light, System), replacing user-menu.png -->
+
 
 </Column>
 <Column>

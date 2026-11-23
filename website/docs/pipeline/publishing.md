@@ -1,125 +1,156 @@
 ---
 title: Publishing
-description: "What publishing is in the AYON pipeline, the rules a publish follows, and how the Create phase and the Collect, Validate, Extract and Integrate stages work."
-verified: 2026-10-16
+description: "How a publish works in the AYON pipeline and why it matters: instances and creators, the Collect, Validate, Extract and Integrate stages, products, versions and representations, review media, where published files go, and publishing on the farm."
+verified: 2026-11-23
 sources:
-  - https://help.ayon.app/en/articles/7070980-about-ayon-pipeline
+  - https://github.com/ynput/ayon-core/tree/develop/client/ayon_core/pipeline/publish
+  - https://github.com/ynput/ayon-core/tree/develop/client/ayon_core/pipeline/create
+  - https://github.com/ynput/ayon-core/tree/develop/client/ayon_core/plugins/publish
+  - https://github.com/ynput/ayon-core/blob/develop/server/settings/tools.py
+  - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/settings/anatomy/templates.py
 ---
 
 import trace from "@site/src/data/flows/publishing-stages.json";
 
 # Publishing
 
-Publishing turns work in progress into a shared, versioned and registered result. An artist selects what to share, AYON checks it, writes the files to a staging directory, copies them to the project's publish folder and registers the result on the AYON server so that other artists and tools can find and load it. A publish is the checkpoint between one person's work and the next person in the pipeline: problems are caught before they travel downstream.
+Publishing turns work in progress into a shared, versioned and registered result. An artist selects what to share, AYON checks it, writes the files, stores them in the project's publish folder and registers them on the AYON server, so that other artists and tools can find and load them. A publish is the checkpoint between one person's work and the next person in the pipeline: problems are caught before they travel downstream, and nobody has to dig through someone else's work files to find the right model or camera.
 
-The unit of a publish is the **product**: a named piece of work such as a model, a camera or a rendered sequence. Each publish of a product creates a new **version** of it. A version holds one or more **representations**, the actual files in a given format. The category a product belongs to is its [product type](product-types.md).
+Publishing takes a little time up front and saves much more later. Everything downstream in AYON builds on it: the [Loader](loader.md) and the [Scene Inventory](scene-inventory.md) work with published versions, review media is made during the publish, and the production tracking side sees each publish as a new version linked to its task.
+
+## What a publish produces
+
+Each publish of a product creates a new **version** of it, for example `v003` of `modelMain`, and the version holds one **representation** per file format, for example `abc` and `ma`. The entities are described in [Entities](../ayon/how-ayon-works/entities.md), the kinds of products in [Product types](product-types.md), and how names, version numbers and paths are built in [Naming conventions](naming-conventions.md).
 
 ## Rules of a publish
 
-| Rule | Meaning |
-|---|---|
-| Clear naming | Product names, folder names and file names follow the studio's naming conventions, which are set in the project anatomy and in the Core addon settings. See [naming conventions](naming-conventions.md). |
-| Versioned | Every publish creates a new version number. Versions are not overwritten. Selected product types also keep a hero version (see below). |
-| Immediately usable | A published version does not depend on unpublished files or on work directories. Dependencies such as textures are copied along as resources. |
-| Immutable | A published version is not modified. A change is published as the next version. |
-| Location from the anatomy | Published files are stored in a folder derived from the folder (asset, shot, sequence), the product and the version, according to the publish templates of the project anatomy. |
+- **Clear naming.** Product names, folder names and file names follow the studio's naming conventions, set in the project anatomy and the Core addon settings.
+- **Versioned.** Every publish creates a new version number. Selected product types also keep a hero version, an unversioned copy of the latest version.
+- **Immediately usable.** A published version does not depend on unpublished files or work directories. Dependencies such as textures are copied along as resources of the version.
+- **Immutable.** A published version is not changed afterwards. A change is published as the next version. The validator **Validate Version** stops a publish that would write to an existing or older version number.
+- **Location from the anatomy.** Published files are stored in a folder derived from the folder, the product and the version, according to the publish templates of the project anatomy.
 
-## How publishing works
+## Instances and creators
 
-A publish has two phases. The **Create** phase defines what is published. The **Publish** phase processes it through four stages: **Collect**, **Validate**, **Extract** and **Integrate**. Publishing is built on Pyblish, a plugin framework in which every plugin belongs to one stage and runs in the order of its number. AYON adds the Create phase in front of it and the Publisher window around it.
+A publish has two phases. The **Create** phase defines *what* is published: a **creator** plugin of the host integration makes a **publish instance**, a record with a product type, a variant, a target folder and task and the creator's options. The instance is stored in the workfile, so it is created once and published again and again. Automatic creators add some instances by themselves, such as the `workfile` instance most hosts keep. The **Publish** phase then runs the publish stages on the instances.
 
-| Stage | What it does | What remains | Runs on every publish |
-|---|---|---|---|
-| Create | Defines what to publish: a publish instance for a selection, node, clip or scene, with a product type and a name. | The instance stays in the scene (or in the publisher session). | No. Created once, edited when needed. |
-| Collect | Gathers data from the host, the AYON server and the instances. | Nothing. | Yes. |
-| Validate | Checks the data and content against the studio's rules and stops the publish on errors. Some checks offer a repair. | Nothing, unless a repair changes the scene. | Yes, and again after each fix. |
-| Extract | Exports the instances to files in a staging directory, with reviewables and thumbnails. | Files in the staging directory, deleted after the publish. | Yes. |
-| Integrate | Copies the files to the publish folder and registers the version on the AYON server. | A new version on disk and on the server, permanent. | Yes. Every publish is a new version. |
-
-An artist usually meets Create once per product and then publishes again and again: the four publish stages start from nothing each time and read the instances that Create left in the scene.
-
-## Explore the stages
-
-Selecting a stage shows what it does, what remains afterwards and whether it runs on every publish. The plain-text version under the chart repeats the same information.
-
-<FlowTrace data={trace} />
-
-## What exists where
-
-| After stage | In the scene or session | In the staging directory | In the publish folder | On the AYON server |
-|---|---|---|---|---|
-| Create | Instances with their data. | Nothing. | Nothing. | Nothing. |
-| Collect | Instances with full data. | Created when resolved. | Nothing. | Unchanged. Entities and the latest version are read. |
-| Validate | Unchanged. | Unchanged. | Nothing. | Unchanged. |
-| Extract | Unchanged. | Representation files, reviewables, thumbnail files. | Nothing. | Unchanged. |
-| Integrate | Unchanged. | Deleted after a successful publish (unless persistent). | Versioned files and resources, hero version files. | Product, version and representation records, thumbnail, reviewables, input links, hero version. |
+Artists do both in the [Publisher](publisher.md). Developers find the creator API in [Host integration](../developer/addon-development/host-integration.md).
 
 ### Where instances live
 
-Each host integration decides where the instance data of the Create phase is stored. The scene is not otherwise changed.
+Each host integration decides where the instance data is stored. AYON does not otherwise change the scene structure or content.
 
 | Host | Where the instance data is stored |
 |---|---|
 | Maya | A set that contains the selected objects, with AYON attributes on the set. |
 | Nuke | A write node with the selection connected as input, with the data in a hidden knob. |
-| DaVinci Resolve | A marker on the clip in the timeline, with the data in the marker notes. |
+| Hiero, DaVinci Resolve, Flame | A tag or marker on the clip in the timeline, with the data in its metadata. |
 | Tray Publisher | The publisher session itself, with the files chosen by the artist. |
+
+## The publish stages
+
+Publishing is built on [Pyblish](https://learn.pyblish.com/), a plugin framework in which every plugin belongs to one stage and runs in the order of its number. AYON adds the Create phase in front of it and the Publisher window around it. The plugins come from the Core addon, which provides the stages shared by all hosts, and from the host and feature addons. Plugins can be switched on, off or made optional in the addon settings; see [Core addon settings](../addons/essentials/core/settings.md#publish-plugins).
+
+### Explore the stages
+
+Selecting a stage shows what it does, what remains afterwards and whether it runs on every publish. The plain-text version under the chart repeats the same information.
+
+<FlowTrace data={trace} />
+
+The integrator writes the product and version records to the server before it copies any file, so parallel publishes do not take the same version number. If a copy fails, the files already copied are rolled back.
+
+### What exists where
+
+| After stage | In the scene or session | In the staging directory | In the publish folder | On the AYON server |
+|---|---|---|---|---|
+| Create | Instances with their data. | Nothing. | Nothing. | Nothing. |
+| Collect | Instances with full data. | Resolved, not yet written. | Nothing. | Unchanged. Entities and the latest version are read. |
+| Validate | Unchanged. | Unchanged. | Nothing. | Unchanged. |
+| Extract | Unchanged. | Representation files, review media, thumbnails. | Nothing. | Unchanged. |
+| Integrate | Unchanged. | Removed after a successful publish (unless persistent). | Versioned files and resources, hero version files. | Product, version and representation records, thumbnail, reviewables, input links, hero version. |
+
+## Where the published files go
 
 ### Staging directory
 
-The staging directory is the temporary location the extractors write to. It is resolved in this order: a value already set on the instance (some hosts write to their own location), then a matching profile of the Core addon setting **Custom Staging Dir Profiles**, then a new temporary folder created inside the folder of the `AYON_TMPDIR` environment variable when set, and in the system temporary folder otherwise.
+Extractors write to a staging directory first. By default it is a new temporary folder (inside the folder of the `AYON_TMPDIR` environment variable when set). Some hosts write to their own location, for example renders, and the Core setting **Custom Staging Dir Profiles** can point chosen products to an anatomy staging template, optionally persistent so the files are kept after the publish. See [Staging directories](naming-conventions.md#staging-directories).
 
-### Publish folder and hero versions
+### Publish directory or in place
 
-Integrate chooses the publish template with the Core setting **Template name profiles** and stores the files in the folder that the project anatomy derives from the folder, product and version. See [naming conventions](naming-conventions.md). The product and version records are registered on the server before any file is copied, so parallel publishes do not reuse a version number, and the copied files are rolled back on an error.
+The integrator chooses a publish template of the project anatomy with the Core setting **Template name profiles** and fills it with the context, product and version. The default templates store each version in its own folder below the folder's `publish` directory, for example `.../sh010/publish/plate/plateMain/v003/`. The `render` template is used for renders and reviews, and the `online` template, used by the Tray Publisher's Online creator, keeps the original file names.
 
-A hero version is an unversioned copy of the latest published version. It is a version with the negative of the source version number and its own folder without a version in the path, so scenes can reference one stable path and always get the latest publish. It is created by an optional plugin for the product types listed in its **Families** setting.
+Publishing **in place** is the exception. The anatomy's `source` publish template uses the key `originalDirname`: files that already sit in their final location inside a project root are registered where they are, with their own names, instead of being copied into a version folder. The validator **Validate publish dir** stops such a publish when the files are outside every project root. No default profile selects the `source` template; a studio adds a profile for the products that should publish in place, for example large plates that are already on the project storage. Template keys and profiles are described in [Publish](naming-conventions.md#publish).
 
-## The artist's view
+### Hero versions
 
-The stages above are the developer's structure. An artist meets them as a few visible steps in the Publisher (see [publisher](publisher.md)) and does not need the stage names.
+A hero version is an unversioned copy of the latest published version, stored in a folder without a version number, so scenes can reference one stable path and always get the latest publish. It is made by the optional plugin **Integrate Hero Version** for the product types listed in its settings. See [Hero versions](naming-conventions.md#hero-versions).
 
-| Step in the Publisher | What the artist sees | Underlying stage |
-|---|---|---|
-| **Create** tab | The list of creators (product types), a variant, the folder and task, and the **Create** button. Created instances appear in the instance list. | Create phase. |
-| **Publish** tab | The instances with an active toggle each, and their attributes, including the attributes of optional plugins. | Before Collect. |
-| **Publish** button (play icon) | A progress bar with the instance and plugin being processed. The footer also has **Save**, **Reset**, **Stop** and **Validate** buttons and a comment field. | Collect, Validate, Extract, Integrate. |
-| **Validate** button | Runs the publish up to the end of validation, then pauses. | Collect and Validate. |
-| Validation errors | The message "Your publish didn't pass studio validations", with the errors grouped by plugin, the affected instances, a description and the plugin actions (for example repair). The publish cannot continue until the errors are fixed. | Validate. |
-| Finished or error | "Finished" on success. "Error happened" for a crash, with a "This is not your fault" page and options to copy or save the report. | Any stage. |
-| **Report** tab | Instances, plugins and the log of each, available after the publish stops. | Report. |
-| **Details** tab | The publish report viewer. | Report. |
+### Version numbers
 
-### Entry points
+A new publish normally gets the latest version of the product plus one. A studio can instead publish with the version number of the workfile, so that `v012` of the scene publishes `v012` of its products:
+
+- **Collect Version from Workfile** lists the hosts that read the version from the workfile name.
+- **Follow workfile version** in **Collect Anatomy Instance Data** applies it to every product of those hosts.
+- The Nuke addon can apply it to chosen product base types only, with **Collect Sync Workfile Version** in its [publish settings](../addons/compositing-editorial-applications/nuke/settings.md#collectors). The global Core option overrides this list.
+
+The order in which the version number is chosen is described in [Version numbers](naming-conventions.md#publish).
+
+## Review media
+
+During a publish, the Core addon turns the frames or movie a host produced (a playblast, a flipbook, a render, a plate) into review media that plays in the browser and in review tools, with consistent color and burnins. The steps are Pyblish plugins that run on the representations of an instance:
+
+1. **Media from the host.** The host writes an image sequence or a movie, such as a playblast or a render.
+2. **Transcode color spaces** (`ExtractOIIOTranscode`) converts the colorspace with OpenImageIO, for example from scene linear to a display colorspace. It is redundant when the host already writes display-referred output with OCIO, and essential for output that is not color managed. See [Color management in publishing](color-management-in-publishing.md).
+3. **OIIO Post Process** (`ExtractOIIOPostProcess`) runs further `oiiotool` operations, such as resizing or cropping, for matching profiles.
+4. **Extract Review** (`ExtractReview`) encodes the review outputs with FFmpeg, for example an H.264 `mp4`, as new representations.
+5. **Extract Burnin** (`ExtractBurnin`) overlays text such as the frame number, the shot name or the date onto the review movie with FFmpeg.
+
+Other addons can add steps. The [Slater](../addons/pipeline-features/slater/index.md) addon, for example, adds a slate frame before the review is encoded. The thumbnail of the version is made from the same media by **Extract Thumbnail**.
+
+The review representations are published to the studio storage like any other representation. A representation tagged `webreview` is also uploaded to the AYON server by **Integrate AYON Review**, which makes it a [reviewable](../ayon/web-ui/details-panel.md#version-files-tab) that plays in the [web viewer](../ayon/web-ui/web-viewer.md) and in review sessions. The default `h264` and `png` outputs of Extract Review carry this tag. The outputs, tags, burnins and profiles are set in the [Core addon settings](../addons/essentials/core/settings.md#extract-review).
+
+:::note
+A reviewable on disk is not always on the server. When a version has review files but the web app shows no reviewable, the representation was published without the `webreview` tag, or the upload failed.
+:::
+
+A version can also get a reviewable without the pipeline, by [uploading a file](../ayon/web-ui/dialogs/upload-version.md) in the web app. Such an upload is used as it is: no transcoding, color conversion or burnins are applied.
+
+## Entry points
 
 The same stages run from different entry points. The plugins differ in what the host and the addon provide.
 
 ```mermaid
 flowchart TB
-  A[DCC Publisher] --> P[Publish plugins]
+  A[Publisher in a DCC] --> P[Publish plugins]
   B[Tray Publisher] --> P
-  C[Farm job] --> P
+  C[Farm publish job] --> P
   D[Web publisher] --> P
-  P --> S[Collect Validate Extract Integrate]
+  P --> S[Collect, Validate, Extract, Integrate]
 ```
 
-| Entry point | How instances come to exist | Notes |
-|---|---|---|
-| DCC Publisher | Creators in the host (Maya, Nuke, Houdini, Blender and others) store instances in the scene. The Publisher window runs all four stages with the target `local`. | Interactive. The artist can stop, validate only and fix problems. |
-| Tray Publisher | The Tray Publisher addon creates instances from files the artist picks (plates, images, editorial, audio, models and others). No DCC is involved. See [Tray Publisher](../addons/essentials/traypublisher/index.md). | The host name is `traypublisher`. |
-| Farm publishing | A host plugin submits a job (Deadline, Royal Render, OpenCue). The job runs `ayon publish` on a JSON file with the target `farm`. Collect Rendered Files reads the files from the path in `AYON_PUBLISH_DATA`, then validation, extraction and integration run headless with the `shell` host. | Instances are flagged `farm` in the local publish, so the local Integrate Asset skips them. |
-| Web publisher | The Webpublisher addon lets a user upload files in the web app. A background service starts a headless publish with its own host (`webpublisher`) for the uploaded batch. | Intended for freelancers without access to studio storage. |
+| Entry point | How instances come to exist |
+|---|---|
+| Publisher in a DCC | Creators of the host addon (Maya, Nuke, Houdini, Blender and others) store instances in the workfile. The artist publishes interactively and can stop, validate only and fix problems. |
+| [Tray Publisher](../addons/essentials/traypublisher/index.md) | Creators make instances from files the artist picks (plates, images, models, edit files, CSV lists and others), without a DCC. |
+| Farm publish job | A job on the render farm publishes what a DCC submitted, see below. |
+| [Web publisher](../addons/pipeline-features/web-publisher/index.md) | A user uploads files in the web app and a background service publishes them headless, for example for freelancers without access to the studio storage. |
 
-### Skipping and partial publishes
+Publishing from an edit, which creates shots as well as products, is described in [Editorial publishing](editorial-publishing.md).
+
+## Farm publishing
+
+Heavy outputs, such as renders, caches or long playblasts, can be produced on a render farm. The workstation then collects, validates and submits jobs, and a publish job on the farm runs the remaining extraction and integration once the render is done, so the result is registered as a normal version. See [Farm](farm.md).
+
+## Skipping and partial publishes
 
 | Mechanism | Effect |
 |---|---|
-| Instance toggle | Each instance has an active toggle in the Publisher. An inactive instance is not collected and none of its plugins run. Child instances can follow the toggle of their parent. |
-| Optional plugin | A plugin that uses `OptionalPyblishPluginMixin` and has `optional` set shows an `active` checkbox (labeled with the plugin name) in the attributes of the instance. When it is off the plugin does nothing for that instance. Examples: Integrate Hero Version and Validate Version. |
-| Inactive or disabled plugin | A plugin with `active` false, or `enabled` false (usually set from the addon settings), is skipped and reported as skipped. |
-| Targets | A plugin with a `targets` list runs only for those targets, for example Collect Rendered Files only for `farm` and `filesequence`. |
-| Per instance data | `publish` false skips an instance. `integrate` false extracts it but does not register it. `farm` true defers integration to the farm job. |
-| Stop and Validate | **Stop** pauses a publish and **Publish** continues it. **Validate** stops after validation. |
+| Optional plugin | A plugin marked optional shows a checkbox in the instance's publish attributes. When it is off, the plugin does nothing for that instance. Integrate Hero Version is an example. |
+| Disabled plugin | A plugin switched off in the addon settings is skipped and reported as skipped. |
+| Targets | A plugin limited to targets runs only for those, for example the collector of farm-rendered files only for `farm`. |
+| Instance data | `publish` false skips an instance. `integrate` false extracts it without registering it. `farm` true defers integration to the farm job. |
+
+Artists also switch instances off, stop a publish or only validate in the [Publisher](publisher.md).
 
 ## Related
 
@@ -127,5 +158,8 @@ flowchart TB
 - [Publisher](publisher.md)
 - [Naming conventions](naming-conventions.md)
 - [Color management in publishing](color-management-in-publishing.md)
+- [Editorial publishing](editorial-publishing.md)
+- [Farm](farm.md)
 - [Core addon settings](../addons/essentials/core/settings.md)
 - [Tray Publisher](../addons/essentials/traypublisher/index.md)
+- [Host integration](../developer/addon-development/host-integration.md) (developer)

@@ -49,7 +49,7 @@ On the [Bundles](../ayon/web-ui/studio/bundles.md) page, in developer mode:
 
 A dev bundle has one assigned developer, and a developer has one dev bundle: assigning a developer to a bundle takes them off the dev bundle they had. Unlike production and staging bundles, a dev bundle can change its addon versions after it is created.
 
-The launcher uses the dev bundle of the logged-in user when it starts with `--use-dev`. Another dev bundle can be used with `--use-dev --bundle <bundle name>`. See [Launcher administration](../pipeline/launcher-administration.md#arguments).
+The launcher uses the dev bundle of the logged-in user when it starts with `--use-dev`. Another dev bundle can be used with `--use-dev --bundle <bundle name>`. See [Launcher command line](../pipeline/launcher-command-line.md#arguments).
 
 ## Addon client code
 
@@ -93,5 +93,5 @@ After a server restart, the server code and the settings of the clone are live, 
 ## Related
 
 - [Bundles](../ayon/how-ayon-works/bundles.md)
-- [Launcher administration](../pipeline/launcher-administration.md)
+- [Launcher command line](../pipeline/launcher-command-line.md)
 - [Addon development](addon-development/overview.md)

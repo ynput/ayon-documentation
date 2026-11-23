@@ -30,7 +30,7 @@ AYON's own production tracking features: planning, reports, node graphs, review 
 |---|---|---|---|---|
 | [AYON MCP server (alpha)](production-tracking/mcp/index.md) | Server | 0.1.0 | Free | The AYON MCP server addon (mcp): the tools it exposes to AI assistants through the Model Context Protocol, its guardrails, transports,... |
 | [Node Graph](production-tracking/node-graph/index.md) | Server | 0.3.0 | Pro, Studio | The AYON Node Graph addon: a project page that draws the folder hierarchy and the entity links of a project as a node graph, and creates and deletes... |
-| [Planner](production-tracking/planner/index.md) | Server | 2.3.2 | Pro, Studio | The AYON Planner addon: a studio-level Plan timeline of resources, bookings, capacity and workload, a Resources page, a project-level Schedule of... |
+| [Planner](production-tracking/planner/index.md) | Server | 2.3.6 | Pro, Studio | The AYON Planner addon: what it provides, with screenshots: the studio Plan of bookings with capacity, workload, time off, recurring events and... |
 | [Power Pack](production-tracking/power-pack/index.md) | Server | 1.6.7 | Pro, Studio | The AYON Power Features addon (powerpack): the licensed features it adds, such as multi-view slicer, annotations, views, comment categories,... |
 | [Reports](production-tracking/reports/index.md) | Server | 0.3.13 | Pro, Studio | The AYON Reports addon: a project Reports page with dashboards of charts and cards counting folders, tasks and versions, current-state and... |
 | [Review](production-tracking/review/index.md) | Server | 1.0.3 | Pro, Studio | The AYON Review addon (review sessions): playlists of versions with a frame-accurate web player, annotations, comparison, synchronized sessions with... |
@@ -76,7 +76,7 @@ Pipeline addons that add publishing, delivery, storage and format features: site
 | [SiteSync](pipeline-features/sitesync/index.md) | Pipeline + server | 1.3.2 | Free | The AYON SiteSync addon: what a site is, how published files are kept in step between sites, the storage providers, the sync page, the background... |
 | [Slater](pipeline-features/slater/index.md) | Pipeline | 1.0.6 | Pro, Studio | The AYON Slater addon: the Slate Editor desktop tool, the slate templates stored on the AYON server and the publish plugin that adds generated... |
 | [USD](pipeline-features/usd/index.md) | Pipeline | 0.1.9 | Free | The AYON USD addon: distribution of the AYON USD asset resolver for Maya, Houdini and Unreal, the launch hooks that set it up, the USD publish... |
-| [Version Control (archived)](pipeline-features/version-control/index.md) | Pipeline | 0.1.1 | Free | The AYON Version Control addon: Perforce support for publishing products to a Perforce server, the Unreal Engine changelist sync dialog and... |
+| [Version Control (archived)](pipeline-features/version-control/index.md) | Pipeline | 0.1.1 | Free | The archived AYON Version Control addon, replaced by the Perforce addon: what it did (committing publishes to Perforce and Unreal changelist sync). |
 | [Web Publisher](pipeline-features/web-publisher/index.md) | Pipeline + server | 1.2.5 | Pro, Studio | The AYON Web Publisher addon: publishing uploaded files from the AYON web interface, the studio-side service that processes the uploads, and the... |
 
 ### 3D applications
@@ -146,7 +146,7 @@ AYON addons that submit publish and render jobs to render farm managers.
 | Addon | Type | Version | License | What it is |
 |---|---|---|---|---|
 | [Deadline](farm-managers/deadline/index.md) | Pipeline | 0.7.5 | Free | The AYON integration for the Deadline render farm manager: the job and publish plugins it adds to each application, the Deadline repository plugins,... |
-| [Deadline Cloud](farm-managers/deadline-cloud/index.md) | Pipeline | 0.0.1 | Free | The AYON integration for AWS Deadline Cloud: the creator and publish plugins that submit Maya, Houdini and Nuke render jobs, the publishing step... |
+| [Deadline Cloud (unreleased)](farm-managers/deadline-cloud/index.md) | Pipeline | 0.0.1 | Free | The AYON integration for AWS Deadline Cloud: how it submits Maya, Houdini, Nuke and Blender renders through the Deadline Cloud submitters, how the... |
 | [Royal Render](farm-managers/royal-render/index.md) | Pipeline | 0.4.1 | Free | The AYON integration for the Royal Render farm manager: the job creation and submission plugins, the RR_ROOT files it ships, and its requirements. |
 
 ### Automation
@@ -155,7 +155,7 @@ Addons for automating AYON with node-based workflows.
 
 | Addon | Type | Version | License | What it is |
 |---|---|---|---|---|
-| [Workflow](automation/workflow/index.md) | Pipeline + server | 0.4.4 | Studio | The AYON Workflow addon: node-based automation with a browser editor, local, farm and event-triggered execution, simple actions in the AYON web app,... |
+| [Workflow](automation/workflow/index.md) | Pipeline + server | 0.4.6 | Studio | The AYON Workflow addon: node-based automation with a browser editor, local, farm and event-triggered execution, simple actions in the AYON web app,... |
 
 ### AI
 
@@ -188,7 +188,7 @@ Addons that connect AYON to other third-party tools (time tracking, chat, issue 
 |---|---|---|---|---|
 | [Clockify](integrations/clockify/index.md) | Pipeline | 0.2.2 | Free | The AYON Clockify addon: it starts and stops Clockify time entries for AYON tasks, adds launcher actions to start a timer and sync projects, and... |
 | [HiBob](integrations/hibob/index.md) | Server | 1.1.3 | Free | The AYON HiBob addon: synchronizes time off from the HiBob HR system into the AYON Planner addon with a background service, and into ftrack... |
-| [Jira (archived)](integrations/jira/index.md) | Pipeline + server | 0.1.1 | Free | The AYON integration for Jira: template-based creation of AYON tasks and matching Jira tickets from a project page, the Jira current phase attribute... |
+| [Jira (archived)](integrations/jira/index.md) | Pipeline + server | 0.1.1 | Free | The archived AYON Jira addon: what it did (Jira ticket preparation from templates and publish comments on Jira tickets) and its status. |
 | [Slack](integrations/slack/index.md) | Pipeline | 1.3.1 | Free | The AYON Slack addon: it posts notifications to Slack channels when products are published, with profile-based filtering, message templates, user... |
 | [Soko Sync](integrations/soko/index.md) | Server | 0.1.4 | Free | The AYON Soko Sync addon, which synchronizes projects and their data between AYON and Soko. |
 | [TimersManager](integrations/timers-manager/index.md) | Pipeline | 0.2.0 | Free | The AYON Timers Manager addon: a common interface that starts and stops timers in connected time tracking addons, stops them after user inactivity,... |

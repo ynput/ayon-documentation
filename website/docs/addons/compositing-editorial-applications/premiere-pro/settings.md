@@ -7,20 +7,33 @@ addon_repo: ayon-premiere
 addon_version: 0.2.3
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-10-15
+verified: 2026-11-18
 sources:
   - https://github.com/ynput/ayon-premiere/tree/0.2.3/server
-  - https://help.ayon.app/en/articles/1663762-premiere-addon-settings
 ---
 
 # Premiere Pro addon settings
 
 <AddonInfo />
 
-The settings of the [Premiere Pro addon](index.md), with the default values the addon ships with. They are studio settings that can be overridden per project, and the editor marks overridden values. See [settings and scopes](../../../ayon/how-ayon-works/settings.md) (planned). The addon has a single setting.
+The settings of the [Premiere Pro addon](index.md) are in **Studio settings > Premiere**, and can be overridden per project in **Project settings**. Pasting a location below into the URI bar of the web app opens that setting. The addon has a single setting.
 
 ## Extension installation
 
-| Setting | Default | Description |
-|---|---|---|
-| Install AYON Extension | On | Runs a pre-launch hook that installs the AYON extension into Premiere Pro when Premiere Pro is started from the AYON Launcher. The hook extracts `extension.zxp` into the CEP extensions folder of the user (`Adobe/CEP/extensions/io.ynput.PPRO.panel` below the user data directory). If the extension is already there with the same bundle version, nothing changes; if the version differs, the old copy is removed and the shipped one is installed. |
+<SettingLocation uri="ayon+settings://premiere/auto_install_extension" scope="Studio, with project overrides" />
+
+Whether the AYON extension is installed when Premiere Pro starts from the AYON Launcher. Turn it off when the studio deploys the extension another way.
+
+<!-- screenshot: settings editor, Install AYON Extension -->
+
+<Settings>
+<Setting name="Install AYON Extension" default="Enabled">
+
+Runs a pre-launch hook that extracts `extension.zxp` into the CEP extensions folder of the user (`Adobe/CEP/extensions/io.ynput.PPRO.panel` below the user data directory). If the extension is already there with the same bundle version, nothing changes; if the version differs, the old copy is removed and the shipped one is installed.
+
+</Setting>
+</Settings>
+
+## Related
+
+- [Premiere Pro addon](index.md)

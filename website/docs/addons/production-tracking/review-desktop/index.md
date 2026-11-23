@@ -8,7 +8,7 @@ addon_version: 0.0.5
 addon_scope: pipeline
 addon_flags: [licensed, beta]
 addon_private: true
-verified: 2026-10-15
+verified: 2026-11-21
 sources:
   - https://help.ayon.app/en/articles/8506818-ayon-desktop-review-addon
 ---
@@ -40,7 +40,7 @@ The addon has no services.
 | **Open session on desktop app** action | AYON web app, actions of a list (category **Review**) | Available on lists of versions of the types `version:review-session` and `version:generic`, for one list at a time. Starts the flow described below. |
 | Pre-launch hook `PreReviewToolOpenRV` | AYON launcher, application group `openrv` | Installs the addon's `review_tools` package into OpenRV with `rvpkg` (a copy is cached in the system temp folder, keyed by a hash of the package) and adds it to `RV_SUPPORT_PATH`. |
 | `review_tools` package for OpenRV | Inside OpenRV | Detects new sources and metadata changes of the loaded clips. It reads the OCIO configuration from the `OCIO` environment variable. |
-| Command `show-review-session-on-desktop` | AYON launcher (`addon review_desktop ...`), options `--project` and `--event` | Launches the player for a session described by a server event. The action starts it; it is not meant for direct use. |
+| Command `show-review-session-on-desktop` | AYON launcher | Launches the player for a session. See [Command line](#command-line). |
 
 ## Opening a list as a session
 
@@ -70,6 +70,14 @@ The panel follows the clip that is loaded in the player and mirrors the details 
 ## Player support
 
 The adaptor layer has implementations for OpenRV and for xSTUDIO (the latter imports the `ayon_xstudio` module). The launch hook and the list action only handle the `openrv` application group, so OpenRV is the player that sessions are opened in.
+
+## Command line
+
+The addon adds the command group `addon review_desktop` to the [launcher command line](../../../pipeline/launcher-command-line.md#addon-commands).
+
+| Command | What it does |
+|---|---|
+| `show-review-session-on-desktop` | Launches the player for a session described by a server event. Options: `--project`, `--event`. The **Open session on desktop app** action starts it; it is not meant for direct use. |
 
 ## Related
 
