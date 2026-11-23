@@ -27,7 +27,7 @@
     --md-sys-color-primary-hover: hsl(206, 80%, 73%);
     --md-sys-color-primary-active: hsl(206, 72%, 71%);
     --md-sys-color-on-primary: #00344f;
-    --md-sys-color-primary-container: #004b70;
+    --md-sys-color-primary-container: #1c4154;
     --md-sys-color-on-primary-container: #ebf5ff;
     --md-sys-color-secondary: #b7c9d9;
     --md-sys-color-secondary-container: #384956;
@@ -36,10 +36,10 @@
     --md-sys-color-on-tertiary: #003827;
     --md-sys-color-tertiary-container: #00513a;
     --md-sys-color-on-tertiary-container: #52fdc3;
-    --md-sys-color-error: #ffb4ab;
-    --md-sys-color-error-container: #93000a;
-    --md-sys-color-on-error-container: #ffdad6;
-    --md-sys-color-warning: #fb9c15;
+    --md-sys-color-error: hsl(6, 100%, 84%);
+    --md-sys-color-error-container: hsl(6, 100%, 29%);
+    --md-sys-color-on-error-container: hsl(6, 100%, 92%);
+    --md-sys-color-warning: hsl(25, 100%, 84%);
     --md-sys-color-warning-container: hsl(25, 100%, 29%);
     --md-sys-color-on-warning-container: hsl(25, 100%, 92%);
     --md-sys-color-outline: #9aa0a7;
@@ -54,7 +54,7 @@
     --md-sys-color-surface-container: #272d35;
     --md-sys-color-surface-container-low: #1c2026;
     --md-sys-color-surface-container-lowest: #16191d;
-    --md-sys-color-surface-container-high-hover: hsl(214, 12%, 26%);
+    --md-sys-color-surface-container-high-hover: hsl(217, 11%, 29%);
     --md-sys-color-surface-container-hover: hsl(212, 11%, 23%);
 
     /* Brand swatch (ayon-colors.jpg): used for status accents and card icons */
@@ -166,7 +166,7 @@
     /* surfaces */
     --ifm-background-color: var(--md-sys-color-surface-container-low); /* the app's dark working panel */
     --ifm-background-surface-color: var(--md-sys-color-surface-container); /* raised: cards, admonitions */
-    --ifm-navbar-background-color: var(--md-sys-color-surface-container-low);
+    --ifm-navbar-background-color: var(--md-sys-color-background); /* the app header's colour */
     --ifm-footer-background-color: var(--md-sys-color-surface-container-lowest);
     --ifm-footer-color: var(--md-sys-color-on-surface-variant);
     --ifm-footer-link-color: var(--md-sys-color-on-surface-variant);
@@ -260,9 +260,10 @@ body {
     --ifm-button-border-color: var(--md-sys-color-surface-container-highest);
 }
 
-/* Navbar: the group items are tabs, as in the AYON web app. The bar is darker
-   than the page; the active tab has the page color and rounded top corners, so
-   it looks attached to the content below. Sidebar and page share one color. */
+/* Navbar: the group items are tabs, as in the AYON web app's page tabs. The bar has the
+   app header's colour (the page background, a step lighter than the work area in dark and darker
+   in light) and a line at its bottom edge; the tabs stand on that line, and the
+   active one is underlined in the accent colour and set in semibold. */
 .navbar {
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
@@ -271,7 +272,7 @@ body {
         --ayon-tab-height: 2.6rem;
     }
     .navbar {
-        background-color: var(--md-sys-color-surface-container-lowest);
+        background-color: var(--md-sys-color-background);
         padding-top: 0;
         padding-bottom: 0;
         align-items: stretch;
@@ -292,34 +293,38 @@ body {
         align-self: flex-end;
         display: flex;
         align-items: center;
+        position: relative;
+        isolation: isolate;
         height: var(--ayon-tab-height);
+        /* over the bar's line, so the underline sits on it */
         margin: 0 0.1rem -1px;
-        border: 1px solid transparent;
-        border-bottom: 0;
-        border-radius: var(--ayon-radius-large) var(--ayon-radius-large) 0 0;
         color: var(--md-sys-color-on-surface-variant);
+        /* the web app's page tabs: Nunito Sans, 500 and 600 when open; a size up from the app's
+           title small (14px), since the docs bar is wider and has fewer controls */
+        font-family: "Nunito Sans Variable", "Nunito Sans", var(--ayon-font-family);
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 0.1px;
         font-weight: 500;
     }
-    .navbar__items > .navbar__item.navbar__link:hover {
-        background-color: var(--md-sys-color-surface-container-low);
-        color: var(--md-sys-color-on-surface);
-    }
-    .navbar__items > .navbar__item.navbar__link--active {
-        position: relative;
-        background-color: var(--ifm-background-color);
-        border-color: var(--md-sys-color-outline-variant);
-        color: var(--md-sys-color-on-surface);
-        font-weight: 700;
-    }
-    /* the tab covers the bar's bottom border, so it joins the page */
-    .navbar__items > .navbar__item.navbar__link--active::after {
+    /* a shade behind the name on hover, clear of the underline */
+    .navbar__items > .navbar__item.navbar__link::before {
         content: "";
         position: absolute;
-        left: 0;
-        right: 0;
-        bottom: -2px;
-        height: 3px;
-        background-color: var(--ifm-background-color);
+        inset: 0.35rem 0 0.45rem;
+        border-radius: var(--ayon-radius);
+        z-index: -1;
+    }
+    .navbar__items > .navbar__item.navbar__link:hover {
+        color: var(--md-sys-color-on-surface);
+    }
+    .navbar__items > .navbar__item.navbar__link:hover::before {
+        background-color: var(--md-sys-color-surface-container-high-hover);
+    }
+    .navbar__items > .navbar__item.navbar__link--active {
+        color: var(--md-sys-color-on-surface);
+        font-weight: 600;
+        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);
     }
 }
 .theme-doc-sidebar-container {
@@ -553,4 +558,47 @@ foreignObject .material-symbols-outlined {
    right, and the arrowhead at the Roots end is hidden here, leaving the arrow into the template. */
 .docusaurus-mermaid-container path[id$="-namingRoot-0"] {
     marker-end: none !important;
+}
+
+/* Mermaid: nodes given the `main` class (classDef main) are the highlighted ones. Their colour
+   comes from here, so it follows the theme: the primary colour as the border and a light tint of
+   it as the fill, like the accent of the web app. */
+.docusaurus-mermaid-container .node.main rect,
+.docusaurus-mermaid-container .node.main polygon,
+.docusaurus-mermaid-container .node.main circle,
+.docusaurus-mermaid-container .node.main path {
+    stroke: var(--md-sys-color-primary) !important;
+    fill: color-mix(in srgb, var(--md-sys-color-primary) 15%, transparent) !important;
+}
+
+/* Navbar on medium screens: the logo keeps its width (its image would run under the first tab
+   otherwise), and the logo, the search box and the tab text get smaller in steps, so the eight
+   tabs fit (below 997px Docusaurus switches to the hamburger menu). */
+.navbar__items > .custom-logo {
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
+@media (min-width: 997px) and (max-width: 1420px) {
+    .navbar__items > .navbar__item.navbar__link {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .navbar__items > .custom-logo img {
+        height: 1.6rem;
+    }
+    .navbar .navbar__search-input {
+        width: 9rem;
+    }
+}
+@media (min-width: 997px) and (max-width: 1160px) {
+    .navbar__items > .navbar__item.navbar__link {
+        font-size: 13px;
+    }
+    .navbar__items > .custom-logo img {
+        height: 1.35rem;
+    }
+    /* the search box keeps room for its placeholder: no Ctrl K hint at this width */
+    .navbar__search [class*="searchHintContainer"] {
+        display: none;
+    }
 }

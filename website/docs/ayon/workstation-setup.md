@@ -35,7 +35,7 @@ flowchart TB
   L -->|launches| A
   S <-->|"publish: write records<br/>load: read records, file paths"| A
   P <-->|"save, publish: write files<br/>load: read files"| A
-  classDef main stroke:#009be1,stroke-width:3px,fill:#009be126
+  classDef main stroke-width:3px
   class L,P main
 ```
 

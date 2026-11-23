@@ -2,11 +2,12 @@
 title: Developer mode
 sidebar_label: Developer mode
 description: "Developer mode in AYON: dev bundles that load the client code of addons from a local folder instead of downloading it, enabling developer mode for a user, creating and assigning a dev bundle, and working with live client code, with the addon outside or inside the server's addons folder."
-verified: 2026-11-13
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-backend/blob/develop/api/bundles/bundles.py
   - https://github.com/ynput/ayon-backend/blob/develop/ayon_server/entities/user.py
   - https://github.com/ynput/ayon-launcher/blob/develop/start.py
+  - https://github.com/ynput/ayon-frontend/tree/develop/shared/src/components/AddonLayout
 ---
 
 # Developer mode
@@ -33,9 +34,18 @@ Developer mode only affects the user who turned it on. A user with **Staging acc
 
 ![The bundle mode selector open, with Production, Staging and Developer](assets/server/set-bundle-mode.png "The bundle mode selector")
 
-![The top bar in developer mode, with the Developer Mode selector in purple](assets/server/bundle-mode-developer.png "Developer mode")
+![The App header in developer mode: the Developer Mode selector in purple, an addon's own header item, and the Addon slots menu open with Show slots on and the addons ayon, planner, powerpack and reports. The Home tabs that addons add are outlined in their addon's colour](assets/server/developer-mode-header.webp "Developer mode")
 
 </Gallery>
+
+## Addon slots
+
+In developer mode the App header has an **Addon slots** button (puzzle icon), for developers of addons that add to the web app. Its menu has:
+
+- **Show slots**: outlines every contribution of an addon, such as a page tab, a header item or a details panel tab, in that addon's colour, and shows each slot's example contribution where real ones would go. AYON's own slots are listed as `ayon`.
+- **Addons**: one checkbox per addon with its colour, to hide the outlines of an addon.
+
+With **Show slots** on, pointing at an outlined element shows a card with the slot's id, the addon that declared it and the contribution. The card can copy the slot id, and **Copy AI prompt** copies a prompt for an AI coding assistant to add a contribution to that slot or to edit this one. The switch and the checkboxes are kept for the browser session.
 
 ## Create a dev bundle and assign it
 

@@ -95,7 +95,7 @@ In developer mode, the bundle mode selector at the top right reads **Developer M
 
 <Gallery columns={2}>
 
-![The top bar in developer mode: the Developer Mode badge in purple](../assets/server/bundle-mode-developer.png "Developer Mode in the top bar")
+![The top bar in developer mode: the Developer Mode badge in purple](../assets/server/developer-mode-header.webp "Developer Mode in the top bar")
 
 ![The bundle list with the dev bundle AYON-Dev and its purple Dev badge](../assets/server/bundle-list-dev.png "A dev bundle")
 

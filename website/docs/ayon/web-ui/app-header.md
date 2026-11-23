@@ -1,7 +1,7 @@
 ---
 title: App header
 description: "The App header of the AYON web app, at the top of every page: the project menu, Home, the URI bar, the launcher and pipeline prompts, the bundle mode selector, items added by addons, the Help, Inbox, App and User buttons and menus, the dark, light and system themes, the page tabs below it, the keyboard shortcuts, and opening ayon+entity and ayon+settings URIs from the URI bar."
-verified: 2026-11-21
+verified: 2026-11-24
 ui_purpose: "The header at the top of every page: opens projects, Home, the menus and the inbox, and shows where the user is as a URI that can be copied or typed."
 ui_location: "At the top of every page of the web app"
 ui_access: "Everyone; the entries depend on the user's role"
@@ -22,7 +22,7 @@ sources:
 
 <PageInfo />
 
-![The App header at the top of a project's Overview: the project menu button and Home on the left, the URI bar with the selected lighting task in the middle, and the bundle mode, chat, Help, Inbox, App and User buttons on the right. The project tabs are below it](../assets/web-ui/app-header/page.webp)
+![The App header on the Global page of the studio settings: the project menu button and Home on the left, the location Studio settings / Global in the middle, and Set bundle mode, chat, Help, Inbox, App and User buttons on the right](../assets/web-ui/app-header/header.webp)
 
 Every page of the web app has the App header at the top. It opens projects and Home on the left, shows where the user is in the middle, and opens the menus on the right. Most pages add a row of tabs below it. What the App header shows depends on the user's role; guests see only **Home** and the **User** menu.
 
@@ -47,6 +47,7 @@ The URI bar in the middle of the App header shows the current location, for exam
 | **Download launcher** | Downloads the launcher installer for the user's platform. Shown until it is downloaded in this browser, or closed. | Everyone, when the server has an installer |
 | **Setup pipeline** | Opens the pipeline release installer. Shown until the server has a launcher installer and a dependency package; the close button hides it for the browser session. | Admins |
 | Bundle mode | Chooses the bundle the user's session uses: **Production** (shown as **Set bundle mode**), **Staging** or **Developer**. A user with only one of the two sees a switch instead. See [Bundles](../how-ayon-works/bundles.md). | Users with developer or staging access |
+| Addon slots (puzzle icon) | Opens **Show slots** and the list of addons, to see where addons add to the web app. See [Addon slots](../../developer/developer-mode.md#addon-slots). | Users with developer mode on |
 | Addon items | Buttons that addons add to the App header, shown as icons. | Everyone except guests |
 | Chat | Opens the support chat once it has loaded. A dot shows unread messages. | Everyone except guests |
 | **Help** (question mark) | Opens the [Help menu](#help-menu). | Everyone except guests |
@@ -138,7 +139,9 @@ The web app is dark until another theme is picked. **System** follows the light 
 
 ### Page tabs
 
-Most pages have a row of tabs below the App header. Addons can add tabs to Home and to the project pages, so the tabs differ between servers.
+Most pages have a row of tabs below the App header. The open tab is underlined and set in bold. Addons can add tabs to Home and to the project pages, so the tabs differ between servers.
+
+![The Home tabs Tasks, Projects, Plan and Resources, with Tasks underlined as the open tab](../assets/web-ui/app-header/page-tabs.webp)
 
 | Area | Tabs |
 |---|---|

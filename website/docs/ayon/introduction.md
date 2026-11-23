@@ -126,7 +126,7 @@ flowchart LR
     S <--> AH
   end
   WS <-->|"publish, load,<br/>addons, settings"| ST
-  classDef main stroke:#009be1,stroke-width:3px,fill:#009be126
+  classDef main stroke-width:3px
   class L,S,AH,AH2 main
 ```
 
