@@ -1,14 +1,14 @@
 ---
 title: Power Features addon settings
 sidebar_label: Settings
-description: "Reference of the settings of the AYON Power Features addon with their default values: comment categories, calculated attributes, hierarchy templates, status sync and pinned project settings."
+description: "Reference of the settings of the AYON Power Features addon with their default values: comment categories, calculated attributes, hierarchy templates, status sync, pinned project settings and personal API keys."
 addon: powerpack
 addon_repo: ayon-power-pack
-addon_version: 1.6.7
+addon_version: 1.8.3
 addon_scope: server
 addon_flags: [licensed, power-feature]
 addon_private: true
-verified: 2026-11-18
+verified: 2026-11-24
 ---
 
 # Power Features addon settings

@@ -4,12 +4,12 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Maya addon with their default values: general options, color management, scene units, render settings, creators, publish plugins, loaders and workfile build."
 addon: maya
 addon_repo: ayon-maya
-addon_version: 0.6.13
+addon_version: 0.6.16
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-maya/tree/0.6.13/server/settings
+  - https://github.com/ynput/ayon-maya/tree/0.6.16/server/settings
 ---
 
 # Maya addon settings
@@ -27,9 +27,13 @@ The fields at the top of the Maya settings: node identifiers, how the workfile i
 <!-- screenshot: settings editor, Maya general settings -->
 
 <Settings>
-<Setting name="Use cbId workflow" default="Enabled">
+<Setting name="Use cbId workflow" default="On">
 
-Creates a `cbId` identifier on each node and validates it for many product base types. Look publishing and look assignment, among others, rely on it. When disabled, the attribute is still created on scene save, but it is not validated.
+Whether a `cbId` identifier is created on each node and validated. Look publishing, look assignment and Yeti, among others, rely on it.
+
+- **On:** the attribute is created on scene save and validated on publish.
+- **Generate ids, but do not validate them:** the attribute is created on scene save, but not validated.
+- **Off:** the attribute is neither created nor validated. Workflows that rely on `cbId`, such as look assignment and Yeti, may not work.
 
 </Setting>
 <Setting name="Open Workfile Post Initialization" default="Enabled">
@@ -333,6 +337,19 @@ Set the current frame to the start frame.
 Delete the existing AOVs before the configured ones are created.
 
 </Setting>
+<Setting name="Default Render Target" default="Farm Rendering">
+
+The default render target of new Render instances: **Local machine rendering**, **Use existing frames (local)** or **Farm Rendering**.
+
+<Settings>
+<Setting name="Default Local Render Method" default="Batch Render">
+
+Shown when the target is **Local machine rendering**. The default local render method of new Render instances: **Batch Render** or **Render Sequence**.
+
+</Setting>
+</Settings>
+
+</Setting>
 </Settings>
 
 Each renderer has a group of its own. **Additional ... Options** lists in each group take pairs of **Attribute name** and **Value** that are set on the render settings node, such as `AASamples` and `4` for Arnold.
@@ -514,7 +531,27 @@ Include texture reference objects in the look.
 </Setting>
 <Setting name="Create Matchmove" default="Enabled, Main" />
 <Setting name="Create Maya Scene" default="Enabled, Main" />
-<Setting name="Create Maya USD" default="Enabled, Main" />
+<Setting name="Create Maya USD" default="Enabled, Main">
+
+<Settings>
+<Setting name="Include User Defined Attributes" default="Disabled">
+
+The default of whether all custom Maya attributes of the nodes are exported as USD metadata (`userProperties`).
+
+</Setting>
+<Setting name="Custom Attributes" default="Empty">
+
+The default custom attributes to export, separated by commas, such as `attr1, attr2`.
+
+</Setting>
+<Setting name="Custom Attributes Prefix" default="Empty">
+
+The default prefixes of custom attributes to export, separated by commas, such as `prefix1, prefix2`.
+
+</Setting>
+</Settings>
+
+</Setting>
 <Setting name="Create Maya USD: Model" default="Enabled, Main" />
 <Setting name="Create Maya USD Export Layer" default="Enabled, Main" />
 <Setting name="Create Model" default="Enabled; Main, Proxy, Sculpt">
@@ -1716,6 +1753,22 @@ Create an Ornatrix cache instance when an Ornatrix rig is loaded, ready to publi
 </Setting>
 </Settings>
 
+## Workfile actions
+
+<SettingLocation uri="ayon+settings://maya/workfile_actions" scope="Studio, with project overrides" />
+
+Settings group **Workfile Actions**: extra actions of the Workfiles tool.
+
+<!-- screenshot: settings editor, Workfile Actions -->
+
+<Settings prefix="workfile-actions">
+<Setting name="Open without references" default="Enabled">
+
+Open the selected workfile from the Workfiles tool with all references unloaded.
+
+</Setting>
+</Settings>
+
 ## Workfile build settings
 
 <SettingLocation uri="ayon+settings://maya/workfile_build" scope="Studio, with project overrides" />
@@ -1800,6 +1853,16 @@ Empty matches all task types.
 <Setting name="Task names">
 
 Empty matches all task names.
+
+</Setting>
+<Setting name="Folder Types">
+
+Empty matches all folder types.
+
+</Setting>
+<Setting name="Folder paths">
+
+Empty matches all folder paths.
 
 </Setting>
 <Setting name="Path to template">

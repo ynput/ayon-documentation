@@ -4,11 +4,11 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Slater addon with their default values: fonts, slate working space and the Extract Slates profiles."
 addon: slater
 addon_repo: ayon-slater
-addon_version: 1.0.6
+addon_version: 1.0.7
 addon_scope: pipeline
 addon_flags: [licensed, power-feature]
 addon_private: true
-verified: 2026-11-18
+verified: 2026-11-24
 ---
 
 # Slater addon settings

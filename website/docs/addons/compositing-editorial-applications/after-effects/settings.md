@@ -4,12 +4,12 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON After Effects addon with their default values: extension install, panel, color management, render creator, publish plugins, workfile builder, templated workfile build and scripts."
 addon: aftereffects
 addon_repo: ayon-aftereffects
-addon_version: 0.3.8
+addon_version: 0.3.9
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-aftereffects/tree/0.3.8/server/settings
+  - https://github.com/ynput/ayon-aftereffects/tree/0.3.9/server/settings
 ---
 
 # After Effects addon settings
@@ -233,6 +233,16 @@ Task types the profile applies to. Empty matches all.
 Task names the profile applies to. Empty matches all.
 
 </Setting>
+<Setting name="Folder Types">
+
+Folder types the profile applies to. Empty matches all.
+
+</Setting>
+<Setting name="Folder paths">
+
+Folder paths the profile applies to. Empty matches all.
+
+</Setting>
 <Setting name="Path to template">
 
 The template workfile.
@@ -277,7 +287,17 @@ Automatic scripts run when a workfile is opened. Manual scripts are run from the
 </Setting>
 <Setting name="Path to script">
 
-Path of a `.js` or `.jsx` file. It can use template keys of the current context, the project roots and environment variables.
+Path of a `.js` or `.jsx` file. It can use template keys of the current context, the project roots and environment variables. A root token, such as `{root[work]}/scripts/my_script.jsx`, makes the path work on other platforms.
+
+</Setting>
+<Setting name="Task types" default="Empty list">
+
+Task types that use the script. Empty uses it in every task type.
+
+</Setting>
+<Setting name="Task names" default="Empty list">
+
+Task names that use the script, as regex patterns. Empty uses it in every task.
 
 </Setting>
 </Settings>

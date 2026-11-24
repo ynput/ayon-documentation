@@ -4,12 +4,12 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Blender addon with their default values: unit scale, startup, handles, hooks, color management, render settings, creator, loader and publish plugins, and the templated workfile build."
 addon: blender
 addon_repo: ayon-blender
-addon_version: 1.1.11
+addon_version: 1.1.12
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-blender/tree/1.1.11/server/settings
+  - https://github.com/ynput/ayon-blender/tree/1.1.12/server/settings
 ---
 
 # Blender addon settings
@@ -110,6 +110,11 @@ Whether the matching tasks include the handles.
 <Setting name="Execute PySide hook" default="Enabled">
 
 When no Qt binding is found at launch, install PySide into the Python of Blender. This may need administrator rights. See [Launch hooks](index.md#launch-hooks).
+
+</Setting>
+<Setting name="Add --python-use-system-env argument" default="Enabled">
+
+Launch Blender with the `--python-use-system-env` argument, so that it uses the `PYTHONPATH` of the launch context. Without it the AYON integration does not load.
 
 </Setting>
 </Settings>

@@ -4,12 +4,12 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Photoshop addon with their default values: extension install, default workfile extension, color management, creator plugins, publish plugins and the workfile builder."
 addon: photoshop
 addon_repo: ayon-photoshop
-addon_version: 0.4.8
+addon_version: 0.4.10
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-photoshop/tree/0.4.8/server/settings
+  - https://github.com/ynput/ayon-photoshop/tree/0.4.10/server/settings
 ---
 
 # Photoshop addon settings
@@ -117,6 +117,16 @@ The creators share **Enabled** (the creator is available or, for automatic creat
 <Setting name="Review by default" default="Disabled">
 
 New instances have a review of their own.
+
+</Setting>
+<Setting name="Use Layer Name" default="Enabled">
+
+Includes the layer name in the product name by default. Artists can toggle it in the Publisher unless **Enforce Layer Name** is enabled.
+
+</Setting>
+<Setting name="Enforce Layer Name" default="Disabled">
+
+Always includes the layer name in the product name, whatever **Use Layer Name** is set to. The toggle is hidden in the Publisher.
 
 </Setting>
 <Setting name="Default Variants" default="Main">
@@ -311,6 +321,11 @@ It has no switches.
 <Setting name="Make an image sequence instead of flatten image" default="Disabled">
 
 Builds the review from an image sequence of all images, instead of one flattened image.
+
+</Setting>
+<Setting name="Max Review Source Dimension" default="8192">
+
+Review source images are downscaled in Photoshop to this length of their longest side, because ffmpeg cannot decode images above about 268 megapixels.
 
 </Setting>
 </Settings>

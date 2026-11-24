@@ -4,11 +4,11 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Review Desktop addon with their default values: the application variant filter and the default representation of the Open Review Session action."
 addon: review_desktop
 addon_repo: ayon-review-desktop
-addon_version: 0.0.5
+addon_version: 0.0.7
 addon_scope: pipeline
 addon_flags: [licensed, beta]
 addon_private: true
-verified: 2026-11-18
+verified: 2026-11-24
 ---
 
 # Review Desktop addon settings

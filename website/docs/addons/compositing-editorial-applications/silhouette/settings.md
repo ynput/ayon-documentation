@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Silhouette addon with their default values: AYON menu and shortcuts, session defaults, color management, loaders, creators, publish plugins and the templated workfile build."
 addon: silhouette
 addon_repo: ayon-silhouette
-addon_version: 0.2.2
+addon_version: 0.2.3
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-silhouette/tree/0.2.2/server/settings
 ---

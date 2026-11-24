@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Fusion addon with their default values: color management, local Fusion profile, hooks, Saver creators and local rendering."
 addon: fusion
 addon_repo: ayon-fusion
-addon_version: 0.4.3
+addon_version: 0.4.4
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-fusion/tree/0.4.3/server
 ---

@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON SiteSync addon with their default values: enabling, sync configuration, sites and provider settings, and the per-user site settings."
 addon: sitesync
 addon_repo: ayon-sitesync
-addon_version: 1.3.2
+addon_version: 1.4.3
 addon_scope: pipeline-server
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-sitesync/tree/1.3.2/server/settings
 ---

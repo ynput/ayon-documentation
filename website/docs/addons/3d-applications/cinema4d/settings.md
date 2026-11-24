@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Cinema4D addon with their default values: color management, creator plugins and publish validators."
 addon: cinema4d
 addon_repo: ayon-cinema4d
-addon_version: 0.2.1
+addon_version: 0.2.2
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-cinema4d/tree/0.2.1/server
 ---

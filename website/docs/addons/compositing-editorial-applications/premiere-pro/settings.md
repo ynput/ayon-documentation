@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Premiere Pro addon with their default values: the automatic installation of the AYON extension."
 addon: premiere
 addon_repo: ayon-premiere
-addon_version: 0.2.3
+addon_version: 0.2.4
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-premiere/tree/0.2.3/server
 ---

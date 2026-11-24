@@ -4,11 +4,11 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Batch delivery addon with their default values: transcoding presets, publish plugins, delivery presets, the ftrack delivery action and the Deadline submitter."
 addon: batchdelivery
 addon_repo: ayon-batch-delivery
-addon_version: 0.4.5
+addon_version: 0.5.0
 addon_scope: pipeline-server
 addon_flags: [licensed, power-feature]
 addon_private: true
-verified: 2026-11-18
+verified: 2026-11-24
 ---
 
 # Batch delivery addon settings

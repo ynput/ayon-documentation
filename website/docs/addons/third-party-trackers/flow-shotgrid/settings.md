@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Flow (ShotGrid) addon with their default values: connection, local storage, entity mapping, folder attribute map, re-parenting, service settings and the movie path publish plugin."
 addon: shotgrid
 addon_repo: ayon-shotgrid
-addon_version: 0.6.21
+addon_version: 0.6.22
 addon_scope: pipeline-server
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-shotgrid/tree/0.6.21/server/settings
 ---

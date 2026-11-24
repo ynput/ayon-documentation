@@ -1,15 +1,15 @@
 ---
 title: Kitsu addon settings
 sidebar_label: Settings
-description: "Reference of the settings of the AYON Kitsu addon with their default values: server and login secrets, publish plugins, user, casting and project synchronization, and the default task and status mapping."
+description: "Reference of the settings of the AYON Kitsu addon with their default values: server and login secrets, publish plugins (family, note and review), user, casting and project synchronization, and the default task and status mapping."
 addon: kitsu
 addon_repo: ayon-kitsu
-addon_version: 1.2.7
+addon_version: 1.2.8
 addon_scope: pipeline-server
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-kitsu/tree/1.2.7/server/settings
+  - https://github.com/ynput/ayon-kitsu/tree/1.2.8/server/settings
 ---
 
 # Kitsu addon settings
@@ -53,7 +53,7 @@ AYON secret that holds the Kitsu password. The default is a placeholder secret n
 
 <SettingLocation uri="ayon+settings://kitsu/publish" scope="Studio, with project overrides" />
 
-The publish plugins that decide which instances go to Kitsu and what note is posted there.
+The publish plugins that decide which instances go to Kitsu, what note is posted there and how reviews are uploaded.
 
 <!-- screenshot: settings editor, Publish plugins -->
 
@@ -126,7 +126,7 @@ The default profiles, by host and families:
 
 <SettingLocation uri="ayon+settings://kitsu/publish/IntegrateKitsuNote" scope="Studio, with project overrides" />
 
-Posts the publish comment as a note on the Kitsu task of instances that have the `review` and `kitsu` families, and can change the task status at the same time.
+Posts the publish comment as a note on the Kitsu task of instances that have the `kitsu` family, and can change the task status at the same time.
 
 <Settings>
 <Setting name="Set status on note" default="Disabled">
@@ -160,7 +160,7 @@ The short name of the current Kitsu task status must meet every condition, compa
 </Setting>
 <Setting name="Family requirements" default="Empty list">
 
-Requirements on the product types of the published instances.
+The published product types must meet one of these requirements for the status to change.
 
 <Settings>
 <Setting name="Condition" default="Equal">
@@ -170,10 +170,6 @@ Requirements on the product types of the published instances.
 </Setting>
 <Setting name="Family" />
 </Settings>
-
-:::caution
-In 1.2.7 a family requirement makes the plugin fail: the plugin reads a key that the setting does not store. Leave this list empty.
-:::
 
 </Setting>
 </Settings>
@@ -199,6 +195,25 @@ Template text with `{key}` placeholders, filled from the instance data, such as 
 </Setting>
 </Settings>
 
+### Integrate Kitsu Review
+
+<SettingLocation uri="ayon+settings://kitsu/publish/IntegrateKitsuReview" scope="Studio, with project overrides" />
+
+Uploads the representations tagged `kitsureview` as previews of the note posted by **Integrate Kitsu Note**.
+
+<Settings>
+<Setting name="Normalize movie" default="Enabled">
+
+Kitsu transcodes uploaded movie previews for web playback.
+
+</Setting>
+<Setting name="Match version number" default="Enabled">
+
+Sets the revision of the Kitsu preview to the AYON version number. When enabled, avoid uploading previews to Kitsu directly, outside AYON: the revisions and versions can get out of step and make publishing fail.
+
+</Setting>
+</Settings>
+
 ## Sync settings
 
 <SettingLocation uri="ayon+settings://kitsu/sync_settings" scope="Studio, with project overrides" />
@@ -212,7 +227,7 @@ What the synchronization between Kitsu and AYON creates: users, casting links, a
 <Settings>
 <Setting name="Delete projects" id="delete-projects-setting" default="Disabled">
 
-Intended to delete AYON projects when the paired Kitsu project is deleted. In 1.2.7 the setting has no effect, because the handler for deleted projects does not read it.
+Intended to delete AYON projects when the paired Kitsu project is deleted. In 1.2.8 the setting has no effect, because the handler for deleted projects does not read it.
 
 </Setting>
 </Settings>
@@ -236,7 +251,7 @@ Password of newly created users.
 </Setting>
 <Setting name="Access Group" default="kitsu_group">
 
-Default access group of synchronized users.
+Default access group of synchronized users. It is created when it does not exist.
 
 </Setting>
 <Setting name="Roles">
@@ -267,7 +282,7 @@ Creates AYON links from the Kitsu casting breakdown.
 </Setting>
 <Setting name="Casting link type" default="breakdown">
 
-Name of the AYON link type used.
+Name of the AYON link type used. Casting always links a folder to a folder, so the link type is `name|folder|folder`.
 
 </Setting>
 </Settings>

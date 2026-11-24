@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON ftrack addon with their default values: server and service credentials, server actions and events, status automation, application launch status, user actions, publish plugins and custom attributes."
 addon: ftrack
 addon_repo: ayon-ftrack
-addon_version: 1.6.9
+addon_version: 1.6.10
 addon_scope: pipeline-server
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-ftrack/tree/1.6.9/server/settings
 ---

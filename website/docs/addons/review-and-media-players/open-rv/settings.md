@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Open RV addon with their default values: the enable switch, the network connection used by the Open in RV loaders and color management."
 addon: openrv
 addon_repo: ayon-openrv
-addon_version: 1.2.4
+addon_version: 1.2.7
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-openrv/tree/1.2.4/server
 ---

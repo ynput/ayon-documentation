@@ -1,15 +1,15 @@
 ---
 title: DaVinci Resolve addon settings
 sidebar_label: Settings
-description: "Reference of the settings of the AYON DaVinci Resolve addon with their default values: startup behavior, project database override, color management, the Create Shot Clip creator, the Load Media loader and the Extract Product Resources profiles."
+description: "Reference of the settings of the AYON DaVinci Resolve addon with their default values: startup behavior, project database override, color management, the Create Editorial Package and Create Shot Clip creators, the Load Media loader and the Extract Product Resources profiles."
 addon: resolve
 addon_repo: ayon-resolve
-addon_version: 0.6.5
+addon_version: 0.6.7
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-resolve/tree/0.6.5/server
+  - https://github.com/ynput/ayon-resolve/tree/0.6.7/server
 ---
 
 # DaVinci Resolve addon settings
@@ -146,6 +146,20 @@ Unique in the list.
 
 <!-- screenshot: settings editor, Creator plugins -->
 
+### Create Editorial Package
+
+<SettingLocation uri="ayon+settings://resolve/create/CreateEditorialPackage" />
+
+Default values of the options of the **Editorial Package** creator.
+
+<Settings prefix="create-editorial-package">
+<Setting name="Make intermediate media reviewable" default="Enabled">
+
+Default state of the matching option when creating an editorial package. Artists can still change it per instance.
+
+</Setting>
+</Settings>
+
 ### Create Shot Clip
 
 <SettingLocation uri="ayon+settings://resolve/create/CreateShotClip" />
@@ -153,6 +167,11 @@ Unique in the list.
 Default values of the options of the **Create Publishable Clip** creator; the artist can change them when creating. How shots are created from a timeline is described in [Editorial publishing](../../../pipeline/editorial-publishing.md).
 
 <Settings prefix="create-shot-clip">
+<Setting name="Use only clips with Chocolate clip color" default="Enabled">
+
+Default state of the matching option in the creator. When disabled, all clips of the current timeline are used, whatever their clip color.
+
+</Setting>
 <Setting name="Shot parent hierarchy" default="{folder}/{sequence}">
 
 Template of the parent folders of the shot folders. The root is the project.
@@ -300,7 +319,7 @@ The default entries:
 
 <SettingLocation uri="ayon+settings://resolve/publish/ExtractProductResources/profiles" />
 
-The renders made for plate and editorial package products. A profile is chosen for each instance by its **Task Types**, **Task Names** and **Product Base Type**. When no profile matches, or the matching profile has no output definition, the publish fails.
+The renders made for plate and editorial package products. A profile is chosen for each instance by its **Task Types**, **Task Names** and **Product Base Type**. When no profile matches, nothing is rendered and the original media of the clip is published; the publish fails when the instance ends up without a representation. A matching profile without output definitions fails the publish.
 
 <Settings prefix="extract-product-resources">
 <Setting name="Profiles" default="Two profiles">
@@ -331,9 +350,9 @@ Empty matches all task names.
 **Editorial Package** (`editorial_pkg`) or **Plate Clip** (`plate`). It also selects which list of output definitions is shown and used.
 
 </Setting>
-<Setting name="Integrate Clip Source" default="Disabled">
+<Setting name="Publish clip's original media" default="Disabled">
 
-Also integrate the media pool item of the timeline item as an additional representation.
+Also publish the original media of the timeline item as an additional representation, next to the rendered outputs.
 
 </Setting>
 <Setting name="Output Definitions" default="Empty list">

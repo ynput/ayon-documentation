@@ -4,12 +4,12 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Flame addon with their default values: project bookmarks, color management, hooks, creator, collector, extractor and loader plugins, and the custom menu."
 addon: flame
 addon_repo: ayon-flame
-addon_version: 1.4.5
+addon_version: 1.4.7
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-flame/tree/1.4.5/server/settings
+  - https://github.com/ynput/ayon-flame/tree/1.4.7/server/settings
 ---
 
 # Flame addon settings
@@ -96,10 +96,12 @@ Flame follows the color management of AYON.
 </Setting>
 <Setting name="Remapping colorspace names">
 
-Maps colorspace names between Flame and OCIO.
+Maps SynColor colorspace names of Flame to OCIO names, in Flame before 2026.
 
 <Settings>
-<Setting name="Rules" default="Empty list">
+<Setting name="Rules" default="Two rules">
+
+The defaults map `ACEScg` to `ACES - ACEScg` and `Rec.709 video` to `Output - Rec.709`.
 
 <Settings>
 <Setting name="Application native colorspace name" />
@@ -160,24 +162,6 @@ Frame depth of the new project.
 <Setting name="Field Dominance" default="PROGRESSIVE">
 
 Field dominance of the new project.
-
-</Setting>
-</Settings>
-
-</Setting>
-<Setting name="Profile names mapping">
-
-Maps the names of Flame colorspace profiles to OCIO names.
-
-<Settings>
-<Setting name="Profile names mapping" id="imageio-profile-names-mapping-inputs" default="Two entries">
-
-The defaults map `ACEScg` to `ACES - ACEScg` and `Rec.709 video` to `Output - Rec.709`.
-
-<Settings>
-<Setting name="Flame name" />
-<Setting name="OCIO name" />
-</Settings>
 
 </Setting>
 </Settings>
@@ -464,6 +448,23 @@ Each validator has **Enabled** (the plugin runs), **Optional** (the artist can t
 Shown as **Validate Timeline Segments** when publishing.
 
 </Setting>
+<Setting name="Validate Batch Render Custom Staging Dir" default="Enabled, optional, active">
+
+Checks that the Write File node of a batch render renders into the custom staging folder. A repair action sets the output folder of the node.
+
+</Setting>
+</Settings>
+
+### Extract Batch Render
+
+<SettingLocation uri="ayon+settings://flame/publish/ExtractBatchRender" />
+
+<Settings prefix="extract-batch-render">
+<Setting name="Representation tags" default="Empty list">
+
+Tags added to the representations of the batch render, for example to mark them reviewable.
+
+</Setting>
 </Settings>
 
 ### Extract Product Resources
@@ -612,6 +613,18 @@ Create a batch group for each task of a published shot and load the clip into it
 
 </Setting>
 </Settings>
+
+</Setting>
+</Settings>
+
+### Increment Batch Render Custom Staging Dir
+
+<SettingLocation uri="ayon+settings://flame/publish/IncrementBatchRenderNextStagingDir" />
+
+<Settings prefix="increment-batch-render">
+<Setting name="Increment Batch Render Custom Staging Dir" default="Enabled, optional, active">
+
+After publishing, points the Write File node of a batch render to the custom staging folder of the next version.
 
 </Setting>
 </Settings>

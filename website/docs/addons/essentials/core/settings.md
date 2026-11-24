@@ -1,15 +1,15 @@
 ---
 title: Core addon settings
 sidebar_label: Settings
-description: "Reference of the settings of the AYON core addon with their default values: general studio settings, tools (creator, workfiles, loader, publish), version start, color management, the publish plugins and the workfile actions."
+description: "Reference of the settings of the AYON core addon with their default values: general studio settings, tools (creator, workfiles, loader, publish, delivery), version start, color management, the publish plugins and the workfile actions."
 addon: core
 addon_repo: ayon-core
-addon_version: 1.10.7
+addon_version: 1.10.9
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-core/tree/1.10.7/server/settings
+  - https://github.com/ynput/ayon-core/tree/1.10.9/server/settings
 ---
 
 # Core addon settings
@@ -73,7 +73,7 @@ Path under which the source becomes available, for example `P:` on Windows or `/
 
 <SettingLocation uri="ayon+settings://core/tools" scope="Studio, with project overrides" />
 
-Behavior of the artist tools: the AYON menu, the Publisher's creators, the Workfiles tool, the Loader and the templates used when publishing. The tools themselves are described in [Pipeline tools](../../../pipeline/pipeline-tools.md).
+Behavior of the artist tools: the AYON menu, the Publisher's creators, the Workfiles tool, the Loader, the templates used when publishing and the Delivery dialog. The tools themselves are described in [Pipeline tools](../../../pipeline/pipeline-tools.md).
 
 <!-- screenshot: settings editor, Tools -->
 
@@ -387,6 +387,73 @@ Strict mode of publish plugin discovery: the artist cannot publish when a publis
 <Setting name="Publish comment minimum required characters" default="0">
 
 Minimum length of the comment before the Publisher continues.
+
+</Setting>
+</Settings>
+
+### Delivery
+
+<SettingLocation uri="ayon+settings://core/tools/delivery" scope="Studio, with project overrides" />
+
+The templates and recipes offered in the delivery dialog of the [Loader](../../../pipeline/loader.md#delivery). A recipe delivers with its default template, and with another template for representations that match one of its overrides, for example EXRs into a plates folder. The templates are the `delivery` templates of the [project anatomy](../../../ayon/web-ui/project/anatomy.md#delivery).
+
+<!-- screenshot: settings editor, Delivery -->
+
+<Settings prefix="delivery-tool">
+<Setting name="Filter type" default="Deny list">
+
+**Allow list** shows only the templates in **Delivery templates**; **Deny list** hides them. It only limits which templates artists can pick: recipes can still use hidden templates.
+
+</Setting>
+<Setting name="Delivery templates" default="Empty list">
+
+Delivery templates of the project anatomy for the filter. An empty deny list shows all templates.
+
+</Setting>
+<Setting name="Delivery recipes" default="Empty list">
+
+Recipes offered in the dialog before the delivery templates. Recipe names must be unique.
+
+<Settings>
+<Setting name="Name" default="Empty">
+
+Name of the recipe in the dialog.
+
+</Setting>
+<Setting name="Default template" default="Empty">
+
+Delivery template for representations that match no override.
+
+</Setting>
+<Setting name="Overrides" default="Empty list">
+
+Another delivery template for matching representations. When several overrides match, the one matching the most filters wins. On a tie, a match on representation names goes before extensions, and extensions before product base types; then the earlier override in the list wins.
+
+<Settings>
+<Setting name="Representation names" default="Empty list">
+
+Representation names, regular expressions allowed. Empty matches any representation.
+
+</Setting>
+<Setting name="Extensions" default="Empty list">
+
+Lowercase extensions without the dot, for example `exr`, regular expressions allowed. Empty matches any extension.
+
+</Setting>
+<Setting name="Product base types" default="Empty list">
+
+Empty matches any product base type.
+
+</Setting>
+<Setting name="Template" default="Empty">
+
+Delivery template for the matching representations.
+
+</Setting>
+</Settings>
+
+</Setting>
+</Settings>
 
 </Setting>
 </Settings>
@@ -921,12 +988,12 @@ Listed in the settings. The core addon has no plugin with this name.
 </Setting>
 <Setting name="Validate Version" default="1 profile">
 
-Fails when the version to publish is not newer than the latest version in AYON. Its state is set per host by **Plugin enable state profiles** (**Host names**, **Enabled**, **Optional**, **Active**). The default profile enables it, not optional and active, for `aftereffects`, `blender`, `houdini`, `maya`, `nuke`, `photoshop`, `substancepainter` and `silhouette`. The plugin is disabled for hosts without a matching profile.
+Fails when the version to publish is not newer than the latest version in AYON. Its state is set per host by **Plugin enable state profiles** (**Host names**, **Enabled**, **Optional**, **Active**). The default profile enables it, not optional and active, for `aftereffects`, `blender`, `flame`, `houdini`, `maya`, `nuke`, `photoshop`, `substancepainter` and `silhouette`. The plugin is disabled for hosts without a matching profile.
 
 </Setting>
-<Setting name="Validate Outdated Containers" default="1 profile">
+<Setting name="Validate Outdated Containers" default="2 profiles">
 
-Fails when the scene has loaded containers that are not the latest version; its failure offers **Show Inventory**. The same structure as **Validate Version**. The default profile enables it, optional and active, for `maya`, `houdini`, `nuke`, `harmony`, `photoshop`, `aftereffects`, `fusion` and `silhouette`.
+Fails when the scene has loaded containers that are not the latest version; its failure offers **Show Inventory**. The same structure as **Validate Version**. The first default profile has no host names and enables it, optional and active, for all hosts; the plugin skips hosts that cannot load containers. The second profile disables it for `unreal`.
 
 </Setting>
 <Setting name="Validate Intent" default="Disabled">

@@ -4,11 +4,11 @@ sidebar_label: Settings
 description: "Settings of the Premium burnins addon: the Premium Extract Burnin plugin, its profiles, burnin definitions, default style options and the top and bottom bar items."
 addon: premium_burnins
 addon_repo: ayon-premium-burnins
-addon_version: 0.2.4
+addon_version: 0.2.6
 addon_scope: pipeline
 addon_flags: [licensed, power-feature]
 addon_private: true
-verified: 2026-11-18
+verified: 2026-11-24
 ---
 
 # Premium burnins addon settings
@@ -126,6 +126,62 @@ Font size as a ratio of the bar height, 0 to 1.
 Absolute path to a font file on shared storage, with separate paths for Windows, Linux and macOS.
 
 </Setting>
+<Setting name="Text shadow">
+
+Drop shadow drawn behind the text. The offsets are ratios of the font size, so the shadow scales with the output resolution.
+
+<Settings>
+<Setting name="Enabled" default="Disabled">
+
+Draw the shadow.
+
+</Setting>
+<Setting name="Color" default="#000000ff">
+
+RGBA color of the shadow.
+
+</Setting>
+<Setting name="Offset X" default="0.05">
+
+Horizontal offset as a ratio of the font size, -1 to 1.
+
+</Setting>
+<Setting name="Offset Y" default="0.05">
+
+Vertical offset as a ratio of the font size, -1 to 1.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Text box">
+
+Background box drawn behind the text. The box does not move the text: the padding expands it around the text, and it may overflow the item area.
+
+<Settings>
+<Setting name="Enabled" default="Disabled">
+
+Draw the box.
+
+</Setting>
+<Setting name="Color" default="#00000099">
+
+RGBA color of the box.
+
+</Setting>
+<Setting name="Padding X" default="0.2">
+
+Horizontal padding as a ratio of the font size, 0 to 2.
+
+</Setting>
+<Setting name="Padding Y" default="0.1">
+
+Vertical padding as a ratio of the font size, 0 to 2.
+
+</Setting>
+</Settings>
+
+</Setting>
 </Settings>
 
 ### Top and Bottom bars
@@ -166,7 +222,7 @@ Text with template variables in braces, see [Template variables](index.md#templa
 <Setting name="Stretch" default="1" />
 <Setting name="Style option" default="All Inherit">
 
-For each of **Alignment**, **Margins**, **Font color**, **Font size** and **Font filepath**, **Inherit** takes the value of the [Default Style Options](#default-style-options) and **Override** uses the matching override field: **Alignment override** (default **Center**), **Margins override** (0.0), **Font color override** (`#ffffffff`), **Font size override** (1.0) and **Font filepath override** (empty).
+For each of **Alignment**, **Margins**, **Font color**, **Font size**, **Font filepath**, **Text shadow** and **Text box**, **Inherit** takes the value of the [Default Style Options](#default-style-options) and **Override** uses the matching override field: **Alignment override** (default **Center**), **Margins override** (0.0), **Font color override** (`#ffffffff`), **Font size override** (1.0), **Font filepath override** (empty), **Text shadow override** and **Text box override** (both disabled, with the same fields and defaults as in the default style options).
 
 </Setting>
 </Settings>

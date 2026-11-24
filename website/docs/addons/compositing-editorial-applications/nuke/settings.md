@@ -4,12 +4,12 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Nuke addon with their default values: general shortcuts, workfile callbacks, color management, directory mapping, menus, creator, publish and loader plugins, and workfile building."
 addon: nuke
 addon_repo: ayon-nuke
-addon_version: 0.4.19
+addon_version: 0.4.23
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
-  - https://github.com/ynput/ayon-nuke/tree/0.4.19/server/settings
+  - https://github.com/ynput/ayon-nuke/tree/0.4.23/server/settings
 ---
 
 # Nuke addon settings
@@ -244,23 +244,25 @@ One of the OCIO configs shipped with Nuke; the numbers in brackets are the compa
 Knob values applied to the nodes that creators build.
 
 <Settings prefix="nodes">
-<Setting name="Plugin required" default="Three entries">
+<Setting name="Plugin required" default="Five entries">
 
-Node definitions applied to the nodes of the creators. The default entries are all for the **Write [Image]** class:
+Node definitions applied to the nodes of the creators. The default entries are for the **Write [Image]** class, and for the **DeepWrite [Image]** class for the deep write creators:
 
 - **Render (write)**: `file_type` `exr`, `datatype` `16 bit half`, `compression` `Zip (1 scanline)`, `autocrop` enabled, `tile_color` 186, 35, 35, `channels` `rgb`, `colorspace` `scene_linear`, `create_directories` enabled.
-- **Prerender (write)**: the same, with `tile_color` 171, 171, 10.
+- **Render (deep write)**: `file_type` `exr`, `datatype` `16 bit half`, `tile_color` 0, 3, 92, `compression` `Zip (1 scanline)`, `channels` `all`.
+- **Prerender (write)**: the same as **Render (write)**, with `tile_color` 171, 171, 10.
+- **Prerender (deep write)**: the same as **Render (deep write)**.
 - **Image (write)**: `file_type` `tiff`, `datatype` `16 bit`, `compression` `Deflate`, `tile_color` 56, 162, 7, `channels` `rgb`, `colorspace` `texture_paint`, `create_directories` enabled.
 
 <Settings>
 <Setting name="Used in plugins" default="Empty list">
 
-**Prerender (write)**, **Camera (3d)**, **Gizmo (group)**, **Image (write)**, **Model (3d)**, **Nukenodes (backdrop)**, **Render (write)** or **Source (read)**.
+**Prerender (write)**, **Prerender (deep write)**, **Camera (3d)**, **Gizmo (group)**, **Image (write)**, **Model (3d)**, **Nukenodes (backdrop)**, **Render (write)**, **Render (deep write)** or **Source (read)**.
 
 </Setting>
 <Setting name="Nuke Node Class">
 
-**Write [Image]**, **Read [Image]**, **Group [Other]**, **Camera [3D]**, **Camera [3D Classic]**, **Scene [3D Classic]**, **Backdrop [Other]** or **Custom Class**.
+**Write [Image]**, **DeepWrite [Image]**, **Read [Image]**, **Group [Other]**, **Camera [3D]**, **Camera [3D Classic]**, **Scene [3D Classic]**, **Backdrop [Other]** or **Custom Class**.
 
 </Setting>
 <Setting name="Custom Node Class" default="Empty">
@@ -278,7 +280,7 @@ Knob names must be unique within an entry. See [Knob definitions](#knob-definiti
 </Setting>
 <Setting name="Plugin's node overrides" default="Empty list">
 
-The same fields, plus **Product names**: the knobs override the required knobs for the matching products.
+The same fields, plus **Task types** and **Product names**: the knobs override the required knobs for the matching products. Empty **Task types** apply the override to all task types.
 
 </Setting>
 </Settings>
@@ -499,7 +501,7 @@ Optional list of product types the creator can create, each with a **Product typ
 
 ### Write creators
 
-**Render (write)**, **Prerender (write)** and **Image (write)** create write nodes. Besides the fields above, they share these fields:
+**Render (write)**, **Prerender (write)** and **Image (write)** create write nodes, and **Render (deep write)** and **Prerender (deep write)** create deep write nodes. Besides the fields above, they share these fields:
 
 <Settings prefix="write-creator">
 <Setting name="Temporary rendering path template">
@@ -582,11 +584,41 @@ A node `Reformat01` of class `Reformat` with the knobs `resize` `none` and `blac
 </Settings>
 
 </Setting>
+<Setting name="Render (deep write)" default="Enabled, order 100">
+
+<Settings>
+<Setting name="Temporary rendering path template" default="{work}/renders/nuke/{product[name]}/{product[name]}.{frame}.{ext}" />
+<Setting name="Default variants" default="DeepMain" />
+<Setting name="Instance attributes" default="Farm rendering" />
+<Setting name="Conditional Reviewable Profiles" default="No task types" />
+<Setting name="Render target" default="Local machine rendering" />
+<Setting name="Write Node Exposed Knobs" default="Empty list" />
+<Setting name="Preceding nodes" default="DeepReformat01">
+
+A node `DeepReformat01` of class `DeepReformat` with the knobs `resize` `none` and `black_outside` enabled.
+
+</Setting>
+</Settings>
+
+</Setting>
 <Setting name="Prerender (write)" default="Enabled, order 100">
 
 <Settings>
 <Setting name="Temporary rendering path template" default="{work}/renders/nuke/{product[name]}/{product[name]}.{frame}.{ext}" />
 <Setting name="Default variants" default="Key01, Bg01, Fg01, Branch01, Part01" />
+<Setting name="Instance attributes" default="Farm rendering, Use range limit" />
+<Setting name="Conditional Reviewable Profiles" default="No task types" />
+<Setting name="Render target" default="Local machine rendering" />
+<Setting name="Write Node Exposed Knobs" default="Empty list" />
+<Setting name="Preceding nodes" default="Empty list" />
+</Settings>
+
+</Setting>
+<Setting name="Prerender (deep write)" default="Enabled, order 100">
+
+<Settings>
+<Setting name="Temporary rendering path template" default="{work}/renders/nuke/{product[name]}/{product[name]}.{frame}.{ext}" />
+<Setting name="Default variants" default="DeepMain" />
 <Setting name="Instance attributes" default="Farm rendering, Use range limit" />
 <Setting name="Conditional Reviewable Profiles" default="No task types" />
 <Setting name="Render target" default="Local machine rendering" />
@@ -661,6 +693,19 @@ The publish plugins of Nuke. Plugins that can be skipped share three switches: *
 <Setting name="Product base types" default="nukenodes, camera, gizmo, source, render, write">
 
 Product base types whose version is synced with the workfile version: **Nukenodes**, **Model**, **Camera**, **Gizmo**, **Source**, **Render**, **Prerender** or **Image**. The default `write` is not one of the options.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Collect Burnin Metadata" default="Enabled, not optional, active">
+
+Exposes values of the Nuke metadata stream entering the write node of the instance, for example from a ModifyMetaData node, as burnin keys such as `{camera/focal}`. Values that change per frame become one value per frame.
+
+<Settings>
+<Setting name="Metadata keys" default="camera/">
+
+Exact keys, such as `camera/focal`, or prefixes ending with `/`, such as `camera/` for all `camera/*` keys. Keys cannot contain `{ } : [ ] . !`.
 
 </Setting>
 </Settings>
@@ -971,8 +1016,38 @@ Start the clip at the first frame of the script.
 </Settings>
 
 </Setting>
-<Setting name="Load Effects" default="Enabled" />
-<Setting name="Load Effects Input Process" default="Enabled" />
+<Setting name="Load Effects" default="Enabled">
+
+<Settings>
+<Setting name="Attach to Read Node" default="Enabled">
+
+Connect the effect group to the Read node of its plate. Default of the loader option of the same name.
+
+</Setting>
+<Setting name="Exposed Knobs" default="Empty list">
+
+Names of knobs exposed on the effect group node.
+
+</Setting>
+<Setting name="Skip Node Classes" default="Empty list">
+
+Node classes of the effect that are not created when it is attached to a Read node loaded with retime, such as `TimeWarp`, so the retime is not applied twice. Empty keeps every node.
+
+</Setting>
+</Settings>
+
+</Setting>
+<Setting name="Load Effects Input Process" default="Enabled">
+
+<Settings>
+<Setting name="Skip Node Classes" default="Empty list">
+
+Node classes of the effect that are not created when its plate is loaded with retime in the script, such as `TimeWarp`, so the retime is not applied twice. Empty keeps every node.
+
+</Setting>
+</Settings>
+
+</Setting>
 <Setting name="Load Gizmo" default="Enabled" />
 <Setting name="Load Gizmo Input Process" default="Enabled" />
 <Setting name="Load Image" default="Enabled">
@@ -1069,6 +1144,16 @@ Task types the profile applies to.
 <Setting name="Task names" default="Empty list">
 
 Task names the profile applies to.
+
+</Setting>
+<Setting name="Folder Types" default="Empty list">
+
+Folder types the profile applies to. Empty matches all.
+
+</Setting>
+<Setting name="Folder paths" default="Empty list">
+
+Folder paths the profile applies to. Empty matches all.
 
 </Setting>
 <Setting name="Path to template">

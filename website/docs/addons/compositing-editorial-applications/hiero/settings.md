@@ -4,10 +4,10 @@ sidebar_label: Settings
 description: "Reference of the settings of the AYON Hiero addon with their default values: path mappings, color management, the Create Shot Clip creator, loaders, clip effects collection and the scripts menu."
 addon: hiero
 addon_repo: ayon-hiero
-addon_version: 0.6.5
+addon_version: 0.6.6
 addon_scope: pipeline
 addon_flags: []
-verified: 2026-11-18
+verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-hiero/tree/0.6.5/server/settings
 ---
