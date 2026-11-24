@@ -6,7 +6,7 @@ description: "A catalogue of AYON addons in two groups: server addons (productio
 
 # Addons
 
-AYON is modular: integrations with applications, trackers, render farms and review tools, production management features and many pipeline features are addons. This catalogue lists the 72 addons in three groups by scope. The groups show where an addon works, because server addons and pipeline addons are set up differently.
+AYON is modular: integrations with applications, trackers, render farms and review tools, production management features and many pipeline features are addons. This catalogue lists the 73 addons in three groups by scope. The groups show where an addon works, because server addons and pipeline addons are set up differently.
 
 | Type | What it is | Where it runs |
 |---|---|---|
@@ -35,6 +35,7 @@ AYON's own production tracking features: planning, reports, node graphs, review 
 | [Reports](production-tracking/reports/index.md) | Server | 0.3.13 | Pro, Studio | The AYON Reports addon: a project Reports page with dashboards of charts and cards counting folders, tasks and versions, current-state and... |
 | [Review](production-tracking/review/index.md) | Server | 1.0.3 | Pro, Studio | The AYON Review addon (review sessions): playlists of versions with a frame-accurate web player, annotations, comparison, synchronized sessions with... |
 | [Review Desktop](production-tracking/review-desktop/index.md) | Pipeline | 0.0.5 | Pro, Studio | The AYON Review Desktop addon: opens version lists and review sessions in OpenRV with an AYON activity panel for viewing feedback and submitting... |
+| [Time Tracker (unreleased)](production-tracking/time-tracker/index.md) | Server | 0.1.0-dev | - | The AYON Time Tracker addon, not released yet: a timer in the web app header, time logs on tasks, folders, versions and Planner bookings, a Time tab... |
 
 ### Access and support
 
@@ -71,7 +72,7 @@ Pipeline addons that add publishing, delivery, storage and format features: site
 | [ArchivalTool](pipeline-features/archival-tool/index.md) | Pipeline + server | 0.1.2 | Pro, Studio | The AYON ArchivalTool addon: analysing folders of a project, reporting which published versions and work files can be removed, and deleting or... |
 | [Batch delivery](pipeline-features/batch-delivery/index.md) | Pipeline + server | 0.4.5 | Pro, Studio | The AYON Batch delivery addon: server actions that submit delivery and transcoding jobs to Deadline, the Deadline submitter service, the publish... |
 | [BatchIngest](pipeline-features/batch-ingest/index.md) | Pipeline | 0.3.0 | Pro, Studio | The AYON BatchIngest addon: the Batch Ingest creator of the Tray Publisher that groups files from dropped folders into products using presets, its... |
-| [Perforce (unreleased)](pipeline-features/perforce/index.md) | Pipeline | 0.0.1+dev.1 | Free | The AYON Perforce addon: Perforce workspace creation and changelist sync for Unreal Engine projects, a changelist viewer, and publish plugins that... |
+| [Perforce (unreleased)](pipeline-features/perforce/index.md) | Pipeline | 0.0.1+dev.1 | - | The AYON Perforce addon: Perforce workspace creation and changelist sync for Unreal Engine projects, a changelist viewer, and publish plugins that... |
 | [Premium burnins](pipeline-features/premium-burnins/index.md) | Pipeline | 0.2.4 | Pro, Studio | The Premium burnins addon: a publish plugin that renders configurable top and bottom burnin bars with text, images and spacers onto review videos,... |
 | [SiteSync](pipeline-features/sitesync/index.md) | Pipeline + server | 1.3.2 | Free | The AYON SiteSync addon: what a site is, how published files are kept in step between sites, the storage providers, the sync page, the background... |
 | [Slater](pipeline-features/slater/index.md) | Pipeline | 1.0.6 | Pro, Studio | The AYON Slater addon: the Slate Editor desktop tool, the slate templates stored on the AYON server and the publish plugin that adds generated... |
@@ -98,7 +99,7 @@ AYON addons that integrate 3D applications such as Blender, Houdini and Maya: mo
 | [Substance Designer](3d-applications/substance-designer/index.md) | Pipeline | 0.2.1 | Free | The AYON integration for Substance Designer: the AYON menu, project templates, the texture set and SBSAR products, publishing, texture loading,... |
 | [Substance Painter](3d-applications/substance-painter/index.md) | Pipeline | 0.3.6 | Free | The AYON integration for Substance Painter: the AYON menu, loading the project mesh, publishing texture sets with their options and validator,... |
 | [Unreal](3d-applications/unreal/index.md) | Pipeline | 0.4.0 | Free | The AYON integration for Unreal Engine: the AYON tools, the products Unreal can create, publish and load, the validators and extractors it provides,... |
-| [Wrap (unreleased)](3d-applications/wrap/index.md) | Pipeline | 0.0.3-dev.1 | Free | The AYON integration for Faceform Wrap: template workfiles with placeholders that load AYON products, and semi-manual publishing of Wrap workfiles... |
+| [Wrap (unreleased)](3d-applications/wrap/index.md) | Pipeline | 0.0.3-dev.1 | - | The AYON integration for Faceform Wrap: template workfiles with placeholders that load AYON products, and semi-manual publishing of Wrap workfiles... |
 | [Zbrush](3d-applications/zbrush/index.md) | Pipeline | 0.4.2 | Free | The AYON integration for Zbrush: the AYON menu, the workfile and model products Zbrush can create and publish, the model loader, workfile metadata... |
 
 ### 2D drawing applications
@@ -137,7 +138,7 @@ AYON addons for reviewing media: media players and review tools.
 | [DJV player](review-and-media-players/djv/index.md) | Pipeline | 1.2.0 | Free | The AYON integration for the DJV media player: the Open in DJV action of the Loader, the ftrack action, its requirements and the executable paths it... |
 | [Open RV](review-and-media-players/open-rv/index.md) | Pipeline | 1.2.4 | Free | The AYON integration for Open RV: launching Open RV from AYON, the AYON menu, loaders, the Open in RV actions, workfile publishing, requirements and... |
 | [SyncSketch](review-and-media-players/syncsketch/index.md) | Server | 0.4.1 | Free | The AYON integration for SyncSketch: pushing version lists to SyncSketch review sessions, pulling comments and drawings back as activities, the... |
-| [xStudio (unreleased)](review-and-media-players/xstudio/index.md) | Pipeline | 0.0.1 | Free | The AYON integration for the xStudio media player: the Open in xStudio action of the Loader, its requirements and the executable paths it uses. The... |
+| [xStudio (unreleased)](review-and-media-players/xstudio/index.md) | Pipeline | 0.0.1 | - | The AYON integration for the xStudio media player: the Open in xStudio action of the Loader, its requirements and the executable paths it uses. The... |
 
 ### Farm managers
 
@@ -146,7 +147,7 @@ AYON addons that submit publish and render jobs to render farm managers.
 | Addon | Type | Version | License | What it is |
 |---|---|---|---|---|
 | [Deadline](farm-managers/deadline/index.md) | Pipeline | 0.7.5 | Free | The AYON integration for the Deadline render farm manager: the job and publish plugins it adds to each application, the Deadline repository plugins,... |
-| [Deadline Cloud (unreleased)](farm-managers/deadline-cloud/index.md) | Pipeline | 0.0.1 | Free | The AYON integration for AWS Deadline Cloud: how it submits Maya, Houdini, Nuke and Blender renders through the Deadline Cloud submitters, how the... |
+| [Deadline Cloud (unreleased)](farm-managers/deadline-cloud/index.md) | Pipeline | 0.0.1 | - | The AYON integration for AWS Deadline Cloud: how it submits Maya, Houdini, Nuke and Blender renders through the Deadline Cloud submitters, how the... |
 | [Royal Render](farm-managers/royal-render/index.md) | Pipeline | 0.4.1 | Free | The AYON integration for the Royal Render farm manager: the job creation and submission plugins, the RR_ROOT files it ships, and its requirements. |
 
 ### Automation

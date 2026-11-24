@@ -129,6 +129,7 @@ The API docs are generated from each addon's code and published on [docs.ayon.de
 | Substance Designer | [Substance Designer addon](../addons/3d-applications/substance-designer/index.md) | [docs.ayon.dev/ayon-substance-designer](https://docs.ayon.dev/ayon-substance-designer/latest/) |
 | Substance Painter | [Substance Painter addon](../addons/3d-applications/substance-painter/index.md) | [docs.ayon.dev/ayon-substance-painter](https://docs.ayon.dev/ayon-substance-painter/latest/) |
 | SyncSketch | [SyncSketch addon](../addons/review-and-media-players/syncsketch/index.md) | [docs.ayon.dev/ayon-syncsketch](https://docs.ayon.dev/ayon-syncsketch/latest/) |
+| Time Tracker | [Time Tracker addon](../addons/production-tracking/time-tracker/index.md) | — |
 | TimersManager | [TimersManager addon](../addons/integrations/timers-manager/index.md) | [docs.ayon.dev/ayon-timers-manager](https://docs.ayon.dev/ayon-timers-manager/latest/) |
 | TrayPublisher | [TrayPublisher addon](../addons/essentials/traypublisher/index.md) | [docs.ayon.dev/ayon-traypublisher](https://docs.ayon.dev/ayon-traypublisher/latest/) |
 | TVPaint | [TVPaint addon](../addons/2d-drawing-applications/tvpaint/index.md) | [docs.ayon.dev/ayon-tvpaint](https://docs.ayon.dev/ayon-tvpaint/latest/) |

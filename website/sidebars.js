@@ -210,6 +210,7 @@ module.exports = {
             collapsed: false,
             items: [
                 "production-tracking/reporting",
+                "production-tracking/time-tracking",
             ],
         },
         "production-tracking/pipeline",
@@ -315,6 +316,7 @@ module.exports = {
                         "addons/production-tracking/review-desktop/settings",
                     ],
                 },
+                "addons/production-tracking/time-tracker/index",
                 "addons/production-tracking/mcp/index",
                 {
                     type: "category",

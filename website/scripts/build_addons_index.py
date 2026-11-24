@@ -40,6 +40,8 @@ def front_matter(path: Path) -> dict:
 
 
 def license_text(flags: str) -> str:
+    if "unreleased" in flags and "licensed" not in flags and "studio-only" not in flags:
+        return "-"
     if "studio-only" in flags:
         return "Studio"
     if "licensed" in flags:

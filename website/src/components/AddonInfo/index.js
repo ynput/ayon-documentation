@@ -12,7 +12,8 @@ import apiDocs from "@site/src/data/addon-api-docs.json";
  *   addon_repo: ayon-blender    GitHub repository (github.com/ynput/<repo>)
  *   addon_version: 1.1.11       addon version this page was written and checked for
  *   addon_flags: []             flags the Market shows: licensed, studio-only,
- *                               power-feature, beta, cloud-only
+ *                               power-feature, beta, cloud-only; unreleased
+ *                               shows no license unless licensed or studio-only is set
  *   verified: 2026-10-15        date the page was last checked against the code
  *
  * Comparing addon_version with the latest release tells how far a page is
@@ -20,6 +21,10 @@ import apiDocs from "@site/src/data/addon-api-docs.json";
  */
 export function licenseChips(flags = []) {
     const chips = [];
+    // An unreleased addon has no license yet, unless the page states one.
+    if (flags.includes("unreleased") && !flags.includes("licensed") && !flags.includes("studio-only")) {
+        return chips;
+    }
     if (flags.includes("studio-only")) {
         chips.push("Studio");
     } else if (flags.includes("licensed")) {
