@@ -47,7 +47,7 @@ The URI bar in the middle of the App header shows the current location, for exam
 | **Download launcher** | Downloads the launcher installer for the user's platform. Shown until it is downloaded in this browser, or closed. | Everyone, when the server has an installer |
 | **Setup pipeline** | Opens the pipeline release installer. Shown until the server has a launcher installer and a dependency package; the close button hides it for the browser session. | Admins |
 | Bundle mode | Chooses the bundle the user's session uses: **Production** (shown as **Set bundle mode**), **Staging** or **Developer**. A user with only one of the two sees a switch instead. See [Bundles](../how-ayon-works/bundles.md). | Users with developer or staging access |
-| Addon slots (puzzle icon) | Opens **Show slots** and the list of addons, to see where addons add to the web app. See [Addon slots](../../developer/developer-mode.md#addon-slots). | Users with developer mode on |
+| Addon slots (puzzle icon) | Opens **Show slots** and the list of addons, to see where addons add to the web app. See [Web app slots](../../developer/addon-development/web-app-slots.md#finding-slots-in-the-web-app). | Users with developer mode on |
 | Addon items | Buttons that addons add to the App header, shown as icons. | Everyone except guests |
 | Chat | Opens the support chat once it has loaded. A dot shows unread messages. | Everyone except guests |
 | **Help** (question mark) | Opens the [Help menu](#help-menu). | Everyone except guests |

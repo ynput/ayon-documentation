@@ -166,7 +166,7 @@
     /* surfaces */
     --ifm-background-color: var(--md-sys-color-surface-container-low); /* the app's dark working panel */
     --ifm-background-surface-color: var(--md-sys-color-surface-container); /* raised: cards, admonitions */
-    --ifm-navbar-background-color: var(--md-sys-color-background); /* the app header's colour */
+    --ifm-navbar-background-color: var(--md-sys-color-surface-container-low); /* the app header's colour */
     --ifm-footer-background-color: var(--md-sys-color-surface-container-lowest);
     --ifm-footer-color: var(--md-sys-color-on-surface-variant);
     --ifm-footer-link-color: var(--md-sys-color-on-surface-variant);
@@ -261,8 +261,8 @@ body {
 }
 
 /* Navbar: the group items are tabs, as in the AYON web app's page tabs. The bar has the
-   app header's colour (the page background, a step lighter than the work area in dark and darker
-   in light) and a line at its bottom edge; the tabs stand on that line, and the
+   app header's colour (surface-container-low, like the panels of the web app) and a line at its
+   bottom edge; the tabs stand on that line, and the
    active one is underlined in the accent colour and set in semibold. */
 .navbar {
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
@@ -272,7 +272,7 @@ body {
         --ayon-tab-height: 2.6rem;
     }
     .navbar {
-        background-color: var(--md-sys-color-background);
+        background-color: var(--md-sys-color-surface-container-low);
         padding-top: 0;
         padding-bottom: 0;
         align-items: stretch;

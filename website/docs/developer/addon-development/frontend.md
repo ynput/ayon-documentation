@@ -21,7 +21,7 @@ sources:
 
 # Addon frontend
 
-An addon can add its own page to the web app. The page is built from the addon's `frontend` folder by [`create_package.py`](overview.md#build-a-package) and declared in the [server addon class](server.md#the-server-addon-class).
+An addon can add its own page to the web app. To add to AYON's own screens instead, such as a header button, a details panel tab or a table column, see [Web app slots](web-app-slots.md). The page is built from the addon's `frontend` folder by [`create_package.py`](overview.md#build-a-package) and declared in the [server addon class](server.md#the-server-addon-class).
 
 `frontend_scopes` sets where the page shows:
 

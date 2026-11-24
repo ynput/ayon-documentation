@@ -1095,6 +1095,7 @@ module.exports = {
                 "developer/addon-development/server",
                 "developer/addon-development/client",
                 "developer/addon-development/frontend",
+                "developer/addon-development/web-app-slots",
                 "developer/addon-development/services",
                 "developer/addon-development/files",
                 "developer/addon-development/host-integration",

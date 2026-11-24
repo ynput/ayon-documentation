@@ -1,7 +1,7 @@
 ---
 title: Developer mode
 sidebar_label: Developer mode
-description: "Developer mode in AYON: dev bundles that load the client code of addons from a local folder instead of downloading it, enabling developer mode for a user, creating and assigning a dev bundle, and working with live client code, with the addon outside or inside the server's addons folder."
+description: "Developer mode in AYON: the Addon slots tools in the web app for addons that extend it, and dev bundles that load the client code of addons from a local folder instead of downloading it, enabling developer mode for a user, creating and assigning a dev bundle, and working with live client code, with the addon outside or inside the server's addons folder."
 verified: 2026-11-24
 sources:
   - https://github.com/ynput/ayon-backend/blob/develop/api/bundles/bundles.py
@@ -11,6 +11,11 @@ sources:
 ---
 
 # Developer mode
+
+Developer mode is for people who develop addons. It gives them two things:
+
+- **Dev bundles**, to run the client code of addons from their own machine, described on this page.
+- **Addon slots** in the web app, to see where addons add to AYON's screens and to build such additions, see [Addon slots](#addon-slots) and [Web app slots](addon-development/web-app-slots.md).
 
 A dev bundle is for testing the client code of addons, the pipeline code that runs on workstations, without packaging and uploading it to the server after every change. For each addon, a dev bundle can name a folder on the developer's machine, and the launcher reads the addon's client code from there instead of downloading it.
 
@@ -26,26 +31,25 @@ The steps:
 ## Enable developer mode for a user
 
 1. An admin turns on **Developer** for the user on the [Users](../ayon/web-ui/studio/users.md) page. Only admins can set it, and only for users with the **Admin** access level.
-2. The user picks **Developer** in **Set bundle mode** at the top right of the web app, see [App header](../ayon/web-ui/app-header.md). Once switched, the selector reads **Developer Mode**, dev bundles are visible on the Bundles page and the web actions icon turns purple.
+2. The user picks **Developer** in **Set bundle mode** at the top right of the web app, see [App header](../ayon/web-ui/app-header.md). Once switched, the selector reads **Developer Mode**, dev bundles are visible on the Bundles page, the web actions icon turns purple and the App header gets the **Addon slots** button.
 
 Developer mode only affects the user who turned it on. A user with **Staging access** can pick **Staging** in the same selector instead, to test staging bundles before they go to production.
 
 <Gallery columns={2}>
 
-![The bundle mode selector open, with Production, Staging and Developer](assets/server/set-bundle-mode.png "The bundle mode selector")
+![The bundle mode selector open with Production, Staging and Developer, each with its colour, and Developer selected](assets/server/set-bundle-mode.png "The bundle mode selector")
 
-![The App header in developer mode: the Developer Mode selector in purple, an addon's own header item, and the Addon slots menu open with Show slots on and the addons ayon, planner, powerpack and reports. The Home tabs that addons add are outlined in their addon's colour](assets/server/developer-mode-header.webp "Developer mode")
+![The App header in developer mode: the Developer Mode selector in purple next to the Addon slots button, and the web actions icon in purple in the toolbar](assets/server/developer-mode-header.png "Developer mode")
 
 </Gallery>
 
 ## Addon slots
 
-In developer mode the App header has an **Addon slots** button (puzzle icon), for developers of addons that add to the web app. Its menu has:
+In developer mode the App header also has an **Addon slots** button (puzzle icon), for developers of addons that add to the web app: header buttons, details panel tabs, table columns, menu items and project or Home pages. **Show slots** outlines what each addon added and shows an example contribution in every slot, and pointing at one shows its slot and copies a prompt for an AI coding assistant. Developer mode also lets `ayon-addon dev --ayon` load an addon's frontend from the developer's machine into the web app.
 
-- **Show slots**: outlines every contribution of an addon, such as a page tab, a header item or a details panel tab, in that addon's colour, and shows each slot's example contribution where real ones would go. AYON's own slots are listed as `ayon`.
-- **Addons**: one checkbox per addon with its colour, to hide the outlines of an addon.
+![The Addon slots menu open in the App header in developer mode, with Show slots and the addons ayon, planner, powerpack and reports](assets/addon-development/slots-menu.png "Addon slots menu")
 
-With **Show slots** on, pointing at an outlined element shows a card with the slot's id, the addon that declared it and the contribution. The card can copy the slot id, and **Copy AI prompt** copies a prompt for an AI coding assistant to add a contribution to that slot or to edit this one. The switch and the checkboxes are kept for the browser session.
+How slots work, the manifest, the tools and the inspector are described in [Web app slots](addon-development/web-app-slots.md).
 
 ## Create a dev bundle and assign it
 
