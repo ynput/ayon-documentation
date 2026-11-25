@@ -268,9 +268,6 @@ body {
     border-bottom: 1px solid var(--md-sys-color-outline-variant);
 }
 @media (min-width: 997px) {
-    :root[data-theme] {
-        --ayon-tab-height: 2.6rem;
-    }
     .navbar {
         background-color: var(--md-sys-color-surface-container-low);
         padding-top: 0;
@@ -283,19 +280,19 @@ body {
     .navbar__items {
         align-items: flex-end;
     }
-    /* logo, search and other non-tab items stay centered */
+    /* logo, search and the theme picker are centred in the bar, on the same line as the tab names */
     .navbar__items > .custom-logo,
-    .navbar__items > .navbar__search,
-    .navbar__items .navbar__search {
+    .navbar__items--right > * {
         align-self: center;
     }
     .navbar__items > .navbar__item.navbar__link {
-        align-self: flex-end;
+        /* the full height of the bar, so the name is centred like the logo and the search, and
+           the underline sits on the bar's bottom line */
+        align-self: stretch;
         display: flex;
         align-items: center;
         position: relative;
         isolation: isolate;
-        height: var(--ayon-tab-height);
         /* over the bar's line, so the underline sits on it */
         margin: 0 0.1rem -1px;
         color: var(--md-sys-color-on-surface-variant);
@@ -311,7 +308,7 @@ body {
     .navbar__items > .navbar__item.navbar__link::before {
         content: "";
         position: absolute;
-        inset: 0.35rem 0 0.45rem;
+        inset: calc(50% - 0.9rem) 0;
         border-radius: var(--ayon-radius);
         z-index: -1;
     }
@@ -578,6 +575,12 @@ foreignObject .material-symbols-outlined {
     flex-shrink: 0;
     margin-right: 0.5rem;
 }
+/* the logo image is centred in its 2.5rem box (logoStyle in docusaurus.config.js), so the smaller
+   images below stay on the bar's centre line instead of at the top of the box */
+.navbar__items > .custom-logo [class*="logo_"] {
+    display: flex;
+    align-items: center;
+}
 @media (min-width: 997px) and (max-width: 1420px) {
     .navbar__items > .navbar__item.navbar__link {
         font-size: 14px;
@@ -603,5 +606,19 @@ foreignObject .material-symbols-outlined {
     }
     .navbar__items > .custom-logo img {
         height: 1.35rem;
+    }
+}
+
+/* Theme picker on narrow screens: Docusaurus hides it from the navbar below 997px (it is then only in
+   the sidebar menu); keep it after the search box at every width, like the MkDocs API docs. */
+@media (max-width: 996px) {
+    /* Docusaurus places the search absolutely at the right edge here; back in the flow, so the
+       picker can follow it */
+    .navbar__items--right [class*="searchBox"] {
+        position: static;
+    }
+    .navbar__items--right [class*="colorModeToggle"] {
+        display: flex;
+        margin-left: 12px;
     }
 }
