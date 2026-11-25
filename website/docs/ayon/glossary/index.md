@@ -34,6 +34,7 @@ The terms below are written as the AYON web app and the AYON server use them. En
 | **Developer mode** | A user setting that allows a Dev bundle and the **Developer** bundle mode, for running addons from source. See [Developer mode](../../developer/developer-mode.md). |
 | **Entity** | A stored record of a project or of the AYON server: project, folder, task, product, version, representation, workfile, user, list or link. |
 | **Event** | A record of something that happened on the AYON server, such as a changed entity or a job for a service, with a topic and a status. See [Event Viewer](../web-ui/event-viewer.md). |
+| **Featured version** | The version a product stands for in the Products page and the Loader: its **Latest Done**, **Latest** or **Hero** version, in an order the user sets. See [Featured version](../web-ui/production-tracking/products.md#featured-version). |
 | **Folder** | The main building block of a project hierarchy. Folders nest into each other and hold tasks and products. Every folder has a folder type, such as Asset, Sequence or Shot. |
 | **Folder path** | The names of a folder and its parents joined by `/`, for example `/assets/characters/bob`. Names are unique within one parent. |
 | **Folder type** | The classification of a folder, defined in the project anatomy. The defaults are Folder, Library, Asset, Episode, Sequence and Shot. |
@@ -44,6 +45,8 @@ The terms below are written as the AYON web app and the AYON server use them. En
 | **Installer** | A launcher build for one platform, stored on the AYON server so users can download it and bundles can reference it. |
 | **Instance** | See Publish instance. |
 | **Label** | An optional display name of an entity. Folders, tasks, projects and lists have a label next to the name. |
+| **Latest** | The most recently published version of a product, not counting the hero version. Written `latest` in URIs and the API. See [Featured version](../web-ui/production-tracking/products.md#featured-version). |
+| **Latest Done** | The most recently published version of a product whose status has the Done state, such as Approved. Written `latestDone` in URIs and the API. See [Featured version](../web-ui/production-tracking/products.md#featured-version). |
 | **Launcher** | The AYON desktop application that starts DCC applications in a context and runs the pipeline of a bundle. Platform builds of it are uploaded to the AYON server as installers. See [AYON launcher](../../pipeline/launcher.md). |
 | **Library project** | A project marked **Library** that stores reusable data, such as assets, which other projects can load. |
 | **Link** | A stored, typed relationship between two entities of one project. See [Links manager](../web-ui/links-manager.md). |

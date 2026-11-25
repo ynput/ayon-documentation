@@ -20,6 +20,8 @@ sources:
   - https://github.com/ynput/ayon-sitesync/blob/develop/client/ayon_sitesync/plugins/loader/sitesync_actions.py
 ---
 
+import FeaturedVersionRules from '../_shared/featured-version-rules.md';
+
 # Loader
 
 <PageInfo />
@@ -133,7 +135,7 @@ The filter bar combines criteria. A criterion has a field, values, and can exclu
 | Entity | Fields |
 |---|---|
 | Product | **Name**, **Type**, **Base Type**, **Status** |
-| Version | **Status**, **Version** (`Latest`, `Latest Done`, `Hero`), **Author**, **Has Reviewables** (**Yes**, **No**), **Tags**, and **In Scene** (**Yes**, **No**) inside an application |
+| Version | **Status**, **Version** (`Latest`, `Latest Done`, `Hero`, see [Featured version](#featured-version)), **Author**, **Has Reviewables** (**Yes**, **No**), **Tags**, and **In Scene** (**Yes**, **No**) inside an application |
 | Folder | **Name**, **Status**. Only offered when the server can filter versions by folder. |
 | Task | **Task**, **Type**, **Status**, **Tags** |
 | Representation | **Name**, **Extension**, **Status**, **Tags**. Only offered when the server can filter versions by representation. |
@@ -149,12 +151,18 @@ The menu lists built-in fields and attributes. A search field at the top finds o
 | Option | Groups by |
 |---|---|
 | **None** | No grouping. |
-| **Product** | Product. The group row shows the featured version (see **Customize**). |
+| **Product** | Product. The group row shows the [featured version](#featured-version). |
 | **Status** | Version status. |
 | **Tags** | Version tags. |
 | **Task type** | Task type. |
 | **Product type** | Product type. |
 | Attributes | Version attributes and product attributes of the types boolean, date and time, float, integer and string, in submenus. |
+
+### Featured version
+
+When the versions are grouped by **Product**, each product row and card shows its featured version: the version that stands for the product, as on the [Products page](../ayon/web-ui/production-tracking/products.md#featured-version) of the web app. **Customize** > **Featured Version** sets the order of the rules that choose it, Latest Done, Latest, Hero by default; the first rule a product matches wins. Actions on a selected product row run on its featured version. The same three values are offered by the **Version** filter.
+
+<FeaturedVersionRules />
 
 ### Customize
 
@@ -162,7 +170,7 @@ The menu lists built-in fields and attributes. A search field at the top finds o
 
 | Option | Applies to | What it does |
 |---|---|---|
-| **Featured Version** | **Group By** > **Product** | Order in which the featured version of a product is chosen: **Latest Done**, **Latest**, **Hero**. Default order: Latest Done, Latest, Hero. |
+| **Featured Version** | **Group By** > **Product** | Order of the rules that choose the [featured version](#featured-version) of a product: **Latest Done**, **Latest**, **Hero**. Default order: Latest Done, Latest, Hero. |
 | **Columns** | Table | Opens the column menu. |
 | **Card size** | Cards | Card width, 150 to 500. Default 200. |
 | **Row height** | Table | Row height, 24 to 160. Default 34. |

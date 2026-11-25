@@ -5,21 +5,22 @@ description: "Tracking the time spent on a production with the Time Tracker addo
 verified: 2026-11-17
 ---
 
-import ThemedImage from '@theme/ThemedImage';
-
 # Know where the time goes
 
 :::note
 The Time Tracker addon is in development and not released yet. This page describes the current development version (0.1.0-dev); features and names can change before the release.
 :::
 
-<ThemedImage
-  alt="The Time Tracker popover opened from the clock button in the header, with the field for what you are working on and the start button"
-  sources={{
-    light: require('./assets/time-tracking/time-tracker-light.png').default,
-    dark: require('./assets/time-tracking/time-tracker-dark.png').default,
-  }}
-/>
+<div className="theme-image--dark">
+
+![The Time Tracker popover opened from the clock button in the header, with the field for what you are working on and the start button](assets/time-tracking/time-tracker-dark.png)
+
+</div>
+<div className="theme-image--light">
+
+![The Time Tracker popover opened from the clock button in the header, with the field for what you are working on and the start button](assets/time-tracking/time-tracker-light.png)
+
+</div>
 
 Bids, budgets and schedules are estimates; time logs show what the work really took. The Time Tracker addon records the time people spend, linked to the work in AYON: a task, a shot, a version or a booking of the Planner. Producers can then see how much time went into a shot or a task, and artists keep their timesheet in the same web app where they find their tasks.
 
@@ -43,13 +44,16 @@ When the [Planner](../addons/production-tracking/planner/index.md) is installed,
 </Column>
 <Column>
 
-<ThemedImage
-  alt="The Time tab of the details panel for a modeling task, with Start timer, Add time and no time logged yet"
-  sources={{
-    light: require('./assets/time-tracking/time-tab-light.png').default,
-    dark: require('./assets/time-tracking/time-tab-dark.png').default,
-  }}
-/>
+<div className="theme-image--dark">
+
+![The Time tab of the details panel for a modeling task, with Start timer, Add time and no time logged yet](assets/time-tracking/time-tab-dark.png)
+
+</div>
+<div className="theme-image--light">
+
+![The Time tab of the details panel for a modeling task, with Start timer, Add time and no time logged yet](assets/time-tracking/time-tab-light.png)
+
+</div>
 
 </Column>
 </Columns>

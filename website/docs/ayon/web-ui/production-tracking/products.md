@@ -20,6 +20,8 @@ sources:
   - https://github.com/ynput/ayon-frontend/blob/develop/shared/src/containers/Slicer/context/slicer/SlicerContextInstance.ts
 ---
 
+import FeaturedVersionRules from '../../../_shared/featured-version-rules.md';
+
 # Products and versions
 
 <PageInfo />
@@ -61,7 +63,9 @@ A hero version is marked with a star after its version name, in both views.
 
 ### Featured version
 
-The featured version is the version a product stands for on the cards and in the player. **Customize** > **Featured version** sets the order of the rules that choose it: **Hero**, **Latest Done** and **Latest**. The first rule a product matches wins.
+The featured version is the version a product stands for on the cards and in the player. **Customize** > **Featured version** sets the order of the rules that choose it: **Hero**, **Latest Done** and **Latest**. The first rule a product matches wins. The same three values are offered by the version filter.
+
+<FeaturedVersionRules />
 
 ## Controls and interactions
 
@@ -69,7 +73,7 @@ The featured version is the version a product stands for on the cards and in the
 
 | Control | What it does |
 |---|---|
-| Search filter | Filters on the attributes of the version, the product, the folder and the task. **Latest Done** among the version values matches the highest version of each product with a status of the done state. More filter options need the Power Pack, see [Power features](#power-features) |
+| Search filter | Filters on the attributes of the version, the product, the folder and the task. The version values **Latest**, **Latest Done** and **Hero** are described in [Featured version](#featured-version). More filter options need the Power Pack, see [Power features](#power-features) |
 | Sync button | Reloads the page after new versions or products are published |
 | **Group by** | Groups by **Product** or by a version field. The arrow on the chosen option switches ascending and descending. The `×` clears it, back to a flat list of versions |
 | **Table** / **Cards** | Switch the view, shortcuts `T` and `C` |

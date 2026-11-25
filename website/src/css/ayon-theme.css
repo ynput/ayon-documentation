@@ -640,3 +640,11 @@ foreignObject .material-symbols-outlined {
         margin-left: 12px;
     }
 }
+
+/* Screenshots with a dark and a light version: each in a <div className="theme-image--dark"> or
+   "theme-image--light" around a Markdown image; the one of the other theme is hidden. Markdown images,
+   not require(), so they survive the ideal-image plugin of the production build (see README). */
+[data-theme="dark"] .theme-image--light,
+[data-theme="light"] .theme-image--dark {
+    display: none;
+}

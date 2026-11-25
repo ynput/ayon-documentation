@@ -27,7 +27,26 @@ If you spot something incorrect or just think a page could do with some improvem
 - **Images on several pages**: a screenshot stays with the page that explains what it shows, usually the user guide (for example `production-tracking/assets/reporting/`), and the other pages, such as an addon's page, link to it with a relative path: `![Alt text](../../../production-tracking/assets/reporting/name.webp)`. Don't copy it.
 - **Brand images**: the AYON, Ynput and AYONpedia logos and the AYON icons (such as the launcher tray icons) live in `website/static/img/` and are referenced from the site root: `![Alt text](/img/name.png)`.
 - **Size the file, not the tag**: Markdown can't set a width, so save small images such as icons at the size they should show (for example 32×32).
+- **Dark and light screenshots**: when a screenshot has a version for each theme, put each Markdown image in a `<div className="theme-image--dark">` or `<div className="theme-image--light">` (blank lines around the image); the site hides the one of the other theme. Name the files `<name>-dark.png` and `<name>-light.png`.
 - **No `require()` in `<img>` tags**: in a production build the ideal-image plugin changes what `require("./image.png")` returns, so `require(...).default` gives an image without a `src`. The dev server turns that plugin off, so it only breaks in the build.
+
+### Shared snippets
+
+When the same definition or explanation is needed on more than one page, write it once in `website/docs/_shared/` and show it on each page, instead of copying it or sending readers to another page for it. Files and folders starting with `_` don't become pages.
+
+- **Write** the snippet as plain Markdown, `docs/_shared/<topic>.md`, starting with a comment that says what it is and which pages use it: `<!-- Shared snippet: ... Used by: pipeline/loader.md, ... -->`. Use HTML comments; this MDX version prints `{/* */}` comments as text.
+- **Links** in a snippet are relative to `docs/_shared/`, not to the page that shows it, for example `../ayon/glossary/index.md`.
+- **Show** it on a page by importing it under the front matter and using it where it belongs:
+
+  ```md
+  import FeaturedVersionRules from '../_shared/featured-version-rules.md';
+
+  <FeaturedVersionRules />
+  ```
+
+- **Same wording on every page**: a snippet can't take values from the page (`{props.x}` stays literal text in this MDX version), so only share text that reads the same everywhere.
+- **Not for one sentence**: a short sentence with a link to the page that explains the topic is enough; a snippet is for definitions, tables or paragraphs that readers need in place.
+- **When you change one**, check every page in its `Used by` list.
 
 ## Running the documentation
 
