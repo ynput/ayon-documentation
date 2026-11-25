@@ -590,15 +590,18 @@ foreignObject .material-symbols-outlined {
         width: 9rem;
     }
 }
+/* The search box is 9rem wide here (this file between 997px and 1420px, Infima below 997px): room
+   for its placeholder but not for the Ctrl K hint as well. Below 577px the plugin shows an icon only. */
+@media (max-width: 1420px) {
+    .navbar__search [class*="searchHintContainer"] {
+        display: none;
+    }
+}
 @media (min-width: 997px) and (max-width: 1160px) {
     .navbar__items > .navbar__item.navbar__link {
         font-size: 13px;
     }
     .navbar__items > .custom-logo img {
         height: 1.35rem;
-    }
-    /* the search box keeps room for its placeholder: no Ctrl K hint at this width */
-    .navbar__search [class*="searchHintContainer"] {
-        display: none;
     }
 }
