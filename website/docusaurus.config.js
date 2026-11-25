@@ -156,6 +156,10 @@ const config = {
             mermaid: {
                 theme: { light: "base", dark: "base" },
                 options: {
+                    // Room around the box labels, like the MkDocs API docs (Mermaid 11 there).
+                    // Mermaid 9 adds the padding once to the width and the height, so 28 gives
+                    // the same box height as MkDocs, whose boxes stay wider.
+                    flowchart: { padding: 28 },
                     themeVariables: {
                         darkMode: true,
                         background: "#1c2026",

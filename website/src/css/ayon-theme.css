@@ -557,6 +557,24 @@ foreignObject .material-symbols-outlined {
     marker-end: none !important;
 }
 
+/* Mermaid, like the MkDocs API docs: 1px lines (Mermaid 9 draws 2px; thick ==> links keep theirs), and
+   arrow labels in the line colour (lineColor in docusaurus.config.js and src/theme/Mermaid), so they
+   read as notes on the line and don't compete with the box and group names. Mermaid's own rules are
+   scoped by the diagram's id, hence !important (no diagram sets a link width with linkStyle). */
+.docusaurus-mermaid-container .edge-thickness-normal {
+    stroke-width: 1px !important;
+}
+.docusaurus-mermaid-container .edgeLabel,
+.docusaurus-mermaid-container .edgeLabel span,
+.docusaurus-mermaid-container .edgeLabel p {
+    color: #8b9198 !important;
+}
+[data-theme="light"] .docusaurus-mermaid-container .edgeLabel,
+[data-theme="light"] .docusaurus-mermaid-container .edgeLabel span,
+[data-theme="light"] .docusaurus-mermaid-container .edgeLabel p {
+    color: #545d68 !important;
+}
+
 /* Mermaid: nodes given the `main` class (classDef main) are the highlighted ones. Their colour
    comes from here, so it follows the theme: the primary colour as the border and a light tint of
    it as the fill, like the accent of the web app. */
