@@ -26,7 +26,7 @@ Every color has a theme variable that starts with `--md-sys-color-`. A variable 
 
 Users pick **Dark**, **Light** or **System** in the user menu; dark is the default. The choice is saved in the user's `frontendPreferences.theme`, so it follows them to other browsers, and mirrored to `localStorage` under `theme`, where an early script in `index.html` applies it before the first paint, without a dark flash (`src/helpers/theme.ts`). **System** follows the operating system's appearance as it changes.
 
-The theme is set on the root element as `data-theme="dark"` or `data-theme="light"`, which switches the tokens of ARC (`theme.dark.css`, `theme.light.css`). `data-color-mode` carries the same value for third-party widgets. A component can set `data-theme` on its own element to keep a theme: the viewer's media area and annotation tools stay dark on the light theme.
+The theme is set on the root element as `data-theme="dark"` or `data-theme="light"`, which switches the tokens of ARC (`theme.dark.css`, `theme.light.css`). `data-color-mode` carries the same value for third-party widgets. A component can set `data-theme` on its own element to keep a theme, for example to stay dark on the light theme.
 
 ## Page levels
 

@@ -119,20 +119,17 @@ The top of the menu shows the user's name and full name, or a **Set Full Name** 
 |---|---|
 | **Account** | The user's [account](account/index.md): profile, sessions and launchers |
 | **Download Launcher** | The launcher installers on this server |
-| **Theme** | Switches the web app between **Dark**, **Light** and **System** |
+| **Theme** | Picks the theme of the web app: **Dark**, **Light** or **System**, see below |
 | **Sign out** | Signs the user out |
 
 Guests see only **Theme** and **Sign out**.
 
-The web app is dark until another theme is picked. **System** follows the light or dark setting of the operating system, and changes with it. The choice is saved with the user's preferences on the server, so it follows the user to other browsers and computers; a guest's choice stays in that browser. The review player and its annotation tools stay dark on the light theme, so media is judged against the same background.
-
-<!-- screenshot: the User menu with the Theme row (Dark, Light, System), replacing user-menu.png -->
-
+To change the theme, open the User menu and pick **Dark**, **Light** or **System** in the **Theme** row. The web app is dark until another theme is picked. **System** follows the light or dark setting of the operating system, and changes with it. The choice is saved with the user's preferences on the server, so it follows the user to other browsers and computers; a guest's choice stays in that browser.
 
 </Column>
 <Column>
 
-![The User menu with the user name and full name, Account, Download Launcher and Sign out](../assets/web-ui/app-header/user-menu.png "User menu")
+![The User menu with the user name and a Set Full Name link, Account, Download Launcher, the Theme row with Dark selected, Light and System, and Sign out](../assets/web-ui/app-header/user-menu.png "User menu")
 
 </Column>
 </Columns>
