@@ -13,28 +13,10 @@
  * work well for content-centric websites.
  */
 
-/* You can override the default Infima variables here. */
-:root {
-    --ifm-color-primary: #00d6a1;
-    --ifm-color-primary-dark: #00c191;
-    --ifm-color-primary-darker: #00b689;
-    --ifm-color-primary-darkest: #009671;
-    --ifm-color-primary-light: #00ebb1;
-    --ifm-color-primary-lighter: #00f6b9;
-    --ifm-color-primary-lightest: #17ffc6;
-}
+/* Colors, fonts and Infima variables live in ayon-theme.css. */
 
 .material-symbols-outlined {
     font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 48;
-}
-
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-    --ifm-color-primary: #00d6a1;
-}
-/* Styling one class specially in dark mode */
-[data-theme="dark"] .white-text {
-    color: black;
 }
 
 body {

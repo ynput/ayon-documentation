@@ -1,0 +1,77 @@
+.gallery {
+    margin: 0 0 var(--ifm-leading);
+}
+
+.grid {
+    display: grid;
+    gap: 16px;
+}
+
+.scroll {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: 8px;
+}
+
+.scroll .item {
+    scroll-snap-align: start;
+}
+
+.item {
+    margin: 0;
+    min-width: 0;
+    padding: 8px;
+    background: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--ayon-radius-large);
+}
+
+.item[hidden] {
+    display: none;
+}
+
+.thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+}
+
+.thumb img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: top left;
+    border-radius: var(--ayon-radius);
+}
+
+.item figcaption {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+.more {
+    margin-top: 8px;
+    padding: 2px 14px;
+    font: inherit;
+    font-size: 0.9rem;
+    color: var(--md-sys-color-on-surface);
+    background: var(--md-sys-color-surface-container-high);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.more:hover {
+    border-color: var(--md-sys-color-outline);
+}
+
+
+.contain .thumb img {
+    aspect-ratio: auto;
+    object-fit: contain;
+}

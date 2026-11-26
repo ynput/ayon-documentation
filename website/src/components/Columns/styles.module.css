@@ -1,0 +1,46 @@
+.columns {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    margin: 0 0 var(--ifm-leading);
+}
+
+/* equal columns by default; with widths each takes its share of the row, minus its part of the gap */
+.column {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.column[style] {
+    flex: 0 0 calc(var(--column-basis) - 0.75rem);
+}
+
+.column > :last-child {
+    margin-bottom: 0;
+}
+
+.figure {
+    margin: 0 0 var(--ifm-leading);
+}
+
+.thumb {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: zoom-in;
+}
+
+.thumb img {
+    display: block;
+    width: 100%;
+    border-radius: var(--ayon-radius);
+}
+
+.figure figcaption {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+}
+

@@ -1,0 +1,650 @@
+/**
+ * AYON theme for the docs.
+ *
+ * Tokens are copied from the AYON web app so the docs look like the
+ * product. Sources:
+ *   - ynput/ayon-react-components  src/theme/tokens.css, states.css,
+ *                                  theme.dark.css, theme.light.css
+ *   - ynput/ayon-frontend          src/styles/index.scss
+ * Like the app, the site has a dark theme (the default) and a light theme, picked
+ * with Dark, Light or System in the navbar (src/theme/Navbar/ColorModeToggle).
+ * To follow a change in the app, update the `--md-*` values below from tokens.css
+ * (the `-dark` and `-light` values); the `--ifm-*` section maps them onto Docusaurus.
+ */
+
+/* ---------- Fonts ----------
+ * Brand swatch: Geograph (primary) / Jost (open-source alternative) for headings,
+ * Inter for paragraphs. Geograph and Documan are commercial, so the docs use the
+ * open-source pair. Loaded from @fontsource-variable in docusaurus.config.js.
+ * (The web app itself uses Nunito Sans; the help center uses Inter.)
+ */
+
+/* ---------- AYON design tokens (dark, the default) ---------- */
+:root,
+[data-theme="dark"] {
+    color-scheme: dark;
+    --md-sys-color-primary: #8fceff;
+    --md-sys-color-primary-hover: hsl(206, 80%, 73%);
+    --md-sys-color-primary-active: hsl(206, 72%, 71%);
+    --md-sys-color-on-primary: #00344f;
+    --md-sys-color-primary-container: #1c4154;
+    --md-sys-color-on-primary-container: #ebf5ff;
+    --md-sys-color-secondary: #b7c9d9;
+    --md-sys-color-secondary-container: #384956;
+    --md-sys-color-on-secondary-container: #d3e5f6;
+    --md-sys-color-tertiary: #23e0a9;
+    --md-sys-color-on-tertiary: #003827;
+    --md-sys-color-tertiary-container: #00513a;
+    --md-sys-color-on-tertiary-container: #52fdc3;
+    --md-sys-color-error: hsl(6, 100%, 84%);
+    --md-sys-color-error-container: hsl(6, 100%, 29%);
+    --md-sys-color-on-error-container: hsl(6, 100%, 92%);
+    --md-sys-color-warning: hsl(25, 100%, 84%);
+    --md-sys-color-warning-container: hsl(25, 100%, 29%);
+    --md-sys-color-on-warning-container: hsl(25, 100%, 92%);
+    --md-sys-color-outline: #9aa0a7;
+    --md-sys-color-outline-variant: #41474d;
+    --md-sys-color-background: #252a31;
+    --md-sys-color-on-background: #f2f2f3;
+    --md-sys-color-surface: #252b32;
+    --md-sys-color-on-surface: #f4f5f5;
+    --md-sys-color-on-surface-variant: #c1c7ce;
+    --md-sys-color-surface-container-highest: #424a57;
+    --md-sys-color-surface-container-high: #353b46;
+    --md-sys-color-surface-container: #272d35;
+    --md-sys-color-surface-container-low: #1c2026;
+    --md-sys-color-surface-container-lowest: #16191d;
+    --md-sys-color-surface-container-high-hover: hsl(217, 11%, 29%);
+    --md-sys-color-surface-container-hover: hsl(212, 11%, 23%);
+
+    /* Brand swatch (ayon-colors.jpg): used for status accents and card icons */
+    --ayon-brand-mint: #00dcb4; /* Ynput Mint */
+    --ayon-brand-blue: #009be1; /* Code Blue */
+    --ayon-brand-black: #000000; /* Terminal Black */
+    --ayon-brand-yellow: #ffb400; /* Construct Yellow */
+    --ayon-brand-red: #ff6446; /* Error Red */
+    --ayon-brand-grey-20: #c3c8cd; /* UI Grey 20 */
+    --ayon-brand-grey-40: #737d8c; /* UI Grey 40 */
+    --ayon-brand-grey-60: #555f73; /* UI Grey 60 */
+    --ayon-brand-grey-80: #2c313a; /* UI Grey 80 */
+
+    /* Sampled from the web app: selected row / list item tint */
+    --ayon-selected: #1b4154;
+
+    /* menus and dropdowns, raised by a lighter surface */
+    --ayon-overlay: var(--md-sys-color-surface-container-high);
+    --ayon-overlay-hover: var(--md-sys-color-surface-container-highest);
+    --ayon-overlay-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+
+    /* Infima's shades of the primary color (button hover, active links) */
+    --ayon-primary-dark: #3db4fc;
+    --ayon-primary-darker: #0099de;
+    --ayon-primary-darkest: #007eb8;
+    --ayon-primary-light: #cae6ff;
+    --ayon-primary-lighter: #e6f2ff;
+    --ayon-primary-lightest: #f6f9ff;
+    --ayon-code-line-highlight: rgba(143, 206, 255, 0.12);
+
+    --ayon-radius: 4px;
+    --ayon-radius-large: 8px;
+    --ayon-font-family: "Inter Variable", Inter, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --ayon-font-family-heading: "Jost Variable", Jost, "Inter Variable", sans-serif;
+}
+
+/* ---------- AYON design tokens (light) ----------
+ * The `-light` values of tokens.css and states.css. The brand swatch stays the same. */
+[data-theme="light"] {
+    color-scheme: light;
+    --md-sys-color-primary: #0b76ba;
+    --md-sys-color-primary-hover: #0a69a6;
+    --md-sys-color-primary-active: #095d93;
+    --md-sys-color-on-primary: #ffffff;
+    --md-sys-color-primary-container: #d5eafa;
+    --md-sys-color-on-primary-container: #08304d;
+    --md-sys-color-secondary: #50606e;
+    --md-sys-color-secondary-container: #dde5ee;
+    --md-sys-color-on-secondary-container: #1e2a36;
+    --md-sys-color-tertiary: #00845e;
+    --md-sys-color-on-tertiary: #ffffff;
+    --md-sys-color-tertiary-container: #c9f2e0;
+    --md-sys-color-on-tertiary-container: #00402c;
+    --md-sys-color-error: #c5281c;
+    --md-sys-color-error-container: #fbddd8;
+    --md-sys-color-on-error-container: #7a1309;
+    --md-sys-color-warning: #b45309;
+    --md-sys-color-warning-container: #fde6cc;
+    --md-sys-color-on-warning-container: #6b3005;
+    --md-sys-color-outline: #545d68;
+    --md-sys-color-outline-variant: #ccd3db;
+    --md-sys-color-background: #e9ecf0;
+    --md-sys-color-on-background: #1a1e23;
+    --md-sys-color-surface: #f8f9fb;
+    --md-sys-color-on-surface: #1a1e23;
+    --md-sys-color-on-surface-variant: #47505a;
+    --md-sys-color-surface-container-highest: #d8dde4;
+    --md-sys-color-surface-container-high: #e4e8ed;
+    --md-sys-color-surface-container: #eef1f4;
+    --md-sys-color-surface-container-low: #f8f9fb;
+    --md-sys-color-surface-container-lowest: #ffffff;
+    --md-sys-color-surface-container-high-hover: #dae0e6;
+    --md-sys-color-surface-container-hover: #e6e9ee;
+
+    /* the app selects with the primary container on the light theme */
+    --ayon-selected: var(--md-sys-color-primary-container);
+
+    /* a light surface can't be raised by making it lighter: white with a shadow and a hairline */
+    --ayon-overlay: var(--md-sys-color-surface-container-lowest);
+    --ayon-overlay-hover: var(--md-sys-color-surface-container);
+    --ayon-overlay-shadow: 0 8px 24px rgba(16, 24, 40, 0.14), 0 0 0 1px var(--md-sys-color-outline-variant);
+
+    --ayon-primary-dark: #0a6aa7;
+    --ayon-primary-darker: #0a649e;
+    --ayon-primary-darkest: #085282;
+    --ayon-primary-light: #0c82cd;
+    --ayon-primary-lighter: #0d88d5;
+    --ayon-primary-lightest: #2196e6;
+    --ayon-code-line-highlight: rgba(11, 118, 186, 0.1);
+}
+
+/* ---------- Map tokens onto Docusaurus / Infima ---------- */
+/* `:root[data-theme]` outranks Infima's own `[data-theme=dark]:root` block. */
+:root[data-theme] {
+    /* brand */
+    --ifm-color-primary: var(--md-sys-color-primary);
+    --ifm-color-primary-dark: var(--ayon-primary-dark);
+    --ifm-color-primary-darker: var(--ayon-primary-darker);
+    --ifm-color-primary-darkest: var(--ayon-primary-darkest);
+    --ifm-color-primary-light: var(--ayon-primary-light);
+    --ifm-color-primary-lighter: var(--ayon-primary-lighter);
+    --ifm-color-primary-lightest: var(--ayon-primary-lightest);
+    --ifm-color-secondary: var(--md-sys-color-secondary);
+    --ifm-color-info: var(--ayon-brand-blue);
+    --ifm-color-success: var(--ayon-brand-mint);
+    --ifm-color-warning: var(--ayon-brand-yellow);
+    --ifm-color-danger: var(--ayon-brand-red);
+
+    /* surfaces */
+    --ifm-background-color: var(--md-sys-color-surface-container-low); /* the app's dark working panel */
+    --ifm-background-surface-color: var(--md-sys-color-surface-container); /* raised: cards, admonitions */
+    --ifm-navbar-background-color: var(--md-sys-color-surface-container-low); /* the app header's colour */
+    --ifm-footer-background-color: var(--md-sys-color-surface-container-lowest);
+    --ifm-footer-color: var(--md-sys-color-on-surface-variant);
+    --ifm-footer-link-color: var(--md-sys-color-on-surface-variant);
+    --ifm-footer-title-color: var(--md-sys-color-on-surface);
+    --ifm-code-background: var(--md-sys-color-surface-container-high);
+    --ifm-pre-background: var(--md-sys-color-surface-container-lowest);
+    --ifm-table-stripe-background: var(--md-sys-color-surface-container);
+    --ifm-table-head-background: var(--md-sys-color-surface-container-highest);
+    --ifm-table-border-color: var(--md-sys-color-outline-variant);
+    --ifm-toc-border-color: var(--md-sys-color-outline-variant);
+    --ifm-hr-background-color: var(--md-sys-color-outline-variant);
+    --ifm-color-emphasis-200: var(--md-sys-color-outline-variant);
+    --ifm-color-emphasis-300: var(--md-sys-color-surface-container-highest);
+
+    /* text */
+    --ifm-font-color-base: var(--md-sys-color-on-surface);
+    --ifm-font-color-secondary: var(--md-sys-color-on-surface-variant);
+    --ifm-heading-color: var(--md-sys-color-on-surface);
+    --ifm-link-color: var(--md-sys-color-primary);
+    --ifm-link-hover-color: var(--md-sys-color-primary-hover);
+    --ifm-navbar-link-color: var(--md-sys-color-on-surface);
+    --ifm-navbar-link-hover-color: var(--md-sys-color-primary);
+    --ifm-menu-color: var(--md-sys-color-on-surface-variant);
+    --ifm-menu-color-active: var(--md-sys-color-on-primary-container);
+    --ifm-menu-color-background-active: var(--ayon-selected);
+    --ifm-menu-color-background-hover: var(--md-sys-color-surface-container-high);
+    --ifm-breadcrumb-color-active: var(--md-sys-color-primary);
+    --ifm-font-family-base: var(--ayon-font-family);
+    --ifm-heading-font-family: var(--ayon-font-family-heading);
+    --ifm-heading-font-weight: 600;
+
+    /* shape */
+    --ifm-global-radius: var(--ayon-radius-large);
+    --ifm-button-border-radius: var(--ayon-radius);
+    --ifm-code-border-radius: var(--ayon-radius);
+    --ifm-pre-border-radius: var(--ayon-radius-large);
+    --ifm-card-border-radius: var(--ayon-radius-large);
+    --ifm-navbar-shadow: 0 1px 0 var(--md-sys-color-outline-variant);
+
+    /* code blocks */
+    --docusaurus-highlighted-code-line-bg: var(--ayon-code-line-highlight);
+
+    /* navbar search field: a raised surface on both themes, like the app's inputs */
+    --ifm-navbar-search-input-background-color: var(--md-sys-color-surface-container-high);
+    --ifm-navbar-search-input-color: var(--md-sys-color-on-surface);
+    --ifm-navbar-search-input-placeholder-color: var(--md-sys-color-on-surface-variant);
+
+    /* search (@easyops-cn/docusaurus-search-local) */
+    --search-local-modal-background: var(--md-sys-color-surface-container-high);
+    --search-local-hit-background: var(--md-sys-color-surface-container-high);
+    --search-local-hit-color: var(--md-sys-color-on-surface);
+    --search-local-muted-color: var(--md-sys-color-on-surface-variant);
+    --search-local-highlight-color: var(--md-sys-color-primary);
+    --search-local-hit-active-color: var(--md-sys-color-on-primary-container);
+}
+
+/* Navbar search icon: Infima draws it as a background image with fill="currentColor", which a background
+   image can't resolve, so it was black on both themes. Same Infima magnifier with the placeholder grey
+   (--md-sys-color-on-surface-variant) as a literal hex, since CSS variables don't reach into a data URI. */
+:root[data-theme="dark"] {
+    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%23c1c7ce" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+}
+:root[data-theme="light"] {
+    --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%2347505a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+}
+
+/* ---------- Component touches ---------- */
+body {
+    font-family: var(--ayon-font-family);
+}
+
+/* Buttons: muted like the app. Primary = blue container, secondary = grey. */
+.button--primary {
+    --ifm-button-color: var(--md-sys-color-on-primary-container);
+    --ifm-button-background-color: var(--md-sys-color-primary-container);
+    --ifm-button-border-color: var(--md-sys-color-primary-container);
+    font-weight: 600;
+}
+.button--primary:hover {
+    --ifm-button-background-color: var(--md-sys-color-primary-hover);
+    --ifm-button-border-color: var(--md-sys-color-primary-hover);
+    --ifm-button-color: var(--md-sys-color-on-primary);
+}
+.button--secondary {
+    --ifm-button-color: var(--md-sys-color-on-surface);
+    --ifm-button-background-color: var(--md-sys-color-secondary-container);
+    --ifm-button-border-color: var(--md-sys-color-secondary-container);
+}
+.button--secondary:hover {
+    --ifm-button-background-color: var(--md-sys-color-surface-container-highest);
+    --ifm-button-border-color: var(--md-sys-color-surface-container-highest);
+}
+
+/* Navbar: the group items are tabs, as in the AYON web app's page tabs. The bar has the
+   app header's colour (surface-container-low, like the panels of the web app) and a line at its
+   bottom edge; the tabs stand on that line, and the
+   active one is underlined in the accent colour and set in semibold. */
+.navbar {
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+@media (min-width: 997px) {
+    .navbar {
+        background-color: var(--md-sys-color-surface-container-low);
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: stretch;
+    }
+    .navbar__inner {
+        align-items: stretch;
+    }
+    .navbar__items {
+        align-items: flex-end;
+    }
+    /* logo, search and the theme picker are centred in the bar, on the same line as the tab names */
+    .navbar__items > .custom-logo,
+    .navbar__items--right > * {
+        align-self: center;
+    }
+    .navbar__items > .navbar__item.navbar__link {
+        /* the full height of the bar, so the name is centred like the logo and the search, and
+           the underline sits on the bar's bottom line */
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        position: relative;
+        isolation: isolate;
+        /* over the bar's line, so the underline sits on it */
+        margin: 0 0.1rem -1px;
+        color: var(--md-sys-color-on-surface-variant);
+        /* the web app's page tabs: Nunito Sans, 500 and 600 when open; a size up from the app's
+           title small (14px), since the docs bar is wider and has fewer controls */
+        font-family: "Nunito Sans Variable", "Nunito Sans", var(--ayon-font-family);
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 0.1px;
+        font-weight: 500;
+    }
+    /* a shade behind the name on hover, clear of the underline */
+    .navbar__items > .navbar__item.navbar__link::before {
+        content: "";
+        position: absolute;
+        inset: calc(50% - 0.9rem) 0;
+        border-radius: var(--ayon-radius);
+        z-index: -1;
+    }
+    .navbar__items > .navbar__item.navbar__link:hover {
+        color: var(--md-sys-color-on-surface);
+    }
+    .navbar__items > .navbar__item.navbar__link:hover::before {
+        background-color: var(--md-sys-color-surface-container-high-hover);
+    }
+    .navbar__items > .navbar__item.navbar__link--active {
+        color: var(--md-sys-color-on-surface);
+        font-weight: 600;
+        box-shadow: inset 0 -2px 0 0 var(--md-sys-color-primary);
+    }
+}
+.theme-doc-sidebar-container {
+    background-color: var(--md-sys-color-surface-container-low);
+    border-right: 1px solid var(--md-sys-color-outline-variant);
+}
+.menu__link {
+    border-radius: var(--ayon-radius);
+}
+.menu__link--active:not(.menu__link--sublist) {
+    background-color: var(--ayon-selected);
+}
+
+/* Admonitions: raised surface with a brand-coloured edge. */
+.alert {
+    background-color: var(--md-sys-color-surface-container);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-left-width: 4px;
+    color: var(--md-sys-color-on-surface);
+}
+.alert--info {
+    border-left-color: var(--ayon-brand-blue);
+}
+.alert--success {
+    border-left-color: var(--ayon-brand-mint);
+}
+.alert--warning {
+    border-left-color: var(--ayon-brand-yellow);
+}
+.alert--danger {
+    border-left-color: var(--ayon-brand-red);
+}
+
+table {
+    border-radius: var(--ayon-radius);
+}
+
+/* Thin scrollbars, as in the app. */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--md-sys-color-surface-container-highest) transparent;
+}
+
+/* Search: the plugin paints the selected hit with the highlight color. Use the
+   app's muted blue-tint selection instead. */
+:root [class*="searchBar"] [class*="dropdownMenu"] [class*="suggestion"][class*="cursor"] {
+    background-color: var(--ayon-selected);
+}
+
+/* Navbar: eight group items. Never wrap a label, and tighten the spacing on
+   medium screens (below 997px Docusaurus switches to the hamburger menu). */
+.navbar__item,
+.navbar__link {
+    white-space: nowrap;
+}
+@media (min-width: 1081px) and (max-width: 1320px) {
+    :root[data-theme] {
+        --ifm-navbar-item-padding-horizontal: 0.45rem;
+    }
+}
+@media (min-width: 997px) and (max-width: 1080px) {
+    :root[data-theme] {
+        --ifm-navbar-item-padding-horizontal: 0.25rem;
+    }
+}
+
+/* Archived addons (front matter `sidebar_class_name: addon-archived`, or className in
+   sidebars.js): greyed out in the sidebar and on the page. */
+.menu__list-item.addon-archived > .menu__link,
+.menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+article:has(dl[data-archived="true"]) h1 {
+    color: var(--md-sys-color-on-surface-variant);
+}
+
+/* Sidebar hierarchy: top-level entries are the strongest, every nested level is lighter
+   (regular weight, smaller, muted) and sits behind a thin guide line, so an expanded
+   section can be followed with the eye. */
+.theme-doc-sidebar-menu > .menu__list-item > .menu__link,
+.theme-doc-sidebar-menu > .menu__list-item > .menu__list-item-collapsible > .menu__link {
+    font-weight: 600;
+    color: var(--md-sys-color-on-surface);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list {
+    margin-left: 0.75rem;
+    padding-left: 0.25rem;
+    border-left: 1px solid var(--md-sys-color-outline-variant);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__link {
+    font-weight: 400;
+    font-size: 0.9em;
+    color: var(--md-sys-color-on-surface-variant);
+}
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__link--active:not(.menu__link--sublist) {
+    font-weight: 500;
+    color: var(--ifm-menu-color-active);
+}
+
+/* Second level (addons): regular weight. */
+.theme-doc-sidebar-menu .theme-doc-sidebar-item-category-level-2 > .menu__list-item-collapsible > .menu__link,
+.theme-doc-sidebar-menu .theme-doc-sidebar-item-link-level-2 > .menu__link {
+    font-weight: 400;
+}
+
+/* The addon groups: server addons blue, pipeline addons mint, third-party grey. */
+.menu__list-item.addons-server > .menu__list-item-collapsible > .menu__link,
+.menu__list-item.addons-pipeline > .menu__list-item-collapsible > .menu__link,
+.menu__list-item.addons-thirdparty > .menu__list-item-collapsible > .menu__link {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.8em;
+}
+.menu__list-item.addons-server,
+.menu__list-item.addons-pipeline,
+.menu__list-item.addons-thirdparty {
+    padding-left: 0.25rem;
+    margin-bottom: 0.75rem;
+}
+/* One shorthand per group: a longhand color rule can be merged away by the CSS minifier. */
+.menu__list-item.addons-server { border-left: 3px solid var(--ayon-brand-blue); }
+.menu__list-item.addons-pipeline { border-left: 3px solid var(--ayon-brand-mint); }
+.menu__list-item.addons-thirdparty { border-left: 3px solid var(--md-sys-color-outline); }
+
+/* Archived and legacy entries stay grey at every level (beats the nested-level color above). */
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__link,
+.theme-doc-sidebar-menu .menu__list .menu__list .menu__list-item.addon-archived > .menu__list-item-collapsible > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+
+/* Legacy and archived entries are grey at the top level of a sidebar too. */
+.theme-doc-sidebar-menu > .menu__list-item.addon-archived > .menu__link {
+    color: var(--md-sys-color-outline);
+}
+
+/* Material Symbols in Mermaid node labels (the icons of the AYON web app). Global on
+   purpose: Mermaid measures labels in a temporary element outside the diagram container. */
+foreignObject .material-symbols-outlined {
+    font-size: 28px;
+    line-height: 1.2;
+    color: var(--ayon-brand-blue);
+}
+
+/* Code blocks on the light theme: the GitHub colors on the app's light surface, with a
+   hairline so the block stands off the page. The Prism theme sets the background inline. */
+[data-theme="light"] [class*="codeBlockContainer"] {
+    --prism-background-color: var(--md-sys-color-surface-container) !important;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    box-shadow: none;
+}
+
+/* Ynput bar above the navbar: the logo with dark letters on the light theme. */
+[data-theme="light"] #brand-logo {
+    content: url("/img/ynput_logo_small_BG.svg");
+}
+
+/* Badges (the GraphQL reference marks fields as scalar, list, non-null...): the chip
+   colors of the app. Infima's secondary badge puts dark text on the secondary color. */
+.badge--secondary {
+    --ifm-badge-background-color: var(--md-sys-color-secondary-container);
+    --ifm-badge-border-color: var(--md-sys-color-secondary-container);
+    color: var(--md-sys-color-on-secondary-container);
+}
+
+/* REST API reference (redoc) on the light theme. Redoc builds its right panel for a dark
+   background, with fixed colors, and its theme can't differ between the color modes, so
+   the light panel and samples are set here, like the light code blocks. Redoc has few
+   stable classes: the panel is the last child of an operation, the full-height strip
+   behind the panels is the last child of .redoc-wrap. */
+[data-theme="light"] .redoc-wrap > div:last-child,
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child {
+    background-color: var(--md-sys-color-surface-container);
+    color: var(--md-sys-color-on-surface);
+}
+
+/* redocusaurus colors the panel headings with a long selector, hence the !important */
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child h3 {
+    color: var(--md-sys-color-on-surface) !important;
+}
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child .react-tabs__tab-panel,
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child .react-tabs__tab-panel :not(.token):not(a) {
+    color: var(--md-sys-color-on-surface);
+}
+
+/* the endpoint bar, the sample panels and the content type and schema boxes */
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child > div:first-child > button,
+[data-theme="light"] .redoc-wrap [id^="operation/"] > div:last-child .react-tabs__tab-panel {
+    background-color: var(--md-sys-color-surface-container-lowest);
+    border: 1px solid var(--md-sys-color-outline-variant);
+    color: var(--md-sys-color-on-surface);
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel span + div,
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel div:has(> select.dropdown-select) {
+    background-color: var(--md-sys-color-surface-container);
+}
+
+/* response code tabs: the selected one stays white, the others sit on the panel */
+[data-theme="light"] .redoc-wrap .react-tabs__tab-list > li {
+    border-color: var(--md-sys-color-outline-variant);
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-list > li:not(.react-tabs__tab--selected) {
+    background-color: var(--md-sys-color-surface-container-high);
+}
+
+/* sample JSON and code: GitHub colors, as in the light code blocks */
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel code,
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel pre {
+    text-shadow: none;
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .collapser {
+    color: var(--md-sys-color-on-surface-variant);
+}
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token.property.string { color: #0550ae; }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token.string { color: #0a3069; }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token:is(.number, .boolean, .keyword, .constant) { color: #cf222e; }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .token.punctuation { color: var(--md-sys-color-on-surface-variant); }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel a { color: var(--md-sys-color-primary); }
+[data-theme="light"] .redoc-wrap .react-tabs__tab-panel .hovered { background-color: var(--ayon-code-line-highlight); }
+
+/* Launcher tray icons: a grey tile, like a taskbar, so the white development icon shows.
+   The same fixed grey in both themes, so the icons don't change when the theme switches.
+   The build inlines these small images, so the alt text is the hook. */
+.markdown img[alt*="tray icon:"] {
+    padding: 3px;
+    border-radius: var(--ayon-radius);
+    background-color: #545d68;
+}
+
+/* Naming conventions graph: the roots feed every template. Mermaid places a node right of whatever
+   points into it, so these links are written two-headed (template <--> Roots) to keep Roots on the
+   right, and the arrowhead at the Roots end is hidden here, leaving the arrow into the template. */
+.docusaurus-mermaid-container path[id$="-namingRoot-0"] {
+    marker-end: none !important;
+}
+
+/* Mermaid, like the MkDocs API docs: 1px lines (Mermaid 9 draws 2px; thick ==> links keep theirs), and
+   arrow labels in the line colour (lineColor in docusaurus.config.js and src/theme/Mermaid), so they
+   read as notes on the line and don't compete with the box and group names. Mermaid's own rules are
+   scoped by the diagram's id, hence !important (no diagram sets a link width with linkStyle). */
+.docusaurus-mermaid-container .edge-thickness-normal {
+    stroke-width: 1px !important;
+}
+.docusaurus-mermaid-container .edgeLabel,
+.docusaurus-mermaid-container .edgeLabel span,
+.docusaurus-mermaid-container .edgeLabel p {
+    color: #8b9198 !important;
+}
+[data-theme="light"] .docusaurus-mermaid-container .edgeLabel,
+[data-theme="light"] .docusaurus-mermaid-container .edgeLabel span,
+[data-theme="light"] .docusaurus-mermaid-container .edgeLabel p {
+    color: #545d68 !important;
+}
+
+/* Mermaid: nodes given the `main` class (classDef main) are the highlighted ones. Their colour
+   comes from here, so it follows the theme: the primary colour as the border and a light tint of
+   it as the fill, like the accent of the web app. */
+.docusaurus-mermaid-container .node.main rect,
+.docusaurus-mermaid-container .node.main polygon,
+.docusaurus-mermaid-container .node.main circle,
+.docusaurus-mermaid-container .node.main path {
+    stroke: var(--md-sys-color-primary) !important;
+    fill: color-mix(in srgb, var(--md-sys-color-primary) 15%, transparent) !important;
+}
+
+/* Navbar on medium screens: the logo keeps its width (its image would run under the first tab
+   otherwise), and the logo, the search box and the tab text get smaller in steps, so the eight
+   tabs fit (below 997px Docusaurus switches to the hamburger menu). */
+.navbar__items > .custom-logo {
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+}
+/* the logo image is centred in its 2.5rem box (logoStyle in docusaurus.config.js), so the smaller
+   images below stay on the bar's centre line instead of at the top of the box */
+.navbar__items > .custom-logo [class*="logo_"] {
+    display: flex;
+    align-items: center;
+}
+@media (min-width: 997px) and (max-width: 1420px) {
+    .navbar__items > .navbar__item.navbar__link {
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .navbar__items > .custom-logo img {
+        height: 1.6rem;
+    }
+    .navbar .navbar__search-input {
+        width: 9rem;
+    }
+}
+/* The search box is 9rem wide here (this file between 997px and 1420px, Infima below 997px): room
+   for its placeholder but not for the Ctrl K hint as well. Below 577px the plugin shows an icon only. */
+@media (max-width: 1420px) {
+    .navbar__search [class*="searchHintContainer"] {
+        display: none;
+    }
+}
+@media (min-width: 997px) and (max-width: 1160px) {
+    .navbar__items > .navbar__item.navbar__link {
+        font-size: 13px;
+    }
+    .navbar__items > .custom-logo img {
+        height: 1.35rem;
+    }
+}
+
+/* Theme picker on narrow screens: Docusaurus hides it from the navbar below 997px (it is then only in
+   the sidebar menu); keep it after the search box at every width, like the MkDocs API docs. */
+@media (max-width: 996px) {
+    /* Docusaurus places the search absolutely at the right edge here; back in the flow, so the
+       picker can follow it */
+    .navbar__items--right [class*="searchBox"] {
+        position: static;
+    }
+    .navbar__items--right [class*="colorModeToggle"] {
+        display: flex;
+        margin-left: 12px;
+    }
+}
+
+/* Screenshots with a dark and a light version: each in a <div className="theme-image--dark"> or
+   "theme-image--light" around a Markdown image; the one of the other theme is hidden. Markdown images,
+   not require(), so they survive the ideal-image plugin of the production build (see README). */
+[data-theme="dark"] .theme-image--light,
+[data-theme="light"] .theme-image--dark {
+    display: none;
+}

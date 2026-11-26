@@ -5,45 +5,58 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import styles from "./styles.module.scss";
-import { Brush, Cube, Shield } from "../components/Icons";
 import SearchBar from "@theme/SearchBar";
-import AddonCard from "./features/_components/AddonCard";
-import stylesFeatures from "./features/styles.module.scss";
-import FeatureCard from "./features/_components/FeatureCard";
-import { addons, products, features } from "../data";
-import ProductCard from "./features/_components/ProductCard";
-import Heading from "@theme/Heading";
 
 const links = [
     {
-        title: "User",
-        icon: Brush,
-        bio: "Guides for users, artists and coordinators",
-        to: "https://help.ayon.app/",
-        button: "Get Help",
+        title: "AYON",
+        bio: "What AYON is, how it works and how it is set up",
+        to: "docs/ayon/introduction",
+        button: "Introduction",
     },
     {
-        title: "Admin",
-        icon: Shield,
-        bio: "Studio setup, configuration and management",
-        to: "https://help.ayon.app/",
-        button: "Get Setup",
+        title: "Backend",
+        bio: "The data model and the settings scopes",
+        to: "docs/ayon/backend/data-model",
+        button: "Data model",
+    },
+    {
+        title: "Production tracking",
+        bio: "The web app pages and features for tracking production",
+        to: "docs/production-tracking",
+        button: "Overview",
+    },
+    {
+        title: "Pipeline",
+        bio: "How data flows through the pipeline, and the tools artists use",
+        to: "docs/pipeline",
+        button: "Overview",
+    },
+    {
+        title: "Ynput Cloud",
+        bio: "The platform for AYON subscriptions and cloud-hosted servers",
+        to: "docs/ynput-cloud",
+        button: "Ynput Cloud",
+    },
+    {
+        title: "Addons",
+        bio: "What each addon provides and its settings",
+        to: "docs/addons",
+        button: "Addons",
     },
     {
         title: "Developer",
-        icon: Cube,
-        bio: "Technical docs and guides for TDs and Devs",
-        to: "docs/dev_introduction",
-        button: "Developer Docs",
+        bio: "APIs, and guides for addon development",
+        to: "docs/developer",
+        button: "Introduction",
     },
 ];
 
 const LinkModal = ({ link }) => {
-    const { title, icon, bio, to, button } = link;
+    const { title, bio, to, button } = link;
     return (
         <div className={styles.link}>
             <header>
-                {icon()}
                 <h3>{title}</h3>
             </header>
             <p>{bio}</p>
@@ -92,7 +105,7 @@ export default function Home() {
                 </div>
                 <div className={styles.linksWrapper}>
                     <h2 className={clsx("hero__subtitle", styles.getStarted)}>
-                        Get Started
+                        Explore the reference
                     </h2>
                     <div className={styles.links}>
                         {links.map((link, i) => (
@@ -101,148 +114,6 @@ export default function Home() {
                     </div>
                 </div>
             </header>
-            <section
-                className={clsx(
-                    "margin-bottom--xl margin-top--xl container padding-top--lg padding-bottom--lg",
-                    styles.features
-                )}
-            >
-                <Link href="/features">
-                    <Heading as="h2" className={clsx("hero__subtitle")}>
-                        Addons
-                    </Heading>
-                </Link>
-                <p>
-                    AYON is a highly modular system designed to cater to your
-                    specific needs. With its extensive library of both official
-                    and community-developed addons, it can seamlessly integrate
-                    with a variety of different software.
-                </p>
-                <div
-                    className={clsx(
-                        "container",
-                        stylesFeatures.featuresSection,
-                        stylesFeatures.addonsSection
-                    )}
-                >
-                    <ul
-                        className={clsx(
-                            "container",
-                            "clean-list",
-                            stylesFeatures.showcaseList
-                        )}
-                    >
-                        {[...addons].splice(0, 12).map((addon) => (
-                            <AddonCard addon={addon} key={addon.id} />
-                        ))}
-                    </ul>
-                    <a href="/features?viewAll=addons">
-                        <div
-                            className={clsx(
-                                "button button--secondary button--md",
-                                "pagination-nav__link",
-                                styles.viewAll
-                            )}
-                        >
-                            View All Addons
-                        </div>
-                    </a>
-                </div>
-            </section>
-            <section
-                className={clsx(
-                    "margin-bottom--xl container padding-top--lg padding-bottom--lg",
-                    styles.features
-                )}
-            >
-                <Link href="/features">
-                    <Heading as="h2" className={clsx("hero__subtitle")}>
-                        Features
-                    </Heading>
-                </Link>
-                <p>
-                    AYON has a vast library of built-in features that can be
-                    utilized throughout the pipeline and addons.
-                </p>
-                <div
-                    className={clsx(
-                        "container",
-                        stylesFeatures.featuresSection,
-                        stylesFeatures.addonsSection
-                    )}
-                >
-                    <ul
-                        className={clsx(
-                            "container",
-                            "clean-list",
-                            stylesFeatures.showcaseList
-                        )}
-                    >
-                        {[...features].splice(0, 8).map((feature) => (
-                            <FeatureCard feature={feature} key={feature.id} />
-                        ))}
-                    </ul>
-                    <a href="/features#features">
-                        <div
-                            className={clsx(
-                                "button button--secondary button--md",
-                                "pagination-nav__link",
-                                styles.viewAll
-                            )}
-                        >
-                            View All Features
-                        </div>
-                    </a>
-                </div>
-            </section>
-            <section
-                className={clsx(
-                    "margin-bottom--xl container padding-top--lg padding-bottom--lg",
-                    styles.features
-                )}
-            >
-                <Link href="https://help.ayon.app/en/help/articles/7070980-about-ayon-pipeline#iw8re13zz2o">
-                    <Heading as="h2" className={clsx("hero__subtitle")}>
-                        Products
-                    </Heading>
-                </Link>
-                <p>
-                    Streamline your data management with our customizable
-                    product categorization system. Efficiently organize data
-                    instances and join the industry standard for efficient data
-                    handling today!
-                </p>
-                <div
-                    className={clsx(
-                        "container",
-                        stylesFeatures.featuresSection,
-                        stylesFeatures.addonsSection
-                    )}
-                >
-                    <ul
-                        className={clsx(
-                            "container",
-                            "clean-list",
-                            stylesFeatures.showcaseList
-                        )}
-                    >
-                        {[...products].splice(0, 16).map((product) => (
-                            <ProductCard product={product} key={product.id} />
-                        ))}
-                    </ul>
-                    <a href="https://help.ayon.app/en/help/articles/7070980-about-ayon-pipeline#iw8re13zz2o">
-                        <div
-                            className={clsx(
-                                "button button--secondary button--md",
-                                "pagination-nav__link",
-                                styles.viewAll
-                            )}
-                        >
-                            View All Products
-                        </div>
-                    </a>
-                </div>
-            </section>
         </Layout>
     );
 }

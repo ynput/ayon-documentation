@@ -1,0 +1,24 @@
+.embed {
+    margin: 0 0 1.5rem;
+    border: 1px solid var(--md-sys-color-outline-variant);
+    border-radius: var(--ayon-radius-large);
+    overflow: hidden;
+    background: var(--md-sys-color-surface-container);
+}
+
+.bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    color: var(--md-sys-color-on-surface-variant);
+    border-bottom: 1px solid var(--md-sys-color-outline-variant);
+}
+
+.frame {
+    display: block;
+    width: 100%;
+    border: 0;
+    background: var(--md-sys-color-surface-container-low);
+}

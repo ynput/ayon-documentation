@@ -1,0 +1,7 @@
+.zoomable {
+    cursor: zoom-in;
+}
+
+a .zoomable {
+    cursor: pointer;
+}

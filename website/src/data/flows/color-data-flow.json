@@ -1,0 +1,224 @@
+{
+  "lanes": [
+    {
+      "id": "inst",
+      "label": "Scene and instance"
+    },
+    {
+      "id": "repr",
+      "label": "Representation (files)"
+    }
+  ],
+  "statuses": {
+    "ok": "data is set",
+    "info": "conversion or output",
+    "pass": "read only"
+  },
+  "nowLabel": "What happens",
+  "expectedLabel": "Result",
+  "keysLabel": "Terms",
+  "keys": [
+    {
+      "id": "cs",
+      "name": "colorspace",
+      "group": "instance and representation",
+      "groupColor": "a",
+      "text": "The name of the colorspace of the pixels, as defined in the OCIO config."
+    },
+    {
+      "id": "cfg",
+      "name": "OCIO config",
+      "group": "instance and representation",
+      "groupColor": "b",
+      "text": "The config that defines the colorspace: an absolute path plus a template with root tokens that another machine can resolve."
+    },
+    {
+      "id": "dv",
+      "name": "display and view",
+      "group": "representation",
+      "groupColor": "c",
+      "text": "Present when the images are display-referred, set by the host or by a transcode to a display and view."
+    },
+    {
+      "id": "rules",
+      "name": "file rules",
+      "group": "settings",
+      "groupColor": "d",
+      "text": "Project rules that assign a colorspace from the file name when the host cannot tell."
+    },
+    {
+      "id": "profile",
+      "name": "transcode profile",
+      "group": "settings",
+      "groupColor": "d",
+      "text": "Settings that select the instances to convert and define the output colorspace or display and view."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "render",
+      "label": "Images from the scene",
+      "steps": [
+        {
+          "phase": "In the scene"
+        },
+        {
+          "lane": 0,
+          "title": "Scene colorspace",
+          "subtitle": "Host integration",
+          "status": "ok",
+          "keys": [
+            "cs",
+            "cfg"
+          ],
+          "now": "The integration reads the colorspace and the OCIO config of the rendered or exported images from the scene (render settings, write nodes, render products).",
+          "expected": "The colorspace and config are stored on the instance."
+        },
+        {
+          "phase": "Extract"
+        },
+        {
+          "lane": 1,
+          "title": "colorspaceData set",
+          "subtitle": "Extract stage",
+          "status": "ok",
+          "keys": [
+            "cs",
+            "cfg"
+          ],
+          "now": "Each image representation gets a colorspaceData entry from the instance, with the colorspace name and the OCIO config.",
+          "expected": "The files and their colorspace are described together."
+        },
+        {
+          "lane": 1,
+          "title": "OIIO transcode",
+          "subtitle": "When a profile matches",
+          "status": "info",
+          "keys": [
+            "profile",
+            "cs",
+            "dv"
+          ],
+          "now": "If a transcode profile matches the instance, the images are converted with OpenImageIO to a target colorspace or to a display and view, and a new representation is created for each output definition.",
+          "expected": "New representations whose colorspaceData describes the target. Without a matching profile, nothing changes."
+        },
+        {
+          "lane": 1,
+          "title": "Review media",
+          "subtitle": "Encoded with FFmpeg",
+          "status": "info",
+          "keys": [
+            "cs",
+            "dv"
+          ],
+          "now": "Representations that carry the review tag are encoded into review media. The encoding does not apply an OCIO transform itself: the transform comes from the transcode step or from the host.",
+          "expected": "A movie or image that inherits the colorspaceData of its input."
+        },
+        {
+          "lane": 1,
+          "title": "Thumbnail",
+          "subtitle": "One image per version",
+          "status": "info",
+          "keys": [
+            "cs"
+          ],
+          "now": "One image is converted to a JPEG thumbnail with OpenImageIO when its representation has colorspaceData, and with FFmpeg otherwise.",
+          "expected": "A thumbnail for the version."
+        },
+        {
+          "phase": "Integrate"
+        },
+        {
+          "lane": 1,
+          "title": "Stored",
+          "subtitle": "Integrate stage",
+          "status": "ok",
+          "keys": [
+            "cs",
+            "cfg",
+            "dv"
+          ],
+          "now": "The colorspaceData of each representation is stored in its data on the AYON server, and the colorspace name is available as the {colorspace} key of the publish templates.",
+          "expected": "Loaders and later steps can read the colorspace of every published file."
+        }
+      ]
+    },
+    {
+      "id": "files",
+      "label": "Files from disk",
+      "steps": [
+        {
+          "phase": "Collect"
+        },
+        {
+          "lane": 0,
+          "title": "Files chosen",
+          "subtitle": "Tray Publisher or farm job",
+          "status": "pass",
+          "keys": [
+            "rules"
+          ],
+          "now": "The files come without color information from a host, for example plates added in the Tray Publisher.",
+          "expected": "The files have no colorspaceData yet."
+        },
+        {
+          "phase": "Extract"
+        },
+        {
+          "lane": 1,
+          "title": "File rules",
+          "subtitle": "Colorspace by file name",
+          "status": "ok",
+          "keys": [
+            "rules",
+            "cs",
+            "cfg"
+          ],
+          "now": "A rule of the project color settings assigns a colorspace from the file name and extension. The colorspace is not checked against the config at this point.",
+          "expected": "The representation gets colorspaceData with the colorspace and the OCIO config of the context."
+        },
+        {
+          "lane": 1,
+          "title": "OIIO transcode",
+          "subtitle": "When a profile matches",
+          "status": "info",
+          "keys": [
+            "profile",
+            "cs",
+            "dv"
+          ],
+          "now": "A matching transcode profile converts the images exactly as for images from the scene.",
+          "expected": "New representations with the target colorspace or display and view."
+        },
+        {
+          "lane": 1,
+          "title": "Review media and thumbnail",
+          "subtitle": "As above",
+          "status": "info",
+          "keys": [
+            "cs",
+            "dv"
+          ],
+          "now": "Review media and the thumbnail are made from the representations as described for images from the scene.",
+          "expected": "Reviewable media and a thumbnail."
+        },
+        {
+          "phase": "Integrate"
+        },
+        {
+          "lane": 1,
+          "title": "Stored",
+          "subtitle": "Integrate stage",
+          "status": "ok",
+          "keys": [
+            "cs",
+            "cfg",
+            "dv"
+          ],
+          "now": "The colorspaceData is stored with each published representation.",
+          "expected": "The colorspace of every published file is on record."
+        }
+      ]
+    }
+  ]
+}

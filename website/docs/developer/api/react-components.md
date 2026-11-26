@@ -1,0 +1,36 @@
+---
+title: AYON Frontend React Components
+sidebar_label: Frontend React Components
+description: Information about AYON frontend react components
+toc_max_heading_level: 5
+---
+
+The [AYON Component Library](https://github.com/ynput/ayon-react-components) is a collection of components for the AYON project. It's extensively used in our [ayon-frontend](https://github.com/ynput/ayon-frontend), the React frontend code for the Ayon server.
+It can be used to create consistent and accessible AYON addons.
+
+## Get Started
+
+You can find examples for creating a Frontend React App for addons in [Frontend](../addon-development/frontend.md).
+Once set up, you can try different AYON components.
+
+:::tip
+Our [AYON React Components Docs](https://components.ayon.dev/?path=/docs/buttons-button--docs) provide examples you can copy and paste directly into your React app for easy experimenting.
+
+Remember to import the component into your code, as it's not copied by default. For the following [EntityCard](https://components.ayon.dev/?path=/docs/entitycard--docs) example in the screen grab, use:
+
+```js
+import { EntityCard } from '@ynput/ayon-react-components'
+```
+
+![](../assets/apis_and_resources/copying_react_examples.gif)
+:::
+
+## Live reference
+
+:::tip
+To run Documentation locally follow [Get Started with Storybook](https://github.com/ynput/ayon-react-components?tab=readme-ov-file#get-started-with-storybook) on GitHub.
+:::
+
+The reference documentation of this project, embedded from [components.ayon.dev](https://components.ayon.dev/?path=/docs/buttons-button--docs).
+
+<Embed src="https://components.ayon.dev/?path=/docs/buttons-button--docs" title="AYON component library" height="800px" />
